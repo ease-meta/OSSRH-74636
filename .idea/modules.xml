@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cloud-config-center/cloud-config-center.iml" filepath="$PROJECT_DIR$/cloud-config-center/cloud-config-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cloud-register-center/cloud-register-center.iml" filepath="$PROJECT_DIR$/cloud-register-center/cloud-register-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/open-cloud-platform.iml" filepath="$PROJECT_DIR$/open-cloud-platform.iml" />
+    </modules>
+  </component>
+</project>
