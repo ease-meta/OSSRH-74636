@@ -5,5 +5,9 @@
     <artifactId>open-cloud-platform</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>cloud-register-center</artifactId>
+  <artifactId>cloud-monitor-center</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>cloud-admin-server</module>
+  </modules>
 </project>
