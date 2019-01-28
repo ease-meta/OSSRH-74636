@@ -6,4 +6,9 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>cloud-register-center</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>cloud-eureka-server</module>
+  	<module>cloud-eureka-client</module>
+  </modules>
 </project>
