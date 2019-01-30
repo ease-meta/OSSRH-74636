@@ -1,9 +1,10 @@
 # open-cloud-platform
 
 #### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+基于SpringBoot2.1.2的后台系统。技术选择spring、mybatis、shiro、activiti、ehcache、redis、jpa等。集成swagger2框架支持在线快速测试，同时采用swagger2markup和asciidoctor生成Restful API文档，通过自定义注解@Resource和shiro实现接口的鉴权管理。
+后续计划加入spring cloud alibaba实现分布式服务注册和限流，采用nacos实现配置文件的实时更新，数据库操作由mybatis替换为jpa操作。
+前端采用easyweb，感谢[https://github.com/github/pages-gem](http://)。
+
 
 #### 软件架构
 软件架构说明
