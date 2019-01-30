@@ -5,14 +5,16 @@
 后续计划加入spring cloud alibaba实现分布式服务注册和限流，采用nacos实现配置文件的实时更新，数据库操作由mybatis替换为jpa操作。
 前端采用easyweb，感谢[https://github.com/github/pages-gem](http://)。
 
-
+分布式网关、日志采集及查看
 #### 软件架构
 软件架构说明
-
+1. zookeeper集群
+2. redis集群
+3. nacos集群
+4. es集群
 
 #### 安装教程
-
-1. xxxx
+. xxxx
 2. xxxx
 3. xxxx
 
