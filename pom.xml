@@ -68,6 +68,11 @@
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -91,7 +96,7 @@
 		<finalName>${artifactId}</finalName>
 	</build>
 	<modules>
-		<module>cloud-config-center</module>
+
 		<module>cloud-register-center</module>
 		<module>cloud-monitor-center</module>
 		<module>cloud-easyweb</module>

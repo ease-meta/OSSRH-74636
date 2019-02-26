@@ -21,7 +21,7 @@
 cloud-config-center:8083
 cloud-register-center
     cloud-eureka-server:8761
-    cloud-eureka-client:8085
+    cloud-eureka-client:8086
 cloud-monitor-center
     cloud-admin-server:8084
 cloud-easyweb:8081

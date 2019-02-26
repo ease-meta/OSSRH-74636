@@ -13,6 +13,7 @@ public class DcController {
 
 	@Autowired
 	LoadBalancerClient loadBalancerClient;
+
 	@Autowired
 	RestTemplate restTemplate;
 
@@ -32,5 +33,10 @@ public class DcController {
 		String url = "http://" + "eurekaclient" + ":" + serviceInstance.getPort() + "/dc";
 		System.out.println(url);
 		return restTemplate.getForObject(url, String.class);
+	}
+
+	@GetMapping("/consumer2")
+	public String consumer2() {
+		return restTemplate.getForObject("http://eurekaclient/dc", String.class);
 	}
 }
