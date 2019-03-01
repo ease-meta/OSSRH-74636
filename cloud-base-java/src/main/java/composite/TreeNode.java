@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:59:06
- * @Fun Ê÷½Úµã ²¿·Ö
- * 		Ò²¿ÉÒÔ×ÔÉí´ú±íÊ÷£ºÒ»¶Ñ½Úµã×é³ÉÁËÒ»¿ÅÊ÷
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:59:06
+ * @Fun æ ‘èŠ‚ç‚¹ éƒ¨åˆ†
+ * 		ä¹Ÿå¯ä»¥è‡ªèº«ä»£è¡¨æ ‘ï¼šä¸€å †èŠ‚ç‚¹ç»„æˆäº†ä¸€é¢—æ ‘
  **/
 public class TreeNode {
 	private String name;

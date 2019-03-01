@@ -1,7 +1,7 @@
 package decorator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç9:27:28
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ9:27:28
  * @Fun
  **/
 public class BufferedReader implements IReader {

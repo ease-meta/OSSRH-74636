@@ -1,8 +1,8 @@
 package absfactory;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ18ÈÕÏÂÎç7:05:50
- * @Fun  ³éÏó¹¤³§ ´´½¨²»Í¬µÄ³éÏó²úÆ·
+ * @Date 2016å¹´8æœˆ18æ—¥ä¸‹åˆ7:05:50
+ * @Fun  æŠ½è±¡å·¥å‚ åˆ›å»ºä¸åŒçš„æŠ½è±¡äº§å“
  **/
 public interface IFactory {
 	public IProduct1 createProduct1A();

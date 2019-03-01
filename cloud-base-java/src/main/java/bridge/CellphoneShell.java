@@ -1,14 +1,14 @@
 package bridge;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:46:32
- * @Fun ÊÖ»ú¿ÇÊµÏÖÀà
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:46:32
+ * @Fun æ‰‹æœºå£³å®ç°ç±»
  **/
 public class CellphoneShell extends BaseCellphoneShell {
 
 	@Override
 	public void mapping() {
 		// TODO Auto-generated method stub
-		System.out.println("¿Ç--iphone6");
+		System.out.println("å£³--iphone6");
 	}
 }

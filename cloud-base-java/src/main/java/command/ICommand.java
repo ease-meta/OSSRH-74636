@@ -1,7 +1,7 @@
 package command;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:43:48
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:43:48
  * @Fun  Command total interface
  **/
 public interface ICommand {

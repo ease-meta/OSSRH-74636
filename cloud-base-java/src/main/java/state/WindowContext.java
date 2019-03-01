@@ -1,8 +1,8 @@
 package state;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:39:00
- * @Fun  ×´Ì¬µÄÊ¹ÓÃ
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:39:00
+ * @Fun  çŠ¶æ€çš„ä½¿ç”¨
  **/
 public class WindowContext {
 	private WindowState state;

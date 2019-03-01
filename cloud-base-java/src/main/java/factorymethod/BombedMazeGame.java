@@ -8,7 +8,7 @@ import model.bombed.BombedWall;
 import model.bombed.RoomWithABomb;
 
 /**
- * @Date 2016Äê7ÔÂ29ÈÕ21:05:59
+ * @Date 2016å¹´7æœˆ29æ—¥21:05:59
  * @Fun Bombed Maze Game is created by Factory Method.
  * @author shadow
  *

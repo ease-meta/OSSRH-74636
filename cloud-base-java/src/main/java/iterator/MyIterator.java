@@ -1,8 +1,8 @@
 package iterator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç9:20:52
- * @Fun  µü´úÆ÷ÊµÏÖÀà
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ9:20:52
+ * @Fun  è¿­ä»£å™¨å®ç°ç±»
  **/
 public class MyIterator<T> implements IIterator<T> {
 

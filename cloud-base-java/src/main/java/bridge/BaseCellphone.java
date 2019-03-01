@@ -1,8 +1,8 @@
 package bridge;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:42:45
- * @Fun ÊÖ»úÀà
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:42:45
+ * @Fun æ‰‹æœºç±»
  **/
 public abstract class BaseCellphone {
 	
@@ -16,6 +16,6 @@ public abstract class BaseCellphone {
 		return this.shell;
 	}
 	
-	//¶ÔÓ¦ÄÄÖÖ¿Ç
+	//å¯¹åº”å“ªç§å£³
 	public abstract void mapping();
 }

@@ -1,8 +1,8 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:15:25
- * @Fun  Ãû³Æ·ÃÎÊ
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:15:25
+ * @Fun  åç§°è®¿é—®
  **/
 public class StringVisitor implements Visitor {
 

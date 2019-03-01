@@ -1,7 +1,7 @@
 package state;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:34:09
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:34:09
  * @Fun
  **/
 public class WindowState {
@@ -20,20 +20,20 @@ public class WindowState {
 	}
 	
 	public void handle(){
-		if("´°¿Ú".equals(stateValue)){
+		if("çª—å£".equals(stateValue)){
 			switchWindow();
-			this.stateValue = "È«ÆÁ";
-		}else if("È«ÆÁ".equals(stateValue)){
+			this.stateValue = "å…¨å±";
+		}else if("å…¨å±".equals(stateValue)){
 			switchFullscreen();
-			this.stateValue = "´°¿Ú";
+			this.stateValue = "çª—å£";
 		}
 	}
 	
 	private void switchWindow(){
-		System.out.println("ÇĞ»»Îª´°¿Ú×´Ì¬");
+		System.out.println("åˆ‡æ¢ä¸ºçª—å£çŠ¶æ€");
 	}
 	
 	private void switchFullscreen(){
-		System.out.println("ÇĞ»»ÎªÈ«ÆÁ×´Ì¬");
+		System.out.println("åˆ‡æ¢ä¸ºå…¨å±çŠ¶æ€");
 	}
 }

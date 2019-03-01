@@ -3,9 +3,9 @@ package proxy;
 import java.util.Date;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ6ÈÕÏÂÎç9:14:10
- * @Fun ¿Í»§¶Ë ¶Ô±»´úÀí¶ÔÏó²»¿É¼û<br/>
- * 		´úÀí¶ÔÏó£¬ÔöÇ¿ÁË±»´úÀí¶ÔÏóµÄ¹¦ÄÜ<br/>
+ * @Date 2016å¹´8æœˆ6æ—¥ä¸‹åˆ9:14:10
+ * @Fun å®¢æˆ·ç«¯ å¯¹è¢«ä»£ç†å¯¹è±¡ä¸å¯è§<br/>
+ * 		ä»£ç†å¯¹è±¡ï¼Œå¢å¼ºäº†è¢«ä»£ç†å¯¹è±¡çš„åŠŸèƒ½<br/>
  **/
 public class GamePlayerProxy2 implements IGamePlayer {
 
@@ -20,7 +20,7 @@ public class GamePlayerProxy2 implements IGamePlayer {
 	@Override
 	public void login(String user, String password) {
 		// TODO Auto-generated method stub
-		System.out.println("µÇÂ¼Ê±¼äÊÇ£º" + new Date().toLocaleString());
+		System.out.println("ç™»å½•æ—¶é—´æ˜¯ï¼š" + new Date().toLocaleString());
 		this.gamePlayer.login(user, password);
 	}
 
@@ -35,7 +35,7 @@ public class GamePlayerProxy2 implements IGamePlayer {
 	public void upgrade() {
 		// TODO Auto-generated method stub
 		this.gamePlayer.upgrade();
-		System.out.println("Éı¼¶Ê±¼äÊÇ£º" + new Date().toLocaleString());
+		System.out.println("å‡çº§æ—¶é—´æ˜¯ï¼š" + new Date().toLocaleString());
 	}
 
 }

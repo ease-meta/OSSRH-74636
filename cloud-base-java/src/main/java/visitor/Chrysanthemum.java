@@ -1,8 +1,8 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:13:05
- * @Fun	¾Õ»¨
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:13:05
+ * @Fun	èŠèŠ±
  **/
 public class Chrysanthemum implements Flower {
 

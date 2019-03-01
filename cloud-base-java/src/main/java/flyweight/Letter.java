@@ -1,8 +1,8 @@
 package flyweight;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ5ÈÕÏÂÎç8:04:08
- * @Fun ×ÖÄ¸
+ * @Date 2016å¹´8æœˆ5æ—¥ä¸‹åˆ8:04:08
+ * @Fun å­—æ¯
  **/
 public class Letter {
 	private String name;

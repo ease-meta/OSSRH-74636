@@ -1,16 +1,16 @@
 package proxy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ6ÈÕÏÂÎç9:05:42
- * @Fun Íæ¼Ò½Ó¿Ú
+ * @Date 2016å¹´8æœˆ6æ—¥ä¸‹åˆ9:05:42
+ * @Fun ç©å®¶æ¥å£
  **/
 public interface IGamePlayer {
 	
 	public void login(String user, String password);
 	
-	// É±¹Ö£¬ÍøÂçÓÎÏ·µÄÖ÷ÒªÌØÉ«
+	// æ€æ€ªï¼Œç½‘ç»œæ¸¸æˆçš„ä¸»è¦ç‰¹è‰²
 	public void killBoss();
 	
-	//Éı¼¶
+	//å‡çº§
 	public void upgrade();
 }

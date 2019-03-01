@@ -1,14 +1,14 @@
 package strategy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:58:25
- * @Fun  ·µÏÖ²ßÂÔ
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:58:25
+ * @Fun  è¿”ç°ç­–ç•¥
  **/
 public class CashReturn implements ICashSuper {
 
-	//·µÏÖµ×ÏŞ½ğ¶î
+	//è¿”ç°åº•é™é‡‘é¢
 	private double moneyCondition;
-	//·µÏÖ½ğ¶î
+	//è¿”ç°é‡‘é¢
 	private double returnMoney;
 	
 	public CashReturn(double moneyCondition, double returnMoney) {
@@ -17,7 +17,7 @@ public class CashReturn implements ICashSuper {
 		this.returnMoney = returnMoney;
 	}
 	
-	//¶àÖØ·µÀû
+	//å¤šé‡è¿”åˆ©
 	@Override
 	public double acceptCash(double money) {
 		// TODO Auto-generated method stub

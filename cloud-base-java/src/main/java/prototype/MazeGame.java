@@ -7,7 +7,7 @@ import model.base.Room;
 import model.base.Wall;
 
 /**
- * @Date 2016Äê7ÔÂ29ÈÕ20:47:40
+ * @Date 2016å¹´7æœˆ29æ—¥20:47:40
  * @fun Factory Method
  * @author shadow
  *

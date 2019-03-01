@@ -1,15 +1,15 @@
 package observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç7:48:35
- * @Fun	 ¾ßÌå¹Û²ìÕß
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ7:48:35
+ * @Fun	 å…·ä½“è§‚å¯Ÿè€…
  **/
 public class UpdateWatcher implements IWatcher{
 
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		System.out.println(this + " ¹Û²ìµ½£ºÄ¿±êÒÑ¾­¸üĞÂÁË¡£");
+		System.out.println(this + " è§‚å¯Ÿåˆ°ï¼šç›®æ ‡å·²ç»æ›´æ–°äº†ã€‚");
 	}
 
 }

@@ -2,22 +2,22 @@ package chainofresponsibility;
 
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç7:58:16
- * @Fun ³éÏóÔğÈÎ
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ7:58:16
+ * @Fun æŠ½è±¡è´£ä»»
  **/
 public abstract class IFilter {
 	private IFilter successor;
 	
-	//»ñÈ¡ÏÂÒ»¼¶´¦Àíµ¥Ôª
+	//è·å–ä¸‹ä¸€çº§å¤„ç†å•å…ƒ
 	public IFilter getSuccessor(){
 		return successor;
 	}
-	//ÉèÖÃÏÂÒ»¼¶´¦Àíµ¥Ôª
+	//è®¾ç½®ä¸‹ä¸€çº§å¤„ç†å•å…ƒ
 	public void setSuccessor(IFilter successor){
 		this.successor = successor;
 	}
 	/**
-	 * ´¦ÀíÊÂ¼ş
+	 * å¤„ç†äº‹ä»¶
 	 */
 	public abstract void handleFilter();
 	

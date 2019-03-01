@@ -1,40 +1,40 @@
 package memento;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç8:26:30
- * @Fun  ±¸ÍüÂ¼(Memento)Ä£Ê½   ĞĞÎªÄ£Ê½
- * 	 	 Á÷³Ì£ºMementoÓÃÓÚ±£´æ Êı¾İ×´Ì¬
- * 			OriginatorÓÃÓÚ¼ÓÔØÊı¾İ£¬½¨Á¢Memento¶ÔÏó£¬¼°Í¨¹ıMemento»Ö¸´Ô­Ê¼Êı¾İ
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ8:26:30
+ * @Fun  å¤‡å¿˜å½•(Memento)æ¨¡å¼   è¡Œä¸ºæ¨¡å¼
+ * 	 	 æµç¨‹ï¼šMementoç”¨äºä¿å­˜ æ•°æ®çŠ¶æ€
+ * 			Originatorç”¨äºåŠ è½½æ•°æ®ï¼Œå»ºç«‹Mementoå¯¹è±¡ï¼ŒåŠé€šè¿‡Mementoæ¢å¤åŸå§‹æ•°æ®
  **/
 public class MainTest {
 	public static void main(String[] args) {
-		//´´½¨Êı¾İ¶ÔÏó		
+		//åˆ›å»ºæ•°æ®å¯¹è±¡		
 		DataState state = new DataState();
 		state.setAction("copy a character");
 		//
 		Originator originator = new Originator();
-		System.out.println("´´½¨Ô­Ê¼Êı¾İ");
+		System.out.println("åˆ›å»ºåŸå§‹æ•°æ®");
 		originator.setState(state);
 		Memento memento = originator.getMemento();
 		System.out.println(memento.getState());
 		
-		System.out.println("´´½¨±¸ÍüÂ¼¶ÔÏó£¬±£´æÔ­Ê¼Êı¾İ×´Ì¬");
+		System.out.println("åˆ›å»ºå¤‡å¿˜å½•å¯¹è±¡ï¼Œä¿å­˜åŸå§‹æ•°æ®çŠ¶æ€");
 		originator.setState(new DataState());
 		
-		System.out.println("´´½¨ÁËÒ»¸öĞÂÊı¾İ");
+		System.out.println("åˆ›å»ºäº†ä¸€ä¸ªæ–°æ•°æ®");
 		originator.setState(new DataState());
 		
-		System.out.println("´´½¨ĞÂÊı¾İºó£º" + originator.getState().getAction());
+		System.out.println("åˆ›å»ºæ–°æ•°æ®åï¼š" + originator.getState().getAction());
 		
 		/**
-		 * memento ĞèÒª±£´æÔÚÄ³µØ£¬ĞèÒªÊ±È¡³ö£¬ÒÔ»Ö¸´ËüÄÚ²¿Ëù±£´æµÄÊı¾İ
+		 * memento éœ€è¦ä¿å­˜åœ¨æŸåœ°ï¼Œéœ€è¦æ—¶å–å‡ºï¼Œä»¥æ¢å¤å®ƒå†…éƒ¨æ‰€ä¿å­˜çš„æ•°æ®
 		 */
-		System.out.println("´´½¨ĞÂÊı¾İºó£¬»Ö¸´Ô­Êı¾İ");
+		System.out.println("åˆ›å»ºæ–°æ•°æ®åï¼Œæ¢å¤åŸæ•°æ®");
 		originator.setMemento(memento);
 		System.out.println(originator.getState().getAction());
 	}
 }
 
 /**
- * ÍÆ¼ö²©¿Í£ºhttp://blog.csdn.net/zhengzhb/article/details/7697549
+ * æ¨èåšå®¢ï¼šhttp://blog.csdn.net/zhengzhb/article/details/7697549
  */

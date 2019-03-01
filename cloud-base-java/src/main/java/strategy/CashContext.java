@@ -1,8 +1,8 @@
 package strategy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç9:02:11
- * @Fun  ¸ù¾İ´«µİµÄ²ßÂÔÀà£¬Ö´ĞĞÏàÓ¦µÄĞĞÎª¡£
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ9:02:11
+ * @Fun  æ ¹æ®ä¼ é€’çš„ç­–ç•¥ç±»ï¼Œæ‰§è¡Œç›¸åº”çš„è¡Œä¸ºã€‚
  **/
 public class CashContext {
 	private ICashSuper casher;
@@ -19,7 +19,7 @@ public class CashContext {
 		this.casher = casher;
 	}
 	
-	//¸ù¾İ¾ßÌåµÄ²ßÂÔ¶ÔÏó£¬µ÷ÓÃËüµÄËã·¨ĞĞÎª
+	//æ ¹æ®å…·ä½“çš„ç­–ç•¥å¯¹è±¡ï¼Œè°ƒç”¨å®ƒçš„ç®—æ³•è¡Œä¸º
 	public double acceptCash(double money){
 		return this.casher.acceptCash(money);
 	}

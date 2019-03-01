@@ -2,30 +2,30 @@ package chainofresponsibility;
 
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:06:44
- * @Fun  ÔğÈÎÁ´(Chain of Responsibility)Ä£Ê½	ĞĞÎªÄ£Ê½
- * 		 ½«ÔğÈÎÒ»¼¶Ò»¼¶´«µİ¸øºó¼ÌÕß£¬Ö±µ½Ä³Ò»¸öºó¼ÌÕß´¦ÀíÁËĞĞÎª±íÏÖÔÚ£ºÔğÈÎµÄ´«µİ£¬ĞèÒªÊÇÒ»¸öÁ´Ò»¸ö¡£
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:06:44
+ * @Fun  è´£ä»»é“¾(Chain of Responsibility)æ¨¡å¼	è¡Œä¸ºæ¨¡å¼
+ * 		 å°†è´£ä»»ä¸€çº§ä¸€çº§ä¼ é€’ç»™åç»§è€…ï¼Œç›´åˆ°æŸä¸€ä¸ªåç»§è€…å¤„ç†äº†è¡Œä¸ºè¡¨ç°åœ¨ï¼šè´£ä»»çš„ä¼ é€’ï¼Œéœ€è¦æ˜¯ä¸€ä¸ªé“¾ä¸€ä¸ªã€‚
  **/
 public class MainTest {
 	public static void main(String[] args) {
-		//È¨ÏŞ¹ıÂË
+		//æƒé™è¿‡æ»¤
 		IFilter filter1 = new ConcreteFilter("permission-filter");
 		
-		//ºó×º¹ıÂË
+		//åç¼€è¿‡æ»¤
 		IFilter filter2 = new ConcreteFilter("suffix-filter");
 		
-		//·ç¸ñ¹ıÂË
+		//é£æ ¼è¿‡æ»¤
 		IFilter filter3 = new ConcreteFilter("style-filter");
 		
-		//ÃÀÅ®¹ıÂË
+		//ç¾å¥³è¿‡æ»¤
 		IFilter filter4 = new ConcreteFilter("beauty-filter");
 		filter1.setSuccessor(filter2);
 		filter2.setSuccessor(filter3);
 		filter3.setSuccessor(filter4);
-		System.out.println("----ÒÔÏÂÊÇÃ¿Ò»¸ö´¦ÀíÕß£¨°üÀ¨ºó¼ÌÕß£©¶¼´¦ÀíÁË£¬Ë³ĞòÒ²ÊÇÒ»¼¶Ò»¼¶µÄ´«µİ----");
+		System.out.println("----ä»¥ä¸‹æ˜¯æ¯ä¸€ä¸ªå¤„ç†è€…ï¼ˆåŒ…æ‹¬åç»§è€…ï¼‰éƒ½å¤„ç†äº†ï¼Œé¡ºåºä¹Ÿæ˜¯ä¸€çº§ä¸€çº§çš„ä¼ é€’----");
 		filter1.handleFilter();
 		
-		System.out.println("---ÒÔÏÂÊÇ½»ÓÉ×îºóÒ»¸öºó¼ÌÕß´¦Àí----");
+		System.out.println("---ä»¥ä¸‹æ˜¯äº¤ç”±æœ€åä¸€ä¸ªåç»§è€…å¤„ç†----");
 		filter1.handleFilter2();
 	}
 }

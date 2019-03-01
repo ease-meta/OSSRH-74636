@@ -3,8 +3,8 @@ package visitor;
 import java.util.Random;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:18:55
- * @Fun  »¨Éú²úÆ÷
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:18:55
+ * @Fun  èŠ±ç”Ÿäº§å™¨
  **/
 public class FlowerGenerator {
 	private static Random random = new Random();

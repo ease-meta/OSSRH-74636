@@ -1,13 +1,13 @@
 package iterator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç9:10:13
- * @Fun  ×Ô¶¨Òå¼¯ºÏ½Ó¿Ú£¬ÀàËÆjava.util.Collection
- * 		 ÓÃÓÚÊı¾İ´æ´¢
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ9:10:13
+ * @Fun  è‡ªå®šä¹‰é›†åˆæ¥å£ï¼Œç±»ä¼¼java.util.Collection
+ * 		 ç”¨äºæ•°æ®å­˜å‚¨
  **/
 public interface ICollection<T> {
 	
-	//·µ»Øµü´úÆ÷
+	//è¿”å›è¿­ä»£å™¨
 	IIterator<T> iterator();
 	
 	void add(T t); 

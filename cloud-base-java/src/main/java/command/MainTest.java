@@ -2,21 +2,21 @@ package command;
 
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:48:11
- * @Fun  ÃüÁî(Command)Ä£Ê½	 ĞĞÎªÄ£Ê½	ÇëÇóÓëÖ´ĞĞ  ·ÖÀë
- * 		 ¿ÉÒÔ¶à¸öÃüÁî½Ó¿ÚµÄÊµÏÖÀà£¬Òş²ØÕæÊµµÄ±»µ÷ÓÃ·½·¨¡£
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:48:11
+ * @Fun  å‘½ä»¤(Command)æ¨¡å¼	 è¡Œä¸ºæ¨¡å¼	è¯·æ±‚ä¸æ‰§è¡Œ  åˆ†ç¦»
+ * 		 å¯ä»¥å¤šä¸ªå‘½ä»¤æ¥å£çš„å®ç°ç±»ï¼Œéšè—çœŸå®çš„è¢«è°ƒç”¨æ–¹æ³•ã€‚
  **/
 public class MainTest {
 	public static void main(String[] args) {
-		//ÕæÕıµÄÖ´ĞĞÕß
+		//çœŸæ­£çš„æ‰§è¡Œè€…
 		Receiver receiver = new Receiver();
-		//ÓÃÓÚµÄ¸ôÀëµÄÃüÁî
+		//ç”¨äºçš„éš”ç¦»çš„å‘½ä»¤
 		ICommand command = new ConcreteCommand(receiver);
-		//µ÷ÓÃÕß
+		//è°ƒç”¨è€…
 		Invoker invoker = new Invoker(command);
 		invoker.invoke();
 	}
 }
 /**
- * ²Î¿¼²©¿Í£ºhttp://www.cnblogs.com/zhenyulu/articles/69858.html
+ * å‚è€ƒåšå®¢ï¼šhttp://www.cnblogs.com/zhenyulu/articles/69858.html
  * */

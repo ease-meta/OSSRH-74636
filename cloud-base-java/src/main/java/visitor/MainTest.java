@@ -5,11 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 /**
  * @author shadow
- * @Date 2016��8��13������8:21:03
- * @Fun  ������(Visitor)ģʽ  ��Ϊģʽ<br/>
- * 		 �ڲ��޸����г���ṹ��ǰ���£�ͨ�����Ӷ���ġ������ߡ�����ɶ����д��빦�ܵ�����<br/>
- * 	  	 ����˵��������ģʽ����һ�ַ���������ݽṹ����Ϊ�ķ�����ͨ�����ַ��룬�ɴﵽΪһ���������߶�̬�����µĲ������������������޸ĵ�Ч��<br/>
- * 		ȱ�㣺�����µ�Ԫ���࣬�Ƚ����ѣ���Ϊ��Ҫ�޸ĳ�������ߵĽӿڼ�ʵ�֣�Υ����-��ԭ��<br/>
+ * @Date 2016年8月13日下午8:21:03
+ * @Fun  访问者(Visitor)模式  行为模式<br/>
+ * 		 在不修改已有程序结构的前提下，通过添加额外的“访问者”来完成对已有代码功能的提升<br/>
+ * 	  	 简单来说，访问者模式就是一种分离对象数据结构与行为的方法，通过这种分离，可达到为一个被访问者动态添加新的操作而无需做其他的修改的效果<br/>
+ * 		缺点：添加新的元素类，比较困难，因为需要修改抽象访问者的接口及实现，违反开-闭原则<br/>
  **/
 public class MainTest {
 	public static void main(String[] args) {
@@ -37,5 +37,5 @@ public class MainTest {
 }
 
 /**
- * �Ƽ����ͣ�http://blog.csdn.net/zhengzhb/article/details/7489639
+ * 推荐博客：http://blog.csdn.net/zhengzhb/article/details/7489639
  * **/

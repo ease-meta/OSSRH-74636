@@ -1,8 +1,8 @@
 package composite;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:58:19
- * @Fun  Ê÷ ÕûÌå
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:58:19
+ * @Fun  æ ‘ æ•´ä½“
  **/
 public class Tree {
 	private TreeNode root;

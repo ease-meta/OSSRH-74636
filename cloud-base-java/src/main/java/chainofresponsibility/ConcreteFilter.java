@@ -1,8 +1,8 @@
 package chainofresponsibility;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:00:34
- * @Fun ¾ßÌåÔğÈÎ
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:00:34
+ * @Fun å…·ä½“è´£ä»»
  **/
 public class ConcreteFilter extends IFilter {
 
@@ -17,9 +17,9 @@ public class ConcreteFilter extends IFilter {
 	public void handleFilter() {
 		// TODO Auto-generated method stub
 		/**
-		 * ×Ô¼ºÏÈ´¦Àí£¬ÈçÓĞºó¼ÌÕß£¬ÔÙÓÉËü´¦ÀíÒ»´Î¡£
+		 * è‡ªå·±å…ˆå¤„ç†ï¼Œå¦‚æœ‰åç»§è€…ï¼Œå†ç”±å®ƒå¤„ç†ä¸€æ¬¡ã€‚
 		 */
-		System.out.println(name + " ´¦ÀíÁËÇëÇó");
+		System.out.println(name + " å¤„ç†äº†è¯·æ±‚");
 		
 		if(getSuccessor() != null){
 			getSuccessor().handleFilter();
@@ -30,13 +30,13 @@ public class ConcreteFilter extends IFilter {
 	public void handleFilter2() {
 		// TODO Auto-generated method stub
 		/**
-		 * ÓĞºó¼ÌÕß¾Íºó¼ÌÕß´¦Àí£¬·ñÔò×Ô¼º´¦Àí
+		 * æœ‰åç»§è€…å°±åç»§è€…å¤„ç†ï¼Œå¦åˆ™è‡ªå·±å¤„ç†
 		 */
 		
 		if(getSuccessor() != null){
 			getSuccessor().handleFilter2();
 		}else{
-			System.out.println(name + " ´¦ÀíÁËÇëÇó");
+			System.out.println(name + " å¤„ç†äº†è¯·æ±‚");
 		}
 	}
 

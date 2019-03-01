@@ -1,9 +1,9 @@
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ1ÈÕÏÂÎç8:04:42
- * @Fun ¶ÔÏóÊÊÅäÆ÷£º Ê¹ÓÃ¶ÔÏó×éºÏµÄ·½Ê½£¬ÊÇ¶¯Ì¬×éºÏµÄ·½Ê½¡£
- * 		¼ÈÄÜ»­·½ÓÖÄÜ»­Ô²¡£DrawAdapterÊÇÊÊÅäÆ÷£¬DrawRectangleÊôÓÚAdapter£¬ÊÇ±»ÊÊÅäÕß£¬
- * 		ÊÊÅäÆ÷½«±»ÊÊÅäÕßºÍÊÊÅäÄ¿±ê£¨DrawCircle£©½øÐÐÊÊÅä¡£
+ * @Date 2016å¹´8æœˆ1æ—¥ä¸‹åˆ8:04:42
+ * @Fun å¯¹è±¡é€‚é…å™¨ï¼š ä½¿ç”¨å¯¹è±¡ç»„åˆçš„æ–¹å¼ï¼Œæ˜¯åŠ¨æ€ç»„åˆçš„æ–¹å¼ã€‚
+ * 		æ—¢èƒ½ç”»æ–¹åˆèƒ½ç”»åœ†ã€‚DrawAdapteræ˜¯é€‚é…å™¨ï¼ŒDrawRectangleå±žäºŽAdapterï¼Œæ˜¯è¢«é€‚é…è€…ï¼Œ
+ * 		é€‚é…å™¨å°†è¢«é€‚é…è€…å’Œé€‚é…ç›®æ ‡ï¼ˆDrawCircleï¼‰è¿›è¡Œé€‚é…ã€‚
  **/
 package adapter;
 

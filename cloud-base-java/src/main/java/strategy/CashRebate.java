@@ -3,8 +3,8 @@ package strategy;
 import java.math.BigDecimal;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:51:48
- * @Fun  ´òÕÛÊÕÈ¡ÏÖ½ğ
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:51:48
+ * @Fun  æ‰“æŠ˜æ”¶å–ç°é‡‘
  **/
 public class CashRebate implements ICashSuper {
 	

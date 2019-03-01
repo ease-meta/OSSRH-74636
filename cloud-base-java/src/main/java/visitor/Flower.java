@@ -1,8 +1,8 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:12:30
- * @Fun  »¨½Ó¿Ú
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:12:30
+ * @Fun  èŠ±æ¥å£
  **/
 public interface Flower {
 	void accept(Visitor v);

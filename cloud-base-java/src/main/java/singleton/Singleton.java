@@ -3,9 +3,9 @@ package singleton;
 /**
  *
  * @author shadow E-mail:zyydqpi@163.com
- * @Date 2016Äê8ÔÂ28ÈÕÏÂÎç7:21:32
+ * @Date 2016å¹´8æœˆ28æ—¥ä¸‹åˆ7:21:32
  * @version 1.0
- * @since  µ¥ÀıÄ£Ê½
+ * @since  å•ä¾‹æ¨¡å¼
  **/
 public class Singleton {
 	private static Singleton instance;

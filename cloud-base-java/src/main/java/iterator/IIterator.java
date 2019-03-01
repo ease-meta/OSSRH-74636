@@ -1,9 +1,9 @@
 package iterator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç9:10:56
- * @Fun ×Ô¶¨Òåµü´úÆ÷½Ó¿Ú ÀàËÆjava.util.Iterator
- * 		ÓÃÓÚ±éÀú¼¯ºÏÀàICollectionµÄÊı¾İ
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ9:10:56
+ * @Fun è‡ªå®šä¹‰è¿­ä»£å™¨æ¥å£ ç±»ä¼¼java.util.Iterator
+ * 		ç”¨äºéå†é›†åˆç±»ICollectionçš„æ•°æ®
  **/
 public interface IIterator<T> {
 	boolean hasNext();

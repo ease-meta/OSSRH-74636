@@ -1,8 +1,8 @@
 package proxy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ6ÈÕÏÂÎç9:07:59
- * @Fun ¾ßÌåÍæ¼Ò
+ * @Date 2016å¹´8æœˆ6æ—¥ä¸‹åˆ9:07:59
+ * @Fun å…·ä½“ç©å®¶
  **/
 public class GamePlayer implements IGamePlayer {
 
@@ -16,19 +16,19 @@ public class GamePlayer implements IGamePlayer {
 	@Override
 	public void login(String user, String password) {
 		// TODO Auto-generated method stub
-		System.out.println("µÇÂ¼ÃûÎª" + user + "µÄ½ÇÉ« " + this.name + " µÇÂ¼³É¹¦£¡");
+		System.out.println("ç™»å½•åä¸º" + user + "çš„è§’è‰² " + this.name + " ç™»å½•æˆåŠŸï¼");
 	}
 
 	@Override
 	public void killBoss() {
 		// TODO Auto-generated method stub
-		System.out.println(this.name + " ÔÚ´ò¹Ö£¡");
+		System.out.println(this.name + " åœ¨æ‰“æ€ªï¼");
 	}
 
 	@Override
 	public void upgrade() {
 		// TODO Auto-generated method stub
-		System.out.println(this.name + " ÓÖÉıÁËÒ»¼¶£¡");
+		System.out.println(this.name + " åˆå‡äº†ä¸€çº§ï¼");
 	}
 
 }

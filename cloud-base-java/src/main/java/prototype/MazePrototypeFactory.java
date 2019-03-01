@@ -6,12 +6,12 @@ import model.base.Room;
 import model.base.Wall;
 /**
  * @author shadow
- * @Date 2016��7��30������6:52:27
- * @Fun ԭ�����ģʽ	���������ģʽ<br/>
- * 		��ԭ��ʵ��ָ��������������࣬����ͨ��������Щԭ�ʹ����µĶ���<br/>
- *		Prototypeԭ��ģʽ��һ�ִ��������ģʽ��Prototypeģʽ����һ�������ٴ�������һ���ɶ��ƵĶ��󣬸�������֪���κ���δ�����ϸ��<br/>
- *		����ԭ����ͨ����һ��ԭ�Ͷ��󴫸��Ǹ�Ҫ���������Ķ������Ҫ���������Ķ���ͨ������ԭ�Ͷ��󿽱������Լ���ʵʩ������<br/>
- *		��java������Ϊclone()����<br/>
+ * @Date 2016年7月30日下午6:52:27
+ * @Fun 原型设计模式	创建型设计模式<br/>
+ * 		用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。<br/>
+ *		Prototype原型模式是一种创建型设计模式，Prototype模式允许一个对象再创建另外一个可定制的对象，根本无需知道任何如何创建的细节<br/>
+ *		工作原理：通过将一个原型对象传给那个要发动创建的对象，这个要发动创建的对象通过请求原型对象拷贝它们自己来实施创建。<br/>
+ *		在java中体现为clone()对象。<br/>
  *		
  **/
 public class MazePrototypeFactory extends MazeGame {

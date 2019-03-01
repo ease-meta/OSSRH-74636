@@ -1,8 +1,8 @@
 package facade;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç9:46:58
- * @Fun  ×éºÏÏà¹ØÀà
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ9:46:58
+ * @Fun  ç»„åˆç›¸å…³ç±»
  **/
 public class Facade {
 	Actor actor;
@@ -10,7 +10,7 @@ public class Facade {
 	
 	public Facade(){
 		this.actor = new Actor("lisi");
-		this.scene = new Scene("º£ÌìÊ¢óÛ");
+		this.scene = new Scene("æµ·å¤©ç››ç­µ");
 	}
 	
 	public void startGame(){

@@ -1,7 +1,7 @@
 package interpreter;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç9:00:03
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ9:00:03
  * @Fun
  **/
 public class XmlDomInterpreter implements Interpreter {

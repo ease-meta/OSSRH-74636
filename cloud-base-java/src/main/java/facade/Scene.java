@@ -1,19 +1,19 @@
 package facade;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç9:45:26
- * @Fun ³¡¾°
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ9:45:26
+ * @Fun åœºæ™¯
  **/
 public class Scene {
 	public Scene(String name){
-		System.out.println("´´½¨ÁË³¡¾°£º" + name);
+		System.out.println("åˆ›å»ºäº†åœºæ™¯ï¼š" + name);
 	}
 	
 	public void load(){
-		System.out.println("³¡¾°¼ÓÔØ¡£");
+		System.out.println("åœºæ™¯åŠ è½½ã€‚");
 	}
 	
 	public void unload(){
-		System.out.println("³¡¾°Ğ¶ÔØ¡£");
+		System.out.println("åœºæ™¯å¸è½½ã€‚");
 	}
 }

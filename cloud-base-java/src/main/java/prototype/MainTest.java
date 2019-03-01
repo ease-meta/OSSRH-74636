@@ -9,11 +9,11 @@ import model.base.Room;
 import model.base.Wall;
 
 /**
- * @fun Ô­ĞÍÄ£Ê½²âÊÔ<br/>
- * 		×¢ÒâÊÂÏî£º1.Ê¹ÓÃÔ­ĞÍÄ£Ê½¸´ÖÆ¶ÔÏó²»»áµ÷ÓÃÀàµÄ¹¹Ôì·½·¨¡£<br/>
- * 			   2.Éî¿½±´ºÍÇ³¿½±´¡£<br/>
+ * @fun åŸå‹æ¨¡å¼æµ‹è¯•<br/>
+ * 		æ³¨æ„äº‹é¡¹ï¼š1.ä½¿ç”¨åŸå‹æ¨¡å¼å¤åˆ¶å¯¹è±¡ä¸ä¼šè°ƒç”¨ç±»çš„æ„é€ æ–¹æ³•ã€‚<br/>
+ * 			   2.æ·±æ‹·è´å’Œæµ…æ‹·è´ã€‚<br/>
  * @author shadow E-mail:zyydqpi@163.com
- * @Date 2016Äê8ÔÂ26ÈÕÏÂÎç7:13:54
+ * @Date 2016å¹´8æœˆ26æ—¥ä¸‹åˆ7:13:54
  * @version 1.0
  * @since 
  **/
@@ -24,7 +24,7 @@ public class MainTest {
 		Wall wall = new Wall();
 		Door door = new Door(room, room);
 		MazeGame game = new MazePrototypeFactory(maze, wall, room, door);
-		//´´½¨Ô­ĞÍ¶ÔÏó
+		//åˆ›å»ºåŸå‹å¯¹è±¡
 		Maze maze2 = game.CreateMaze();
 		
 		System.err.println(maze.getRoomCount());
@@ -38,5 +38,5 @@ public class MainTest {
 	}
 }
 /**
- * ÍÆ¼ö²©¿Í£ºhttp://blog.csdn.net/jason0539/article/details/23158081
+ * æ¨èåšå®¢ï¼šhttp://blog.csdn.net/jason0539/article/details/23158081
  */

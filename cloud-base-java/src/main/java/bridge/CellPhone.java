@@ -1,15 +1,15 @@
 package bridge;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:44:26
- * @Fun ÊÖ»úµÄÊµÏÖ
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:44:26
+ * @Fun æ‰‹æœºçš„å®ç°
  **/
 public class CellPhone extends BaseCellphone {
 	
 	@Override
 	public void mapping() {
 		// TODO Auto-generated method stub
-		System.out.println("±¾ÊÖ»ú¶ÔÓ¦µÄ¿ÇÊÇ£º");
+		System.out.println("æœ¬æ‰‹æœºå¯¹åº”çš„å£³æ˜¯ï¼š");
 		getShell().mapping();
 	}
 }

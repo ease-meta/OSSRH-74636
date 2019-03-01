@@ -1,8 +1,8 @@
 package observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:02:06
- * @Fun  ¼àÌı µ±ÓÃ»§µÇÂ¼ºó
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:02:06
+ * @Fun  ç›‘å¬ å½“ç”¨æˆ·ç™»å½•å
  **/
 public interface ILoginListener {
 	void onLogined();

@@ -1,22 +1,22 @@
 package adapter;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ1ÈÕÏÂÎç8:01:07
- * @Fun ÊÊÅäÆ÷£º¶ÔÏóÊÊÅäÆ÷¡¢ÀàÊÊÅäÆ÷¡¢½Ó¿ÚÊÊÅäÆ÷
+ * @Date 2016å¹´8æœˆ1æ—¥ä¸‹åˆ8:01:07
+ * @Fun é€‚é…å™¨ï¼šå¯¹è±¡é€‚é…å™¨ã€ç±»é€‚é…å™¨ã€æ¥å£é€‚é…å™¨
  **/
 public class MainTest {
 	public static void main(String[] args) {
-		//¶ÔÏóÊÊÅäÆ÷
+		//å¯¹è±¡é€‚é…å™¨
 		DrawAdapter4Object objAdapter = new DrawAdapter4Object(new DrawRectangle());
 		objAdapter.drawCircle();
 		objAdapter.drawRectangle(" in DrawAdapter4Object");
 		
-		//ÀàÊÊÅäÆ÷
+		//ç±»é€‚é…å™¨
 		DrawAdapter4Class adapter4 = new DrawAdapter4Class();
 		adapter4.drawCircle();
 		adapter4.drawRectangle(" in DrawAdapter4Class ");
 		
-		//½Ó¿ÚÊÊÅäÆ÷
+		//æ¥å£é€‚é…å™¨
 		MyDrawAdapter adapter = new MyDrawAdapter();
 		adapter.drawCircle();
 		adapter.drawRectangle();
@@ -38,5 +38,5 @@ public class MainTest {
 	}
 }
 /**
- * ²Î¿¼²©¿Í£º http://blog.csdn.net/jason0539/article/details/22468457
+ * å‚è€ƒåšå®¢ï¼š http://blog.csdn.net/jason0539/article/details/22468457
  * **/

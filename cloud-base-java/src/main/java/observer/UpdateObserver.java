@@ -4,19 +4,19 @@ import java.util.Observable;
 import java.util.Observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç7:38:19
- * @Fun ¹Û²ìÕß
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ7:38:19
+ * @Fun è§‚å¯Ÿè€…
  **/
 public class UpdateObserver implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		System.out.println("½ÓÊÜµ½Êı¾İ±ä»¯µÄÍ¨Öª£º");
+		System.out.println("æ¥å—åˆ°æ•°æ®å˜åŒ–çš„é€šçŸ¥ï¼š");
 		
 		if(o instanceof UpdateObservable) {
 			UpdateObservable uObservable = (UpdateObservable)o;
-			System.out.println("Êı¾İ±ä¸üÎª£º" + uObservable.getData());
+			System.out.println("æ•°æ®å˜æ›´ä¸ºï¼š" + uObservable.getData());
 		}
 		
 	}

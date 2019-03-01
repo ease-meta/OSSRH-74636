@@ -1,7 +1,7 @@
 package memento;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç8:01:48
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ8:01:48
  * @Fun 
  **/
 public class Originator {
@@ -22,7 +22,7 @@ public class Originator {
 	
 	public void setMemento(Memento m){
 		/**
-		 * getMemento()´´½¨µÄ¶ÔÏó£¬±£´æÔÚÄ³¸öÈİÆ÷Àï£¬µ±ĞèÒª»Ö¸´Ê±£¬½«Æä´«Èëµ±Ç°·½·¨£¬ÔÙÊ¹ÓÃgetState()µÃ³ö 
+		 * getMemento()åˆ›å»ºçš„å¯¹è±¡ï¼Œä¿å­˜åœ¨æŸä¸ªå®¹å™¨é‡Œï¼Œå½“éœ€è¦æ¢å¤æ—¶ï¼Œå°†å…¶ä¼ å…¥å½“å‰æ–¹æ³•ï¼Œå†ä½¿ç”¨getState()å¾—å‡º 
 		 */
 		this.state = m.getState();
 	}

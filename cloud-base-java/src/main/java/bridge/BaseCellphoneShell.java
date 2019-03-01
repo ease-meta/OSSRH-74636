@@ -1,10 +1,10 @@
 package bridge;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç7:41:27
- * @Fun ÊÖ»ú¿Ç¡¢Ì×
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ7:41:27
+ * @Fun æ‰‹æœºå£³ã€å¥—
  **/
 public abstract class BaseCellphoneShell {
-	//¶ÔÓ¦Æ¥ÅäÄÄÖÖÊÖ»ú
+	//å¯¹åº”åŒ¹é…å“ªç§æ‰‹æœº
 	public abstract void mapping();
 }

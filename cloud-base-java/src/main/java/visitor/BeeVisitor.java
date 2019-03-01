@@ -1,21 +1,21 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:17:10
- * @Fun  ÃÛ·ä·ÃÎÊ
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:17:10
+ * @Fun  èœœèœ‚è®¿é—®
  **/
 public class BeeVisitor implements Visitor {
 
 	@Override
 	public void visit(Gladiolus g) {
 		// TODO Auto-generated method stub
-		System.out.println("ÃÛ·äÀ´·ÃÎÊ£º" + g.getClass().getName());
+		System.out.println("èœœèœ‚æ¥è®¿é—®ï¼š" + g.getClass().getName());
 	}
 
 	@Override
 	public void visit(Chrysanthemum c) {
 		// TODO Auto-generated method stub
-		System.out.println("ÃÛ·äÀ´·ÃÎÊ£º" + c.getClass().getName());
+		System.out.println("èœœèœ‚æ¥è®¿é—®ï¼š" + c.getClass().getName());
 	}
 	
 }

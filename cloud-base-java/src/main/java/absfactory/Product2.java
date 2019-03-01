@@ -1,7 +1,7 @@
 package absfactory;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ18ÈÕÏÂÎç7:00:57
+ * @Date 2016å¹´8æœˆ18æ—¥ä¸‹åˆ7:00:57
  * @Fun
  **/
 public class Product2 implements IProduct2 {
@@ -9,7 +9,7 @@ public class Product2 implements IProduct2 {
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		System.out.println("´´½¨ÁË2ĞÍ²úÆ·");
+		System.out.println("åˆ›å»ºäº†2å‹äº§å“");
 	}
 
 }

@@ -1,8 +1,8 @@
 package absfactory;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ18ÈÕÏÂÎç7:07:15
- * @Fun  ÊµÌå¹¤³§ ´´½¨ÊµÌå²úÆ·£¬·µ»ØÀàĞÍÎª³éÏó²úÆ·
+ * @Date 2016å¹´8æœˆ18æ—¥ä¸‹åˆ7:07:15
+ * @Fun  å®ä½“å·¥å‚ åˆ›å»ºå®ä½“äº§å“ï¼Œè¿”å›ç±»å‹ä¸ºæŠ½è±¡äº§å“
  **/
 public class Factory implements IFactory {
 

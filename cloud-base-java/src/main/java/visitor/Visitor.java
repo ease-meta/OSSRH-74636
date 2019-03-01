@@ -1,8 +1,8 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:11:17
- * @Fun  ·ÃÎÊÕß½á¹¹
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:11:17
+ * @Fun  è®¿é—®è€…ç»“æ„
  **/
 public interface Visitor {
 	void visit(Gladiolus g);

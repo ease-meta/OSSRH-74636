@@ -1,15 +1,15 @@
 package observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç7:39:54
- * @Fun  ¹Û²ìÕß(Observer)Ä£Ê½£¬ĞĞÎªĞÍÄ£Ê½<br/>
- * 		 ¹Û²ìÕßÄ£Ê½¶¨ÒåÁËÒ»ÖÖÒ»¶Ô¶àµÄÒÀÀµ¹ØÏµ£¬ÈÃ¶à¸ö¹Û²ìÕß¶ÔÏóÍ¬Ê±¹Û²ìÄ³Ò»¸öÄ¿±ê¶ÔÏó¡£<br/>
- * 		Õâ¸öÄ¿±ê¶ÔÏóÔÚ×´Ì¬ÉÏ·¢Éú±ä»¯Ê±£¬»áÍ¨ÖªËùÓĞ¹Û²ìÕß¶ÔÏó£¬ÈÃËüÃÇÄÜ¹»×Ô¶¯¸üĞÂ×Ô¼ºÄ¿±ê¶ÔÏóÖĞĞèÒªÌí¼Ó¡¢ÒÆ³ı¡¢Í¨Öª ¹Û²ìÕßµÄ½Ó¿Ú¡£<br/>
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ7:39:54
+ * @Fun  è§‚å¯Ÿè€…(Observer)æ¨¡å¼ï¼Œè¡Œä¸ºå‹æ¨¡å¼<br/>
+ * 		 è§‚å¯Ÿè€…æ¨¡å¼å®šä¹‰äº†ä¸€ç§ä¸€å¯¹å¤šçš„ä¾èµ–å…³ç³»ï¼Œè®©å¤šä¸ªè§‚å¯Ÿè€…å¯¹è±¡åŒæ—¶è§‚å¯ŸæŸä¸€ä¸ªç›®æ ‡å¯¹è±¡ã€‚<br/>
+ * 		è¿™ä¸ªç›®æ ‡å¯¹è±¡åœ¨çŠ¶æ€ä¸Šå‘ç”Ÿå˜åŒ–æ—¶ï¼Œä¼šé€šçŸ¥æ‰€æœ‰è§‚å¯Ÿè€…å¯¹è±¡ï¼Œè®©å®ƒä»¬èƒ½å¤Ÿè‡ªåŠ¨æ›´æ–°è‡ªå·±ç›®æ ‡å¯¹è±¡ä¸­éœ€è¦æ·»åŠ ã€ç§»é™¤ã€é€šçŸ¥ è§‚å¯Ÿè€…çš„æ¥å£ã€‚<br/>
  **/
 public class MainTest {
 	public static void main(String[] args) {
 		/**
-		 * Ê¹ÓÃJava×Ô´øµÄObserver½Ó¿ÚºÍObservableÀà
+		 * ä½¿ç”¨Javaè‡ªå¸¦çš„Observeræ¥å£å’ŒObservableç±»
 		 */
 		UpdateObserver observer = new UpdateObserver();
 		UpdateObservable observable = new UpdateObservable(observer);
@@ -19,7 +19,7 @@ public class MainTest {
 		System.out.println();
 		
 		/**
-		 * ×Ô¶¨ÒåµÄ¹Û²ìÕßÄ£ĞÍ
+		 * è‡ªå®šä¹‰çš„è§‚å¯Ÿè€…æ¨¡å‹
 		 */
 		IWathedSubject watched = new UpdateWatchedSubject();
 		watched.add(new UpdateWatcher());
@@ -29,7 +29,7 @@ public class MainTest {
 		System.out.println();
 		
 		/**
-		 * ×ÓÄ£Ê½-¼àÌıÆ÷
+		 * å­æ¨¡å¼-ç›‘å¬å™¨
 		 */
 		User user = new User();
 		user.register(new IRegisterListener() {
@@ -37,7 +37,7 @@ public class MainTest {
 			@Override
 			public void onRegistered() {
 				// TODO Auto-generated method stub
-				System.out.println("¼àÌıµ½×¢²áºó...");
+				System.out.println("ç›‘å¬åˆ°æ³¨å†Œå...");
 			}
 		});
 		
@@ -46,11 +46,11 @@ public class MainTest {
 			@Override
 			public void onLogined() {
 				// TODO Auto-generated method stub
-				System.out.println("¼àÌıµ½µÇÂ¼ºó...");
+				System.out.println("ç›‘å¬åˆ°ç™»å½•å...");
 			}
 		});
 	}
 }
 /**
- * ÍÆ¼ö²©¿Í£ºhttp://blog.csdn.net/ai92/article/details/375691
+ * æ¨èåšå®¢ï¼šhttp://blog.csdn.net/ai92/article/details/375691
  */

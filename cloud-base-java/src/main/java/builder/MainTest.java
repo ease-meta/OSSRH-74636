@@ -4,14 +4,14 @@ package builder;
 import absfactory.MazeFactory;
 
 /**
- * ½¨ÔìÕß(Builder)Ä£Ê½ÊÇ´´½¨ÐÍÄ£Ê½£¬´´½¨ÁËÒ»¸ö¶ÔÍâÒþ²Ø´´½¨¹ý³ÌµÄ²úÆ·£¬Ê¹ÓÃ×éºÏµÄ·½Ê½£¬ÓÉÖ¸»ÓÕß(Director)À´¾ö¶¨½¨ÔìµÄÁ÷³Ì¡£
+ * å»ºé€ è€…(Builder)æ¨¡å¼æ˜¯åˆ›å»ºåž‹æ¨¡å¼ï¼Œåˆ›å»ºäº†ä¸€ä¸ªå¯¹å¤–éšè—åˆ›å»ºè¿‡ç¨‹çš„äº§å“ï¼Œä½¿ç”¨ç»„åˆçš„æ–¹å¼ï¼Œç”±æŒ‡æŒ¥è€…(Director)æ¥å†³å®šå»ºé€ çš„æµç¨‹ã€‚
  * 
- * ½¨ÔìÕßÄ£Ê½£º½«¸÷ÖÖ²úÆ·¼¯ÖÐÆðÀ´½øÐÐ¹ÜÀí£¬ÓÃÀ´´´½¨¸´ºÏ¶ÔÏó¡£
+ * å»ºé€ è€…æ¨¡å¼ï¼šå°†å„ç§äº§å“é›†ä¸­èµ·æ¥è¿›è¡Œç®¡ç†ï¼Œç”¨æ¥åˆ›å»ºå¤åˆå¯¹è±¡ã€‚
  * 
- * ½«Ò»¸ö¸´ÔÓ¶ÔÏóµÄ¹¹ÔìÓëËüµÄ±íÊ¾·ÖÀë£¬Ê¹Í¬ÑùµÄ¹¹½¨¹ý³Ì¿ÉÒÔ´´½¨²»Í¬µÄ±íÊ¾£¬ÕâÑùµÄÉè¼ÆÄ£Ê½±»³ÆÎª½¨ÔìÕßÄ£Ê½¡£
+ * å°†ä¸€ä¸ªå¤æ‚å¯¹è±¡çš„æž„é€ ä¸Žå®ƒçš„è¡¨ç¤ºåˆ†ç¦»ï¼Œä½¿åŒæ ·çš„æž„å»ºè¿‡ç¨‹å¯ä»¥åˆ›å»ºä¸åŒçš„è¡¨ç¤ºï¼Œè¿™æ ·çš„è®¾è®¡æ¨¡å¼è¢«ç§°ä¸ºå»ºé€ è€…æ¨¡å¼ã€‚
  *	
  * @author shadow E-mail:zyydqpi@163.com
- * @Date 2016Äê8ÔÂ20ÈÕÏÂÎç7:16:44
+ * @Date 2016å¹´8æœˆ20æ—¥ä¸‹åˆ7:16:44
  * @version 1.0
  * @since 
  **/
@@ -26,5 +26,5 @@ public class MainTest {
 }
 
 /**
- * ²Î¿¼²©¿Í£ºhttp://blog.csdn.net/jason0539/article/details/44992733
+ * å‚è€ƒåšå®¢ï¼šhttp://blog.csdn.net/jason0539/article/details/44992733
  * */

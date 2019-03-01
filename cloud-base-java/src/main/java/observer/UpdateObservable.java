@@ -4,8 +4,8 @@ import java.util.Observable;
 import java.util.Observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç7:29:31
- * @Fun ¹Û²ìÄ¿±ê
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ7:29:31
+ * @Fun è§‚å¯Ÿç›®æ ‡
  **/
 public class UpdateObservable extends Observable {
 	private int data;
@@ -22,9 +22,9 @@ public class UpdateObservable extends Observable {
 	public void setData(int data){
 		if(data != this.data){
 			this.data = data;
-			//±ê¼Ç ¸Ä±ä Ö»ÓĞ±ê¼Çºó²ÅÄÜÍ¨Öªµ½
+			//æ ‡è®° æ”¹å˜ åªæœ‰æ ‡è®°åæ‰èƒ½é€šçŸ¥åˆ°
 			setChanged();
-			//Í¨Öª
+			//é€šçŸ¥
 			notifyObservers();
 		}
 	}

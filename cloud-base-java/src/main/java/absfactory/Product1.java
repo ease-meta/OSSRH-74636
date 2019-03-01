@@ -1,15 +1,15 @@
 package absfactory;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ18ÈÕÏÂÎç6:59:33
- * @Fun  ÊµÌå²úÆ·1
+ * @Date 2016å¹´8æœˆ18æ—¥ä¸‹åˆ6:59:33
+ * @Fun  å®ä½“äº§å“1
  **/
 public class Product1 implements IProduct1 {
 
 	@Override
 	public void show() {
 		// TODO Auto-generated method stub
-		System.out.println("´´½¨ÁË1ĞÍ²úÆ·");
+		System.out.println("åˆ›å»ºäº†1å‹äº§å“");
 	}
 
 }

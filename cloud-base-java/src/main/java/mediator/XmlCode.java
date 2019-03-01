@@ -2,16 +2,16 @@ package mediator;
 
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç7:25:54
- * @Fun	 ±¾ÀàÃèÊöAndroid²¼¾ÖÀïµÄxml´úÂë
- * 		 ¼ÓÈëÁË´úÂë£¬Ô¤ÀÀ½çÃæ»á±ä»¯
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ7:25:54
+ * @Fun	 æœ¬ç±»æè¿°Androidå¸ƒå±€é‡Œçš„xmlä»£ç 
+ * 		 åŠ å…¥äº†ä»£ç ï¼Œé¢„è§ˆç•Œé¢ä¼šå˜åŒ–
  **/
 public class XmlCode implements IWork {
 
 	@Override
 	public void work() {
 		// TODO Auto-generated method stub
-		System.out.println("¼ÓÈë²¼¾Ö´úÂë");
+		System.out.println("åŠ å…¥å¸ƒå±€ä»£ç ");
 	}
 
 }

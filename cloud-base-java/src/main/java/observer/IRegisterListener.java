@@ -1,8 +1,8 @@
 package observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:01:19
- * @Fun  ¼àÌı ÓÃ»§ÔÚ×¢²áºó
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:01:19
+ * @Fun  ç›‘å¬ ç”¨æˆ·åœ¨æ³¨å†Œå
  **/
 public interface IRegisterListener {
 	void onRegistered();

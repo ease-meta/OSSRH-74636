@@ -7,7 +7,7 @@ import model.base.Maze;
 import model.base.Room;
 
 /**
- * @Date 2016Äê7ÔÂ29ÈÕ19:48:45
+ * @Date 2016å¹´7æœˆ29æ—¥19:48:45
  * @Fun Standard Maze Builder is created by Builber.
  * @author shadow
  *

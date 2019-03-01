@@ -4,7 +4,7 @@ import absfactory.MazeFactory;
 import model.base.Maze;
 
 /**
- * @Date 2016Äê7ÔÂ29ÈÕ21:07:25
+ * @Date 2016å¹´7æœˆ29æ—¥21:07:25
  * @Fun A counting Maze Builder is created by Builder.
  * @author shadow
  *

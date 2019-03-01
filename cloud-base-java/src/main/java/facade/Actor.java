@@ -1,19 +1,19 @@
 package facade;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ4ÈÕÏÂÎç9:43:24
- * @Fun ½ÇÉ«
+ * @Date 2016å¹´8æœˆ4æ—¥ä¸‹åˆ9:43:24
+ * @Fun è§’è‰²
  **/
 public class Actor {
 	public Actor(String name){
-		System.out.println("´´½¨ÁË½ÇÉ«£º" + name);
+		System.out.println("åˆ›å»ºäº†è§’è‰²ï¼š" + name);
 	}
 	
 	public void load(){
-		System.out.println("½ÇÉ«¼ÓÔØ¡£");
+		System.out.println("è§’è‰²åŠ è½½ã€‚");
 	}
 	
 	public void unload(){
-		System.out.println("½ÇÉ«ÍË³ö£¬´æµµ");
+		System.out.println("è§’è‰²é€€å‡ºï¼Œå­˜æ¡£");
 	}
 }

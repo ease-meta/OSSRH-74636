@@ -1,8 +1,8 @@
 package visitor;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ13ÈÕÏÂÎç8:14:15
- * @Fun ½£À¼
+ * @Date 2016å¹´8æœˆ13æ—¥ä¸‹åˆ8:14:15
+ * @Fun å‰‘å…°
  **/
 public class Gladiolus implements Flower {
 

@@ -1,21 +1,21 @@
 package state;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:42:27
- * @Fun  ×´Ì¬(State)Ä£Ê½  ĞĞÎªÄ£Ê½
- * 	     ¼È¸Ä±ä¶ÔÏóµÄ×´Ì¬£¬ÓÖ¸Ä±ä¶ÔÏóµÄĞĞÎª£¬ÔÚÔËĞĞÆÚ ¸ù¾İ×´Ì¬¸Ä±äĞĞÎª¡£
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:42:27
+ * @Fun  çŠ¶æ€(State)æ¨¡å¼  è¡Œä¸ºæ¨¡å¼
+ * 	     æ—¢æ”¹å˜å¯¹è±¡çš„çŠ¶æ€ï¼Œåˆæ”¹å˜å¯¹è±¡çš„è¡Œä¸ºï¼Œåœ¨è¿è¡ŒæœŸ æ ¹æ®çŠ¶æ€æ”¹å˜è¡Œä¸ºã€‚
  **/
 public class MainTest {
 	/**
-	 * ±¾ÀıµÄ×´Ì¬ÖµÖ»ÓĞÁ½¸ö£¬ÓÉ×´Ì¬Àà×ÔÉí¿ØÖÆ£¬Ò²¿ÉÒÔ°Ñ×´Ì¬ÖµµÄ¿ØÖÆ£¬½»ÓÉ¿Í»§¶ËÀ´ÉèÖÃ¡£
+	 * æœ¬ä¾‹çš„çŠ¶æ€å€¼åªæœ‰ä¸¤ä¸ªï¼Œç”±çŠ¶æ€ç±»è‡ªèº«æ§åˆ¶ï¼Œä¹Ÿå¯ä»¥æŠŠçŠ¶æ€å€¼çš„æ§åˆ¶ï¼Œäº¤ç”±å®¢æˆ·ç«¯æ¥è®¾ç½®ã€‚
 	 */
 	public static void main(String[] args) {
-		WindowContext context = new WindowContext(new WindowState("´°¿Ú"));
+		WindowContext context = new WindowContext(new WindowState("çª—å£"));
 		context.switchState();
 		context.switchState();
 		context.switchState();
 	}	
 }
 /**
- * ÍÆ¼ö²©¿Í£ºhttp://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html
+ * æ¨èåšå®¢ï¼šhttp://www.cnblogs.com/java-my-life/archive/2012/06/08/2538146.html
  */

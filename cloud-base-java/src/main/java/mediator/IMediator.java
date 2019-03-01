@@ -1,8 +1,8 @@
 package mediator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç7:08:30
- * @Fun  ÖĞ½éÕß½Ó¿Ú
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ7:08:30
+ * @Fun  ä¸­ä»‹è€…æ¥å£
  **/
 public interface IMediator {
 	public void creareMediator();

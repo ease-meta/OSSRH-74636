@@ -7,13 +7,13 @@ import java.util.Date;
 
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ6ÈÕÏÂÎç9:17:48
+ * @Date 2016å¹´8æœˆ6æ—¥ä¸‹åˆ9:17:48
  * @Fun  
- *      ¶¯Ì¬´úÀí£ºÊ¹ÓÃjdkÌá¹©µÄInvocationHandler£¬·´Éäµ÷ÓÃ±»´úÀí¶ÔÏóµÄ·½·¨£¬½áºÏjava.reflect.Proxy²úÉú´úÀí¶ÔÏó<br/>
+ *      åŠ¨æ€ä»£ç†ï¼šä½¿ç”¨jdkæä¾›çš„InvocationHandlerï¼Œåå°„è°ƒç”¨è¢«ä»£ç†å¯¹è±¡çš„æ–¹æ³•ï¼Œç»“åˆjava.reflect.Proxyäº§ç”Ÿä»£ç†å¯¹è±¡<br/>
  * 
- *      ¶¯Ì¬´«Èë±»´úÀí¶ÔÏó¹¹ÔìInvocationHandler£¬ÔÚhandlerÖĞµÄinvokeÊ±¿ÉÒÔÔöÇ¿±»´úÀí¶ÔÏóµÄ·½·¨µÄ¹¦ÄÜ<br/>
- *      »òÕßËµ£º£¨ÃæÏòÇĞÃæ£º£©ÔÚÊ²Ã´µØ·½£¨Á¬½Óµã£©£¬Ö´ĞĞÊ²Ã´ĞĞÎª£¨Í¨Öª£©<br/>
- *      GamePlayerProxy3ÖĞÊÇ·½·¨ÃûÎªloginÊ±Í¨Öª¿ªÊ¼Ê±¼ä£¬upgradeÊ±Í¨Öª½áÊøÊ±¼ä¡£<br/>
+ *      åŠ¨æ€ä¼ å…¥è¢«ä»£ç†å¯¹è±¡æ„é€ InvocationHandlerï¼Œåœ¨handlerä¸­çš„invokeæ—¶å¯ä»¥å¢å¼ºè¢«ä»£ç†å¯¹è±¡çš„æ–¹æ³•çš„åŠŸèƒ½<br/>
+ *      æˆ–è€…è¯´ï¼šï¼ˆé¢å‘åˆ‡é¢ï¼šï¼‰åœ¨ä»€ä¹ˆåœ°æ–¹ï¼ˆè¿æ¥ç‚¹ï¼‰ï¼Œæ‰§è¡Œä»€ä¹ˆè¡Œä¸ºï¼ˆé€šçŸ¥ï¼‰<br/>
+ *      GamePlayerProxy3ä¸­æ˜¯æ–¹æ³•åä¸ºloginæ—¶é€šçŸ¥å¼€å§‹æ—¶é—´ï¼Œupgradeæ—¶é€šçŸ¥ç»“æŸæ—¶é—´ã€‚<br/>
  */
 
 public class GamePlayerProxy3 {
@@ -36,9 +36,9 @@ public class GamePlayerProxy3 {
 		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 			// TODO Auto-generated method stub
 			if (method.getName().equals("login")) {
-				System.out.println("µÇÂ¼Ê±¼äÊÇ£º" + new Date().toLocaleString());
+				System.out.println("ç™»å½•æ—¶é—´æ˜¯ï¼š" + new Date().toLocaleString());
 			} else if (method.getName().equals("upgrade")) {
-				System.out.println("Éı¼¶Ê±¼äÊÇ£º" + new Date().toLocaleString());
+				System.out.println("å‡çº§æ—¶é—´æ˜¯ï¼š" + new Date().toLocaleString());
 			}
 
 			method.invoke(gamePlayer, args);

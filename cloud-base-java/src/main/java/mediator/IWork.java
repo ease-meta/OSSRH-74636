@@ -1,8 +1,8 @@
 package mediator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç7:23:53
- * @Fun  ¹¤×÷Àà½Ó¿Ú
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ7:23:53
+ * @Fun  å·¥ä½œç±»æ¥å£
  **/
 public interface IWork {
 	void work();

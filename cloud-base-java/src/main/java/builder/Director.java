@@ -1,9 +1,9 @@
 
 package builder;
 /**
- * Ö¸»ÓÕß£ºÖ¸µ¼ ÈçºÎ ½¨Ôì
+ * æŒ‡æŒ¥è€…ï¼šæŒ‡å¯¼ å¦‚ä½• å»ºé€ 
  * @author shadow E-mail:zyydqpi@163.com
- * @Date 2016Äê8ÔÂ20ÈÕÏÂÎç7:29:25
+ * @Date 2016å¹´8æœˆ20æ—¥ä¸‹åˆ7:29:25
  * @version 1.0
  * @since 
  **/
@@ -16,7 +16,7 @@ public class Director {
 	}
 	
 	/**
-	 * ½¨Ôì·½·¨£º¶¨ÒåÁË½¨ÔìµÄÁ÷³Ì
+	 * å»ºé€ æ–¹æ³•ï¼šå®šä¹‰äº†å»ºé€ çš„æµç¨‹
 	 */
 	public void construct(){
 		builder.Buildmaze();

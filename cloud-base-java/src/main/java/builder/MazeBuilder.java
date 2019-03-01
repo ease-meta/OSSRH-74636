@@ -4,7 +4,7 @@ import absfactory.MazeFactory;
 import model.base.Maze;
 
 /**
- * @Date 2016Äê7ÔÂ29ÈÕ19:49:01
+ * @Date 2016å¹´7æœˆ29æ—¥19:49:01
  * @fun Builder
  * @author shadow
  *

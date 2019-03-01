@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç7:50:13
- * @Fun  ¾ßÌå±»¹Û²ìÕßÄ¿±ê
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ7:50:13
+ * @Fun  å…·ä½“è¢«è§‚å¯Ÿè€…ç›®æ ‡
  **/
 public class UpdateWatchedSubject implements IWathedSubject {
 
@@ -38,7 +38,7 @@ public class UpdateWatchedSubject implements IWathedSubject {
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		System.out.println("Ä¿±ê¸üĞÂÖĞ....");
+		System.out.println("ç›®æ ‡æ›´æ–°ä¸­....");
 		notifyWatchers();
 	}
 

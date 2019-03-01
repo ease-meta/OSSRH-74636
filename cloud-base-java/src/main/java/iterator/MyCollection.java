@@ -3,8 +3,8 @@ package iterator;
 import java.util.Arrays;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç9:15:55
- * @Fun  ÊµÏÖµÄ´æ´¢Êı¾İ¼¯ºÏÀà
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ9:15:55
+ * @Fun  å®ç°çš„å­˜å‚¨æ•°æ®é›†åˆç±»
  **/
 public class MyCollection<T> implements ICollection<T> {
 

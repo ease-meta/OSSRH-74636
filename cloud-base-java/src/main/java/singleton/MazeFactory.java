@@ -1,8 +1,8 @@
 package singleton;
 /**
  * @author shadow
- * @Date 2016Äê7ÔÂ30ÈÕÏÂÎç8:01:22
- * @Fun  µ¥ÀıÄ£Ê½
+ * @Date 2016å¹´7æœˆ30æ—¥ä¸‹åˆ8:01:22
+ * @Fun  å•ä¾‹æ¨¡å¼
  **/
 public class MazeFactory {
 	private static MazeFactory instance;

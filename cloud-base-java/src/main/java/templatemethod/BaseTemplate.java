@@ -1,8 +1,8 @@
 package templatemethod;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç9:29:03
- * @Fun  ÒµÎñÁ÷³ÌÄ£°å£¬Ìá¹©»ù±¾¿ò¼Ü
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ9:29:03
+ * @Fun  ä¸šåŠ¡æµç¨‹æ¨¡æ¿ï¼Œæä¾›åŸºæœ¬æ¡†æ¶
  **/
 public abstract class BaseTemplate {
 	public abstract void part1();
@@ -11,7 +11,7 @@ public abstract class BaseTemplate {
 	
 	public abstract void part3();
 	
-	//ÎªÁËÑÏ¸ñÊµÑé½á¹û£¬Ê¹ÓÃfinal²»¿É±»¸²Ğ´
+	//ä¸ºäº†ä¸¥æ ¼å®éªŒç»“æœï¼Œä½¿ç”¨finalä¸å¯è¢«è¦†å†™
 	public final void useTemplateMethod(){
 		part1();
 		part2();

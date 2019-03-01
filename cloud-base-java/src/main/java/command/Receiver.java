@@ -1,8 +1,8 @@
 package command;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:44:48
- * @Fun  ½ÓÊÜÕßÀàÊµÏÖ
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:44:48
+ * @Fun  æ¥å—è€…ç±»å®ç°
  **/
 public class Receiver {
 	public void action(){

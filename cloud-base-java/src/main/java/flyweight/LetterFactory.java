@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ5ÈÕÏÂÎç8:05:27
- * @Fun  Ò»¸ö²úÉú×ÖÄ¸¶ÔÏóµÄ ÏíÔª¹¤³§£¨µ¥Àı¹¤³§£©
+ * @Date 2016å¹´8æœˆ5æ—¥ä¸‹åˆ8:05:27
+ * @Fun  ä¸€ä¸ªäº§ç”Ÿå­—æ¯å¯¹è±¡çš„ äº«å…ƒå·¥å‚ï¼ˆå•ä¾‹å·¥å‚ï¼‰
  **/
 public class LetterFactory {
 	private Map<String, Letter> map;

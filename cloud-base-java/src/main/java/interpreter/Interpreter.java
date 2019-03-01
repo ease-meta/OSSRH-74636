@@ -1,10 +1,10 @@
 package interpreter;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ7ÈÕÏÂÎç8:55:04
- * @Fun ½âÊÍ²Ù×÷
+ * @Date 2016å¹´8æœˆ7æ—¥ä¸‹åˆ8:55:04
+ * @Fun è§£é‡Šæ“ä½œ
  **/
 public interface Interpreter {
-	//Êµ¼ÊÖĞ£¬¿ÉÒÔÓĞ¸ö·µ»ØµÄÀàĞÍ£¬¶¨Òå½âÊÍ³öµÄÊı¾İ¶ÔÏó¡£
+	//å®é™…ä¸­ï¼Œå¯ä»¥æœ‰ä¸ªè¿”å›çš„ç±»å‹ï¼Œå®šä¹‰è§£é‡Šå‡ºçš„æ•°æ®å¯¹è±¡ã€‚
 	public void interpreter(Context context);
 }

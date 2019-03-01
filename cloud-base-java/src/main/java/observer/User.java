@@ -1,17 +1,17 @@
 package observer;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:02:58
- * @Fun  ¼àÌıÆ÷ ÊÇ¹Û²ìÕßÄ£Ê½µÄÒ»ÖÖÊµÏÖ
- * 		 Ò»Ğ©ĞèÒª¼àÌıµÄÒµÎñ½Ó¿ÚÉÏÌí¼Ó ¼àÌıÆ÷£¬µ÷ÓÃ¼àÌıÆ÷µÄÏàÓ¦·½·¨£¬ÊµÏÖ¼àÌı¡£
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:02:58
+ * @Fun  ç›‘å¬å™¨ æ˜¯è§‚å¯Ÿè€…æ¨¡å¼çš„ä¸€ç§å®ç°
+ * 		 ä¸€äº›éœ€è¦ç›‘å¬çš„ä¸šåŠ¡æ¥å£ä¸Šæ·»åŠ  ç›‘å¬å™¨ï¼Œè°ƒç”¨ç›‘å¬å™¨çš„ç›¸åº”æ–¹æ³•ï¼Œå®ç°ç›‘å¬ã€‚
  **/
 public class User {
 	public void register(IRegisterListener register){
 		/**
 		 * do ... register
 		 */
-		System.out.println("ÕıÔÚ×¢²áÖĞ....");
-		//×¢²áºó
+		System.out.println("æ­£åœ¨æ³¨å†Œä¸­....");
+		//æ³¨å†Œå
 		register.onRegistered();
 	}
 	
@@ -19,8 +19,8 @@ public class User {
 		/**
 		 * do ... login
 		 */
-		System.out.println("ÕıÔÚµÇÂ¼ÖĞ....");
-		//µÇÂ¼ºó
+		System.out.println("æ­£åœ¨ç™»å½•ä¸­....");
+		//ç™»å½•å
 		login.onLogined();
 	}
 }

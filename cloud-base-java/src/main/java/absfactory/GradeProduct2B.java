@@ -1,7 +1,7 @@
 package absfactory;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ18ÈÕÏÂÎç7:05:00
+ * @Date 2016å¹´8æœˆ18æ—¥ä¸‹åˆ7:05:00
  * @Fun
  **/
 public class GradeProduct2B extends Product2 {
@@ -9,6 +9,6 @@ public class GradeProduct2B extends Product2 {
 	public void show() {
 		// TODO Auto-generated method stub
 		super.show();
-		System.out.println("ÕâÊÇ²úÆ·2ÏÂµÄ£º²úÆ·B");
+		System.out.println("è¿™æ˜¯äº§å“2ä¸‹çš„ï¼šäº§å“B");
 	}
 }

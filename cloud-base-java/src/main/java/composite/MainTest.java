@@ -3,18 +3,18 @@ package composite;
 import java.util.List;
 /**
  * @author shadow
- * @Date 2016��8��4������8:06:20
- * @Fun  ���(Composite)ģʽ���ֽ�������--����ģʽ<br/>
- * 		 ��ʹ���ǲ㼶�����νṹ�������У�ģ���˼�Ԫ�غ͸���Ԫ�صĸ���ͻ��������������Ԫ��һ������������Ԫ�أ�<br/>
- * 		�Ӷ�ʹ�ÿͻ������븴��Ԫ�ص��ڲ��ṹ���<br/>
+ * @Date 2016年8月4日下午8:06:20
+ * @Fun  组合(Composite)模式，又叫做部分--整体模式<br/>
+ * 		 它使我们层级、树形结构的问题中，模糊了简单元素和复杂元素的概念，客户程序可以像处理简单元素一样来处理复杂元素，<br/>
+ * 		从而使得客户程序与复杂元素的内部结构解耦。<br/>
  * 
- * 		�������������Compositeģʽ��<br/ >
- * 			1.�����ʾ����Ĳ���--�����νṹ��<br/>
- * 			2.��ϣ���û�������϶����뵥������Ĳ�ͬ���û���ͳһ��ʹ����Ͻṹ�е����ж���
+ * 		以下情况下适用Composite模式：<br/ >
+ * 			1.你想表示对象的部分--整体层次结构。<br/>
+ * 			2.你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
  **/
 public class MainTest {
 	public static void main(String[] args) {
-		//Tree�����ʹ��
+		//Tree对象的使用
 //		Tree treeA = new Tree("A");
 //		treeA.getRoot().add(new TreeNode("B"));
 //		treeA.getRoot().add(new TreeNode("C"));
@@ -41,7 +41,7 @@ public class MainTest {
 		print(treeA);
 		
 		/**
-		 * ����ʾ�����ļ�ϵͳ��Ŀ¼���ļ������������ֿ��õݹ�����Ľṹ����һ��������ܱ�ʾ���������壬�����������ģʽ��
+		 * 其他示例：文件系统（目录、文件），类似这种可用递归遍历的结构，用一个对象就能表示部分与整体，都可以用组合模式。
 		 */
 	}
 	
@@ -66,5 +66,5 @@ public class MainTest {
 	}
 }
 /**
- * �Ƽ����ͣ�http://blog.csdn.net/hguisu/article/details/7530783
+ * 推荐博客：http://blog.csdn.net/hguisu/article/details/7530783
  * */

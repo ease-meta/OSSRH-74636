@@ -1,27 +1,27 @@
 package templatemethod;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç9:33:01
- * @Fun  Ä£°åÊµÏÖ·½Ê½2
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ9:33:01
+ * @Fun  æ¨¡æ¿å®ç°æ–¹å¼2
  **/
 public class TemplateMethod2 extends BaseTemplate {
 
 	@Override
 	public void part1() {
 		// TODO Auto-generated method stub
-		System.out.println("Ä£°å·½·¨21");
+		System.out.println("æ¨¡æ¿æ–¹æ³•21");
 	}
 
 	@Override
 	public void part2() {
 		// TODO Auto-generated method stub
-		System.out.println("Ä£°å·½·¨22");
+		System.out.println("æ¨¡æ¿æ–¹æ³•22");
 	}
 
 	@Override
 	public void part3() {
 		// TODO Auto-generated method stub
-		System.out.println("Ä£°å·½·¨23");
+		System.out.println("æ¨¡æ¿æ–¹æ³•23");
 		
 	}
 

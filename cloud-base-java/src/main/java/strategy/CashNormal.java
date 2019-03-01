@@ -1,8 +1,8 @@
 package strategy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ12ÈÕÏÂÎç8:50:53
- * @Fun  Õı³£ÊÕÈ¡ÏÖ½ğ
+ * @Date 2016å¹´8æœˆ12æ—¥ä¸‹åˆ8:50:53
+ * @Fun  æ­£å¸¸æ”¶å–ç°é‡‘
  **/
 public class CashNormal implements ICashSuper {
 

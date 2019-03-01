@@ -1,8 +1,8 @@
 package memento;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç7:59:32
- * @Fun Êı¾İ¶ÔÏó
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ7:59:32
+ * @Fun æ•°æ®å¯¹è±¡
  **/
 public class DataState {
 	private String action;

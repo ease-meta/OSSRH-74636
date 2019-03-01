@@ -3,7 +3,7 @@ package model.enchanted;
 import java.util.Random;
 
 /**
- * ÖäÓïÀà
+ * å’’è¯­ç±»
  * @author shadow
  *
  */

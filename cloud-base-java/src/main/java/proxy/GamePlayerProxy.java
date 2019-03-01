@@ -1,16 +1,16 @@
 package proxy;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ6ÈÕÏÂÎç9:11:26
- * @Fun  Íæ¼Ò´úÀí<br/>
- * 		  ÆÕÍ¨µÄ¾²Ì¬´úÀí£º¿Í»§¶Ë²»ÖªµÀ±»´úÀí¶ÔÏó£¬ÓÉ´úÀí¶ÔÏóÍê³ÉÆä¹¦ÄÜµÄµ÷ÓÃ<br/>
+ * @Date 2016å¹´8æœˆ6æ—¥ä¸‹åˆ9:11:26
+ * @Fun  ç©å®¶ä»£ç†<br/>
+ * 		  æ™®é€šçš„é™æ€ä»£ç†ï¼šå®¢æˆ·ç«¯ä¸çŸ¥é“è¢«ä»£ç†å¯¹è±¡ï¼Œç”±ä»£ç†å¯¹è±¡å®Œæˆå…¶åŠŸèƒ½çš„è°ƒç”¨<br/>
  **/
 public class GamePlayerProxy implements IGamePlayer {
 
-	//±»´úÀí¶ÔÏó
+	//è¢«ä»£ç†å¯¹è±¡
 	private IGamePlayer gamePlayer = null;
 	
-	//Í¨¹ı¹¹Ôìº¯Êı´«µİÒª¶ÔË­½øĞĞ´úÀí
+	//é€šè¿‡æ„é€ å‡½æ•°ä¼ é€’è¦å¯¹è°è¿›è¡Œä»£ç†
 	public GamePlayerProxy(String userName) {
 		// TODO Auto-generated constructor stub
 		this.gamePlayer = new GamePlayer(userName);

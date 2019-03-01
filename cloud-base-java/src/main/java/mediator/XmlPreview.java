@@ -1,16 +1,16 @@
 package mediator;
 /**
  * @author shadow
- * @Date 2016Äê8ÔÂ8ÈÕÏÂÎç7:24:48
- * @Fun	 ±¾ÀàÃèÊöAndroid²¼¾ÖÀïµÄÔ¤ÀÀ½çÃæ
- * 		 ÔÚÔ¤ÀÀ½çÃæÖĞÍÏÒ·×é¼ş£¬´úÂë»á±ä»¯
+ * @Date 2016å¹´8æœˆ8æ—¥ä¸‹åˆ7:24:48
+ * @Fun	 æœ¬ç±»æè¿°Androidå¸ƒå±€é‡Œçš„é¢„è§ˆç•Œé¢
+ * 		 åœ¨é¢„è§ˆç•Œé¢ä¸­æ‹–æ›³ç»„ä»¶ï¼Œä»£ç ä¼šå˜åŒ–
  **/
 public class XmlPreview implements IWork {
 
 	@Override
 	public void work() {
 		// TODO Auto-generated method stub
-		System.out.println("Ô¤ÀÀÀïµÄ×é¼ş±ä»¯ÁË");
+		System.out.println("é¢„è§ˆé‡Œçš„ç»„ä»¶å˜åŒ–äº†");
 	}
 
 }
