@@ -1,7 +1,6 @@
 package com.open.cloud.system.service.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.open.cloud.system.dao.RoleMapper;
 import com.open.cloud.system.model.Role;
 import com.open.cloud.system.model.UserRole;

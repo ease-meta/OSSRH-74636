@@ -1,6 +1,6 @@
 package com.open.cloud.system.service;
 
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.open.cloud.system.model.User;
 import com.open.cloud.system.model.UserRole;
 

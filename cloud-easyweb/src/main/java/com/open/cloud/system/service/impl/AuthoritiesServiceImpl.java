@@ -1,6 +1,6 @@
 package com.open.cloud.system.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.open.cloud.system.dao.AuthoritiesMapper;
 import com.open.cloud.system.model.Authorities;
 import com.open.cloud.system.service.AuthoritiesService;

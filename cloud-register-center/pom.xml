@@ -9,6 +9,5 @@
   <packaging>pom</packaging>
   <modules>
   	<module>cloud-eureka-server</module>
-  	<module>cloud-eureka-client</module>
   </modules>
 </project>

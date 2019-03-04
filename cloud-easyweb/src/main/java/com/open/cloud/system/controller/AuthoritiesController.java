@@ -2,7 +2,6 @@ package com.open.cloud.system.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.open.cloud.common.BaseController;
 import com.open.cloud.common.JsonResult;
 import com.open.cloud.common.PageResult;
