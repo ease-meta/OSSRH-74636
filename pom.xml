@@ -134,7 +134,8 @@
 		<module>cloud-base-java</module>
 		<module>cloud-monitor-center</module>
 		<module>cloud-workflow-center</module>
-	</modules>
+        <module>cloud-monitor-center</module>
+    </modules>
 
 	<repositories>
 		<repository>
