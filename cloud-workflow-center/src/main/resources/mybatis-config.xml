@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- setting用来设置每一个设置项 name：设置项名 value：设置项值 -->
+    <settings>
+        <setting name="cacheEnabled" value="true"/>  <!-- 全局映射器启用缓存 -->
+        <setting name="useGeneratedKeys" value="true"/>  <!-- 允许 JDBC 支持自动生成主键 -->
+        <setting name="defaultExecutorType" value="REUSE"/> <!-- 配置默认的执行器 -->
+        <setting name="logImpl" value="LOG4J2"/> <!-- 指定 MyBatis 所用日志的具体实现 -->
+        <!-- <setting name="mapUnderscoreToCamelCase" value="true"/> 驼峰式命名 -->
+    </settings>
+    <!-- typeAliases别名处理器，可以为我们的java类型起别名(别名不区分大小写，也就是即使你制定了别名无论大小写，只要字母对的上就可以)
+        1)typeAlias为指定java类型起别名， type：被指定的java类型全类名，默认别名是类名的小写（employee，此时mapper文件中用到的全类名都能写成此别名）
+        alias:指定全新别名 2)package为某包下以及该子包下的所有类起别名（默认别名是类名的小写） name：指定包的全路径 3)当批量起别名的时候，若子包中有类名与父包中类名相同时，会发生冲突报错，
+        这时可以在冲突的bean文件中添加@Alias标签来制定冲突类别名； -->
+    <!-- 	<typeHandlers> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.InstantTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.LocalDateTimeTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.LocalDateTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.LocalTimeTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.OffsetDateTimeTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.OffsetTimeTypeHandler" /> -->
+    <!-- 		<typeHandler -->
+    <!-- 			handler="org.apache.ibatis.type.ZonedDateTimeTypeHandler" /> -->
+    <!-- 	</typeHandlers> -->
+
+</configuration>

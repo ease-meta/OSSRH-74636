@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActRuExecutionMapper">
+  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActRuExecution">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="REV" jdbcType="INTEGER" property="rev" />
+    <result column="PROC_INST_ID" jdbcType="VARCHAR" property="procInstId" />
+    <result column="BUSINESS_KEY" jdbcType="VARCHAR" property="businessKey" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="PROC_DEF_ID" jdbcType="VARCHAR" property="procDefId" />
+    <result column="SUPER_EXEC" jdbcType="VARCHAR" property="superExec" />
+    <result column="ROOT_PROC_INST_ID" jdbcType="VARCHAR" property="rootProcInstId" />
+    <result column="ACT_ID" jdbcType="VARCHAR" property="actId" />
+    <result column="IS_ACTIVE" jdbcType="TINYINT" property="isActive" />
+    <result column="IS_CONCURRENT" jdbcType="TINYINT" property="isConcurrent" />
+    <result column="IS_SCOPE" jdbcType="TINYINT" property="isScope" />
+    <result column="IS_EVENT_SCOPE" jdbcType="TINYINT" property="isEventScope" />
+    <result column="IS_MI_ROOT" jdbcType="TINYINT" property="isMiRoot" />
+    <result column="SUSPENSION_STATE" jdbcType="INTEGER" property="suspensionState" />
+    <result column="CACHED_ENT_STATE" jdbcType="INTEGER" property="cachedEntState" />
+    <result column="TENANT_ID" jdbcType="VARCHAR" property="tenantId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="START_TIME" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="START_USER_ID" jdbcType="VARCHAR" property="startUserId" />
+    <result column="LOCK_TIME" jdbcType="TIMESTAMP" property="lockTime" />
+    <result column="IS_COUNT_ENABLED" jdbcType="TINYINT" property="isCountEnabled" />
+    <result column="EVT_SUBSCR_COUNT" jdbcType="INTEGER" property="evtSubscrCount" />
+    <result column="TASK_COUNT" jdbcType="INTEGER" property="taskCount" />
+    <result column="JOB_COUNT" jdbcType="INTEGER" property="jobCount" />
+    <result column="TIMER_JOB_COUNT" jdbcType="INTEGER" property="timerJobCount" />
+    <result column="SUSP_JOB_COUNT" jdbcType="INTEGER" property="suspJobCount" />
+    <result column="DEADLETTER_JOB_COUNT" jdbcType="INTEGER" property="deadletterJobCount" />
+    <result column="VAR_COUNT" jdbcType="INTEGER" property="varCount" />
+    <result column="ID_LINK_COUNT" jdbcType="INTEGER" property="idLinkCount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, REV, PROC_INST_ID, BUSINESS_KEY, PARENT_ID, PROC_DEF_ID, SUPER_EXEC, ROOT_PROC_INST_ID, 
+    ACT_ID, IS_ACTIVE, IS_CONCURRENT, IS_SCOPE, IS_EVENT_SCOPE, IS_MI_ROOT, SUSPENSION_STATE, 
+    CACHED_ENT_STATE, TENANT_ID, NAME, START_TIME, START_USER_ID, LOCK_TIME, IS_COUNT_ENABLED, 
+    EVT_SUBSCR_COUNT, TASK_COUNT, JOB_COUNT, TIMER_JOB_COUNT, SUSP_JOB_COUNT, DEADLETTER_JOB_COUNT, 
+    VAR_COUNT, ID_LINK_COUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dc_act_ru_execution
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dc_act_ru_execution
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActRuExecution">
+    insert into dc_act_ru_execution (ID, REV, PROC_INST_ID, 
+      BUSINESS_KEY, PARENT_ID, PROC_DEF_ID, 
+      SUPER_EXEC, ROOT_PROC_INST_ID, ACT_ID, 
+      IS_ACTIVE, IS_CONCURRENT, IS_SCOPE, 
+      IS_EVENT_SCOPE, IS_MI_ROOT, SUSPENSION_STATE, 
+      CACHED_ENT_STATE, TENANT_ID, NAME, 
+      START_TIME, START_USER_ID, LOCK_TIME, 
+      IS_COUNT_ENABLED, EVT_SUBSCR_COUNT, TASK_COUNT, 
+      JOB_COUNT, TIMER_JOB_COUNT, SUSP_JOB_COUNT, 
+      DEADLETTER_JOB_COUNT, VAR_COUNT, ID_LINK_COUNT
+      )
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{procInstId,jdbcType=VARCHAR}, 
+      #{businessKey,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, 
+      #{superExec,jdbcType=VARCHAR}, #{rootProcInstId,jdbcType=VARCHAR}, #{actId,jdbcType=VARCHAR}, 
+      #{isActive,jdbcType=TINYINT}, #{isConcurrent,jdbcType=TINYINT}, #{isScope,jdbcType=TINYINT}, 
+      #{isEventScope,jdbcType=TINYINT}, #{isMiRoot,jdbcType=TINYINT}, #{suspensionState,jdbcType=INTEGER}, 
+      #{cachedEntState,jdbcType=INTEGER}, #{tenantId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{startUserId,jdbcType=VARCHAR}, #{lockTime,jdbcType=TIMESTAMP}, 
+      #{isCountEnabled,jdbcType=TINYINT}, #{evtSubscrCount,jdbcType=INTEGER}, #{taskCount,jdbcType=INTEGER}, 
+      #{jobCount,jdbcType=INTEGER}, #{timerJobCount,jdbcType=INTEGER}, #{suspJobCount,jdbcType=INTEGER}, 
+      #{deadletterJobCount,jdbcType=INTEGER}, #{varCount,jdbcType=INTEGER}, #{idLinkCount,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuExecution">
+    insert into dc_act_ru_execution
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="rev != null">
+        REV,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID,
+      </if>
+      <if test="businessKey != null">
+        BUSINESS_KEY,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID,
+      </if>
+      <if test="superExec != null">
+        SUPER_EXEC,
+      </if>
+      <if test="rootProcInstId != null">
+        ROOT_PROC_INST_ID,
+      </if>
+      <if test="actId != null">
+        ACT_ID,
+      </if>
+      <if test="isActive != null">
+        IS_ACTIVE,
+      </if>
+      <if test="isConcurrent != null">
+        IS_CONCURRENT,
+      </if>
+      <if test="isScope != null">
+        IS_SCOPE,
+      </if>
+      <if test="isEventScope != null">
+        IS_EVENT_SCOPE,
+      </if>
+      <if test="isMiRoot != null">
+        IS_MI_ROOT,
+      </if>
+      <if test="suspensionState != null">
+        SUSPENSION_STATE,
+      </if>
+      <if test="cachedEntState != null">
+        CACHED_ENT_STATE,
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="startTime != null">
+        START_TIME,
+      </if>
+      <if test="startUserId != null">
+        START_USER_ID,
+      </if>
+      <if test="lockTime != null">
+        LOCK_TIME,
+      </if>
+      <if test="isCountEnabled != null">
+        IS_COUNT_ENABLED,
+      </if>
+      <if test="evtSubscrCount != null">
+        EVT_SUBSCR_COUNT,
+      </if>
+      <if test="taskCount != null">
+        TASK_COUNT,
+      </if>
+      <if test="jobCount != null">
+        JOB_COUNT,
+      </if>
+      <if test="timerJobCount != null">
+        TIMER_JOB_COUNT,
+      </if>
+      <if test="suspJobCount != null">
+        SUSP_JOB_COUNT,
+      </if>
+      <if test="deadletterJobCount != null">
+        DEADLETTER_JOB_COUNT,
+      </if>
+      <if test="varCount != null">
+        VAR_COUNT,
+      </if>
+      <if test="idLinkCount != null">
+        ID_LINK_COUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessKey != null">
+        #{businessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="superExec != null">
+        #{superExec,jdbcType=VARCHAR},
+      </if>
+      <if test="rootProcInstId != null">
+        #{rootProcInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="actId != null">
+        #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isConcurrent != null">
+        #{isConcurrent,jdbcType=TINYINT},
+      </if>
+      <if test="isScope != null">
+        #{isScope,jdbcType=TINYINT},
+      </if>
+      <if test="isEventScope != null">
+        #{isEventScope,jdbcType=TINYINT},
+      </if>
+      <if test="isMiRoot != null">
+        #{isMiRoot,jdbcType=TINYINT},
+      </if>
+      <if test="suspensionState != null">
+        #{suspensionState,jdbcType=INTEGER},
+      </if>
+      <if test="cachedEntState != null">
+        #{cachedEntState,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startUserId != null">
+        #{startUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCountEnabled != null">
+        #{isCountEnabled,jdbcType=TINYINT},
+      </if>
+      <if test="evtSubscrCount != null">
+        #{evtSubscrCount,jdbcType=INTEGER},
+      </if>
+      <if test="taskCount != null">
+        #{taskCount,jdbcType=INTEGER},
+      </if>
+      <if test="jobCount != null">
+        #{jobCount,jdbcType=INTEGER},
+      </if>
+      <if test="timerJobCount != null">
+        #{timerJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="suspJobCount != null">
+        #{suspJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="deadletterJobCount != null">
+        #{deadletterJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="varCount != null">
+        #{varCount,jdbcType=INTEGER},
+      </if>
+      <if test="idLinkCount != null">
+        #{idLinkCount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuExecution">
+    update dc_act_ru_execution
+    <set>
+      <if test="rev != null">
+        REV = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessKey != null">
+        BUSINESS_KEY = #{businessKey,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="superExec != null">
+        SUPER_EXEC = #{superExec,jdbcType=VARCHAR},
+      </if>
+      <if test="rootProcInstId != null">
+        ROOT_PROC_INST_ID = #{rootProcInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="actId != null">
+        ACT_ID = #{actId,jdbcType=VARCHAR},
+      </if>
+      <if test="isActive != null">
+        IS_ACTIVE = #{isActive,jdbcType=TINYINT},
+      </if>
+      <if test="isConcurrent != null">
+        IS_CONCURRENT = #{isConcurrent,jdbcType=TINYINT},
+      </if>
+      <if test="isScope != null">
+        IS_SCOPE = #{isScope,jdbcType=TINYINT},
+      </if>
+      <if test="isEventScope != null">
+        IS_EVENT_SCOPE = #{isEventScope,jdbcType=TINYINT},
+      </if>
+      <if test="isMiRoot != null">
+        IS_MI_ROOT = #{isMiRoot,jdbcType=TINYINT},
+      </if>
+      <if test="suspensionState != null">
+        SUSPENSION_STATE = #{suspensionState,jdbcType=INTEGER},
+      </if>
+      <if test="cachedEntState != null">
+        CACHED_ENT_STATE = #{cachedEntState,jdbcType=INTEGER},
+      </if>
+      <if test="tenantId != null">
+        TENANT_ID = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startUserId != null">
+        START_USER_ID = #{startUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="lockTime != null">
+        LOCK_TIME = #{lockTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isCountEnabled != null">
+        IS_COUNT_ENABLED = #{isCountEnabled,jdbcType=TINYINT},
+      </if>
+      <if test="evtSubscrCount != null">
+        EVT_SUBSCR_COUNT = #{evtSubscrCount,jdbcType=INTEGER},
+      </if>
+      <if test="taskCount != null">
+        TASK_COUNT = #{taskCount,jdbcType=INTEGER},
+      </if>
+      <if test="jobCount != null">
+        JOB_COUNT = #{jobCount,jdbcType=INTEGER},
+      </if>
+      <if test="timerJobCount != null">
+        TIMER_JOB_COUNT = #{timerJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="suspJobCount != null">
+        SUSP_JOB_COUNT = #{suspJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="deadletterJobCount != null">
+        DEADLETTER_JOB_COUNT = #{deadletterJobCount,jdbcType=INTEGER},
+      </if>
+      <if test="varCount != null">
+        VAR_COUNT = #{varCount,jdbcType=INTEGER},
+      </if>
+      <if test="idLinkCount != null">
+        ID_LINK_COUNT = #{idLinkCount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActRuExecution">
+    update dc_act_ru_execution
+    set REV = #{rev,jdbcType=INTEGER},
+      PROC_INST_ID = #{procInstId,jdbcType=VARCHAR},
+      BUSINESS_KEY = #{businessKey,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      PROC_DEF_ID = #{procDefId,jdbcType=VARCHAR},
+      SUPER_EXEC = #{superExec,jdbcType=VARCHAR},
+      ROOT_PROC_INST_ID = #{rootProcInstId,jdbcType=VARCHAR},
+      ACT_ID = #{actId,jdbcType=VARCHAR},
+      IS_ACTIVE = #{isActive,jdbcType=TINYINT},
+      IS_CONCURRENT = #{isConcurrent,jdbcType=TINYINT},
+      IS_SCOPE = #{isScope,jdbcType=TINYINT},
+      IS_EVENT_SCOPE = #{isEventScope,jdbcType=TINYINT},
+      IS_MI_ROOT = #{isMiRoot,jdbcType=TINYINT},
+      SUSPENSION_STATE = #{suspensionState,jdbcType=INTEGER},
+      CACHED_ENT_STATE = #{cachedEntState,jdbcType=INTEGER},
+      TENANT_ID = #{tenantId,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      START_TIME = #{startTime,jdbcType=TIMESTAMP},
+      START_USER_ID = #{startUserId,jdbcType=VARCHAR},
+      LOCK_TIME = #{lockTime,jdbcType=TIMESTAMP},
+      IS_COUNT_ENABLED = #{isCountEnabled,jdbcType=TINYINT},
+      EVT_SUBSCR_COUNT = #{evtSubscrCount,jdbcType=INTEGER},
+      TASK_COUNT = #{taskCount,jdbcType=INTEGER},
+      JOB_COUNT = #{jobCount,jdbcType=INTEGER},
+      TIMER_JOB_COUNT = #{timerJobCount,jdbcType=INTEGER},
+      SUSP_JOB_COUNT = #{suspJobCount,jdbcType=INTEGER},
+      DEADLETTER_JOB_COUNT = #{deadletterJobCount,jdbcType=INTEGER},
+      VAR_COUNT = #{varCount,jdbcType=INTEGER},
+      ID_LINK_COUNT = #{idLinkCount,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

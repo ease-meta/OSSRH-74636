@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActAssigneeMapper">
+    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActAssignee">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="KEY" jdbcType="VARCHAR" property="key"/>
+        <result column="SID" jdbcType="VARCHAR" property="sid"/>
+        <result column="ASSIGNEE" jdbcType="VARCHAR" property="assignee"/>
+        <result column="GROUP_ID" jdbcType="VARCHAR" property="groupId"/>
+        <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId"/>
+        <result column="ASSIGNEE_TYPE" jdbcType="VARCHAR" property="assigneeType"/>
+        <result column="ACTIVTI_NAME" jdbcType="VARCHAR" property="activtiName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    ID, `KEY`, SID, ASSIGNEE, GROUP_ID, ROLE_ID, ASSIGNEE_TYPE, ACTIVTI_NAME
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from dc_act_assignee
+        where `KEY` = #{key,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteBatch" parameterType="list">
+        <foreach collection="list" index="index" item="item" separator=";">
+            DELETE FROM dc_act_assignee
+            WHERE `KEY` = #{item.key} AND SID = #{item.sid}
+        </foreach>
+    </delete>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dc_act_assignee
+    where `ID` = #{id,jdbcType=VARCHAR}
+  </delete>
+    <!-- 批量插入数据 -->
+    <insert id="insertBatch" parameterType="list">
+        INSERT INTO dc_act_assignee (`KEY`, SID,
+        ASSIGNEE, GROUP_ID, ROLE_ID,
+        ASSIGNEE_TYPE, ACTIVTI_NAME)
+        VALUES
+        <foreach collection="list" index="index" item="item" separator=",">
+            (
+            #{item.key},
+            #{item.sid},
+            #{item.assignee},
+            #{item.groupId},
+            #{item.roleId},
+            #{item.assigneeType},
+            #{item.activtiName}
+            )
+        </foreach>
+    </insert>
+    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActAssignee">
+    insert into dc_act_assignee (`KEY`, SID,
+      ASSIGNEE, GROUP_ID, ROLE_ID, 
+      ASSIGNEE_TYPE, ACTIVTI_NAME)
+    values (#{key,jdbcType=VARCHAR}, #{sid,jdbcType=VARCHAR},
+      #{assignee,jdbcType=VARCHAR}, #{groupId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR}, 
+      #{assigneeType,jdbcType=VARCHAR}, #{activtiName,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActAssignee">
+        insert into dc_act_assignee
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="key != null">
+                `KEY`,
+            </if>
+            <if test="sid != null">
+                SID,
+            </if>
+            <if test="assignee != null">
+                ASSIGNEE,
+            </if>
+            <if test="groupId != null">
+                GROUP_ID,
+            </if>
+            <if test="roleId != null">
+                ROLE_ID,
+            </if>
+            <if test="assigneeType != null">
+                ASSIGNEE_TYPE,
+            </if>
+            <if test="activtiName != null">
+                ACTIVTI_NAME,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="key != null">
+                #{key,jdbcType=VARCHAR},
+            </if>
+            <if test="sid != null">
+                #{sid,jdbcType=VARCHAR},
+            </if>
+            <if test="assignee != null">
+                #{assignee,jdbcType=VARCHAR},
+            </if>
+            <if test="groupId != null">
+                #{groupId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="assigneeType != null">
+                #{assigneeType,jdbcType=VARCHAR},
+            </if>
+            <if test="activtiName != null">
+                #{activtiName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActAssignee">
+        update dc_act_assignee
+        <set>
+            <if test="assignee != null">
+                ASSIGNEE = #{assignee,jdbcType=VARCHAR},
+            </if>
+            <if test="groupId != null">
+                GROUP_ID = #{groupId,jdbcType=VARCHAR},
+            </if>
+            <if test="roleId != null">
+                ROLE_ID = #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="assigneeType != null">
+                ASSIGNEE_TYPE = #{assigneeType,jdbcType=VARCHAR},
+            </if>
+            <if test="activtiName != null">
+                ACTIVTI_NAME = #{activtiName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where `KEY` = #{key,jdbcType=VARCHAR} AND SID=#{sid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActAssignee">
+    update dc_act_assignee
+    set `KEY` = #{key,jdbcType=VARCHAR},
+      SID = #{sid,jdbcType=VARCHAR},
+      ASSIGNEE = #{assignee,jdbcType=VARCHAR},
+      GROUP_ID = #{groupId,jdbcType=VARCHAR},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      ASSIGNEE_TYPE = #{assigneeType,jdbcType=VARCHAR},
+      ACTIVTI_NAME = #{activtiName,jdbcType=VARCHAR}
+    where `ID` = #{id,jdbcType=VARCHAR}
+  </update>
+    <!-- 根据条件查询数据 -->
+    <select id="selectSelective" resultMap="BaseResultMap"
+            parameterType="com.moc.cloud.workflow.framework.entity.ActAssignee">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM dc_act_assignee WHERE 1 = 1
+        <if test="key != null and key != ''">
+            AND `KEY` = #{key,jdbcType=VARCHAR}
+        </if>
+        <if test="sid != null and sid != ''">
+            AND SID = #{sid,jdbcType=VARCHAR}
+        </if>
+        <if test="assignee != null and assignee != ''">
+            AND ASSIGNEE = #{assignee,jdbcType=VARCHAR}
+        </if>
+        <if test="groupId != null and groupId != ''">
+            AND GROUP_ID = #{groupId,jdbcType=VARCHAR}
+        </if>
+        <if test="roleId != null and roleId != ''">
+            AND ROLE_ID = #{roleId,jdbcType=VARCHAR}
+        </if>
+        <if test="assigneeType != null and assigneeType != ''">
+            AND ASSIGNEE_TYPE = #{assigneeType,jdbcType=VARCHAR}
+        </if>
+        <if test="activtiName != null and activtiName != ''">
+            AND ACTIVTI_NAME = #{activtiName,jdbcType=VARCHAR}
+        </if>
+    </select>
+</mapper>

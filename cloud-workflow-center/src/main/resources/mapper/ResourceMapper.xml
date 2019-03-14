@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.moc.cloud.workflow.framework.mapper.ResourceMapper">
+	<resultMap id="BaseResultMap"
+		type="com.moc.cloud.workflow.framework.entity.Resource">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="RESOURCE_NAME" jdbcType="VARCHAR"	property="resourceName" />
+		<result column="MAPPING" jdbcType="VARCHAR" property="mapping" />
+		<result column="METHOD" jdbcType="VARCHAR" property="method" />
+		<result column="AUTH_TYPE" jdbcType="VARCHAR" property="authType" />
+		<result column="PERM" jdbcType="VARCHAR" property="perm" />
+		<result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, RESOURCE_NAME, MAPPING, METHOD, AUTH_TYPE, PERM, UPDATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from dc_act_sys_resource
+		where MAPPING = #{mapping,jdbcType=VARCHAR} AND METHOD = #{method,jdbcType=VARCHAR}
+	</select>
+	<!-- 批量插入数据 -->
+	<insert id="insertBatch" parameterType="list">
+		INSERT INTO dc_act_sys_resource (ID, RESOURCE_NAME, MAPPING, METHOD, AUTH_TYPE, PERM, UPDATE_TIME)
+		VALUES
+		<foreach collection="list" index="index" item="item"
+			separator=",">
+			(
+			#{item.id},
+			#{item.resourceName},
+			#{item.mapping},
+			#{item.method},
+			#{item.authType},
+			#{item.perm},
+			#{item.updateTime}
+			)
+		</foreach>
+	</insert>
+	<insert id="insert"
+		parameterType="com.moc.cloud.workflow.framework.entity.Resource">
+		insert into dc_act_sys_resource (ID, RESOURCE_NAME, MAPPING, METHOD, AUTH_TYPE, PERM, UPDATE_TIME)
+		VALUES (#{id,jdbcType=VARCHAR}, #{resourceName,jdbcType=VARCHAR},
+		#{mapping,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR},
+		#{authType,jdbcType=VARCHAR},
+		#{perm,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}) 
+		ON DUPLICATE KEY UPDATE ID=#{id,jdbcType=VARCHAR}, RESOURCE_NAME=#{resourceName,jdbcType=VARCHAR},AUTH_TYPE=#{authType,jdbcType=VARCHAR},PERM=#{perm,jdbcType=VARCHAR},UPDATE_TIME=#{updateTime,jdbcType=TIMESTAMP}
+	</insert>
+</mapper>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActRuIdentitylinkMapper">
+  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="REV" jdbcType="INTEGER" property="rev" />
+    <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="TASK_ID" jdbcType="VARCHAR" property="taskId" />
+    <result column="PROC_INST_ID" jdbcType="VARCHAR" property="procInstId" />
+    <result column="PROC_DEF_ID" jdbcType="VARCHAR" property="procDefId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, REV, ROLE_ID, TYPE, USER_ID, TASK_ID, PROC_INST_ID, PROC_DEF_ID
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dc_act_ru_identitylink
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dc_act_ru_identitylink
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+    insert into dc_act_ru_identitylink (ID, REV, ROLE_ID, 
+      TYPE, USER_ID, TASK_ID, 
+      PROC_INST_ID, PROC_DEF_ID)
+    values (#{id,jdbcType=VARCHAR}, #{rev,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
+      #{procInstId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+    insert into dc_act_ru_identitylink
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="rev != null">
+        REV,
+      </if>
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="taskId != null">
+        TASK_ID,
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID,
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="rev != null">
+        #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+    update dc_act_ru_identitylink
+    <set>
+      <if test="rev != null">
+        REV = #{rev,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null">
+        ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="taskId != null">
+        TASK_ID = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstId != null">
+        PROC_INST_ID = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null">
+        PROC_DEF_ID = #{procDefId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+    update dc_act_ru_identitylink
+    set REV = #{rev,jdbcType=INTEGER},
+      ROLE_ID = #{roleId,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=VARCHAR},
+      TASK_ID = #{taskId,jdbcType=VARCHAR},
+      PROC_INST_ID = #{procInstId,jdbcType=VARCHAR},
+      PROC_DEF_ID = #{procDefId,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
