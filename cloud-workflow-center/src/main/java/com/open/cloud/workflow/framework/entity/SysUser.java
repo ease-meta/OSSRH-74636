@@ -1,4 +1,5 @@
 package com.open.cloud.workflow.framework.entity;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotNull;
