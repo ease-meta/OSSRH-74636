@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.SysUserMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.SysUser">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.SysUser">
         <id column="USER_ID" jdbcType="VARCHAR" property="userId"/>
         <result column="USERNAME" jdbcType="VARCHAR" property="username"/>
         <result column="PASSWORD" jdbcType="VARCHAR" property="password"/>
@@ -46,7 +46,7 @@
     delete from dc_act_sys_user
     where USER_ID = #{userId,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.SysUser">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.SysUser">
     insert into dc_act_sys_user (USER_ID, USERNAME, PASSWORD, 
       AGE, EMAIL, PHOTO, 
       REAL_NAME, CREATE_BY, UPDATE_BY, 
@@ -58,7 +58,7 @@
       #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=TINYINT}
       )
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.SysUser">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.SysUser">
         insert into dc_act_sys_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null">
@@ -137,7 +137,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.SysUser">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.SysUser">
         update dc_act_sys_user
         <set>
             <if test="username != null">
@@ -176,7 +176,7 @@
         </set>
         where USER_ID = #{userId,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.SysUser">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.SysUser">
     update dc_act_sys_user
     set USERNAME = #{username,jdbcType=VARCHAR},
       PASSWORD = #{password,jdbcType=VARCHAR},

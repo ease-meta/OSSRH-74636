@@ -1,7 +1,7 @@
-package com.moc.cloud.workflow;
+package com.open.cloud.workflow;
 
 import com.alibaba.fastjson.JSON;
-import com.moc.cloud.workflow.framework.entity.SysUser;
+import com.open.cloud.workflow.framework.entity.SysUser;
 import io.github.robwin.markup.builder.MarkupLanguage;
 import io.github.robwin.swagger2markup.GroupBy;
 import io.github.robwin.swagger2markup.Swagger2MarkupConverter;

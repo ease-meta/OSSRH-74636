@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActReDeploymentMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActReDeployment">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActReDeploymentMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActReDeployment">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="NAME" jdbcType="VARCHAR" property="name" />
     <result column="CATEGORY" jdbcType="VARCHAR" property="category" />
@@ -23,7 +23,7 @@
     delete from dc_act_re_deployment
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActReDeployment">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActReDeployment">
     insert into dc_act_re_deployment (ID, NAME, CATEGORY, 
       KEY, TENANT_ID, DEPLOY_TIME, 
       ENGINE_VERSION)
@@ -31,7 +31,7 @@
       #{key,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{deployTime,jdbcType=TIMESTAMP}, 
       #{engineVersion,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActReDeployment">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActReDeployment">
     insert into dc_act_re_deployment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActReDeployment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActReDeployment">
     update dc_act_re_deployment
     <set>
       <if test="name != null">
@@ -104,7 +104,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActReDeployment">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActReDeployment">
     update dc_act_re_deployment
     set `NAME` = #{name,jdbcType=VARCHAR},
       CATEGORY = #{category,jdbcType=VARCHAR},

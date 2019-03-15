@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.SysLogMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.SysLog">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.SysLogMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.SysLog">
         <id column="ID" jdbcType="VARCHAR" property="id"/>
         <result column="USER_NAME" jdbcType="VARCHAR" property="userName"/>
         <result column="IP" jdbcType="VARCHAR" property="ip"/>
@@ -10,7 +10,7 @@
         <result column="TEXT" jdbcType="VARCHAR" property="text"/>
         <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime"/>
     </resultMap>
-    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.moc.cloud.workflow.framework.entity.SysLog">
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.open.cloud.workflow.framework.entity.SysLog">
         <result column="PARAM" jdbcType="LONGVARCHAR" property="param"/>
     </resultMap>
     <sql id="Base_Column_List">
@@ -31,7 +31,7 @@
     delete from dc_act_sys_log
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.SysLog">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.SysLog">
     insert into dc_act_sys_log (USER_NAME, IP,
       TYPE, URL, TEXT, CREATE_TIME, 
       PARAM)
@@ -39,7 +39,7 @@
       #{type,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{param,jdbcType=LONGVARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.SysLog">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.SysLog">
         insert into dc_act_sys_log
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -94,7 +94,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.SysLog">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.SysLog">
         update dc_act_sys_log
         <set>
             <if test="userName != null">
@@ -122,7 +122,7 @@
         where ID = #{id,jdbcType=VARCHAR}
     </update>
     
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.SysLog">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.SysLog">
     update dc_act_sys_log
     set USER_NAME = #{userName,jdbcType=VARCHAR},
       IP = #{ip,jdbcType=VARCHAR},

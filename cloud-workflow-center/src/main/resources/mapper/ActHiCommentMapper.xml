@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActHiCommentMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActHiComment">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActHiCommentMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActHiComment">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="TYPE" jdbcType="VARCHAR" property="type" />
     <result column="TIME" jdbcType="TIMESTAMP" property="time" />
@@ -13,7 +13,7 @@
     <result column="URL" jdbcType="VARCHAR" property="url" />
     <result column="CONTENT_ID" jdbcType="VARCHAR" property="contentId" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.moc.cloud.workflow.framework.entity.ActHiComment">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.open.cloud.workflow.framework.entity.ActHiComment">
     <result column="FULL_MSG" jdbcType="LONGVARBINARY" property="fullMsg" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -34,7 +34,7 @@
     delete from dc_act_hi_comment
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActHiComment">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActHiComment">
     insert into dc_act_hi_comment (ID, TYPE, TIME, 
       USER_ID, TASK_ID, PROC_INST_ID, 
       ACTION, MESSAGE, URL, 
@@ -44,7 +44,7 @@
       #{action,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
       #{contentId,jdbcType=VARCHAR}, #{fullMsg,jdbcType=LONGVARBINARY})
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActHiComment">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActHiComment">
     insert into dc_act_hi_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -117,7 +117,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActHiComment">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActHiComment">
     update dc_act_hi_comment
     <set>
       <if test="type != null">
@@ -153,7 +153,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActHiComment">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActHiComment">
     update dc_act_hi_comment
     set TYPE = #{type,jdbcType=VARCHAR},
       TIME = #{time,jdbcType=TIMESTAMP},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.SeqNoParaMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.SeqNoPara">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.SeqNoParaMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.SeqNoPara">
     <id column="SEQ_TYPE" jdbcType="VARCHAR" property="seqType" />
     <result column="MIN_SEQ" jdbcType="VARCHAR" property="minSeq" />
     <result column="MAX_SEQ" jdbcType="VARCHAR" property="maxSeq" />
@@ -21,13 +21,13 @@
     delete from dc_act_seq_no_para
     where SEQ_TYPE = #{seqType,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.SeqNoPara">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.SeqNoPara">
     insert ignore into dc_act_seq_no_para (SEQ_TYPE, MIN_SEQ, MAX_SEQ,
       CURR_SEQ, COUNT_SEQ)
     values (#{seqType,jdbcType=VARCHAR}, #{minSeq,jdbcType=VARCHAR}, #{maxSeq,jdbcType=VARCHAR}, 
       #{currSeq,jdbcType=VARCHAR}, #{countSeq,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.SeqNoPara">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.SeqNoPara">
     insert into dc_act_seq_no_para
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="seqType != null">
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.SeqNoPara">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.SeqNoPara">
     update dc_act_seq_no_para
     <set>
       <if test="minSeq != null">
@@ -82,7 +82,7 @@
     </set>
     where SEQ_TYPE = #{seqType,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.SeqNoPara">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.SeqNoPara">
     update dc_act_seq_no_para
     set MIN_SEQ = #{minSeq,jdbcType=VARCHAR},
       MAX_SEQ = #{maxSeq,jdbcType=VARCHAR},

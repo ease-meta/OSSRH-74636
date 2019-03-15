@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActRuTaskMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActRuTask">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActRuTaskMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActRuTask">
         <id column="ID" jdbcType="VARCHAR" property="id"/>
         <result column="REV" jdbcType="INTEGER" property="rev"/>
         <result column="EXECUTION_ID" jdbcType="VARCHAR" property="executionId"/>
@@ -38,7 +38,7 @@
     delete from dc_act_ru_task
     where `ID` = #{id,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActRuTask">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActRuTask">
     insert into dc_act_ru_task (`ID`, REV, EXECUTION_ID,
       PROC_INST_ID, PROC_DEF_ID, `NAME`,
       PARENT_TASK_ID, DESCRIPTION, TASK_DEF_KEY, 
@@ -54,7 +54,7 @@
       #{category,jdbcType=VARCHAR}, #{suspensionState,jdbcType=INTEGER}, #{tenantId,jdbcType=VARCHAR}, 
       #{formKey,jdbcType=VARCHAR}, #{claimTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuTask">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActRuTask">
         insert into dc_act_ru_task
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -181,7 +181,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuTask">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActRuTask">
         update dc_act_ru_task
         <set>
             <if test="rev != null">
@@ -244,7 +244,7 @@
         </set>
         where `ID` = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActRuTask">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActRuTask">
     update dc_act_ru_task
     set REV = #{rev,jdbcType=INTEGER},
       EXECUTION_ID = #{executionId,jdbcType=VARCHAR},
@@ -268,7 +268,7 @@
     where `ID` = #{id,jdbcType=VARCHAR}
   </update>
     <select id="selectSelective" resultMap="BaseResultMap"
-            parameterType="com.moc.cloud.workflow.framework.entity.ActRuTask">
+            parameterType="com.open.cloud.workflow.framework.entity.ActRuTask">
         SELECT
         <include refid="Base_Column_List"/>
         FROM dc_act_ru_task WHERE 1 = 1

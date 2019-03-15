@@ -29,6 +29,11 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 		</dependency>
 
+		<!-- SpringBoot集成thymeleaf模板 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
 		<!--已web工程启动 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,7 +61,6 @@
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>${spring-boot-admin.version}</version>
 		</dependency>
 
 		<dependency>
@@ -329,7 +333,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.moc.cloud.workflow.SpringbootApplicationBranchWorkflow</mainClass>
+							<mainClass>com.open.cloud.workflow.SpringbootApplicationBranchWorkflow</mainClass>
 							<classpathPrefix>../lib</classpathPrefix>
 							<addClasspath>true</addClasspath>
 						</manifest>

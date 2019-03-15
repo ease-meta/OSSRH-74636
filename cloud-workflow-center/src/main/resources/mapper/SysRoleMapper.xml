@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.SysRoleMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.SysRole">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.SysRoleMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.SysRole">
     <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
     <result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
     <result column="REMARK" jdbcType="VARCHAR" property="remark" />
@@ -29,7 +29,7 @@
     delete from dc_act_sys_role
     where ROLE_ID = #{roleId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.SysRole">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.SysRole">
     insert into dc_act_sys_role (ROLE_ID, ROLE_NAME, REMARK, 
       CREATE_BY, CREATE_DATE, UPDATE_BY, 
       UPDATE_DATE)
@@ -37,7 +37,7 @@
       #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.SysRole">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.SysRole">
     insert into dc_act_sys_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="roleId != null">
@@ -86,7 +86,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.SysRole">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.SysRole">
     update dc_act_sys_role
     <set>
       <if test="roleName != null">
@@ -113,7 +113,7 @@
     </set>
     where ROLE_ID = #{roleId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.SysRole">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.SysRole">
     update dc_act_sys_role
     set ROLE_NAME = #{roleName,jdbcType=VARCHAR},
       REMARK = #{remark,jdbcType=VARCHAR},

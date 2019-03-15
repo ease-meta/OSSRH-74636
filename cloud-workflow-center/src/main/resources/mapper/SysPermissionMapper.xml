@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.SysPermissionMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.SysPermission">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.SysPermissionMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.SysPermission">
         <id column="PERMISSION_ID" jdbcType="VARCHAR" property="permissionId"/>
         <result column="PERMISSION_NAME" jdbcType="VARCHAR" property="permissionName"/>
         <result column="REMARK" jdbcType="VARCHAR" property="remark"/>
@@ -29,7 +29,7 @@
     delete from dc_act_sys_permission
     where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.SysPermission">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.SysPermission">
     insert into dc_act_sys_permission (PERMISSION_ID, PERMISSION_NAME, REMARK, 
       CREATE_BY, CREATE_DATE, UPDATE_BY, 
       UPDATE_DATE)
@@ -37,7 +37,7 @@
       #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
       #{updateDate,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.SysPermission">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.SysPermission">
         insert into dc_act_sys_permission
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="permissionId != null">
@@ -86,7 +86,7 @@
             </if>
         </trim>
     </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.SysPermission">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.SysPermission">
         update dc_act_sys_permission
         <set>
             <if test="permissionName != null">
@@ -113,7 +113,7 @@
         </set>
         where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.SysPermission">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.SysPermission">
     update dc_act_sys_permission
     set PERMISSION_NAME = #{permissionName,jdbcType=VARCHAR},
       REMARK = #{remark,jdbcType=VARCHAR},
@@ -124,8 +124,8 @@
       DEL_FLAG = #{delFlag,jdbcType=TIMESTAMP}
     where PERMISSION_ID = #{permissionId,jdbcType=VARCHAR}
   </update>
-    <select id="selectSelective" resultType="com.moc.cloud.workflow.framework.entity.SysPermission"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysPermission">
+    <select id="selectSelective" resultType="com.open.cloud.workflow.framework.entity.SysPermission"
+            parameterType="com.open.cloud.workflow.framework.entity.SysPermission">
         SELECT
         <include refid="Base_Column_List"/>
         FROM dc_act_sys_permission WHERE 1 = 1

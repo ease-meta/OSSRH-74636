@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.moc.cloud.workflow.framework.mapper.ResourceMapper">
+	namespace="com.open.cloud.workflow.framework.mapper.ResourceMapper">
 	<resultMap id="BaseResultMap"
-		type="com.moc.cloud.workflow.framework.entity.Resource">
+		type="com.open.cloud.workflow.framework.entity.Resource">
 		<id column="ID" jdbcType="VARCHAR" property="id" />
 		<result column="RESOURCE_NAME" jdbcType="VARCHAR"	property="resourceName" />
 		<result column="MAPPING" jdbcType="VARCHAR" property="mapping" />
@@ -40,7 +40,7 @@
 		</foreach>
 	</insert>
 	<insert id="insert"
-		parameterType="com.moc.cloud.workflow.framework.entity.Resource">
+		parameterType="com.open.cloud.workflow.framework.entity.Resource">
 		insert into dc_act_sys_resource (ID, RESOURCE_NAME, MAPPING, METHOD, AUTH_TYPE, PERM, UPDATE_TIME)
 		VALUES (#{id,jdbcType=VARCHAR}, #{resourceName,jdbcType=VARCHAR},
 		#{mapping,jdbcType=VARCHAR}, #{method,jdbcType=VARCHAR},

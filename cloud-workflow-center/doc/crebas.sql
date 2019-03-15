@@ -465,48 +465,23 @@ INSERT INTO `dc_act_seq_no_para` VALUES ('leave', '1', '999999', '6', '1');
 INSERT INTO `dc_act_seq_no_para` VALUES ('task', '1', '999999', '6', '1');
 
 
-/*
-alter table act_ru_execution add constraint ACT_FK_EXE_PARENT foreign key (PARENT_ID)
-      references act_ru_execution (ID);
+drop table if exists sys_config;
+create table sys_config (
+	config_id 		   int(5) 	     not null auto_increment    comment '参数主键',
+	config_name        varchar(100)  default ''                 comment '参数名称',
+	config_key         varchar(100)  default ''                 comment '参数键名',
+	config_value       varchar(100)  default ''                 comment '参数键值',
+	config_type        char(1)       default 'N'                comment '系统内置（Y是 N否）',
+    create_by          varchar(64)   default ''                 comment '创建者',
+    create_time 	   datetime                                 comment '创建时间',
+    update_by          varchar(64)   default ''                 comment '更新者',
+    update_time        datetime                                 comment '更新时间',
+	remark 	           varchar(500)  default null 				comment '备注',
+	primary key (config_id)
+) engine=innodb auto_increment=100 default charset=utf8 comment = '参数配置表';
 
-alter table act_ru_execution add constraint ACT_FK_EXE_PROCDEF foreign key (PROC_DEF_ID)
-      references act_re_procdef (ID);
-
-alter table act_ru_execution add constraint ACT_FK_EXE_PROCINST foreign key (PROC_INST_ID)
-      references act_hi_procinst (PROC_INST_ID);
-
-alter table act_ru_execution add constraint ACT_FK_EXE_SUPER foreign key (SUPER_EXEC)
-      references act_ru_execution (ID);
-
-alter table act_ru_identitylink add constraint ACT_FK_ATHRZ_PROCEDEF foreign key (PROC_DEF_ID)
-      references act_re_procdef (ID);
-
-alter table act_ru_identitylink add constraint ACT_FK_IDL_PROCINST foreign key (PROC_INST_ID)
-      references act_ru_execution (ID);
-
-alter table act_ru_identitylink add constraint ACT_FK_TSKASS_TASK foreign key (TASK_ID)
-      references act_ru_task (ID);
-
-alter table act_ru_task add constraint ACT_FK_TASK_EXE foreign key (EXECUTION_ID)
-      references act_ru_execution (ID);
-
-alter table act_ru_task add constraint ACT_FK_TASK_PROCDEF foreign key (PROC_DEF_ID)
-      references act_re_procdef (ID);
-
-alter table act_ru_task add constraint ACT_FK_TASK_PROCINST foreign key (PROC_INST_ID)
-      references act_hi_procinst (PROC_INST_ID);
-
-alter table act_ru_variable add constraint ACT_FK_VAR_EXE foreign key (EXECUTION_ID)
-      references act_ru_execution (ID);
-
-alter table act_ru_variable add constraint ACT_FK_VAR_PROCINST foreign key (PROC_INST_ID)
-      references act_ru_execution (ID);*/
-
-
-
-
-
-
+insert into sys_config values(1, '主框架页-默认皮肤样式名称', 'sys.index.skinName',     'skin-blue',     'Y', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '蓝色 skin-blue、绿色 skin-green、紫色 skin-purple、红色 skin-red、黄色 skin-yellow' );
+insert into sys_config values(2, '用户管理-账号初始密码',     'sys.user.initPassword',  '123456',        'Y', 'admin', '2018-03-16 11-33-00', 'ry', '2018-03-16 11-33-00', '初始化密码 123456' );
 
 
 

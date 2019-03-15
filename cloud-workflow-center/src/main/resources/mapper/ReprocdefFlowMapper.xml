@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ReprocdefFlowMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ReprocdefFlowMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
         <id column="KEY" jdbcType="VARCHAR" property="key"/>
         <id column="SID" jdbcType="VARCHAR" property="sid"/>
         <result column="TASK_DEF_KEY" jdbcType="VARCHAR" property="taskDefKey"/>
@@ -17,7 +17,7 @@
     `KEY`, SID, TASK_DEF_KEY, SID_TYPE, SID_TITLE, INIT_NUM, VERSION, STATE, CREATETIME,
     CREATOR
   </sql>
-    <select id="selectByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow"
+    <select id="selectByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow"
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -28,7 +28,7 @@
         select  COUNT(1) num from dc_act_reprocdef_flow
     </select>
 
-    <select id="seletFlowsByKey" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow"
+    <select id="seletFlowsByKey" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow"
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -36,11 +36,11 @@
         where `KEY` = #{key,jdbcType=VARCHAR}
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+    <delete id="deleteByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
     delete from dc_act_reprocdef_flow
     where `KEY` = #{key,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
     insert into dc_act_reprocdef_flow (`KEY`, SID, TASK_DEF_KEY,
       SID_TYPE, SID_TITLE, INIT_NUM, 
       VERSION, STATE, CREATETIME, 
@@ -50,7 +50,7 @@
       #{version,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
       #{creator,jdbcType=VARCHAR})
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
         insert into dc_act_reprocdef_flow
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="key != null">
@@ -137,7 +137,7 @@
         </foreach>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
         update dc_act_reprocdef_flow
         <set>
             <if test="taskDefKey != null">
@@ -167,7 +167,7 @@
         </set>
         where `KEY` = #{key,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ReprocdefFlow">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ReprocdefFlow">
     update dc_act_reprocdef_flow
     set TASK_DEF_KEY = #{taskDefKey,jdbcType=VARCHAR},
       SID_TYPE = #{sidType,jdbcType=VARCHAR},

@@ -57,10 +57,10 @@
     </Appenders>
 
     <Loggers>
-        <logger name="com.moc.cloud" level="info"/>
+        <logger name="com.open.cloud" level="info"/>
         <logger name="org.activiti.engine.impl.persistence.entity" level="trace"/>
         <logger name="org.springframework.transaction.support" level="debug"/>
-        <logger name="com.moc.cloud.workflow.framework.mapper" level="debug"/>
+        <logger name="com.open.cloud.workflow.framework.mapper" level="debug"/>
 
        <!-- <logger name="org.hibernate.SQL" level="debug"/>
         <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>

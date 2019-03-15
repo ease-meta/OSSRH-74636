@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActRuIdentitylinkMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActRuIdentitylinkMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActRuIdentitylink">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="REV" jdbcType="INTEGER" property="rev" />
     <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
@@ -24,7 +24,7 @@
     delete from dc_act_ru_identitylink
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActRuIdentitylink">
     insert into dc_act_ru_identitylink (ID, REV, ROLE_ID, 
       TYPE, USER_ID, TASK_ID, 
       PROC_INST_ID, PROC_DEF_ID)
@@ -32,7 +32,7 @@
       #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, 
       #{procInstId,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActRuIdentitylink">
     insert into dc_act_ru_identitylink
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -87,7 +87,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActRuIdentitylink">
     update dc_act_ru_identitylink
     <set>
       <if test="rev != null">
@@ -114,7 +114,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActRuIdentitylink">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActRuIdentitylink">
     update dc_act_ru_identitylink
     set REV = #{rev,jdbcType=INTEGER},
       ROLE_ID = #{roleId,jdbcType=VARCHAR},

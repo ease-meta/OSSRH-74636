@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActHiActinstMapper">
-  <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActHiActinstMapper">
+  <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActHiActinst">
     <id column="ID" jdbcType="VARCHAR" property="id" />
     <result column="PROC_DEF_ID" jdbcType="VARCHAR" property="procDefId" />
     <result column="PROC_INST_ID" jdbcType="VARCHAR" property="procInstId" />
@@ -33,7 +33,7 @@
     delete from dc_act_hi_actinst
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+  <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActHiActinst">
     insert into dc_act_hi_actinst (ID, PROC_DEF_ID, PROC_INST_ID, 
       EXECUTION_ID, ACT_ID, TASK_ID, 
       CALL_PROC_INST_ID, ACT_NAME, ACT_TYPE, 
@@ -47,7 +47,7 @@
       #{duration,jdbcType=BIGINT}, #{deleteReason,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+  <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActHiActinst">
     insert into dc_act_hi_actinst
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -144,7 +144,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+  <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActHiActinst">
     update dc_act_hi_actinst
     <set>
       <if test="procDefId != null">
@@ -192,7 +192,7 @@
     </set>
     where ID = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+  <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActHiActinst">
     update dc_act_hi_actinst
     set PROC_DEF_ID = #{procDefId,jdbcType=VARCHAR},
       PROC_INST_ID = #{procInstId,jdbcType=VARCHAR},
@@ -213,7 +213,7 @@
 
   <!-- 根据条件查询数据 -->
   <select id="selectSelective" resultMap="BaseResultMap"
-          parameterType="com.moc.cloud.workflow.framework.entity.ActHiActinst">
+          parameterType="com.open.cloud.workflow.framework.entity.ActHiActinst">
     SELECT
     <include refid="Base_Column_List"/>
     FROM dc_act_hi_actinst WHERE 1 = 1

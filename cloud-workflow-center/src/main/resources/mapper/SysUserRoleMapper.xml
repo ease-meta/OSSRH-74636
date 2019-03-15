@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-        namespace="com.moc.cloud.workflow.framework.mapper.SysUserRoleMapper">
+        namespace="com.open.cloud.workflow.framework.mapper.SysUserRoleMapper">
     <resultMap id="BaseResultMap"
-               type="com.moc.cloud.workflow.framework.entity.SysUserRole">
+               type="com.open.cloud.workflow.framework.entity.SysUserRole">
         <id column="USER_ID" jdbcType="VARCHAR" property="userId"/>
         <id column="ROLE_ID" jdbcType="VARCHAR" property="roleId"/>
         <id column="DEL_FLAG" jdbcType="BIT" property="delFlag"/>
     </resultMap>
     <delete id="deleteByPrimaryKey"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysUserRole">
+            parameterType="com.open.cloud.workflow.framework.entity.SysUserRole">
 		delete from dc_act_sys_user_role
 		where USER_ID = #{userId,jdbcType=VARCHAR}
 		and ROLE_ID = #{roleId,jdbcType=VARCHAR}
 	</delete>
     <insert id="insert"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysUserRole">
+            parameterType="com.open.cloud.workflow.framework.entity.SysUserRole">
 		insert into dc_act_sys_user_role (USER_ID, ROLE_ID,DEL_FLAG)
 		values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR},#{delFlag,jdbcType=BIT})
 	</insert>
 
     <delete id="deleteSelective"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysUserRole">
+            parameterType="com.open.cloud.workflow.framework.entity.SysUserRole">
 		delete from dc_act_sys_user_role
 		where USER_ID = #{userId,jdbcType=VARCHAR}
 		and ROLE_ID = #{roleId,jdbcType=VARCHAR}
 	</delete>
 
     <update id="updateByPrimaryKeySelective"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysUserRole">
+            parameterType="com.open.cloud.workflow.framework.entity.SysUserRole">
 		update dc_act_sys_user_role set DEL_FLAG=#{delFlag,jdbcType=BIT}
 		where USER_ID = #{userId,jdbcType=VARCHAR}
 		and ROLE_ID = #{roleId,jdbcType=VARCHAR}
 	</update>
 
     <insert id="insertSelective"
-            parameterType="com.moc.cloud.workflow.framework.entity.SysUserRole">
+            parameterType="com.open.cloud.workflow.framework.entity.SysUserRole">
         insert into dc_act_sys_user_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null">

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.moc.cloud.workflow.framework.mapper.ActReProcdefMapper">
-    <resultMap id="BaseResultMap" type="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+<mapper namespace="com.open.cloud.workflow.framework.mapper.ActReProcdefMapper">
+    <resultMap id="BaseResultMap" type="com.open.cloud.workflow.framework.entity.ActReProcdef">
         <id column="ID" jdbcType="VARCHAR" property="id"/>
         <result column="REV" jdbcType="INTEGER" property="rev"/>
         <result column="CATEGORY" jdbcType="VARCHAR" property="category"/>
@@ -42,7 +42,7 @@
         from dc_act_re_procdef
         where `KEY` = #{key,jdbcType=VARCHAR} ORDER BY VERSION DESC
     </select>
-    <select id="selectSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef"
+    <select id="selectSelective" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef"
             resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -98,7 +98,7 @@
     delete from dc_act_re_procdef
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-    <insert id="insert" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+    <insert id="insert" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef">
     insert into dc_act_re_procdef (ID, REV, CATEGORY, 
       `NAME`, `KEY`, VERSION,
       DEPLOYMENT_ID, RESOURCE_NAME, DGRM_RESOURCE_NAME, 
@@ -112,7 +112,7 @@
       #{suspensionState,jdbcType=BIT}, #{tenantId,jdbcType=VARCHAR}, #{engineVersion,jdbcType=VARCHAR}, 
       #{resourceTime,jdbcType=TIMESTAMP})
   </insert>
-    <insert id="insertSelective" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+    <insert id="insertSelective" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef">
         insert into dc_act_re_procdef
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -216,7 +216,7 @@
         </trim>
     </insert>
 
-    <update id="updateByKey" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+    <update id="updateByKey" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef">
         update dc_act_re_procdef
         <set>
             <if test="rev != null">
@@ -266,7 +266,7 @@
     </update>
 
 
-    <update id="updateByPrimaryKeySelective" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+    <update id="updateByPrimaryKeySelective" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef">
         update dc_act_re_procdef
         <set>
             <if test="rev != null">
@@ -317,7 +317,7 @@
         </set>
         where ID = #{id,jdbcType=VARCHAR}
     </update>
-    <update id="updateByPrimaryKey" parameterType="com.moc.cloud.workflow.framework.entity.ActReProcdef">
+    <update id="updateByPrimaryKey" parameterType="com.open.cloud.workflow.framework.entity.ActReProcdef">
     update dc_act_re_procdef
     set REV = #{rev,jdbcType=INTEGER},
       CATEGORY = #{category,jdbcType=VARCHAR},

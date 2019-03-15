@@ -9,10 +9,6 @@
 	</parent>
 	<artifactId>cloud-eureka-server</artifactId>
 
-	<properties>
-		<kotlin.version>1.2.71</kotlin.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
