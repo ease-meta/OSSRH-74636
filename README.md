@@ -18,15 +18,12 @@
 4. es集群
 5. jenkins自动化部署
 6. 服务监控
-cloud-config-center:8083
-cloud-register-center
-    cloud-eureka-server:8761
-    cloud-eureka-client:8086
-cloud-monitor-center
-    cloud-admin-server:8084
-cloud-easyweb:8081
-cloud-gateway:8082
-cloud-base-java:无
+    cloud-config-center:8083
+    cloud-register-center
+        cloud-eureka-server:8761
+    cloud-monitor-center:8084
+    cloud-workflow-center:8080
+    cloud-base-java:无
 
 #### 安装教程
 . xxxx
