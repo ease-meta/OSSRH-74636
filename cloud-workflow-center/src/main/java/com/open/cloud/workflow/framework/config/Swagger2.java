@@ -15,15 +15,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class Swagger2 {
 
-	@Bean
-	public Docket createRestApi() {
-		return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-				.select().apis(RequestHandlerSelectors.basePackage("com.open.cloud.workflow.framework.controller"))
-				.paths(PathSelectors.any()).build();
-	}
+    @Bean
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
+                .select().apis(RequestHandlerSelectors.basePackage("com.open.cloud.workflow.framework.controller"))
+                .paths(PathSelectors.any()).build();
+    }
 
-	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("工作流API接口文档").version("1.0").build();
-	}
-
+    private ApiInfo apiInfo() {
+        return new ApiInfoBuilder()
+                .title("Swagger")
+                .description("API Description")
+                .license("Apache 2.0")
+                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+                .version("1.0.0")
+                .build();
+    }
 }
+
