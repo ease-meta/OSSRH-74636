@@ -13,7 +13,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
 
-        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
         <spring-cloud-services.version>2.1.0.RELEASE</spring-cloud-services.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
@@ -166,7 +166,7 @@
         <module>cloud-monitor-center</module>
         <module>cloud-workflow-center</module>
         <module>cloud-dubbo</module>
-        <module>cloud-mq</module>
+        <module>cloud-zipkin-center</module>
     </modules>
 
     <repositories>

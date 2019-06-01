@@ -1,3 +1,6 @@
 spring:
   application:
-    name: dubbo-auto-configure-consumer-sample
+    name: open-cloud-dubbo-consumer
+dubbo:
+  registry:
+    address: zookeeper://10.7.25.201:2282

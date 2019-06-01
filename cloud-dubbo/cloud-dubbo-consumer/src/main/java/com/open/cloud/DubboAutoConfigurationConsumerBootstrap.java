@@ -16,19 +16,19 @@ import org.springframework.context.annotation.Bean;
 @EnableAutoConfiguration
 public class DubboAutoConfigurationConsumerBootstrap {
 
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
-	@Reference(version = "1.0.0", url = "dubbo://127.0.0.1:12345")
-	private DemoService demoService;
+    @Reference
+    private DemoService demoService;
 
-	public static void main(String[] args) {
-		SpringApplication.run(DubboAutoConfigurationConsumerBootstrap.class).close();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DubboAutoConfigurationConsumerBootstrap.class).close();
+    }
 
-	@Bean
-	public ApplicationRunner runner() {
-		return args -> {
-			logger.info(demoService.sayHello("mercyblitz"));
-		};
-	}
+    @Bean
+    public ApplicationRunner runner() {
+        return args -> {
+            logger.info(demoService.sayHello("mercyblitz"));
+        };
+    }
 }

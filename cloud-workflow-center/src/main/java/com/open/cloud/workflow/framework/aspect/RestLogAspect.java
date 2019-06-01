@@ -40,7 +40,7 @@ public class RestLogAspect {
     //使用@Pointcut定义一个切入点，可以是一个规则表达式，比如下例中某个package下的所有函数，也可以是一个注解等。
     // @Pointcut("execution( *
     // com.nizi..coder.*.*(..))")//两个..代表所有子目录，最后括号里的两个..代表所有参数
-    @Pointcut("execution(* com.open.cloud.workflow.framework.controller..*.*(..))")
+    @Pointcut("execution(* com.open.cloud.workflow..controller..*.*(..))")
     public void logPointCut() {
     }
 

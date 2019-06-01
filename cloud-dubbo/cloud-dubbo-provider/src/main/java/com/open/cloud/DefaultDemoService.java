@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @see DemoService
  * @since 2.7.0
  */
-@Service(version = "1.0.0")
+@Service
 public class DefaultDemoService implements DemoService {
 
     /**
