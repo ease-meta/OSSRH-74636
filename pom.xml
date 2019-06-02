@@ -24,6 +24,7 @@
         <sharding-spring-boot-starter>3.1.0</sharding-spring-boot-starter>
         <shiro-spring.version>1.4.0</shiro-spring.version>
         <spring-statemachine.version>2.0.1.RELEASE</spring-statemachine.version>
+        <perf4j.version>0.9.16</perf4j.version>
 
         <azure.version>2.1.2</azure.version>
         <vaadin.version>13.0.4</vaadin.version>
@@ -167,6 +168,7 @@
         <module>cloud-workflow-center</module>
         <module>cloud-dubbo</module>
         <module>cloud-zipkin-center</module>
+        <module>cloud-sequence-provider</module>
     </modules>
 
     <repositories>
