@@ -21,7 +21,7 @@
         <sofa.boot.version>3.1.3</sofa.boot.version>
         <dubbo.version>2.7.1</dubbo.version>
         <mybatis.boot.version>2.0.0</mybatis.boot.version>
-        <sharding-spring-boot-starter>3.1.0</sharding-spring-boot-starter>
+        <shardingsphere.version>4.0.0-RC1</shardingsphere.version>
         <shiro-spring.version>1.4.0</shiro-spring.version>
         <spring-statemachine.version>2.0.1.RELEASE</spring-statemachine.version>
         <perf4j.version>0.9.16</perf4j.version>
@@ -169,6 +169,8 @@
         <module>cloud-dubbo</module>
         <module>cloud-zipkin-center</module>
         <module>cloud-sequence-provider</module>
+        <module>cloud-mq-center</module>
+        <module>cloud-batch-center</module>
     </modules>
 
     <repositories>
