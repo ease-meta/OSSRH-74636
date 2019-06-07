@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="2.0">
+
+    <entity class="com.open.cloud.test.entity.MqConsumerMsgEntity">
+        <table name="mq_consumer_msg" schema="workflow" catalog=""/>
+        <attributes>
+            <id name="mqMessageId">
+                <column name="mq_message_id" length="36"/>
+            </id>
+            <basic name="msgId">
+                <column name="msg_id" nullable="false" length="36"/>
+            </basic>
+            <basic name="bornTime">
+                <column name="born_time" nullable="false" length="20"/>
+            </basic>
+            <basic name="bornHost">
+                <column name="born_host" nullable="false" length="36"/>
+            </basic>
+            <basic name="storeTime">
+                <column name="store_time" nullable="false" length="20"/>
+            </basic>
+            <basic name="storeHost">
+                <column name="store_host" nullable="false" length="36"/>
+            </basic>
+            <basic name="topic">
+                <column name="topic" nullable="false" length="36"/>
+            </basic>
+            <basic name="tag">
+                <column name="tag" nullable="false" length="10"/>
+            </basic>
+            <basic name="queueId">
+                <column name="queue_id" nullable="false" precision="11"/>
+            </basic>
+            <basic name="receiveTime">
+                <column name="receive_time" nullable="false" length="20"/>
+            </basic>
+            <basic name="status">
+                <column name="status" nullable="false" precision="11"/>
+            </basic>
+            <basic name="updateTime">
+                <column name="update_time" nullable="false" length="20"/>
+            </basic>
+            <basic name="remark">
+                <column name="remark" nullable="false" length="2000"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

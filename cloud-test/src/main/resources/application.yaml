@@ -4,13 +4,19 @@ spring:
       names: ds0,ds1
       ds0:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        password: 123456
+        password: root
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://127.0.0.1:3306/workflow
+        url: jdbc:mysql://127.0.0.1:3306/workflow?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
         username: root
       ds1:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        password: 123456
+        password: root
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://127.0.0.1:3306/workflow
+        url: jdbc:mysql://127.0.0.1:3306/workflow?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
         username: root
+  jpa:
+    open-in-view: false
+    show-sql: true
+logging:
+  level:
+    root: DEBUG

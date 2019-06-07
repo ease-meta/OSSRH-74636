@@ -10,6 +10,19 @@ import java.util.Date;
  **/
 public class Main {
     public static void main(String[] args) throws ParseException {
+        //计算出指定年月日的时间s数据
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(2019,00,01);
+        long time = dateFormat.parse(dateFormat.format(calendar.getTime())).getTime();
+        System.out.println("开始时间s数据:"+time);
+        System.out.println(~(-1L<<28));
+        System.out.println(~(-1L<<10));
+        System.out.println(~(-1L<<13));
+
+    }
+
+    void  Demo01() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         calendar.set(2016,00,01);

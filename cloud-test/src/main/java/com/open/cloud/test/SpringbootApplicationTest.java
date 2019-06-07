@@ -1,7 +1,7 @@
 package com.open.cloud.test;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
  * @author leijian
@@ -10,7 +10,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class SpringbootApplicationTest {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(SpringbootApplicationTest.class).run(args);
+        //new SpringApplicationBuilder(SpringbootApplicationTest.class).run(args);
+        SpringApplication.run(SpringbootApplicationTest.class,args);
     }
 
 }
