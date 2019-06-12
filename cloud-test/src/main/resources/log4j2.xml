@@ -59,13 +59,13 @@
     <Loggers>
         <logger name="com.open.cloud" level="info"/>
         <logger name="org.springframework.transaction.support" level="debug"/>
-
+        <logger name="org.apache.ibatis.executor.statement.BaseStatementHandler" level="debug"/>
        <!-- <logger name="org.hibernate.SQL" level="debug"/>
         <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE"/>
         <logger name="org.hibernate.engine.QueryParameters" level="DEBUG"/>
         <logger name="org.hibernate.engine.query.HQLQueryPlan" level="DEBUG"/>-->
 
-        <root level="info">
+        <root level="debug">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="ERROR_LOG"/>
             <appender-ref ref="INFO_LOG"/>

@@ -19,6 +19,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-common</artifactId>
+            <version>${open.cloud.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <!--log4j2的日志的实现需要剔除掉boot依赖的日志 -->
@@ -84,6 +90,12 @@
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mybatis.spring.boot</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--mysql数据库连接操作 -->

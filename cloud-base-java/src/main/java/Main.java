@@ -20,6 +20,10 @@ public class Main {
         System.out.println(~(-1L<<10));
         System.out.println(~(-1L<<13));
 
+        for (int i =0;i<100;i++){
+            System.out.println(((int)(Math.random()*10)));
+        }
+
     }
 
     void  Demo01() throws ParseException {

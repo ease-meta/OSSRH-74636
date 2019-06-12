@@ -12,6 +12,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <java.version>1.8</java.version>
+        <open.cloud.version>0.0.1-SNAPSHOT</open.cloud.version>
 
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <spring-boot-admin.version>2.1.4</spring-boot-admin.version>
@@ -218,6 +219,8 @@
         <module>cloud-batch-center</module>
         <module>cloud-test</module>
         <module>cloud-common</module>
+        <module>cloud-nacos</module>
+        <module>cloud-sofa</module>
     </modules>
 
     <repositories>
