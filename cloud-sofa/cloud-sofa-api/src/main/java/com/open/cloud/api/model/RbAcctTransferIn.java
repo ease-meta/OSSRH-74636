@@ -1,13 +1,11 @@
 package com.open.cloud.api.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class RbAcctTransferIn extends RbBaseRequest {
+public class RbAcctTransferIn extends BaseRequest {
     /**
      * 交易参考号<br>
      * REFERENCE<br>
