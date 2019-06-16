@@ -16,5 +16,6 @@
     <modules>
         <module>cloud-sofa-api</module>
         <module>cloud-sofa-app</module>
+        <module>cloud-rpc-gateway</module>
     </modules>
 </project>

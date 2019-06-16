@@ -18,7 +18,7 @@ public class RbAcctTransferImpl implements IRbAcctTransfer {
     @Override
     public HeadOut rbAcctTransfer(RbAcctTransferIn in) {
         log.info("{}", in);
-        Result ret = new Result("123", "456");
+        Result ret = new Result(in.getAcctSystem(), in.getReference());
         String retStatus = "OK";
         HeadOut headOut = new HeadOut(retStatus, ret);
         return headOut;
