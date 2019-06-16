@@ -8,7 +8,7 @@ import lombok.Data;
  * @date 2019/6/14 18:44
  **/
 @Data
-public class BaseRequest {
+public class BaseRequest extends  BaseData {
 
     private Head head;
 }

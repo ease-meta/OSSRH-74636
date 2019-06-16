@@ -32,6 +32,7 @@ done
 
 if [[ "${MODE}" == "debug" ]]; then
     JAVA_OPT="%JAVA_OPT% -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n "
+	                     
 fi
 if [[ "${MODE}" == "jmx" ]]; then
     JAVA_OPT="%JAVA_OPT%  -Dcom.sun.management.jmxremote.port=1099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false "

@@ -13,5 +13,4 @@ public class SpringbootApplicationTest {
         //new SpringApplicationBuilder(SpringbootApplicationTest.class).run(args);
         SpringApplication.run(SpringbootApplicationTest.class,args);
     }
-
 }

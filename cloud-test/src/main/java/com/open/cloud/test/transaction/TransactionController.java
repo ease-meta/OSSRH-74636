@@ -1,6 +1,7 @@
 package com.open.cloud.test.transaction;
 
 import com.open.cloud.common.sequences.UidGeneratorFactory;
+import com.open.cloud.test.groovy.GroovyCommonEngine;
 import com.open.cloud.test.repository.MqConsumerMsgRepository;
 import com.open.cloud.test.repository.MqProducerMsgRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,9 @@ import static org.springframework.transaction.annotation.Propagation.REQUIRES_NE
 public class TransactionController {
 
     private final static String NAME_SPACE = "com.open.cloud.prod";
+
+    private final String RULE_NAME = "comet.groovy";
+
     @Autowired
     MqConsumerMsgRepository mqConsumerMsgRepository;
 
@@ -106,6 +110,19 @@ public class TransactionController {
             accountPoints.put("STATUS", 1);
             sqlSessionFactory.openSession().insert("InsAccountPoint", accountPoints);
 
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+
+    @RequestMapping(value = {"/groovy"}, method = {RequestMethod.GET})
+    @Transactional(propagation = REQUIRES_NEW, rollbackFor = Exception.class)
+    public boolean groovy(HttpServletRequest httpRequest, HttpServletResponse response) {
+        try {
+            GroovyCommonEngine.invokeMethod(RULE_NAME, "demo01", "");
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             e.printStackTrace();

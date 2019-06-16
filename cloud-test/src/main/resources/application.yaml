@@ -30,4 +30,6 @@ spring:
         show: true
 logging:
   level:
-    root: debug
+    root: info
+server:
+  port: 8091

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class RbAcctTransferIn extends BaseRequest {
+public class RbAcctTransferIn extends SuperBaseRequest  {
     /**
      * 交易参考号<br>
      * REFERENCE<br>
