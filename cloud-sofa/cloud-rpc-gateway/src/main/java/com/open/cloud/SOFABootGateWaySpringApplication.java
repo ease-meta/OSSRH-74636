@@ -1,22 +1,10 @@
 package com.open.cloud;
 
-import com.alipay.hessian.generic.model.GenericObject;
-import com.alipay.sofa.rpc.api.GenericService;
-import com.alipay.sofa.rpc.boot.runtime.param.BoltBindingParam;
-import com.alipay.sofa.runtime.api.client.ReferenceClient;
-import com.alipay.sofa.runtime.api.client.param.BindingParam;
-import com.alipay.sofa.runtime.api.client.param.ReferenceParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
 
 /**
  * SOFABootWebSpringApplication
@@ -25,14 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 public class SOFABootGateWaySpringApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ServletException {
         SpringApplication.run(SOFABootGateWaySpringApplication.class, args);
-    }
 
+        UndertowServer undertowServer = new UndertowServer();
+        undertowServer.start();
+    }
+/*
     @Configuration
     @RestController
-    class Demo {
-
+    class Demo {*/
         /*@SofaReference(binding = @SofaReferenceBinding(bindingType = "bolt"))
         IRbAcctTransfer iRbAcctTransfer;
         */
@@ -48,7 +38,7 @@ public class SOFABootGateWaySpringApplication {
             return headOut;
         }*/
 
-        @Autowired
+/*        @Autowired
         ClientFactoryBean clientFactory;
         @GetMapping("/test")
         @ResponseBody
@@ -76,5 +66,6 @@ public class SOFABootGateWaySpringApplication {
 
             return true;
         }
-    }
+
+    }*/
 }

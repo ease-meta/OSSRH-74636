@@ -1,5 +1,7 @@
 package com.open.cloud.api.model;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ import java.util.List;
  * @version 1.0
  * @date 2019/6/14 19:10
  **/
+@Data
 public class HeadOut extends BaseData{
 
     private String runDate;
