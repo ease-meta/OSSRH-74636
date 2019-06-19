@@ -11,7 +11,7 @@ import java.util.List;
  * @date 2019/6/14 19:10
  **/
 @Data
-public class HeadOut extends BaseData{
+public class HeadOut extends BaseData {
 
     private String runDate;
     private String downFilePath;
