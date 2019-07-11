@@ -1,6 +1,7 @@
 package com.open.cloud.test.config;
 
 import org.apache.ibatis.logging.log4j2.Log4j2Impl;
+import org.apache.ibatis.session.LocalCacheScope;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,7 @@ public class MybatisConfig {
         configuration.setLazyLoadingEnabled(false);
         configuration.setAggressiveLazyLoading(false);
         configuration.setLogImpl(Log4j2Impl.class);
+        configuration.setLocalCacheScope(LocalCacheScope.STATEMENT);
         //configuration.addInterceptor(new OracleInterceptor());
         //configuration.addInterceptor(new SelectForUpdateHelper());
         //bean.setConfigLocation(new DefaultResourceLoader().getResource("classpath:mybatis/mybatis-config.xml"));

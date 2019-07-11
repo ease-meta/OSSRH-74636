@@ -10,26 +10,51 @@ import java.util.Date;
  **/
 public class Main {
     public static void main(String[] args) throws ParseException {
-        //计算出指定年月日的时间s数据
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2019,00,01);
-        long time = dateFormat.parse(dateFormat.format(calendar.getTime())).getTime();
-        System.out.println("开始时间s数据:"+time);
-        System.out.println(~(-1L<<28));
-        System.out.println(~(-1L<<10));
-        System.out.println(~(-1L<<13));
-
-        for (int i =0;i<100;i++){
-            System.out.println(((int)(Math.random()*10)));
-        }
+        System.out.println(hexStr2Str("0x02"));
+        final byte[] b1 = {0x02};
+        System.out.println(new String (b1));
 
     }
 
-    void  Demo01() throws ParseException {
+
+    public static String hexStr2Str(String hexStr) {
+        String str = "0123456789ABCDEF";
+        char[] hexs = hexStr.toCharArray();
+        byte[] bytes = new byte[hexStr.length() / 2];
+        int n;
+        for (int i = 0; i < bytes.length; i++) {
+            n = str.indexOf(hexs[2 * i]) * 16;
+            n += str.indexOf(hexs[2 * i + 1]);
+            bytes[i] = (byte) (n & 0xff);
+        }
+        return new String(bytes);
+
+    }
+
+
+    public static String toStringHex(String s) {
+        byte[] baKeyword = new byte[s.length() / 2];
+        for (int i = 0; i < baKeyword.length; i++) {
+            try {
+                baKeyword[i] = (byte) (0xff & Integer.parseInt(s.substring(
+                        i * 2, i * 2 + 2), 16));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            s = new String(baKeyword, "utf-8");// UTF-16le:Not
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return s;
+    }
+
+
+    void Demo01() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2016,00,01);
+        calendar.set(2016, 00, 01);
         System.out.println(dateFormat.format(calendar.getTime()));
         System.out.println(calendar.getTimeInMillis());
         System.out.println(dateFormat.parse(dateFormat.format(calendar.getTime())).getTime());

@@ -2,6 +2,7 @@ package com.open.cloud;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alipay.common.tracer.core.utils.TracerUtils;
 import com.alipay.sofa.rpc.api.GenericService;
 import com.alipay.sofa.rpc.boot.runtime.param.BoltBindingParam;
 import com.alipay.sofa.runtime.api.client.ReferenceClient;
@@ -42,11 +43,60 @@ public class MessageServlet extends HttpServlet {
         if (log.isInfoEnabled()) {
             start = System.currentTimeMillis();
         }
-
+        log.info(TracerUtils.getTraceId());
         try (InputStream in = request.getInputStream(); OutputStream out = response.getOutputStream()) {
 
             String str = RequestUtils.getRequestBody(in);
-
+            str="{\n" +
+                    "  \"acctExec\": \"8000\",\n" +
+                    "  \"acctExecName\": \"经理4\",\n" +
+                    "  \"reference\": \"0\",\n" +
+                    "  \"appHead\": {\n" +
+                    "    \"currentNum\": \"string\",\n" +
+                    "    \"pgupOrPgdn\": \"string\",\n" +
+                    "    \"totalFlag\": \"string\",\n" +
+                    "    \"totalNum\": \"string\",\n" +
+                    "    \"totalRows\": \"string\"\n" +
+                    "  },\n" +
+                    "  \"branch\": \"01\",\n" +
+                    "  \"collatMgrInd\": \"0\",\n" +
+                    "  \"contactTel\": \"string\",\n" +
+                    "  \"documentId\": \"002\",\n" +
+                    "  \"documentType\": \"02\",\n" +
+                    "  \"issCountry\": \"ZH\",\n" +
+                    "  \"localHead\": {},\n" +
+                    "  \"manager\": \"jingli\",\n" +
+                    "  \"option\": \"03\",\n" +
+                    "  \"profitCentre\": \"string\",\n" +
+                    "  \"sysHead\": {\n" +
+                    "    \"apprFlag\": \"string\",\n" +
+                    "    \"apprUserId\": \"string\",\n" +
+                    "    \"authFlag\": \"string\",\n" +
+                    "    \"authUserId\": \"string\",\n" +
+                    "    \"branchId\": \"01\",\n" +
+                    "    \"company\": \"dcits\",\n" +
+                    "    \"destBranchNo\": \"string\",\n" +
+                    "    \"filePath\": \"string\",\n" +
+                    "    \"macValue\": \"string\",\n" +
+                    "    \"messageCode\": \"9110\",\n" +
+                    "    \"messageType\": \"string\",\n" +
+                    "    \"programId\": \"string\",\n" +
+                    "    \"reference\": \"string\",\n" +
+                    "    \"runDate\": \"string\",\n" +
+                    "    \"sceneId\": \"string\",\n" +
+                    "    \"seqNo\": \"string\",\n" +
+                    "    \"serviceCode\": \"1200\",\n" +
+                    "    \"sourceBranchNo\": \"string\",\n" +
+                    "    \"sourceType\": \"string\",\n" +
+                    "    \"systemId\": \"string\",\n" +
+                    "    \"threadNo\": \"string\",\n" +
+                    "    \"tranDate\": \"string\",\n" +
+                    "    \"tranMode\": \"string\",\n" +
+                    "    \"tranTimestamp\": \"string\",\n" +
+                    "    \"userId\": \"string\",\n" +
+                    "    \"userLang\": \"string\"\n" +
+                    "  }\n" +
+                    "}";
             log.info("{}", str);
             Head head = new Head();
             head.setApprFlag("1");
