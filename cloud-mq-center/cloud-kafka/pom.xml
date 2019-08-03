@@ -3,16 +3,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>open-cloud-platform</artifactId>
+        <artifactId>cloud-mq-center</artifactId>
         <groupId>com.open.cloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-mq-center</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>cloud-rocketmq</module>
-        <module>cloud-kafka</module>
-    </modules>
+    <artifactId>cloud-kafka</artifactId>
+
+    <name>cloud-kafka</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>1.1.1.RELEASE</version>
+        </dependency>
+    </dependencies>
 </project>

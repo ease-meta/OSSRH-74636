@@ -8,12 +8,13 @@ public class UidGeneratorFactory {
     private Map<String, SnowflakeUidGenerator> keys = new ConcurrentHashMap<>();
     private long workerId;
 
-    public UidGeneratorFactory(long workerId) {
+    private UidGeneratorFactory(long workerId) {
         this.workerId = workerId;
     }
 
     public static UidGeneratorFactory getInstance(long workerId) {
         if (inst == null) {
+
             synchronized (UidGeneratorFactory.class) {
                 if (inst == null) {
                     inst = new UidGeneratorFactory(workerId);
@@ -37,6 +38,7 @@ public class UidGeneratorFactory {
     }
 
     public static void main(String[] args) {
+
         UidGeneratorFactory.getInstance(3).getKey();
         for (int i = 0; i < 1000; i++) {
             long id = UidGeneratorFactory.getInstance(3).getKey();
