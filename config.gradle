@@ -1,0 +1,57 @@
+ext {
+    configuration = [
+            javaVersion = JavaVersion.VERSION_1_8
+    ]
+
+    dependVersion = [
+            springBootVersion = '2.1.6.RELEASE',
+            springBootAdminVersion = '2.1.5',
+            springCloudVersion = 'Greenwich.SR2',
+            springCloudAlibabaVersion = '2.1.0.RELEASE',
+            springRetryVersion = '1.2.4.RELEASE',
+            sofaBootVersion = '3.1.5',
+            springKafkaVersion = "2.2.7.RELEASE",
+            rocketmqVersion = "4.3.0",
+            dubboVersion = "2.7.1",
+            zookeeperVersion = "3.4.5",
+            curatorVersion="2.3.0",
+            curatorVersion = '2.9.1',
+            dubboVersion = '2.7.1',
+            druidVersion = '1.1.17',
+            mybatisVersion = '3.5.2',
+            mybatisSpringVersion = '2.0.2',
+            mybatisSpringBootStarterVersion = '2.1.0',
+            shardingsphereVersion = '4.0.0-RC1',
+            shiroSpringVersion = '1.4.0',
+            springStatemachineVersion = '2.0.1.RELEASE',
+            perf4jVersion = '0.9.16',
+            commonslang3Version = '3.8.1',
+            commonsioVersion = '1.3.2',
+            fastjsonVersion = '1.2.56',
+            easypoiVersion = '4.0.0',
+            jasyptVersion = '2.1.1',
+            p6spyVersion = '3.8.1',
+            hutoolAllVersion = '4.5.13',
+            fastjsonVersion = '1.2.56',
+            swaggerVersion = '2.7.0',
+            swaggerAnnotationsVersion = '1.5.20',
+            swagger2markupVersion = '1.3.3',
+            springRestdocsVersion='2.0.3.RELEASE',
+            springfoxStaticdocsVersion = '2.6.1',
+            kaptchaVersion = '2.3.2',
+            jsqlparserVersion = '1.2',
+            junitVersion = '4.12',
+            commonsLang3Version='3.8.1',
+            commonsioVersion = '1.3.1',
+            jasyptSpringBoot = '2.1.1',
+            activitiSpringVersion = '6.0.0',
+            p6spyVersion = '3.8.1',
+            jsonwebtokenVersion='0.9.1',
+            droolsVersion = '7.18.0.Final',
+            kaptchaVersion = '2.3.2',
+    ]
+
+    lib = [
+            "junit" :"junit:junit:${junitVersion}"
+    ]
+}
