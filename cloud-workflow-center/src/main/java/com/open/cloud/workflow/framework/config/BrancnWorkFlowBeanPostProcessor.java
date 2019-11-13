@@ -12,6 +12,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.RootBeanDefinition;
+import org.springframework.lang.Nullable;
 
 /**
  * @author leijian
@@ -48,7 +49,7 @@ public class BrancnWorkFlowBeanPostProcessor implements BeanPostProcessor {
 		return bean;
 	}
 
-	private boolean isInfrastructureBean(String beanName) {
+	private boolean isInfrastructureBean(@Nullable String beanName) {
 		if (beanName != null && this.beanFactory.containsBeanDefinition(beanName)) {
 			BeanDefinition bd = this.beanFactory.getBeanDefinition(beanName);
 			return (bd.getRole() == RootBeanDefinition.ROLE_INFRASTRUCTURE);

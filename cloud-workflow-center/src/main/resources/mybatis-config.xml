@@ -9,6 +9,7 @@
         <setting name="useGeneratedKeys" value="true"/>  <!-- 允许 JDBC 支持自动生成主键 -->
         <setting name="defaultExecutorType" value="REUSE"/> <!-- 配置默认的执行器 -->
         <setting name="logImpl" value="LOG4J2"/> <!-- 指定 MyBatis 所用日志的具体实现 -->
+        <setting name="lo" value=""
         <!-- <setting name="mapUnderscoreToCamelCase" value="true"/> 驼峰式命名 -->
     </settings>
     <!-- typeAliases别名处理器，可以为我们的java类型起别名(别名不区分大小写，也就是即使你制定了别名无论大小写，只要字母对的上就可以)

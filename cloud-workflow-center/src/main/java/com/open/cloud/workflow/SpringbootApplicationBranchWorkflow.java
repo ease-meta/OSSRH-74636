@@ -22,9 +22,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @MapperScan(basePackages = {"com.open.cloud.workflow.framework.mapper","com.open.cloud.workflow.framework.drools.dao"})
 public class SpringbootApplicationBranchWorkflow extends SpringBootServletInitializer {
     public static void main(String[] args) {
-        for (int j = 0; j < args.length; j++) {
-            System.out.println(args[j]);
-        }
         new SpringApplicationBuilder(SpringbootApplicationBranchWorkflow.class).run(args);
     }
 

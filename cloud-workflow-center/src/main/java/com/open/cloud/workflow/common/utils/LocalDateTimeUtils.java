@@ -14,7 +14,7 @@ import java.util.Date;
  * @since 2019-01-10
  */
 public class LocalDateTimeUtils {
-
+    //LocalDateTime年月日十分秒；LocalDate日期；LocalTime时间
     //获取当前时间的LocalDateTime对象
     //LocalDateTime.now();
 

@@ -35,78 +35,21 @@
         </rollingPolicy>
     </appender>
 
-    <appender name="ROOT-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <append>true</append>
-        <file>${logging.path}/${spring.application.name}/common-default.log</file>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>${logging.level.root}</level>
-        </filter>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!--output format：%d is for date，%thread is for thread name，%-5level：loglevel with 5 character  %msg：log message，%n line breaker-->
-
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %traceId [%X{SOFA-TraceId},%X{SOFA-SpanId}] [%thread] %-5level [%X{SOFA-TraceId},%X{SOFA-SpanId}]  %logger{50} - %msg%n</pattern>
-
-            <!-- encoding -->
-            <charset>UTF-8</charset>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/common-default.%d{yyyyMMdd}.%i.log.zip
-            </fileNamePattern>
-            <maxFileSize>50MB</maxFileSize>  <!-- 日志文件过大会使的编辑器打开非常慢，因此设置日志最大50MB -->
-            <maxHistory>30</maxHistory>  <!-- 保存30天 -->
-            <totalSizeCap>10GB</totalSizeCap>  <!-- 总日志大小 -->
-        </rollingPolicy>
-    </appender>
-
-    <appender name="MDC-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <append>true</append>
-        <file>${logging.path}/${spring.application.name}/mdc-default.log</file>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>${logging.level}</level>
-        </filter>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <!--output format：%d is for date，%thread is for thread name，%-5level：loglevel with 5 character  %msg：log message，%n line breaker-->
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%X{SOFA-TraceId},%X{SOFA-SpanId}] [%thread] %-5level [%X{SOFA-TraceId},%X{SOFA-SpanId}]  %logger{50} - %msg%n</pattern>
-            <!-- encoding -->
-            <charset>UTF-8</charset>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>
-                ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/mdc-default.%d{yyyyMMdd}.%i.log.zip
-            </fileNamePattern>
-            <maxFileSize>50MB</maxFileSize>  <!-- 日志文件过大会使的编辑器打开非常慢，因此设置日志最大50MB -->
-            <maxHistory>30</maxHistory>  <!-- 保存30天 -->
-            <totalSizeCap>10GB</totalSizeCap>  <!-- 总日志大小 -->
-        </rollingPolicy>
-    </appender>
 
 
     <logger name="com.alipay.sofa" level="DEBUG" additivity="false">
-        <appender-ref ref="ROOT-APPENDER"/>
         <appender-ref ref="ERROR-APPENDER"/>
-        <appender-ref ref="MDC-APPENDER"/>
         <appender-ref ref="STDOUT"/>
     </logger>
 
     <logger name="com.open.cloud" level="${logging.level}" additivity="false">
-        <appender-ref ref="ROOT-APPENDER"/>
         <appender-ref ref="ERROR-APPENDER"/>
-        <appender-ref ref="MDC-APPENDER"/>
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="MDC-APPENDER" level="${logging.level}" additivity="false">
-        <appender-ref ref="ROOT-APPENDER"/>
-        <appender-ref ref="ERROR-APPENDER"/>
-        <appender-ref ref="MDC-APPENDER"/>
-        <appender-ref ref="STDOUT"/>
-    </logger>
 
     <root level="${logging.level.root}" additivity="false">
-        <appender-ref ref="ROOT-APPENDER"/>
         <appender-ref ref="ERROR-APPENDER"/>
-        <appender-ref ref="MDC-APPENDER"/>
         <appender-ref ref="STDOUT"/>
     </root>
 

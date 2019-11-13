@@ -185,13 +185,3 @@ Icon
 .svn/
 /target/
 /bin/
-# gradle
-.gradle
-**/build
-
-# MacOS
-.DS_Store
-/repo/
-gradle/
-gradlew
-gradlew.bat

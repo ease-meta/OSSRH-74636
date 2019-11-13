@@ -1,5 +1,6 @@
 package com.open.cloud.workflow.framework.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.open.cloud.workflow.common.enums.AuthTypeEnum;
 import com.open.cloud.workflow.common.responses.Responses;
 import com.open.cloud.workflow.framework.annotation.Resources;
@@ -54,6 +55,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @param request
      * @return
      */
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN,description = "获取指定用户")
     @RequestMapping(value = {"/user/{userId}"}, method = {RequestMethod.GET})
     public Responses<SysUser> getUser(@PathVariable(required = true) String userId, HttpServletRequest request) {
@@ -67,6 +69,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @param request
      * @return
      */
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN,description = "获取所有用户")
     @RequestMapping(value = {"/user"}, method = {RequestMethod.GET})
     public Responses<List<SysUser>> list(HttpServletRequest request, HttpServletResponse response) {
@@ -80,6 +83,7 @@ public class SysUserController extends BaseController<SysUser> {
      * @param request
      * @return
      */
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN,description = "删除用户")
     @RequestMapping(value = {"/user/{userId}"}, method = {RequestMethod.DELETE})
     public Responses<Void> delete(@PathVariable(required = true) String userId, HttpServletRequest request, HttpServletResponse response) {
@@ -91,6 +95,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN,description = "维护用户")
     @RequestMapping(value = {"/user"}, method = {RequestMethod.PUT})
     public Responses<SysUser> put(@RequestBody(required = true) @Validated SysUser sysUser, HttpServletRequest request, HttpServletResponse response) {
@@ -98,6 +103,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK,sysUserServiceImpl.selectByPrimaryKey(sysUser.getUserId()));
     }
 
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN,description = "新增用户")
     @RequestMapping(value = {"/user"}, method = {RequestMethod.POST})
     public Responses<Void> post(@RequestBody(required = true) SysUser sysUser, HttpServletRequest request, HttpServletResponse response) {
@@ -105,6 +111,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和角色")
     @RequestMapping(value = {"/sysUserRole"}, method = {RequestMethod.POST})
     public Responses<Void> sysUserRolePost(@RequestBody(required = true) SysUserRole sysUserRole, HttpServletRequest request, HttpServletResponse response) {
@@ -112,7 +119,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
-
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和工作组")
     @RequestMapping(value = {"/sysUserPersim"}, method = {RequestMethod.POST})
     public Responses<Void> sysUserPersimPost(@RequestBody(required = true) SysUserPermission sysUserPermission, HttpServletRequest request, HttpServletResponse response) {
@@ -120,7 +127,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
-
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和角色")
     @RequestMapping(value = {"/sysUserRole"}, method = {RequestMethod.PUT})
     public Responses<Void> sysUserRolePut(@RequestBody(required = true) SysUserRole sysUserRole, HttpServletRequest request, HttpServletResponse response) {
@@ -128,7 +135,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
-
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和工作组")
     @RequestMapping(value = {"/sysUserPersim"}, method = {RequestMethod.PUT})
     public Responses<Void> sysUserPersimPut(@RequestBody(required = true) SysUserPermission sysUserPermission, HttpServletRequest request, HttpServletResponse response) {
@@ -136,6 +143,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和角色")
     @RequestMapping(value = {"/sysUserRole"}, method = {RequestMethod.DELETE})
     public Responses<Void> sysUserRoleDel(@RequestBody(required = true) SysUserRole sysUserRole, HttpServletRequest request, HttpServletResponse response) {
@@ -143,7 +151,7 @@ public class SysUserController extends BaseController<SysUser> {
         return responses(HttpStatus.OK);
     }
 
-
+    @SentinelResource("sysuser")
     @Resources(auth = AuthTypeEnum.OPEN, description = "用户和工作组")
     @RequestMapping(value = {"/sysUserPersim"}, method = {RequestMethod.DELETE})
     public Responses<Void> sysUserPersimDel(@RequestBody(required = true) SysUserPermission sysUserPermission, HttpServletRequest request, HttpServletResponse response) {

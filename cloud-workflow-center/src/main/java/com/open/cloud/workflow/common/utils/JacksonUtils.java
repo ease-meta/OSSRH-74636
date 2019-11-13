@@ -188,13 +188,13 @@ public abstract class JacksonUtils {
      * @param <T>
      * @return
      */
-    public static <T> T readValue(String json, @SuppressWarnings("rawtypes") TypeReference valueTypeRef) {
+   /* public static <T> T readValue(String json, @SuppressWarnings("rawtypes") TypeReference valueTypeRef) {
         T t = null;
         try {
             t = getObjectMapper().readValue(json, valueTypeRef);
         } catch (Exception ignored) {
         }
         return t;
-    }
+    }*/
 
 }
