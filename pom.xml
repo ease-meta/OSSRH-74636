@@ -16,7 +16,7 @@
         <!--最基本组织-->
         <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <!--RPC服务-->
-        <spring-cloud.version>Hoxton.RC1</spring-cloud.version>
+        <spring-cloud.version>Hoxton.RC2</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
         <sofa.boot.version>3.2.0</sofa.boot.version>
         <dubbo.version>2.7.3</dubbo.version>
