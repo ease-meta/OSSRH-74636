@@ -52,7 +52,7 @@
         <module>cloud-register-center</module>
         <module>cloud-base-java</module>
         <module>cloud-monitor-center</module>
-        <module>cloud-workflow-center</module>
+        <module>cloud-business-center</module>
         <module>cloud-dubbo</module>
         <module>cloud-zipkin-center</module>
         <module>cloud-mq-center</module>
