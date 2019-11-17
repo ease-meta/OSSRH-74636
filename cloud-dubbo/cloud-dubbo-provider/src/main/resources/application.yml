@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: cloud-dubbo-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.didispace.com:80
+dubbo:
+  scan:
+    base-packages: com.dubbo.example.provider
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://nacos.didispace.com
+server:
+  port: 8080
