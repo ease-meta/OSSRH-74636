@@ -53,7 +53,6 @@
         <module>cloud-base-java</module>
         <module>cloud-monitor-center</module>
         <module>cloud-business-center</module>
-        <module>cloud-dubbo</module>
         <module>cloud-zipkin-center</module>
         <module>cloud-mq-center</module>
         <module>cloud-test</module>
@@ -68,6 +67,8 @@
         <module>cloud-tuning-center</module>
         <module>cloud-web-portal</module>
         <module>cloud-dependencies</module>
+        <module>cloud-dubbo</module>
+        <module>cloud-framework</module>
     </modules>
 
 

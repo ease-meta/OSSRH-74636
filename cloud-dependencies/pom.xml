@@ -8,7 +8,7 @@
     <groupId>com.open.cloud</groupId>
     <artifactId>cloud-dependencies</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <packaging>pom</packaging>
     <name>cloud-dependencies</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
@@ -60,6 +60,7 @@
         <jasypt.version>2.1.1</jasypt.version>
         <hutool-all.version>5.0.1</hutool-all.version>
         <kaptcha.version>2.3.2</kaptcha.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
 
 
@@ -86,14 +87,6 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-dependencies-bom</artifactId>
                 <version>${dubbo.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -246,6 +239,19 @@
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox-swagger2.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
