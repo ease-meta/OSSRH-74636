@@ -49,7 +49,6 @@
     </build>
 
     <modules>
-        <module>cloud-register-center</module>
         <module>cloud-base-java</module>
         <module>cloud-monitor-center</module>
         <module>cloud-business-center</module>
@@ -69,6 +68,7 @@
         <module>cloud-dependencies</module>
         <module>cloud-dubbo</module>
         <module>cloud-framework</module>
+        <module>cloud-eureka</module>
     </modules>
 
 

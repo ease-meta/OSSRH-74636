@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: cloud-eureka-web
+
+server:
+  port: 9526
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:9527/eureka/
+  instance:
+    prefer-ip-address: true
