@@ -1,18 +1,22 @@
 spring:
   application:
-    name: cloud-eureka-server
+    name: cloud-eureka-gateway
 
 server:
-  port: 9527
+  port: 9524
 
 eureka:
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    use-read-only-response-cache: false
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:9527/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    api-a:
+      path: /sayHello/**
+      serviceId: CLOUD-EUREKA-SERVICE
+      stripPrefix: false
