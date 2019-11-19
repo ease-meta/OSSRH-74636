@@ -70,7 +70,7 @@
         <module>cloud-tuning-center</module>
         <module>cloud-web-portal</module>
         <module>cloud-dependencies</module>
-        <module>cloud-dubbo</module>
+        <!--module>cloud-dubbo</module-->
         <module>cloud-framework</module>
         <module>cloud-eureka</module>
     </modules>
