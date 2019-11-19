@@ -66,7 +66,6 @@
         <module>cloud-elasticsearch</module>
         <module>cloud-batch</module>
         <module>cloud-oauth</module>
-        <module>cloud-gateway</module>
         <module>cloud-inner-intergration</module>
         <module>cloud-tuning-center</module>
         <module>cloud-web-portal</module>
