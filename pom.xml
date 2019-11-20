@@ -72,6 +72,7 @@
         <module>cloud-dubbo</module>
         <module>cloud-framework</module>
         <module>cloud-eureka</module>
+        <module>cloud-mq-center</module>
     </modules>
 
 
