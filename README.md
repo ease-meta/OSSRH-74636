@@ -12,6 +12,8 @@
 分布式网关、日志采集及查看
 #### 软件架构
 软件架构说明
+
+1. springCloud demo完成
 1. zookeeper集群
 2. redis集群
 3. nacos集群
