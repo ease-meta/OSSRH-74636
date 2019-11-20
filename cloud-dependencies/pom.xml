@@ -97,8 +97,9 @@
 
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <artifactId>dubbo-spring-boot-project</artifactId>
                 <version>${dubbo.version}</version>
+                <type>pom</type>
                 <scope>import</scope>
             </dependency>
 

@@ -58,7 +58,6 @@
         <module>cloud-monitor-center</module>
         <module>cloud-business-center</module>
         <module>cloud-zipkin-center</module>
-        <module>cloud-mq-center</module>
         <module>cloud-test</module>
         <module>cloud-common</module>
         <module>cloud-nacos</module>
