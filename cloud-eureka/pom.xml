@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-eureka-server</module>
-        <module>cloud-zuul-gateway</module>
+        <module>cloud-eureka-gateway</module>
         <module>cloud-eureka-service</module>
         <module>cloud-eureka-web</module>
         <module>spring-cloud-gateway</module>

@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: springboot-batch
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/batch?serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+logging:
+  level:
+    org.spring.batch: debug

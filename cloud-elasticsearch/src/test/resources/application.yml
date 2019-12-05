@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: cloud-eureka-gateway
+
+server:
+  port: 9524
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:9527/eureka/
+  instance:
+    prefer-ip-address: true
+
+zuul:
+  routes:
+    api-a:
+      path: /sayHello/**
+      serviceId: CLOUD-EUREKA-SERVICE
+      stripPrefix: false

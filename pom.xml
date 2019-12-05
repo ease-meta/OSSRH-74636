@@ -73,6 +73,7 @@
         <module>cloud-framework</module>
         <module>cloud-eureka</module>
         <module>cloud-mq-center</module>
+        <module>cloud-web-common</module>
     </modules>
 
 
