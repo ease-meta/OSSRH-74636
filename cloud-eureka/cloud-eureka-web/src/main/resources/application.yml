@@ -1,7 +1,15 @@
 spring:
   application:
     name: cloud-eureka-web
-
+    admin:
+      enabled: true
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8084
+        instance:
+          prefer-ip: true
+          service-base-url: http://127.0.0.1:9526
 server:
   port: 9526
 
@@ -13,3 +21,12 @@ eureka:
       defaultZone: http://127.0.0.1:9527/eureka/
   instance:
     prefer-ip-address: true
+    hostname: 127.0.0.1
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
