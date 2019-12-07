@@ -1,5 +1,6 @@
 package com.open.cloud.eureka.web;
 
+import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -14,6 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 @EnableDiscoveryClient
 @EnableFeignClients
 @EnableCircuitBreaker
+@EnableApolloConfig
 public class WebApplication {
 
 	@Bean
