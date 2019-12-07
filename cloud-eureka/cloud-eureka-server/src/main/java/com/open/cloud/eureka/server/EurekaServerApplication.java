@@ -1,5 +1,6 @@
 package com.open.cloud.eureka.server;
 
+import com.open.cloud.framework.ComponentScanFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
