@@ -11,6 +11,7 @@
 
     <artifactId>cloud-mq-center</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>cloud-mq-kafka</module>
         <module>cloud-mq-rocketmq</module>
