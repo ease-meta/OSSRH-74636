@@ -32,22 +32,23 @@
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
         <!--RPC服务-->
         <spring-cloud.version>Hoxton.RELEASE</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
-        <sofa.boot.version>3.2.0</sofa.boot.version>
-        <dubbo.version>2.7.3</dubbo.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <sofa.boot.version>3.2.1</sofa.boot.version>
+        <dubbo.version>2.7.4.1</dubbo.version>
         <!--消息中间件-->
-        <spring-kafka.version>2.3.3.RELEASE</spring-kafka.version>
+        <spring-kafka.version>2.3.4.RELEASE</spring-kafka.version>
         <spring-rocketmq.version>2.0.4</spring-rocketmq.version>
+        <rocketmq.version>4.6.0</rocketmq.version>
         <!--事务-->
-        <seata.version>2.1.0.RELEASE</seata.version>
+        <seata.version>2.1.1.RELEASE</seata.version>
         <curator.version>2.9.1</curator.version>
         <!--数据库操作-->
         <druid.version>1.1.21</druid.version>
         <mybatis.boot.version>2.1.1</mybatis.boot.version>
         <mybatis.plus.version>3.2.0</mybatis.plus.version>
-        <shardingsphere.version>4.0.0-RC2</shardingsphere.version>
+        <shardingsphere.version>4.0.0-RC3</shardingsphere.version>
         <!--BusinessService -->
-        <sentinel.version>2.1.0.RELEASE</sentinel.version>
+        <sentinel.version>2.1.1.RELEASE</sentinel.version>
         <!--高性能框架-->
         <disruptor.version>3.4.2</disruptor.version>
         <!--安全鉴权-->
@@ -118,18 +119,17 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- Aapche Dubbo -->
             <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-dependencies-bom</artifactId>
-                <version>${dubbo.version}</version>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-all</artifactId>
+                <version>${rocketmq.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-spring-boot-project</artifactId>
+                <artifactId>dubbo-spring-boot-parent</artifactId>
                 <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -259,7 +259,6 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.boot.version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>p6spy</groupId>
