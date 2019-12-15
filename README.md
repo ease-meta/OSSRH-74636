@@ -40,11 +40,11 @@
 
 #### 环境说明
 
-| 描述信息 | IP | 端口 | 备注 |
+| 描述信息 | 应用信息 | 端口 | 地址 |
 | --- | ---| --- | --- |
-| Mysql | 122.51.108.224 | 8085  |  |
-| Redis | 10.7.19.110 | 8989  |  |
-| ZK | 10.7.19.110 | 8989  |  |
+| admin监控 | cloud-monitor-center | 9001  |  |
+| EurekaServer1 | EurekaServer | 8001  |  |
+| EurekaServer2 | EurekaServer | 8002  |  |
 | nacos | 10.7.19.110 | 8989  |  |
 | zipkin | 10.7.19.110 | 8989  |  |
 | eureka | 10.7.19.110 | 8989  |  |

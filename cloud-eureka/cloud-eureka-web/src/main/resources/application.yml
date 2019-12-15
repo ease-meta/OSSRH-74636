@@ -18,10 +18,18 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://127.0.0.1:9527/eureka/
+      zone-1: http://127.0.0.1:8001/eureka/
+      zone-2: http://127.0.0.1:8002/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+    region: xian
+    availability-zones:
+      xian: zone-1,zone-2
   instance:
     prefer-ip-address: true
     hostname: 127.0.0.1
+    metadata-map:
+      zone: zone-1
 management:
   endpoint:
     health:
@@ -29,7 +37,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
 #apollo引入
 env:
   DEV

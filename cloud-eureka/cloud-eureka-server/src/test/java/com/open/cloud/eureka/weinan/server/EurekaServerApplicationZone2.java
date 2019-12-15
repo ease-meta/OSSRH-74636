@@ -1,4 +1,4 @@
-package com.open.cloud.eureka.server;
+package com.open.cloud.eureka.weinan.server;
 
 import com.open.cloud.framework.ComponentScanFilter;
 import org.springframework.boot.SpringApplication;
@@ -10,8 +10,9 @@ import org.springframework.context.annotation.FilterType;
 @SpringBootApplication
 @EnableEurekaServer
 @ComponentScan(useDefaultFilters = false, excludeFilters = {@ComponentScan.Filter(type = FilterType.CUSTOM, classes = {ComponentScanFilter.class})})
-public class EurekaServerApplication {
+public class EurekaServerApplicationZone2 {
 	public static void main(String[] args) {
-		SpringApplication.run(EurekaServerApplication.class, args);
+		System.setProperty("spring.profiles.active", "weinan");
+		SpringApplication.run(EurekaServerApplicationZone2.class, args);
 	}
 }
