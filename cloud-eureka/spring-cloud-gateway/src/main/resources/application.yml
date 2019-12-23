@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: cloud-eureka-gateway
+  cloud:
+    gateway:
+      routes:
+        - predicates:
+            - Path=/java/**
+          filters:
+            - StripPrefix=1
+          uri: "http://localhost:8090/helloWorld"
+server:
+  port: 9524
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka/
+  instance:
+    prefer-ip-address: true

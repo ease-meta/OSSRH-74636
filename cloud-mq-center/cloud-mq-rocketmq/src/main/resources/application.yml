@@ -1,0 +1,3 @@
+rocketmq:
+  producer:
+    enable-msg-trace:

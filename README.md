@@ -45,7 +45,7 @@
 | admin监控 | cloud-monitor-center | 9001  |  |
 | EurekaServer1 | EurekaServer | 8001  |  |
 | EurekaServer2 | EurekaServer | 8002  |  |
-| nacos | 10.7.19.110 | 8989  |  |
+| gateWay | 10.7.19.110 | 9002  |  |
 | zipkin | 10.7.19.110 | 8989  |  |
 | eureka | 10.7.19.110 | 8989  |  |
 | kafka | 10.7.19.110 | 8989  |  |

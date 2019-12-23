@@ -22,6 +22,8 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+
+
     </dependencies>
 
     <modules>
@@ -45,5 +47,10 @@
         <module>cloud-eureka</module>
         <module>cloud-mq-center</module>
         <module>cloud-web-common</module>
+        <module>cloud-webflux</module>
+        <module>cloud-maven-plugin</module>
+        <module>cloud-server</module>
+        <module>cloud-server/seata-server</module>
+        <module>cloud-server/ZKServer</module>
     </modules>
 </project>
