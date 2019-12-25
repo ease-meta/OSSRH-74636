@@ -46,10 +46,8 @@ server:
 
 eureka:
   client:
-    register-with-eureka: false
     service-url:
       defaultZone: http://127.0.0.1:8001/eureka/
-    registry-fetch-interval-seconds: 5
   instance:
     prefer-ip-address: true
     metadataMap:
