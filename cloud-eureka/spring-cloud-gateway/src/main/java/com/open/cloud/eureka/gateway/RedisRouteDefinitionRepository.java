@@ -6,7 +6,6 @@ import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -20,7 +19,7 @@ import java.util.List;
  *
  * @since 2018年7月9日 下午2:39:02
  */
-@Component
+//@Component
 public class RedisRouteDefinitionRepository implements RouteDefinitionRepository {
     public static final String GATEWAY_ROUTES = "geteway_routes";
 

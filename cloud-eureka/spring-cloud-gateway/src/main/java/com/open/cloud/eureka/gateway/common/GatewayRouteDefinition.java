@@ -1,11 +1,7 @@
 package com.open.cloud.eureka.gateway.common;
 
-import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.List;
-
 //1.创建路由模型
+/*
 @Data
 public class GatewayRouteDefinition {
     //路由的Id
@@ -19,4 +15,4 @@ public class GatewayRouteDefinition {
     //路由执行的顺序
     private int order = 0;
     //此处省略get和set方法
-}
+}*/

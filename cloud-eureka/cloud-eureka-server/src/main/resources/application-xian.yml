@@ -13,7 +13,7 @@ eureka:
     health-check-url-path: /actuator/health
   client:
     register-with-eureka: true
-    fetch-registry: false
+    fetch-registry: true
     prefer-same-zone-eureka: true
     #地区
     region: xian

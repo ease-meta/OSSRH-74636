@@ -8,18 +8,16 @@ eureka:
   client:
     healthcheck:
       enabled: true
-    service-url:
-      zone-1: http://127.0.0.1:8001/eureka/
-      zone-2: http://127.0.0.1:8002/eureka/
     prefer-same-zone-eureka: true
     region: xian
     availability-zones:
       xian: zone-1,zone-2
-    register-with-eureka: true
-    fetch-registry: true
+    service-url:
+      zone-1: http://eureka1:8001/eureka/
+      zone-2: http://eureka2:8002/eureka/
   instance:
     prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
     metadata-map:
-      zone: zone-1
+      zone: zone-2

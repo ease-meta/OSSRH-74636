@@ -1,0 +1,34 @@
+[
+  {
+    "name": "svcCd",
+    "desc": "服务码"
+  },
+  {
+    "name": "scnCd",
+    "desc": "服务场景码"
+  },
+  {
+    "name": "busiCd",
+    "desc": "业务编码"
+  },
+  {
+    "name": "cnlCd",
+    "desc": "渠道类型"
+  },
+  {
+    "name": "cnsmrSysNo",
+    "desc": "调用方系统编号"
+  },
+  {
+    "name": "hostCd",
+    "desc": "主机编码"
+  },
+  {
+    "name": "instNo",
+    "desc": "机构号"
+  },
+  {
+    "name": "tmlIndNo",
+    "desc": "终端编号"
+  }
+]

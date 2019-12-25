@@ -1,0 +1,124 @@
+[
+  {
+    "name": "#{@remoteAddrKeyResolver}",
+    "comment": "根据指定IP限流",
+    "args": [
+      {
+        "name": "custom-redis-rate-limiter.burstCapacity",
+        "placeholder": "100",
+        "comment": "单位时间最大可访问次数/s",
+        "type": "text",
+        "eg": "单位时间最大可访问次数/s"
+      },
+      {
+        "name": "custom-redis-rate-limiter.replenishRate",
+        "placeholder": "100",
+        "comment": "单位时间桶中新增令牌数",
+        "type": "text",
+        "eg": "单位时间桶中新增令牌数"
+      },
+      {
+        "name": "custom-redis-rate-limiter.value",
+        "placeholder": "127.0.0.1",
+        "comment": "需要限流的IP",
+        "type": "text",
+        "eg": "需要限流的IP"
+      }
+    ]
+  },
+  {
+    "name": "#{@requestHeaderFixationKeyResolver}",
+    "comment": "headers字段固定值限流",
+    "args": [
+      {
+        "name": "custom-redis-rate-limiter.burstCapacity",
+        "placeholder": "100",
+        "comment": "单位时间最大可访问次数/s",
+        "type": "text",
+        "eg": "单位时间最大可访问次数/s"
+      },
+      {
+        "name": "custom-redis-rate-limiter.replenishRate",
+        "placeholder": "100",
+        "comment": "单位时间桶中新增令牌数",
+        "type": "text",
+        "eg": "单位时间桶中新增令牌数"
+      },
+      {
+        "name": "custom-redis-rate-limiter.key",
+        "placeholder": "str1-str2",
+        "comment": "需要限流的字段",
+        "type": "fixed_splice",
+        "eg": "需要限流的字段"
+      },
+      {
+        "name": "custom-redis-rate-limiter.value",
+        "placeholder": "100-100",
+        "comment": "限流的值",
+        "type": "fixed_splice",
+        "eg": "限流的值"
+      }
+    ]
+  },
+  {
+    "name": "#{@requestHeaderScopeKeyResolver}",
+    "comment": "headers字段值范围限流",
+    "args": [
+      {
+        "name": "custom-redis-rate-limiter.burstCapacity",
+        "placeholder": "100",
+        "comment": "单位时间最大可访问次数/s",
+        "type": "text",
+        "eg": "单位时间最大可访问次数/s"
+      },
+      {
+        "name": "custom-redis-rate-limiter.replenishRate",
+        "placeholder": "100",
+        "comment": "单位时间桶中新增令牌数",
+        "type": "text",
+        "eg": "单位时间桶中新增令牌数"
+      },
+      {
+        "name": "custom-redis-rate-limiter.key",
+        "placeholder": "str1",
+        "comment": "需要限流的字段",
+        "type": "splice",
+        "eg": "需要限流的字段"
+      },
+      {
+        "name": "custom-redis-rate-limiter.value",
+        "placeholder": "100-200",
+        "comment": "限流的值范围",
+        "type": "splice",
+        "eg": "限流的值范围"
+      },
+      {
+        "name": "custom-redis-rate-limiter.scope",
+        "placeholder": "3",
+        "comment": "取值位数",
+        "type": "text",
+        "eg": "取值位数"
+      }
+    ]
+  },
+  {
+    "name": "#{@globalLimiterKeyResolver}",
+    "comment": "全局限流",
+    "args": [
+      {
+        "name": "custom-redis-rate-limiter.burstCapacity",
+        "placeholder": "100",
+        "comment": "单位时间最大可访问次数/s",
+        "type": "text",
+        "eg": "单位时间最大可访问次数/s"
+      },
+      {
+        "name": "custom-redis-rate-limiter.replenishRate",
+        "placeholder": "100",
+        "comment": "单位时间桶中新增令牌数",
+        "type": "text",
+        "eg": "单位时间桶中新增令牌数"
+      }
+    ]
+  }
+]
