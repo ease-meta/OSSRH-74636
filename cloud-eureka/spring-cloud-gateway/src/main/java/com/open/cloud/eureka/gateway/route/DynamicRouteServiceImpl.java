@@ -27,6 +27,7 @@ import java.util.Map;
 @Service
 public class DynamicRouteServiceImpl implements ApplicationEventPublisherAware {
 	private static final Logger log;
+
 	@Autowired
 	private RouteDefinitionWriter routeDefinitionWriter;
 

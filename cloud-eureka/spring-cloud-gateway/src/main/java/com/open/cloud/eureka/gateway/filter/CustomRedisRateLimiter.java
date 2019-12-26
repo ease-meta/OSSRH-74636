@@ -32,8 +32,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class CustomRedisRateLimiter
-		extends AbstractRateLimiter<CustomRedisRateLimiter.Config>
+public class CustomRedisRateLimiter extends AbstractRateLimiter<CustomRedisRateLimiter.Config>
 		implements ApplicationContextAware, Ordered {
 	@Deprecated
 	public static final String REPLENISH_RATE_KEY = "replenishRate";
