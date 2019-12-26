@@ -2,22 +2,15 @@ spring:
   application:
     name: cloud-eureka-service
 server:
-  port: 9525
+  port: 7001
 
 eureka:
   client:
     healthcheck:
       enabled: true
-    prefer-same-zone-eureka: true
-    region: xian
-    availability-zones:
-      xian: zone-1,zone-2
     service-url:
-      zone-1: http://eureka1:8001/eureka/
-      zone-2: http://eureka2:8002/eureka/
+      defaultZone: http://10.7.19.103:8761/eureka/
   instance:
     prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
-    metadata-map:
-      zone: zone-2

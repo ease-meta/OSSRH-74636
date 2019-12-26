@@ -34,7 +34,6 @@
         <module>cloud-base-java</module>
         <module>cloud-monitor-center</module>
         <module>cloud-business-center</module>
-        <module>cloud-zipkin-center</module>
         <module>cloud-test</module>
         <module>cloud-common</module>
         <module>cloud-nacos</module>
@@ -44,17 +43,15 @@
         <module>cloud-oauth</module>
         <module>cloud-inner-intergration</module>
         <module>cloud-tuning-center</module>
-        <module>cloud-web-portal</module>
         <module>cloud-dependencies</module>
         <module>cloud-dubbo</module>
         <module>cloud-framework</module>
         <module>cloud-eureka</module>
         <module>cloud-mq-center</module>
-        <module>cloud-web-common</module>
+        <module>cloud-web</module>
         <module>cloud-webflux</module>
         <module>cloud-maven-plugin</module>
         <module>cloud-server</module>
-        <module>cloud-server/seata-server</module>
-        <module>cloud-server/ZKServer</module>
+        <module>cloud-gateway</module>
     </modules>
 </project>

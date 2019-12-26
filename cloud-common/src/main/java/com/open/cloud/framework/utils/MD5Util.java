@@ -1,6 +1,5 @@
 package com.open.cloud.framework.utils;
 
-import com.moc.branch.workflow.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.security.MessageDigest;
@@ -23,7 +22,6 @@ public class MD5Util {
 			digest.update(input.getBytes("UTF-8"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new BusinessException("系统异常");
 		}
 		byte[] digestBytes = digest.digest();
 

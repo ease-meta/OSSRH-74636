@@ -1,6 +1,6 @@
+/*
 package com.open.cloud.framework.common.responses;
 
-import com.open.cloud.framework.utils.MessageUtils;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,18 +16,24 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Ret {
 
-    /**
+    */
+/**
      * 返回码
-     */
+     *//*
+
     private Integer retCode;
-    /**
+    */
+/**
      * 返回信息
-     */
+     *//*
+
     private String retMsg;
 
-    /**
+    */
+/**
      * 当前时间戳
-     */
+     *//*
+
     private LocalDateTime retTime;
 
     public Ret(Integer retCode, String retMsg, LocalDateTime retTime) {
@@ -37,3 +43,4 @@ public class Ret {
 
     }
 }
+*/

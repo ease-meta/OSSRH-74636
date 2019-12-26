@@ -45,8 +45,9 @@
 | admin监控 | cloud-monitor-center | 9001  |  |
 | EurekaServer1 | EurekaServer | 8001  |  |
 | EurekaServer2 | EurekaServer | 8002  |  |
-| gateWay | 10.7.19.110 | 9002  |  |
-| zipkin | 10.7.19.110 | 8989  |  |
+| EurekaServer3 | EurekaServer | 8003  |  |
+| gateway | spring-cloud-gateway | 9002  |  |
+| zuul-gateway | zuul-gateway | 9001  |  |
 | eureka | 10.7.19.110 | 8989  |  |
 | kafka | 10.7.19.110 | 8989  |  |
 | rocketMQ | 10.7.19.110 | 8989  |  |

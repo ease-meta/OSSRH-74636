@@ -1,6 +1,5 @@
 package com.open.cloud.framework.utils;
 
-import javax.validation.constraints.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,7 +32,7 @@ public class ToolsStrBusi {
      *               SSS表示毫米，如333
      * @return 系统时间
      */
-    public static String getSysDate(@NotNull String format) {
+    public static String getSysDate( String format) {
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat(format);
         return df.format(date);

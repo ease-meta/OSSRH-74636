@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: spring-cloud-gateway
+  http:
+    encoding:
+      charset: UTF-8
+      enable: true
+      force: true
+  messages:
+    encoding: UTF-8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 2000ms
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lowerCaseServiceId: true
+      routes:
+        - id: path_route
+          uri: lb://CLOUD-EUREKA-SERVICE
+          order: 0
+          predicates:
+            - Path=/sayHello/**
+
+server:
+  port: 9002
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://10.7.19.103:8761//eureka/
+  instance:
+    prefer-ip-address: true
+    metadataMap:
+      version: 1.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    security:
+      enabled: false
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+ribbon:
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+threadpool:
+  default:
+    coreSize: 32
+    maximumSize: 32
+    allowMaximumSizeToDivergeFromCoreSize: true
+    maxQueueSize: 100000
+logging:
+  level:
+    root: INFO
+    org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler: DEBUG
