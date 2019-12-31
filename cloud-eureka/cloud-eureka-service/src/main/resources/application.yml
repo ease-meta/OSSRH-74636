@@ -1,6 +1,8 @@
 spring:
   application:
     name: cloud-eureka-service
+  zipkin:
+    base-url: http://122.51.108.224:9411
 server:
   port: 7001
 
@@ -9,8 +11,16 @@ eureka:
     healthcheck:
       enabled: true
     service-url:
-      defaultZone: http://10.7.19.103:8761/eureka/
+      defaultZone: http://122.51.108.224:8001/eureka/
   instance:
     prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
+com:
+  alipay:
+    sofa:
+      tracer:
+        zipkin:
+          base-url: http://122.51.108.224:9411
+        springmvc:
+          url-patterns: /**
