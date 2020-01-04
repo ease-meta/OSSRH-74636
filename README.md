@@ -51,9 +51,9 @@
 | zipkin | zipkin | 9411  |122.51.108.224  |
 | nacos | nacos | 8848  |122.51.108.224  |
 | NacosApplication | NacosApplication | 6001  |122.51.108.224  |
-| eureka | 10.7.19.110 | 8989  |  |
-| kafka | 10.7.19.110 | 8989  |  |
-| rocketMQ | 10.7.19.110 | 8989  |  |
+| eureka | eureka | 8001  | 122.51.108.224 |
+| kafka | kafka | 8989  |  |
+| rocketMQ | rocketMQ | 8989  |  |
 
 
 

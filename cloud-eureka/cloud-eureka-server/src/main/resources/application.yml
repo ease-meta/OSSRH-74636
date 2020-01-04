@@ -19,4 +19,5 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
   server:
     use-read-only-response-cache: false
-    enable-self-preservation: true
+    enable-self-preservation: false
+#eureka.server.enableSelfPreservation=false

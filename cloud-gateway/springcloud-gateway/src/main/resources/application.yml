@@ -8,34 +8,55 @@ spring:
       force: true
   messages:
     encoding: UTF-8
-  redis:
-    host: 127.0.0.1
-    port: 6379
-    timeout: 2000ms
   cloud:
     gateway:
       discovery:
         locator:
-          enabled: false
-          lowerCaseServiceId: true
+          enabled: true
+          #lowerCaseServiceId: true
       routes:
         - id: path_route
           uri: lb://CLOUD-EUREKA-SERVICE
           order: 0
           predicates:
             - Path=/sayHello/**
+          filters:
+            - name: Retry
+              args:
+                retries: 3
+                statuses: BAD_GATEWAY
+            - name: Hystrix
+              args:
+                name: fallbackcmd
+                fallbackUri: forward:/incaseoffailureusethis
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10 #允许用户每秒处理多少个请求
+                redis-rate-limiter.burstCapacity: 20 #令牌桶的容量，允许在一秒钟内完成的最大请求数
+                key-resolver: "#{@userKeyResolver}" #使用 SpEL 按名称引用 bean
+  redis:
+    host: 127.0.0.1
 
 server:
   port: 9002
 
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+    
 eureka:
   client:
+    healthcheck:
+      enabled: true
     service-url:
-      defaultZone: http://10.7.19.103:8761//eureka/
+      defaultZone: http://122.51.108.224:8001/eureka/
   instance:
     prefer-ip-address: true
-    metadataMap:
-      version: 1.0
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
 
 management:
   endpoints:
@@ -44,24 +65,3 @@ management:
         include: '*'
     security:
       enabled: false
-
-hystrix:
-  command:
-    fallbackcmd:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 2000
-ribbon:
-  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
-
-threadpool:
-  default:
-    coreSize: 32
-    maximumSize: 32
-    allowMaximumSizeToDivergeFromCoreSize: true
-    maxQueueSize: 100000
-logging:
-  level:
-    root: INFO
-    org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler: DEBUG

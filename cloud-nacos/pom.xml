@@ -15,5 +15,6 @@
 
     <modules>
         <module>cloud-nacos-service</module>
+        <module>cloud-nacos-gateway</module>
     </modules>
 </project>
