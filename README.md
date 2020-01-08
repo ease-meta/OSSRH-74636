@@ -52,7 +52,9 @@
 | nacos | nacos | 8848  |122.51.108.224  |
 | NacosApplication | NacosApplication | 6001  |122.51.108.224  |
 | eureka | eureka | 8001  | 122.51.108.224 |
-| kafka | kafka | 8989  |  |
+| redis | redis | 7369  | 122.51.108.224 |
+| mysql | mysql | 3306  | 122.51.108.224 |
+| MongoDB |  MongoDB | 27017  | 122.51.108.224 |
 | rocketMQ | rocketMQ | 8989  |  |
 
 

@@ -36,7 +36,7 @@
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
         <sofa.boot.version>3.2.1</sofa.boot.version>
-        <dubbo.version>2.7.4.1</dubbo.version>
+        <dubbo.version>2.7.5</dubbo.version>
         <!--消息中间件-->
         <spring-kafka.version>2.3.4.RELEASE</spring-kafka.version>
         <spring-rocketmq.version>2.0.4</spring-rocketmq.version>
