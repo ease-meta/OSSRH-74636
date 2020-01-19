@@ -19,7 +19,6 @@ public class Responses<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Ret ret;
 
 	private T result;
 

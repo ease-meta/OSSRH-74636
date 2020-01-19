@@ -1,3 +1,4 @@
+/*
 package com.open.cloud.common.extension;
 
 import cn.hutool.core.collection.ConcurrentHashSet;
@@ -133,31 +134,36 @@ public class ExtensionLoader<T> {
         return cachedNames.get(extensionClass);
     }
 
-    /**
+    */
+/**
      * This is equivalent to {@code getActivateExtension(url, key, null)}
      *
      * @param url url
      * @param key url parameter key which used to get extension point names
      * @return extension list which are activated.
      * @see #getActivateExtension(org.apache.dubbo.common.URL, String, String)
-     */
+     *//*
+
     public List<T> getActivateExtension(URL url, String key) {
         return getActivateExtension(url, key, null);
     }
 
-    /**
+    */
+/**
      * This is equivalent to {@code getActivateExtension(url, values, null)}
      *
      * @param url    url
      * @param values extension point names
      * @return extension list which are activated
      * @see #getActivateExtension(org.apache.dubbo.common.URL, String[], String)
-     */
+     *//*
+
     public List<T> getActivateExtension(URL url, String[] values) {
         return getActivateExtension(url, values, null);
     }
 
-    /**
+    */
+/**
      * This is equivalent to {@code getActivateExtension(url, url.getParameter(key).split(","), null)}
      *
      * @param url   url
@@ -165,13 +171,15 @@ public class ExtensionLoader<T> {
      * @param group group
      * @return extension list which are activated.
      * @see #getActivateExtension(org.apache.dubbo.common.URL, String[], String)
-     */
+     *//*
+
     public List<T> getActivateExtension(URL url, String key, String group) {
         String value = url.getParameter(key);
         return getActivateExtension(url, StringUtils.isEmpty(value) ? null : COMMA_SPLIT_PATTERN.split(value), group);
     }
 
-    /**
+    */
+/**
      * Get activate extensions.
      *
      * @param url    url
@@ -179,7 +187,8 @@ public class ExtensionLoader<T> {
      * @param group  group
      * @return extension list which are activated
      * @see org.apache.dubbo.common.extension.Activate
-     */
+     *//*
+
     public List<T> getActivateExtension(URL url, String[] values, String group) {
         List<T> exts = new ArrayList<>();
         List<String> names = values == null ? new ArrayList<>(0) : Arrays.asList(values);
@@ -269,14 +278,16 @@ public class ExtensionLoader<T> {
         return false;
     }
 
-    /**
+    */
+/**
      * Get extension's instance. Return <code>null</code> if extension is not found or is not initialized. Pls. note
      * that this method will not trigger extension load.
      * <p>
      * In order to trigger extension load, call {@link #getExtension(String)} instead.
      *
      * @see #getExtension(String)
-     */
+     *//*
+
     @SuppressWarnings("unchecked")
     public T getLoadedExtension(String name) {
         if (StringUtils.isEmpty(name)) {
@@ -295,13 +306,15 @@ public class ExtensionLoader<T> {
         return holder;
     }
 
-    /**
+    */
+/**
      * Return the list of extensions which are already loaded.
      * <p>
      * Usually {@link #getSupportedExtensions()} should be called in order to get all extensions.
      *
      * @see #getSupportedExtensions()
-     */
+     *//*
+
     public Set<String> getLoadedExtensions() {
         return Collections.unmodifiableSet(new TreeSet<>(cachedInstances.keySet()));
     }
@@ -327,10 +340,12 @@ public class ExtensionLoader<T> {
 //
 //    }
 
-    /**
+    */
+/**
      * Find the extension with the given name. If the specified name is not found, then {@link IllegalStateException}
      * will be thrown.
-     */
+     *//*
+
     @SuppressWarnings("unchecked")
     public T getExtension(String name) {
         if (StringUtils.isEmpty(name)) {
@@ -353,19 +368,23 @@ public class ExtensionLoader<T> {
         return (T) instance;
     }
 
-    /**
+    */
+/**
      * Get the extension by specified name if found, or {@link #getDefaultExtension() returns the default one}
      *
      * @param name the name of extension
      * @return non-null
-     */
+     *//*
+
     public T getOrDefaultExtension(String name) {
         return containsExtension(name)  ? getExtension(name) : getDefaultExtension();
     }
 
-    /**
+    */
+/**
      * Return default extension, return <code>null</code> if it's not configured.
-     */
+     *//*
+
     public T getDefaultExtension() {
         getExtensionClasses();
         if (StringUtils.isBlank(cachedDefaultName) || "true".equals(cachedDefaultName)) {
@@ -398,21 +417,25 @@ public class ExtensionLoader<T> {
         return instances;
     }
 
-    /**
+    */
+/**
      * Return default extension name, return <code>null</code> if not configured.
-     */
+     *//*
+
     public String getDefaultExtensionName() {
         getExtensionClasses();
         return cachedDefaultName;
     }
 
-    /**
+    */
+/**
      * Register new extension via API
      *
      * @param name  extension name
      * @param clazz extension class
      * @throws IllegalStateException when extension with the same name has already been registered.
-     */
+     *//*
+
     public void addExtension(String name, Class<?> clazz) {
         getExtensionClasses(); // load classes
 
@@ -445,14 +468,16 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * Replace the existing extension via API
      *
      * @param name  extension name
      * @param clazz extension class
      * @throws IllegalStateException when extension to be placed doesn't exist
      * @deprecated not recommended any longer, and use only when test
-     */
+     *//*
+
     @Deprecated
     public void replaceExtension(String name, Class<?> clazz) {
         getExtensionClasses(); // load classes
@@ -582,9 +607,11 @@ public class ExtensionLoader<T> {
                 if (!isSetter(method)) {
                     continue;
                 }
-                /**
+                */
+/**
                  * Check {@link DisableInject} to see if we need auto injection for this property
-                 */
+                 *//*
+
                 if (method.getAnnotation(DisableInject.class) != null) {
                     continue;
                 }
@@ -618,16 +645,19 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * get properties name for setter, for instance: setVersion, return "version"
      * <p>
      * return "", if setter name with length less than 3
-     */
+     *//*
+
     private String getSetterProperty(Method method) {
         return method.getName().length() > 3 ? method.getName().substring(3, 4).toLowerCase() + method.getName().substring(4) : "";
     }
 
-    /**
+    */
+/**
      * return true if and only if:
      * <p>
      * 1, public
@@ -635,7 +665,8 @@ public class ExtensionLoader<T> {
      * 2, name starts with "set"
      * <p>
      * 3, only has one parameter
-     */
+     *//*
+
     private boolean isSetter(Method method) {
         return method.getName().startsWith("set")
                 && method.getParameterTypes().length == 1
@@ -666,9 +697,11 @@ public class ExtensionLoader<T> {
         return classes;
     }
 
-    /**
+    */
+/**
      * synchronized in getExtensionClasses
-     * */
+     * *//*
+
     private Map<String, Class<?>> loadExtensionClasses() {
         cacheDefaultExtensionName();
 
@@ -684,9 +717,11 @@ public class ExtensionLoader<T> {
         return extensionClasses;
     }
 
-    /**
+    */
+/**
      * extract and cache default extension name if exists
-     */
+     *//*
+
     private void cacheDefaultExtensionName() {
         final SPI defaultAnnotation = type.getAnnotation(SPI.class);
         if (defaultAnnotation == null) {
@@ -808,18 +843,22 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * cache name
-     */
+     *//*
+
     private void cacheName(Class<?> clazz, String name) {
         if (!cachedNames.containsKey(clazz)) {
             cachedNames.put(clazz, name);
         }
     }
 
-    /**
+    */
+/**
      * put clazz in extensionClasses
-     */
+     *//*
+
     private void saveInExtensionClass(Map<String, Class<?>> extensionClasses, Class<?> clazz, String name) {
         Class<?> c = extensionClasses.get(name);
         if (c == null) {
@@ -831,11 +870,13 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * cache Activate class which is annotated with <code>Activate</code>
      * <p>
      * for compatibility, also cache class with old alibaba Activate annotation
-     */
+     *//*
+
     private void cacheActivateClass(Class<?> clazz, String name) {
         Activate activate = clazz.getAnnotation(Activate.class);
         if (activate != null) {
@@ -849,9 +890,11 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * cache Adaptive class which is annotated with <code>Adaptive</code>
-     */
+     *//*
+
     private void cacheAdaptiveClass(Class<?> clazz) {
         if (cachedAdaptiveClass == null) {
             cachedAdaptiveClass = clazz;
@@ -862,11 +905,13 @@ public class ExtensionLoader<T> {
         }
     }
 
-    /**
+    */
+/**
      * cache wrapper class
      * <p>
      * like: ProtocolFilterWrapper, ProtocolListenerWrapper
-     */
+     *//*
+
     private void cacheWrapperClass(Class<?> clazz) {
         if (cachedWrapperClasses == null) {
             cachedWrapperClasses = new ConcurrentHashSet<>();
@@ -874,11 +919,13 @@ public class ExtensionLoader<T> {
         cachedWrapperClasses.add(clazz);
     }
 
-    /**
+    */
+/**
      * test if clazz is a wrapper class
      * <p>
      * which has Constructor with given class type as its only argument
-     */
+     *//*
+
     private boolean isWrapperClass(Class<?> clazz) {
         try {
             clazz.getConstructor(type);
@@ -932,3 +979,4 @@ public class ExtensionLoader<T> {
     }
 
 }
+*/

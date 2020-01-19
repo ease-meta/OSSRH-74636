@@ -3,6 +3,7 @@ package com.open.cloud.test.okhttp;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.open.cloud.framework.utils.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;
 import okhttp3.Headers;
@@ -26,10 +27,11 @@ public class OkHttpMain {
 			two = load(two.second.getPerPage(), two.second.getNextPage());
 			linkedList.addAll(two.first);
 		}
-		String fileName = getPath() + "测试.xlsx";
-		EasyExcel.write(fileName)
+		String fileName = LocalDateTimeUtils.formatNow("yyyy-MM-dd") + "测试.xlsx";
+		EasyExcel.write(fileName).password("1q2w3e4r")
 				// 这里放入动态头
-				.head(head()).sheet()
+				//.head(head())
+				.sheet()
 				// 当然这里数据也可以用 List<List<String>> 去传入
 				.doWrite(linkedList);
 	}
@@ -37,11 +39,11 @@ public class OkHttpMain {
 	private static List<List<String>> head() {
 		List<List<String>> list = new ArrayList<List<String>>();
 		List<String> head0 = new ArrayList<String>();
-		head0.add("字符串");
+		head0.add("创建日期");
 		List<String> head1 = new ArrayList<String>();
-		head1.add("数字");
+		head1.add("默认分支");
 		List<String> head2 = new ArrayList<String>();
-		head2.add("日期");
+		head2.add("fork数");
 		list.add(head0);
 		list.add(head1);
 		list.add(head2);

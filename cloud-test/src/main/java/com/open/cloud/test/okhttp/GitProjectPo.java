@@ -3,18 +3,17 @@ package com.open.cloud.test.okhttp;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
-@Builder
 @Data
 public class GitProjectPo {
-	private LocalDateTime createdAt;
+	private Date createdAt;
 	private String defaultBranch;
 	private String description;
 	private int forksCount;
 	private String httpUrlToRepo;
 	private String id;
-	private LocalDateTime lastActivityAt;
+	private Date lastActivityAt;
 	private String name;
 	private String nameWithNamespace;
 	private String path;

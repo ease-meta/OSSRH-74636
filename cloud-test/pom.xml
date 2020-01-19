@@ -59,7 +59,9 @@
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-common</artifactId>
+            <version>${project.version}</version>
         </dependency>
+
 
     </dependencies>
 </project>
