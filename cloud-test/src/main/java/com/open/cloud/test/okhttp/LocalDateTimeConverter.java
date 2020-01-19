@@ -23,7 +23,7 @@ public class LocalDateTimeConverter implements Converter<LocalDateTime> {
 	@Override
 	public LocalDateTime convertToJavaData(CellData cellData, ExcelContentProperty contentProperty, GlobalConfiguration globalConfiguration) throws Exception {
 		if (contentProperty == null || contentProperty.getDateTimeFormatProperty() == null) {
-			return LocalDateTimeUtils.
+			return LocalDateTimeUtils
 		} else {
 			return DateUtils.parseDate(cellData.getStringValue(),
 					contentProperty.getDateTimeFormatProperty().getFormat());
