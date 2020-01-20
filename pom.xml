@@ -39,7 +39,7 @@
         <module>cloud-monitor-center</module>
         <module>cloud-business-center</module>
         <module>cloud-test</module>
-        <module>cloud-common</module>
+        <module>cloud-core</module>
         <module>cloud-nacos</module>
         <module>cloud-sofa</module>
         <module>cloud-elasticsearch</module>
@@ -58,6 +58,8 @@
         <module>cloud-server</module>
         <module>cloud-gateway</module>
         <module>cloud-nacos</module>
+        <module>cloud-health</module>
+        <module>cloud-apollo</module>
     </modules>
 
     <build>

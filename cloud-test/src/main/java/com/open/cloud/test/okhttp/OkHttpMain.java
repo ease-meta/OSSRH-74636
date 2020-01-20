@@ -3,7 +3,7 @@ package com.open.cloud.test.okhttp;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.open.cloud.framework.utils.LocalDateTimeUtils;
+import com.open.cloud.common.utils.LocalDateTimeUtils;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;
 import okhttp3.Headers;
@@ -13,7 +13,6 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
