@@ -30,64 +30,57 @@
         <cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 
         <java.version>1.8</java.version>
-        <!--最基本组织-->
         <spring-boot.version>2.3.0.BUILD-SNAPSHOT</spring-boot.version>
-        <!--RPC服务-->
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-        <sofa.boot.version>3.2.1</sofa.boot.version>
         <dubbo.version>2.7.5</dubbo.version>
+        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <sofa-boot.version>3.2.1</sofa-boot.version>
+        <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
+        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <!--消息中间件-->
-        <spring-kafka.version>2.3.4.RELEASE</spring-kafka.version>
+        <spring-kafka.version>2.4.1.RELEASE</spring-kafka.version>
         <spring-rocketmq.version>2.0.4</spring-rocketmq.version>
         <rocketmq.version>4.6.0</rocketmq.version>
-        <!--事务-->
-        <seata.version>2.1.1.RELEASE</seata.version>
-        <curator.version>2.9.1</curator.version>
         <!--数据库操作-->
         <druid.version>1.1.21</druid.version>
         <mybatis.boot.version>2.1.1</mybatis.boot.version>
-        <mybatis.plus.version>3.2.0</mybatis.plus.version>
-        <shardingsphere.version>4.0.0-RC3</shardingsphere.version>
-        <!--BusinessService -->
-        <sentinel.version>2.1.1.RELEASE</sentinel.version>
+        <mybatis.plus.version>3.3.1</mybatis.plus.version>
+        <shardingsphere.version>4.0.0</shardingsphere.version>
         <!--缓存-->
-        <caffeine.version>2.8.0</caffeine.version>
+        <caffeine.version>2.8.1</caffeine.version>
         <!--高性能框架-->
         <disruptor.version>3.4.2</disruptor.version>
         <!--安全鉴权-->
         <shiro-spring.version>1.4.2</shiro-spring.version>
-        <!--监控-->
-        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
         <!--链路跟踪-->
-        <zipkin.version>2.12.9</zipkin.version>
+        <zipkin.version>2.19.2</zipkin.version>
         <apollo.version>1.5.1</apollo.version>
         <perf4j.version>0.9.16</perf4j.version>
-        <p6spy.version>3.8.6</p6spy.version>
-        <azure.version>2.1.2</azure.version>
+        <p6spy.version>3.8.7</p6spy.version>
         <nacos.version>1.1.4</nacos.version>
+        <huaweicloud-dws-jdbc.version>1.5.301</huaweicloud-dws-jdbc.version>
         <!--单元测试-->
         <org.mockito.version>3.2.4</org.mockito.version>
         <!--公共及工具类-->
-        <guava.version>28.1-jre</guava.version>
-        <vaadin.version>14.1.5</vaadin.version>
-        <activiti.version>7.1.0.M4</activiti.version>
-        <commons-lang3.version>3.8.1</commons-lang3.version>
-        <commons-io.version>1.3.2</commons-io.version>
+        <curator.version>2.9.1</curator.version>
+        <activiti.version>7.1.0.M5</activiti.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-configuration2.version>2.6</commons-configuration2.version>
+        <commons-text.version>1.8</commons-text.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-compress.version>1.19</commons-compress.version>
         <fastjson.version>1.2.62</fastjson.version>
-        <drools.version>7.29.0.Final</drools.version>
         <jjwt.version>0.9.1</jjwt.version>
-        <easypoi.version>4.1.0</easypoi.version>
-        <easyexcel.version>2.1.4</easyexcel.version>
-        <jasypt.version>3.0.0</jasypt.version>
+        <easypoi.version>4.1.3</easypoi.version>
+        <easyexcel.version>2.1.6</easyexcel.version>
+        <jasypt.version>3.0.2</jasypt.version>
         <hutool-all.version>5.1.1</hutool-all.version>
         <guava.version>20.0</guava.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
-        <api.boot.version>2.1.5.RELEASE</api.boot.version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
@@ -117,7 +110,6 @@
                 <scope>import</scope>
             </dependency>
 
-
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -127,17 +119,9 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-all</artifactId>
-                <version>${nacos.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-dependencies</artifactId>
-                <version>${sofa.boot.version}</version>
+                <version>${sofa-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -145,65 +129,35 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
-                <version>3.2.1</version>
+                <version>${sofa-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <!--蚂蚁分布式事务-->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-seata</artifactId>
-                <version>${seata.version}</version>
-                <type>pom</type>
             </dependency>
 
             <dependency>
                 <groupId>com.huaweicloud</groupId>
                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
-                <version>1.0.0</version>
+                <version>${spring-cloud-huawei.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
 
-            <!--监控-->
+            <!--限流熔断-->
             <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
+
+            <!--蚂蚁分布式事务-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-seata</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
-                <scope>import</scope>
             </dependency>
 
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-
-
-            <!--胖客户端Web应用程序-->
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-bom</artifactId>
-                <version>${vaadin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-
-            <dependency>
-                <groupId>com.huaweicloud.dws</groupId>
-                <artifactId>huaweicloud-dws-jdbc</artifactId>
-                <version>1.5.301</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${org.mockito.version}</version>
-            </dependency>
-
+            <!--携程配置中心-->
             <dependency>
                 <groupId>com.ctrip.framework.apollo</groupId>
                 <artifactId>apollo</artifactId>
@@ -212,7 +166,7 @@
                 <scope>import</scope>
             </dependency>
 
-
+            <!--MQ中间件-->
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-all</artifactId>
@@ -221,6 +175,26 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${spring-rocketmq.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+            </dependency>
+
+            <!--监控、链路跟踪-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
 
             <dependency>
                 <groupId>io.zipkin.zipkin2</groupId>
@@ -230,59 +204,12 @@
                 <scope>import</scope>
             </dependency>
 
-
-            <!-- <dependency>
-                 <groupId>com.microsoft.azure</groupId>
-                 <artifactId>azure-spring-boot-bom</artifactId>
-                 <version>${azure.version}</version>
-                 <type>pom</type>
-                 <scope>import</scope>
-             </dependency>-->
-
-            <!--  <dependency>
-                  <groupId>org.springframework.statemachine</groupId>
-                  <artifactId>spring-statemachine-bom</artifactId>
-                  <version>${spring-statemachine.version}</version>
-                  <type>pom</type>
-                  <scope>import</scope>
-              </dependency>-->
+            <!--三方jar包-->
             <dependency>
-                <groupId>org.minbox.framework</groupId>
-                <artifactId>api-boot-dependencies</artifactId>
-                <version>${api.boot.version}</version>
-                <scope>import</scope>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi</artifactId>
+                <version>${easypoi.version}</version>
                 <type>pom</type>
-            </dependency>
-
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis.plus.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool-all.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
-            </dependency>
-
-
-            <!--<dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
             </dependency>
 
             <dependency>
@@ -290,7 +217,12 @@
                 <artifactId>shiro-spring</artifactId>
                 <version>${shiro-spring.version}</version>
             </dependency>
--->
+
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -311,9 +243,39 @@
             </dependency>
 
             <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>${sentinel.version}</version>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huaweicloud.dws</groupId>
+                <artifactId>huaweicloud-dws-jdbc</artifactId>
+                <version>${huaweicloud-dws-jdbc.version}</version>
             </dependency>
 
             <dependency>
@@ -333,15 +295,45 @@
             </dependency>
 
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.boot.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-compress</artifactId>
+                <version>${commons-compress.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>${commons-text.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-configuration2</artifactId>
+                <version>${commons-configuration2.version}</version>
             </dependency>
 
             <!--阿里json工具类 -->
@@ -351,6 +343,7 @@
                 <version>${fastjson.version}</version>
             </dependency>
 
+            <!--接口包-->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -361,6 +354,13 @@
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${springfox-swagger2.version}</version>
+            </dependency>
+
+            <!--单元测试-->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${org.mockito.version}</version>
             </dependency>
 
             <dependency>
