@@ -12,7 +12,6 @@
     <artifactId>cloud-common</artifactId>
 
     <name>cloud-common</name>
-    <url>http://www.example.com</url>
 
     <dependencies>
         <dependency>

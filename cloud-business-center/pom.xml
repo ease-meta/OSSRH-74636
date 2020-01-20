@@ -5,9 +5,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-business-api</module>
-        <module>cloud-business-admin</module>
-        <module>cloud-business-repository</module>
-        <module>cloud-business-common</module>
         <!--<module>cloud-business-ui</module>-->
     </modules>
     <parent>
