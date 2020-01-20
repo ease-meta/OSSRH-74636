@@ -1,10 +1,8 @@
 package com.open.cloud.apollo.config;
 
 
-public class ApolloProperties {
-	/**
-	 * Fields
-	 */
+public class ApolloConstant {
+
 	public static String Project = "Apollo";
 	public static String SpringApplicationName = "spring.application.name";
 	public static String AppId = "app.id";

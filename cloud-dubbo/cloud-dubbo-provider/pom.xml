@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-dubbo-interface</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>

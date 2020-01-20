@@ -41,7 +41,7 @@ public class JsonSerializer implements Serializer {
 	@Override
 	public <T> T deserialize(String str, Type type) {
 		try {
-			return objectMapper.readValue(str, new TypeReference<Object>() {
+			return (T) objectMapper.readValue(str, new TypeReference<Object>() {
 				@Override
 				public Type getType() {
 					return type;
