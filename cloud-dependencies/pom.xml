@@ -34,7 +34,8 @@
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <dubbo.version>2.7.5</dubbo.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-        <sofa-boot.version>3.2.1</sofa-boot.version>
+        <sofa-boot.version>3.2.2</sofa-boot.version>
+        <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
         <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
         <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <!--消息中间件-->
@@ -129,7 +130,7 @@
             <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
-                <version>${sofa-boot.version}</version>
+                <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

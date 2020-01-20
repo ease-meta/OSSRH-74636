@@ -13,12 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.alipay.sofa</groupId>
-            <artifactId>gateway-enterprise-sofa-boot-starter</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-sofa-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
