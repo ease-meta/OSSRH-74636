@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
     <properties>
         <main.user.dir>${user.dir}</main.user.dir>
+        <project.encoding>utf-8</project.encoding>
     </properties>
 
     <dependencies>
@@ -117,7 +118,7 @@
                 </executions>
                 <configuration>
                     <configFile>${main.user.dir}/Formatter.xml</configFile>
-                    <encoding>${project.encoding}</encoding>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
