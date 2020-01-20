@@ -97,6 +97,16 @@
                 <version>${guava.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/com.huaweicloud/spring-cloud-huawei-dependencies -->
+            <dependency>
+                <groupId>com.huaweicloud</groupId>
+                <artifactId>spring-cloud-huawei-dependencies</artifactId>
+                <version>1.0.0</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+
             <dependency>
                 <groupId>com.huaweicloud.dws</groupId>
                 <artifactId>huaweicloud-dws-jdbc</artifactId>
