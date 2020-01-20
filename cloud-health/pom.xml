@@ -13,11 +13,8 @@
     <dependencies>
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-common</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <artifactId>cloud-core</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
-
-
 </project>

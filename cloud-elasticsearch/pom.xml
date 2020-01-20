@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-web-common</artifactId>
+            <artifactId>cloud-web</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
