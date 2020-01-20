@@ -31,7 +31,7 @@
 
         <java.version>1.8</java.version>
         <!--最基本组织-->
-        <spring-boot.version>2.2.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.0.BUILD-SNAPSHOT</spring-boot.version>
         <!--RPC服务-->
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
@@ -95,6 +95,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huaweicloud.dws</groupId>
+                <artifactId>huaweicloud-dws-jdbc</artifactId>
+                <version>1.5.301</version>
             </dependency>
 
             <dependency>
