@@ -2,3 +2,5 @@ org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.open.cloud.apollo.ApolloAutoConfiguration
 org.springframework.context.ApplicationContextInitializer=\
 com.open.cloud.apollo.ApolloApplicationContextInitializer
+org.springframework.context.ApplicationContextAware=\
+com.open.cloud.apollo.ApolloConfigChange

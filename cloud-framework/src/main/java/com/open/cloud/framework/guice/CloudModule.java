@@ -7,7 +7,6 @@ public final class CloudModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		//super.configure();
 		bind(Service.class).to(DefaultService.class).in(Scopes.SINGLETON);
 	}
 }

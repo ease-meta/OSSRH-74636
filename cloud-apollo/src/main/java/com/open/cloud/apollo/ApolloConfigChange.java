@@ -1,4 +1,4 @@
-package com.open.cloud.eureka.web;
+package com.open.cloud.apollo;
 
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
@@ -7,9 +7,10 @@ import org.springframework.beans.BeansException;
 import org.springframework.cloud.context.environment.EnvironmentChangeEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
-@Component
+/**
+ * @author Leijian
+ */
 @Slf4j
 public class ApolloConfigChange implements ApplicationContextAware {
 
