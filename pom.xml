@@ -63,8 +63,6 @@
         <module>cloud-elasticsearch</module>
         <module>cloud-batch</module>
         <module>cloud-oauth</module>
-        <module>cloud-inner-intergration</module>
-        <module>cloud-tuning-center</module>
         <module>cloud-dependencies</module>
         <module>cloud-dubbo</module>
         <module>cloud-framework</module>

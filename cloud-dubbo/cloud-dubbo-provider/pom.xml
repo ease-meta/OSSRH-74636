@@ -4,11 +4,9 @@
     <parent>
         <groupId>com.open.cloud</groupId>
         <artifactId>cloud-dubbo</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
-    <groupId>com.open.cloud</groupId>
     <artifactId>cloud-dubbo-provider</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
     <properties>

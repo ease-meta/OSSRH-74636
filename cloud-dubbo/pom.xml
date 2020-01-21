@@ -5,15 +5,12 @@
     <parent>
         <artifactId>open-cloud-platform</artifactId>
         <groupId>com.open.cloud</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
-    <groupId>com.open.cloud</groupId>
     <artifactId>cloud-dubbo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
-    <description>The demo module of dubbo project</description>
 
     <properties>
         <skip_maven_deploy>true</skip_maven_deploy>

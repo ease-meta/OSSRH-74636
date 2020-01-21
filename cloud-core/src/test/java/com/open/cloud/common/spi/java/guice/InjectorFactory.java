@@ -1,4 +1,4 @@
-package com.open.cloud.framework.guice;
+package com.open.cloud.common.spi.java.guice;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;

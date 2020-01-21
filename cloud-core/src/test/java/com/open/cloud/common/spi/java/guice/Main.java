@@ -1,4 +1,4 @@
-package com.open.cloud.framework.guice;
+package com.open.cloud.common.spi.java.guice;
 
 public class Main {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.open.cloud.framework.guice;
+package com.open.cloud.common.spi.java.guice;
 
 import com.google.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
