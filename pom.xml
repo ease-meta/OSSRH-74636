@@ -10,17 +10,36 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.open.cloud</groupId>
     <artifactId>open-cloud-platform</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
+
+    <url>https://github.com/apache/dubbo</url>
+    <inceptionYear>2018</inceptionYear>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://gitee.com/sloars/open-cloud-platform.git</url>
+        <connection>scm:git@gitee.com:sloars/open-cloud-platform.git</connection>
+        <developerConnection>scm:git@gitee.com:sloars/open-cloud-platform.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <properties>
         <main.user.dir>${user.dir}</main.user.dir>
         <project.encoding>utf-8</project.encoding>
+        <revision>0.0.1-SNAPSHOT</revision>
     </properties>
 
     <dependencies>
-        <!--lombok 简化代码 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -31,7 +50,6 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-
     </dependencies>
 
     <modules>

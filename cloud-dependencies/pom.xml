@@ -7,7 +7,7 @@
 
     <groupId>com.open.cloud</groupId>
     <artifactId>cloud-dependencies</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <name>cloud-dependencies</name>
 
@@ -29,6 +29,7 @@
         <coveralls.maven.plugin>3.1.0</coveralls.maven.plugin>
         <cobertura.maven.plugin>2.6</cobertura.maven.plugin>
 
+        <revision>0.0.1-SNAPSHOT</revision>
         <java.version>1.8</java.version>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
@@ -80,6 +81,7 @@
         <jasypt.version>3.0.2</jasypt.version>
         <hutool-all.version>5.1.1</hutool-all.version>
         <guava.version>20.0</guava.version>
+        <guice.version>4.2.2</guice.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
     </properties>
@@ -272,6 +274,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>${guice.version}</version>
             </dependency>
 
             <dependency>

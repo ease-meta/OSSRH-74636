@@ -1,4 +1,4 @@
-/*
+
 package com.open.cloud.common.extension;
 
 import cn.hutool.core.collection.ConcurrentHashSet;
@@ -979,4 +979,3 @@ public class ExtensionLoader<T> {
     }
 
 }
-*/
