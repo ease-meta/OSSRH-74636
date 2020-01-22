@@ -136,14 +136,14 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
+           <!-- <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
                 <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+-->
             <dependency>
                 <groupId>com.huaweicloud</groupId>
                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
