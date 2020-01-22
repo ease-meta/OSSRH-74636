@@ -12,7 +12,6 @@
 
     <modules>
         <module>cloud-business-api</module>
-        <!--<module>cloud-business-ui</module>-->
     </modules>
 
 </project>

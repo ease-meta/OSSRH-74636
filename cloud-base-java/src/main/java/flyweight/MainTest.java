@@ -1,4 +1,21 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package flyweight;
+
 /**
  * @author shadow
  * @Date 2016年8月5日下午8:10:16
@@ -11,25 +28,25 @@ package flyweight;
  * 		所以一般都会有一个集合存储元件；有一个享元工厂进行元件的管理。</p>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		LetterFactory factory = LetterFactory.getInstance();
-		String word = "easiness";
-		addLetterByName(factory, word);
-		
-		getLetter(factory, word);
-	}
+    public static void main(String[] args) {
+        LetterFactory factory = LetterFactory.getInstance();
+        String word = "easiness";
+        addLetterByName(factory, word);
 
-	static void addLetterByName(LetterFactory factory, String word) {
-		for (char c : word.toCharArray()) {
-			factory.add(new Letter(c + ""));
-		}
-	}
+        getLetter(factory, word);
+    }
 
-	static void getLetter(LetterFactory factory, String word) {
-		for (char c : word.toCharArray()) {
-			System.out.println(factory.get(c + ""));
-		}
-	}
+    static void addLetterByName(LetterFactory factory, String word) {
+        for (char c : word.toCharArray()) {
+            factory.add(new Letter(c + ""));
+        }
+    }
+
+    static void getLetter(LetterFactory factory, String word) {
+        for (char c : word.toCharArray()) {
+            System.out.println(factory.get(c + ""));
+        }
+    }
 }
 /**
  * 推荐博客：http://blog.csdn.net/hguisu/article/details/7535792

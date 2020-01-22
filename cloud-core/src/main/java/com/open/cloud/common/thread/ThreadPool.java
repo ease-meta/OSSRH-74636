@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.common.thread;
 
 import com.open.cloud.common.base.Ref;
@@ -27,98 +43,101 @@ import java.util.concurrent.TimeUnit;
  * @author Leijian
  */
 public class ThreadPool {
-	static {
-		initSystem();
-	}
+    static {
+        initSystem();
+    }
 
-	public static void initSystem() {
-		System = new ThreadPool("open.cloud.thread.system", ThreadPoolProperties.getThreadPoolMinSize(), ThreadPoolProperties.getThreadPoolMaxSize());
-	}
+    public static void initSystem() {
+        System = new ThreadPool("open.cloud.thread.system",
+            ThreadPoolProperties.getThreadPoolMinSize(),
+            ThreadPoolProperties.getThreadPoolMaxSize());
+    }
 
-	public static ThreadPool System;
+    public static ThreadPool   System;
 
-	private ThreadPoolExecutor threadPool;
+    private ThreadPoolExecutor threadPool;
 
-	@Getter
-	@Setter
-	private boolean checkHealth = true;
+    @Getter
+    @Setter
+    private boolean            checkHealth = true;
 
-	public ThreadPoolExecutor getThreadPool() {
-		return threadPool;
-	}
+    public ThreadPoolExecutor getThreadPool() {
+        return threadPool;
+    }
 
-	@Getter
-	private ThreadMonitor threadMonitor;
+    @Getter
+    private ThreadMonitor threadMonitor;
 
-	@Getter
-	private String name;
+    @Getter
+    private String        name;
 
-	public ThreadPool(String name, int threadPoolMinSize, int threadPoolMaxSize) {
-		this.name = name;
-		threadPool = new ThreadPoolExecutor(threadPoolMinSize, threadPoolMaxSize,
-				60L, TimeUnit.SECONDS,
-				new SynchronousQueue<Runnable>(), new SystemThreadPoolFactory());
-		threadMonitor = new ThreadMonitor(this.name, threadPool);
-	}
+    public ThreadPool(String name, int threadPoolMinSize, int threadPoolMaxSize) {
+        this.name = name;
+        threadPool = new ThreadPoolExecutor(threadPoolMinSize, threadPoolMaxSize, 60L,
+            TimeUnit.SECONDS, new SynchronousQueue<Runnable>(), new SystemThreadPoolFactory());
+        threadMonitor = new ThreadMonitor(this.name, threadPool);
+    }
 
-	private void checkHealth() {
-		if (checkHealth && threadPool.getMaximumPoolSize() <= threadPool.getPoolSize() && threadPool.getQueue().size() > 0) {
-			LogUtils.warn(ThreadPool.class, CoreProperties.Project, "线程池已满,任务开始出现排队,请考虑设置threadpool.max,当前:" + threadPool.getMaximumPoolSize());
-		}
-	}
+    private void checkHealth() {
+        if (checkHealth && threadPool.getMaximumPoolSize() <= threadPool.getPoolSize()
+            && threadPool.getQueue().size() > 0) {
+            LogUtils.warn(ThreadPool.class, CoreProperties.Project,
+                "线程池已满,任务开始出现排队,请考虑设置threadpool.max,当前:" + threadPool.getMaximumPoolSize());
+        }
+    }
 
-	public <T> Future<T> submit(String taskName, Callable<T> task) {
+    public <T> Future<T> submit(String taskName, Callable<T> task) {
 		checkHealth();
 		return threadMonitor.hook().run(taskName, () -> threadPool.submit(task));
 	}
 
-	public Future<?> submit(String taskName, Runnable task) {
+    public Future<?> submit(String taskName, Runnable task) {
 		checkHealth();
 		return threadMonitor.hook().run(taskName, () -> threadPool.submit(task));
 	}
 
-	public boolean isShutdown() {
-		return threadPool.isShutdown();
-	}
+    public boolean isShutdown() {
+        return threadPool.isShutdown();
+    }
 
-	public void shutdown() {
-		threadPool.shutdown();
-	}
+    public void shutdown() {
+        threadPool.shutdown();
+    }
 
+    static {
+        //JVM 停止或重启时，关闭线程池释
+        /*ProcessExitEvent.register(() -> {
+        	try {
+        		System.shutdown();
+        	} catch (Exception e) {
+        		LogUtils.error(ThreadPool.class, CoreProperties.Project, "关闭SystemThreadPool时出错", e);
+        	}
+        }, Integer.MAX_VALUE, false);*/
+        ProcessExitEvent.register(new com.open.cloud.common.base.Callable.Action0() {
+            @Override
+            public void invoke() {
+                try {
+                    System.shutdown();
+                } catch (Exception e) {
+                    LogUtils.error(ThreadPool.class, CoreProperties.Project,
+                        "关闭SystemThreadPool时出错", e);
+                }
+            }
+        }, Integer.MAX_VALUE, false);
 
-	static {
-		//JVM 停止或重启时，关闭线程池释
-		/*ProcessExitEvent.register(() -> {
-			try {
-				System.shutdown();
-			} catch (Exception e) {
-				LogUtils.error(ThreadPool.class, CoreProperties.Project, "关闭SystemThreadPool时出错", e);
-			}
-		}, Integer.MAX_VALUE, false);*/
-		ProcessExitEvent.register(new com.open.cloud.common.base.Callable.Action0() {
-			@Override
-			public void invoke() {
-				try {
-					System.shutdown();
-				} catch (Exception e) {
-					LogUtils.error(ThreadPool.class, CoreProperties.Project, "关闭SystemThreadPool时出错", e);
-				}
-			}
-		}, Integer.MAX_VALUE, false);
+    }
 
-	}
-
-	/**
-	 * 任务拆分多个小任务分批并行处理，并行处理完一批再并行处理下一批。
-	 * 在抛出错误的时候有问题，未修复，仅试验，不要用这个方法。
-	 *
-	 * @param taskName
-	 * @param parallelCount
-	 * @param array
-	 * @param action
-	 * @param <T>
-	 */
-	public <T> void parallelFor(String taskName, int parallelCount, List<T> array, final com.open.cloud.common.base.Callable.Action1<T> action) {
+    /**
+     * 任务拆分多个小任务分批并行处理，并行处理完一批再并行处理下一批。
+     * 在抛出错误的时候有问题，未修复，仅试验，不要用这个方法。
+     *
+     * @param taskName
+     * @param parallelCount
+     * @param array
+     * @param action
+     * @param <T>
+     */
+    public <T> void parallelFor(String taskName, int parallelCount, List<T> array, final com.open.cloud.common.base.Callable.Action1<T> action) {
 		checkHealth();
 		threadMonitor.hook().run(taskName, () -> {
 			var parallelCount2 = parallelCount;
@@ -174,17 +193,16 @@ public class ThreadPool {
 
 	}
 
-
-	/**
-	 * 任务使用固定并行大小处理任务,直到所有任务处理完毕。
-	 *
-	 * @param taskName
-	 * @param parallelCount
-	 * @param array
-	 * @param action
-	 * @param <T>
-	 */
-	public <T> void parallelFor2(String taskName, int parallelCount, List<T> array, final com.open.cloud.common.base.Callable.Action1<T> action) {
+    /**
+     * 任务使用固定并行大小处理任务,直到所有任务处理完毕。
+     *
+     * @param taskName
+     * @param parallelCount
+     * @param array
+     * @param action
+     * @param <T>
+     */
+    public <T> void parallelFor2(String taskName, int parallelCount, List<T> array, final com.open.cloud.common.base.Callable.Action1<T> action) {
 		checkHealth();
 		threadMonitor.hook().run(taskName, () -> {
 			var parallelCount2 = parallelCount;
@@ -236,16 +254,16 @@ public class ThreadPool {
 		});
 	}
 
-	static class SystemThreadPoolFactory implements ThreadFactory {
-		private ThreadFactory factory = Executors.defaultThreadFactory();
+    static class SystemThreadPoolFactory implements ThreadFactory {
+        private ThreadFactory factory = Executors.defaultThreadFactory();
 
-		@Override
-		public Thread newThread(Runnable r) {
-			Thread t = factory.newThread(r);
-			//后台线程模式
-			t.setDaemon(true);
-			return t;
-		}
-	}
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread t = factory.newThread(r);
+            //后台线程模式
+            t.setDaemon(true);
+            return t;
+        }
+    }
 
 }

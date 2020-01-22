@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package factorymethod;
 
 import model.base.Door;
@@ -15,43 +31,43 @@ import model.bombed.RoomWithABomb;
  */
 public class BombedMazeGame extends MazeGame {
 
-//	public Maze CreateMaze(){
-//		return MakeMaze();		
-//	}
-	
-	public BombedMazeGame() {
-		// TODO Auto-generated constructor stub
-	}
+    //	public Maze CreateMaze(){
+    //		return MakeMaze();		
+    //	}
 
-	@Override
-	public Maze MakeMaze() {
-		// TODO Auto-generated method stub
-		return new Maze();
-	}
+    public BombedMazeGame() {
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public Room MakeRoom(int number) {
-		// TODO Auto-generated method stub
-		return new RoomWithABomb(number);
-	}
+    @Override
+    public Maze MakeMaze() {
+        // TODO Auto-generated method stub
+        return new Maze();
+    }
 
-	@Override
-	public Wall MakeWall() {
-		// TODO Auto-generated method stub
-		return new BombedWall();
-	}
+    @Override
+    public Room MakeRoom(int number) {
+        // TODO Auto-generated method stub
+        return new RoomWithABomb(number);
+    }
 
-	@Override
-	public Door MakeDoor(Room r1, Room r2) {
-		// TODO Auto-generated method stub
-		return new Door(r1, r2);
-	}
+    @Override
+    public Wall MakeWall() {
+        // TODO Auto-generated method stub
+        return new BombedWall();
+    }
 
-	public static void main(String[] args) {
-		MazeGame game = new BombedMazeGame();
-		Maze aMaze = game.CreateMaze();
-		Room room = aMaze.getRoom(1);
-		System.err.println("Rooms : " + aMaze.getRoomCount());
-		room.Enter();
-	}
+    @Override
+    public Door MakeDoor(Room r1, Room r2) {
+        // TODO Auto-generated method stub
+        return new Door(r1, r2);
+    }
+
+    public static void main(String[] args) {
+        MazeGame game = new BombedMazeGame();
+        Maze aMaze = game.CreateMaze();
+        Room room = aMaze.getRoom(1);
+        System.err.println("Rooms : " + aMaze.getRoomCount());
+        room.Enter();
+    }
 }

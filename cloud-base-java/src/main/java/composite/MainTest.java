@@ -1,6 +1,23 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package composite;
 
 import java.util.List;
+
 /**
  * @author shadow
  * @Date 2016年8月4日下午8:06:20
@@ -13,57 +30,57 @@ import java.util.List;
  * 			2.你希望用户忽略组合对象与单个对象的不同，用户将统一地使用组合结构中的所有对象。
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		//Tree对象的使用
-//		Tree treeA = new Tree("A");
-//		treeA.getRoot().add(new TreeNode("B"));
-//		treeA.getRoot().add(new TreeNode("C"));
-//		treeA.getRoot().add(new TreeNode("D"));
-//		
-//		TreeNode treeNodeE = new TreeNode("E");
-//		treeNodeE.add(new TreeNode("E01"));
-//		treeNodeE.add(new TreeNode("E02"));
-//		treeA.getRoot().add(treeNodeE);
-//		
-//		treeA.getRoot().add(new TreeNode("F"));
-//		
-//		
-//		print(treeA.getRoot());
-		
-		TreeNode treeA = new TreeNode("A");
-		treeA.add(new TreeNode("B"));
-		treeA.add(new TreeNode("C"));
-		TreeNode treeNodeD = new TreeNode("D");
-		treeNodeD.add(new TreeNode("D01"));
-		treeNodeD.add(new TreeNode("D02"));
-		treeA.add(treeNodeD);
-		
-		print(treeA);
-		
-		/**
-		 * 其他示例：文件系统（目录、文件），类似这种可用递归遍历的结构，用一个对象就能表示部分与整体，都可以用组合模式。
-		 */
-	}
-	
-	public static void print(TreeNode root){
-		if(root == null){
-			return;
-		}
-		System.err.println(root.getName());
-		print(root.getChildren());
-		
-	}
-	
-	public static void print(List<TreeNode> children){
-		if(children == null || children.size() <= 0){
-			return;
-		}
-		
-		for(int i = 0; i < children.size(); i++){
-			System.out.println(children.get(i).getName());
-			print(children.get(i).getChildren());
-		}		
-	}
+    public static void main(String[] args) {
+        //Tree对象的使用
+        //		Tree treeA = new Tree("A");
+        //		treeA.getRoot().add(new TreeNode("B"));
+        //		treeA.getRoot().add(new TreeNode("C"));
+        //		treeA.getRoot().add(new TreeNode("D"));
+        //		
+        //		TreeNode treeNodeE = new TreeNode("E");
+        //		treeNodeE.add(new TreeNode("E01"));
+        //		treeNodeE.add(new TreeNode("E02"));
+        //		treeA.getRoot().add(treeNodeE);
+        //		
+        //		treeA.getRoot().add(new TreeNode("F"));
+        //		
+        //		
+        //		print(treeA.getRoot());
+
+        TreeNode treeA = new TreeNode("A");
+        treeA.add(new TreeNode("B"));
+        treeA.add(new TreeNode("C"));
+        TreeNode treeNodeD = new TreeNode("D");
+        treeNodeD.add(new TreeNode("D01"));
+        treeNodeD.add(new TreeNode("D02"));
+        treeA.add(treeNodeD);
+
+        print(treeA);
+
+        /**
+         * 其他示例：文件系统（目录、文件），类似这种可用递归遍历的结构，用一个对象就能表示部分与整体，都可以用组合模式。
+         */
+    }
+
+    public static void print(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.err.println(root.getName());
+        print(root.getChildren());
+
+    }
+
+    public static void print(List<TreeNode> children) {
+        if (children == null || children.size() <= 0) {
+            return;
+        }
+
+        for (int i = 0; i < children.size(); i++) {
+            System.out.println(children.get(i).getName());
+            print(children.get(i).getChildren());
+        }
+    }
 }
 /**
  * 推荐博客：http://blog.csdn.net/hguisu/article/details/7530783

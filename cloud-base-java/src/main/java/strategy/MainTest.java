@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package strategy;
 
 /**
@@ -11,17 +27,17 @@ package strategy;
  *      策略模式多用在算法决策系统中，比如工资结算。<br/>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		double money = 998;
-		CashContext cashContext = new CashContext(new CashNormal());
-		System.out.println("原价：" + cashContext.acceptCash(money));
+    public static void main(String[] args) {
+        double money = 998;
+        CashContext cashContext = new CashContext(new CashNormal());
+        System.out.println("原价：" + cashContext.acceptCash(money));
 
-		cashContext.setCasher(new CashRebate(8.5));
-		System.out.println("打85折：" + cashContext.acceptCash(money));
+        cashContext.setCasher(new CashRebate(8.5));
+        System.out.println("打85折：" + cashContext.acceptCash(money));
 
-		cashContext.setCasher(new CashReturn(300, 50));
-		System.out.println("满300返50：" + cashContext.acceptCash(money));
-	}
+        cashContext.setCasher(new CashReturn(300, 50));
+        System.out.println("满300返50：" + cashContext.acceptCash(money));
+    }
 }
 /**
  * 分析和总结：<br/>
@@ -36,4 +52,3 @@ public class MainTest {
 /**
  * 推荐博客：http://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/strategy.html
  * */
- 

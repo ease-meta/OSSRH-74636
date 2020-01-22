@@ -1,8 +1,25 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package visitor;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 /**
  * @author shadow
  * @Date 2016年8月13日下午8:21:03
@@ -12,28 +29,28 @@ import java.util.List;
  * 		缺点：添加新的元素类，比较困难，因为需要修改抽象访问者的接口及实现，违反开-闭原则<br/>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		List<Flower> flowers = new ArrayList<>();
-		
-		for(int i = 0; i < 10; i++){
-			flowers.add(FlowerGenerator.newFlower());
-		}
-		
-		Visitor visitor = new StringVisitor();
-		Iterator<Flower> iterator = flowers.iterator();
-		while(iterator.hasNext()){
-			iterator.next().accept(visitor);
-			System.out.println(visitor);
-		}
-		System.out.println("-----------");
-		
-		visitor = new BeeVisitor();
-		iterator = flowers.iterator();
-		while(iterator.hasNext()){
-			iterator.next().accept(visitor);
-			System.out.println(visitor);
-		}
-	}
+    public static void main(String[] args) {
+        List<Flower> flowers = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            flowers.add(FlowerGenerator.newFlower());
+        }
+
+        Visitor visitor = new StringVisitor();
+        Iterator<Flower> iterator = flowers.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
+            System.out.println(visitor);
+        }
+        System.out.println("-----------");
+
+        visitor = new BeeVisitor();
+        iterator = flowers.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
+            System.out.println(visitor);
+        }
+    }
 }
 
 /**

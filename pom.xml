@@ -89,7 +89,6 @@
         <module>cloud-maven-plugin</module>
         <module>cloud-server</module>
         <module>cloud-gateway</module>
-        <module>cloud-nacos</module>
         <module>cloud-health</module>
         <module>cloud-apollo</module>
     </modules>

@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.workflow.framework.entity;
 
 import javax.persistence.Basic;
@@ -18,16 +34,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "sys_config", schema = "workflow", catalog = "")
 public class SysConfig {
-    private int configId;
-    private String configName;
-    private String configKey;
-    private String configValue;
-    private String configType;
-    private String createBy;
+    private int       configId;
+    private String    configName;
+    private String    configKey;
+    private String    configValue;
+    private String    configType;
+    private String    createBy;
     private Timestamp createTime;
-    private String updateBy;
+    private String    updateBy;
     private Timestamp updateTime;
-    private String remark;
+    private String    remark;
 
     @Id
     @Column(name = "config_id")
@@ -131,14 +147,25 @@ public class SysConfig {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         final SysConfig sysConfig = (SysConfig) o;
-        return configId == sysConfig.configId && Objects.equals(configName, sysConfig.configName) && Objects.equals(configKey, sysConfig.configKey) && Objects.equals(configValue, sysConfig.configValue) && Objects.equals(configType, sysConfig.configType) && Objects.equals(createBy, sysConfig.createBy) && Objects.equals(createTime, sysConfig.createTime) && Objects.equals(updateBy, sysConfig.updateBy) && Objects.equals(updateTime, sysConfig.updateTime) && Objects.equals(remark, sysConfig.remark);
+        return configId == sysConfig.configId && Objects.equals(configName, sysConfig.configName)
+               && Objects.equals(configKey, sysConfig.configKey)
+               && Objects.equals(configValue, sysConfig.configValue)
+               && Objects.equals(configType, sysConfig.configType)
+               && Objects.equals(createBy, sysConfig.createBy)
+               && Objects.equals(createTime, sysConfig.createTime)
+               && Objects.equals(updateBy, sysConfig.updateBy)
+               && Objects.equals(updateTime, sysConfig.updateTime)
+               && Objects.equals(remark, sysConfig.remark);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(configId, configName, configKey, configValue, configType, createBy, createTime, updateBy, updateTime, remark);
+        return Objects.hash(configId, configName, configKey, configValue, configType, createBy,
+            createTime, updateBy, updateTime, remark);
     }
 }
