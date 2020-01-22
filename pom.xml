@@ -12,8 +12,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.open.cloud</groupId>
-    <artifactId>open-cloud-platform</artifactId>
-    <version>${revision}</version>
+    <artifactId>cloud-platform</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <url>https://github.com/apache/dubbo</url>
@@ -77,7 +77,6 @@
         <module>cloud-core</module>
         <module>cloud-nacos</module>
         <module>cloud-sofa</module>
-        <module>cloud-elasticsearch</module>
         <module>cloud-batch</module>
         <module>cloud-oauth</module>
         <module>cloud-dependencies</module>

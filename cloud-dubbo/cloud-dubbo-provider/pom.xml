@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.open.cloud</groupId>
         <artifactId>cloud-dubbo</artifactId>
-        <version>${revision}</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>cloud-dubbo-provider</artifactId>
     <packaging>jar</packaging>
