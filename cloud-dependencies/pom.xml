@@ -87,6 +87,8 @@
         <jasypt.version>3.0.2</jasypt.version>
         <hutool-all.version>5.1.1</hutool-all.version>
         <guava.version>20.0</guava.version>
+        <joda-time.version>2.10.5</joda-time.version>
+        <okhttp.version>4.3.1</okhttp.version>
         <guice.version>4.2.2</guice.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
@@ -136,14 +138,14 @@
                 <scope>import</scope>
             </dependency>
 
-           <!-- <dependency>
+            <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
                 <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
--->
+
             <dependency>
                 <groupId>com.huaweicloud</groupId>
                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
@@ -289,6 +291,18 @@
             </dependency>
 
             <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.huaweicloud.dws</groupId>
                 <artifactId>huaweicloud-dws-jdbc</artifactId>
                 <version>${huaweicloud-dws-jdbc.version}</version>
@@ -314,6 +328,12 @@
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jline</groupId>
+                <artifactId>jline</artifactId>
+                <version>3.13.3</version>
             </dependency>
 
             <dependency>
@@ -352,6 +372,37 @@
                 <version>${commons-configuration2.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>1.9.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>0.9.12</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.typesafe</groupId>
+                <artifactId>config</artifactId>
+                <version>1.4.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>3.3.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.dagger</groupId>
+                <artifactId>dagger</artifactId>
+                <version>2.25.4</version>
+            </dependency>
+
+
             <!--阿里json工具类 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -383,6 +434,35 @@
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.easymock</groupId>
+                <artifactId>easymock</artifactId>
+                <version>4.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest -->
+            <dependency>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest_2.13</artifactId>
+                <version>3.2.0-M2</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.6.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>5.6.0</version>
                 <scope>test</scope>
             </dependency>
 
