@@ -14,16 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.common.spi.java.guice;
+package com.open.cloud.common.spi.guice;
 
-import com.google.inject.Inject;
+import com.google.inject.AbstractModule;
+import com.google.inject.Scopes;
 
-public class DogEgg {
-    @Inject
-    //告诉Guice，这里要注入东西，具体的注入规则从Module里找吧
-    public Service service;
+public final class CloudModule extends AbstractModule {
 
-    public void work() {
-        service.process();
-    }
+	@Override
+	protected void configure() {
+		bind(Service.class).to(DefaultService.class).in(Scopes.SINGLETON);
+	}
 }

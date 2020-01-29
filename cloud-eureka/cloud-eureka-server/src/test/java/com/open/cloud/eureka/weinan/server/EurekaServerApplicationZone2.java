@@ -1,7 +1,6 @@
 package com.open.cloud.eureka.weinan.server;
 
 import cn.hutool.core.net.NetUtil;
-import com.open.cloud.framework.ComponentScanFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -13,7 +12,7 @@ import org.springframework.core.env.Environment;
 @Slf4j
 @SpringBootApplication
 @EnableEurekaServer
-@ComponentScan(useDefaultFilters = false, excludeFilters = {@ComponentScan.Filter(type = FilterType.CUSTOM, classes = {ComponentScanFilter.class})})
+@ComponentScan(useDefaultFilters = false, excludeFilters = {@ComponentScan.Filter(type = FilterType.CUSTOM)})
 public class EurekaServerApplicationZone2 {
     public static void main(String[] args) {
         Environment env = new SpringApplicationBuilder(EurekaServerApplicationZone2.class).run(args).getEnvironment();

@@ -14,24 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.common.spi.java.guice;
+package com.open.cloud.common.spi.guice;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import com.google.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 
-public class InjectorFactory {
+public interface Service {
+    void process();
+}
 
-    public static Injector getInjector() {
-        return InjectorFactoryHolder.injector;
+@Slf4j
+@Singleton
+// 这个注解告诉Guice，该实现全局单例
+class DefaultService implements Service {
+    @Override
+    public void process() {
+        log.info("2020年");
     }
+}
 
-    private static class InjectorFactoryHolder {
-
-        private static Injector injector;
-
-        static {
-            injector = Guice.createInjector(new CloudModule());
-        }
-
+@Slf4j
+class DefaultService2 implements Service {
+    @Override
+    public void process() {
+        log.info("20201");
     }
 }

@@ -14,29 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.common.spi.java.guice;
+package com.open.cloud.common.spi.guice;
 
-import com.google.inject.Singleton;
-import lombok.extern.slf4j.Slf4j;
+import com.google.inject.Inject;
 
-public interface Service {
-    void process();
-}
+public class DogEgg {
+    @Inject
+    //告诉Guice，这里要注入东西，具体的注入规则从Module里找吧
+    public Service service;
 
-@Slf4j
-@Singleton
-// 这个注解告诉Guice，该实现全局单例
-class DefaultService implements Service {
-    @Override
-    public void process() {
-        log.info("2020年");
-    }
-}
-
-@Slf4j
-class DefaultService2 implements Service {
-    @Override
-    public void process() {
-        log.info("20201");
+    public void work() {
+        service.process();
     }
 }

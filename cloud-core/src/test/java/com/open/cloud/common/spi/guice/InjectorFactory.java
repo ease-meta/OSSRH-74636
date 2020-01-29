@@ -14,11 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.common.spi.java.guice;
+package com.open.cloud.common.spi.guice;
 
-public class Main {
-    public static void main(String[] args) {
-        DogEgg dogEgg = InjectorFactory.getInjector().getInstance(DogEgg.class);
-        dogEgg.work();
-    }
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+/**
+ * @author Leijian
+ */
+public class InjectorFactory {
+	private InjectorFactory() {
+
+	}
+
+	public static Injector getInjector() {
+		return InjectorFactoryHolder.injector;
+	}
+
+	private static class InjectorFactoryHolder {
+
+		private static Injector injector;
+
+		static {
+			injector = Guice.createInjector(new CloudModule());
+		}
+
+	}
 }
