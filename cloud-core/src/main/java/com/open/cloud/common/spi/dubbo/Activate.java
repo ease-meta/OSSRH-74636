@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 public @interface Activate {
 	String[] group() default {};
 
-	String[] value() default {};
+	String value();
 
 	int order() default 0;
 

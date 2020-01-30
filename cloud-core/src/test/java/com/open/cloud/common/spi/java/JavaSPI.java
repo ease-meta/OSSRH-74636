@@ -16,5 +16,8 @@
  */
 package com.open.cloud.common.spi.java;
 
+import com.open.cloud.common.spi.dubbo.SPI;
+
+@SPI()
 public interface JavaSPI extends BaseSPI {
 }
