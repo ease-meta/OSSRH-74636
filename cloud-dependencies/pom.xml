@@ -38,6 +38,7 @@
 
         <revision>0.0.1-SNAPSHOT</revision>
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.0.BUILD-SNAPSHOT</spring-boot.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <dubbo.version>2.7.5</dubbo.version>
         <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
