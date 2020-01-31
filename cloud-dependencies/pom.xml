@@ -59,8 +59,8 @@
         <!--高性能框架-->
         <disruptor.version>[3.4.2,)</disruptor.version>
         <!--安全鉴权-->
-        <shiro-spring.version>1.4.2</shiro-spring.version>
-        <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
+        <shiro-spring.version>[1.4.2,)</shiro-spring.version>
+        <spring-statemachine.version>[2.1.3.RELEASE,)</spring-statemachine.version>
         <!--链路跟踪-->
         <zipkin.version>2.12.9</zipkin.version>
         <apollo.version>[1.5.1,)</apollo.version>
@@ -158,7 +158,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
+                <version>[${spring-cloud-alibaba.version},)</version>
             </dependency>
 
             <!--蚂蚁分布式事务-->
@@ -190,13 +190,13 @@
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${spring-rocketmq.version}</version>
+                <version>[${spring-rocketmq.version},)</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.kafka</groupId>
                 <artifactId>spring-kafka</artifactId>
-                <version>${spring-kafka.version}</version>
+                <version>[${spring-kafka.version},)</version>
             </dependency>
 
             <!--监控、链路跟踪-->
@@ -228,7 +228,7 @@
             <dependency>
                 <groupId>cn.afterturn</groupId>
                 <artifactId>easypoi-spring-boot-starter</artifactId>
-                <version>${easypoi.version}</version>
+                <version>[${easypoi.version},)</version>
             </dependency>
 
             <dependency>
