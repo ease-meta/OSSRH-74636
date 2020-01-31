@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
@@ -205,22 +206,26 @@ public class ExtensionLoader<T> {
 										}
 										if (line.length() > 0) {
 											Class<?> clazz = Class.forName(line, true, classLoader);
+
 											if (!type.isAssignableFrom(clazz)) {
 												throw new IllegalStateException("Error when load extension class(interface: " + type + ", class line: " + clazz.getName() + "), class " + clazz.getName()
 														+ "is not subtype of interface.");
 											}
-											if (cachedWrapperClasses == null) {
-												cachedWrapperClasses = new ConcurrentHashSet<Class<?>>();
+											Activate activate = (Activate) getAnnotationsByType(clazz, Activate.class);
+											if (Objects.isNull(activate) || activate.activate()) {
+												if (cachedWrapperClasses == null) {
+													cachedWrapperClasses = new ConcurrentHashSet<Class<?>>();
+												}
+												cachedWrapperClasses.add(clazz);
+												SPI spi = (SPI) getAnnotationsByType(clazz, SPI.class);
+												if (!StringUtils.hasText(name)) {
+													name = spi.value();
+												}
+												if (StringUtils.isEmpty(name)) {
+													throw new IllegalStateException();
+												}
+												extensionClasses.put(name, clazz);
 											}
-											cachedWrapperClasses.add(clazz);
-											SPI spi = (SPI) getAnnotationsByType(clazz, SPI.class);
-											if (!StringUtils.hasText(name)) {
-												name = spi.value();
-											}
-											if (StringUtils.isEmpty(name)) {
-												throw new IllegalStateException();
-											}
-											extensionClasses.put(name, clazz);
 										}
 									} catch (Throwable t) {
 										IllegalStateException e =

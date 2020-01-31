@@ -37,61 +37,61 @@
         <java.version>1.8</java.version>
 
         <revision>0.0.1-SNAPSHOT</revision>
-        <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
-        <dubbo.version>2.7.5</dubbo.version>
-        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
-        <sofa-boot.version>3.2.2</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
-        <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
+        <spring-boot.version>[2.2.4.RELEASE,)</spring-boot.version>
+        <spring-cloud.version>[Hoxton.SR1,)</spring-cloud.version>
+        <dubbo.version>[2.7.5,)</dubbo.version>
+        <spring-cloud-alibaba.version>[2.1.1.RELEASE,)</spring-cloud-alibaba.version>
+        <sofa-boot.version>[3.2.1,)</sofa-boot.version>
+        <sofa-boot-enterprise.version>[3.2.1,)</sofa-boot-enterprise.version>
+        <spring-cloud-huawei.version>[1.0.0,)</spring-cloud-huawei.version>
+        <spring-boot-admin.version>[2.2.0,)</spring-boot-admin.version>
         <!--消息中间件-->
-        <spring-kafka.version>2.4.1.RELEASE</spring-kafka.version>
-        <spring-rocketmq.version>2.0.4</spring-rocketmq.version>
-        <rocketmq.version>4.6.0</rocketmq.version>
+        <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
+        <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
+        <rocketmq.version>[4.6.0,)</rocketmq.version>
         <!--数据库操作-->
-        <druid.version>1.1.21</druid.version>
-        <mybatis.boot.version>2.1.1</mybatis.boot.version>
-        <mybatis.plus.version>3.3.1</mybatis.plus.version>
-        <shardingsphere.version>4.0.0</shardingsphere.version>
+        <druid.version>[1.1.21,)</druid.version>
+        <mybatis.boot.version>[2.1.1,)</mybatis.boot.version>
+        <mybatis.plus.version>[3.3.1,)</mybatis.plus.version>
+        <shardingsphere.version>[4.0.0,)</shardingsphere.version>
         <!--缓存-->
-        <caffeine.version>2.8.1</caffeine.version>
+        <caffeine.version>[2.8.1,)</caffeine.version>
         <!--高性能框架-->
-        <disruptor.version>3.4.2</disruptor.version>
+        <disruptor.version>[3.4.2,)</disruptor.version>
         <!--安全鉴权-->
-        <shiro-spring.version>1.4.2</shiro-spring.version>
-        <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
+        <shiro-spring.version>[1.4.2,)</shiro-spring.version>
+        <spring-statemachine.version>[2.1.3.RELEASE,)</spring-statemachine.version>
         <!--链路跟踪-->
-        <zipkin.version>2.12.9</zipkin.version>
-        <apollo.version>1.5.1</apollo.version>
-        <perf4j.version>0.9.16</perf4j.version>
-        <p6spy.version>3.8.7</p6spy.version>
-        <nacos.version>1.1.4</nacos.version>
-        <huaweicloud-dws-jdbc.version>1.5.301</huaweicloud-dws-jdbc.version>
+        <zipkin.version>[2.12.9,)</zipkin.version>
+        <apollo.version>[1.5.1,)</apollo.version>
+        <perf4j.version>[0.9.16,)</perf4j.version>
+        <p6spy.version>[3.8.7,)</p6spy.version>
+        <nacos.version>[1.1.4,)</nacos.version>
+        <huaweicloud-dws-jdbc.version>[1.5.301,)</huaweicloud-dws-jdbc.version>
         <!--单元测试-->
-        <org.mockito.version>3.2.4</org.mockito.version>
-        <testng.version>7.1.0</testng.version>
+        <org.mockito.version>[3.2.4,)</org.mockito.version>
+        <testng.version>[7.1.0,)</testng.version>
         <!--公共及工具类-->
-        <curator.version>2.9.1</curator.version>
-        <activiti.version>7.1.0.M5</activiti.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
-        <commons-io.version>2.6</commons-io.version>
-        <commons-configuration2.version>2.6</commons-configuration2.version>
-        <commons-text.version>1.8</commons-text.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-compress.version>1.19</commons-compress.version>
-        <fastjson.version>1.2.62</fastjson.version>
-        <jjwt.version>0.9.1</jjwt.version>
-        <easypoi.version>4.1.3</easypoi.version>
-        <easyexcel.version>2.1.6</easyexcel.version>
-        <jasypt.version>3.0.2</jasypt.version>
-        <hutool-all.version>5.1.1</hutool-all.version>
+        <curator.version>[2.9.1,)</curator.version>
+        <activiti.version>[7.1.0.M5,)</activiti.version>
+        <commons-lang3.version>[3.9,)</commons-lang3.version>
+        <commons-io.version>[2.6,)</commons-io.version>
+        <commons-configuration2.version>[2.6,)</commons-configuration2.version>
+        <commons-text.version>[1.8,)</commons-text.version>
+        <commons-collections4.version>[4.4,)</commons-collections4.version>
+        <commons-compress.version>[1.19,)</commons-compress.version>
+        <fastjson.version>[1.2.62,)</fastjson.version>
+        <jjwt.version>[0.9.1,)</jjwt.version>
+        <easypoi.version>[4.1.3,)</easypoi.version>
+        <easyexcel.version>[2.1.6,)</easyexcel.version>
+        <jasypt.version>[3.0.2,)</jasypt.version>
+        <hutool-all.version>[5.1.0,)</hutool-all.version>
         <guava.version>20.0</guava.version>
-        <joda-time.version>2.10.5</joda-time.version>
-        <okhttp.version>4.3.1</okhttp.version>
-        <guice.version>4.2.2</guice.version>
-        <kaptcha.version>2.3.2</kaptcha.version>
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <joda-time.version>[2.10.5,)</joda-time.version>
+        <okhttp.version>[4.3.1,)</okhttp.version>
+        <guice.version>[4.2.2,)</guice.version>
+        <kaptcha.version>[2.3.2,)</kaptcha.version>
+        <springfox-swagger2.version>[2.9.2,)</springfox-swagger2.version>
     </properties>
 
     <dependencyManagement>
@@ -222,6 +222,13 @@
                 <artifactId>easypoi</artifactId>
                 <version>${easypoi.version}</version>
                 <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-spring-boot-starter</artifactId>
+                <version>${easypoi.version}</version>
             </dependency>
 
             <dependency>
@@ -444,7 +451,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.scalatest/scalatest -->
             <dependency>
                 <groupId>org.scalatest</groupId>
                 <artifactId>scalatest_2.13</artifactId>
