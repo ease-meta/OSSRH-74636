@@ -8,3 +8,7 @@ apollo:
 logging:
   level:
     com.ctrip.framework: DEBUG
+open:
+  cloud:
+    apollo:
+      enabled: true
