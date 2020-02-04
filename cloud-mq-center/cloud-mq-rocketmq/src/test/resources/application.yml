@@ -1,0 +1,12 @@
+rocketmq:
+  producer:
+    enable-msg-trace: true
+    group: ${spring.application.name}
+    max-message-size: 4096
+    send-message-timeout: 3000
+    retry-times-when-send-failed: 2
+    retry-times-when-send-async-failed: 2
+  name-server: 10.7.25.201:9876
+spring:
+  application:
+    name: cloud-mq-rocketmq

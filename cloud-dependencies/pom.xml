@@ -47,7 +47,7 @@
         <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <!--消息中间件-->
         <spring-kafka.version>2.4.1.RELEASE</spring-kafka.version>
-        <spring-rocketmq.version>2.0.4</spring-rocketmq.version>
+        <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
         <rocketmq.version>4.6.0</rocketmq.version>
         <!--数据库操作-->
         <druid.version>1.1.21</druid.version>
