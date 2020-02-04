@@ -35,9 +35,7 @@ import java.util.Date;
  */
 public class LocalDateTimeUtils {
 
-	private LocalDateTimeUtils() {
-
-	}
+	private LocalDateTimeUtils() { }
 
 	public static LocalDate localDateNow() {
 		return LocalDate.now();
