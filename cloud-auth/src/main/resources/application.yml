@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: @artifactId@
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      jdbc-url:
+      username:
+      password:
+server:
+  port: 9001
+
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://122.51.108.224:8001/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health

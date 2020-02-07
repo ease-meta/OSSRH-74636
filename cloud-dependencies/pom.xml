@@ -26,6 +26,13 @@
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
         <license.maven.plugin>3.0</license.maven.plugin>
+        <security.oauth.version>2.3.6.RELEASE</security.oauth.version>
+        <docker.plugin.version>0.32.0</docker.plugin.version>
+        <docker.host>http://172.17.0.111:2375</docker.host>
+        <docker.registry>172.17.0.111</docker.registry>
+        <docker.namespace>library</docker.namespace>
+        <docker.username>admin</docker.username>
+        <docker.password>Harbor12345</docker.password>
 
         <maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
@@ -40,7 +47,7 @@
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <dubbo.version>2.7.5</dubbo.version>
-        <spring-cloud-alibaba.version>2.1.1.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <sofa-boot.version>3.2.2</sofa-boot.version>
         <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
         <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
@@ -59,6 +66,7 @@
         <!--高性能框架-->
         <disruptor.version>3.4.2</disruptor.version>
         <!--安全鉴权-->
+        <security.oauth.version>[2.3.6.RELEASE,)</security.oauth.version>
         <jjwt.version>[0.9.1,)</jjwt.version>
         <java-jwt.version>[3.2.0,)</java-jwt.version>
         <shiro-spring.version>[1.4.2,)</shiro-spring.version>
@@ -77,11 +85,13 @@
         <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
         <jline.version>[3.13.3,)</jline.version>
+        <oshi.version>[3.9.1,)</oshi.version>
         <curator.version>[2.9.1,)</curator.version>
         <activiti.version>7.1.0.M5</activiti.version>
         <commons-beanutils.version>[1.9.4,)</commons-beanutils.version>
         <reflections.version>[0.9.12,)</reflections.version>
         <commons-lang3.version>[3.9,)</commons-lang3.version>
+        <commons-codec.version>[1.11,)</commons-codec.version>
         <commons-io.version>[2.6,)</commons-io.version>
         <commons-configuration2.version>[2.6,)</commons-configuration2.version>
         <commons-text.version>[1.8,)</commons-text.version>
@@ -174,7 +184,12 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
             </dependency>
-
+            <!--稳定版本，替代spring security bom内置-->
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${security.oauth.version}</version>
+            </dependency>
             <!--携程配置中心-->
             <dependency>
                 <groupId>com.ctrip.framework.apollo</groupId>
@@ -362,10 +377,24 @@
                 <version>${jline.version}</version>
             </dependency>
 
+            <!--硬件信息获取-->
+            <dependency>
+                <groupId>com.github.oshi</groupId>
+                <artifactId>oshi-core</artifactId>
+                <version>${oshi.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- BASE64处理 -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
             </dependency>
 
             <dependency>
@@ -500,6 +529,34 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker.plugin.version}</version>
+                    <configuration>
+                        <!-- Docker Remote Api-->
+                        <dockerHost>${docker.host}</dockerHost>
+                        <!-- Docker 镜像私服-->
+                        <registry>${docker.registry}</registry>
+                        <!-- 认证信息-->
+                        <authConfig>
+                            <push>
+                                <username>${docker.username}</username>
+                                <password>${docker.password}</password>
+                            </push>
+                        </authConfig>
+                        <images>
+                            <image>
+                                <!-- 镜像名称： 172.17.0.111/library/pig-gateway:2.6.3-->
+                                <name>${docker.registry}/${docker.namespace}/${project.name}:${project.version}</name>
+                                <build>
+                                    <dockerFile>${project.basedir}/Dockerfile</dockerFile>
+                                </build>
+                            </image>
+                        </images>
+                    </configuration>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
