@@ -12,10 +12,17 @@
     <artifactId>cloud-eureka-service</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>net.bull.javamelody</groupId>
+            <artifactId>javamelody-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <version>0.0.1-SNAPSHOT</version>
             <artifactId>cloud-webflux</artifactId>
         </dependency>
 
@@ -33,14 +40,5 @@
             <groupId>com.alipay.sofa</groupId>
             <artifactId>tracer-sofa-boot-starter</artifactId>
         </dependency>-->
-
-        <dependency>
-            <groupId>net.bull.javamelody</groupId>
-            <artifactId>javamelody-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.lowagie</groupId>
-            <artifactId>itext</artifactId>
-        </dependency>
     </dependencies>
 </project>
