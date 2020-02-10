@@ -74,10 +74,11 @@
         <!--链路跟踪-->
         <zipkin.version>2.12.9</zipkin.version>
         <apollo.version>1.5.1</apollo.version>
-        <perf4j.version>0.9.16</perf4j.version>
-        <p6spy.version>3.8.7</p6spy.version>
+        <perf4j.version>[0.9.16,)</perf4j.version>
+        <p6spy.version>[3.8.7,)</p6spy.version>
         <nacos.version>1.1.4</nacos.version>
-        <huaweicloud-dws-jdbc.version>1.5.301</huaweicloud-dws-jdbc.version>
+        <javamelody.spring.boot.version>[1.72.0,)</javamelody.spring.boot.version>
+        <huaweicloud-dws-jdbc.version>[1.5.301,)</huaweicloud-dws-jdbc.version>
         <!--单元测试-->
         <org.mockito.version>[3.2.4,)</org.mockito.version>
         <testng.version>[7.1.0,)</testng.version>
@@ -243,6 +244,12 @@
                 <scope>import</scope>
             </dependency>
 
+
+            <dependency>
+                <groupId>net.bull.javamelody</groupId>
+                <artifactId>javamelody-spring-boot-starter</artifactId>
+                <version>${javamelody.spring.boot.version}</version>
+            </dependency>
             <!--三方jar包-->
             <dependency>
                 <groupId>cn.afterturn</groupId>

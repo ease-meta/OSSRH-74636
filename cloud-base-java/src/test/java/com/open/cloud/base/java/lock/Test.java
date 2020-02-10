@@ -16,6 +16,7 @@
  */
 package com.open.cloud.base.java.lock;
 
+import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Test {
@@ -46,5 +47,9 @@ public class Test {
 		System.out.println("线程不安全：" + value1);
 		System.out.println("乐观锁(AtomicInteger)：" + value2);
 		System.out.println("悲观锁(synchronized)：" + value3);
+		HashMap hashMap = new HashMap(1);
+		hashMap.put("1","2");
+		hashMap.put("2","2");
+		hashMap.put("2","2");
 	}
 }

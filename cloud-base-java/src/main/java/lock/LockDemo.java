@@ -41,7 +41,9 @@ public class LockDemo {
 	}
 
 	public static void main(String[] args) {
-		Thread thread = new Thread();
+		int i = 128;
+		byte b = (byte) i;
+		System.out.println(b);
 
 	}
 

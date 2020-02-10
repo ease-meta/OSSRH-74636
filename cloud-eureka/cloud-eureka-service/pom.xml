@@ -33,5 +33,11 @@
             <groupId>com.alipay.sofa</groupId>
             <artifactId>tracer-sofa-boot-starter</artifactId>
         </dependency>-->
+
+        <dependency>
+            <groupId>net.bull.javamelody</groupId>
+            <artifactId>javamelody-spring-boot-starter</artifactId>
+            <version>1.72.0</version>
+        </dependency>
     </dependencies>
 </project>
