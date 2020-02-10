@@ -85,6 +85,7 @@
         <easymock.version>[4.1,)</easymock.version>
         <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
+        <itex.version>[2.1.7,)</itex.version>
         <jline.version>[3.13.3,)</jline.version>
         <oshi.version>[3.9.1,)</oshi.version>
         <curator.version>[2.9.1,)</curator.version>
@@ -294,6 +295,26 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>${easyexcel.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>${itex.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>bcmail-jdk14</artifactId>
+                        <groupId>bouncycastle</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>bcprov-jdk14</artifactId>
+                        <groupId>bouncycastle</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>bctsp-jdk14</artifactId>
+                        <groupId>bouncycastle</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
