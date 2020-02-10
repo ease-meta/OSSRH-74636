@@ -102,6 +102,7 @@
         <module>cloud-gateway</module>
         <module>cloud-health</module>
         <module>cloud-apollo</module>
+        <module>cloud-sloars</module>
     </modules>
 
     <build>

@@ -9,10 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-server</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>seata-server</artifactId>
 
-    <modules>
-        <module>seata-server</module>
-    </modules>
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.seata/seata-server -->
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-server</artifactId>
+            <version>[1.0.0,)</version>
+        </dependency>
+    </dependencies>
+
 </project>
