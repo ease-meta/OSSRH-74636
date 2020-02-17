@@ -20,13 +20,13 @@ import com.open.cloud.common.spi.dubbo.SPI;
 
 @SPI("JavaSPIService")
 public class JavaSPIService implements JavaSPI {
-	@Override
-	public int getOrder() {
-		return 0;
-	}
+    @Override
+    public int getOrder() {
+        return 0;
+    }
 
-	@Override
-	public String supportName() {
-		return null;
-	}
+    @Override
+    public String supportName() {
+        return null;
+    }
 }

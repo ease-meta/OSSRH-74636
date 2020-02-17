@@ -34,45 +34,46 @@ import static org.springframework.util.ObjectUtils.containsElement;
  */
 public abstract class BeanFactoryUtils {
 
-	public static <T> T getOptionalBean(ListableBeanFactory beanFactory, String beanName, Class<T> beanType) {
+    public static <T> T getOptionalBean(ListableBeanFactory beanFactory, String beanName,
+                                        Class<T> beanType) {
 
-		if (!hasText(beanName)) {
-			return null;
-		}
+        if (!hasText(beanName)) {
+            return null;
+        }
 
-		String[] beanNames = of(beanName);
+        String[] beanNames = of(beanName);
 
-		List<T> beans = getBeans(beanFactory, beanNames, beanType);
+        List<T> beans = getBeans(beanFactory, beanNames, beanType);
 
-		return isEmpty(beans) ? null : beans.get(0);
-	}
+        return isEmpty(beans) ? null : beans.get(0);
+    }
 
+    /**
+     * Gets name-matched Beans from {@link ListableBeanFactory BeanFactory}
+     *
+     * @param beanFactory {@link ListableBeanFactory BeanFactory}
+     * @param beanNames   the names of Bean
+     * @param beanType    the {@link Class type} of Bean
+     * @param <T>         the {@link Class type} of Bean
+     * @return the read-only and non-null {@link List} of Bean names
+     */
+    public static <T> List<T> getBeans(ListableBeanFactory beanFactory, String[] beanNames,
+                                       Class<T> beanType) {
 
-	/**
-	 * Gets name-matched Beans from {@link ListableBeanFactory BeanFactory}
-	 *
-	 * @param beanFactory {@link ListableBeanFactory BeanFactory}
-	 * @param beanNames   the names of Bean
-	 * @param beanType    the {@link Class type} of Bean
-	 * @param <T>         the {@link Class type} of Bean
-	 * @return the read-only and non-null {@link List} of Bean names
-	 */
-	public static <T> List<T> getBeans(ListableBeanFactory beanFactory, String[] beanNames, Class<T> beanType) {
+        if (isEmpty(beanNames)) {
+            return emptyList();
+        }
 
-		if (isEmpty(beanNames)) {
-			return emptyList();
-		}
+        String[] allBeanNames = beanNamesForTypeIncludingAncestors(beanFactory, beanType);
 
-		String[] allBeanNames = beanNamesForTypeIncludingAncestors(beanFactory, beanType);
+        List<T> beans = new ArrayList<T>(beanNames.length);
 
-		List<T> beans = new ArrayList<T>(beanNames.length);
+        for (String beanName : beanNames) {
+            if (containsElement(allBeanNames, beanName)) {
+                beans.add(beanFactory.getBean(beanName, beanType));
+            }
+        }
 
-		for (String beanName : beanNames) {
-			if (containsElement(allBeanNames, beanName)) {
-				beans.add(beanFactory.getBean(beanName, beanType));
-			}
-		}
-
-		return unmodifiableList(beans);
-	}
+        return unmodifiableList(beans);
+    }
 }

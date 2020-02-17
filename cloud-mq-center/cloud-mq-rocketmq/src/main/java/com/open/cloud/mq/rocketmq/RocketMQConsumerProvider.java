@@ -16,7 +16,7 @@
  */
 package com.open.cloud.mq.rocketmq;
 
-import com.open.cloud.common.serialize.JsonSerializer;
+import com.open.cloud.common.serializer.JsonSerializer;
 import com.open.cloud.common.utils.LogUtils;
 import com.open.cloud.mq.base.AbstractConsumer;
 import com.open.cloud.mq.base.AbstractConsumerProvider;
@@ -89,7 +89,9 @@ public class RocketMQConsumerProvider extends AbstractConsumerProvider {
 						if (type == String.class) {
 							runnable.run(new Message<T>(id, topic, tags, (T) msg));
 						} else {
-							runnable.run(new Message<T>(id, topic, tags, new JsonSerializer().deserialize(msg, type)));
+							JsonSerializer jsonSerializer = new JsonSerializer();
+							jsonSerializer.deserialize(body,type);
+							runnable.run(new Message<T>(id, topic, tags,(T)jsonSerializer.deserialize(body,type)));
 						}
 						return null;
 					} catch (Exception e) {

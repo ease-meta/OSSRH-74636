@@ -37,10 +37,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Response<T> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private Ret ret;
+    private Ret               ret;
 
-	private T result;
+    private T                 result;
 
 }

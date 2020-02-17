@@ -16,7 +16,7 @@
  */
 package com.open.cloud.mq.rocketmq;
 
-import com.open.cloud.common.serialize.JsonSerializer;
+import com.open.cloud.common.serializer.JsonSerializer;
 import com.open.cloud.common.utils.LogUtils;
 import com.open.cloud.mq.base.AbstractProducer;
 import com.open.cloud.mq.base.AbstractProducerProvider;
@@ -58,12 +58,13 @@ public class RocketMQProducerProvider extends AbstractProducerProvider {
 	public <T> AbstractProducer sendMessage(String topic, String tag, T msg) {
 		try {
 			String msgJson = null;
+			byte[] body;
 			if (msg instanceof String) {
-				msgJson = (String) msg;
+				body =((String) msg).getBytes(RemotingHelper.DEFAULT_CHARSET);
 			} else {
-				msgJson = new JsonSerializer().serialize(msg);
+				body = new JsonSerializer().serialize(msg);
 			}
-			Message message = new Message(topic, StringUtils.isEmpty(tag) ? "" : tag, msgJson.getBytes(RemotingHelper.DEFAULT_CHARSET));
+			Message message = new Message(topic, StringUtils.isEmpty(tag) ? "" : tag, body);
 			object.send(message);
 			return producer;
 		} catch (Exception exp) {

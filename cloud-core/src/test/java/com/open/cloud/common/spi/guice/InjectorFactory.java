@@ -23,21 +23,21 @@ import com.google.inject.Injector;
  * @author Leijian
  */
 public class InjectorFactory {
-	private InjectorFactory() {
+    private InjectorFactory() {
 
-	}
+    }
 
-	public static Injector getInjector() {
-		return InjectorFactoryHolder.injector;
-	}
+    public static Injector getInjector() {
+        return InjectorFactoryHolder.injector;
+    }
 
-	private static class InjectorFactoryHolder {
+    private static class InjectorFactoryHolder {
 
-		private static Injector injector;
+        private static Injector injector;
 
-		static {
-			injector = Guice.createInjector(new CloudModule());
-		}
+        static {
+            injector = Guice.createInjector(new CloudModule());
+        }
 
-	}
+    }
 }

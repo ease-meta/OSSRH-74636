@@ -48,7 +48,6 @@ public class MemInfo {
         return NumberUtil.div(used, (1024 * 1024 * 1024), 2);
     }
 
-
     public double getFree() {
         return NumberUtil.div(free, (1024 * 1024 * 1024), 2);
     }

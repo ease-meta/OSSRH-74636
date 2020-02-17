@@ -21,21 +21,22 @@ import javassist.LoaderClassPath;
 
 public class ClassPoolUtils {
 
-	private static volatile ClassPool instance;
+    private static volatile ClassPool instance;
 
-	private ClassPoolUtils() {
-	}
+    private ClassPoolUtils() {
+    }
 
-	public static ClassPool getInstance() {
-		if (instance == null) {
-			synchronized (ClassPoolUtils.class) {
-				if (instance == null) {
-					instance = ClassPool.getDefault();
-					instance.appendClassPath(new LoaderClassPath(Thread.currentThread().getContextClassLoader()));
-				}
-			}
-		}
-		return instance;
-	}
+    public static ClassPool getInstance() {
+        if (instance == null) {
+            synchronized (ClassPoolUtils.class) {
+                if (instance == null) {
+                    instance = ClassPool.getDefault();
+                    instance.appendClassPath(new LoaderClassPath(Thread.currentThread()
+                        .getContextClassLoader()));
+                }
+            }
+        }
+        return instance;
+    }
 
 }

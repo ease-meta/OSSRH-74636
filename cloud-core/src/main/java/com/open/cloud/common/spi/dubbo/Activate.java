@@ -27,13 +27,13 @@ import java.lang.annotation.Target;
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target({ ElementType.TYPE, ElementType.METHOD })
 public @interface Activate {
-	String[] group() default {};
+    String[] group() default {};
 
-	String value();
+    String value();
 
-	int order() default 0;
+    int order() default 0;
 
-	boolean activate() default true;
+    boolean activate() default true;
 }

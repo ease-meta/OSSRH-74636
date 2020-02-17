@@ -21,8 +21,8 @@ import com.google.inject.Scopes;
 
 public final class CloudModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		bind(Service.class).to(DefaultService.class).in(Scopes.SINGLETON);
-	}
+    @Override
+    protected void configure() {
+        bind(Service.class).to(DefaultService.class).in(Scopes.SINGLETON);
+    }
 }

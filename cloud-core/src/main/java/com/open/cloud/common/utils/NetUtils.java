@@ -16,7 +16,6 @@
  */
 package com.open.cloud.common.utils;
 
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -60,7 +59,8 @@ public class NetUtils {
                 InetAddress address = addressEnumeration.nextElement();
 
                 // ignores all invalidated addresses
-                if (address.isLinkLocalAddress() || address.isLoopbackAddress() || address.isAnyLocalAddress()) {
+                if (address.isLinkLocalAddress() || address.isLoopbackAddress()
+                    || address.isAnyLocalAddress()) {
                     continue;
                 }
 

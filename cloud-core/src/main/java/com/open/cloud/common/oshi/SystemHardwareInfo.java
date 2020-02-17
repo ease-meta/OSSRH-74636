@@ -46,32 +46,32 @@ import java.util.Properties;
 @Data
 public class SystemHardwareInfo {
 
-    private static final int OSHI_WAIT_SECOND = 1000;
+    private static final int  OSHI_WAIT_SECOND = 1000;
 
     /**
      * CPU相关信息
      */
-    private CpuInfo cpu = new CpuInfo();
+    private CpuInfo           cpu              = new CpuInfo();
 
     /**
      * 內存相关信息
      */
-    private MemInfo mem = new MemInfo();
+    private MemInfo           mem              = new MemInfo();
 
     /**
      * JVM相关信息
      */
-    private JvmInfo jvm = new JvmInfo();
+    private JvmInfo           jvm              = new JvmInfo();
 
     /**
      * 服务器相关信息
      */
-    private SysInfo sys = new SysInfo();
+    private SysInfo           sys              = new SysInfo();
 
     /**
      * 磁盘相关信息
      */
-    private List<SysFileInfo> sysFiles = new LinkedList<>();
+    private List<SysFileInfo> sysFiles         = new LinkedList<>();
 
     public void copyTo() {
         SystemInfo si = new SystemInfo();

@@ -23,11 +23,11 @@ import java.lang.reflect.Array;
  */
 public abstract class ObjectUtils {
 
-	public static <T> T[] of(T... values) {
-		return values;
-	}
+    public static <T> T[] of(T... values) {
+        return values;
+    }
 
-	public static <T> T[] emptyArray(Class<T> componentType) {
-		return (T[]) Array.newInstance(componentType, 0);
-	}
+    public static <T> T[] emptyArray(Class<T> componentType) {
+        return (T[]) Array.newInstance(componentType, 0);
+    }
 }

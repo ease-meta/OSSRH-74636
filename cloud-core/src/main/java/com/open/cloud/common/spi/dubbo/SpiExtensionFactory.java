@@ -21,9 +21,9 @@ package com.open.cloud.common.spi.dubbo;
  */
 public class SpiExtensionFactory implements ExtensionFactory {
 
-	@Override
-	public <T> T getExtension(Class<T> type, String name) {
-		return null;
-	}
+    @Override
+    public <T> T getExtension(Class<T> type, String name) {
+        return null;
+    }
 
 }

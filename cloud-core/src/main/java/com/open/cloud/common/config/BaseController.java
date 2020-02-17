@@ -41,11 +41,12 @@ import java.util.Date;
  */
 public class BaseController<T> {
 
-
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"), true));
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat(
+            "yyyy-MM-dd HH:mm:ss"), true));
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat(
+            "yyyy-MM-dd"), true));
 
     }
 
@@ -58,8 +59,8 @@ public class BaseController<T> {
     }
 
     @SuppressWarnings("hiding")
-	protected <T> Response<T> response(HttpStatus code, T object) {
-        return Response.<T>builder().ret(extracted(code)).result(object).build();
+    protected <T> Response<T> response(HttpStatus code, T object) {
+        return Response.<T> builder().ret(extracted(code)).result(object).build();
 
     }
 
@@ -69,10 +70,10 @@ public class BaseController<T> {
     }
 
     public Response<Void> response(HttpStatus code) {
-        return Response.<Void>builder().ret(extracted(code)).build();
+        return Response.<Void> builder().ret(extracted(code)).build();
     }
 
     public Response<Void> response(int code, String message) {
-        return Response.<Void>builder().ret(extracted(code, message)).build();
+        return Response.<Void> builder().ret(extracted(code, message)).build();
     }
 }

@@ -39,10 +39,10 @@ public class P6spyLogger extends FormattedLogger {
     }
 
     @Override
-    public void logSQL(int connectionId, String now, long elapsed,
-                       Category category, String prepared, String sql, String url) {
-        final String msg = strategy.formatMessage(connectionId, now, elapsed,
-                category.toString(), prepared, sql, url);
+    public void logSQL(int connectionId, String now, long elapsed, Category category,
+                       String prepared, String sql, String url) {
+        final String msg = strategy.formatMessage(connectionId, now, elapsed, category.toString(),
+            prepared, sql, url);
         if (StringUtils.isEmpty(msg)) {
             return;
         }
@@ -57,7 +57,6 @@ public class P6spyLogger extends FormattedLogger {
         }
     }
 
-
     @Override
     public boolean isCategoryEnabled(Category category) {
         if (Category.ERROR.equals(category)) {
@@ -71,4 +70,3 @@ public class P6spyLogger extends FormattedLogger {
         }
     }
 }
-

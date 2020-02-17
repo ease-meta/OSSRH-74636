@@ -18,6 +18,7 @@ package com.open.cloud.common.oshi.model;
 
 import cn.hutool.core.util.NumberUtil;
 import lombok.Setter;
+
 /**
  * @author Leijian
  * @date   2020/2/7
@@ -28,7 +29,7 @@ public class CpuInfo {
     /**
      * 核心数
      */
-    private int cpuNum;
+    private int    cpuNum;
 
     /**
      * CPU总的使用率

@@ -46,25 +46,25 @@ import lombok.ToString;
 @NoArgsConstructor
 public class Ret {
 
-	/**
-	 * 返回码
-	 */
-	private Integer retCode;
-	/**
-	 * 返回信息
-	 */
-	private String retMsg;
+    /**
+     * 返回码
+     */
+    private Integer       retCode;
+    /**
+     * 返回信息
+     */
+    private String        retMsg;
 
-	/**
-	 * 当前时间戳
-	 */
-	@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+8")
-	private LocalDateTime retTime;
+    /**
+     * 当前时间戳
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "GMT+8")
+    private LocalDateTime retTime;
 
-	public Ret(Integer retCode, String retMsg, LocalDateTime retTime) {
-		this.retCode = retCode;
-		this.retMsg = MessageUtils.message(retMsg);
-		this.retTime = retTime;
+    public Ret(Integer retCode, String retMsg, LocalDateTime retTime) {
+        this.retCode = retCode;
+        this.retMsg = MessageUtils.message(retMsg);
+        this.retTime = retTime;
 
-	}
+    }
 }
