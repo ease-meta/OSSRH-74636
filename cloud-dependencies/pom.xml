@@ -60,6 +60,7 @@
         <druid.version>1.1.21</druid.version>
         <mybatis.boot.version>2.1.1</mybatis.boot.version>
         <mybatis.plus.version>3.3.1</mybatis.plus.version>
+        <mybatis.version>[3.3.0,)</mybatis.version>
         <shardingsphere.version>4.0.0</shardingsphere.version>
         <!--缓存-->
         <caffeine.version>2.8.1</caffeine.version>
@@ -315,6 +316,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
@@ -336,6 +343,12 @@
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>caffeine</artifactId>
                 <version>${caffeine.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
             </dependency>
 
             <dependency>
@@ -388,6 +401,12 @@
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.perf4j</groupId>
+                <artifactId>perf4j</artifactId>
+                <version>${perf4j.version}</version>
             </dependency>
 
             <dependency>
@@ -512,31 +531,32 @@
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
             </dependency>
-
+            <!--应用内部jar包-->
+            <dependency>
+                <artifactId>cloud-leaf-core</artifactId>
+                <groupId>com.open.cloud</groupId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-webflux</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-oauth</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-framework</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-core</artifactId>
