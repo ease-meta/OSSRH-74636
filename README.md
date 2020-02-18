@@ -2,7 +2,7 @@
 
 #### 介绍
 
-​		个人学习的案例。整体融合了SpringBoot、SpringCloud、Dubbo、springCloudAlibaba、Sofa、 分布式事务解决方案、集成了kafka和RocketMq、基于SpringSecurity、shiro的权限认证、Redis权限管理、Linux系统资源监控、应用系统的资源监控、  分布式链路跟踪、分布式序列服务及分布式锁的实现。
+​		个人学习的案例。整体融合了SpringBoot、SpringCloud、Dubbo、springCloudAlibaba、Sofa、 分布式事务解决方案（AT、TCC、SAGA）、分布式序列服务、集成了kafka和RocketMq、基于SpringSecurity、shiro的权限认证、Redis权限管理、Linux系统资源监控、应用系统的资源监控、  分布式链路跟踪、分布式序列服务及分布式锁的实现。
 
 | 技术栈             | 版本号        |      
 | ------------------ | ------------- | 
