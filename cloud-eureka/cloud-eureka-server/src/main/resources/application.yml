@@ -15,7 +15,7 @@ eureka:
     fetch-registry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
-  server:
-    use-read-only-response-cache: false
-    enable-self-preservation: false
+  #server:
+  #  use-read-only-response-cache: false
+  #  enable-self-preservation: false
 #eureka.server.enableSelfPreservation=false
