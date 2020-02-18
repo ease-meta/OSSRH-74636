@@ -26,7 +26,7 @@
         <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
         <maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
         <license.maven.plugin>3.0</license.maven.plugin>
-        <security.oauth.version>2.3.6.RELEASE</security.oauth.version>
+
         <docker.plugin.version>0.32.0</docker.plugin.version>
         <docker.host>http://172.17.0.111:2375</docker.host>
         <docker.registry>172.17.0.111</docker.registry>
@@ -51,7 +51,9 @@
         <sofa-boot.version>3.2.2</sofa-boot.version>
         <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
         <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
+        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
+        <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
+        <vaadin.version>14.1.17</vaadin.version>
         <!--消息中间件-->
         <spring-kafka.version>2.4.1.RELEASE</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
@@ -81,6 +83,7 @@
         <javamelody.spring.boot.version>[1.80.0,)</javamelody.spring.boot.version>
         <huaweicloud-dws-jdbc.version>[1.5.301,)</huaweicloud-dws-jdbc.version>
         <!--单元测试-->
+        <jmh.version>[1.19,)</jmh.version>
         <org.mockito.version>[3.2.4,)</org.mockito.version>
         <testng.version>[7.1.0,)</testng.version>
         <easymock.version>[4.1,)</easymock.version>
@@ -279,29 +282,7 @@
                 <artifactId>shiro-spring</artifactId>
                 <version>${shiro-spring.version}</version>
             </dependency>
-            <!--字节码操作-->
-            <dependency>
-                <groupId>net.bytebuddy</groupId>
-                <artifactId>byte-buddy</artifactId>
-                <version>[1.10.8,)</version>
-            </dependency>
-            <dependency>
-                <groupId>net.bytebuddy</groupId>
-                <artifactId>byte-buddy-agent</artifactId>
-                <version>[1.10.8,)</version>
-            </dependency>
-            <dependency>
-                <groupId>net.bytebuddy</groupId>
-                <artifactId>byte-buddy-dep</artifactId>
-                <version>[1.10.8,)</version>
-            </dependency>
 
-            <!---->
-            <dependency>
-                <groupId>org.fugerit.java</groupId>
-                <artifactId>fj-daogen-base</artifactId>
-                <version>[1.10.8,)</version>
-            </dependency>
             <!--JWT token应用 -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
@@ -564,6 +545,17 @@
             </dependency>
 
             <!--单元测试-->
+
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-core</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.openjdk.jmh</groupId>
+                <artifactId>jmh-generator-annprocess</artifactId>
+                <version>${jmh.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>

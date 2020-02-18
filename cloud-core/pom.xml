@@ -121,7 +121,7 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
         </dependency>
@@ -129,16 +129,21 @@
         <dependency>
             <groupId>de.javakaffee</groupId>
             <artifactId>kryo-serializers</artifactId>
-        </dependency>
+        </dependency>-->
 
-        <dependency>
+       <!-- <dependency>
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>io.protostuff</groupId>
             <artifactId>protostuff-core</artifactId>
-        </dependency>
+        </dependency>-->
+        <!--<dependency>
+            <groupId>org.fugerit.java</groupId>
+            <artifactId>fj-daogen-base</artifactId>
+            <version>[1.10.8,)</version>
+        </dependency>-->
     </dependencies>
 
 </project>

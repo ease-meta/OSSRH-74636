@@ -21,30 +21,30 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LockDemo {
 
-	//悲观锁
-	public synchronized void testMethod() {
+    //悲观锁
+    public synchronized void testMethod() {
 
-	}
+    }
 
-	//悲观锁
-	private ReentrantLock lock = new ReentrantLock();
+    //悲观锁
+    private ReentrantLock lock          = new ReentrantLock();
 
-	//乐观锁的使用方式
-	private AtomicInteger atomicInteger = new AtomicInteger();
+    //乐观锁的使用方式
+    private AtomicInteger atomicInteger = new AtomicInteger();
 
-	public void modify() {
-		try {
-			lock.lock();
-		} finally {
-			lock.unlock();
-		}
-	}
+    public void modify() {
+        try {
+            lock.lock();
+        } finally {
+            lock.unlock();
+        }
+    }
 
-	public static void main(String[] args) {
-		int i = 128;
-		byte b = (byte) i;
-		System.out.println(b);
+    public static void main(String[] args) {
+        int i = 128;
+        byte b = (byte) i;
+        System.out.println(b);
 
-	}
+    }
 
 }
