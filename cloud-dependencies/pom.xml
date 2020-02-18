@@ -116,7 +116,7 @@
         <easyexcel.version>[2.1.6,)</easyexcel.version>
         <jasypt.version>3.0.2</jasypt.version>
         <hutool-all.version>[5.1.2,)</hutool-all.version>
-        <guava.version>[20.0,)</guava.version>
+        <guava.version>20.0</guava.version>
         <joda-time.version>[2.10.5,)</joda-time.version>
         <okhttp.version>[4.3.1,)</okhttp.version>
         <guice.version>[4.2.2,)</guice.version>
