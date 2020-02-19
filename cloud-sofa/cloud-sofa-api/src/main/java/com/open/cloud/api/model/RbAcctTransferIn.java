@@ -21,7 +21,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class RbAcctTransferIn extends SuperBaseRequest  {
+public class RbAcctTransferIn extends SuperBaseRequest {
     /**
      * 交易参考号<br>
      * REFERENCE<br>
@@ -30,7 +30,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:50<br>
      * cons:
      */
-    private String reference;
+    private String     reference;
 
     /**
      * 账户所属账务系统<br>
@@ -41,7 +41,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * cons:
      * 1.新核心 2.老核心
      */
-    private String acctSystem;
+    private String     acctSystem;
 
     /**
      * 客户号<br>
@@ -51,7 +51,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:12<br>
      * cons:
      */
-    private String clientNo;
+    private String     clientNo;
 
     /**
      * 主账号<br>
@@ -61,7 +61,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:50<br>
      * cons:
      */
-    private String baseAcctNo;
+    private String     baseAcctNo;
 
     /**
      * 账户币种<br>
@@ -71,7 +71,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:3<br>
      * cons:
      */
-    private String acctCcy;
+    private String     acctCcy;
 
     /**
      * 产品代码<br>
@@ -81,7 +81,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:3<br>
      * cons:渠道交易时不是必输
      */
-    private String prodType;
+    private String     prodType;
 
     /**
      * 账户序列号<br>
@@ -91,7 +91,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:8<br>
      * cons:为空默认取1
      */
-    private String acctSeqNo;
+    private String     acctSeqNo;
 
     /**
      * 卡二磁道信息<br>
@@ -101,7 +101,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:37<br>
      * cons:
      */
-    private String track2;
+    private String     track2;
 
     /**
      * 卡三磁道信息<br>
@@ -111,7 +111,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:104<br>
      * cons:
      */
-    private String track3;
+    private String     track3;
 
     /**
      * 支取方式<br>
@@ -125,8 +125,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * B凭印鉴和密码支取
      * O凭证件支取
      */
-    private String withdrawalType;
-
+    private String     withdrawalType;
 
     /**
      * 密码<br>
@@ -136,8 +135,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:50<br>
      * cons:密码支取时需要且必输
      */
-    private String password;
-
+    private String     password;
 
     /**
      * 到账方式<br>
@@ -147,7 +145,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:2<br>
      * cons:
      */
-    private String tranMethod;
+    private String     tranMethod;
 
     /**
      * 存折携带标记<br>
@@ -157,7 +155,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:1<br>
      * cons:
      */
-    private String pbFlag;
+    private String     pbFlag;
 
     /**
      * 交易金额<br>
@@ -178,7 +176,7 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:3<br>
      * cons:
      */
-    private String tranCcy;
+    private String     tranCcy;
 
     /**
      * 交款单位<br>
@@ -188,6 +186,6 @@ public class RbAcctTransferIn extends SuperBaseRequest  {
      * length:50<br>
      * cons:
      */
-    private String payUnit;
+    private String     payUnit;
 
 }

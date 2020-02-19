@@ -23,7 +23,7 @@ import com.open.cloud.common.exception.BaseException;
  * @date 2020/2/3
  */
 public class MqException extends BaseException {
-	public MqException(Throwable cause) {
-		super(cause);
-	}
+    public MqException(Throwable cause) {
+        super(cause);
+    }
 }

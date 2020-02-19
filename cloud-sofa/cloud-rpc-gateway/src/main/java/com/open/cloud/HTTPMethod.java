@@ -23,5 +23,4 @@ package com.open.cloud;
 public enum HTTPMethod {
     GET, POST, PUT, DELETE, PATCH, TRACE, HEAD, OPTIONS,
 
-
 }

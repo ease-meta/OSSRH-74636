@@ -24,9 +24,9 @@ import java.io.IOException;
 
 @Slf4j
 public class OkHttpLogInterceptor implements Interceptor {
-	@Override
-	public Response intercept(Chain chain) throws IOException {
-		log.info("OkHttpUrl : " + chain.request().url());
-		return chain.proceed(chain.request());
-	}
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+        log.info("OkHttpUrl : " + chain.request().url());
+        return chain.proceed(chain.request());
+    }
 }

@@ -51,52 +51,52 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class DynamicRoutingConfig implements ApplicationEventPublisherAware {
 
-	private final Logger logger = LoggerFactory.getLogger(DynamicRoutingConfig.class);
+    private final Logger            logger        = LoggerFactory
+                                                      .getLogger(DynamicRoutingConfig.class);
 
-	private static final String DATA_ID = "zuul-refresh-dev.json";
-	private static final String Group = "DEFAULT_GROUP";
+    private static final String     DATA_ID       = "zuul-refresh-dev.json";
+    private static final String     Group         = "DEFAULT_GROUP";
 
-	private static final AtomicLong REFRESH_COUNT = new AtomicLong(0);
+    private static final AtomicLong REFRESH_COUNT = new AtomicLong(0);
 
-	private final ConfigService configService;
+    private final ConfigService     configService;
 
-	private ApplicationContext applicationContext;
+    private ApplicationContext      applicationContext;
 
-	private AtomicBoolean ready = new AtomicBoolean(false);
+    private AtomicBoolean           ready         = new AtomicBoolean(false);
 
-	private Map<String, Listener> listenerMap = new ConcurrentHashMap<>(16);
+    private Map<String, Listener>   listenerMap   = new ConcurrentHashMap<>(16);
 
-	public DynamicRoutingConfig(ConfigService configService) {
-		this.configService = configService;
-	}
+    public DynamicRoutingConfig(ConfigService configService) {
+        this.configService = configService;
+    }
 
-	@Autowired
-	private RouteDefinitionWriter routeDefinitionWriter;
+    @Autowired
+    private RouteDefinitionWriter     routeDefinitionWriter;
 
-	private ApplicationEventPublisher applicationEventPublisher;
+    private ApplicationEventPublisher applicationEventPublisher;
 
-	@Override
-	public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
-		this.applicationEventPublisher = applicationEventPublisher;
-		if (this.ready.compareAndSet(false, true)) {
-			this.registerNacosListenersForApplications();
-		}
-	}
+    @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.applicationEventPublisher = applicationEventPublisher;
+        if (this.ready.compareAndSet(false, true)) {
+            this.registerNacosListenersForApplications();
+        }
+    }
 
-	private void registerNacosListenersForApplications() {
-		for (NacosPropertySource nacosPropertySource : NacosPropertySourceRepository
-				.getAll()) {
+    private void registerNacosListenersForApplications() {
+        for (NacosPropertySource nacosPropertySource : NacosPropertySourceRepository.getAll()) {
 
-			if (!nacosPropertySource.isRefreshable()) {
-				continue;
-			}
+            if (!nacosPropertySource.isRefreshable()) {
+                continue;
+            }
 
-			String dataId = nacosPropertySource.getDataId();
-			registerNacosListener(nacosPropertySource.getGroup(), dataId);
-		}
-	}
+            String dataId = nacosPropertySource.getDataId();
+            registerNacosListener(nacosPropertySource.getGroup(), dataId);
+        }
+    }
 
-	private void registerNacosListener(final String group, final String dataId) {
+    private void registerNacosListener(final String group, final String dataId) {
 		Listener listener = listenerMap.computeIfAbsent(dataId, i -> new Listener() {
 			@Override
 			public void receiveConfigInfo(String configInfo) {
@@ -127,60 +127,60 @@ public class DynamicRoutingConfig implements ApplicationEventPublisherAware {
 		}
 	}
 
-	/**
-	 * 路由更新
-	 *
-	 * @param routeDefinition
-	 * @return
-	 */
-	public void update(RouteDefinition routeDefinition) {
-		try {
-			this.routeDefinitionWriter.delete(Mono.just(routeDefinition.getId()));
-			logger.info("路由更新成功");
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
+    /**
+     * 路由更新
+     *
+     * @param routeDefinition
+     * @return
+     */
+    public void update(RouteDefinition routeDefinition) {
+        try {
+            this.routeDefinitionWriter.delete(Mono.just(routeDefinition.getId()));
+            logger.info("路由更新成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
 
-		try {
-			routeDefinitionWriter.save(Mono.just(routeDefinition)).subscribe();
-			this.applicationEventPublisher.publishEvent(new RefreshRoutesEvent(this));
-			logger.info("路由更新成功");
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-		}
-	}
+        try {
+            routeDefinitionWriter.save(Mono.just(routeDefinition)).subscribe();
+            this.applicationEventPublisher.publishEvent(new RefreshRoutesEvent(this));
+            logger.info("路由更新成功");
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+    }
 
-	public RouteDefinition assembleRouteDefinition(RouteEntity routeEntity) {
+    public RouteDefinition assembleRouteDefinition(RouteEntity routeEntity) {
 
-		RouteDefinition definition = new RouteDefinition();
+        RouteDefinition definition = new RouteDefinition();
 
-		// ID
-		definition.setId(routeEntity.getId());
+        // ID
+        definition.setId(routeEntity.getId());
 
-		// Predicates
-		List<PredicateDefinition> pdList = new ArrayList<>();
-		for (PredicateEntity predicateEntity : routeEntity.getPredicates()) {
-			PredicateDefinition predicateDefinition = new PredicateDefinition();
-			predicateDefinition.setArgs(predicateEntity.getArgs());
-			predicateDefinition.setName(predicateEntity.getName());
-			pdList.add(predicateDefinition);
-		}
-		definition.setPredicates(pdList);
+        // Predicates
+        List<PredicateDefinition> pdList = new ArrayList<>();
+        for (PredicateEntity predicateEntity : routeEntity.getPredicates()) {
+            PredicateDefinition predicateDefinition = new PredicateDefinition();
+            predicateDefinition.setArgs(predicateEntity.getArgs());
+            predicateDefinition.setName(predicateEntity.getName());
+            pdList.add(predicateDefinition);
+        }
+        definition.setPredicates(pdList);
 
-		// Filters
-		List<FilterDefinition> fdList = new ArrayList<>();
-		for (FilterEntity filterEntity : routeEntity.getFilters()) {
-			FilterDefinition filterDefinition = new FilterDefinition();
-			filterDefinition.setArgs(filterEntity.getArgs());
-			filterDefinition.setName(filterEntity.getName());
-			fdList.add(filterDefinition);
-		}
-		definition.setFilters(fdList);
+        // Filters
+        List<FilterDefinition> fdList = new ArrayList<>();
+        for (FilterEntity filterEntity : routeEntity.getFilters()) {
+            FilterDefinition filterDefinition = new FilterDefinition();
+            filterDefinition.setArgs(filterEntity.getArgs());
+            filterDefinition.setName(filterEntity.getName());
+            fdList.add(filterDefinition);
+        }
+        definition.setFilters(fdList);
 
-		// URI
-		URI uri = UriComponentsBuilder.fromUriString(routeEntity.getUri()).build().toUri();
-		definition.setUri(uri);
+        // URI
+        URI uri = UriComponentsBuilder.fromUriString(routeEntity.getUri()).build().toUri();
+        definition.setUri(uri);
 
-		return definition;
-	}
+        return definition;
+    }
 }

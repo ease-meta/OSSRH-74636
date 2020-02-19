@@ -38,33 +38,34 @@ import java.util.concurrent.ExecutionException;
 //http://localhost:8080/send/kl
 public class KafkaApplication {
 
-	private final Logger logger = LoggerFactory.getLogger(KafkaApplication.class);
+    private final Logger logger = LoggerFactory.getLogger(KafkaApplication.class);
 
-	public static void main(String[] args) {
-		SpringApplication.run(KafkaApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KafkaApplication.class, args);
+    }
 
-	@Autowired
-	private KafkaTemplate<Object, Object> template;
+    @Autowired
+    private KafkaTemplate<Object, Object> template;
 
-	@GetMapping("/send/{input}")
-	public void sendFoo(@PathVariable String input) {
-		ListenableFuture<SendResult<Object, Object>> future = this.template.send("topic_input", input);
-		try {
-			future.get();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			e.printStackTrace();
-		}
-	}
+    @GetMapping("/send/{input}")
+    public void sendFoo(@PathVariable String input) {
+        ListenableFuture<SendResult<Object, Object>> future = this.template.send("topic_input",
+            input);
+        try {
+            future.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * 事务消息
-	 *
-	 * @param input
-	 */
-	@GetMapping("/kafkatx/{input}")
+    /**
+     * 事务消息
+     *
+     * @param input
+     */
+    @GetMapping("/kafkatx/{input}")
 	@Transactional(rollbackFor= RuntimeException.class)
 	public void kafkaTx(@PathVariable String input) {
 		template.executeInTransaction(t -> {
@@ -77,24 +78,24 @@ public class KafkaApplication {
 		});
 	}
 
+    //异步获取发送结果
+    public void sendFooAsy() {
+        template.send("", "").addCallback(
+            new ListenableFutureCallback<SendResult<Object, Object>>() {
+                @Override
+                public void onFailure(Throwable ex) {
 
-	//异步获取发送结果
-	public void sendFooAsy() {
-		template.send("", "").addCallback(new ListenableFutureCallback<SendResult<Object, Object>>() {
-			@Override
-			public void onFailure(Throwable ex) {
+                }
 
-			}
+                @Override
+                public void onSuccess(SendResult<Object, Object> result) {
 
-			@Override
-			public void onSuccess(SendResult<Object, Object> result) {
+                }
+            });
+    }
 
-			}
-		});
-	}
-
-	@KafkaListener(id = "webGroup", topics = "topic_input")
-	public void listen(String input) {
-		logger.info("input value: {}", input);
-	}
+    @KafkaListener(id = "webGroup", topics = "topic_input")
+    public void listen(String input) {
+        logger.info("input value: {}", input);
+    }
 }

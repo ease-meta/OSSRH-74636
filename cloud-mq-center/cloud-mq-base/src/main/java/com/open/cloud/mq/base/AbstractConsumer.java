@@ -18,11 +18,11 @@ package com.open.cloud.mq.base;
 
 import com.open.cloud.common.utils.LogUtils;
 
-public class AbstractConsumer extends AbstractMQ  {
+public class AbstractConsumer extends AbstractMQ {
     @Override
-    public void close(){
+    public void close() {
         try {
-            LogUtils.debug(AbstractConsumer.class, MQProperties.Project,"MQ消费者准备释放资源...");
+            LogUtils.debug(AbstractConsumer.class, MQProperties.Project, "MQ消费者准备释放资源...");
             Object obj = getObject();
             /*if (obj != null) {
                 if (obj instanceof DefaultMQPushConsumer) {
@@ -33,9 +33,8 @@ public class AbstractConsumer extends AbstractMQ  {
                 }
             }*/
             innerClose(obj);
-        }catch (Exception exp)
-        {
-            LogUtils.warn(AbstractConsumer.class,MQProperties.Project,"MQ消费者资源释放异常",exp);
+        } catch (Exception exp) {
+            LogUtils.warn(AbstractConsumer.class, MQProperties.Project, "MQ消费者资源释放异常", exp);
         }
 
     }

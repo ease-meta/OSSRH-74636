@@ -34,7 +34,7 @@ public class jasypt {
         String username = textEncryptor.encrypt("1qaz2wsX");
         String password = textEncryptor.encrypt("1qaz2wsX");
         System.out.println(textEncryptor.decrypt("1JBgo0/a878qEDYR3RdUvYtITF1xGFA6"));
-        System.out.println("username:"+username);
-        System.out.println("password:"+password);
+        System.out.println("username:" + username);
+        System.out.println("password:" + password);
     }
 }

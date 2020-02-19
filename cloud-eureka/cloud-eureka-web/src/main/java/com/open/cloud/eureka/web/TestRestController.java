@@ -29,32 +29,30 @@ import reactor.core.publisher.Mono;
 @RestController
 public class TestRestController {
 
-	@Autowired
-	private DiscoveryClient client;
+    @Autowired
+    private DiscoveryClient    client;
 
-	@Autowired
-	private RestTemplateClient restTemplateClient;
+    @Autowired
+    private RestTemplateClient restTemplateClient;
 
-	@Autowired
-	FeignClientClient feignClientClient;
+    @Autowired
+    FeignClientClient          feignClientClient;
 
-	@Autowired
-	private WebClient.Builder webClientBuilder;
+    @Autowired
+    private WebClient.Builder  webClientBuilder;
 
-	@GetMapping(value = "/sayHello")
-	public String queryPayOrder(@RequestParam String params) {
-		if ("rest".equalsIgnoreCase(params)) {
-			return restTemplateClient.sayHello(params);
-		} else if ("feign".equalsIgnoreCase(params)) {
-			return feignClientClient.sayHello(params);
-		} else {
-			Mono<String> result = webClientBuilder.build()
-							.get()
-							.uri("http://CLOUD-EUREKA-SERVICE/sayHello?message="+params)
-							.retrieve()
-							.bodyToMono(String.class);
-			return result.block();
-		}
+    @GetMapping(value = "/sayHello")
+    public String queryPayOrder(@RequestParam String params) {
+        if ("rest".equalsIgnoreCase(params)) {
+            return restTemplateClient.sayHello(params);
+        } else if ("feign".equalsIgnoreCase(params)) {
+            return feignClientClient.sayHello(params);
+        } else {
+            Mono<String> result = webClientBuilder.build().get()
+                .uri("http://CLOUD-EUREKA-SERVICE/sayHello?message=" + params).retrieve()
+                .bodyToMono(String.class);
+            return result.block();
+        }
 
-	}
+    }
 }

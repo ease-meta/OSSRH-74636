@@ -37,8 +37,8 @@ public class ClientFactoryBean implements ClientFactoryAware {
     @Override
     public void setClientFactory(ClientFactory clientFactory) {
         this.clientFactory = clientFactory;
-        log.info("{}",clientFactory.getClient(ServiceClient.class));
-        log.info("{}",clientFactory.getClient(ReferenceClient.class));
+        log.info("{}", clientFactory.getClient(ServiceClient.class));
+        log.info("{}", clientFactory.getClient(ReferenceClient.class));
     }
 
     public ClientFactory getClientFactory() {

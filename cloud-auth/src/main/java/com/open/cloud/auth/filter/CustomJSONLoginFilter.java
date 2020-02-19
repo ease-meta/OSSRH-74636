@@ -56,7 +56,11 @@ public class CustomJSONLoginFilter extends AbstractAuthenticationProcessingFilte
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest,
+                                                HttpServletResponse httpServletResponse)
+                                                                                        throws AuthenticationException,
+                                                                                        IOException,
+                                                                                        ServletException {
         JSONObject requestBody = getRequestBody(httpServletRequest);
         String username = requestBody.getString("username");
         String password = requestBody.getString("password");
@@ -88,12 +92,13 @@ public class CustomJSONLoginFilter extends AbstractAuthenticationProcessingFilte
     /**
      * 校验用户名和密码
      */
-    private void validateUsernameAndPassword(String username, String password) throws AuthenticationException {
+    private void validateUsernameAndPassword(String username, String password)
+                                                                              throws AuthenticationException {
         UserPo userPo = userService.getByUsername(username);
-        if (userPo == null){
+        if (userPo == null) {
             throw new UsernameNotFoundException("user not exist");
         }
-        if(!userPo.getPassword().equals(password)){
+        if (!userPo.getPassword().equals(password)) {
             throw new AuthenticationServiceException("error username or password");
         }
     }

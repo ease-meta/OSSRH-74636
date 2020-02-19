@@ -26,9 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BusinessServiceImpl implements BusinessService {
 
-
     private StorageService storageService;
-    private OrderService orderService;
+    private OrderService   orderService;
 
     @Override
     @GlobalTransactional(timeoutMills = 300000, name = "dubbo-demo-tx")

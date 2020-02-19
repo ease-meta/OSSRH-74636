@@ -26,10 +26,10 @@ import java.io.IOException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApplicationTests.class)
-@EmbeddedKafka(count = 4,ports = {9092,9093,9094,9095})
+@EmbeddedKafka(count = 4, ports = { 9092, 9093, 9094, 9095 })
 public class ApplicationTests {
     @Test
-    public void contextLoads()throws IOException {
+    public void contextLoads() throws IOException {
         System.in.read();
     }
 }

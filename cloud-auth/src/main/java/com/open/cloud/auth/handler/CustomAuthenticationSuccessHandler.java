@@ -37,13 +37,16 @@ import java.nio.charset.StandardCharsets;
  */
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-	@Override
-	public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-		Response responses = ResponseTool.response(HttpServletResponse.SC_OK, "Login successfully");
-		httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-		httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		httpServletResponse.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-		httpServletResponse.getWriter().write(JSON.toJSONString(responses));
-	}
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest httpServletRequest,
+                                        HttpServletResponse httpServletResponse,
+                                        Authentication authentication) throws IOException,
+                                                                      ServletException {
+        Response responses = ResponseTool.response(HttpServletResponse.SC_OK, "Login successfully");
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+        httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        httpServletResponse.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        httpServletResponse.getWriter().write(JSON.toJSONString(responses));
+    }
 
 }

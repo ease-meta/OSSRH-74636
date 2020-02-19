@@ -25,21 +25,21 @@ import java.lang.annotation.Target;
 /**
  * @author Leijian
  */
-@Target({ElementType.FIELD})
+@Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface FieldReport {
-	/**
-	 * 唯一名称
-	 *
-	 * @return
-	 */
-	String name() default "";
+    /**
+     * 唯一名称
+     *
+     * @return
+     */
+    String name() default "";
 
-	/**
-	 * 描述
-	 *
-	 * @return
-	 */
-	String desc() default "";
+    /**
+     * 描述
+     *
+     * @return
+     */
+    String desc() default "";
 }

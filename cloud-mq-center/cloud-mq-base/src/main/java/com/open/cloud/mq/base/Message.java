@@ -25,9 +25,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Message<T> implements Serializable {
 
-	private static final long serialVersionUID = 6017550519278159274L;
-	private String msgId;
-	private String topic;
-	private String tag;
-	private T data;
+    private static final long serialVersionUID = 6017550519278159274L;
+    private String            msgId;
+    private String            topic;
+    private String            tag;
+    private T                 data;
 }

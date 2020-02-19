@@ -27,15 +27,15 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class NacosApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NacosApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NacosApplication.class, args);
+    }
 
-	@RestController
-	class EchoController {
-		@GetMapping(value = "/echo/{string}")
-		public String echo(@PathVariable String string) {
-			return string;
-		}
-	}
+    @RestController
+    class EchoController {
+        @GetMapping(value = "/echo/{string}")
+        public String echo(@PathVariable String string) {
+            return string;
+        }
+    }
 }

@@ -33,12 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/user/**").hasAuthority("USER")
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/user/**")
+            .hasAuthority("USER").and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
         http.addFilterAt(customFromLoginFilter(), UsernamePasswordAuthenticationFilter.class);
     }

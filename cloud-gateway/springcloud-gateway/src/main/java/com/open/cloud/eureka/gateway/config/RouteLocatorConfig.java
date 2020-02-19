@@ -16,7 +16,6 @@
  */
 package com.open.cloud.eureka.gateway.config;
 
-
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
@@ -27,7 +26,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class RouteLocatorConfig {
 
-	@Bean
+    @Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route("path_route", r -> r.path("/meteor_93")
@@ -35,7 +34,7 @@ public class RouteLocatorConfig {
 				.build();
 	}
 
-	@Bean
+    @Bean
 	KeyResolver userKeyResolver() {
 		return exchange -> Mono.just(exchange.getRequest().getRemoteAddress().getHostName());
 	}

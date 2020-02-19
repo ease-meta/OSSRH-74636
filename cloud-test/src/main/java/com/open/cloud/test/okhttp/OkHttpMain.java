@@ -34,42 +34,42 @@ import java.util.List;
 
 @Slf4j
 public class OkHttpMain {
-	public static void main(String[] args) {
-		LinkedList linkedList = new LinkedList();
-		Two<LinkedList, PagePo> two = load(null, null);
-		linkedList.addAll(two.first);
-		while (two.second.getNextPage() != null && two.second.getNextPage().trim().length() > 0) {
-			two = load(two.second.getPerPage(), two.second.getNextPage());
-			linkedList.addAll(two.first);
-		}
-		String fileName = LocalDateTimeUtils.formatNow("yyyy-MM-dd") + "测试.xlsx";
-		EasyExcel.write(fileName).password("1q2w3e4r")
-				// 这里放入动态头
-				//.head(head())
-				.sheet()
-				// 当然这里数据也可以用 List<List<String>> 去传入
-				.doWrite(linkedList);
-	}
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        Two<LinkedList, PagePo> two = load(null, null);
+        linkedList.addAll(two.first);
+        while (two.second.getNextPage() != null && two.second.getNextPage().trim().length() > 0) {
+            two = load(two.second.getPerPage(), two.second.getNextPage());
+            linkedList.addAll(two.first);
+        }
+        String fileName = LocalDateTimeUtils.formatNow("yyyy-MM-dd") + "测试.xlsx";
+        EasyExcel.write(fileName).password("1q2w3e4r")
+        // 这里放入动态头
+        //.head(head())
+            .sheet()
+            // 当然这里数据也可以用 List<List<String>> 去传入
+            .doWrite(linkedList);
+    }
 
-	private static List<List<String>> head() {
-		List<List<String>> list = new ArrayList<List<String>>();
-		List<String> head0 = new ArrayList<String>();
-		head0.add("创建日期");
-		List<String> head1 = new ArrayList<String>();
-		head1.add("默认分支");
-		List<String> head2 = new ArrayList<String>();
-		head2.add("fork数");
-		list.add(head0);
-		list.add(head1);
-		list.add(head2);
-		return list;
-	}
+    private static List<List<String>> head() {
+        List<List<String>> list = new ArrayList<List<String>>();
+        List<String> head0 = new ArrayList<String>();
+        head0.add("创建日期");
+        List<String> head1 = new ArrayList<String>();
+        head1.add("默认分支");
+        List<String> head2 = new ArrayList<String>();
+        head2.add("fork数");
+        list.add(head0);
+        list.add(head1);
+        list.add(head2);
+        return list;
+    }
 
-	public static String getPath() {
-		return OkHttpMain.class.getResource("/").getPath();
-	}
+    public static String getPath() {
+        return OkHttpMain.class.getResource("/").getPath();
+    }
 
-	public static Two<LinkedList, PagePo> load(String per_page, String page) {
+    public static Two<LinkedList, PagePo> load(String per_page, String page) {
 		//String url = "http://10.7.20.144/api/v3/projects?simple=true";
 		//String url = "http://10.7.20.144/api/v3/projects/8/issues/8/notes?per_page=50";
 		if (per_page == null) {
@@ -122,5 +122,4 @@ public class OkHttpMain {
 		}
 		return two;
 	}
-
 }

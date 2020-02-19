@@ -23,8 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient("CLOUD-EUREKA-SERVICE")
 public interface FeignClientClient {
 
-	@GetMapping(value = "/sayHello")
-	String sayHello(@RequestParam("message") String message);
-
+    @GetMapping(value = "/sayHello")
+    String sayHello(@RequestParam("message") String message);
 
 }

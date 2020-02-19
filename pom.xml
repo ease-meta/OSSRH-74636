@@ -118,7 +118,7 @@
         <module>cloud-mq-center</module>
         <module>cloud-web</module>
         <module>cloud-webflux</module>
-        <module>cloud-maven-plugin</module>
+        <!--<module>cloud-maven-plugin</module>-->
         <module>cloud-server</module>
         <module>cloud-gateway</module>
         <module>cloud-health</module>
@@ -196,7 +196,7 @@
                 </configuration>
             </plugin>-->
 
-            <plugin>
+            <!--<plugin>
                 <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
                 <artifactId>maven-java-formatter-plugin</artifactId>
                 <version>${maven.java.formatter.plugin}</version>
@@ -212,7 +212,7 @@
                     <encoding>${project.encoding}</encoding>
                 </configuration>
             </plugin>
-
+-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

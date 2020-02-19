@@ -24,29 +24,29 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Slf4j
 public class StorageServiceImpl implements StorageService {
 
+    private JdbcTemplate jdbcTemplate;
 
-	private JdbcTemplate jdbcTemplate;
+    /**
+     * Sets jdbc template.
+     *
+     * @param jdbcTemplate the jdbc template
+     */
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-	/**
-	 * Sets jdbc template.
-	 *
-	 * @param jdbcTemplate the jdbc template
-	 */
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
+    @Override
+    public void deduct(String commodityCode, int count) {
+        log.info("Storage Service Begin ... xid: " + RootContext.getXID());
+        log.info(
+            "Deducting inventory SQL: update STORAGE_TBL set count = count - {} where commodity_code = {}",
+            count, commodityCode);
 
-	@Override
-	public void deduct(String commodityCode, int count) {
-		log.info("Storage Service Begin ... xid: " + RootContext.getXID());
-		log.info("Deducting inventory SQL: update STORAGE_TBL set count = count - {} where commodity_code = {}",
-				count, commodityCode);
+        jdbcTemplate.update("update storage_tbl set count = count - ? where commodity_code = ?",
+            count, commodityCode);
+        log.info("Storage Service End ... ");
 
-		jdbcTemplate.update("update storage_tbl set count = count - ? where commodity_code = ?",
-				count, commodityCode);
-		log.info("Storage Service End ... ");
-
-		//test update
+        //test update
         /*
         final List<ArrayList> params = new ArrayList<>();
         for (int i = 1000; i < 1003; i++) {
@@ -94,14 +94,14 @@ public class StorageServiceImpl implements StorageService {
         }
         */
 
-		// test inc batch
+        // test inc batch
         /*
         jdbcTemplate.update("insert into STORAGE_TBL(commodity_code,count) values('fake',999),('fake1',999),('fake2',
         999)");
         */
 
-		//jdbcTemplate.update("insert into STORAGE_TBL(commodity_code,count) values(?,?),(?,?),(?,?)",new
-		// Object[]{"fake1",999,"fake2",999,"fake3",999});
+        //jdbcTemplate.update("insert into STORAGE_TBL(commodity_code,count) values(?,?),(?,?),(?,?)",new
+        // Object[]{"fake1",999,"fake2",999,"fake3",999});
 
         /* test no-inc batch
         //jdbcTemplate.update("insert into STORAGE_TBL(id,commodity_code,count) values(111,'fake',999),(112,'fake1',
@@ -111,7 +111,7 @@ public class StorageServiceImpl implements StorageService {
         Object[]{111,"fake1",999,112,"fake2",999,113,"fake3",999});
         */
 
-		//test batchUpdate
+        //test batchUpdate
         /*
         final List<ArrayList> params = new ArrayList<>();
         for (int i = 100; i < 200; i++) {
@@ -146,6 +146,6 @@ public class StorageServiceImpl implements StorageService {
             StringBuilder sb=new StringBuilder();
         }
         */
-	}
+    }
 
 }

@@ -40,85 +40,93 @@ import java.util.List;
  */
 public class RocketMQConsumerProvider extends AbstractConsumerProvider {
 
-	private org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties;
+    private org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties;
 
-	public RocketMQConsumerProvider(org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties) {
-		this.rocketMQProperties = rocketMQProperties;
-	}
+    public RocketMQConsumerProvider(org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties) {
+        this.rocketMQProperties = rocketMQProperties;
+    }
 
-	public void setRocketMQProperties(org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties) {
-		this.rocketMQProperties = rocketMQProperties;
-	}
+    public void setRocketMQProperties(org.apache.rocketmq.spring.autoconfigure.RocketMQProperties rocketMQProperties) {
+        this.rocketMQProperties = rocketMQProperties;
+    }
 
-	public org.apache.rocketmq.spring.autoconfigure.RocketMQProperties getRocketMQProperties() {
-		return rocketMQProperties;
-	}
+    public org.apache.rocketmq.spring.autoconfigure.RocketMQProperties getRocketMQProperties() {
+        return rocketMQProperties;
+    }
 
-	@Override
-	public <T> AbstractConsumer subscribe(String consumergroup, String topic, String[] filterTags, SubscribeRunable<T> runnable, Class<T> type) {
-		return subscribe(consumergroup, MessageModel.CLUSTERING, topic, filterTags, runnable, type);
-	}
+    @Override
+    public <T> AbstractConsumer subscribe(String consumergroup, String topic, String[] filterTags,
+                                          SubscribeRunable<T> runnable, Class<T> type) {
+        return subscribe(consumergroup, MessageModel.CLUSTERING, topic, filterTags, runnable, type);
+    }
 
-	public <T> AbstractConsumer subscribe(String consumergroup, MessageModel mode, String topic, String[] filterTags, SubscribeRunable<T> runnable, Class<T> type) {
+    public <T> AbstractConsumer subscribe(String consumergroup, MessageModel mode, String topic,
+                                          String[] filterTags, SubscribeRunable<T> runnable,
+                                          Class<T> type) {
 
-		DefaultMQPushConsumer consumer = null;
-		try {
-			consumer = new DefaultMQPushConsumer(consumergroup);
-			// Specify name server addresses.
-			consumer.setNamesrvAddr(rocketMQProperties.getNameServer());
-			String filtertag = null;
-			// Subscribe one more more topics to consume.
-			if (filterTags == null || filterTags.length == 0) {
-				filtertag = "*";
-			} else {
-				filtertag = StringUtils.join(filterTags, "||");
-			}
-			consumer.subscribe(topic, filtertag);
-			// Register callback to execute on arrival of messages fetched from brokers.
-			consumer.registerMessageListener(new MessageListenerConcurrently() {
-				@Override
-				public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
-					MessageExt messageExt = msgs.get(0);
-					try {
-						String id = messageExt.getMsgId();
-						byte[] body = messageExt.getBody();
-						String tags = messageExt.getTags();
-						String topic = messageExt.getTopic();
-						String keys = messageExt.getKeys();
-						String msg = new String(body, RemotingHelper.DEFAULT_CHARSET);
-						if (type == String.class) {
-							runnable.run(new Message<T>(id, topic, tags, (T) msg));
-						} else {
-							JsonSerializer jsonSerializer = new JsonSerializer();
-							jsonSerializer.deserialize(body,type);
-							runnable.run(new Message<T>(id, topic, tags,(T)jsonSerializer.deserialize(body,type)));
-						}
-						return null;
-					} catch (Exception e) {
-						LogUtils.error(RocketMQConsumerProvider.class, RocketMQProperties.Project, String.format("rocketmq 消费者%s,消费异常", consumergroup), e);
-						//处理出现异常，获取重试次数.达到某个次数的时候可以记录日志，做补偿处理
-						int reconsumeTimes = messageExt.getReconsumeTimes();
-						/*if (reconsumeTimes < rocketMQProperties.getReconsumeTimes()) {
-							return ConsumeConcurrentlyStatus.RECONSUME_LATER;
-						}*/
-					}
+        DefaultMQPushConsumer consumer = null;
+        try {
+            consumer = new DefaultMQPushConsumer(consumergroup);
+            // Specify name server addresses.
+            consumer.setNamesrvAddr(rocketMQProperties.getNameServer());
+            String filtertag = null;
+            // Subscribe one more more topics to consume.
+            if (filterTags == null || filterTags.length == 0) {
+                filtertag = "*";
+            } else {
+                filtertag = StringUtils.join(filterTags, "||");
+            }
+            consumer.subscribe(topic, filtertag);
+            // Register callback to execute on arrival of messages fetched from brokers.
+            consumer.registerMessageListener(new MessageListenerConcurrently() {
+                @Override
+                public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs,
+                                                                ConsumeConcurrentlyContext context) {
+                    MessageExt messageExt = msgs.get(0);
+                    try {
+                        String id = messageExt.getMsgId();
+                        byte[] body = messageExt.getBody();
+                        String tags = messageExt.getTags();
+                        String topic = messageExt.getTopic();
+                        String keys = messageExt.getKeys();
+                        String msg = new String(body, RemotingHelper.DEFAULT_CHARSET);
+                        if (type == String.class) {
+                            runnable.run(new Message<T>(id, topic, tags, (T) msg));
+                        } else {
+                            JsonSerializer jsonSerializer = new JsonSerializer();
+                            jsonSerializer.deserialize(body, type);
+                            runnable.run(new Message<T>(id, topic, tags, (T) jsonSerializer
+                                .deserialize(body, type)));
+                        }
+                        return null;
+                    } catch (Exception e) {
+                        LogUtils.error(RocketMQConsumerProvider.class, RocketMQProperties.Project,
+                            String.format("rocketmq 消费者%s,消费异常", consumergroup), e);
+                        //处理出现异常，获取重试次数.达到某个次数的时候可以记录日志，做补偿处理
+                        int reconsumeTimes = messageExt.getReconsumeTimes();
+                        /*if (reconsumeTimes < rocketMQProperties.getReconsumeTimes()) {
+                        	return ConsumeConcurrentlyStatus.RECONSUME_LATER;
+                        }*/
+                    }
 
-					return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-				}
-			});
-			consumer.start();
-			AbstractConsumer abstractConsumer = new AbstractConsumer();
-			abstractConsumer.setObject(consumer);
-			LogUtils.info(RocketMQConsumerProvider.class, RocketMQProperties.Project, String.format("rocketmq 消费者%s,队列%s 启动成功", consumergroup, topic));
-			return abstractConsumer;
-		} catch (Exception exp) {
-			LogUtils.error(RocketMQConsumerProvider.class, RocketMQProperties.Project, String.format("rocketmq 消费者%s,队列%s 启动失败", consumergroup, topic), exp);
-			if (consumer != null) {
-				consumer.shutdown();
-				consumer = null;
-			}
-			throw new MqException(exp);
-		}
-	}
+                    return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+                }
+            });
+            consumer.start();
+            AbstractConsumer abstractConsumer = new AbstractConsumer();
+            abstractConsumer.setObject(consumer);
+            LogUtils.info(RocketMQConsumerProvider.class, RocketMQProperties.Project,
+                String.format("rocketmq 消费者%s,队列%s 启动成功", consumergroup, topic));
+            return abstractConsumer;
+        } catch (Exception exp) {
+            LogUtils.error(RocketMQConsumerProvider.class, RocketMQProperties.Project,
+                String.format("rocketmq 消费者%s,队列%s 启动失败", consumergroup, topic), exp);
+            if (consumer != null) {
+                consumer.shutdown();
+                consumer = null;
+            }
+            throw new MqException(exp);
+        }
+    }
 
 }

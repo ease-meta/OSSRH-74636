@@ -20,7 +20,6 @@ import com.netflix.appinfo.InstanceInfo;
 
 public interface GrayCommunicateClient {
 
-
     /**
      * 将实例信息发送到灰度服务器
      *

@@ -23,8 +23,8 @@ import org.apache.maven.plugins.annotations.Mojo;
 
 @Mojo(name = "exportDataToFile")
 public class WriteDataToFile extends AbstractMojo {
-	@Override
-	public void execute() throws MojoExecutionException, MojoFailureException {
-		//要执行的代码
-	}
+    @Override
+    public void execute() throws MojoExecutionException, MojoFailureException {
+        //要执行的代码
+    }
 }

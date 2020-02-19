@@ -38,74 +38,81 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import java.io.File;
 
 @Order(-1)
-public class ApolloApplicationContextInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+public class ApolloApplicationContextInitializer
+                                                implements
+                                                ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-	private static boolean isload = false;
+    private static boolean isload = false;
 
-	@Override
-	public void initialize(ConfigurableApplicationContext context) {
-		val apolloProperties = context.getBean(ApolloProperties.class);
-		ConfigurableEnvironment environment = context.getEnvironment();
-		if (!apolloProperties.isEnabled()) {
-			return;
-		}
-		this.initializeSystemProperty(context);
-	}
+    @Override
+    public void initialize(ConfigurableApplicationContext context) {
+        val apolloProperties = context.getBean(ApolloProperties.class);
+        ConfigurableEnvironment environment = context.getEnvironment();
+        if (!apolloProperties.isEnabled()) {
+            return;
+        }
+        this.initializeSystemProperty(context);
+    }
 
-	void initializeSystemProperty(ConfigurableApplicationContext context) {
-		val apolloProperties = context.getBean(ApolloProperties.class);
-		String appId = apolloProperties.getAppId();
-		ConfigurableEnvironment environment = context.getEnvironment();
+    void initializeSystemProperty(ConfigurableApplicationContext context) {
+        val apolloProperties = context.getBean(ApolloProperties.class);
+        String appId = apolloProperties.getAppId();
+        ConfigurableEnvironment environment = context.getEnvironment();
 
-		if (Strings.isNullOrEmpty(appId) || !apolloProperties.isBootstrapEnabled()) {
-			return;
-		}
-		//默认设置app.id
-		PropertyUtils.setDefaultInitProperty(ApolloApplicationContextInitializer.class, ApolloConstant.Project, ApolloConstant.AppId, apolloProperties.getAppId());
-		if (!StringUtils.isEmpty(apolloProperties.getAppId())) {
-			//val env = environment.getProperty(ApolloConstant.Env);
-			//默认设置apollo.meta
-			//setDefaultProperty(ApolloProperties.ApolloMeta, Environment.dev.toString().equalsIgnoreCase(env) ? BsfEnvironmentEnum.APOLLO_DEV.getUrl() : BsfEnvironmentEnum.APOLLO_PRD.getUrl());
-			//默认设置env
-			//setDefaultProperty(ApolloProperties.Env, env);
-			//默认设置 apollo.bootstrap.enabled=true
-			setDefaultProperty(ApolloConstant.ApolloBootstrapEnabled, "true");
-			//默认设置 namespaces
-			setDefaultProperty(ApolloConstant.ApolloBootstrapNamespaces, "application");
-			//默认设置 日志加载前后 v1.2版本+ 的客户端才生效
-			setDefaultProperty(ApolloConstant.ApolloBootstrapEagerLoadEnabled, "true");
-			//默认config cache 位置
-			String configdir = System.getProperty(apolloProperties.getUserDir()) + File.separator + "apolloConfig" + File.separator;
-			setDefaultProperty(ApolloConstant.ApolloCacheDir, configdir);
-			this.replaceCatInit(environment);
-			this.registerConfigChangedListener(environment);
-		}
+        if (Strings.isNullOrEmpty(appId) || !apolloProperties.isBootstrapEnabled()) {
+            return;
+        }
+        //默认设置app.id
+        PropertyUtils.setDefaultInitProperty(ApolloApplicationContextInitializer.class,
+            ApolloConstant.Project, ApolloConstant.AppId, apolloProperties.getAppId());
+        if (!StringUtils.isEmpty(apolloProperties.getAppId())) {
+            //val env = environment.getProperty(ApolloConstant.Env);
+            //默认设置apollo.meta
+            //setDefaultProperty(ApolloProperties.ApolloMeta, Environment.dev.toString().equalsIgnoreCase(env) ? BsfEnvironmentEnum.APOLLO_DEV.getUrl() : BsfEnvironmentEnum.APOLLO_PRD.getUrl());
+            //默认设置env
+            //setDefaultProperty(ApolloProperties.Env, env);
+            //默认设置 apollo.bootstrap.enabled=true
+            setDefaultProperty(ApolloConstant.ApolloBootstrapEnabled, "true");
+            //默认设置 namespaces
+            setDefaultProperty(ApolloConstant.ApolloBootstrapNamespaces, "application");
+            //默认设置 日志加载前后 v1.2版本+ 的客户端才生效
+            setDefaultProperty(ApolloConstant.ApolloBootstrapEagerLoadEnabled, "true");
+            //默认config cache 位置
+            String configdir = System.getProperty(apolloProperties.getUserDir()) + File.separator
+                               + "apolloConfig" + File.separator;
+            setDefaultProperty(ApolloConstant.ApolloCacheDir, configdir);
+            this.replaceCatInit(environment);
+            this.registerConfigChangedListener(environment);
+        }
 
-	}
+    }
 
-	private void replaceCatInit(ConfigurableEnvironment environment) {
-		try {
-			ClassPool classPool = ClassPoolUtils.getInstance();
-			CtClass ctClass = classPool.get("com.ctrip.framework.apollo.tracer.internals.DefaultMessageProducerManager");
-			if (!isload) {
-				isload = true;
-				CtConstructor[] constructors = ctClass.getConstructors();
-				if (constructors != null && constructors.length > 0) {
-					CtConstructor constructor = constructors[0];
-					constructor.setBody(newMethodCode());
-				}
-				if (ctClass.isFrozen()) {
-					ctClass.defrost();
-				}
-				ctClass.toClass();
-				LogUtils.info(ApolloApplicationContextInitializer.class, ApolloConstant.Project, "重写cat init ok");
-			}
-		} catch (Exception exp) {
-			LogUtils.error(ApolloApplicationContextInitializer.class, ApolloConstant.Project, "重写cat init 异常", exp);
-		}
-	}
+    private void replaceCatInit(ConfigurableEnvironment environment) {
+        try {
+            ClassPool classPool = ClassPoolUtils.getInstance();
+            CtClass ctClass = classPool
+                .get("com.ctrip.framework.apollo.tracer.internals.DefaultMessageProducerManager");
+            if (!isload) {
+                isload = true;
+                CtConstructor[] constructors = ctClass.getConstructors();
+                if (constructors != null && constructors.length > 0) {
+                    CtConstructor constructor = constructors[0];
+                    constructor.setBody(newMethodCode());
+                }
+                if (ctClass.isFrozen()) {
+                    ctClass.defrost();
+                }
+                ctClass.toClass();
+                LogUtils.info(ApolloApplicationContextInitializer.class, ApolloConstant.Project,
+                    "重写cat init ok");
+            }
+        } catch (Exception exp) {
+            LogUtils.error(ApolloApplicationContextInitializer.class, ApolloConstant.Project,
+                "重写cat init 异常", exp);
+        }
+    }
 
-	private void registerConfigChangedListener(ConfigurableEnvironment environment) {
+    private void registerConfigChangedListener(ConfigurableEnvironment environment) {
 		for (val namespace : environment.getProperty(ApolloConstant.ApolloBootstrapNamespaces, "").split(",")) {
 			if (!StringUtils.isEmpty(namespace)) {
 				Config config = ConfigService.getConfig(namespace);
@@ -122,15 +129,16 @@ public class ApolloApplicationContextInitializer implements ApplicationContextIn
 		}
 	}
 
-	private String newMethodCode() {
-		String code = "{" +
-				"     producer = new com.ctrip.framework.apollo.tracer.internals.NullMessageProducerManager().getProducer();" +
-				"}";
-		return code;
-	}
+    private String newMethodCode() {
+        String code = "{"
+                      + "     producer = new com.ctrip.framework.apollo.tracer.internals.NullMessageProducerManager().getProducer();"
+                      + "}";
+        return code;
+    }
 
-	void setDefaultProperty(String key, String defaultPropertyValue) {
-		PropertyUtils.setDefaultInitProperty(ApolloApplicationContextInitializer.class, ApolloConstant.Project, key, defaultPropertyValue);
-	}
+    void setDefaultProperty(String key, String defaultPropertyValue) {
+        PropertyUtils.setDefaultInitProperty(ApolloApplicationContextInitializer.class,
+            ApolloConstant.Project, key, defaultPropertyValue);
+    }
 
 }

@@ -22,7 +22,7 @@ package com.open.cloud.mq.base;
  */
 public class AbstractProvider implements AutoCloseable {
 
-	@Override
-	public void close() throws Exception {
-	}
+    @Override
+    public void close() throws Exception {
+    }
 }

@@ -25,10 +25,9 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class DemoService {
 
-
     @GetMapping("/sayHello")
     public String sayHello(@RequestParam String message) {
         log.info("invoked name = " + message);
-        return "你好:"+message;
+        return "你好:" + message;
     }
 }

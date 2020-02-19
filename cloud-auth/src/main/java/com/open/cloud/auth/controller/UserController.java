@@ -27,14 +27,14 @@ import java.security.Principal;
 @RestController
 public class UserController {
 
-	@GetMapping("/user")
-	public Response<String> user(@AuthenticationPrincipal Principal principal) {
-		return ResponseTool.success(principal.getName());
-	}
+    @GetMapping("/user")
+    public Response<String> user(@AuthenticationPrincipal Principal principal) {
+        return ResponseTool.success(principal.getName());
+    }
 
-	@GetMapping("/admin")
-	public Response<String> admin(@AuthenticationPrincipal Principal principal) {
-		return ResponseTool.success(principal.getName());
-	}
+    @GetMapping("/admin")
+    public Response<String> admin(@AuthenticationPrincipal Principal principal) {
+        return ResponseTool.success(principal.getName());
+    }
 
 }

@@ -32,21 +32,20 @@ import org.springframework.web.reactive.function.client.WebClient;
 @EnableCircuitBreaker
 public class WebApplication {
 
-	@Bean
-	@LoadBalanced
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
-	@Bean
-	@LoadBalanced
-	public WebClient.Builder loadBalancedWebClientBuilder() {
-		return WebClient.builder();
-	}
+    @Bean
+    @LoadBalanced
+    public WebClient.Builder loadBalancedWebClientBuilder() {
+        return WebClient.builder();
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(WebApplication.class, args);
+    }
 
 }

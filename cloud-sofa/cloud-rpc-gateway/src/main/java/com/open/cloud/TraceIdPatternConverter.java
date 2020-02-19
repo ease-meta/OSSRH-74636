@@ -40,18 +40,19 @@ public class TraceIdPatternConverter extends ClassicConverter {
 
         String traceId = "";
         SofaTraceContext sofaTraceContext = SofaTraceContextHolder.getSofaTraceContext();
-        log.info("{}",sofaTraceContext);
+        log.info("{}", sofaTraceContext);
         SofaTracerSpan sofaTracerSpan = sofaTraceContext.getCurrentSpan();
         System.out.println(sofaTraceContext.isEmpty());
         System.out.println(sofaTraceContext.getThreadLocalSpanSize());
         if (sofaTracerSpan != null) {
-            String TRACE_ID_KEY = sofaTracerSpan.getBaggageItem(TracerCompatibleConstants.TRACE_ID_KEY);
+            String TRACE_ID_KEY = sofaTracerSpan
+                .getBaggageItem(TracerCompatibleConstants.TRACE_ID_KEY);
             String RPC_ID_KEY = sofaTracerSpan.getBaggageItem(TracerCompatibleConstants.RPC_ID_KEY);
-            String CALLER_IP_KEY = sofaTracerSpan.getBaggageItem(TracerCompatibleConstants.CALLER_IP_KEY);
+            String CALLER_IP_KEY = sofaTracerSpan
+                .getBaggageItem(TracerCompatibleConstants.CALLER_IP_KEY);
             StringJoiner stringJoiner = new StringJoiner(",", "[", "]");
             return stringJoiner.add(TRACE_ID_KEY).add(RPC_ID_KEY).add(CALLER_IP_KEY).toString();
         }
-
 
         return StringUtils.isEmpty(traceId) ? "," : traceId;
     }

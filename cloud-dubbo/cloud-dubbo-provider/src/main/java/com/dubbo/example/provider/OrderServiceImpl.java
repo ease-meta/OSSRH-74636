@@ -33,95 +33,99 @@ import java.sql.SQLException;
 @Slf4j
 public class OrderServiceImpl implements OrderService {
 
+    private AccountService accountService;
 
-	private AccountService accountService;
+    private JdbcTemplate   jdbcTemplate;
 
-	private JdbcTemplate jdbcTemplate;
+    @Override
+    public Order create(String userId, String commodityCode, int orderCount) {
+        log.info("Order Service Begin ... xid: " + RootContext.getXID());
 
-	@Override
-	public Order create(String userId, String commodityCode, int orderCount) {
-		log.info("Order Service Begin ... xid: " + RootContext.getXID());
+        // 计算订单金额
+        int orderMoney = calculate(commodityCode, orderCount);
 
-		// 计算订单金额
-		int orderMoney = calculate(commodityCode, orderCount);
+        // 从账户余额扣款
+        accountService.debit(userId, orderMoney);
 
-		// 从账户余额扣款
-		accountService.debit(userId, orderMoney);
+        final Order order = new Order();
+        order.userId = userId;
+        order.commodityCode = commodityCode;
+        order.count = orderCount;
+        order.money = orderMoney;
 
-		final Order order = new Order();
-		order.userId = userId;
-		order.commodityCode = commodityCode;
-		order.count = orderCount;
-		order.money = orderMoney;
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
-		KeyHolder keyHolder = new GeneratedKeyHolder();
+        log.info(
+            "Order Service SQL: insert into order_tbl (user_id, commodity_code, count, money) values ({}, {}, {}, {})",
+            userId, commodityCode, orderCount, orderMoney);
 
-		log.info(
-				"Order Service SQL: insert into order_tbl (user_id, commodity_code, count, money) values ({}, {}, {}, {})",
-				userId, commodityCode, orderCount, orderMoney);
+        if (EnvContext.dbType == DBType.MYSQL) {
+            jdbcTemplate.update(new PreparedStatementCreator() {
 
-		if (EnvContext.dbType == DBType.MYSQL) {
-			jdbcTemplate.update(new PreparedStatementCreator() {
+                @Override
+                public PreparedStatement createPreparedStatement(Connection con)
+                                                                                throws SQLException {
+                    PreparedStatement pst = con
+                        .prepareStatement(
+                            "insert into order_tbl (user_id, commodity_code, count, money) values (?, ?, ?, ?)",
+                            PreparedStatement.RETURN_GENERATED_KEYS);
+                    pst.setObject(1, order.userId);
+                    pst.setObject(2, order.commodityCode);
+                    pst.setObject(3, order.count);
+                    pst.setObject(4, order.money);
+                    return pst;
+                }
+            }, keyHolder);
+            order.id = keyHolder.getKey().longValue();
+        } else if (EnvContext.dbType == DBType.ORACLE) {
 
-				@Override
-				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement pst = con.prepareStatement(
-							"insert into order_tbl (user_id, commodity_code, count, money) values (?, ?, ?, ?)",
-							PreparedStatement.RETURN_GENERATED_KEYS);
-					pst.setObject(1, order.userId);
-					pst.setObject(2, order.commodityCode);
-					pst.setObject(3, order.count);
-					pst.setObject(4, order.money);
-					return pst;
-				}
-			}, keyHolder);
-			order.id = keyHolder.getKey().longValue();
-		} else if (EnvContext.dbType == DBType.ORACLE) {
+            String nextID = jdbcTemplate.queryForObject("select ORDER_TBL_SEQ.nextval from dual",
+                String.class);
+            jdbcTemplate.update(new PreparedStatementCreator() {
 
-			String nextID = jdbcTemplate.queryForObject("select ORDER_TBL_SEQ.nextval from dual", String.class);
-			jdbcTemplate.update(new PreparedStatementCreator() {
+                @Override
+                public PreparedStatement createPreparedStatement(Connection con)
+                                                                                throws SQLException {
+                    PreparedStatement pst = con
+                        .prepareStatement(
+                            "insert into ORDER_TBL (id, user_id, commodity_code, count, money) values (?,?, ?, ?, ?)",
+                            PreparedStatement.RETURN_GENERATED_KEYS);
+                    pst.setObject(1, nextID);
+                    pst.setObject(2, order.userId);
+                    pst.setObject(3, order.commodityCode);
+                    pst.setObject(4, order.count);
+                    pst.setObject(5, order.money);
+                    return pst;
+                }
+            }, keyHolder);
+            order.id = Long.parseLong(nextID);
+        }
 
-				@Override
-				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement pst = con.prepareStatement(
-							"insert into ORDER_TBL (id, user_id, commodity_code, count, money) values (?,?, ?, ?, ?)",
-							PreparedStatement.RETURN_GENERATED_KEYS);
-					pst.setObject(1, nextID);
-					pst.setObject(2, order.userId);
-					pst.setObject(3, order.commodityCode);
-					pst.setObject(4, order.count);
-					pst.setObject(5, order.money);
-					return pst;
-				}
-			}, keyHolder);
-			order.id = Long.parseLong(nextID);
-		}
+        log.info("Order Service End ... Created " + order);
 
-		log.info("Order Service End ... Created " + order);
+        return order;
+    }
 
-		return order;
-	}
+    /**
+     * Sets account service.
+     *
+     * @param accountService the account service
+     */
+    public void setAccountService(AccountService accountService) {
+        this.accountService = accountService;
+    }
 
-	/**
-	 * Sets account service.
-	 *
-	 * @param accountService the account service
-	 */
-	public void setAccountService(AccountService accountService) {
-		this.accountService = accountService;
-	}
+    /**
+     * Sets jdbc template.
+     *
+     * @param jdbcTemplate the jdbc template
+     */
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
-	/**
-	 * Sets jdbc template.
-	 *
-	 * @param jdbcTemplate the jdbc template
-	 */
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
-	}
-
-	private int calculate(String commodityId, int orderCount) {
-		return 200 * orderCount;
-	}
+    private int calculate(String commodityId, int orderCount) {
+        return 200 * orderCount;
+    }
 
 }

@@ -34,42 +34,42 @@ import static com.open.cloud.mq.rocketmq.RocketMQProperties.Project;
  */
 public class RocketMQProducerProvider extends AbstractProducerProvider {
 
-	protected volatile DefaultMQProducer object;
+    protected volatile DefaultMQProducer object;
 
-	protected AbstractProducer producer;
+    protected AbstractProducer           producer;
 
-	protected Object _lock = new Object();
+    protected Object                     _lock = new Object();
 
-	public RocketMQProducerProvider(DefaultMQProducer object) {
-		this.object = object;
-		this.producer = new AbstractProducer();
-		//producer.setObject();
-	}
+    public RocketMQProducerProvider(DefaultMQProducer object) {
+        this.object = object;
+        this.producer = new AbstractProducer();
+        //producer.setObject();
+    }
 
-	public void setObject(DefaultMQProducer defaultMQProducer) {
-		this.object = defaultMQProducer;
-	}
+    public void setObject(DefaultMQProducer defaultMQProducer) {
+        this.object = defaultMQProducer;
+    }
 
-	public DefaultMQProducer getObject() {
-		return object;
-	}
+    public DefaultMQProducer getObject() {
+        return object;
+    }
 
-	@Override
-	public <T> AbstractProducer sendMessage(String topic, String tag, T msg) {
-		try {
-			String msgJson = null;
-			byte[] body;
-			if (msg instanceof String) {
-				body =((String) msg).getBytes(RemotingHelper.DEFAULT_CHARSET);
-			} else {
-				body = new JsonSerializer().serialize(msg);
-			}
-			Message message = new Message(topic, StringUtils.isEmpty(tag) ? "" : tag, body);
-			object.send(message);
-			return producer;
-		} catch (Exception exp) {
-			LogUtils.error(RocketMQProducerProvider.class, Project, "生产者消息发送失败", exp);
-			throw new MqException(exp);
-		}
-	}
+    @Override
+    public <T> AbstractProducer sendMessage(String topic, String tag, T msg) {
+        try {
+            String msgJson = null;
+            byte[] body;
+            if (msg instanceof String) {
+                body = ((String) msg).getBytes(RemotingHelper.DEFAULT_CHARSET);
+            } else {
+                body = new JsonSerializer().serialize(msg);
+            }
+            Message message = new Message(topic, StringUtils.isEmpty(tag) ? "" : tag, body);
+            object.send(message);
+            return producer;
+        } catch (Exception exp) {
+            LogUtils.error(RocketMQProducerProvider.class, Project, "生产者消息发送失败", exp);
+            throw new MqException(exp);
+        }
+    }
 }

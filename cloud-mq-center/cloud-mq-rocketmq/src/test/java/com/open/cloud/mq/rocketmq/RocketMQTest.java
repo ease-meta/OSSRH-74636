@@ -33,24 +33,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RocketMQTest {
 
-	@Autowired(required = false)
-	private RocketMQProducerProvider rocketMQProducerProvider;
+    @Autowired(required = false)
+    private RocketMQProducerProvider rocketMQProducerProvider;
 
-	//@Test
-	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(RocketMQTest.class, args);
-//		RocketMQConsumerProvider consumerProvider = context.getBean(RocketMQConsumerProvider.class);
-//		consumerProvider.subscribe("csx-bsf-demo-test-consumer-01", "csx-bsf-demo-test", new String[]{"aaaa", "ddd"}, (msg) -> {
-//			System.out.println(new JsonSerializer().serialize(msg));
-//		}, String.class);
-	}
+    //@Test
+    public static void main(String[] args) {
+        ApplicationContext context = SpringApplication.run(RocketMQTest.class, args);
+        //		RocketMQConsumerProvider consumerProvider = context.getBean(RocketMQConsumerProvider.class);
+        //		consumerProvider.subscribe("csx-bsf-demo-test-consumer-01", "csx-bsf-demo-test", new String[]{"aaaa", "ddd"}, (msg) -> {
+        //			System.out.println(new JsonSerializer().serialize(msg));
+        //		}, String.class);
+    }
 
-	int i = 0;
+    int i = 0;
 
-	@GetMapping("/sendMessage")
-	public void sendMessage() {
-		i = i + 1;
-		rocketMQProducerProvider.sendMessage("csx-bsf-demo-test", "aaaa", "测试" + i);
+    @GetMapping("/sendMessage")
+    public void sendMessage() {
+        i = i + 1;
+        rocketMQProducerProvider.sendMessage("csx-bsf-demo-test", "aaaa", "测试" + i);
 
-	}
+    }
 }

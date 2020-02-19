@@ -30,16 +30,21 @@
 				<include>mapper/**/*.xml</include>
 				<include>application.properties</include>
 				<include>*.xml</include>
+				<include>*.yaml</include>
+				<include>*.yml</include>
 				<include>*.properties</include>
 			</includes>
 		</fileSet>
 		<!--artifact -->
 		<fileSet>
 			<directory>target</directory>
-			<outputDirectory>boot</outputDirectory>
+			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>${project.artifactId}-*.jar</include>
 			</includes>
+			<excludes>
+				<exclude>${project.artifactId}-*sources.jar</exclude>
+			</excludes>
 			<fileMode>0755</fileMode>
 		</fileSet>
 		<!-- 将第三方依赖打包到lib目录中 -->

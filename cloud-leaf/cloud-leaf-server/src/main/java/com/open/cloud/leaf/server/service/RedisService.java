@@ -17,26 +17,27 @@ import java.util.Properties;
  * @date 2020/2/17
  */
 public class RedisService {
-	private Logger logger = LoggerFactory.getLogger(RedisService.class);
+    private Logger        logger = LoggerFactory.getLogger(RedisService.class);
 
-	private IDGen idGen;
+    private IDGen         idGen;
 
-	private RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
 
-	public RedisService(RedisTemplate redisTemplate) throws InitException {
-		Properties properties = PropertyFactory.getProperties();
-		boolean flag = Boolean.parseBoolean(properties.getProperty(Constants.LEAF_REDIS_ENABLE, "true"));
-		if (flag) {
-			this.redisTemplate = redisTemplate;
-			idGen = new RedisIDGenImpl(redisTemplate);
-			if (idGen.init()) {
-				logger.info("Redis Service Init Successfully");
-			} else {
-				throw new InitException("Snowflake Service Init Fail");
-			}
-		} else {
-			idGen = new ZeroIDGen();
-			logger.info("Zero ID Gen Service Init Successfully");
-		}
-	}
+    public RedisService(RedisTemplate redisTemplate) throws InitException {
+        Properties properties = PropertyFactory.getProperties();
+        boolean flag = Boolean.parseBoolean(properties.getProperty(Constants.LEAF_REDIS_ENABLE,
+            "true"));
+        if (flag) {
+            this.redisTemplate = redisTemplate;
+            idGen = new RedisIDGenImpl(redisTemplate);
+            if (idGen.init()) {
+                logger.info("Redis Service Init Successfully");
+            } else {
+                throw new InitException("Snowflake Service Init Fail");
+            }
+        } else {
+            idGen = new ZeroIDGen();
+            logger.info("Zero ID Gen Service Init Successfully");
+        }
+    }
 }

@@ -28,9 +28,8 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@SofaService(bindings = {@SofaServiceBinding(bindingType = "bolt")})
+@SofaService(bindings = { @SofaServiceBinding(bindingType = "bolt") })
 public class RbAcctTransferImpl implements IRbAcctTransfer {
-
 
     @Override
     public RbAcctTransferOut rbAcctTransfer(RbAcctTransferIn in) {
@@ -42,8 +41,8 @@ public class RbAcctTransferImpl implements IRbAcctTransfer {
         RbAcctTransferOut rbAcctTransferOut = new RbAcctTransferOut();
         rbAcctTransferOut.setAcctCcy("CNY");
         rbAcctTransferOut.setHead(headOut);
-        log.info("{}",rbAcctTransferOut.getHead());
-        log.info("{}",rbAcctTransferOut);
+        log.info("{}", rbAcctTransferOut.getHead());
+        log.info("{}", rbAcctTransferOut);
         return rbAcctTransferOut;
     }
 }

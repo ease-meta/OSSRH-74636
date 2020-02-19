@@ -30,14 +30,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RocketMQConfiguration {
 
-	@Bean
-	public RocketMQProducerProvider rocketMQProducerProvider(DefaultMQProducer defaultMQProducer) {
-		return new RocketMQProducerProvider(defaultMQProducer);
-	}
+    @Bean
+    public RocketMQProducerProvider rocketMQProducerProvider(DefaultMQProducer defaultMQProducer) {
+        return new RocketMQProducerProvider(defaultMQProducer);
+    }
 
-	@Bean
-	public RocketMQConsumerProvider rocketMQConsumerProvider(RocketMQProperties rocketMQProperties) {
-		return new RocketMQConsumerProvider(rocketMQProperties);
-	}
+    @Bean
+    public RocketMQConsumerProvider rocketMQConsumerProvider(RocketMQProperties rocketMQProperties) {
+        return new RocketMQConsumerProvider(rocketMQProperties);
+    }
 
 }

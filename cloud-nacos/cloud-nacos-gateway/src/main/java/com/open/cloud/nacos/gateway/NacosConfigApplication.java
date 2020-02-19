@@ -26,13 +26,12 @@ import org.springframework.context.annotation.Bean;
 @EnableDiscoveryClient
 public class NacosConfigApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(NacosConfigApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(NacosConfigApplication.class, args);
+    }
 
-	@Bean
-	public DynamicRoutingConfig nacosContextRefresher(
-			NacosConfigProperties configProperties) {
-		return new DynamicRoutingConfig(configProperties.configServiceInstance());
-	}
+    @Bean
+    public DynamicRoutingConfig nacosContextRefresher(NacosConfigProperties configProperties) {
+        return new DynamicRoutingConfig(configProperties.configServiceInstance());
+    }
 }

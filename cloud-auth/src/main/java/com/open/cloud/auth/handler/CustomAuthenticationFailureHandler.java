@@ -37,13 +37,17 @@ import java.nio.charset.StandardCharsets;
  */
 public class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
-	@Override
-	public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-		Response responses = ResponseTool.response(HttpServletResponse.SC_UNAUTHORIZED, "authenticate fail");
-		httpServletResponse.setStatus(HttpServletResponse.SC_OK);
-		httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-		httpServletResponse.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-		httpServletResponse.getWriter().write(JSON.toJSONString(responses));
-	}
+    @Override
+    public void onAuthenticationFailure(HttpServletRequest httpServletRequest,
+                                        HttpServletResponse httpServletResponse,
+                                        AuthenticationException e) throws IOException,
+                                                                  ServletException {
+        Response responses = ResponseTool.response(HttpServletResponse.SC_UNAUTHORIZED,
+            "authenticate fail");
+        httpServletResponse.setStatus(HttpServletResponse.SC_OK);
+        httpServletResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        httpServletResponse.setCharacterEncoding(StandardCharsets.UTF_8.toString());
+        httpServletResponse.getWriter().write(JSON.toJSONString(responses));
+    }
 
 }

@@ -28,7 +28,7 @@ public class ContextRefreshListener implements ApplicationListener<ApplicationEv
 
     private final ApplicationEventPublisher publisher;
 
-    private HeartbeatMonitor monitor = new HeartbeatMonitor();
+    private HeartbeatMonitor                monitor = new HeartbeatMonitor();
 
     public ContextRefreshListener(ApplicationEventPublisher publisher) {
         Assert.notNull(publisher, "publisher may not be null");

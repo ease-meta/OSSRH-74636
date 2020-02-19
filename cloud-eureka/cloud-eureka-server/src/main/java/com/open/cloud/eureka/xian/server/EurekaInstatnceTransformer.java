@@ -22,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EurekaInstatnceTransformer {
 
-
     public static InstanceInfo.InstanceStatus toEurekaInstanceStatus(InstanceStatus status) {
         switch (status) {
             case UP:
@@ -41,7 +40,6 @@ public class EurekaInstatnceTransformer {
 
         }
     }
-
 
     public static InstanceStatus toGrayInstanceStatus(InstanceInfo.InstanceStatus status) {
         if (status == null) {

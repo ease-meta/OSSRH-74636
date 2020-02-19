@@ -25,14 +25,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Deprecated
 //@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private DbUserDetailsService dbUserDetailsService;
 
     @Autowired
-    public void setAnyUserDetailsService(DbUserDetailsService dbUserDetailsService){
+    public void setAnyUserDetailsService(DbUserDetailsService dbUserDetailsService) {
         this.dbUserDetailsService = dbUserDetailsService;
     }
 
@@ -45,21 +46,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/user/**").hasAuthority("USER")
-                .and()
-                .formLogin().loginPage("/login").defaultSuccessUrl("/user")
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/login");
+        http.authorizeRequests().antMatchers("/").permitAll().antMatchers("/user/**")
+            .hasAuthority("USER").and().formLogin().loginPage("/login").defaultSuccessUrl("/user")
+            .and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
     }
 
     /**
      * 添加 UserDetailsService， 实现自定义登录校验
      */
     @Override
-    protected void configure(AuthenticationManagerBuilder builder) throws Exception{
+    protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(dbUserDetailsService);
     }
 

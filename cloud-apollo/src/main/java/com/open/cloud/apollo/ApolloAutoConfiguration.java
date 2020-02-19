@@ -30,14 +30,18 @@ import org.springframework.context.annotation.Configuration;
  * @author Leijian
  */
 @Configuration
-@EnableConfigurationProperties({ApolloProperties.class})
+@EnableConfigurationProperties({ ApolloProperties.class })
 @ConditionalOnProperty(name = "open.cloud.apollo.enabled", havingValue = "true")
 @EnableApolloConfig
 public class ApolloAutoConfiguration implements InitializingBean {
 
-	@Override
-	public void afterPropertiesSet() {
-		LogUtils.info(ApolloAutoConfiguration.class, ApolloConstant.Project, "已启动!!!" + " " + ApolloConstant.ApolloMeta + "=" + PropertyUtils.getPropertyCache(ApolloConstant.ApolloMeta, ""));
-	}
+    @Override
+    public void afterPropertiesSet() {
+        LogUtils.info(
+            ApolloAutoConfiguration.class,
+            ApolloConstant.Project,
+            "已启动!!!" + " " + ApolloConstant.ApolloMeta + "="
+                    + PropertyUtils.getPropertyCache(ApolloConstant.ApolloMeta, ""));
+    }
 
 }

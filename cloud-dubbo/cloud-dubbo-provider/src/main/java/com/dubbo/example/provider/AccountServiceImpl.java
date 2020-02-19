@@ -24,7 +24,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Slf4j
 public class AccountServiceImpl implements AccountService {
 
-
     private JdbcTemplate jdbcTemplate;
 
     /**
@@ -39,9 +38,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public void debit(String userId, int money) {
         log.info("Account Service ... xid: " + RootContext.getXID());
-        log.info("Deducting balance SQL: update ACCOUNT_TBL set money = money - {} where user_id = {}", money,
+        log.info(
+            "Deducting balance SQL: update ACCOUNT_TBL set money = money - {} where user_id = {}",
+            money, userId);
+        jdbcTemplate.update("update ACCOUNT_TBL set money = money - ? where user_id = ?", money,
             userId);
-        jdbcTemplate.update("update ACCOUNT_TBL set money = money - ? where user_id = ?", money, userId);
         log.info("Account Service End ... ");
     }
 }

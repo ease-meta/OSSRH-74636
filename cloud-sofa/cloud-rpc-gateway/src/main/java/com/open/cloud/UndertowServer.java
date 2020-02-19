@@ -43,25 +43,20 @@ public class UndertowServer {
     public void start() throws ServletException {
 
         DeploymentInfo servletBuilder = deployment()
-                .setClassLoader(UndertowServer.class.getClassLoader())
-                .setContextPath(MYAPP)
-                .setDeploymentName("test.war")
-                .addServlets(
-                        servlet("MessageServlet", MessageServlet.class)
-                                .addMapping("/*"));
+            .setClassLoader(UndertowServer.class.getClassLoader()).setContextPath(MYAPP)
+            .setDeploymentName("test.war")
+            .addServlets(servlet("MessageServlet", MessageServlet.class).addMapping("/*"));
 
         DeploymentManager manager = defaultContainer().addDeployment(servletBuilder);
         manager.deploy();
 
         HttpHandler servletHandler = manager.start();
 
-        PathHandler path = Handlers.path(Handlers.redirect(MYAPP))
-                .addPrefixPath(MYAPP, servletHandler);
+        PathHandler path = Handlers.path(Handlers.redirect(MYAPP)).addPrefixPath(MYAPP,
+            servletHandler);
 
-        Undertow server = Undertow.builder()
-                .addHttpListener(8081, "localhost")
-                .setHandler(path)
-                .build();
+        Undertow server = Undertow.builder().addHttpListener(8081, "localhost").setHandler(path)
+            .build();
         server.start();
     }
 

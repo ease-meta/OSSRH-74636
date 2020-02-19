@@ -22,5 +22,5 @@ package com.open.cloud.mq.rocketmq;
  */
 public class RocketMQProperties {
 
-	public static String Project = "RocketMQ";
+    public static String Project = "RocketMQ";
 }

@@ -40,9 +40,9 @@ public class ProviderFilter extends Filter {
     public SofaResponse invoke(FilterInvoker invoker, SofaRequest request) throws SofaRpcException {
         Stopwatch stopwatch = Stopwatch.createStarted();
         Type type = request.getMethod().getGenericReturnType();
-        Class returnType =  request.getMethod().getReturnType();
+        Class returnType = request.getMethod().getReturnType();
         try {
-            Object baseObject= returnType.newInstance();
+            Object baseObject = returnType.newInstance();
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -64,7 +64,7 @@ public class ProviderFilter extends Filter {
         } finally {
             //Context.getInstance().cleanResource();
             log.info("<====== 结束 ProviderFilter, elapsedTime is [{}] ======>",
-                    stopwatch.elapsed(TimeUnit.MILLISECONDS));
+                stopwatch.elapsed(TimeUnit.MILLISECONDS));
         }
         // TODO 是否特殊处理？
     }

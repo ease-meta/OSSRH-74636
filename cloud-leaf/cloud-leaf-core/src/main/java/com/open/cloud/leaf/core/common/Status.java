@@ -5,6 +5,5 @@ package com.open.cloud.leaf.core.common;
  * @date 2020/2/17
  */
 public enum Status {
-	SUCCESS,
-	EXCEPTION
+    SUCCESS, EXCEPTION
 }

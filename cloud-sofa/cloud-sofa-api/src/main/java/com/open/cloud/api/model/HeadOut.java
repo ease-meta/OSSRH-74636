@@ -29,15 +29,14 @@ import java.util.List;
 @Data
 public class HeadOut extends BaseData {
 
-    private String runDate;
-    private String downFilePath;
-    private String retStatus;
+    private String       runDate;
+    private String       downFilePath;
+    private String       retStatus;
 
     /**
      * 返回结果集
      */
     private List<Result> ret;
-
 
     public HeadOut(String retStatus, Result result) {
         this.retStatus = retStatus;

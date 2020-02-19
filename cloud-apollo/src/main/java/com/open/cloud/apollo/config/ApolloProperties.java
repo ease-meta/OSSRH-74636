@@ -25,12 +25,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(value = ApolloConstant.prefix)
 @Data
 public class ApolloProperties {
-	private String appId;
-	private String meta;
-	private boolean bootstrapEnabled;
-	private String bootstrapNamespaces;
-	private boolean bootstrapEagerLoadEnabled;
-	private String cacheDir;
-	private String userDir;
-	private boolean enabled;
+    private String  appId;
+    private String  meta;
+    private boolean bootstrapEnabled;
+    private String  bootstrapNamespaces;
+    private boolean bootstrapEagerLoadEnabled;
+    private String  cacheDir;
+    private String  userDir;
+    private boolean enabled;
 }

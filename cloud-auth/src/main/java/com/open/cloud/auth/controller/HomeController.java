@@ -29,13 +29,13 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class HomeController {
 
-	private final UserService userService;
+    private final UserService userService;
 
-	@PostMapping("/register")
-	public Response<Void> doRegister(@RequestBody UserPo userPo) {
-		// 此处省略校验逻辑
-		userService.insert(userPo);
-		return ResponseTool.success();
-	}
+    @PostMapping("/register")
+    public Response<Void> doRegister(@RequestBody UserPo userPo) {
+        // 此处省略校验逻辑
+        userService.insert(userPo);
+        return ResponseTool.success();
+    }
 
 }

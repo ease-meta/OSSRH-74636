@@ -17,6 +17,7 @@
 package com.open.cloud.auth.service;
 
 import com.open.cloud.auth.entity.UserPo;
+
 /**
  * @author Leijian
  * @date   2020/2/8

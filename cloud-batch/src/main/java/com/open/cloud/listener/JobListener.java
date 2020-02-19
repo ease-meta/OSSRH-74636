@@ -32,19 +32,18 @@ import javax.annotation.Resource;
  */
 @Component
 public class JobListener implements JobExecutionListener {
-    private static final Logger log = LoggerFactory.getLogger(JobListener.class);
+    private static final Logger    log = LoggerFactory.getLogger(JobListener.class);
 
     @Resource
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
-    private long startTime;
+    private long                   startTime;
 
     @Override
     public void beforeJob(JobExecution jobExecution) {
         startTime = System.currentTimeMillis();
         log.info("job before " + jobExecution.getJobParameters());
     }
-
 
     @Override
     public void afterJob(JobExecution jobExecution) {
@@ -55,6 +54,6 @@ public class JobListener implements JobExecutionListener {
         } else if (jobExecution.getStatus() == BatchStatus.FAILED) {
             log.info("JOB FAILED");
         }
-        log.info("Job Cost Time : {}ms" , (System.currentTimeMillis() - startTime));
+        log.info("Job Cost Time : {}ms", (System.currentTimeMillis() - startTime));
     }
 }

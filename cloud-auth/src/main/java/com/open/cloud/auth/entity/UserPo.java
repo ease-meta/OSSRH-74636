@@ -25,23 +25,23 @@ import javax.persistence.*;
 @Data
 public class UserPo {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long   id;
 
-	/**
-	 * 账号
-	 */
-	private String userName;
+    /**
+     * 账号
+     */
+    private String userName;
 
-	/**
-	 * 密码
-	 */
-	private String password;
+    /**
+     * 密码
+     */
+    private String password;
 
-	/**
-	 * 昵称
-	 */
-	private String nickName;
+    /**
+     * 昵称
+     */
+    private String nickName;
 
 }

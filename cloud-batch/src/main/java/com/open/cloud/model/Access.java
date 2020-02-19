@@ -27,16 +27,16 @@ public class Access {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String username;
-    private String shopName;
-    private String categoryName;
-    private String brandName;
-    private String shopId;
-    private String omit;
-    private String updateTime;
+    private String  username;
+    private String  shopName;
+    private String  categoryName;
+    private String  brandName;
+    private String  shopId;
+    private String  omit;
+    private String  updateTime;
     private boolean deleteStatus;
-    private String createTime;
-    private String description;
+    private String  createTime;
+    private String  description;
 
     public Integer getId() {
         return id;
@@ -128,18 +128,11 @@ public class Access {
 
     @Override
     public String toString() {
-        return "Access{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", shopName='" + shopName + '\'' +
-                ", categoryName='" + categoryName + '\'' +
-                ", brandName='" + brandName + '\'' +
-                ", shopId='" + shopId + '\'' +
-                ", omit='" + omit + '\'' +
-                ", updateTime='" + updateTime + '\'' +
-                ", deleteStatus=" + deleteStatus +
-                ", createTime='" + createTime + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "Access{" + "id=" + id + ", username='" + username + '\'' + ", shopName='"
+               + shopName + '\'' + ", categoryName='" + categoryName + '\'' + ", brandName='"
+               + brandName + '\'' + ", shopId='" + shopId + '\'' + ", omit='" + omit + '\''
+               + ", updateTime='" + updateTime + '\'' + ", deleteStatus=" + deleteStatus
+               + ", createTime='" + createTime + '\'' + ", description='" + description + '\''
+               + '}';
     }
 }

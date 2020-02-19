@@ -24,18 +24,18 @@ import org.springframework.stereotype.Component;
 @Component
 @StepScope
 public class CatChunkListener implements ChunkListener {
-	@Override
-	public void beforeChunk(ChunkContext chunkContext) {
-		System.out.println("chunk执行之前");
-	}
+    @Override
+    public void beforeChunk(ChunkContext chunkContext) {
+        System.out.println("chunk执行之前");
+    }
 
-	@Override
-	public void afterChunk(ChunkContext chunkContext) {
-		System.out.println("chunk执行之后");
-	}
+    @Override
+    public void afterChunk(ChunkContext chunkContext) {
+        System.out.println("chunk执行之后");
+    }
 
-	@Override
-	public void afterChunkError(ChunkContext chunkContext) {
-		System.out.println("chunk执行报错之后");
-	}
+    @Override
+    public void afterChunkError(ChunkContext chunkContext) {
+        System.out.println("chunk执行报错之后");
+    }
 }

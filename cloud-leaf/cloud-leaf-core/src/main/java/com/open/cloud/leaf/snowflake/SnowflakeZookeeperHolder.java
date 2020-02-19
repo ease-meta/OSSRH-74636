@@ -27,17 +27,24 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 public class SnowflakeZookeeperHolder {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SnowflakeZookeeperHolder.class);
-    private String zk_AddressNode = null;//保存自身的key  ip:port-000000001
-    private String listenAddress = null;//保存自身的key ip:port
-    private int workerID;
-    private static final String PREFIX_ZK_PATH = "/snowflake/" + PropertyFactory.getProperties().getProperty("leaf.name");
-    private static final String PROP_PATH = System.getProperty("java.io.tmpdir") + File.separator + PropertyFactory.getProperties().getProperty("leaf.name") + "/leafconf/{port}/workerID.properties";
-    private static final String PATH_FOREVER = PREFIX_ZK_PATH + "/forever";//保存所有数据持久的节点
-    private String ip;
-    private String port;
-    private String connectionString;
-    private long lastUpdateTime;
+    private static final Logger LOGGER         = LoggerFactory
+                                                   .getLogger(SnowflakeZookeeperHolder.class);
+    private String              zk_AddressNode = null;                                         //保存自身的key  ip:port-000000001
+    private String              listenAddress  = null;                                         //保存自身的key ip:port
+    private int                 workerID;
+    private static final String PREFIX_ZK_PATH = "/snowflake/"
+                                                 + PropertyFactory.getProperties().getProperty(
+                                                     "leaf.name");
+    private static final String PROP_PATH      = System.getProperty("java.io.tmpdir")
+                                                 + File.separator
+                                                 + PropertyFactory.getProperties().getProperty(
+                                                     "leaf.name")
+                                                 + "/leafconf/{port}/workerID.properties";
+    private static final String PATH_FOREVER   = PREFIX_ZK_PATH + "/forever";                  //保存所有数据持久的节点
+    private String              ip;
+    private String              port;
+    private String              connectionString;
+    private long                lastUpdateTime;
 
     public SnowflakeZookeeperHolder(String ip, String port, String connectionString) {
         this.ip = ip;
@@ -48,7 +55,8 @@ public class SnowflakeZookeeperHolder {
 
     public boolean init() {
         try {
-            CuratorFramework curator = createWithOptions(connectionString, new RetryUntilElapsed(1000, 4), 10000, 6000);
+            CuratorFramework curator = createWithOptions(connectionString, new RetryUntilElapsed(
+                1000, 4), 10000, 6000);
             curator.start();
             Stat stat = curator.checkExists().forPath(PATH_FOREVER);
             if (stat == null) {
@@ -75,12 +83,16 @@ public class SnowflakeZookeeperHolder {
                     zk_AddressNode = PATH_FOREVER + "/" + realNode.get(listenAddress);
                     workerID = workerid;//启动worder时使用会使用
                     if (!checkInitTimeStamp(curator, zk_AddressNode)) {
-                        throw new CheckLastTimeException("init timestamp check error,forever node timestamp gt this node time");
+                        throw new CheckLastTimeException(
+                            "init timestamp check error,forever node timestamp gt this node time");
                     }
                     //准备创建临时节点
                     doService(curator);
                     updateLocalWorkerID(workerID);
-                    LOGGER.info("[Old NODE]find forever node have this endpoint ip-{} port-{} workid-{} childnode and start SUCCESS", ip, port, workerID);
+                    LOGGER
+                        .info(
+                            "[Old NODE]find forever node have this endpoint ip-{} port-{} workid-{} childnode and start SUCCESS",
+                            ip, port, workerID);
                 } else {
                     //表示新启动的节点,创建持久节点 ,不用check时间
                     String newNode = createNode(curator);
@@ -89,14 +101,18 @@ public class SnowflakeZookeeperHolder {
                     workerID = Integer.parseInt(nodeKey[1]);
                     doService(curator);
                     updateLocalWorkerID(workerID);
-                    LOGGER.info("[New NODE]can not find node on forever node that endpoint ip-{} port-{} workid-{},create own node on forever node and start SUCCESS ", ip, port, workerID);
+                    LOGGER
+                        .info(
+                            "[New NODE]can not find node on forever node that endpoint ip-{} port-{} workid-{},create own node on forever node and start SUCCESS ",
+                            ip, port, workerID);
                 }
             }
         } catch (Exception e) {
             LOGGER.error("Start node ERROR {}", e);
             try {
                 Properties properties = new Properties();
-                properties.load(new FileInputStream(new File(PROP_PATH.replace("{port}", port + ""))));
+                properties.load(new FileInputStream(
+                    new File(PROP_PATH.replace("{port}", port + ""))));
                 workerID = Integer.valueOf(properties.getProperty("workerID"));
                 LOGGER.warn("START FAILED ,use local node file properties workerID-{}", workerID);
             } catch (Exception e1) {
@@ -128,7 +144,8 @@ public class SnowflakeZookeeperHolder {
 
     }
 
-    private boolean checkInitTimeStamp(CuratorFramework curator, String zk_AddressNode) throws Exception {
+    private boolean checkInitTimeStamp(CuratorFramework curator, String zk_AddressNode)
+                                                                                       throws Exception {
         byte[] bytes = curator.getData().forPath(zk_AddressNode);
         Endpoint endPoint = deBuildData(new String(bytes));
         //该节点的时间不能小于最后一次上报的时间
@@ -144,7 +161,9 @@ public class SnowflakeZookeeperHolder {
      */
     private String createNode(CuratorFramework curator) throws Exception {
         try {
-            return curator.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT_SEQUENTIAL).forPath(PATH_FOREVER + "/" + listenAddress + "-", buildData().getBytes());
+            return curator.create().creatingParentsIfNeeded()
+                .withMode(CreateMode.PERSISTENT_SEQUENTIAL)
+                .forPath(PATH_FOREVER + "/" + listenAddress + "-", buildData().getBytes());
         } catch (Exception e) {
             LOGGER.error("create node error msg {} ", e.getMessage());
             throw e;
@@ -201,7 +220,9 @@ public class SnowflakeZookeeperHolder {
             //不存在文件,父目录页肯定不存在
             try {
                 boolean mkdirs = leafConfFile.getParentFile().mkdirs();
-                LOGGER.info("init local file cache create parent dis status is {}, worker id is {}", mkdirs, workerID);
+                LOGGER.info(
+                    "init local file cache create parent dis status is {}, worker id is {}",
+                    mkdirs, workerID);
                 if (mkdirs) {
                     if (leafConfFile.createNewFile()) {
                         FileUtils.writeStringToFile(leafConfFile, "workerID=" + workerID, false);
@@ -216,12 +237,11 @@ public class SnowflakeZookeeperHolder {
         }
     }
 
-    private CuratorFramework createWithOptions(String connectionString, RetryPolicy retryPolicy, int connectionTimeoutMs, int sessionTimeoutMs) {
+    private CuratorFramework createWithOptions(String connectionString, RetryPolicy retryPolicy,
+                                               int connectionTimeoutMs, int sessionTimeoutMs) {
         return CuratorFrameworkFactory.builder().connectString(connectionString)
-                .retryPolicy(retryPolicy)
-                .connectionTimeoutMs(connectionTimeoutMs)
-                .sessionTimeoutMs(sessionTimeoutMs)
-                .build();
+            .retryPolicy(retryPolicy).connectionTimeoutMs(connectionTimeoutMs)
+            .sessionTimeoutMs(sessionTimeoutMs).build();
     }
 
     /**
@@ -230,7 +250,7 @@ public class SnowflakeZookeeperHolder {
     static class Endpoint {
         private String ip;
         private String port;
-        private long timestamp;
+        private long   timestamp;
 
         public Endpoint() {
         }

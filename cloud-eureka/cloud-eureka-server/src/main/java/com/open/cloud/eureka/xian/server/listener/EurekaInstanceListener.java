@@ -36,7 +36,6 @@ public class EurekaInstanceListener {
         this.communicateClient = communicateClient;
     }
 
-
     /**
      * 监听eureka实例下线事件，并发送信息给灰度服务器
      *
@@ -45,12 +44,12 @@ public class EurekaInstanceListener {
     @EventListener
     public void listenDown(EurekaInstanceCanceledEvent event) {
         InstanceRegistry registry = (InstanceRegistry) event.getSource();
-        com.netflix.appinfo.InstanceInfo instanceInfo =
-                registry.getApplication(event.getAppName()).getByInstanceId(event.getServerId());
-        InstanceStatus instanceStatus = EurekaInstatnceTransformer.toGrayInstanceStatus(instanceInfo.getStatus());
-       // sendNotice(instanceInfo, instanceStatus, "DOWN");
+        com.netflix.appinfo.InstanceInfo instanceInfo = registry.getApplication(event.getAppName())
+            .getByInstanceId(event.getServerId());
+        InstanceStatus instanceStatus = EurekaInstatnceTransformer
+            .toGrayInstanceStatus(instanceInfo.getStatus());
+        // sendNotice(instanceInfo, instanceStatus, "DOWN");
     }
-
 
     /**
      * 监听eureka实例心跳事件，并发送信息给灰度服务器
@@ -60,10 +59,10 @@ public class EurekaInstanceListener {
     @EventListener
     public void listenRenew(EurekaInstanceRenewedEvent event) {
         com.netflix.appinfo.InstanceInfo instanceInfo = event.getInstanceInfo();
-        InstanceStatus instanceStatus = EurekaInstatnceTransformer.toGrayInstanceStatus(instanceInfo.getStatus());
+        InstanceStatus instanceStatus = EurekaInstatnceTransformer
+            .toGrayInstanceStatus(instanceInfo.getStatus());
         //sendNotice(instanceInfo, instanceStatus, "RENEW");
     }
-
 
     /**
      * 监听eureka实例注册事件，并发送信息给灰度服务器
@@ -73,10 +72,10 @@ public class EurekaInstanceListener {
     @EventListener
     public void listenRegistered(EurekaInstanceRegisteredEvent event) {
         com.netflix.appinfo.InstanceInfo instanceInfo = event.getInstanceInfo();
-        InstanceStatus instanceStatus = EurekaInstatnceTransformer.toGrayInstanceStatus(instanceInfo.getStatus());
+        InstanceStatus instanceStatus = EurekaInstatnceTransformer
+            .toGrayInstanceStatus(instanceInfo.getStatus());
         //sendNotice(instanceInfo, instanceStatus, "REGISTERED");
     }
-
 
     /**
      * 发送实例信息给灰度服务器
@@ -85,17 +84,17 @@ public class EurekaInstanceListener {
      * @param instanceStatus 事件状态
      * @param eventType      eureka事件类型
      */
-    private void sendNotice(com.netflix.appinfo.InstanceInfo instanceInfo, InstanceStatus instanceStatus, String eventType) {
-        log.info(MarkerFactory.getMarker(eventType), "{}  serviceId：{}, instanceId：{} ",
-                eventType, instanceInfo.getAppName(), instanceInfo.getInstanceId());
+    private void sendNotice(com.netflix.appinfo.InstanceInfo instanceInfo,
+                            InstanceStatus instanceStatus, String eventType) {
+        log.info(MarkerFactory.getMarker(eventType), "{}  serviceId：{}, instanceId：{} ", eventType,
+            instanceInfo.getAppName(), instanceInfo.getInstanceId());
 
-      /*  sendNotice(InstanceInfo.builder()
-                .instanceId(instanceInfo.getInstanceId())
-                .serviceId(instanceInfo.getVIPAddress())
-                .instanceStatus(instanceStatus)
-                .build(), eventType);*/
+        /*  sendNotice(InstanceInfo.builder()
+                  .instanceId(instanceInfo.getInstanceId())
+                  .serviceId(instanceInfo.getVIPAddress())
+                  .instanceStatus(instanceStatus)
+                  .build(), eventType);*/
     }
-
 
     /**
      * 发送实例信息给灰度服务器
@@ -103,14 +102,13 @@ public class EurekaInstanceListener {
      * @param instanceInfo 实例信息
      * @param eventType    事件状态
      */
-   /* private void sendNotice(InstanceInfo instanceInfo, String eventType) {
-        try {
-            communicateClient.noticeInstanceInfo(instanceInfo);
-        } catch (Exception e) {
-            log.error("发送实例{}消息失败,serviceId:{}, instanceId:{}",
-                    eventType, instanceInfo.getServiceId(), instanceInfo.getInstanceId(), e);
-        }
-    }*/
-
+    /* private void sendNotice(InstanceInfo instanceInfo, String eventType) {
+         try {
+             communicateClient.noticeInstanceInfo(instanceInfo);
+         } catch (Exception e) {
+             log.error("发送实例{}消息失败,serviceId:{}, instanceId:{}",
+                     eventType, instanceInfo.getServiceId(), instanceInfo.getInstanceId(), e);
+         }
+     }*/
 
 }

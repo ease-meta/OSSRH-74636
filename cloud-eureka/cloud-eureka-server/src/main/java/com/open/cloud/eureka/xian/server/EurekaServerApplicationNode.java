@@ -27,19 +27,22 @@ import org.springframework.core.env.Environment;
 @SpringBootApplication
 @EnableEurekaServer
 public class EurekaServerApplicationNode {
-	public static void main(String[] args) {
-		Environment env = new SpringApplicationBuilder(EurekaServerApplicationNode.class).run(args).getEnvironment();
-		log.info(
-				"\n----------------------------------------------------------\n\t"
-						+ "Application '{}' is running! Access URLs:\n\t" + "Local: \t\thttp://127.0.0.1:{}\n\t"
-						+ "External: \thttp://{}:{}\n----------------------------------------------------------",
-				env.getProperty("spring.application.name"), env.getProperty("server.port"),
-				NetUtil.getLocalhostStr(), env.getProperty("server.port"));
+    public static void main(String[] args) {
+        Environment env = new SpringApplicationBuilder(EurekaServerApplicationNode.class).run(args)
+            .getEnvironment();
+        log.info(
+            "\n----------------------------------------------------------\n\t"
+                    + "Application '{}' is running! Access URLs:\n\t"
+                    + "Local: \t\thttp://127.0.0.1:{}\n\t"
+                    + "External: \thttp://{}:{}\n----------------------------------------------------------",
+            env.getProperty("spring.application.name"), env.getProperty("server.port"),
+            NetUtil.getLocalhostStr(), env.getProperty("server.port"));
 
-		String configServerStatus = env.getProperty("configserver.status");
-		log.info(
-				"\n----------------------------------------------------------\n\t"
-						+ "Config Server: \t{}\n----------------------------------------------------------",
-				configServerStatus == null ? "Not found or not setup for this application" : configServerStatus);
-	}
+        String configServerStatus = env.getProperty("configserver.status");
+        log.info(
+            "\n----------------------------------------------------------\n\t"
+                    + "Config Server: \t{}\n----------------------------------------------------------",
+            configServerStatus == null ? "Not found or not setup for this application"
+                : configServerStatus);
+    }
 }

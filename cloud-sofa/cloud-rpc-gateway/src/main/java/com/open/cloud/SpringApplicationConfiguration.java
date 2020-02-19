@@ -23,7 +23,8 @@ public class SpringApplicationConfiguration {
     /**
      * 全局的ApplicationContext
      */
-    private final static ApplicationContext applicationContext = ApplicationContextRegister.getApplicationContext();
+    private final static ApplicationContext applicationContext = ApplicationContextRegister
+                                                                   .getApplicationContext();
 
     /**
      * 获取ApplicationContext

@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Deprecated
 public class CustomFromLoginFilter extends AbstractAuthenticationProcessingFilter {
 
@@ -38,7 +39,11 @@ public class CustomFromLoginFilter extends AbstractAuthenticationProcessingFilte
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest,
+                                                HttpServletResponse httpServletResponse)
+                                                                                        throws AuthenticationException,
+                                                                                        IOException,
+                                                                                        ServletException {
         String username = httpServletRequest.getParameter("username");
         String password = httpServletRequest.getParameter("password");
         customCheck(username, password);
@@ -47,8 +52,8 @@ public class CustomFromLoginFilter extends AbstractAuthenticationProcessingFilte
         return new UsernamePasswordAuthenticationToken(username, password, simpleGrantedAuthorities);
     }
 
-    private void customCheck(String username, String password){
-        if (!("anoyi".equals(username) && "anoyi".equals(password))){
+    private void customCheck(String username, String password) {
+        if (!("anoyi".equals(username) && "anoyi".equals(password))) {
             throw new RuntimeException("用户名或密码错误！");
         }
 

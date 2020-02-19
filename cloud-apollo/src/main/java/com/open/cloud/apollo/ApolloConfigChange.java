@@ -30,9 +30,9 @@ import org.springframework.context.ApplicationContextAware;
 @Slf4j
 public class ApolloConfigChange implements ApplicationContextAware {
 
-	private ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
-	@ApolloConfigChangeListener
+    @ApolloConfigChangeListener
 	private void onApolloConfigChangeListener(ConfigChangeEvent configChangeEvent) {
 		configChangeEvent.changedKeys().forEach((v) -> {
 			log.info("Found change: {}", v.toString());
@@ -40,8 +40,8 @@ public class ApolloConfigChange implements ApplicationContextAware {
 		this.applicationContext.publishEvent(new EnvironmentChangeEvent(configChangeEvent.changedKeys()));
 	}
 
-	@Override
-	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		this.applicationContext = applicationContext;
-	}
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext = applicationContext;
+    }
 }

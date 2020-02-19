@@ -1,17 +1,13 @@
-#!/bin/bash
-SERVICE_NAME=apollo-adminservice
+#!/bin/sh
 
-if [[ -z "$JAVA_HOME" && -d /usr/java/latest/ ]]; then
-    export JAVA_HOME=/usr/java/latest/
+pid=`ps ax | grep -i 'branch-workflow' |grep java | grep -v grep | awk '{print $1}'`
+if [ -z "$pid" ] ; then
+        echo "No branch-workflow running."
+        exit -1;
 fi
 
-cd `dirname $0`/..
+echo "The branch-workflow(${pid}) is running..."
 
-if [[ ! -f $SERVICE_NAME".jar" && -d current ]]; then
-    cd current
-fi
+kill ${pid}
 
-if [[ -f $SERVICE_NAME".jar" ]]; then
-  chmod a+x $SERVICE_NAME".jar"
-  ./$SERVICE_NAME".jar" stop
-fi
+echo "Send shutdown request to branch-workflow(${pid}) OK"

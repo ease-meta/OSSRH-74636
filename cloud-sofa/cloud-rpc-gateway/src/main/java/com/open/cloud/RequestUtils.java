@@ -183,9 +183,9 @@ public class RequestUtils {
         return body;
     }
 
-
     public static String getClientIP(HttpServletRequest request, String... otherHeaderNames) {
-        String[] headers = {"X-Forwarded-For", "X-Real-IP", "Proxy-Client-IP", "WL-Proxy-Client-IP", "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR"};
+        String[] headers = { "X-Forwarded-For", "X-Real-IP", "Proxy-Client-IP",
+                "WL-Proxy-Client-IP", "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR" };
         return getClientIPByHeader(request, headers);
     }
 
@@ -219,4 +219,3 @@ public class RequestUtils {
         return ip;
     }
 }
-
