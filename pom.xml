@@ -41,6 +41,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
@@ -125,6 +130,8 @@
         <module>cloud-apollo</module>
         <module>cloud-sloars</module>
         <module>cloud-leaf</module>
+        <module>cloud-lock</module>
+        <module>cloud-cache</module>
     </modules>
 
     <build>
