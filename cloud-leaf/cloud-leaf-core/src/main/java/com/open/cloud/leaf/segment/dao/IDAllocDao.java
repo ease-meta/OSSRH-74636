@@ -12,4 +12,10 @@ public interface IDAllocDao {
     LeafAlloc updateMaxIdByCustomStepAndGetLeafAlloc(LeafAlloc leafAlloc);
 
     List<String> getAllTags();
+
+    LeafAlloc insertCustomStepAndGetLeafAlloc(LeafAlloc leafAlloc);
+
+    List<LeafAlloc> getAllLeafAllocsForLock();
+
+
 }

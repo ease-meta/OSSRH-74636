@@ -13,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.open.cloud;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +23,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.servlet.ServletException;
 
+*/
 /**
  * SOFABootWebSpringApplication
- */
+ *//*
+
 @SpringBootApplication
 @Slf4j
 public class SOFABootGateWaySpringApplication {
@@ -35,15 +38,20 @@ public class SOFABootGateWaySpringApplication {
         UndertowServer undertowServer = new UndertowServer();
         undertowServer.start();
     }
-    /*
+    */
+/*
         @Configuration
         @RestController
-        class Demo {*/
-    /*@SofaReference(binding = @SofaReferenceBinding(bindingType = "bolt"))
-    IRbAcctTransfer iRbAcctTransfer;
-    */
+        class Demo {*//*
 
-    /*@GetMapping("/test")
+    */
+/*@SofaReference(binding = @SofaReferenceBinding(bindingType = "bolt"))
+    IRbAcctTransfer iRbAcctTransfer;
+    *//*
+
+
+    */
+/*@GetMapping("/test")
     @ResponseBody
     public HeadOut getNext(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         RbAcctTransferIn rbAcctTransferIn = new RbAcctTransferIn();
@@ -51,9 +59,11 @@ public class SOFABootGateWaySpringApplication {
         HeadOut headOut = iRbAcctTransfer.rbAcctTransfer(rbAcctTransferIn);
         log.info("{}", headOut);
         return headOut;
-    }*/
+    }*//*
 
-    /*        @Autowired
+
+    */
+/*        @Autowired
             ClientFactoryBean clientFactory;
             @GetMapping("/test")
             @ResponseBody
@@ -82,5 +92,7 @@ public class SOFABootGateWaySpringApplication {
                 return true;
             }
 
-        }*/
+        }*//*
+
 }
+*/

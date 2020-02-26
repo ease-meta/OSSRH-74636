@@ -77,4 +77,14 @@ public class IDAllocDaoImpl implements IDAllocDao {
             sqlSession.close();
         }
     }
+
+    @Override
+    public LeafAlloc insertCustomStepAndGetLeafAlloc(LeafAlloc leafAlloc) {
+        return null;
+    }
+
+    @Override
+    public List<LeafAlloc> getAllLeafAllocsForLock() {
+        return null;
+    }
 }

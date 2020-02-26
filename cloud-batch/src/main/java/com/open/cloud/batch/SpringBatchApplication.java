@@ -14,25 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.config;
+package com.open.cloud.batch;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * 配置TaskExecutor
+ * Created by EalenXie on 2018/9/10 14:41.
  */
-@Configuration
-public class ExecutorConfiguration {
+@SpringBootApplication
+public class SpringBatchApplication {
 
-    @Bean
-    public ThreadPoolTaskExecutor threadPoolTaskExecutor() {
-        ThreadPoolTaskExecutor threadPoolTaskExecutor = new ThreadPoolTaskExecutor();
-        threadPoolTaskExecutor.setCorePoolSize(50);
-        threadPoolTaskExecutor.setMaxPoolSize(200);
-        threadPoolTaskExecutor.setQueueCapacity(1000);
-        threadPoolTaskExecutor.setThreadNamePrefix("Data-Job");
-        return threadPoolTaskExecutor;
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBatchApplication.class, args);
     }
 }

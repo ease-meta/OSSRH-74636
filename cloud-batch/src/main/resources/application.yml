@@ -2,10 +2,14 @@ spring:
   application:
     name: springboot-batch
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/batch?serverTimezone=GMT%2B8&useSSL=false
+    url: jdbc:mariadb://127.0.0.1:3306/sloars?serverTimezone=GMT%2B8&useSSL=false
     username: root
-    password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    password: 123456
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 logging:
   level:
     org.spring.batch: debug

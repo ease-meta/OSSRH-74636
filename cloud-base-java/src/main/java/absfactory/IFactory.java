@@ -16,17 +16,11 @@
  */
 package absfactory;
 
-/**
- * @author shadow
- * @Date 2016年8月18日下午7:05:50
- * @Fun  抽象工厂 创建不同的抽象产品
- **/
+import com.leijian.moc.SubClass1;
+import com.leijian.moc.SubClass2;
+
 public interface IFactory {
-    public IProduct1 createProduct1A();
+	public SubClass1 createSubClass1();
 
-    public IProduct1 createProduct1B();
-
-    public IProduct2 createProduct2A();
-
-    public IProduct2 createProduct2B();
+	public SubClass2 createSubClass2();
 }

@@ -13,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.open.cloud;
 
 import io.undertow.Handlers;
@@ -30,11 +31,13 @@ import static io.undertow.servlet.Servlets.defaultContainer;
 import static io.undertow.servlet.Servlets.deployment;
 import static io.undertow.servlet.Servlets.servlet;
 
+*/
 /**
  * @author leijian
  * @version 1.0
  * @date 2019/6/16 21:23
- **/
+ **//*
+
 @Component
 public class UndertowServer {
 
@@ -65,3 +68,4 @@ public class UndertowServer {
         undertowServer.start();
     }
 }
+*/
