@@ -16,7 +16,8 @@
  */
 package com.open.cloud.mq.rocketmq;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
+import com.open.cloud.common.serializer.JsonSerializer;
+import com.open.cloud.common.utils.LogUtils;
 import com.open.cloud.mq.base.AbstractConsumer;
 import com.open.cloud.mq.base.AbstractConsumerProvider;
 import com.open.cloud.mq.base.Message;
