@@ -10,6 +10,7 @@ spring:
         instance:
           prefer-ip: true
           service-base-url: http://127.0.0.1:9526
+        enabled: false
   redis:
     host: 122.51.108.224
     port: 6379

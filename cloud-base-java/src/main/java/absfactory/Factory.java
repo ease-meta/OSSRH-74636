@@ -16,12 +16,25 @@
  */
 package absfactory;
 
+import com.leijian.moc.SubClass1;
+import com.leijian.moc.SubClass2;
+
 /**
  * @author shadow
  * @Date 2016年8月18日下午7:07:15
  * @Fun  实体工厂 创建实体产品，返回类型为抽象产品
  **/
 public class Factory implements IFactory {
+
+    @Override
+    public SubClass1 createSubClass1() {
+        return null;
+    }
+
+    @Override
+    public SubClass2 createSubClass2() {
+        return null;
+    }
 
     @Override
     public IProduct1 createProduct1A() {

@@ -23,4 +23,12 @@ public interface IFactory {
 	public SubClass1 createSubClass1();
 
 	public SubClass2 createSubClass2();
+
+	IProduct1 createProduct1A();
+
+	IProduct1 createProduct1B();
+
+	IProduct2 createProduct2A();
+
+	IProduct2 createProduct2B();
 }

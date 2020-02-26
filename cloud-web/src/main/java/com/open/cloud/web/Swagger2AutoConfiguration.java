@@ -14,22 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud;
+package com.open.cloud.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.web.context.request.async.DeferredResult;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@Configuration
 @EnableSwagger2
-public class Swagger2Config {
+@ConditionalOnProperty(name = "open.cloud.swagger2.enabled", havingValue = "true",matchIfMissing = true)
+public class Swagger2AutoConfiguration{
     @Autowired
     Environment environment;
 
@@ -45,6 +47,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
             // //大标题
             .title("开放发云平台")
+                .contact(new Contact("leijian","","leijian0128@163.com"))
             // 版本号
             .version("1.0")
             //                .termsOfServiceUrl("NO terms of service")
