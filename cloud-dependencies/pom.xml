@@ -65,6 +65,7 @@
         <shardingsphere.version>[4.0.0,)</shardingsphere.version>
         <!--缓存-->
         <caffeine.version>[2.8.1,)</caffeine.version>
+        <jetcache.version>[2.5.16,)</jetcache.version>
         <!--高性能框架-->
         <disruptor.version>[3.4.2,)</disruptor.version>
         <!--安全鉴权-->
@@ -415,6 +416,12 @@
                 <groupId>com.github.ben-manes.caffeine</groupId>
                 <artifactId>caffeine</artifactId>
                 <version>${caffeine.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis</artifactId>
+                <version>${jetcache.version}</version>
             </dependency>
 
             <dependency>
