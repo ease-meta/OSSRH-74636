@@ -11,6 +11,17 @@
 
     <artifactId>cloud-sloars</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-web</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
