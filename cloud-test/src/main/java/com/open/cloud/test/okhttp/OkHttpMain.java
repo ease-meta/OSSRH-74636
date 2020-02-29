@@ -20,7 +20,6 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.open.cloud.common.utils.LocalDateTimeUtils;
-import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
@@ -32,7 +31,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-@Slf4j
+@
 public class OkHttpMain {
     public static void main(String[] args) {
         LinkedList linkedList = new LinkedList();
