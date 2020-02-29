@@ -20,6 +20,7 @@ import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.open.cloud.common.utils.LocalDateTimeUtils;
+import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;
 import okhttp3.Headers;
 import okhttp3.OkHttpClient;
@@ -28,47 +29,77 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-@
+@Slf4j
 public class OkHttpMain {
-    public static void main(String[] args) {
-        LinkedList linkedList = new LinkedList();
-        Two<LinkedList, PagePo> two = load(null, null);
-        linkedList.addAll(two.first);
-        while (two.second.getNextPage() != null && two.second.getNextPage().trim().length() > 0) {
-            two = load(two.second.getPerPage(), two.second.getNextPage());
-            linkedList.addAll(two.first);
-        }
-        String fileName = LocalDateTimeUtils.formatNow("yyyy-MM-dd") + "测试.xlsx";
-        EasyExcel.write(fileName).password("1q2w3e4r")
-        // 这里放入动态头
-        //.head(head())
-            .sheet()
-            // 当然这里数据也可以用 List<List<String>> 去传入
-            .doWrite(linkedList);
-    }
+	public static void main(String[] args) {
+		LinkedList<GitProjectPo> temp = new LinkedList();
+		String fileName = "测试.xlsx";
+		String password = "1q2w3e4r";
 
-    private static List<List<String>> head() {
-        List<List<String>> list = new ArrayList<List<String>>();
-        List<String> head0 = new ArrayList<String>();
-        head0.add("创建日期");
-        List<String> head1 = new ArrayList<String>();
-        head1.add("默认分支");
-        List<String> head2 = new ArrayList<String>();
-        head2.add("fork数");
-        list.add(head0);
-        list.add(head1);
-        list.add(head2);
-        return list;
-    }
+		List<GitProjectPo> readSync = new LinkedList<>();
+		try {
+			readSync = EasyExcel.read(fileName).password(password).head(GitProjectPo.class).sheet().doReadSync();
+		} catch (Exception e) {
+			//TODO
+		}
 
-    public static String getPath() {
-        return OkHttpMain.class.getResource("/").getPath();
-    }
+		Two<LinkedList, PagePo> two = load(null, null);
+		temp.addAll(two.first);
 
-    public static Two<LinkedList, PagePo> load(String per_page, String page) {
+		while (two.second.getNextPage() != null && two.second.getNextPage().trim().length() > 0) {
+			two = load(two.second.getPerPage(), two.second.getNextPage());
+			temp.addAll(two.first);
+		}
+		List<GitProjectPo> linkedList = temp.stream().sorted(Comparator.comparing(GitProjectPo::getId)).collect(Collectors.toList());
+		for (int i = 0; i < readSync.size(); i++) {
+			for (int j = 0; j < linkedList.size(); j++) {
+				if (readSync.get(i).getId() == linkedList.get(j).getId()) {
+					linkedList.get(j).setExist(readSync.get(i).getExist());
+				}
+			}
+		}
+		
+		EasyExcel.write(fileName).password(password)
+				// 这里放入动态头
+				.head(head())
+				.sheet(LocalDateTimeUtils.formatNow("yyyy-MM-dd"))
+				// 当然这里数据也可以用 List<List<String>> 去传入
+				.doWrite(linkedList);
+	}
+
+	private static List<List<String>> head() {
+		List<List<String>> list = new ArrayList<List<String>>();
+		List<String> head0 = new ArrayList<String>();
+		head0.add("序号");
+		List<String> head1 = new ArrayList<String>();
+		head1.add("状态");
+		List<String> head2 = new ArrayList<String>();
+		head2.add("地址");
+		List<String> head3 = new ArrayList<String>();
+		head3.add("创建日期");
+		List<String> head4 = new ArrayList<String>();
+		head4.add("更新日期");
+		List<String> head5 = new ArrayList<String>();
+		head5.add("描述信息");
+		list.add(head0);
+		list.add(head1);
+		list.add(head2);
+		list.add(head3);
+		list.add(head4);
+		list.add(head5);
+		return list;
+	}
+
+	public static String getPath() {
+		return OkHttpMain.class.getResource("/").getPath();
+	}
+
+	public static Two<LinkedList, PagePo> load(String per_page, String page) {
 		//String url = "http://10.7.20.144/api/v3/projects?simple=true";
 		//String url = "http://10.7.20.144/api/v3/projects/8/issues/8/notes?per_page=50";
 		if (per_page == null) {
