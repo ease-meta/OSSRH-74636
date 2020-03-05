@@ -47,18 +47,18 @@
         <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
         <dubbo.version>2.7.5</dubbo.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
-        <sofa-boot.version>3.2.2</sofa-boot.version>
+        <sofa-boot.version>3.3.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
-        <spring-cloud-huawei.version>1.0.0</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.2.1</spring-boot-admin.version>
+        <spring-cloud-huawei.version>1.1.0</spring-cloud-huawei.version>
+        <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
         <vaadin.version>14.1.17</vaadin.version>
         <!--消息中间件-->
+        <rocketmq.version>4.6.1</rocketmq.version>
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
-        <rocketmq.version>4.6.0</rocketmq.version>
         <!--数据库操作-->
-        <druid.version>1.1.21</druid.version>
+        <druid.version>[1.1.21,)</druid.version>
         <mybatis.boot.version>[2.1.1,)</mybatis.boot.version>
         <mybatis.plus.version>[3.3.1,)</mybatis.plus.version>
         <mybatis.version>[3.3.0,)</mybatis.version>
@@ -70,13 +70,13 @@
         <!--高性能框架-->
         <disruptor.version>[3.4.2,)</disruptor.version>
         <!--安全鉴权-->
+        <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
         <security.oauth.version>[2.3.6.RELEASE,)</security.oauth.version>
         <jjwt.version>[0.9.1,)</jjwt.version>
         <java-jwt.version>[3.2.0,)</java-jwt.version>
         <shiro-spring.version>[1.4.2,)</shiro-spring.version>
-        <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
         <!--链路跟踪-->
-        <zipkin.version>2.12.9</zipkin.version>
+        <zipkin.version>2.20.0</zipkin.version>
         <apollo.version>1.5.1</apollo.version>
         <perf4j.version>[0.9.16,)</perf4j.version>
         <p6spy.version>[3.8.7,)</p6spy.version>
@@ -90,20 +90,22 @@
         <easymock.version>[4.1,)</easymock.version>
         <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
+        <guava.version>20.0</guava.version>
+        <easypoi.version>4.1.3</easypoi.version>
         <kotlin.version>1.3.61</kotlin.version>
+        <protobuf.java.version>3.6.0</protobuf.java.version>
         <itextpdf.version>[5.5.13,)</itextpdf.version>
         <kryo.version>[4.0.2,)</kryo.version>
-        <kryo.serializers.version>0.9</kryo.serializers.version>
+        <kryo.serializers.version>[0.9,)</kryo.serializers.version>
         <avro.version>[1.8.2,)</avro.version>
         <protostuff.version>[1.6.0,)</protostuff.version>
-        <protobuf.java.version>3.6.0</protobuf.java.version>
         <fst.version>[2.48-jdk-6,)</fst.version>
         <gson.version>[2.8.5,)</gson.version>
         <hessian.version>[4.0.38,)</hessian.version>
         <jline.version>[3.13.3,)</jline.version>
         <oshi.version>[3.9.1,)</oshi.version>
         <curator.version>[2.9.1,)</curator.version>
-        <activiti.version>7.1.0.M5</activiti.version>
+        <activiti.version>[7.1.0.M5,)</activiti.version>
         <commons-beanutils.version>[1.9.4,)</commons-beanutils.version>
         <reflections.version>[0.9.12,)</reflections.version>
         <commons-lang3.version>[3.9,)</commons-lang3.version>
@@ -114,11 +116,9 @@
         <commons-collections4.version>[4.4,)</commons-collections4.version>
         <commons-compress.version>[1.19,)</commons-compress.version>
         <fastjson.version>[1.2.62,)</fastjson.version>
-        <easypoi.version>4.1.3</easypoi.version>
         <easyexcel.version>[2.1.6,)</easyexcel.version>
         <jasypt.version>[3.0.2,)</jasypt.version>
         <hutool-all.version>[5.1.2,)</hutool-all.version>
-        <guava.version>20.0</guava.version>
         <joda-time.version>[2.10.5,)</joda-time.version>
         <okhttp.version>[4.3.1,)</okhttp.version>
         <guice.version>[4.2.2,)</guice.version>
@@ -169,6 +169,17 @@
                 <version>${sofa-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
             <!--<dependency>
@@ -254,11 +265,10 @@
 
             <dependency>
                 <groupId>io.zipkin.zipkin2</groupId>
-                <artifactId>parent</artifactId>
+                <artifactId>zipkin</artifactId>
                 <version>${zipkin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
+
 
             <dependency>
                 <groupId>net.bull.javamelody</groupId>
@@ -338,7 +348,7 @@
             <dependency>
                 <groupId>de.javakaffee</groupId>
                 <artifactId>kryo-serializers</artifactId>
-                <version>0.9</version>
+                <version>${kryo.serializers.version}</version>
             </dependency>
 
             <dependency>

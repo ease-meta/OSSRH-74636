@@ -19,5 +19,19 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-core</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.jedis-lock</groupId>
+            <artifactId>jedis-lock</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.leopard/leopard-redis -->
+        <dependency>
+            <groupId>io.leopard</groupId>
+            <artifactId>leopard-redis</artifactId>
+            <version>0.9.12</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 </project>
