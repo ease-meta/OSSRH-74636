@@ -44,11 +44,11 @@
 
         <revision>0.0.1-SNAPSHOT</revision>
         <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <dubbo.version>2.7.5</dubbo.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <sofa-boot.version>3.3.0</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.2.1</sofa-boot-enterprise.version>
+        <sofa-boot-enterprise.version>3.3.0</sofa-boot-enterprise.version>
         <spring-cloud-huawei.version>1.1.0</spring-cloud-huawei.version>
         <spring-boot-admin.version>2.2.2</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
@@ -182,13 +182,13 @@
                 <version>${druid.version}</version>
             </dependency>
 
-            <!--<dependency>
+            <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
                 <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>-->
+            </dependency>
 
             <dependency>
                 <groupId>com.huaweicloud</groupId>

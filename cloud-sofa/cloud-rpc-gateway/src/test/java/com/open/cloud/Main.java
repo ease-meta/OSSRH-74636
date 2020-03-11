@@ -13,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.open.cloud;
 
 import com.alipay.hessian.generic.model.GenericObject;
@@ -21,11 +22,13 @@ import com.alipay.sofa.rpc.api.GenericService;
 import com.alipay.sofa.rpc.config.ConsumerConfig;
 import com.alipay.sofa.rpc.config.RegistryConfig;
 
+*/
 /**
  * @author leijian
  * @version 1.0
  * @date 2019/6/16 15:24
- **/
+ **//*
+
 public class Main {
 
     public static void main(String[] args) {
@@ -52,3 +55,4 @@ public class Main {
         System.out.println(o2);
     }
 }
+*/

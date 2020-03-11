@@ -13,7 +13,8 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.open.cloud;
 
 import ch.qos.logback.classic.pattern.ClassicConverter;
@@ -27,11 +28,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.StringJoiner;
 
+*/
 /**
  * @author leijian
  * @version 1.0
  * @date 2019/6/29 1:06
- **/
+ **//*
+
 @Slf4j
 public class TraceIdPatternConverter extends ClassicConverter {
 
@@ -57,3 +60,4 @@ public class TraceIdPatternConverter extends ClassicConverter {
         return StringUtils.isEmpty(traceId) ? "," : traceId;
     }
 }
+*/

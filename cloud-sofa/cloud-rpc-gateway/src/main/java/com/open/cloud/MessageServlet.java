@@ -13,14 +13,13 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ *//*
+
 package com.open.cloud;
 
+import com.alibaba.dubbo.rpc.service.GenericService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.alipay.common.tracer.core.utils.TracerUtils;
-import com.alipay.sofa.rpc.api.GenericService;
-import com.alipay.sofa.rpc.boot.runtime.param.BoltBindingParam;
 import com.alipay.sofa.runtime.api.client.ReferenceClient;
 import com.alipay.sofa.runtime.api.client.param.ReferenceParam;
 import com.open.cloud.api.model.BaseResponse;
@@ -116,14 +115,16 @@ public class MessageServlet extends HttpServlet {
                 .setGenericInterface("com.open.cloud.api.IRbAcctTransfer");
             referenceParam.setBindingParam(refBindingParam);
             referenceParam.setJvmFirst(false);
-            /*
+            */
+/*
 
                         GenericObject genericObject = new GenericObject(
                                 "com.open.cloud.api.model.RbAcctTransferIn");
                         genericObject.putField("reference", "123456");
                         genericObject.putField("acctSystem", "555");
                         genericObject.putField("transId","nihao");
-            */
+            *//*
+
 
             BaseResponse result = (BaseResponse) referenceClient.reference(referenceParam)
                 .$genericInvoke("rbAcctTransfer",
@@ -162,3 +163,4 @@ public class MessageServlet extends HttpServlet {
     }
 
 }
+*/
