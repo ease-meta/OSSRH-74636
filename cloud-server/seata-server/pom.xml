@@ -12,7 +12,6 @@
     <artifactId>seata-server</artifactId>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/io.seata/seata-server -->
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-server</artifactId>

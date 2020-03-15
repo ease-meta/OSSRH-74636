@@ -16,7 +16,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <url>https://github.com/apache/dubbo</url>
     <inceptionYear>2018</inceptionYear>
     <licenses>
         <license>
@@ -128,7 +127,6 @@
         <module>cloud-mq-center</module>
         <module>cloud-web</module>
         <module>cloud-webflux</module>
-        <!--<module>cloud-maven-plugin</module>-->
         <module>cloud-server</module>
         <module>cloud-gateway</module>
         <module>cloud-health</module>

@@ -12,18 +12,9 @@
     <artifactId>cloud-cache</artifactId>
 
     <dependencies>
-       <!-- <dependency>
+        <dependency>
             <groupId>com.alicp.jetcache</groupId>
             <artifactId>jetcache-starter-redis</artifactId>
-        </dependency>-->
-
-        <dependency>
-            <groupId>com.alicp.jetcache</groupId>
-            <artifactId>jetcache-anno</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alicp.jetcache</groupId>
-            <artifactId>jetcache-redis</artifactId>
         </dependency>
 
         <dependency>

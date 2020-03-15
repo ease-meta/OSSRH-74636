@@ -25,6 +25,7 @@
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>mq-spring-boot-log</artifactId>
+            <version>3.1.2</version>
         </dependency>
     </dependencies>
 
