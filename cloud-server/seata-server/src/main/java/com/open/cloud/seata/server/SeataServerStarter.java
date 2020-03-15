@@ -1,9 +1,8 @@
 package com.open.cloud.seata.server;
 
-import java.io.IOException;
-
-import io.seata.core.store.StoreMode;
 import io.seata.server.Server;
+
+import java.io.IOException;
 
 public class SeataServerStarter {
 

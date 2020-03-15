@@ -1,10 +1,6 @@
 package com.open.cloud.eureka.server.controller;
 
-import com.netflix.appinfo.InstanceInfo;
-import com.netflix.discovery.shared.Applications;
 import com.netflix.eureka.EurekaServerContext;
-import com.netflix.eureka.cluster.PeerEurekaNodes;
-import com.netflix.eureka.registry.PeerAwareInstanceRegistry;
 import com.open.cloud.common.base.ResponseTool;
 import com.open.cloud.eureka.server.service.EurekaInstacneZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +35,22 @@ public class EurekaServerController {
 		return ResponseEntity.ok(ResponseTool.success(zoneService.setVersionDown(name, value, status)));
 	}
 
-	@GetMapping("/test")
+	@GetMapping("/getInstanceInfo")
+	public ResponseEntity<?> getInstanceInfo(@RequestParam String serviceName) {
+		return ResponseEntity.ok(ResponseTool.success(zoneService.getInstances(serviceName)));
+	}
+
+	@GetMapping("/getAllInstanceInfo")
+	public ResponseEntity<?> getAllInstanceInfo() {
+		return ResponseEntity.ok(ResponseTool.success(zoneService.getInstances(null)));
+	}
+
+	/*@GetMapping("/test")
 	public String test() {
-		InstanceInfo instanceInfo = eurekaServerContext.getApplicationInfoManager().getInfo();
+		InstanceInfo instanceInfo =
 		PeerAwareInstanceRegistry peerAwareInstanceRegistry = eurekaServerContext.getRegistry();
 		PeerEurekaNodes peerEurekaNodes = eurekaServerContext.getPeerEurekaNodes();
 		Applications applications = peerAwareInstanceRegistry.getApplications();
 		return "success";
-	}
+	}*/
 }

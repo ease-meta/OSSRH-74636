@@ -19,7 +19,6 @@ package com.open.cloud.common.oshi.model;
 import cn.hutool.core.date.DateUnit;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.NumberUtil;
-import com.open.cloud.common.utils.LocalDateTimeUtils;
 import lombok.Setter;
 
 import java.lang.management.ManagementFactory;

@@ -16,11 +16,8 @@
  */
 package com.open.cloud.mq.kafka;
 
-import kafka.admin.AdminUtils;
 import kafka.admin.TopicCommand;
-import kafka.utils.ZKStringSerializer$;
 import lombok.extern.slf4j.Slf4j;
-import org.I0Itec.zkclient.ZkClient;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +25,10 @@ import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaAdmin;
-import sun.reflect.generics.reflectiveObjects.LazyReflectiveObjectGenerator;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-import java.util.Properties;
 
 @Slf4j
 @Configuration

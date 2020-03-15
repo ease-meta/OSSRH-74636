@@ -16,6 +16,11 @@
  */
 package com.open.cloud.common.spi.dubbo;
 
+import com.open.cloud.common.utils.ConcurrentHashSet;
+import com.open.cloud.common.utils.Holder;
+import com.open.cloud.common.utils.StringUtils;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.annotation.Annotation;
@@ -32,11 +37,6 @@ import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
-
-import com.open.cloud.common.utils.ConcurrentHashSet;
-import com.open.cloud.common.utils.Holder;
-import com.open.cloud.common.utils.StringUtils;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Leijian

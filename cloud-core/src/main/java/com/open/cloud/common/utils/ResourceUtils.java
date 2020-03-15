@@ -1,5 +1,7 @@
 package com.jeesuite.common.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,8 +22,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author Leijian

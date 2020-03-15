@@ -16,12 +16,12 @@
  */
 package prototype;
 
-import java.util.Iterator;
-
 import model.base.Door;
 import model.base.Maze;
 import model.base.Room;
 import model.base.Wall;
+
+import java.util.Iterator;
 
 /**
  * @fun 原型模式测试<br/>

@@ -21,9 +21,9 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.open.cloud.common.utils.ObjectUtils.of;
 import static com.open.cloud.common.utils.StringUtils.hasText;
 import static com.open.cloud.common.utils.StringUtils.isEmpty;
-import static com.open.cloud.common.utils.ObjectUtils.of;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableList;
 import static org.springframework.beans.factory.BeanFactoryUtils.beanNamesForTypeIncludingAncestors;
