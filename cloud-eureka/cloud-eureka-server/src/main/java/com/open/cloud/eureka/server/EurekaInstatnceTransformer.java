@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.eureka.xian.server;
+package com.open.cloud.eureka.server;
 
 import com.netflix.appinfo.InstanceInfo;
 import lombok.extern.slf4j.Slf4j;

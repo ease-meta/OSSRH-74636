@@ -21,6 +21,11 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>mq-spring-boot-log</artifactId>
+        </dependency>
     </dependencies>
 
 

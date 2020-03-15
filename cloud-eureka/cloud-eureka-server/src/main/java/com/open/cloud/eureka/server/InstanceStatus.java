@@ -14,17 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.eureka.xian.server;
+package com.open.cloud.eureka.server;
 
-import com.netflix.appinfo.InstanceInfo;
+public enum InstanceStatus {
 
-public interface GrayCommunicateClient {
-
-    /**
-     * 将实例信息发送到灰度服务器
-     *
-     * @param instanceInfo 实例信息
-     */
-    void noticeInstanceInfo(InstanceInfo instanceInfo);
-
+    STARTING, UP, OUT_OF_SERVICE, DOWN, UNKNOWN
 }
