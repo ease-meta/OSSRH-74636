@@ -1,17 +1,27 @@
 spring:
   application:
     name: cloud-dubbo-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: nacos.didispace.com:80
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://122.51.108.224:8001/eureka/
 dubbo:
   scan:
-    base-packages: com.dubbo.example.provider
+    base-packages: om.open.cloud.dubbo.provider
   protocol:
     name: dubbo
     port: -1
   registry:
-    address: spring-cloud://nacos.didispace.com
+    address: spring-cloud://localhost
 server:
   port: 8080
+feign:
+  hystrix:
+    enabled: true

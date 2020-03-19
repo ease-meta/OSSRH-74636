@@ -16,11 +16,8 @@
  */
 package com.open.cloud.api.model;
 
-import lombok.Data;
-
 import java.math.BigDecimal;
 
-@Data
 public class RbAcctTransferIn extends SuperBaseRequest {
     /**
      * 交易参考号<br>
@@ -188,4 +185,132 @@ public class RbAcctTransferIn extends SuperBaseRequest {
      */
     private String     payUnit;
 
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getAcctSystem() {
+        return acctSystem;
+    }
+
+    public void setAcctSystem(String acctSystem) {
+        this.acctSystem = acctSystem;
+    }
+
+    public String getClientNo() {
+        return clientNo;
+    }
+
+    public void setClientNo(String clientNo) {
+        this.clientNo = clientNo;
+    }
+
+    public String getBaseAcctNo() {
+        return baseAcctNo;
+    }
+
+    public void setBaseAcctNo(String baseAcctNo) {
+        this.baseAcctNo = baseAcctNo;
+    }
+
+    public String getAcctCcy() {
+        return acctCcy;
+    }
+
+    public void setAcctCcy(String acctCcy) {
+        this.acctCcy = acctCcy;
+    }
+
+    public String getProdType() {
+        return prodType;
+    }
+
+    public void setProdType(String prodType) {
+        this.prodType = prodType;
+    }
+
+    public String getAcctSeqNo() {
+        return acctSeqNo;
+    }
+
+    public void setAcctSeqNo(String acctSeqNo) {
+        this.acctSeqNo = acctSeqNo;
+    }
+
+    public String getTrack2() {
+        return track2;
+    }
+
+    public void setTrack2(String track2) {
+        this.track2 = track2;
+    }
+
+    public String getTrack3() {
+        return track3;
+    }
+
+    public void setTrack3(String track3) {
+        this.track3 = track3;
+    }
+
+    public String getWithdrawalType() {
+        return withdrawalType;
+    }
+
+    public void setWithdrawalType(String withdrawalType) {
+        this.withdrawalType = withdrawalType;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTranMethod() {
+        return tranMethod;
+    }
+
+    public void setTranMethod(String tranMethod) {
+        this.tranMethod = tranMethod;
+    }
+
+    public String getPbFlag() {
+        return pbFlag;
+    }
+
+    public void setPbFlag(String pbFlag) {
+        this.pbFlag = pbFlag;
+    }
+
+    public BigDecimal getTranAmt() {
+        return tranAmt;
+    }
+
+    public void setTranAmt(BigDecimal tranAmt) {
+        this.tranAmt = tranAmt;
+    }
+
+    public String getTranCcy() {
+        return tranCcy;
+    }
+
+    public void setTranCcy(String tranCcy) {
+        this.tranCcy = tranCcy;
+    }
+
+    public String getPayUnit() {
+        return payUnit;
+    }
+
+    public void setPayUnit(String payUnit) {
+        this.payUnit = payUnit;
+    }
 }

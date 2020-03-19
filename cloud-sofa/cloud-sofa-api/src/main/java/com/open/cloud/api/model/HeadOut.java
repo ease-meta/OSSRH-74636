@@ -16,8 +16,6 @@
  */
 package com.open.cloud.api.model;
 
-import lombok.Data;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +24,6 @@ import java.util.List;
  * @version 1.0
  * @date 2019/6/14 19:10
  **/
-@Data
 public class HeadOut extends BaseData {
 
     private String       runDate;
@@ -42,5 +39,37 @@ public class HeadOut extends BaseData {
         this.retStatus = retStatus;
         this.ret = new ArrayList<>();
         this.ret.add(result);
+    }
+
+    public String getRunDate() {
+        return runDate;
+    }
+
+    public void setRunDate(String runDate) {
+        this.runDate = runDate;
+    }
+
+    public String getDownFilePath() {
+        return downFilePath;
+    }
+
+    public void setDownFilePath(String downFilePath) {
+        this.downFilePath = downFilePath;
+    }
+
+    public String getRetStatus() {
+        return retStatus;
+    }
+
+    public void setRetStatus(String retStatus) {
+        this.retStatus = retStatus;
+    }
+
+    public List<Result> getRet() {
+        return ret;
+    }
+
+    public void setRet(List<Result> ret) {
+        this.ret = ret;
     }
 }
