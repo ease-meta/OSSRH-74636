@@ -8,10 +8,25 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cloud-rpc-gateway</artifactId>
-    <name>cloud-rpc-gateway</name>
+
+    <artifactId>cloud-sofa-app</artifactId>
+
+    <name>cloud-sofa-app</name>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.networknt</groupId>
+            <artifactId>mask</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>sensitive-core</artifactId>
+            <version>0.0.6</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -24,14 +39,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.alipay.sofa</groupId>
-            <artifactId>rpc-sofa-boot-starter</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-sofa-framework</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -12,6 +12,7 @@ import com.alicp.jetcache.support.FastjsonKeyConvertor;
 import com.alicp.jetcache.support.JavaValueDecoder;
 import com.alicp.jetcache.support.JavaValueEncoder;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
@@ -24,6 +25,7 @@ import java.util.Map;
 @Configuration
 @EnableMethodCache(basePackages = "com.company.mypackage")
 @EnableCreateCacheAnnotation
+@EnableCaching
 public class JetCacheConfig {
 
 	@Bean

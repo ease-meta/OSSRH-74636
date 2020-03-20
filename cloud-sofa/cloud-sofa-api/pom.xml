@@ -15,10 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-business-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 </project>

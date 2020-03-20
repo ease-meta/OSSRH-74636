@@ -67,12 +67,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-lock</artifactId>
-        </dependency>
-
     </dependencies>
 
 </project>

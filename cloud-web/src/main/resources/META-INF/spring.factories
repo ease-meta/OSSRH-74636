@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.cloud.web.Swagger2AutoConfiguration
+com.open.cloud.web.swagger.Swagger2AutoConfiguration
