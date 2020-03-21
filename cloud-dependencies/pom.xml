@@ -42,9 +42,11 @@
         <java.version>1.8</java.version>
 
         <revision>0.0.1-SNAPSHOT</revision>
-        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <!--<spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>-->
         <!--<dubbo.version>2.7.5</dubbo.version>-->
+        <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
+        <spring-cloud.version>Greenwich.SR5</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <sofa-boot.version>3.3.1</sofa-boot.version>
         <sofa-boot-enterprise.version>3.3.1</sofa-boot-enterprise.version>
@@ -80,6 +82,7 @@
         <perf4j.version>[0.9.16,)</perf4j.version>
         <p6spy.version>[3.8.7,)</p6spy.version>
         <nacos.version>1.1.4</nacos.version>
+        <curator.version>2.13.0</curator.version>
         <javamelody.spring.boot.version>[1.80.0,)</javamelody.spring.boot.version>
         <huaweicloud-dws-jdbc.version>[1.5.301,)</huaweicloud-dws-jdbc.version>
         <!--单元测试-->
@@ -103,7 +106,6 @@
         <hessian.version>[4.0.38,)</hessian.version>
         <jline.version>[3.13.3,)</jline.version>
         <oshi.version>[3.9.1,)</oshi.version>
-        <curator.version>[2.9.1,)</curator.version>
         <activiti.version>[7.1.0.M5,)</activiti.version>
         <commons-beanutils.version>[1.9.4,)</commons-beanutils.version>
         <reflections.version>[0.9.12,)</reflections.version>
@@ -187,13 +189,13 @@
                 <version>${druid.version}</version>
             </dependency>
 
-            <dependency>
+         <!--   <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-enterprise-dependencies</artifactId>
                 <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
+            </dependency>-->
 
             <!--nacos-->
             <dependency>
@@ -206,6 +208,23 @@
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-client</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${curator.version}</version>
+            </dependency>
+
 
             <dependency>
                 <groupId>com.huaweicloud</groupId>

@@ -3,5 +3,5 @@
 
 # SpringApplicationListener
 # org.springframework.context.ApplicationListener=com.alipay.sofa.boot.listener.SofaBootstrapRunListener
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.cloud.sofa.framework.SofaAutoConfiguration
+# org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+# com.open.cloud.sofa.framework.SofaAutoConfiguration

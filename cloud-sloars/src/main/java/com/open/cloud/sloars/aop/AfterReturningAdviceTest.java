@@ -4,7 +4,6 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
-// 定义一个方面
 @Aspect
 @Component
 public class AfterReturningAdviceTest {
