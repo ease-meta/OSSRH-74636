@@ -1,5 +1,6 @@
 package com.open.cloud.sofa.provider.annotation;
 
+
 import com.open.cloud.business.api.annotation.AnnotationService;
 
 public class AnnotationServiceImpl implements AnnotationService {

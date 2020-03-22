@@ -11,7 +11,7 @@
 
     <artifactId>cloud-sofa-app</artifactId>
 
-    <name>cloud-sofa-app</name>
+    <name>cloud-sofa-provider</name>
 
     <dependencies>
 

@@ -116,7 +116,6 @@
         <module>cloud-business-center</module>
         <module>cloud-test</module>
         <module>cloud-core</module>
-        <module>cloud-sofa</module>
         <module>cloud-batch</module>
         <module>cloud-auth</module>
         <module>cloud-dependencies</module>
