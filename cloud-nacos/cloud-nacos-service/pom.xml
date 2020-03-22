@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-web</artifactId>
+            <artifactId>cloud-webflux</artifactId>
         </dependency>
     </dependencies>
 
