@@ -12,6 +12,13 @@
     <artifactId>cloud-mq-rocketmq</artifactId>
 
     <dependencies>
+        <!-- 整合RocketMq -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-spring-boot-starter</artifactId>

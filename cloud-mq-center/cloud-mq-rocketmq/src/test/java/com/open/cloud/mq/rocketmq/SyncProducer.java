@@ -26,12 +26,12 @@ public class SyncProducer {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new DefaultMQProducer("please_rename_unique_group_name");
         // Specify name server addresses.
-        producer.setNamesrvAddr("122.51.108.224:9876");
+        producer.setNamesrvAddr("10.7.19.103:9876");
         //Launch the instance.
         producer.start();
         for (int i = 0; i < 100; i++) {
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("TopicTest" /* Topic */, "TagA" /* Tag */,
+            Message msg = new Message("Topicst" /* Topic */, "TagA" /* Tag */,
                 ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */
             );
             //Call send message to deliver message to one of brokers.
