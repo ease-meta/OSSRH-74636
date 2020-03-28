@@ -18,4 +18,4 @@ eureka:
   server:
     #use-read-only-response-cache: false
     enable-self-preservation: false
-#eureka.server.enableSelfPreservation=false
+    #eureka.server.enableSelfPreservation=false

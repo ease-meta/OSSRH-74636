@@ -5,7 +5,6 @@ spring:
     base-url: http://122.51.108.224:9411
 server:
   port: 7001
-
 eureka:
   client:
     healthcheck:

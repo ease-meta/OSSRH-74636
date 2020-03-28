@@ -14,7 +14,7 @@ public class AsyncProducer {
         producer.setNamesrvAddr("10.7.19.103:9876");
         //Launch the instance.
         producer.start();
-        producer.setRetryTimesWhenSendAsyncFailed(0);
+        //producer.setRetryTimesWhenSendAsyncFailed(0);
         for (int i = 0; i < 100; i++) {
                 final int index = i;
                 //Create a message instance, specifying topic, tag and message body.
