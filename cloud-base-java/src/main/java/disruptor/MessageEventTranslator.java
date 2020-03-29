@@ -1,3 +1,4 @@
+/*
 package disruptor;
 
 import com.lmax.disruptor.EventTranslatorOneArg;
@@ -8,4 +9,4 @@ public class MessageEventTranslator implements EventTranslatorOneArg<MessageEven
     public void translateTo(MessageEvent messageEvent, long l, String o2) {
             messageEvent.setMessage(o2);
     }
-}
+}*/

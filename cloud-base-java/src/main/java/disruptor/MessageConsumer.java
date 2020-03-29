@@ -1,3 +1,4 @@
+/*
 package disruptor;
 
 import com.lmax.disruptor.BlockingWaitStrategy;
@@ -23,4 +24,4 @@ public class MessageConsumer {
 			producer.onData(x + message);
 		});
 	}
-}
+}*/

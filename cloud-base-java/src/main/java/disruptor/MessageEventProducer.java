@@ -1,3 +1,4 @@
+/*
 package disruptor;
 
 import com.lmax.disruptor.EventTranslatorOneArg;
@@ -16,4 +17,4 @@ public class MessageEventProducer {
     }
 
 
-}
+}*/

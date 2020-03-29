@@ -1,3 +1,4 @@
+/*
 package disruptor;
 
 import com.lmax.disruptor.EventHandler;
@@ -8,4 +9,4 @@ public class MessageEvenHandler3 implements EventHandler<MessageEvent> {
 		System.out.println("----------------" + messageEvent.getMessage());
 
 	}
-}
+}*/

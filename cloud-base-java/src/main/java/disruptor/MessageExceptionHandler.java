@@ -1,3 +1,4 @@
+/*
 package disruptor;
 
 import com.lmax.disruptor.ExceptionHandler;
@@ -18,4 +19,4 @@ public class MessageExceptionHandler implements ExceptionHandler {
     public void handleOnShutdownException(Throwable throwable) {
         throwable.printStackTrace();
     }
-}
+}*/
