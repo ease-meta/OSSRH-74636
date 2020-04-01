@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cloud-boot-build</artifactId>
+        <groupId>com.open.cloud</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cloud-boot-project</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>cloud-boot-dependencies</module>
+        <module>cloud-boot-parent</module>
+        <module>cloud-boot-core</module>
+        <module>cloud-boot-jboot</module>
+        <module>cloud-boot-sofa</module>
+        <module>cloud-boot-springcloud</module>
+        <module>cloud-boot-plugins</module>
+        <module>cloud-boot-actuator</module>
+        <module>cloud-boot-autoconfigure</module>
+        <module>cloud-boot-datalake</module>
+        <module>cloud-boot-tools</module>
+        <module>cloud-boot-starters</module>
+    </modules>
+
+    <properties>
+        <main.user.dir>${basedir}/..</main.user.dir>
+    </properties>
+</project>
