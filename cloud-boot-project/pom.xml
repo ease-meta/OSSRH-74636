@@ -24,6 +24,8 @@
         <module>cloud-boot-datalake</module>
         <module>cloud-boot-tools</module>
         <module>cloud-boot-starters</module>
+        <module>cloud-boot-flyway</module>
+        <module>cloud-boot-dubbo</module>
     </modules>
 
     <properties>

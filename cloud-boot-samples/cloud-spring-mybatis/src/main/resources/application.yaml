@@ -1,0 +1,16 @@
+mybatis:
+  mapper-locations: classpath*:META-INF/mapper/**/*.xml,classpath*:mapper/**/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+
+spring:
+  datasource:
+    # 配置数据源
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid连接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://10.7.25.205:3306/workflow?characterEncoding=utf-8&autoReconnect=true&failOverReadOnly=false&useSSL=true
+    username: root
+    password: 123456
+logging:
+  level:
+    org.mybatis: TRACE
