@@ -24,7 +24,6 @@ import com.alibaba.dubbo.rpc.RpcException;
 import com.alibaba.dubbo.rpc.cluster.LoadBalance;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.dcits.galaxy.dubbo.rpc.cluster.router.GrayRule;
 import com.dcits.galaxy.dubbo.rpc.cluster.router.ServRule;
 import com.dcits.galaxy.dubbo.rpc.cluster.router.redis.JedisPoolUtil;
 import org.slf4j.Logger;
@@ -75,17 +74,24 @@ public class DubboGrayLoadBalance implements LoadBalance {
             jedis = JedisPoolUtil.getJedisPoolInstance().getResource();
             int length = invokers.size(); // 总个数
             boolean greey = false;
+            HashMap<String, String> application = new HashMap<>();
             List<Invoker<T>> newInvokers = new ArrayList<>();
+            List<Invoker<T>> newInvokers2 = new ArrayList<>();
             for (int i = 0; i < length; i++) {
                 if (invokers.get(i).isAvailable()) {
                     Field field = invokers.get(i).getClass()
                         .getDeclaredField(Dubbo_Invoker_ProviderUrl_Field_Key);
                     field.setAccessible(true);
                     URL providerUrl = (URL) field.get(invokers.get(i));
+                    application.put(providerUrl.getParameter(APPLICATION_KEY),
+                        providerUrl.getParameter(APPLICATION_KEY));
                     Set<String> set = jedis.keys("Greey:" + providerUrl.getHost() + "*");
                     if (set.size() > 0) {
+                        //当前服务节点涉及到灰度发布，invokers应该去除掉次服务节点，只有复合灰度规则的进行节点操作
                         greey = true;
                         newInvokers.add(invokers.get(i));
+                    } else {
+                        newInvokers2.add(invokers.get(i));
                     }
                 }
             }
@@ -93,16 +99,22 @@ public class DubboGrayLoadBalance implements LoadBalance {
             if (args.length == 3 && greey
                 && (jedis.exists(url.getServiceInterface()) || jedis.exists("ALL"))) {
                 //接口名：灰度条件--->应用
-                ServRule servRule = JSON.parseObject(jedis.get(url.getServiceInterface()),
-                    ServRule.class);
+                String value = jedis.get("ALL");
+                if (value == null) {
+                    value = jedis.get(url.getServiceInterface());
+                }
+                ServRule servRule = JSON.parseObject(value, ServRule.class);
                 String applicationId = servRule.getSerMtdEnm();
+                if (!application.containsKey(applicationId)) {
+                    return defualtLoadBalance.select(invokers, url, invocation);
+                }
                 String bizzKey = servRule.getRouterColCdn();
                 String bizzKeyValue = servRule.getRouterCondVal();
-                String applicationType = servRule.getAppSerClsnm();
+                String routerCondOper = servRule.getRouterCondOper();
                 Integer integer = servRule.getRouterArgsPos();
                 String key = "";
                 if (0 == integer) {
-                    key = "head";
+                    key = "sysHead";
                 }
                 if (1 == integer) {
                     key = "body";
@@ -111,14 +123,44 @@ public class DubboGrayLoadBalance implements LoadBalance {
                     return defualtLoadBalance.select(invokers, url, invocation);
                 }
                 JSONObject jsonObject = (JSON.parseArray(JSON.toJSONString(args[2])))
-                    .getJSONObject(0).getJSONObject("key");
-                if (jsonObject != null && null != bizzKeyValue && null != bizzKey
-                    && bizzKeyValue.equals(jsonObject.getString(bizzKey))) {
-                    return defualtLoadBalance.select(newInvokers,
-                    //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
-                        url, invocation);
+                    .getJSONObject(0).getJSONObject(key);
+
+                if (jsonObject != null && null != bizzKeyValue && null != bizzKey) {
+                    String v = jsonObject.getString(bizzKey);
+                    String[] strings = bizzKeyValue.split(",");
+                    for (int i = 0; i < strings.length; i++) {
+                        if ("=".equalsIgnoreCase(routerCondOper) && strings[i].equals(v)) {
+                            return defualtLoadBalance.select(newInvokers,
+                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
+                                url, invocation);
+                        }
+                        if ("!=".equalsIgnoreCase(routerCondOper) && !strings[i].equals(v)) {
+                            return defualtLoadBalance.select(newInvokers,
+                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
+                                url, invocation);
+                        }
+
+                        //in包含
+                        if ("in".equalsIgnoreCase(routerCondOper) && null != v
+                            && v.contains(strings[i])) {
+                            return defualtLoadBalance.select(newInvokers,
+                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
+                                url, invocation);
+                        }
+                        //前缀
+                        if ("pre".equalsIgnoreCase(routerCondOper) && null != v
+                            && v.startsWith(strings[i])) {
+                            return defualtLoadBalance.select(newInvokers,
+                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
+                                url, invocation);
+                        }
+                    }
                 }
-                return defualtLoadBalance.select(invokers, url, invocation);
+                //invokers.remove(newInvokers);
+                if (newInvokers2.size() == 0) {
+                    throw new RpcException("not found service for " + url.getServiceInterface());
+                }
+                return defualtLoadBalance.select(newInvokers2, url, invocation);
             } else {
                 return defualtLoadBalance.select(invokers, url, invocation);
             }
