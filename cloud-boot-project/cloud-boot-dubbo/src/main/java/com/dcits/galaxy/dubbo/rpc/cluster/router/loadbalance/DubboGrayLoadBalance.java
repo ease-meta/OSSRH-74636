@@ -29,14 +29,11 @@ import com.dcits.galaxy.dubbo.rpc.cluster.router.redis.JedisPoolUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import static com.alibaba.dubbo.common.Constants.APPLICATION_KEY;
@@ -65,117 +62,119 @@ public class DubboGrayLoadBalance implements LoadBalance {
             .getExtension(DEFAULT_LOADBALANCE);
         try {
             logger.info("use loadbalance {}", NAME);
-            Map<String, Map<String, String>> grayRouteRulesMap = new HashMap<>();
+
+            Field field = invokers.get(0).getClass()
+                .getDeclaredField(Dubbo_Invoker_ProviderUrl_Field_Key);
+            field.setAccessible(true);
+            URL providerUrl = (URL) field.get(invokers.get(0));
+            logger.info("providerUrl{}", providerUrl);
+            String messagep = providerUrl.getPath();
+            String application = providerUrl.getParameter(APPLICATION_KEY);
+            logger.info("messagep{}", messagep);
+            logger.info("application{}", application);
             Object[] args = invocation.getArguments();
             //暂时先用json解析。后续转为spel解析
-            if (args == null) {
-                return defualtLoadBalance.select(invokers, url, invocation);
-            }
             jedis = JedisPoolUtil.getJedisPoolInstance().getResource();
             int length = invokers.size(); // 总个数
-            boolean greey = false;
-            HashMap<String, String> application = new HashMap<>();
+
             List<Invoker<T>> newInvokers = new ArrayList<>();
-            List<Invoker<T>> newInvokers2 = new ArrayList<>();
-            for (int i = 0; i < length; i++) {
-                if (invokers.get(i).isAvailable()) {
-                    Field field = invokers.get(i).getClass()
-                        .getDeclaredField(Dubbo_Invoker_ProviderUrl_Field_Key);
-                    field.setAccessible(true);
-                    URL providerUrl = (URL) field.get(invokers.get(i));
-                    application.put(providerUrl.getParameter(APPLICATION_KEY),
-                        providerUrl.getParameter(APPLICATION_KEY));
-                    Set<String> set = jedis.keys("Greey:" + providerUrl.getHost() + "*");
-                    if (set.size() > 0) {
-                        //当前服务节点涉及到灰度发布，invokers应该去除掉次服务节点，只有复合灰度规则的进行节点操作
-                        greey = true;
-                        newInvokers.add(invokers.get(i));
-                    } else {
-                        newInvokers2.add(invokers.get(i));
+            //先匹配接口，在匹配地址
+            boolean greey = false;
+            ServRule servRule = null;
+            //精确匹配
+            if (jedis.exists(messagep) || jedis.exists("All") || jedis.exists("ALL")
+                || jedis.exists("all") || jedis.exists("*")) {
+                if (jedis.exists(messagep)) {
+                    servRule = JSON.parseObject(jedis.get(messagep), ServRule.class);
+                }
+                if (servRule == null && jedis.exists("*")) {
+                    servRule = JSON.parseObject(jedis.get(messagep), ServRule.class);
+                }
+                if (servRule == null && jedis.exists("all")) {
+                    servRule = JSON.parseObject(jedis.get(messagep), ServRule.class);
+                }
+                if (servRule == null && jedis.exists("All")) {
+                    servRule = JSON.parseObject(jedis.get("All"), ServRule.class);
+                }
+                if (servRule == null && jedis.exists("ALL")) {
+                    servRule = JSON.parseObject(jedis.get("ALL"), ServRule.class);
+                }
+                if (servRule != null) {
+                    greey = true;
+                }
+                if (!application.equalsIgnoreCase(servRule.getSerMtdEnm())) {
+                    greey = false;
+                }
+                logger.info("servRule{}", servRule);
+                logger.info("greey{}", greey);
+            }
+            //ALL匹配
+            //规则再与应用ID匹配
+            if (greey && servRule != null) {
+                for (int j = 0; j < length; j++) {
+                    if (invokers.get(j).isAvailable()) {
+                        Set<String> set = jedis.keys("Greey:" + providerUrl.getHost() + "*");
+                        logger.info("greey{}", set.size());
+                        if (set.size() > 0) {
+                            String bizzKey = servRule.getRouterColCdn();
+                            String bizzKeyValue = servRule.getRouterCondVal();
+                            String routerCondOper = servRule.getRouterCondOper();
+                            Integer integer = servRule.getRouterArgsPos();
+                            String keyLocl = "";
+                            if (0 == integer) {
+                                keyLocl = "sysHead";
+                            }
+                            if (1 == integer) {
+                                keyLocl = "body";
+                            }
+                            JSONObject jsonObject = (JSON.parseArray(JSON.toJSONString(args[2])))
+                                .getJSONObject(0).getJSONObject(keyLocl);
+                            if (jsonObject != null && null != bizzKeyValue && null != bizzKey) {
+                                String v = jsonObject.getString(bizzKey);
+                                String[] strings = bizzKeyValue.split(",");
+                                logger.info("v{}", v);
+                                logger.info("strings{}", strings);
+                                for (int i = 0; i < strings.length; i++) {
+                                    if ("=".equalsIgnoreCase(routerCondOper)
+                                        && strings[i].equals(v)) {
+                                        newInvokers.add(invokers.get(j));
+                                    }
+                                    if ("!=".equalsIgnoreCase(routerCondOper)
+                                        && !strings[i].equals(v)) {
+                                        newInvokers.add(invokers.get(j));
+                                    }
+                                    //in包含
+                                    if ("in".equalsIgnoreCase(routerCondOper) && null != v
+                                        && v.contains(strings[i])) {
+                                        newInvokers.add(invokers.get(j));
+                                    }
+                                    //前缀
+                                    if ("pre".equalsIgnoreCase(routerCondOper) && null != v
+                                        && v.startsWith(strings[i])) {
+                                        newInvokers.add(invokers.get(j));
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
-            //灰度接口校验
-            if (args.length == 3 && greey
-                && (jedis.exists(url.getServiceInterface()) || jedis.exists("ALL"))) {
-                //接口名：灰度条件--->应用
-                String value = jedis.get("ALL");
-                if (value == null) {
-                    value = jedis.get(url.getServiceInterface());
-                }
-                ServRule servRule = JSON.parseObject(value, ServRule.class);
-                String applicationId = servRule.getSerMtdEnm();
-                if (!application.containsKey(applicationId)) {
-                    return defualtLoadBalance.select(invokers, url, invocation);
-                }
-                String bizzKey = servRule.getRouterColCdn();
-                String bizzKeyValue = servRule.getRouterCondVal();
-                String routerCondOper = servRule.getRouterCondOper();
-                Integer integer = servRule.getRouterArgsPos();
-                String key = "";
-                if (0 == integer) {
-                    key = "sysHead";
-                }
-                if (1 == integer) {
-                    key = "body";
-                }
-                if (key.trim().length() == 0) {
-                    return defualtLoadBalance.select(invokers, url, invocation);
-                }
-                JSONObject jsonObject = (JSON.parseArray(JSON.toJSONString(args[2])))
-                    .getJSONObject(0).getJSONObject(key);
-
-                if (jsonObject != null && null != bizzKeyValue && null != bizzKey) {
-                    String v = jsonObject.getString(bizzKey);
-                    String[] strings = bizzKeyValue.split(",");
-                    for (int i = 0; i < strings.length; i++) {
-                        if ("=".equalsIgnoreCase(routerCondOper) && strings[i].equals(v)) {
-                            return defualtLoadBalance.select(newInvokers,
-                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
-                                url, invocation);
-                        }
-                        if ("!=".equalsIgnoreCase(routerCondOper) && !strings[i].equals(v)) {
-                            return defualtLoadBalance.select(newInvokers,
-                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
-                                url, invocation);
-                        }
-
-                        //in包含
-                        if ("in".equalsIgnoreCase(routerCondOper) && null != v
-                            && v.contains(strings[i])) {
-                            return defualtLoadBalance.select(newInvokers,
-                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
-                                url, invocation);
-                        }
-                        //前缀
-                        if ("pre".equalsIgnoreCase(routerCondOper) && null != v
-                            && v.startsWith(strings[i])) {
-                            return defualtLoadBalance.select(newInvokers,
-                            //this.getGrayInvoker(invokers, applicationId, applicationType, bizzKey),
-                                url, invocation);
-                        }
-                    }
-                }
-                //invokers.remove(newInvokers);
-                if (newInvokers2.size() == 0) {
-                    throw new RpcException("not found service for " + url.getServiceInterface());
-                }
-                return defualtLoadBalance.select(newInvokers2, url, invocation);
+            logger.info("greey{}", greey);
+            if (greey) {
+                logger.info("newInvokers{}", newInvokers.size());
+                return defualtLoadBalance.select(newInvokers, url, invocation);
             } else {
+                logger.info("invokers{}", invokers.size());
                 return defualtLoadBalance.select(invokers, url, invocation);
             }
         } catch (Exception e) {
             logger.error("{},{}", e.getMessage(), e);
-            if (e instanceof JedisConnectionException) {
-                return defualtLoadBalance.select(invokers, url, invocation);
-            }
-            throw new RpcException("RPC执行异常");
+            return defualtLoadBalance.select(invokers, url, invocation);
         } finally {
             if (null != jedis) {
                 jedis.close();
             }
         }
-
     }
 
     private <T> List<Invoker<T>> getGrayInvoker(List<Invoker<T>> invokers, String applicationId,

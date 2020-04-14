@@ -14,5 +14,6 @@
 
     <modules>
         <module>mybatis-generator-core</module>
+        <module>cloud-boot-xml</module>
     </modules>
 </project>
