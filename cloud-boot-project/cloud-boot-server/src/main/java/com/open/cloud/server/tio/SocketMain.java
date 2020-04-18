@@ -14,7 +14,7 @@ public class SocketMain {
 	private static final String GROUP_CONTEXT_NAME = "tio-server-spring-boot-starter";
 
 	public static void main(String[] args) throws IOException {
-		CloudServerAioHandler cloudServerAioHandler = new CloudServerAioHandler();
+		CloudServerAioHandler cloudServerAioHandler = new CloudServerAioHandler("");
 		CloudListen serverAioListener = new CloudListen();
 		ServerTioConfig serverTioConfig = new ServerTioConfig(GROUP_CONTEXT_NAME, cloudServerAioHandler, serverAioListener);
 		serverTioConfig.setServerAioListener(serverAioListener);
