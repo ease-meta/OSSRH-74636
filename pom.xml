@@ -23,7 +23,6 @@
 
     <modules>
         <module>cloud-boot-project</module>
-        <module>cloud-boot-project/cloud-boot-server</module>
     </modules>
 
     <dependencyManagement>

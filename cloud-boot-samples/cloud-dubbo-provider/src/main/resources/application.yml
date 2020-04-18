@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: cloud-dubbo-provider
+dubbo:
+  scan:
+    base-packages: com.open.cloud.dubbo.provider
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://122.51.108.224:2181
+server:
+  port: 8080
+feign:
+  hystrix:
+    enabled: true

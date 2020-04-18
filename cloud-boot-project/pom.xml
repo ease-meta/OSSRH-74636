@@ -26,6 +26,10 @@
         <module>cloud-boot-starters</module>
         <module>cloud-boot-flyway</module>
         <module>cloud-boot-dubbo</module>
+        <module>cloud-boot-server</module>
+        <module>cloud-boot-base</module>
+        <module>cloud-boot-api</module>
+        <module>cloud-boot-web</module>
     </modules>
 
     <properties>
