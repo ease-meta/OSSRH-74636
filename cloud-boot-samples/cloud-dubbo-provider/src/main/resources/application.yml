@@ -2,8 +2,6 @@ spring:
   application:
     name: cloud-dubbo-provider
 dubbo:
-  scan:
-    base-packages: com.open.cloud.dubbo.provider
   protocol:
     name: dubbo
     port: -1

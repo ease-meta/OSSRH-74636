@@ -3,9 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cloud-boot-build</artifactId>
+        <artifactId>cloud-boot-parent</artifactId>
         <groupId>com.open.cloud</groupId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,7 +14,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-boot-dependencies</module>
-        <module>cloud-boot-parent</module>
         <module>cloud-boot-core</module>
         <module>cloud-boot-jboot</module>
         <module>cloud-boot-sofa</module>
@@ -30,9 +30,10 @@
         <module>cloud-boot-base</module>
         <module>cloud-boot-api</module>
         <module>cloud-boot-web</module>
+        <module>cloud-boot-bom</module>
     </modules>
 
     <properties>
-        <main.user.dir>${basedir}/..</main.user.dir>
+        <main.user.dir>${basedir}/../../</main.user.dir>
     </properties>
 </project>
