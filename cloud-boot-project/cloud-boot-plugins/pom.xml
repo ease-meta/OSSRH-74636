@@ -12,6 +12,6 @@
     <artifactId>cloud-boot-plugins</artifactId>
 
     <modules>
-        <module>mybatis-generator-core</module>
+        <module>cloud-boot-generator</module>
     </modules>
 </project>
