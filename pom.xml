@@ -23,6 +23,7 @@
 
     <modules>
         <module>cloud-boot-project</module>
+        <module>cloud-boot-samples</module>
     </modules>
 
     <dependencies>

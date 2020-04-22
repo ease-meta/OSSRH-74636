@@ -18,10 +18,12 @@ package com.open.cloud.dubbo.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.dcits.comet","com.open.cloud.dubbo"})
 @ImportResource(value = "classpath:META-INF/spring/*.xml")
+@EnableCaching
 public class ProviderApplication {
 
     public static void main(String[] args) {

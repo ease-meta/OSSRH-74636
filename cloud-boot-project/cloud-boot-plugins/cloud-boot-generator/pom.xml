@@ -89,11 +89,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--Oracle驱动-->
-        <dependency>
-            <groupId>com.oracle.ojdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-        </dependency>
         <!-- postgresql驱动 -->
         <dependency>
             <groupId>org.postgresql</groupId>

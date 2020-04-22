@@ -23,14 +23,13 @@
         <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
         <maven.jacoco.plugin>0.7.9</maven.jacoco.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
-
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <dubbo.version>2.7.6</dubbo.version>
         <!-- <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
          <spring-cloud.version>Greenwich.SR5</spring-cloud.version>-->
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
-        <sofa-boot.version>3.3.2</sofa-boot.version>
+        <sofa-boot.version>3.1.1</sofa-boot.version>
         <sofa-boot-enterprise.version>3.3.2</sofa-boot-enterprise.version>
         <jboot.version>[3.0.5,)</jboot.version>
         <spring-cloud-huawei.version>1.2.0</spring-cloud-huawei.version>
@@ -133,6 +132,12 @@
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
             </dependency>
 

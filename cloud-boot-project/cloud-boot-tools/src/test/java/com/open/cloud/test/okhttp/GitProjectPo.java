@@ -20,99 +20,100 @@ import java.util.Date;
 import java.util.Objects;
 
 public class GitProjectPo {
-	private int id;
-	private String exist = "0";
-	private String httpUrlToRepo;
-	private Date createdAt;
-	private Date lastActivityAt;
-	private String description;
+    private int    id;
+    private String exist = "0";
+    private String httpUrlToRepo;
+    private Date   createdAt;
+    private Date   lastActivityAt;
+    private String description;
+
     /*@JSONField(serialize = false)
-	private String defaultBranch;
+    private String defaultBranch;
     @JSONField(serialize = false)
-	private int forksCount;
+    private int forksCount;
     @JSONField(serialize = false)
-	private String name;
+    private String name;
     @JSONField(serialize = false)
-	private String nameWithNamespace;
+    private String nameWithNamespace;
     @JSONField(serialize = false)
-	private String path;
+    private String path;
     @JSONField(serialize = false)
-	private String pathWithNamespace;
+    private String pathWithNamespace;
     @JSONField(serialize = false)
-	private String sshUrlToRepo;
+    private String sshUrlToRepo;
     @JSONField(serialize = false)
-	private int starCount;
+    private int starCount;
     @JSONField(serialize = false)
-	private String tagList;
+    private String tagList;
     @JSONField(serialize = false)
-	private String webUrl;*/
+    private String webUrl;*/
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		GitProjectPo that = (GitProjectPo) o;
-		return Objects.equals(String.valueOf(id), String.valueOf(that.id));
-		//	Objects.equals(httpUrlToRepo, that.httpUrlToRepo) &&
-		//	Objects.equals(createdAt, that.createdAt) &&
-		//	Objects.equals(lastActivityAt, that.lastActivityAt) &&
-		//	Objects.equals(description, that.description);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GitProjectPo that = (GitProjectPo) o;
+        return Objects.equals(String.valueOf(id), String.valueOf(that.id));
+        //	Objects.equals(httpUrlToRepo, that.httpUrlToRepo) &&
+        //	Objects.equals(createdAt, that.createdAt) &&
+        //	Objects.equals(lastActivityAt, that.lastActivityAt) &&
+        //	Objects.equals(description, that.description);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id, httpUrlToRepo, createdAt, lastActivityAt, description);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, httpUrlToRepo, createdAt, lastActivityAt, description);
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getExist() {
-		return exist;
-	}
+    public String getExist() {
+        return exist;
+    }
 
-	public void setExist(String exist) {
-		this.exist = exist;
-	}
+    public void setExist(String exist) {
+        this.exist = exist;
+    }
 
-	public String getHttpUrlToRepo() {
-		return httpUrlToRepo;
-	}
+    public String getHttpUrlToRepo() {
+        return httpUrlToRepo;
+    }
 
-	public void setHttpUrlToRepo(String httpUrlToRepo) {
-		this.httpUrlToRepo = httpUrlToRepo;
-	}
+    public void setHttpUrlToRepo(String httpUrlToRepo) {
+        this.httpUrlToRepo = httpUrlToRepo;
+    }
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
+    public Date getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public Date getLastActivityAt() {
-		return lastActivityAt;
-	}
+    public Date getLastActivityAt() {
+        return lastActivityAt;
+    }
 
-	public void setLastActivityAt(Date lastActivityAt) {
-		this.lastActivityAt = lastActivityAt;
-	}
+    public void setLastActivityAt(Date lastActivityAt) {
+        this.lastActivityAt = lastActivityAt;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
