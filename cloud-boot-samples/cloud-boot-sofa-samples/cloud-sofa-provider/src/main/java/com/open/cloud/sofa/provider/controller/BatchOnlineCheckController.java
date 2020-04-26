@@ -1,10 +1,10 @@
-package com.open.cloud.dubbo.provider.controller;
+package com.open.cloud.sofa.provider.controller;
 
 import java.util.Arrays;
 
-import com.open.cloud.dubbo.provider.R;
-import com.open.cloud.dubbo.provider.entity.BatchOnlineCheckEntity;
-import com.open.cloud.dubbo.provider.service.BatchOnlineCheckService;
+import com.open.cloud.sofa.provider.R;
+import com.open.cloud.sofa.provider.entity.BatchOnlineCheckEntity;
+import com.open.cloud.sofa.provider.service.BatchOnlineCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
