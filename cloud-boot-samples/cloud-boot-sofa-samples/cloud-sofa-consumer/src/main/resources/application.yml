@@ -8,7 +8,7 @@ dubbo:
   registry:
     address: zookeeper://122.51.108.224:2181
   consumer:
-    check: true
+    check: false
 server:
   port: 8081
 logging:

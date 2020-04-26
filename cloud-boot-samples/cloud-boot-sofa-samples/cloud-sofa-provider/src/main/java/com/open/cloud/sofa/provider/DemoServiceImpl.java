@@ -14,21 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.dubbo.provider;
+package com.open.cloud.sofa.provider;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.ImportResource;
+import com.open.cloud.business.api.DemoService;
+import org.springframework.stereotype.Service;
 
-@SpringBootApplication(scanBasePackages = {"com.open.cloud.dubbo"})
-@ImportResource(value = "classpath:META-INF/spring/*.xml")
-@EnableCaching
-public class ProviderApplication {
-
-    public static void main(String[] args) {
-
-        SpringApplication.run(ProviderApplication.class, args);
-
-    }
+/**
+ * @author Leijian
+ * @date 2020/4/18
+ */
+@Service
+public class DemoServiceImpl implements DemoService {
+	@Override
+	public String sayHello(String message) {
+		return message;
+	}
 }

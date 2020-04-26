@@ -14,21 +14,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.dubbo.provider;
+package com.open.cloud.sofa.consumer;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.ImportResource;
+import com.open.cloud.business.api.DemoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@SpringBootApplication(scanBasePackages = {"com.open.cloud.dubbo"})
-@ImportResource(value = "classpath:META-INF/spring/*.xml")
-@EnableCaching
-public class ProviderApplication {
+/**
+ * Dubbo Spring Cloud Consumer Bootstrap.
+ */
+@RestController
+@RequestMapping(value = "${spring.application.name}", produces = MediaType.APPLICATION_JSON_VALUE)
+public class DubboConsumerController {
 
-    public static void main(String[] args) {
+	@Autowired
+	private DemoService demoService;
 
-        SpringApplication.run(ProviderApplication.class, args);
-
-    }
+	@PostMapping(value = "/dubboconsumercontroller/sayHello")
+	public String sayHello(String message) {
+		return demoService.sayHello(message);
+	}
 }

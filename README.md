@@ -7,12 +7,12 @@
 
 | 技术栈             | 版本号        |      
 | ------------------ | ------------- | 
-| SpringBoot         | 2.2.4.RELEASE |      
-| springCloud        | Hoxton.SR1    |      
-| dubbo              | 2.7.5         |      
-| springCloudAlibaba | 2.2.0.RELEASE |      
-| sofaBootEnterprise | 3.2.1         |      
-| springCloudHuawei  | 1.0.0         |      
+| SpringBoot         | 2.2.6.RELEASE |      
+| springCloud        | Hoxton.SR4    |      
+| dubbo              | 2.7.6         |      
+| springCloudAlibaba | 2.2.1.RELEASE |      
+| sofaBootEnterprise | 3.3.2         |      
+| springCloudHuawei  | 1.2.0         |      
 
 #### 软件架构
 
