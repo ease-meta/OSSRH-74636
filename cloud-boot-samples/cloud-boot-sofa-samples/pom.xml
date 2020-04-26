@@ -3,22 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cloud-boot-parent</artifactId>
+        <artifactId>cloud-boot-samples</artifactId>
         <groupId>com.open.cloud</groupId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>cloud-boot-samples</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>cloud-business-api</module>
-        <module>cloud-boot-dubbo-samples</module>
-        <module>cloud-boot-sofa-samples</module>
-    </modules>
+    <artifactId>cloud-boot-sofa-samples</artifactId>
 
-    <properties>
-        <main.user.dir>${basedir}/../../</main.user.dir>
-    </properties>
+
 </project>

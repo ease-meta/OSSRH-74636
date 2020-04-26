@@ -28,6 +28,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
@@ -62,7 +63,12 @@ public class OkHttpMain {
 				}
 			}
 		}
-
+		Collections.sort(linkedList, new Comparator<GitProjectPo>() {
+			@Override
+			public int compare(GitProjectPo o1, GitProjectPo o2) {
+				return o1.getHttpUrlToRepo().compareTo(o2.getHttpUrlToRepo());
+			}
+		});
 		EasyExcel.write(fileName).password(password)
 				// 这里放入动态头
 				.head(head())
