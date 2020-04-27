@@ -60,9 +60,9 @@
 </template>
 
 <script>
-  import AddOrUpdate from './'
+    import AddOrUpdate from './'
 
-  export default {
+    export default {
     data() {
       return {
         dataForm: {
