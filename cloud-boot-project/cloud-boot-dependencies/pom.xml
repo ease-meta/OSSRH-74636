@@ -10,6 +10,17 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/42889-release-ONfbyh/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/42889-snapshot-PMGiNA/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
     <properties>
         <main.user.dir>${basedir}/../..</main.user.dir>
         <project.encoding>UTF-8</project.encoding>
