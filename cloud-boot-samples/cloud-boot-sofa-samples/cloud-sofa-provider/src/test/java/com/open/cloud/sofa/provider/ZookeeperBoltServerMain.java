@@ -33,9 +33,12 @@ public class ZookeeperBoltServerMain {
              <scope>test</scope>
          </dependency>
          */
+        //RegistryConfig registryConfig = new RegistryConfig()
+        //   .setProtocol(RpcConstants.REGISTRY_PROTOCOL_ZK)
+        //    .setAddress("122.51.108.224:2181");
         RegistryConfig registryConfig = new RegistryConfig()
-            .setProtocol(RpcConstants.REGISTRY_PROTOCOL_ZK)
-            .setAddress("122.51.108.224:2181");
+               .setProtocol("nacos")
+                .setAddress("122.51.108.224:8848/public");
 
         ServerConfig serverConfig = new ServerConfig()
             .setPort(22104).
