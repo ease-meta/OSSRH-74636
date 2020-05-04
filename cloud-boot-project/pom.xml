@@ -22,6 +22,7 @@
         <module>cloud-boot-actuator</module>
         <module>cloud-boot-autoconfigure</module>
         <module>cloud-boot-datalake</module>
+        <module>cloud-boot-dataway</module>
         <module>cloud-boot-tools</module>
         <module>cloud-boot-starters</module>
         <module>cloud-boot-flyway</module>
@@ -35,6 +36,6 @@
     </modules>
 
     <properties>
-        <main.user.dir>${basedir}/..</main.user.dir>
+        <main.user.dir>${basedir}/../../</main.user.dir>
     </properties>
 </project>

@@ -26,11 +26,6 @@
 
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-boot-cache</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.open.cloud</groupId>
             <artifactId>cloud-sofa-interface</artifactId>
             <version>${project.version}</version>
         </dependency>

@@ -7,19 +7,8 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-  redis:
-    host: 10.7.25.201
-    port: 7379
-dubbo:
-  enabled: false
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    address: zookeeper://122.51.108.224:2181
 server:
   port: 8080
-
 mybatis-plus:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -28,6 +17,14 @@ logging:
     root: INFO
     com.open.cloud.dubbo.provider.dao: DEBUG
     org.mybatis: debug
+    "com.alipay.sofa": DEBUG
     org.apache.ibatis: debug
     com.baomidou.mybatisplus: debug
     org.springframework.jdbc: debug
+  file:
+    path: ./logs
+com:
+  alipay:
+    sofa:
+      rpc:
+        registry-address: nacos://122.51.108.224:8848/public
