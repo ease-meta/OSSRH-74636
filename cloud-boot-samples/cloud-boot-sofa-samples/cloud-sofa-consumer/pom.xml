@@ -25,13 +25,11 @@
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-web</artifactId>
-            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-sofa</artifactId>
-            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

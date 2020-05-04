@@ -11,5 +11,23 @@
 
     <artifactId>cloud-boot-flyway</artifactId>
 
+    <dependencies>
+        <!-- 实现对数据库连接池的自动化配置 -->
+        <!-- 同时，spring-boot-starter-jdbc 支持 Flyway 的自动化配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency> <!-- 本示例，我们使用 MySQL -->
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.48</version>
+        </dependency>
 
+        <!-- Flyway 依赖 -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

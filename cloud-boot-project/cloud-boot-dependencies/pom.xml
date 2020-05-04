@@ -34,7 +34,7 @@
         <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
         <maven.jacoco.plugin>0.7.9</maven.jacoco.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
-        <spring-boot.version>2.3.0.M4</spring-boot.version>
+        <spring-boot.version>2.3.0.RC1</spring-boot.version>
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
         <dubbo.version>2.7.6</dubbo.version>
         <!-- <spring-boot.version>2.1.13.RELEASE</spring-boot.version>

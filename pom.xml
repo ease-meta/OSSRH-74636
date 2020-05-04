@@ -106,15 +106,104 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <artifactId>cloud-boot-actuator</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-api</artifactId>
+            </dependency>
+
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-autoconfigure</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-base</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-cache</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-core</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-datalake</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-dataway</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-dubbo</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-flyway</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-jboot</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-generator</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-server</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-sofa</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-springcloud</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-starters</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-web</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <version>1.0.0-SNAPSHOT</version>
+                <artifactId>cloud-boot-tools</artifactId>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -124,7 +213,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
+           <!-- <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>${license.maven.plugin}</version>
@@ -149,7 +238,7 @@
                         <java>SLASHSTAR_STYLE</java>
                     </mapping>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
             <plugin>
                 <groupId>com.googlecode.maven-java-formatter-plugin</groupId>

@@ -35,6 +35,6 @@
     </modules>
 
     <properties>
-        <main.user.dir>${basedir}/../../</main.user.dir>
+        <main.user.dir>${basedir}/..</main.user.dir>
     </properties>
 </project>
