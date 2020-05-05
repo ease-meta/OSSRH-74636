@@ -22,21 +22,21 @@ package state;
  * @Fun 状态的使用
  **/
 public class WindowContext {
-	private WindowState state;
+    private WindowState state;
 
-	public WindowContext(WindowState state) {
-		this.state = state;
-	}
+    public WindowContext(WindowState state) {
+        this.state = state;
+    }
 
-	public WindowState getState() {
-		return state;
-	}
+    public WindowState getState() {
+        return state;
+    }
 
-	public void setState(WindowState state) {
-		this.state = state;
-	}
+    public void setState(WindowState state) {
+        this.state = state;
+    }
 
-	public void switchState() {
-		this.state.handle();
-	}
+    public void switchState() {
+        this.state.handle();
+    }
 }

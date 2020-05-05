@@ -22,5 +22,5 @@ package mediator;
  * @Fun 工作类接口
  **/
 public interface IWork {
-	void work();
+    void work();
 }

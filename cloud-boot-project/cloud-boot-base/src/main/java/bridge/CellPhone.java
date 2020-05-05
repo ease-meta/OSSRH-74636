@@ -23,10 +23,10 @@ package bridge;
  **/
 public class CellPhone extends BaseCellphone {
 
-	@Override
-	public void mapping() {
-		// TODO Auto-generated method stub
-		System.out.println("本手机对应的壳是：");
-		getShell().mapping();
-	}
+    @Override
+    public void mapping() {
+        // TODO Auto-generated method stub
+        System.out.println("本手机对应的壳是：");
+        getShell().mapping();
+    }
 }

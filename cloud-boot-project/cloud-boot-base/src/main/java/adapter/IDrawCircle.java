@@ -22,5 +22,5 @@
 package adapter;
 
 public interface IDrawCircle {
-	void drawCircle();
+    void drawCircle();
 }

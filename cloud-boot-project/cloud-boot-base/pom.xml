@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-boot-base</artifactId>
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

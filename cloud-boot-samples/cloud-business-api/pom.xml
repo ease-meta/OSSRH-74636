@@ -9,7 +9,9 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
     <artifactId>cloud-business-api</artifactId>
 
     <name>cloud-business-api</name>

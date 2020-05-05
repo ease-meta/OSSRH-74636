@@ -40,8 +40,8 @@
         <!-- <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
          <spring-cloud.version>Greenwich.SR5</spring-cloud.version>-->
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
-        <sofa-boot.version>3.3.2</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.3.2</sofa-boot-enterprise.version>
+        <sofa-boot.version>3.4.0</sofa-boot.version>
+        <sofa-boot-enterprise.version>3.4.0</sofa-boot-enterprise.version>
         <jboot.version>[3.0.5,)</jboot.version>
         <spring-cloud-huawei.version>1.2.0</spring-cloud-huawei.version>
         <spring-boot-admin.version>2.2.2</spring-boot-admin.version>

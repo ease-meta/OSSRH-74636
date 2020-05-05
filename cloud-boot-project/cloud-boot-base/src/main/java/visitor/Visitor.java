@@ -22,7 +22,7 @@ package visitor;
  * @Fun 访问者结构
  **/
 public interface Visitor {
-	void visit(Gladiolus g);
+    void visit(Gladiolus g);
 
-	void visit(Chrysanthemum c);
+    void visit(Chrysanthemum c);
 }

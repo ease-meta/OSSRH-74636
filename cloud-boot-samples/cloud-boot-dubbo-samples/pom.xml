@@ -10,7 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <artifactId>cloud-boot-dubbo-samples</artifactId>
-
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
     <modules>
         <module>cloud-dubbo-consumer</module>
         <module>cloud-dubbo-interface</module>

@@ -29,28 +29,28 @@ import java.util.List;
  * 缺点：添加新的元素类，比较困难，因为需要修改抽象访问者的接口及实现，违反开-闭原则<br/>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		List<Flower> flowers = new ArrayList<>();
+    public static void main(String[] args) {
+        List<Flower> flowers = new ArrayList<>();
 
-		for (int i = 0; i < 10; i++) {
-			flowers.add(FlowerGenerator.newFlower());
-		}
+        for (int i = 0; i < 10; i++) {
+            flowers.add(FlowerGenerator.newFlower());
+        }
 
-		Visitor visitor = new StringVisitor();
-		Iterator<Flower> iterator = flowers.iterator();
-		while (iterator.hasNext()) {
-			iterator.next().accept(visitor);
-			System.out.println(visitor);
-		}
-		System.out.println("-----------");
+        Visitor visitor = new StringVisitor();
+        Iterator<Flower> iterator = flowers.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
+            System.out.println(visitor);
+        }
+        System.out.println("-----------");
 
-		visitor = new BeeVisitor();
-		iterator = flowers.iterator();
-		while (iterator.hasNext()) {
-			iterator.next().accept(visitor);
-			System.out.println(visitor);
-		}
-	}
+        visitor = new BeeVisitor();
+        iterator = flowers.iterator();
+        while (iterator.hasNext()) {
+            iterator.next().accept(visitor);
+            System.out.println(visitor);
+        }
+    }
 }
 
 /**

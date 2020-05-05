@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-boot-actuator</artifactId>
-
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
 
 </project>

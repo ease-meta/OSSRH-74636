@@ -24,12 +24,12 @@ package iterator;
  **/
 public interface ICollection<T> {
 
-	//返回迭代器
-	IIterator<T> iterator();
+    //返回迭代器
+    IIterator<T> iterator();
 
-	void add(T t);
+    void add(T t);
 
-	T get(int index);
+    T get(int index);
 
-	int size();
+    int size();
 }

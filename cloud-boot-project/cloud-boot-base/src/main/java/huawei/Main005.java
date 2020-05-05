@@ -25,12 +25,12 @@ import java.util.Scanner;
  * @date 2020/2/11
  */
 public class Main005 {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNextLine()) {
-			String str = scanner.nextLine();
-			long num = Long.parseLong(str.substring(2), 16);
-			System.out.println(num);
-		}
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String str = scanner.nextLine();
+            long num = Long.parseLong(str.substring(2), 16);
+            System.out.println(num);
+        }
+    }
 }

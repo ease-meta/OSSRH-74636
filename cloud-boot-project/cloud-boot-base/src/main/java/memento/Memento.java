@@ -25,25 +25,25 @@ import java.io.Serializable;
  **/
 public class Memento implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 8121679932355414767L;
-	//
-	//	private int number;
-	//	private File file = null;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8121679932355414767L;
+    //
+    //	private int number;
+    //	private File file = null;
 
-	private DataState state;
+    private DataState         state;
 
-	public Memento(Originator o) {
-		this.state = o.getState();
-	}
+    public Memento(Originator o) {
+        this.state = o.getState();
+    }
 
-	public DataState getState() {
-		return this.state;
-	}
+    public DataState getState() {
+        return this.state;
+    }
 
-	public void setState(DataState state) {
-		this.state = state;
-	}
+    public void setState(DataState state) {
+        this.state = state;
+    }
 }

@@ -28,25 +28,25 @@ package flyweight;
  * 所以一般都会有一个集合存储元件；有一个享元工厂进行元件的管理。</p>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		LetterFactory factory = LetterFactory.getInstance();
-		String word = "easiness";
-		addLetterByName(factory, word);
+    public static void main(String[] args) {
+        LetterFactory factory = LetterFactory.getInstance();
+        String word = "easiness";
+        addLetterByName(factory, word);
 
-		getLetter(factory, word);
-	}
+        getLetter(factory, word);
+    }
 
-	static void addLetterByName(LetterFactory factory, String word) {
-		for (char c : word.toCharArray()) {
-			factory.add(new Letter(c + ""));
-		}
-	}
+    static void addLetterByName(LetterFactory factory, String word) {
+        for (char c : word.toCharArray()) {
+            factory.add(new Letter(c + ""));
+        }
+    }
 
-	static void getLetter(LetterFactory factory, String word) {
-		for (char c : word.toCharArray()) {
-			System.out.println(factory.get(c + ""));
-		}
-	}
+    static void getLetter(LetterFactory factory, String word) {
+        for (char c : word.toCharArray()) {
+            System.out.println(factory.get(c + ""));
+        }
+    }
 }
 /**
  * 推荐博客：http://blog.csdn.net/hguisu/article/details/7535792

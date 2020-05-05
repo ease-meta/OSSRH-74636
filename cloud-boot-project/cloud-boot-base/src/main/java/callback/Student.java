@@ -21,6 +21,6 @@ package callback;
  */
 public interface Student {
 
-	public void resolveQuestion(Callback callback);
+    public void resolveQuestion(Callback callback);
 
 }

@@ -23,13 +23,13 @@ import model.base.Room;
  */
 public class RoomWithABomb extends Room {
 
-	public RoomWithABomb(int roomNo) {
-		super(roomNo);
-		// TODO Auto-generated constructor stub
-	}
+    public RoomWithABomb(int roomNo) {
+        super(roomNo);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void Enter() {
-		System.err.println("RoomWithABomb");
-	}
+    public void Enter() {
+        System.err.println("RoomWithABomb");
+    }
 
 }

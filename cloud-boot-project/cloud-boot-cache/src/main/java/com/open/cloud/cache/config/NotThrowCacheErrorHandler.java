@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.cache.config;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,7 +45,8 @@ public class NotThrowCacheErrorHandler implements CacheErrorHandler {
     }
 
     @Override
-    public void handleCachePutError(RuntimeException exception, Cache cache, Object key, Object value) {
+    public void handleCachePutError(RuntimeException exception, Cache cache, Object key,
+                                    Object value) {
         //log.error("cache put error, cacheName:{}, key:{}, msg:{}", cache.getName(), key, ExceptionUtils.getMessage(exception));
         logError("Put", key, exception);
     }
@@ -51,19 +68,15 @@ public class NotThrowCacheErrorHandler implements CacheErrorHandler {
                     redisTemplate.delete(keys);
                 }
             }
-        }catch (Exception e){
-            log.error("{},{}",e,e.getMessage());
+        } catch (Exception e) {
+            log.error("{},{}", e, e.getMessage());
         }
     }
 
     protected void logError(String oper, Object key, Throwable e) {
         StringBuilder sb = new StringBuilder(64);
-        sb.append("cache(")
-                .append(this.getClass().getSimpleName()).append(") ")
-                .append(oper)
-                .append(" error. key=")
-                .append(key)
-                .append(".");
+        sb.append("cache(").append(this.getClass().getSimpleName()).append(") ").append(oper)
+            .append(" error. key=").append(key).append(".");
         if (needLogStackTrace(e)) {
             log.error(sb.toString(), e);
         } else {

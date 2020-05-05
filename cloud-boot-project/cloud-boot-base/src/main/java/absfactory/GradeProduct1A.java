@@ -22,10 +22,10 @@ package absfactory;
  * @Fun
  **/
 public class GradeProduct1A extends Product1 {
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		super.show();
-		System.out.println("这是产品1下的：产品A");
-	}
+    @Override
+    public void show() {
+        // TODO Auto-generated method stub
+        super.show();
+        System.out.println("这是产品1下的：产品A");
+    }
 }

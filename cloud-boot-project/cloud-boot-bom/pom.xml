@@ -11,5 +11,7 @@
     <packaging>pom</packaging>
     <artifactId>cloud-boot-bom</artifactId>
 
-
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
 </project>

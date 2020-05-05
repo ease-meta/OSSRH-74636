@@ -21,16 +21,16 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
 public class MessagePacketEncoder extends MessageToByteEncoder<Object> {
-	public MessagePacketEncoder() {
-	}
+    public MessagePacketEncoder() {
+    }
 
-	@Override
-	protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
-		try {
-			//在这之前可以实现编码工作。
-			out.writeBytes((byte[]) msg);
-		} finally {
+    @Override
+    protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
+        try {
+            //在这之前可以实现编码工作。
+            out.writeBytes((byte[]) msg);
+        } finally {
 
-		}
-	}
+        }
+    }
 }

@@ -25,12 +25,12 @@ package interpreter;
  * 解释器模式在实际的系统开发中使用的非常少，因为它会引起效率、性能以及维护等问题。
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		Context context = new Context();
-		context.setData("一段XML数据");
-		new XmlDomInterpreter().interpreter(context);
-		new XmlDomInterpreter().interpreter(context);
-	}
+    public static void main(String[] args) {
+        Context context = new Context();
+        context.setData("一段XML数据");
+        new XmlDomInterpreter().interpreter(context);
+        new XmlDomInterpreter().interpreter(context);
+    }
 }
 /**
  * 推荐博客：http://blog.csdn.net/zhengzhb/article/details/7666020

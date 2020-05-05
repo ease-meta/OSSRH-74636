@@ -22,5 +22,5 @@ package absfactory;
  * @Fun 抽象产品1
  **/
 public interface IProduct1 {
-	void show();
+    void show();
 }

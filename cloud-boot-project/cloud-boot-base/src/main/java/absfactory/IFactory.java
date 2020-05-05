@@ -20,15 +20,15 @@ import com.leijian.moc.SubClass1;
 import com.leijian.moc.SubClass2;
 
 public interface IFactory {
-	public SubClass1 createSubClass1();
+    public SubClass1 createSubClass1();
 
-	public SubClass2 createSubClass2();
+    public SubClass2 createSubClass2();
 
-	IProduct1 createProduct1A();
+    IProduct1 createProduct1A();
 
-	IProduct1 createProduct1B();
+    IProduct1 createProduct1B();
 
-	IProduct2 createProduct2A();
+    IProduct2 createProduct2A();
 
-	IProduct2 createProduct2B();
+    IProduct2 createProduct2B();
 }

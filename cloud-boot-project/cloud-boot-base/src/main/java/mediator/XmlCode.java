@@ -24,10 +24,10 @@ package mediator;
  **/
 public class XmlCode implements IWork {
 
-	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-		System.out.println("加入布局代码");
-	}
+    @Override
+    public void work() {
+        // TODO Auto-generated method stub
+        System.out.println("加入布局代码");
+    }
 
 }

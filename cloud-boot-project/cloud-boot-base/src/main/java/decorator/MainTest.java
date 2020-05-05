@@ -31,13 +31,13 @@ package decorator;
  * </p>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		Reader reader = new Reader();
-		reader.read();
-		System.err.println("--------");
-		BufferedReader reader2 = new BufferedReader(reader);
-		reader2.read();
-	}
+    public static void main(String[] args) {
+        Reader reader = new Reader();
+        reader.read();
+        System.err.println("--------");
+        BufferedReader reader2 = new BufferedReader(reader);
+        reader2.read();
+    }
 }
 /**
  * 推荐博客：http://www.cnblogs.com/bastard/archive/2012/02/02/2336150.html

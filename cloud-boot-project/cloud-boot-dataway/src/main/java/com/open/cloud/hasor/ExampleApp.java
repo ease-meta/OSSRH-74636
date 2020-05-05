@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 package com.open.cloud.hasor;
+
 import net.hasor.spring.boot.EnableHasor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

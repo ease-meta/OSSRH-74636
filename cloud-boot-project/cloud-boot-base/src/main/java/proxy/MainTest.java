@@ -40,48 +40,48 @@ import java.util.Date;
  * </p>
  **/
 public class MainTest {
-	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
-		/**
-		 * 普通的静态代理：客户端不知道被代理对象，由代理对象完成其功能的调用
-		 */
-		IGamePlayer proxy = new GamePlayerProxy("x");
-		System.out.println("开始时间是：" + new Date().toLocaleString());
-		proxy.login("zz", "zz");
-		proxy.killBoss();
-		proxy.upgrade();
-		System.out.println("结束时间是：" + new Date().toLocaleString());
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) {
+        /**
+         * 普通的静态代理：客户端不知道被代理对象，由代理对象完成其功能的调用
+         */
+        IGamePlayer proxy = new GamePlayerProxy("x");
+        System.out.println("开始时间是：" + new Date().toLocaleString());
+        proxy.login("zz", "zz");
+        proxy.killBoss();
+        proxy.upgrade();
+        System.out.println("结束时间是：" + new Date().toLocaleString());
 
-		System.out.println();
+        System.out.println();
 
-		/**
-		 * 代理对象，增强了被代理对象的功能
-		 */
-		IGamePlayer proxy2 = new GamePlayerProxy2("y");
-		proxy2.login("zhao", "y");
-		proxy2.killBoss();
-		proxy2.upgrade();
+        /**
+         * 代理对象，增强了被代理对象的功能
+         */
+        IGamePlayer proxy2 = new GamePlayerProxy2("y");
+        proxy2.login("zhao", "y");
+        proxy2.killBoss();
+        proxy2.upgrade();
 
-		System.out.println();
+        System.out.println();
 
-		/**
-		 * 动态代理：使用jdk提供的InvocationHandler，反射调用被代理对象的方法，结合java.reflect.Proxy产生代理对象
-		 *
-		 * 动态传入被代理对象构造InvocationHandler，在handler中的invoke时可以增强被代理对象的方法的功能
-		 * 或者说：（面向切面：）在什么地方（连接点），执行什么行为（通知）
-		 * GamePlayerProxy3中是方法名为login时通知开始时间，upgrade时通知结束时间。
-		 */
-		GamePlayerProxy3 dynamic = new GamePlayerProxy3(new GamePlayer("z"));
-		IGamePlayer dynamicPlayer = dynamic.getProxy();
-		dynamicPlayer.login("some", "jone");
-		dynamicPlayer.killBoss();
-		dynamicPlayer.upgrade();
+        /**
+         * 动态代理：使用jdk提供的InvocationHandler，反射调用被代理对象的方法，结合java.reflect.Proxy产生代理对象
+         *
+         * 动态传入被代理对象构造InvocationHandler，在handler中的invoke时可以增强被代理对象的方法的功能
+         * 或者说：（面向切面：）在什么地方（连接点），执行什么行为（通知）
+         * GamePlayerProxy3中是方法名为login时通知开始时间，upgrade时通知结束时间。
+         */
+        GamePlayerProxy3 dynamic = new GamePlayerProxy3(new GamePlayer("z"));
+        IGamePlayer dynamicPlayer = dynamic.getProxy();
+        dynamicPlayer.login("some", "jone");
+        dynamicPlayer.killBoss();
+        dynamicPlayer.upgrade();
 
-		System.out.println();
-		/**
-		 * 面向切面：一些相似的业务逻辑需要加在众多的地方，我们就可以把它提取到切面中，切面也就是事务切面：如日志切面，权限切面，业务切面。
-		 */
-	}
+        System.out.println();
+        /**
+         * 面向切面：一些相似的业务逻辑需要加在众多的地方，我们就可以把它提取到切面中，切面也就是事务切面：如日志切面，权限切面，业务切面。
+         */
+    }
 }
 /**
  * 推荐博客：http://blog.csdn.net/jackiehff/article/details/8621517

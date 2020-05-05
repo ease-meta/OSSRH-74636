@@ -31,13 +31,13 @@ import absfactory.MazeFactory;
  * @since
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		MazeFactory factory = new MazeFactory();
-		MazeBuilder builder = new StandardMazeBuilder(factory);
-		Director director = new Director(builder);
-		director.construct();
-		System.out.println(builder.currentMaze.getRoomCount());
-	}
+    public static void main(String[] args) {
+        MazeFactory factory = new MazeFactory();
+        MazeBuilder builder = new StandardMazeBuilder(factory);
+        Director director = new Director(builder);
+        director.construct();
+        System.out.println(builder.currentMaze.getRoomCount());
+    }
 }
 
 /**

@@ -25,21 +25,21 @@ package adapter;
 
 public class DrawAdapter4Object implements IDrawCircle {
 
-	private DrawRectangle drawRectangle;
+    private DrawRectangle drawRectangle;
 
-	public DrawAdapter4Object(DrawRectangle drawRectangle) {
-		// TODO Auto-generated constructor stub
-		this.drawRectangle = drawRectangle;
-	}
+    public DrawAdapter4Object(DrawRectangle drawRectangle) {
+        // TODO Auto-generated constructor stub
+        this.drawRectangle = drawRectangle;
+    }
 
-	@Override
-	public void drawCircle() {
-		// TODO Auto-generated method stub
-		System.out.println("DrawAdapter4Object:drawCircle");
-	}
+    @Override
+    public void drawCircle() {
+        // TODO Auto-generated method stub
+        System.out.println("DrawAdapter4Object:drawCircle");
+    }
 
-	public void drawRectangle(String msg) {
-		drawRectangle.drawRectangle(msg);
-	}
+    public void drawRectangle(String msg) {
+        drawRectangle.drawRectangle(msg);
+    }
 
 }

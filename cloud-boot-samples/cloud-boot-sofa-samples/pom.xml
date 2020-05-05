@@ -10,6 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <artifactId>cloud-boot-sofa-samples</artifactId>
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
     <modules>
         <module>cloud-sofa-interface</module>
         <module>cloud-sofa-consumer</module>
