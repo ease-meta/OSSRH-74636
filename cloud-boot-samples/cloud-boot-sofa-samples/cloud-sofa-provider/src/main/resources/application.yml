@@ -1,12 +1,11 @@
 spring:
   application:
-    name: cloud-dubbo-provider
+    name: cloud-sofa-provider
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://10.7.25.205:3306/workflow?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/workflow?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
 server:
   port: 8080
 mybatis-plus:
@@ -21,8 +20,7 @@ logging:
     org.apache.ibatis: debug
     com.baomidou.mybatisplus: debug
     org.springframework.jdbc: debug
-  file:
-    path: ./logs
+  path: ./logs
 com:
   alipay:
     sofa:

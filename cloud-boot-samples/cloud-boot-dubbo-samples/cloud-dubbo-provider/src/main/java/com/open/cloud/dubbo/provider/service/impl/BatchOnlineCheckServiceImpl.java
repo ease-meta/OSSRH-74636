@@ -16,12 +16,12 @@
  */
 package com.open.cloud.dubbo.provider.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.open.cloud.dubbo.provider.dao.BatchOnlineCheckDao;
 import com.open.cloud.dubbo.provider.entity.BatchOnlineCheckEntity;
 import com.open.cloud.dubbo.provider.service.BatchOnlineCheckService;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 @Service("batchOnlineCheckService")
 public class BatchOnlineCheckServiceImpl extends

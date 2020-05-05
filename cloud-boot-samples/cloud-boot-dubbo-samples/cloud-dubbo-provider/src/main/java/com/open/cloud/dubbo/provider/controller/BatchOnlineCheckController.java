@@ -16,8 +16,6 @@
  */
 package com.open.cloud.dubbo.provider.controller;
 
-import java.util.Arrays;
-
 import com.open.cloud.dubbo.provider.R;
 import com.open.cloud.dubbo.provider.entity.BatchOnlineCheckEntity;
 import com.open.cloud.dubbo.provider.service.BatchOnlineCheckService;
@@ -29,6 +27,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Arrays;
 
 /**
  * 文件登记表(UPRGHT)

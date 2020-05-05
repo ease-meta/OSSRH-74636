@@ -16,7 +16,6 @@
  */
 package com.open.cloud.sofa.consumer;
 
-import com.alipay.sofa.rpc.common.RpcConstants;
 import com.alipay.sofa.rpc.config.ConsumerConfig;
 import com.alipay.sofa.rpc.config.RegistryConfig;
 import com.open.cloud.sofa.api.HelloService;

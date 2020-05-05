@@ -6,5 +6,9 @@
             http://sofastack.io/schema/sofaboot http://sofastack.io/schema/sofaboot.xsd"
        default-autowire="byName">
     <!-- 声明需要暴露的服务接口 -->
-    <sofa:service interface="com.open.cloud.sofa.api.HelloService" ref="helloServiceImpl"/>
+    <sofa:service interface="com.open.cloud.sofa.api.HelloService" ref="helloServiceImpl">
+        <sofa:binding.bolt>
+            <sofa:global-attrs timeout="15000"></sofa:global-attrs>
+        </sofa:binding.bolt>
+    </sofa:service>
 </beans>

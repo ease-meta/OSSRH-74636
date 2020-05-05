@@ -1,16 +1,20 @@
 spring:
   application:
-    name: cloud-dubbo-consumer
-dubbo:
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    address: zookeeper://122.51.108.224:2181
-  consumer:
-    check: false
+    name: cloud-sofa-consumer
 server:
   port: 8081
 logging:
-  file:
-    path:
+  level:
+    root: INFO
+    com.open.cloud.dubbo.provider.dao: DEBUG
+    org.mybatis: debug
+    "com.alipay.sofa": DEBUG
+    org.apache.ibatis: debug
+    com.baomidou.mybatisplus: debug
+    org.springframework.jdbc: debug
+  path: ./logs
+com:
+  alipay:
+    sofa:
+      rpc:
+        registry-address: nacos://122.51.108.224:8848/public

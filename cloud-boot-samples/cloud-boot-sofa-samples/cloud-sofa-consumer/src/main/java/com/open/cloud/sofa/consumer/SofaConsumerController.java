@@ -16,7 +16,7 @@
  */
 package com.open.cloud.sofa.consumer;
 
-import com.open.cloud.business.api.DemoService;
+import com.open.cloud.sofa.api.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,13 +28,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(value = "${spring.application.name}", produces = MediaType.APPLICATION_JSON_VALUE)
-public class DubboConsumerController {
+public class SofaConsumerController {
 
     @Autowired
-    private DemoService demoService;
+    private HelloService helloService;
 
-    @PostMapping(value = "/dubboconsumercontroller/sayHello")
+    @PostMapping(value = "/sofaconsumercontroller/sayHello")
     public String sayHello(String message) {
-        return demoService.sayHello(message);
+        return helloService.sayHello(message);
     }
 }

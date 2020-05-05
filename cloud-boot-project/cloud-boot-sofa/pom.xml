@@ -74,15 +74,23 @@
             </exclusions>
         </dependency>
 
+      <!--  <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-jaxrs2</artifactId>
+            <version>2.0.0</version>
+        </dependency>-->
+
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>guardian-sofa-boot-starter</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <!--MQ-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>mq-enterprise-sofa-boot-starter</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>com.alipay.sofa</groupId>
