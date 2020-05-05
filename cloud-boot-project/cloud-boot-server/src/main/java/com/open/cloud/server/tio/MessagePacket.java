@@ -25,7 +25,7 @@ import org.tio.core.intf.Packet;
 public class MessagePacket extends Packet {
 
     private static final long  serialVersionUID = -172060606924066412L;
-    public static final int    HEADER_LENGHT    = 8;                    //消息头的长度
+    public static final int    HEADER_LENGHT    = 8;                   //消息头的长度
     public static final String CHARSET          = "GBK";
     private byte[]             body;
     private int                length;

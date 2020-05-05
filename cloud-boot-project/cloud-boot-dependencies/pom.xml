@@ -34,11 +34,11 @@
         <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
         <maven.jacoco.plugin>0.7.9</maven.jacoco.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
-        <spring-boot.version>2.3.0.RC1</spring-boot.version>
+        <!--<spring-boot.version>2.3.0.RC1</spring-boot.version>-->
         <spring-cloud.version>Hoxton.SR4</spring-cloud.version>
         <dubbo.version>2.7.6</dubbo.version>
-        <!-- <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
-         <spring-cloud.version>Greenwich.SR5</spring-cloud.version>-->
+        <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
+        <!-- <spring-cloud.version>Greenwich.SR5</spring-cloud.version>-->
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <sofa-boot.version>3.4.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.4.0</sofa-boot-enterprise.version>
@@ -52,9 +52,10 @@
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
         <!--数据库操作-->
-        <druid.version>[1.1.21,)</druid.version>
+        <druid.version>[1.1.9,)</druid.version>
+        <druid-boot.version>[1.1.9,)</druid-boot.version>
         <mybatis.boot.version>[2.1.1,)</mybatis.boot.version>
-        <mybatis.plus.version>[3.3.1,)</mybatis.plus.version>
+        <mybatis.plus.version>3.3.1</mybatis.plus.version>
         <mybatis.version>[3.3.0,)</mybatis.version>
         <shardingsphere.version>[4.0.0,)</shardingsphere.version>
         <!--缓存-->
@@ -179,7 +180,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
+                <version>${druid-boot.version}</version>
             </dependency>
 
             <dependency>

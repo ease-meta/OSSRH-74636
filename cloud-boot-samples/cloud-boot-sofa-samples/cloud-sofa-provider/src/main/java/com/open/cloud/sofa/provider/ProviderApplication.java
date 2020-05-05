@@ -21,7 +21,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication(scanBasePackages = { "com.open.cloud.sofa" })
+@SpringBootApplication
 @ImportResource(value = "classpath:META-INF/spring/*.xml")
 @EnableCaching
 public class ProviderApplication {
