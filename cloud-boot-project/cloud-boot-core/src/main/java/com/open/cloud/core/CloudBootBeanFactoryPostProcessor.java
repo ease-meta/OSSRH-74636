@@ -18,12 +18,14 @@ package com.open.cloud.core;
 
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Leijian
  * @date   2020/5/4 22:07
  */
+@Component
 public class CloudBootBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     public CloudBootBeanFactoryPostProcessor() {

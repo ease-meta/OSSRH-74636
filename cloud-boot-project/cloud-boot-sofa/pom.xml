@@ -14,7 +14,10 @@
         <main.user.dir>${basedir}/../..</main.user.dir>
     </properties>
     <dependencies>
-
+        <dependency>
+            <artifactId>velocity</artifactId>
+            <groupId>org.apache.velocity</groupId>
+        </dependency>
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>dbp-connector-java</artifactId>
@@ -62,7 +65,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!--SOFARPC 依赖-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>rpc-sofa-boot-starter</artifactId>
@@ -73,12 +76,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-      <!--  <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2</artifactId>
-            <version>2.0.0</version>
-        </dependency>-->
+        <!--SOFATracer 依赖-->
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>tracer-sofa-boot-starter</artifactId>
+        </dependency>
+        <!--runtime 依赖-->
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>runtime-sofa-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-core</artifactId>
+        </dependency>
+        <!--  <dependency>
+              <groupId>io.swagger.core.v3</groupId>
+              <artifactId>swagger-jaxrs2</artifactId>
+              <version>2.0.0</version>
+          </dependency>-->
 
         <dependency>
             <groupId>com.alipay.sofa</groupId>

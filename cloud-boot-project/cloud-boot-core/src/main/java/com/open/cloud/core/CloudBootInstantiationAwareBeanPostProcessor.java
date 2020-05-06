@@ -19,6 +19,7 @@ package com.open.cloud.core;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
+import org.springframework.stereotype.Component;
 
 import java.beans.PropertyDescriptor;
 
@@ -27,6 +28,7 @@ import java.beans.PropertyDescriptor;
  * @author Leijian
  * @date   2020/5/4 22:09
  */
+@Component
 public class CloudBootInstantiationAwareBeanPostProcessor extends
                                                          InstantiationAwareBeanPostProcessorAdapter {
 

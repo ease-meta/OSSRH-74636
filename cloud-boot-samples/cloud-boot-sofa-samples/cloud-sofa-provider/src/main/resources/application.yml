@@ -16,7 +16,7 @@ logging:
     root: INFO
     com.open.cloud.dubbo.provider.dao: DEBUG
     org.mybatis: debug
-    "com.alipay.sofa": DEBUG
+    com.alipay.sofa: debug
     org.apache.ibatis: debug
     com.baomidou.mybatisplus: debug
     org.springframework.jdbc: debug
@@ -25,4 +25,8 @@ com:
   alipay:
     sofa:
       rpc:
+        enable-swagger: true
         registry-address: nacos://122.51.108.224:8848/public
+      tracer:
+        zipkin:
+          base-url: http://122.51.108.224:9411
