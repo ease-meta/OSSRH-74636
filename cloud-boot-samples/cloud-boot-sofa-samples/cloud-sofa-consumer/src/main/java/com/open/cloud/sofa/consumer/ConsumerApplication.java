@@ -16,12 +16,14 @@
  */
 package com.open.cloud.sofa.consumer;
 
+import com.open.cloud.sofa.dynamic.EnableConsumerReference;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages={"com.open.cloud.sofa"})
 @ImportResource(value = "classpath:META-INF/spring/*.xml")
+@EnableConsumerReference
 public class ConsumerApplication {
 
     public static void main(String[] args) {

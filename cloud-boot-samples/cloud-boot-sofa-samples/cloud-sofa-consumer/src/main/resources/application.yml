@@ -2,13 +2,13 @@ spring:
   application:
     name: cloud-sofa-consumer
 server:
-  port: 8081
+  port: 8088
 logging:
   level:
     root: INFO
     com.open.cloud.dubbo.provider.dao: DEBUG
     org.mybatis: debug
-    "com.alipay.sofa": DEBUG
+    com.alipay.sofa: DEBUG
     org.apache.ibatis: debug
     com.baomidou.mybatisplus: debug
     org.springframework.jdbc: debug
@@ -19,6 +19,7 @@ com:
       rpc:
         enable-swagger: true
         registry-address: nacos://122.51.108.224:8848/public
+        bolt-port: 18792
       tracer:
         zipkin:
           base-url: http://122.51.108.224:9411

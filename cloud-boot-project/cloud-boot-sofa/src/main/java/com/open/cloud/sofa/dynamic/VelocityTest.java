@@ -30,12 +30,11 @@ public class VelocityTest {
         try {
             //初始化模板
             Velocity.init(prop);
-            //获取模板(hello.html)
+            //获取模板
             Template template =  Velocity.getTemplate("template/provider.xml.vm", "UTF-8");
             //获取上下文
             VelocityContext root = new VelocityContext();
             //把数据填入上下文
-            root.put("name", "world");
             LinkedList linkedList = new LinkedList();
             Provider provider = new Provider();
             provider.setInterfaceName("1");

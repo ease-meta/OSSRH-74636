@@ -14,6 +14,7 @@ mybatis-plus:
 logging:
   level:
     root: INFO
+    com.open.cloud.sofa: DEBUG
     com.open.cloud.dubbo.provider.dao: DEBUG
     org.mybatis: debug
     com.alipay.sofa: debug
@@ -27,6 +28,7 @@ com:
       rpc:
         enable-swagger: true
         registry-address: nacos://122.51.108.224:8848/public
+        bolt-port: 18798
       tracer:
         zipkin:
           base-url: http://122.51.108.224:9411
