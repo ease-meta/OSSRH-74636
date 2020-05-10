@@ -1,4 +1,4 @@
-package com.open.cloud.sofa.dynamic;
+package com.open.cloud.sofa.dynamic.text;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,12 +6,14 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanClassLoaderAware;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Component;
 
 import static org.springframework.util.ClassUtils.getUserClass;
 
 /**
  *openfeign
  */
+@Component
 public class TargeterBeanPostProcessor implements BeanPostProcessor, BeanClassLoaderAware {
 
 	private Logger logger = LoggerFactory.getLogger(TargeterBeanPostProcessor.class);

@@ -16,9 +16,16 @@
  */
 package com.open.cloud.core;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProcessor;
 import org.springframework.stereotype.Component;
+
+import static org.springframework.util.ObjectUtils.nullSafeEquals;
+import static org.springframework.util.StringUtils.hasText;
 
 /**
  *
@@ -26,7 +33,8 @@ import org.springframework.stereotype.Component;
  * @date   2020/5/4 22:07
  */
 @Component
-public class CloudBootBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
+public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor, BeanPostProcessor {
+    private BeanDefinitionRegistry registry;
 
     public CloudBootBeanFactoryPostProcessor() {
     }
@@ -34,8 +42,22 @@ public class CloudBootBeanFactoryPostProcessor implements BeanFactoryPostProcess
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
         System.out
-            .println("【BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+            .println("【1BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
                      + beanFactory);
 
+    }
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+        System.out
+                .println("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                        + beanName);
+        return bean;
+    }
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+        this.registry = registry;
+        System.out
+                .println("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                        + registry);
     }
 }

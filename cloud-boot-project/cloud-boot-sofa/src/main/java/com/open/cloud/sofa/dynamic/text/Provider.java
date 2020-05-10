@@ -1,4 +1,4 @@
-package com.open.cloud.sofa.dynamic;
+package com.open.cloud.sofa.dynamic.text;
 
 /**
  * @author Leijian

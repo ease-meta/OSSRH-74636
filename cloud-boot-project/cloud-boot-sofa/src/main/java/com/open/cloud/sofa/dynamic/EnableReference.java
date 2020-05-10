@@ -15,8 +15,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 @Documented
-@Import(ConsumerReferenceRegistrar.class)
-public @interface EnableConsumerReference {
+@Import(ReferenceRegistrar.class)
+public @interface EnableReference {
 
 	/**
 	 * Alias for the {@link #basePackages()} attribute. Allows for more concise annotation
