@@ -17,6 +17,7 @@
 package com.open.cloud.sofa.consumer;
 
 import com.open.cloud.sofa.api.HelloService;
+import com.open.cloud.sofa.consumer.rpc.HelloService2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +33,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class SofaConsumerController {
 
     @Autowired
-    private HelloService helloService;
+    private com.open.cloud.sofa.consumer.rpc.HelloService2 HelloService2;
 
     @PostMapping(value = "/sofaconsumercontroller/sayHello")
     public String sayHello(String message) {
-        return helloService.sayHello(message);
+        return HelloService2.sayHello(message);
     }
 }

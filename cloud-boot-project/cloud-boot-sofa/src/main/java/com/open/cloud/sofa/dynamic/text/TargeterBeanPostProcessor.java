@@ -1,5 +1,8 @@
 package com.open.cloud.sofa.dynamic.text;
 
+import com.alipay.sofa.runtime.spi.binding.BindingAdapterFactory;
+import com.alipay.sofa.runtime.spi.component.SofaRuntimeContext;
+import com.alipay.sofa.runtime.spi.service.BindingConverterFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
@@ -22,9 +25,19 @@ public class TargeterBeanPostProcessor implements BeanPostProcessor, BeanClassLo
 
 	private ClassLoader classLoader;
 
-	public TargeterBeanPostProcessor(Environment environment) {
+	protected final SofaRuntimeContext sofaRuntimeContext;
+
+	protected final BindingConverterFactory bindingConverterFactory;
+	/** binding adapter factory */
+	protected final BindingAdapterFactory bindingAdapterFactory;
+
+	public TargeterBeanPostProcessor(Environment environment, SofaRuntimeContext sofaRuntimeContext, BindingConverterFactory bindingConverterFactory, BindingAdapterFactory bindingAdapterFactory) {
 		this.environment = environment;
+		this.sofaRuntimeContext = sofaRuntimeContext;
+		this.bindingConverterFactory = bindingConverterFactory;
+		this.bindingAdapterFactory = bindingAdapterFactory;
 	}
+
 
 	@Override
 	public void setBeanClassLoader(ClassLoader classLoader) {
@@ -34,14 +47,14 @@ public class TargeterBeanPostProcessor implements BeanPostProcessor, BeanClassLo
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		Class<?> beanClass = getUserClass(bean.getClass());
-		logger.info("{},{},{}",bean.getClass(),beanClass,beanName);
+		logger.info("1：{},{},{}", bean.getClass(), beanClass, beanName);
 		return bean;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 		Class<?> beanClass = getUserClass(bean.getClass());
-		logger.info("{},{},{}",bean.getClass(),beanClass,beanName);
+		logger.info("2：{},{},{}", bean.getClass(), beanClass, beanName);
 		return bean;
 	}
 }
