@@ -1,6 +1,5 @@
 package com.open.cloud.core.runtime.api.annotation;
 
-import org.springframework.core.annotation.AliasFor;
 
 /**
  * 服务消费者

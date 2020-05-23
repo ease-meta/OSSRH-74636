@@ -39,7 +39,6 @@ public class TargetBeanFactoryPostProcessor implements BeanFactoryPostProcessor,
 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-		logger.info("{}", beanFactory);
 	}
 
 	@Override

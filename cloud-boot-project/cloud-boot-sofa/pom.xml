@@ -101,7 +101,6 @@
             <artifactId>guardian-sofa-boot-starter</artifactId>
             <optional>true</optional>
         </dependency>
-
         <!--MQ-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>

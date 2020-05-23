@@ -8,6 +8,7 @@ spring:
     password: 123456
 server:
   port: 8080
+  shutdown: graceful
 mybatis-plus:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath*:/mapper/**/*.xml
@@ -21,6 +22,9 @@ logging:
     org.apache.ibatis: debug
     com.baomidou.mybatisplus: debug
     org.springframework.jdbc: debug
+  register-shutdown-hook: true
+  file:
+    path: ./logs
   path: ./logs
 com:
   alipay:

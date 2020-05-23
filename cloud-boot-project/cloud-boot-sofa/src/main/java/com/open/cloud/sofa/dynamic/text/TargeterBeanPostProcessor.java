@@ -11,8 +11,6 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
-import static org.springframework.util.ClassUtils.getUserClass;
-
 /**
  *openfeign
  */
@@ -46,15 +44,11 @@ public class TargeterBeanPostProcessor implements BeanPostProcessor, BeanClassLo
 
 	@Override
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		Class<?> beanClass = getUserClass(bean.getClass());
-		logger.info("1：{},{},{}", bean.getClass(), beanClass, beanName);
 		return bean;
 	}
 
 	@Override
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		Class<?> beanClass = getUserClass(bean.getClass());
-		logger.info("2：{},{},{}", bean.getClass(), beanClass, beanName);
 		return bean;
 	}
 }

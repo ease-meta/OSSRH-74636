@@ -11,29 +11,24 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor, BeanPostProcessor {
-    private static final Logger logger = LoggerFactory.getLogger(CloudBootBeanFactoryPostProcessor.class);
-    private BeanDefinitionRegistry registry;
-    public CloudBootBeanFactoryPostProcessor() {
-    }
+	private static final Logger logger = LoggerFactory.getLogger(CloudBootBeanFactoryPostProcessor.class);
+	private BeanDefinitionRegistry registry;
 
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-        logger.info("【1BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-                     + beanFactory);
+	public CloudBootBeanFactoryPostProcessor() {
+	}
 
-    }
+	@Override
+	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
+
+	}
 
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-                        + beanName);
-        return bean;
-    }
-    @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
-        this.registry = registry;
-        logger.info("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-                        + registry);
-    }
+	@Override
+	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+		return bean;
+	}
+
+	@Override
+	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+	}
 }

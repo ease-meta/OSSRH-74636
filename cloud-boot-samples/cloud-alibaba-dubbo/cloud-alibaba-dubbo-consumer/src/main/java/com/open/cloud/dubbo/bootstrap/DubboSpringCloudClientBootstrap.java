@@ -17,7 +17,6 @@ package com.open.cloud.dubbo.bootstrap;
 
 import com.open.cloud.business.api.EchoService;
 import org.apache.dubbo.config.annotation.Reference;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

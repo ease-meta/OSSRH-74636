@@ -1,14 +1,15 @@
 package com.open.cloud.sofa.dynamic.text;
+
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.LinkedList;
 import java.util.Properties;
-
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
 
 /**
  * Velocity转换
