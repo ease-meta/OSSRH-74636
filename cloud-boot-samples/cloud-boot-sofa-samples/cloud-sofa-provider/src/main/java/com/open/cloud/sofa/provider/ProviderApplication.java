@@ -16,6 +16,8 @@
  */
 package com.open.cloud.sofa.provider;
 
+import com.alipay.sofa.rpc.config.UserThreadPoolManager;
+import com.alipay.sofa.rpc.server.UserThreadPool;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -29,6 +31,8 @@ public class ProviderApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(ProviderApplication.class, args);
+        UserThreadPool userThreadPool = new UserThreadPool();
+        UserThreadPoolManager.registerUserThread("com.open.cloud.sofa.api.HelloService",userThreadPool);
 
     }
 }
