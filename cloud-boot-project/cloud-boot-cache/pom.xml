@@ -30,5 +30,10 @@
             <groupId>com.alicp.jetcache</groupId>
             <artifactId>jetcache-starter-redis-springdata</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
     </dependencies>
 </project>
