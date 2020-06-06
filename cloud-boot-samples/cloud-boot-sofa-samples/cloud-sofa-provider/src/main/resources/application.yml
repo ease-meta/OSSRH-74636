@@ -33,6 +33,8 @@ com:
         enable-swagger: true
         registry-address: nacos://122.51.108.224:8848/public
         bolt-port: 18798
+        dynamic-config: apollo
       tracer:
         zipkin:
           base-url: http://122.51.108.224:9411
+
