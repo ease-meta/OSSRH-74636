@@ -35,7 +35,7 @@
         <maven.jacoco.plugin>0.7.9</maven.jacoco.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
 
-        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
         <!--<spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>

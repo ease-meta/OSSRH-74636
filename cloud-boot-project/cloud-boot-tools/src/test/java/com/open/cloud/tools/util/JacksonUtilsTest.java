@@ -2,7 +2,6 @@ package com.open.cloud.tools.util;
 
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
 public class JacksonUtilsTest {
@@ -49,21 +48,52 @@ public class JacksonUtilsTest {
 			"}";
 
 	@Test
-	public void testObject2Json() throws Exception {
+	public void readTree() throws Exception {
+		JsonNode jsonNode = JacksonHelper.readTree(string);
+	}
+
+	@Test
+	public void writeValueAsStringIgnoreNull() throws Exception {
 		Person person = new Person();
 		Person.Body body = new Person.Body();
 		body.setAge(1);
 		body.setAcctName("雷建");
 		person.setBody(body);
 		person.setId(2);
-		String obj2json = JacksonUtils.obj2jsonIgnoreNull(person);
+		String obj2json = JacksonHelper.writeValueAsStringIgnoreNull(person);
 	}
 
 	@Test
-	public void testString2Json() throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode node = mapper.readTree(string);
-		Request request = mapper.readValue(string, Request.class);
+	public void writeValueAsStringUpperIgnoreNull() throws Exception {
+		Person person = new Person();
+		Person.Body body = new Person.Body();
+		body.setAge(1);
+		body.setAcctName("雷建");
+		person.setBody(body);
+		person.setId(2);
+		String obj2json = JacksonHelper.writeValueAsStringSnakeCaseStrategyIgnoreNull(person);
+	}
+
+	@Test
+	public void writeValueAsStringSnakeCaseStrategyUpperIgnoreNull() throws Exception {
+		Person person = new Person();
+		Person.Body body = new Person.Body();
+		body.setAge(1);
+		body.setAcctName("雷建");
+		person.setBody(body);
+		person.setId(2);
+		String obj2json = JacksonHelper.writeValueAsStringSnakeCaseStrategyUpperIgnoreNull(person);
+	}
+
+	@Test
+	public void writeValueAsStringUpperCameLCaseIgnoreNull() throws Exception {
+		Person person = new Person();
+		Person.Body body = new Person.Body();
+		body.setAge(1);
+		body.setAcctName("雷建");
+		person.setBody(body);
+		person.setId(2);
+		String obj2json = JacksonHelper.writeValueAsStringUpperCameLCaseIgnoreNull(person);
 	}
 
 }

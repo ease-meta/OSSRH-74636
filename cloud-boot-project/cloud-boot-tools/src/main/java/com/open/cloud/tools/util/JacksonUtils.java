@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.open.cloud.tools.util;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -35,25 +36,17 @@ public class JacksonUtils {
 
 	private final static ObjectMapper objectMapper = new ObjectMapper();
 
-	private JacksonUtils() {
-		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-	}
-
-	public static ObjectMapper getInstance() {
-		return objectMapper;
-	}
-
 	/**
 	 * javaBean、列表数组转换为json字符串
 	 */
-	public static String obj2json(Object obj) throws Exception {
+	public static String writeValueAsString(Object obj) throws Exception {
 		return objectMapper.writeValueAsString(obj);
 	}
 
 	/**
 	 * javaBean、列表数组转换为json字符串,忽略空值
 	 */
-	public static String obj2jsonIgnoreNull(Object obj) throws Exception {
+	public static String writeValueAsStringIgnoreNull(Object obj) throws Exception {
 		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
 		objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
@@ -65,7 +58,7 @@ public class JacksonUtils {
 	 * json 转JavaBean
 	 */
 
-	public static <T> T json2pojo(String jsonString, Class<T> clazz) throws Exception {
+	public static <T> T readValue(String jsonString, Class<T> clazz) throws Exception {
 		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
 		return objectMapper.readValue(jsonString, clazz);
 	}
@@ -73,7 +66,7 @@ public class JacksonUtils {
 	/**
 	 * json字符串转换为map
 	 */
-	public static <T> Map<String, Object> json2map(String jsonString) throws Exception {
+	public static <T> Map<String, Object> readValue(String jsonString) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 		return mapper.readValue(jsonString, Map.class);
@@ -85,7 +78,7 @@ public class JacksonUtils {
 	 * @param json
 	 * @return
 	 */
-	public static Map<String, Object> json2mapDeeply(String json) throws Exception {
+	public static Map<String, Object> json2MapRecursion(String json) throws Exception {
 		return json2MapRecursion(json, objectMapper);
 	}
 

@@ -56,7 +56,7 @@ public class RRExceptionHandler implements HandlerExceptionResolver {
             }
             //记录异常日志
             logger.error("{},{}", ex.getMessage(), ex);
-            String json = JacksonUtils.obj2json(r);
+            String json = JacksonUtils.writeValueAsString(r);
             //String json = JSON.toJSONString(r);
             response.getWriter().print(json);
         } catch (Exception e) {
