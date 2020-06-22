@@ -16,7 +16,6 @@
  */
 package com.open.cloud.base.exception;
 
-
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;

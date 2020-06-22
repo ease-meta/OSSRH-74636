@@ -29,7 +29,8 @@ import org.springframework.stereotype.Component;
  * @date   2020/5/4 22:07
  */
 @Component
-public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor, BeanPostProcessor {
+public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor,
+                                              BeanPostProcessor {
     private BeanDefinitionRegistry registry;
 
     public CloudBootBeanFactoryPostProcessor() {
@@ -42,18 +43,22 @@ public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistry
                      + beanFactory);
 
     }
+
     @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+                                                                              throws BeansException {
         System.out
-                .println("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-                        + beanName);
+            .println("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                     + beanName);
         return bean;
     }
+
     @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
+                                                                                  throws BeansException {
         this.registry = registry;
         System.out
-                .println("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-                        + registry);
+            .println("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                     + registry);
     }
 }
