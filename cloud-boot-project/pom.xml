@@ -30,7 +30,8 @@
         <module>cloud-boot-server</module>
         <module>cloud-boot-base</module>
         <module>cloud-boot-api</module>
-        <module>cloud-boot-web</module>
+        <module>cloud-boot-webmvc</module>
+        <module>cloud-boot-webflux</module>
         <module>cloud-boot-cache</module>
     </modules>
 

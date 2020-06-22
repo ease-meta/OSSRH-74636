@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.open.cloud.webmvc.swagger.Swagger2AutoConfiguration,\
+  com.open.cloud.webmvc.configuration.WebMvcAutoConfiguration
