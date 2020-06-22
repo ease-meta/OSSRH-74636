@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,17 +25,17 @@ public class ProviderApplication {
 	@RestController
 	class EchoController {
 
-		@GetMapping("/")
+		@PostMapping("/")
 		public ResponseEntity index() {
 			return new ResponseEntity("index error", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		@GetMapping("/test")
+		@PostMapping("/test")
 		public ResponseEntity test() {
 			return new ResponseEntity("error", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		@GetMapping("/sleep")
+		@PostMapping("/sleep")
 		public String sleep() {
 			try {
 				Thread.sleep(1000L);
@@ -46,12 +46,12 @@ public class ProviderApplication {
 			return "ok";
 		}
 
-		@GetMapping("/echo/{string}")
+		@PostMapping("/echo/{string}")
 		public String echo(@PathVariable String string) {
 			return "hello Nacos Discovery " + string;
 		}
 
-		@GetMapping("/divide")
+		@PostMapping("/divide")
 		public String divide(@RequestParam Integer a, @RequestParam Integer b) {
 			return String.valueOf(a / b);
 		}
