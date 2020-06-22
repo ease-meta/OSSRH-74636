@@ -16,7 +16,8 @@
  */
 package com.open.cloud.base.exception;
 
-import org.springframework.util.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 

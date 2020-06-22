@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cloud-boot-parent</artifactId>
+        <artifactId>cloud-boot-build</artifactId>
         <groupId>com.open.cloud</groupId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
@@ -24,14 +24,13 @@
         <module>cloud-boot-datalake</module>
         <module>cloud-boot-dataway</module>
         <module>cloud-boot-tools</module>
-        <module>cloud-boot-starters</module>
+        <module>cloud-boot-parent</module>
         <module>cloud-boot-flyway</module>
         <module>cloud-boot-dubbo</module>
         <module>cloud-boot-server</module>
         <module>cloud-boot-base</module>
         <module>cloud-boot-api</module>
         <module>cloud-boot-web</module>
-        <module>cloud-boot-bom</module>
         <module>cloud-boot-cache</module>
     </modules>
 
