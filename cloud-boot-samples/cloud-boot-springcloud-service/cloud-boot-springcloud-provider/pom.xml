@@ -11,16 +11,24 @@
 
     <groupId>com.open.cloud</groupId>
     <artifactId>cloud-boot-springcloud-provider</artifactId>
-
+    <properties>
+        <main.user.dir>${basedir}/../../..</main.user.dir>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-springcloud</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-boot-webflux</artifactId>
+            <artifactId>cloud-boot-webmvc</artifactId>
         </dependency>
 
         <dependency>

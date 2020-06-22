@@ -8,8 +8,8 @@
     <artifactId>cloud-boot-build</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Cloud Boot build</name>
-    <description>Cloud Boot build</description>
+    <name>Cloud Boot Build</name>
+    <description>Cloud Boot Build</description>
 
     <properties>
         <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>

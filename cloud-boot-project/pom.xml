@@ -37,5 +37,6 @@
 
     <properties>
         <main.user.dir>${basedir}/..</main.user.dir>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     </properties>
 </project>

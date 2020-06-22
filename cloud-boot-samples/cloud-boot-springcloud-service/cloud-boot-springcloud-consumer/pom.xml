@@ -11,7 +11,9 @@
 
     <groupId>com.open.cloud</groupId>
     <artifactId>cloud-boot-springcloud-consumer</artifactId>
-
+    <properties>
+        <main.user.dir>${basedir}/../../..</main.user.dir>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>com.open.cloud</groupId>

@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 /**
  * Dubbo Spring Cloud Consumer Bootstrap.
  */
@@ -32,11 +31,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "${spring.application.name}", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SofaConsumerController {
 
-	@SofaReference(binding = @SofaReferenceBinding(bindingType = "bolt"))
-	HelloService helloService;
+    @SofaReference(binding = @SofaReferenceBinding(bindingType = "bolt"))
+    HelloService helloService;
 
-	@PostMapping(value = "/sofaconsumercontroller/sayHello")
-	public String sayHello(String message) {
-		return helloService.sayHello(message);
-	}
+    @PostMapping(value = "/sofaconsumercontroller/sayHello")
+    public String sayHello(String message) {
+        return helloService.sayHello(message);
+    }
 }

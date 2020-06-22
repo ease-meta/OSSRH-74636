@@ -13,6 +13,7 @@
     <artifactId>cloud-boot-parent</artifactId>
 
     <properties>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <main.user.dir>${basedir}/../..</main.user.dir>
         <project.encoding>UTF-8</project.encoding>
         <java.version>1.8</java.version>

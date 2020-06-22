@@ -31,16 +31,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 @SpringBootApplication
 public class DubboSpringCloudClientBootstrap {
 
-	@DubboReference
-	private EchoService echoService;
+    @DubboReference
+    private EchoService echoService;
 
-	@GetMapping("/echo")
-	public String echo(String message) {
-		return echoService.echo(message);
-	}
+    @GetMapping("/echo")
+    public String echo(String message) {
+        return echoService.echo(message);
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(DubboSpringCloudClientBootstrap.class);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DubboSpringCloudClientBootstrap.class);
+    }
 
 }

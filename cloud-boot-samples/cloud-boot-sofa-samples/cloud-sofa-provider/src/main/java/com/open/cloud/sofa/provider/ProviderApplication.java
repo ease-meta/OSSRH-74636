@@ -32,7 +32,8 @@ public class ProviderApplication {
 
         SpringApplication.run(ProviderApplication.class, args);
         UserThreadPool userThreadPool = new UserThreadPool();
-        UserThreadPoolManager.registerUserThread("com.open.cloud.sofa.api.HelloService",userThreadPool);
+        UserThreadPoolManager.registerUserThread("com.open.cloud.sofa.api.HelloService",
+            userThreadPool);
 
     }
 }

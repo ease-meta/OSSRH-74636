@@ -12,6 +12,9 @@
     <groupId>com.open.cloud</groupId>
     <artifactId>cloud-boot-springcloud-service</artifactId>
     <packaging>pom</packaging>
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
     <modules>
         <module>cloud-boot-springcloud-provider</module>
         <module>cloud-boot-springcloud-consumer</module>

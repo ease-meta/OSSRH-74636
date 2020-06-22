@@ -5,48 +5,7 @@ Content-Type: application/json
 #Content-Type: application/x-www-form-urlencoded
 
 {
-  "appHead":{
-    "currentNum":"0",
-    "pageEnd":"0",
-    "pageStart":"0",
-    "pgupOrPgdn":"0",
-    "totalFlag":"E",
-    "totalNum":"-1"
-  },
-  "body":{
-    "clientNo":"1000019815",
-    "dealClass":"CLIENT",
-    "dealType":"",
-    "endDate":"20230410",
-    "narrative":"客户级限制新增测试",
-    "option":"01",
-    "restraintSeqNo":"",
-    "restraintType":"001",
-    "startDate":"20230409",
-    "term":"3",
-    "termType":"D"
-  },
-  "sysHead":{
-    "apprFlag":"",
-    "apprUserId":"",
-    "authFlag":"N",
-    "authUserId":"",
-    "branchId":"2000",
-    "destBranchNo":"2000",
-    "messageCode":"0122",
-    "messageType":"1200",
-    "programId":"3520",
-    "sceneId":"01",
-    "seqNo":"00059A3C7A006222245715518",
-    "serviceCode":"MbsdCore",
-    "sourceBranchNo":"2000",
-    "sourceType":"MT",
-    "tranDate":"20230409",
-    "tranMode":"ONLINE",
-    "tranTimestamp":"245715518",
-    "userId":"ZQQ",
-    "userLang":"CHINESE"
-  }
+  "1": "2"
 }
 
 ###
