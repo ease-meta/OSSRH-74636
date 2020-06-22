@@ -38,6 +38,7 @@
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
         <!--<spring-cloud-alibaba.version>2.1.2.RELEASE</spring-cloud-alibaba.version>
         <spring-boot.version>2.1.13.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.SR5</spring-cloud.version>-->
@@ -179,6 +180,14 @@
                 <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/aliyun-spring-boot-dependencies -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>aliyun-spring-boot-dependencies</artifactId>
+                <version>${aliyun-spring-boot-dependencies}</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>

@@ -14,6 +14,13 @@
         <main.user.dir>${basedir}/../..</main.user.dir>
     </properties>
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/aliyun-oss-spring-boot-starter -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>aliyun-oss-spring-boot-starter</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <artifactId>velocity</artifactId>
             <groupId>org.apache.velocity</groupId>
