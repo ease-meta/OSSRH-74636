@@ -16,4 +16,8 @@
         <module>cloud-alibaba-dubbo-interface</module>
         <module>cloud-alibaba-dubbo-provider</module>
     </modules>
+
+    <properties>
+        <main.user.dir>${basedir}/../..</main.user.dir>
+    </properties>
 </project>
