@@ -20,41 +20,4 @@ public class SpringCloudProviderApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCloudProviderApplication.class, args);
 	}
-
-	@RestController
-	class EchoController {
-
-		@PostMapping("/")
-		public ResponseEntity index() {
-			return new ResponseEntity("index error", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		@PostMapping("/test")
-		public ResponseEntity test() {
-			return new ResponseEntity("error", HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		@PostMapping("/sleep")
-		public String sleep() {
-			try {
-				Thread.sleep(1000L);
-			}
-			catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			return "ok";
-		}
-
-		@PostMapping("/echo/{string}")
-		public String echo(@PathVariable String string) {
-			return "hello Nacos Discovery " + string;
-		}
-
-		@PostMapping("/divide")
-		public String divide(@RequestParam Integer a, @RequestParam Integer b) {
-			return String.valueOf(a / b);
-		}
-
-	}
-
 }

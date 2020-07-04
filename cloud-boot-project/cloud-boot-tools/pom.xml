@@ -15,6 +15,10 @@
     <artifactId>cloud-boot-tools</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-base</artifactId>
+        </dependency>
         <!--校验操作 -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>

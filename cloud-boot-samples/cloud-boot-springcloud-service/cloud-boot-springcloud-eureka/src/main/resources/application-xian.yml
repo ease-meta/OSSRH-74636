@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: cloud-eureka-server
+
+server:
+  port: 8001
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: xian
+    availability-zones:
+      xian: zone-1,zone-2
+    service-url:
+      zone-1: http://localhost:8001/eureka/
+      zone-2: http://localhost:8002/eureka/
+    #serviceUrl:
+    #  defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    use-dns-for-fetching-service-urls: false
+  server:
+    use-read-only-response-cache: false
+    enable-self-preservation: true
