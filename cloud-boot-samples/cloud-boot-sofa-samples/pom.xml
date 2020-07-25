@@ -19,4 +19,17 @@
         <module>cloud-sofa-provider</module>
     </modules>
 
+    <dependencies>
+        <!--<dependency>
+            <groupId>com.alipay.gateway</groupId>
+            <artifactId>mobilegw-unify-spi-sofa</artifactId>
+            <version>1.0.5.20180810</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>gateway-enterprise-sofa-boot-starter</artifactId>
+            <version>2.0.0</version>
+        </dependency>-->
+    </dependencies>
 </project>
