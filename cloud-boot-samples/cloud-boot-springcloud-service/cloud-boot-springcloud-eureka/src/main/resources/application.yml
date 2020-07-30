@@ -1,6 +1,10 @@
 spring:
   application:
     name: cloud-eureka-server
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8788
 server:
   port: 8001
 eureka:
@@ -18,4 +22,12 @@ eureka:
   server:
     #use-read-only-response-cache: false
     enable-self-preservation: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
 #eureka.server.enableSelfPreservation=false

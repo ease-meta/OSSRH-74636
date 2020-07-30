@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: cloud-boot-springcloud-adminserver
+server:
+  port: 8788

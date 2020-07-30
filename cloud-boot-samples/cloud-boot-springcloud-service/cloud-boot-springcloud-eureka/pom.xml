@@ -31,6 +31,11 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-webmvc</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
