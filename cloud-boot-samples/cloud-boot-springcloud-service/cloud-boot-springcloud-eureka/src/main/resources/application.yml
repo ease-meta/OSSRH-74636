@@ -1,24 +1,25 @@
 spring:
-  application:
-    name: cloud-eureka-server
   boot:
     admin:
       client:
         url: http://127.0.0.1:8788
-server:
-  port: 8001
 eureka:
+  environment: dev
+  #datacenter: DC1
   instance:
-    hostname: ${spring.cloud.client.ip-address}
-    prefer-ip-address: true
+    #hostname: ${spring.cloud.client.ip-address}
+    #prefer-ip-address: true
     status-page-url-path: /actuator/info
     health-check-url-path: /actuator/health
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    #instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    namespace: platform
+    ip-address: ${eureka.instance.hostname}
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    #serviceUrl:
+    #  defaultZone: http://peer1.com:9801/eureka/,http://peer2.com:9802/eureka/,http://peer3.com:9803/eureka/
+    prefer-same-zone-eureka: true
   server:
     #use-read-only-response-cache: false
     enable-self-preservation: false
@@ -30,4 +31,66 @@ management:
   endpoint:
     health:
       show-details: always
+---
+server:
+  port: 9801
+eureka:
+  datacenter: DC1
+  instance:
+    hostname: peer1.com
+    appname: eureka-server-cluster
+  client:
+    region: tangshan
+    availability-zones:
+      tangshan: DC1,DC2,DC3
+    service-url:
+      DC1: http://peer1.com:9801/eureka/
+      DC2: http://peer2.com:9802/eureka/
+      DC3: http://peer3.com:9803/eureka/
+spring:
+  profiles: peer1
+  application:
+    name: application-peer1
+---
+server:
+  port: 9802
+
+eureka:
+  datacenter: DC2
+  instance:
+    hostname: peer2.com
+    appname: eureka-server-cluster
+  client:
+    region: tangshan
+    availability-zones:
+      tangshan: DC2,DC1,DC3
+    service-url:
+      DC1: http://peer1.com:9801/eureka/
+      DC2: http://peer2.com:9802/eureka/
+      DC3: http://peer3.com:9803/eureka/
+spring:
+  profiles: peer2
+  application:
+    name: application-peer2
+---
+server:
+  port: 9803
+eureka:
+  datacenter: DC3
+  instance:
+    hostname: peer3.com
+    appname: eureka-server-cluster
+  client:
+    region: shijiazhuang
+    availability-zones:
+      shijiazhuang: DC3,DC1,DC2
+    service-url:
+      DC1: http://peer1.com:9801/eureka/
+      DC2: http://peer2.com:9802/eureka/
+      DC3: http://peer3.com:9803/eureka/
+spring:
+  profiles: peer3
+  application:
+    name: application-peer3
+
 #eureka.server.enableSelfPreservation=false

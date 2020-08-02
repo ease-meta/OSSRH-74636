@@ -24,10 +24,9 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-webflux</artifactId>
         </dependency>
-
-        <dependency>
+      <!--  <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
+        </dependency>-->
     </dependencies>
 </project>

@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: cloud-boot-springcloud-provider
+eureka:
+  instance:
+    #prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: tangshan
+    service-url:
+      DC1: http://peer1.com:9801/eureka/
+      DC2: http://peer2.com:9802/eureka/
+      DC3: http://peer3.com:9803/eureka/
+---
+server:
+  #web端口
+  port: 18081
+eureka:
+  instance:
+    metadata-map:
+      zone: DC1
+  client:
+    availability-zones:
+      tangshan: DC1,DC2,DC3
+spring:
+  profiles: peer1
+---
+server:
+  #web端口
+  port: 18082
+eureka:
+  instance:
+    metadata-map:
+      zone: DC2
+  client:
+    availability-zones:
+      tangshan: DC2,DC1,DC3
+spring:
+  profiles: peer2
+---
+
