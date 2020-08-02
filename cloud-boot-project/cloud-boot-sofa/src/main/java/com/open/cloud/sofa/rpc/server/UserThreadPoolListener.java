@@ -20,7 +20,6 @@ import com.alipay.sofa.rpc.boot.context.event.SofaBootRpcStartAfterEvent;
 import com.alipay.sofa.rpc.bootstrap.ProviderBootstrap;
 import com.alipay.sofa.rpc.config.ProviderConfig;
 import com.alipay.sofa.rpc.config.ServerConfig;
-import com.alipay.sofa.rpc.config.UserThreadPoolManager;
 import com.alipay.sofa.rpc.context.RpcRuntimeContext;
 import com.alipay.sofa.rpc.server.UserThreadPool;
 import org.springframework.context.ApplicationListener;

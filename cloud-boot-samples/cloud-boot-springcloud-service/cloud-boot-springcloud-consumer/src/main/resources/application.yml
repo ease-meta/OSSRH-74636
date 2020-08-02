@@ -16,6 +16,12 @@ eureka:
       DC1: http://peer1.com:9801/eureka/
       DC2: http://peer2.com:9802/eureka/
       DC3: http://peer3.com:9803/eureka/
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: '*'
 ---
 server:
   #web端口
