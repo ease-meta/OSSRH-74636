@@ -17,6 +17,9 @@
         <module>cloud-boot-sofa-samples</module>
         <module>cloud-alibaba-dubbo</module>
         <module>cloud-boot-springcloud-service</module>
+        <module>cloud-business-dao</module>
+        <module>cloud-business-service</module>
+        <module>cloud-business-web</module>
     </modules>
 
     <properties>
