@@ -260,10 +260,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-couchbase</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.geode</groupId>
             <artifactId>spring-geode-starter</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-integration</artifactId>
@@ -296,10 +296,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.solace.spring.boot</groupId>
             <artifactId>solace-spring-boot-starter</artifactId>
@@ -352,10 +352,10 @@
             <artifactId>micrometer-registry-new-relic</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>com.wavefront</groupId>
             <artifactId>wavefront-spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
@@ -407,10 +407,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-oauth2</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-open-service-broker</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
@@ -503,14 +503,14 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>cola-core</artifactId>
         </dependency>
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>cola-common</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
@@ -605,7 +605,7 @@
             <artifactId>r2dbc-mssql</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot.experimental</groupId>
             <artifactId>spring-boot-actuator-autoconfigure-r2dbc</artifactId>
         </dependency>
@@ -613,7 +613,7 @@
             <groupId>org.springframework.boot.experimental</groupId>
             <artifactId>spring-boot-test-autoconfigure-r2dbc</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-test</artifactId>
