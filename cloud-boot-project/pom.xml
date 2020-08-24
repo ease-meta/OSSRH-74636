@@ -34,6 +34,7 @@
         <module>cloud-boot-webflux</module>
         <module>cloud-boot-cache</module>
         <module>cloud-boot-flowable</module>
+        <module>cloud-boot-rocketmq</module>
     </modules>
 
     <properties>

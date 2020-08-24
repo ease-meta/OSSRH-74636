@@ -43,7 +43,7 @@
         <vaadin.version>14.2.0</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
         <!--消息中间件-->
-        <rocketmq.version>4.7.0</rocketmq.version>
+        <rocketmq.version>4.7.1</rocketmq.version>
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
         <!--数据库操作-->
