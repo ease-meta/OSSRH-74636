@@ -49,12 +49,4 @@ public class SpringCloudConsumerApplication {
 		return WebClient.builder();
 	}
 
-	@FeignClient("cloud-boot-springcloud-provider")
-	public interface Client {
-
-		@GetMapping("/hi")
-		String hi();
-
-	}
-
 }
