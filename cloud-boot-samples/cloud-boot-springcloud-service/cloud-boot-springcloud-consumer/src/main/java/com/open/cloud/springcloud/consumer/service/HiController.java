@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
+//import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -26,7 +26,7 @@ public class HiController {
 		return "error";
 	}
 
-	@Autowired
+	/*@Autowired
 	private WebClient.Builder webClientBuilder;
 
 	@GetMapping("/webclient")
@@ -37,16 +37,16 @@ public class HiController {
 				.retrieve()
 				.bodyToMono(String.class);
 		return result;
-	}
+	}*/
 
 	@Autowired
 	private HiClient hiClient;
 
-	@GetMapping("/feign")
+	/*@GetMapping("/feign")
 	public Flux<String> feign() {
 		Flux<String> result = Flux.just(hiClient.hi());
 		return result;
-	}
+	}*/
 
 	@RequestMapping(value = "/openfeign")
 	public String openfeign() {
