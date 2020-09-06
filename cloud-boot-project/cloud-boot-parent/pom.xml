@@ -113,6 +113,7 @@
         <easyexcel.version>[2.1.6,)</easyexcel.version>
         <jasypt.version>[3.0.2,)</jasypt.version>
         <hutool-all.version>[5.1.2,)</hutool-all.version>
+        <esapi.version>[2.2.1.1,)</esapi.version>
         <joda-time.version>[2.10.5,)</joda-time.version>
         <okhttp.version>[4.3.1,)</okhttp.version>
         <guice.version>[4.2.2,)</guice.version>
@@ -530,6 +531,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.owasp.esapi</groupId>
+                <artifactId>esapi</artifactId>
+                <version>${esapi.version}</version>
+            </dependency>
+
+            <dependency>
                 <artifactId>velocity</artifactId>
                 <groupId>org.apache.velocity</groupId>
                 <version>${velocity.version}</version>
@@ -775,6 +782,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.owasp.esapi</groupId>
+            <artifactId>esapi</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
