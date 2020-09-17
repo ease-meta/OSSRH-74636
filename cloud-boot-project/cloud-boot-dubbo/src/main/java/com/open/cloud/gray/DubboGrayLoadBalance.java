@@ -16,13 +16,7 @@
  */
 package com.open.cloud.gray;
 
-import org.apache.dubbo.common.URL;
-import org.apache.dubbo.rpc.Invocation;
-import org.apache.dubbo.rpc.Invoker;
-import org.apache.dubbo.rpc.RpcException;
-import org.apache.dubbo.rpc.cluster.LoadBalance;
 
-import java.util.List;
 
 /**
  * @author Leijian
@@ -30,7 +24,7 @@ import java.util.List;
  * 灰度修改服务的loadBalance为
  * loadbalance
  */
-public class DubboGrayLoadBalance implements LoadBalance, GrayApi {
+/*public class DubboGrayLoadBalance implements LoadBalance, GrayApi {
 
     @Override
     public <T> Invoker<T> select(List<Invoker<T>> invokers, URL url, Invocation invocation)
@@ -38,4 +32,4 @@ public class DubboGrayLoadBalance implements LoadBalance, GrayApi {
         //
         return null;
     }
-}
+}*/
