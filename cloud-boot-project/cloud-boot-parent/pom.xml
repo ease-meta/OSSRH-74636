@@ -27,9 +27,9 @@
         <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
         <maven.surefire.plugin>2.21.0</maven.surefire.plugin>
 
-        <spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
         <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
         <solace-spring-boot.version>1.1.0</solace-spring-boot.version>
         <dubbo.version>[2.7.6,)</dubbo.version>
