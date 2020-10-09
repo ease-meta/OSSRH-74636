@@ -20,6 +20,7 @@
         <module>cloud-boot-springcloud-consumer</module>
         <module>cloud-boot-springcloud-eureka</module>
         <module>cloud-boot-springcloud-adminserver</module>
+        <module>cloud-boot-springcloud-gateway</module>
     </modules>
 
 </project>
