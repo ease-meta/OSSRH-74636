@@ -1,141 +1,65 @@
 server:
-  port: 8765
+  port: 8080
 
-#请求和响应GZIP压缩支持
-feign:
-  httpclient:
-    enabled: false
-  okhttp:
+eureka:
+  instance:
+    hostname: ${hostname:localhost}
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 15 #服务过期时间
+    lease-renewal-interval-in-seconds: 5 #服务刷新时间,每5s心跳一次
+  client:
     enabled: true
-  compression:
-    request:
-      enabled: true
-      mime-types: text/xml,application/xml,application/json
-      min-request-size: 2048
-    response:
-      enabled: true
+    #是否注册至eureka
+    register-with-eureka: true
+    #是否获取注册表
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: false
+    eurekaServiceUrlPollIntervalSeconds: 60
+    #设置拉取服务注册信息时间
+    registry-fetch-interval-seconds: 5
 
 spring:
-  application:
-      name: ace-gate
-  redis:
-      database: 2
-      host: 127.0.0.1
-      jedis:
-        pool:
-            max-active: 20
-  rabbitmq:
-      host: ${RABBIT_MQ_HOST:localhost}
-      port:  ${RABBIT_MQ_PORT:5672}
-      username: guest
-      password: guest
-  sleuth:
-    enabled: false
-    http:
-      legacy:
-        enabled: true
   cloud:
-     gateway:
-       default-filters:
-         - DedupeResponseHeader=Access-Control-Allow-Origin
-       globalcors:
-         add-to-simple-url-handler-mapping: true
-         corsConfigurations:
-           '[/**]':
-             allowed-origins: "*"
-             allowed-methods: "*"
-             allowed-headers: "*"
-             allow-credentials: true
-       discovery:
-         locator:
-           lowerCaseServiceId: true
-           enabled: true
-       routes:
-        # =====================================
-        - id: ace-auth
-          uri: lb://ace-admin
-          order: 8000
+    gateway:
+      routes:
+        - id: neo_route
+          uri: http://www.ityouknow.com
           predicates:
-          - RequestBody=true
-          - Path=/api/auth/**
-          filters:
-          - StripPrefix=2
-        - id: ace-admin
-          uri: lb://ace-admin
-          order: 8001
-          predicates:
-          - RequestBody=true
-          - Path=/api/admin/**
-          filters:
-          - StripPrefix=2
-        - id: ace-generator
-          uri: lb://ace-generator
-          order: 8001
-          predicates:
-            - Path=/api/code/**
-          filters:
-            - StripPrefix=1
-        - id: ace-sample
-          uri: lb://ace-sample
-          order: 8001
-          predicates:
-            - RequestBody=true
-            - Path=/api/sample/**
-          filters:
-            - StripPrefix=2
-     nacos:
-        discovery:
-          server-addr: 127.0.0.1:8848
-  sentinel:
-    transport:
-      dashboard: localhost:8080
-logging:
-  level:
-    com.github.wxiaoqi.security.gate.v2: info
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-        exclude: heapdump,dump,threaddump,configprops,env
-
-  security:
-    enabled: false
-
-
-gate:
-  ignore:
-    startWith: /auth/jwt,/auth/captcha
-
-
-auth:
-  serviceId: ace-admin
-  user:
-    token-header: Authorization
-  client:
-    id: ace-gate  #不填则默认读取spring.application.name
-    secret: 123456
-
-
-ribbon:
-  eureka:
-    enabled: true
-  ReadTimeout: 60000
-  ConnectTimeout: 60000
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 1
-  OkToRetryOnAllOperations: false
-
-hystrix:
-  threadpool:
-    default:
-      coreSize: 1000 ##并发执行的最大线程数，默认10
-      maxQueueSize: 1000 ##BlockingQueue的最大队列数
-      queueSizeRejectionThreshold: 500 ##即使maxQueueSize没有达到，达到queueSizeRejectionThreshold该值后，请求也会被拒绝
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 10000
+            - Path=/spring-cloud
+#      - id: time_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+#        - Before=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+#        - Between=2018-01-20T06:06:06+08:00[Asia/Shanghai], 2019-01-20T06:06:06+08:00[Asia/Shanghai]
+#      - id: cookie_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - Cookie=ityouknow, kee.e
+#      - id: header_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - Header=X-Request-Id, \d+
+#      - id: host_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - Host=**.ityouknow.com
+#      - id: method_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - Method=GET
+#      - id: host_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - Path=/foo/{segment}
+#      - id: query_route
+#        uri: http://ityouknow.com
+#        predicates:
+#         - Query=keep, pu.
+#      - id: remoteaddr_route
+#        uri: http://ityouknow.com
+#        predicates:
+#        - RemoteAddr=192.168.126.218/24
