@@ -1,11 +1,12 @@
 /*
- * Copyright 2013-2018 the original author or authors.
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,13 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.example.demo.dubbo.demo.provider;
-
-import org.apache.dubbo.config.annotation.Service;
 
 import com.example.demo.dubbo.demo.api.User;
 import com.example.demo.dubbo.demo.api.UserService;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -31,21 +30,21 @@ import java.util.Map;
 @Service(protocol = "dubbo")
 public class InMemoryUserServiceImpl implements UserService {
 
-	private Map<Long, User> usersRepository = new HashMap<>();
+    private Map<Long, User> usersRepository = new HashMap<>();
 
-	@Override
-	public boolean save(User user) {
-		return usersRepository.put(user.getId(), user) == null;
-	}
+    @Override
+    public boolean save(User user) {
+        return usersRepository.put(user.getId(), user) == null;
+    }
 
-	@Override
-	public boolean remove(Long userId) {
-		return usersRepository.remove(userId) != null;
-	}
+    @Override
+    public boolean remove(Long userId) {
+        return usersRepository.remove(userId) != null;
+    }
 
-	@Override
-	public Collection<User> findAll() {
-		return usersRepository.values();
-	}
+    @Override
+    public Collection<User> findAll() {
+        return usersRepository.values();
+    }
 
 }

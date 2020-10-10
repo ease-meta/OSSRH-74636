@@ -1,11 +1,12 @@
 /*
- * Copyright 2013-2018 the original author or authors.
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.example.demo.sms;
 
 import com.alibaba.cloud.spring.boot.sms.ISmsService;
@@ -54,8 +54,7 @@ public class SmsController {
 	}
 
 	@RequestMapping("/batch-sms-send.do")
-	public SendBatchSmsResponse batchsendCheckCode(
-			@RequestParam(name = "code") String code) {
+	public SendBatchSmsResponse batchsendCheckCode(@RequestParam(name = "code") String code) {
 		// 组装请求对象
 		SendBatchSmsRequest request = new SendBatchSmsRequest();
 		// 使用post提交
@@ -68,16 +67,13 @@ public class SmsController {
 		request.setTemplateCode("******");
 		// 必填:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
 		// 友情提示:如果JSON中需要带换行符,请参照标准的JSON协议对换行符的要求,比如短信内容中包含\r\n的情况在JSON中需要表示成\\r\\n,否则会导致JSON在服务端解析失败
-		request.setTemplateParamJson(
-				"[{\"code\":\"" + code + "\"},{\"code\":\"" + code + "\"}]");
+		request.setTemplateParamJson("[{\"code\":\"" + code + "\"},{\"code\":\"" + code + "\"}]");
 		// 可选-上行短信扩展码(扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段)
 		// request.setSmsUpExtendCodeJson("[\"90997\",\"90998\"]");
 		try {
-			SendBatchSmsResponse sendSmsResponse = smsService
-					.sendSmsBatchRequest(request);
+			SendBatchSmsResponse sendSmsResponse = smsService.sendSmsBatchRequest(request);
 			return sendSmsResponse;
-		}
-		catch (ClientException e) {
+		} catch (ClientException e) {
 			e.printStackTrace();
 		}
 		return new SendBatchSmsResponse();
@@ -104,16 +100,14 @@ public class SmsController {
 		try {
 			SendSmsResponse sendSmsResponse = smsService.sendSmsRequest(request);
 			return sendSmsResponse;
-		}
-		catch (ClientException e) {
+		} catch (ClientException e) {
 			e.printStackTrace();
 		}
 		return new SendSmsResponse();
 	}
 
 	@RequestMapping("/query.do")
-	public QuerySendDetailsResponse querySendDetailsResponse(
-			@RequestParam(name = "tel") String telephone) {
+	public QuerySendDetailsResponse querySendDetailsResponse(@RequestParam(name = "tel") String telephone) {
 		// 组装请求对象
 		QuerySendDetailsRequest request = new QuerySendDetailsRequest();
 		// 必填-号码
@@ -127,8 +121,7 @@ public class SmsController {
 		try {
 			QuerySendDetailsResponse response = smsService.querySendDetails(request);
 			return response;
-		}
-		catch (ClientException e) {
+		} catch (ClientException e) {
 			e.printStackTrace();
 		}
 

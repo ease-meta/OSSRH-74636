@@ -10,7 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-boot-springcloud-eureka</artifactId>
-
+    <properties>
+        <skip_maven_deploy>true</skip_maven_deploy>
+        <main.user.dir>${basedir}/../../..</main.user.dir>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
