@@ -37,8 +37,8 @@
         <sofa-boot.version>3.4.4</sofa-boot.version>
         <sofa-boot-enterprise.version>3.4.4</sofa-boot-enterprise.version>
         <jboot.version>[3.0.5,)</jboot.version>
-        <spring-cloud-huawei.version>1.3.5</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.2.4</spring-boot-admin.version>
+        <spring-cloud-huawei.version>1.3.7</spring-cloud-huawei.version>
+        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
         <vaadin.version>14.2.0</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
@@ -70,7 +70,7 @@
         <shiro-spring.version>[1.4.2,)</shiro-spring.version>
         <!--链路跟踪-->
         <zipkin.version>2.20.0</zipkin.version>
-        <apollo.version>1.6.2</apollo.version>
+        <apollo.version>1.7.0</apollo.version>
         <perf4j.version>[0.9.16,)</perf4j.version>
         <p6spy.version>[3.8.7,)</p6spy.version>
         <nacos.version>1.3.1</nacos.version>
@@ -86,7 +86,7 @@
         <!--公共及工具类-->
         <velocity.version>[1.7,)</velocity.version>
         <guava.version>[20.0,)</guava.version>
-        <easypoi.version>4.1.3</easypoi.version>
+        <easypoi.version>4.2.0</easypoi.version>
         <kotlin.version>1.3.72</kotlin.version>
         <protobuf.java.version>3.6.0</protobuf.java.version>
         <itextpdf.version>[5.5.13,)</itextpdf.version>
@@ -309,8 +309,7 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-seata</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
+                <version>[2.2.0.RELEASE,)</version>
             </dependency>
             <!--稳定版本，替代spring security bom内置-->
             <dependency>
