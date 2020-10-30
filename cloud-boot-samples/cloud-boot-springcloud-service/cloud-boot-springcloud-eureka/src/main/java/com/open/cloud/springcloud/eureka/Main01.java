@@ -16,14 +16,7 @@
  */
 package com.open.cloud.springcloud.eureka;
 
-import org.apache.commons.configuration2.YAMLConfiguration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
-import java.util.Iterator;
+import java.util.function.Function;
 
 /**
  * @author Leijian
@@ -31,7 +24,7 @@ import java.util.Iterator;
  */
 public class Main01 {
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		YAMLConfiguration config = new YAMLConfiguration();
 		Resource resource = new ClassPathResource("application-dev.yml");
 		File file = resource.getFile();
@@ -43,5 +36,24 @@ public class Main01 {
 			String value = config.getString(key);
 			System.out.println(key + " = " + value);
 		}
+	}*/
+
+	public static void main(String[] args) {
+
+		Function<Integer, Integer> name = new Function<Integer, Integer>() {
+			@Override
+			public Integer apply(Integer integer) {
+				return integer * 2;
+			}
+		};
+		//Function<Integer, Integer> name = e -> e * 2;
+		Function<Integer, Integer> square = e -> e * e;
+		int value = name.andThen(square).apply(3);
+		System.out.println("andThen value=" + value);
+		int value2 = name.compose(square).apply(3);
+		System.out.println("compose value2=" + value2);
+		//返回一个执行了apply()方法之后只会返回输入参数的函数对象
+		Object identity = Function.identity().apply("huohuo");
+		System.out.println(identity);
 	}
 }
