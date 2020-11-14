@@ -51,5 +51,52 @@
             <artifactId>slf4j-log4j12</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.alipay.session</groupId>
+            <artifactId>alipay-session-spring-ocs</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.categoryService</groupId>
+            <artifactId>categoryService-facade</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.cp</groupId>
+            <artifactId>cp-data-utils</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay</groupId>
+            <artifactId>generic-serialization</artifactId>
+            <version>1.0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.hybirdpb</groupId>
+            <artifactId>classparser</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.security</groupId>
+            <artifactId>alipay-security-open</artifactId>
+            <version>0.0.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <version>5.6.0</version>
+            <artifactId>zdal-sequence</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>sofa-tracer-zipkin-plugin</artifactId>
+        </dependency>
     </dependencies>
 </project>
