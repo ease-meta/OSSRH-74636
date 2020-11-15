@@ -17,8 +17,7 @@
 package com.open.cloud.sofa.provider;
 
 
-import com.open.cloud.core.moc.BizLog;
-import com.open.cloud.core.moc.BizLoggerFactory;
+import com.jfinal.log.Log;
 
 /**
  * <p></p>
@@ -29,24 +28,25 @@ import com.open.cloud.core.moc.BizLoggerFactory;
  */
 public class ZookeeperBoltServerMain {
 
+	private final static Log bizLog = Log.getLog(ZookeeperBoltServerMain.class);
 
 	public static void main(String[] args) {
 
 		chkCycle("1", "2", "3");
 	}
 
-	private final static BizLog bizLog = BizLoggerFactory.getLog(ZookeeperBoltServerMain.class);
-
 	public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
-		bizLog.method(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
-		bizLog.parm("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
+
+
+		bizLog.info(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
+		bizLog.debug("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
 		String sCalJtriq = "";// 计算计提日期值
 		if (true) {
 			bizLog.info("boolean [true]");
-			bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
+			bizLog.error("<<<<<<<<<<<<End<<<<<<<<<<<<");
 		}
 		bizLog.debug("boolean [false]");
-		bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
+		bizLog.debug("<<<<<<<<<<<<End<<<<<<<<<<<<");
 
 		return false;
 	}

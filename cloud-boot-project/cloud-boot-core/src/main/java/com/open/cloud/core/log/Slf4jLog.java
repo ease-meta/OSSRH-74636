@@ -1,11 +1,12 @@
-/**
- * Copyright (c) 2011-2021, James Zhan 詹波 (jfinal@126.com).
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,7 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.open.cloud.core.log;
 
 import org.slf4j.helpers.FormattingTuple;
@@ -132,35 +132,40 @@ public class Slf4jLog extends Log {
 	public void trace(String format, Object... args) {
 		if (isTraceEnabled()) {
 			FormattingTuple ft = MessageFormatter.arrayFormat(format, args);
-			log.log(null, callerFQCN, LocationAwareLogger.TRACE_INT, ft.getMessage(), NULL_ARGS, ft.getThrowable());
+			log.log(null, callerFQCN, LocationAwareLogger.TRACE_INT, ft.getMessage(), NULL_ARGS,
+					ft.getThrowable());
 		}
 	}
 
 	public void debug(String format, Object... args) {
 		if (isDebugEnabled()) {
 			FormattingTuple ft = MessageFormatter.arrayFormat(format, args);
-			log.log(null, callerFQCN, LocationAwareLogger.DEBUG_INT, ft.getMessage(), NULL_ARGS, ft.getThrowable());
+			log.log(null, callerFQCN, LocationAwareLogger.DEBUG_INT, ft.getMessage(), NULL_ARGS,
+					ft.getThrowable());
 		}
 	}
 
 	public void info(String format, Object... args) {
 		if (isInfoEnabled()) {
 			FormattingTuple ft = MessageFormatter.arrayFormat(format, args);
-			log.log(null, callerFQCN, LocationAwareLogger.INFO_INT, ft.getMessage(), NULL_ARGS, ft.getThrowable());
+			log.log(null, callerFQCN, LocationAwareLogger.INFO_INT, ft.getMessage(), NULL_ARGS,
+					ft.getThrowable());
 		}
 	}
 
 	public void warn(String format, Object... args) {
 		if (isWarnEnabled()) {
 			FormattingTuple ft = MessageFormatter.arrayFormat(format, args);
-			log.log(null, callerFQCN, LocationAwareLogger.WARN_INT, ft.getMessage(), NULL_ARGS, ft.getThrowable());
+			log.log(null, callerFQCN, LocationAwareLogger.WARN_INT, ft.getMessage(), NULL_ARGS,
+					ft.getThrowable());
 		}
 	}
 
 	public void error(String format, Object... args) {
 		if (isErrorEnabled()) {
 			FormattingTuple ft = MessageFormatter.arrayFormat(format, args);
-			log.log(null, callerFQCN, LocationAwareLogger.ERROR_INT, ft.getMessage(), NULL_ARGS, ft.getThrowable());
+			log.log(null, callerFQCN, LocationAwareLogger.ERROR_INT, ft.getMessage(), NULL_ARGS,
+					ft.getThrowable());
 		}
 	}
 
@@ -169,8 +174,3 @@ public class Slf4jLog extends Log {
 		error(format, args);
 	}
 }
-
-
-
-
-

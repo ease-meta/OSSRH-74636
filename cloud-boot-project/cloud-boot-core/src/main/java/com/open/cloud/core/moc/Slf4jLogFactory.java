@@ -14,12 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core.log;
+package com.open.cloud.core.moc;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * 可变参数最后一个元素为 Throwable 类型时封装为 LogInfo
+ * @author Leijian
+ * @date 2020/11/15
  */
-public class LogInfo {
-	public String message;
-	public Throwable throwable;
+public class Slf4jLogFactory implements ILogFactory {
+
+	@Override
+	public BizLog getLog(Class<?> clazz) {
+		Logger log = LoggerFactory.getLogger(clazz);
+		return new Slf4jLog(log);
+	}
+
+	@Override
+	public BizLog getLog(String name) {
+		Logger log = LoggerFactory.getLogger(name);
+		return new Slf4jLog(log);
+	}
 }

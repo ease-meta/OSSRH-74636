@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core.log;
+package com.open.cloud.core.moc;
 
 /**
  * 可变参数最后一个元素为 Throwable 类型时封装为 LogInfo
