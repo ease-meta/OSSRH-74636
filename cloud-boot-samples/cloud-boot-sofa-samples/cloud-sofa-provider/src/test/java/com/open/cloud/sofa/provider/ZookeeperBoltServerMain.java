@@ -17,7 +17,6 @@
 package com.open.cloud.sofa.provider;
 
 
-import com.open.cloud.core.log.GlobalLogFactory;
 import com.open.cloud.core.log.Log;
 
 /**
@@ -29,7 +28,7 @@ import com.open.cloud.core.log.Log;
  */
 public class ZookeeperBoltServerMain {
 
-	private final static Log galxyLog = GlobalLogFactory.get().getLog(ZookeeperBoltServerMain.class);
+	private final static Log galxyLog = Log.getLog(ZookeeperBoltServerMain.class);
 
 	//private final static Log log = GlobalLogFactory.get().getLog(ZookeeperBoltServerMain.class);
 	//private final static Logger galxyLog = LoggerFactory.getLogger(ZookeeperBoltServerMain.class);
