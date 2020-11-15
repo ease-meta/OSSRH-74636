@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.open.cloud</groupId>
     <artifactId>cloud-boot-springcloud-gateway</artifactId>
+
     <properties>
         <skip_maven_deploy>true</skip_maven_deploy>
         <main.user.dir>${basedir}/../../..</main.user.dir>

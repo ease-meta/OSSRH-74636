@@ -24,19 +24,19 @@ import java.util.function.Function;
  */
 public class Main01 {
 
-	/*public static void main(String[] args) throws Exception {
-		YAMLConfiguration config = new YAMLConfiguration();
-		Resource resource = new ClassPathResource("application-dev.yml");
-		File file = resource.getFile();
-		config.read(new InputStreamReader(new FileInputStream(file)));
+    /*public static void main(String[] args) throws Exception {
+    	YAMLConfiguration config = new YAMLConfiguration();
+    	Resource resource = new ClassPathResource("application-dev.yml");
+    	File file = resource.getFile();
+    	config.read(new InputStreamReader(new FileInputStream(file)));
 
-		Iterator<String> keys = config.getKeys();
-		while (keys.hasNext()) {
-			String key = keys.next();
-			String value = config.getString(key);
-			System.out.println(key + " = " + value);
-		}
-	}*/
+    	Iterator<String> keys = config.getKeys();
+    	while (keys.hasNext()) {
+    		String key = keys.next();
+    		String value = config.getString(key);
+    		System.out.println(key + " = " + value);
+    	}
+    }*/
 
 	public static void main(String[] args) {
 

@@ -21,6 +21,6 @@ package com.example.demo.dubbo.demo.api;
  */
 public interface EchoService {
 
-	String echo(String message);
+    String echo(String message);
 
 }

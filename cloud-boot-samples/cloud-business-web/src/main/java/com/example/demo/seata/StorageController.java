@@ -30,27 +30,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class StorageController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(StorageController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(StorageController.class);
 
-    private static final String SUCCESS = "SUCCESS";
-    private static final String FAIL = "FAIL";
+	private static final String SUCCESS = "SUCCESS";
+	private static final String FAIL = "FAIL";
 
-    private final JdbcTemplate jdbcTemplate;
+	private final JdbcTemplate jdbcTemplate;
 
-    public StorageController(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+	public StorageController(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
 
-    @GetMapping(value = "/storage/{commodityCode}/{count}", produces = "application/json")
-    public String echo(@PathVariable String commodityCode, @PathVariable int count) {
-        LOGGER.info("Storage Service Begin ... xid: " + RootContext.getXID());
-        int result = jdbcTemplate.update(
-                "update storage_tbl set count = count - ? where commodity_code = ?", new Object[]{
-                        count, commodityCode});
-        LOGGER.info("Storage Service End ... ");
-        if (result == 1) {
-            return SUCCESS;
-        }
-        return FAIL;
-    }
+	@GetMapping(value = "/storage/{commodityCode}/{count}", produces = "application/json")
+	public String echo(@PathVariable String commodityCode, @PathVariable int count) {
+		LOGGER.info("Storage Service Begin ... xid: " + RootContext.getXID());
+		int result = jdbcTemplate.update(
+				"update storage_tbl set count = count - ? where commodity_code = ?", new Object[]{
+						count, commodityCode});
+		LOGGER.info("Storage Service End ... ");
+		if (result == 1) {
+			return SUCCESS;
+		}
+		return FAIL;
+	}
 }

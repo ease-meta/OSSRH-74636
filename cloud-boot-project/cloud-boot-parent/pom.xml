@@ -16,7 +16,7 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <main.user.dir>${basedir}/../..</main.user.dir>
         <project.encoding>UTF-8</project.encoding>
-        <java.version>1.8</java.version>
+        <java.version>14</java.version>
 
         <jacoco.maven.plugin>0.7.9</jacoco.maven.plugin>
         <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
@@ -35,10 +35,10 @@
         <dubbo.version>[2.7.6,)</dubbo.version>
 
         <sofa-boot.version>3.4.5</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.4.4</sofa-boot-enterprise.version>
+        <sofa-boot-enterprise.version>3.4.6</sofa-boot-enterprise.version>
         <jboot.version>[3.0.5,)</jboot.version>
         <spring-cloud-huawei.version>1.3.7</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.3.0</spring-boot-admin.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
         <vaadin.version>14.2.0</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
@@ -47,6 +47,8 @@
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
         <!--数据库操作-->
+        <github-pageHelper>[5.1.4,)</github-pageHelper>
+        <github-pageHelper-starter>[1.2.5,)</github-pageHelper-starter>
         <druid.version>[1.1.9,)</druid.version>
         <druid-boot.version>[1.1.9,)</druid-boot.version>
         <mybatis.boot.version>[2.1.1,)</mybatis.boot.version>
@@ -96,7 +98,7 @@
         <protostuff.version>[1.6.0,)</protostuff.version>
         <fst.version>[2.48-jdk-6,)</fst.version>
         <gson.version>[2.8.5,)</gson.version>
-        <hessian.version>[4.0.38,)</hessian.version>
+        <hessian.version>[4.0.7,)</hessian.version>
         <jline.version>[3.13.3,)</jline.version>
         <oshi.version>[3.9.1,)</oshi.version>
         <activiti.version>[7.1.0.M5,)</activiti.version>
@@ -506,6 +508,12 @@
             </dependency>
 
             <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.boot.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
@@ -518,9 +526,15 @@
             </dependency>
 
             <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.boot.version}</version>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${github-pageHelper}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${github-pageHelper-starter}</version>
             </dependency>
 
             <dependency>
@@ -709,6 +723,12 @@
                 <version>${reflections.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/org.eclipse.osgi/org.eclipse.osgi.services -->
+            <dependency>
+                <groupId>org.eclipse.osgi</groupId>
+                <artifactId>org.eclipse.osgi.services</artifactId>
+                <version>3.2.100.v20100503</version>
+            </dependency>
             <!--阿里json工具类 -->
             <dependency>
                 <groupId>com.alibaba</groupId>

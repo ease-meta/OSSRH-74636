@@ -21,7 +21,7 @@ import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 
 public class EncryptConfigUtil {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
 		String password = "123456";
 		String data = "root";

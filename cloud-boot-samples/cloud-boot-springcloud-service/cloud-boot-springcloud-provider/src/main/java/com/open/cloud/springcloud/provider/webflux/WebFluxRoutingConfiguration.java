@@ -34,6 +34,6 @@ public class WebFluxRoutingConfiguration {
 	@Bean
 	public RouterFunction<ServerResponse> routerFunction() {
 		return route(GET("/webflux/user/{userId}"), userHandler::getUserById)
-				.andRoute(GET("/webflux/users"),userHandler::getAll);
+				.andRoute(GET("/webflux/users"), userHandler::getAll);
 	}
 }

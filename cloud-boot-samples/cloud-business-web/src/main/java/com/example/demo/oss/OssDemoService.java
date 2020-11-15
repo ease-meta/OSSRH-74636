@@ -41,7 +41,7 @@ import java.io.OutputStream;
 public class OssDemoService {
 
     @Autowired
-    private OSS ossClient;
+	private OSS ossClient;
 
     /**
      * the file in local machine.
@@ -65,14 +65,14 @@ public class OssDemoService {
     }
 
     public void uploadWithClient() {
-        ossClient.putObject(OssConfig.BUCKET_NAME, "oss-test.json", this.getClass()
-                .getClassLoader().getResourceAsStream("oss-test.json"));
-    }
+		ossClient.putObject(OssConfig.BUCKET_NAME, "oss-test.json", this.getClass()
+				.getClassLoader().getResourceAsStream("oss-test.json"));
+	}
 
     public void uploadWithOutputStream() throws IOException {
-        try (OutputStream out = ((WritableResource) this.remoteFile).getOutputStream();
-             InputStream in = localFile.getInputStream()) {
-            StreamUtils.copy(in, out);
-        }
-    }
+		try (OutputStream out = ((WritableResource) this.remoteFile).getOutputStream();
+			 InputStream in = localFile.getInputStream()) {
+			StreamUtils.copy(in, out);
+		}
+	}
 }

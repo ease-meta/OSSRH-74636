@@ -125,6 +125,12 @@
             <groupId>com.alipay.sofa</groupId>
             <artifactId>rpc-enterprise-sofa-boot-starter</artifactId>
             <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.log4j</groupId>
+                    <artifactId>org.apache.log4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--链路跟踪-->
         <dependency>
