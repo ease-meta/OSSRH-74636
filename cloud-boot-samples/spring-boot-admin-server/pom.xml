@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-boot-webflux</artifactId>
+            <artifactId>cloud-boot-webmvc</artifactId>
         </dependency>
     </dependencies>
 </project>

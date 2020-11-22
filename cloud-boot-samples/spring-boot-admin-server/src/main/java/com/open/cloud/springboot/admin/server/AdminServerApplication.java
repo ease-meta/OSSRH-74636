@@ -19,6 +19,9 @@ package com.open.cloud.springboot.admin.server;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableAdminServer
@@ -28,4 +31,11 @@ public class AdminServerApplication {
 		SpringApplication.run(AdminServerApplication.class, args);
 	}
 
+	@RestController
+	public class TestClontroller {
+		@PostMapping("/cif/nfin/client/restraint")
+		public Core12000122Out runService(@RequestBody Core12000122In in) {
+			return new Core12000122Out();
+		}
+	}
 }

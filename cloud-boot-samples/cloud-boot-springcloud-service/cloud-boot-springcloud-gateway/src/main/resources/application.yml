@@ -25,9 +25,9 @@ spring:
     gateway:
       routes:
         - id: neo_route
-          uri: http://www.ityouknow.com
+          uri: lb://cloud-boot-springcloud-provider
           predicates:
-            - Path=/spring-cloud
+            - Path=/cif/nfin/client/restraint
 #      - id: time_route
 #        uri: http://ityouknow.com
 #        predicates:

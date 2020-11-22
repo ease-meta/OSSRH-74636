@@ -1,0 +1,51 @@
+POST http://localhost:8080/cif/nfin/client/restraint
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+#Content-Type: application/x-www-form-urlencoded
+
+{
+  "appHead": {
+    "currentNum": "0",
+    "pageEnd": "0",
+    "pageStart": "0",
+    "pgupOrPgdn": "0",
+    "totalFlag": "E",
+    "totalNum": "-1"
+  },
+  "body": {
+    "clientNo": "100000000004",
+    "dealClass": "CLIENT",
+    "startDate": "20201731",
+    "endDate": "20200806",
+    "narrative": "客户级限制新增测试",
+    "option": "02",
+    "restraintType": "006",
+    "startDate": "20200731",
+    "restraintSeqNo": "20"
+  },
+  "sysHead": {
+    "apprFlag": "",
+    "apprUserId": "",
+    "authFlag": "N",
+    "authUserId": "",
+    "branchId": "351003",
+    "destBranchNo": "2000",
+    "messageCode": "0122",
+    "messageType": "1200",
+    "programId": "3520",
+    "sceneId": "01",
+    "seqNo": "00059A3C7A0062222457155181",
+    "serviceCode": "MbsdCore",
+    "sourceBranchNo": "2000",
+    "sourceType": "MT",
+    "tranDate": "20200731",
+    "tranMode": "ONLINE",
+    "tranTimestamp": "245715518",
+    "userId": "ZQQ",
+    "userLang": "CHINESE"
+  }
+}
+
+###
+
