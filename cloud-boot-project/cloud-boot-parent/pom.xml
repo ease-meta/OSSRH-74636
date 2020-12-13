@@ -660,7 +660,11 @@
                 <artifactId>jline</artifactId>
                 <version>${jline.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.t-io</groupId>
+                <artifactId>tio-core</artifactId>
+                <version>[3.7.0.v20201010-RELEASE,)</version>
+            </dependency>
             <!--硬件信息获取-->
             <dependency>
                 <groupId>com.github.oshi</groupId>

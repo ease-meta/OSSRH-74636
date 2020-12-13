@@ -33,8 +33,19 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.lianjiatech</groupId>
-            <artifactId>retrofit-spring-boot-starter</artifactId>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>[1.65,)</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>[1.65,)</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.t-io</groupId>
+            <artifactId>tio-core</artifactId>
         </dependency>
     </dependencies>
 
