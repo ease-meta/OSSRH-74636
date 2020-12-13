@@ -19,7 +19,7 @@ package com.example.demo.oss;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.common.utils.IOUtils;
 import com.aliyun.oss.model.OSSObject;
-import org.apache.commons.codec.CharEncoding;
+import org.apache.commons.lang.CharEncoding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
