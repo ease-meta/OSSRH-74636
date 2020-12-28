@@ -73,11 +73,13 @@
         <dependency>
             <groupId>com.github.lianjiatech</groupId>
             <artifactId>retrofit-spring-boot-starter</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-seata</artifactId>
+            <optional>true</optional>
         </dependency>
         <!-- <dependency>
              <groupId>com.github.xiaoymin</groupId>

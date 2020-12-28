@@ -6,7 +6,6 @@ server:
   port: 18081
 eureka:
   instance:
-    hostname: ${hostname:localhost}
     prefer-ip-address: true
     lease-expiration-duration-in-seconds: 15 #服务过期时间
     lease-renewal-interval-in-seconds: 5 #服务刷新时间,每5s心跳一次
@@ -16,14 +15,13 @@ eureka:
     register-with-eureka: true
     #是否获取注册表
     fetch-registry: true
-    service-url:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      #service-url:
+    #defaultZone: http://127.0.0.1:8761/eureka/
     healthcheck:
       enabled: false
     eurekaServiceUrlPollIntervalSeconds: 60
     #设置拉取服务注册信息时间
     registry-fetch-interval-seconds: 5
-
       #eureka:
       #instance:
       #prefer-ip-address: true
@@ -39,6 +37,7 @@ eureka:
       #DC1: http://peer1.com:9801/eureka/
       #DC2: http://peer2.com:9802/eureka/
     #DC3: http://peer3.com:9803/eureka/
+    region: beijing
 ---
 server:
   #web端口
@@ -49,9 +48,16 @@ eureka:
       zone: DC1
   client:
     availability-zones:
-      tangshan: DC1,DC2,DC3
+      tangshan: DC1,DC2
+    region: tangshan
+    service-url:
+      DC1: http://42.192.87.137:9801/eureka/
+      DC2: http://42.192.87.137:9802/eureka/
+    prefer-same-zone-eureka: true
 spring:
-  profiles: peer1
+  config:
+    activate:
+      on-profile: peer1
 ---
 server:
   #web端口
@@ -62,8 +68,15 @@ eureka:
       zone: DC2
   client:
     availability-zones:
-      tangshan: DC2,DC1,DC3
+      tangshan: DC2,DC1
+    region: tangshan
+    service-url:
+      DC2: http://42.192.87.137:9802/eureka/
+      DC1: http://42.192.87.137:9801/eureka/
+    prefer-same-zone-eureka: true
 spring:
-  profiles: peer2
+  config:
+    activate:
+      on-profile: peer2
 ---
 

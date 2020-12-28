@@ -16,8 +16,10 @@ management:
 ---
 spring:
   application:
-    name: eureka-service
-  profiles: dev
+    name: registry-center
+  config:
+    activate:
+      on-profile: dev
 server:
   port: 8761
 eureka:
@@ -27,7 +29,7 @@ eureka:
     # 实例的主机名
     hostname: ${spring.cloud.client.ip-address}
     # 使用 ip 代替实例名
-    prefer-ip-address: true
+    #prefer-ip-address: true
     # 实例的 ID 规则
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 
@@ -54,19 +56,28 @@ eureka:
   datacenter: DC1
   instance:
     hostname: peer1.com
-    appname: eureka-server-cluster
+    appname: registry-center
+    instance-id: eureka-9801
+    metadata-map:
+      zone: DC1
   client:
+    # 是否向注册中心注册自己
+    registerWithEureka: true
+    # 是否向注册中心获取注册信息
+    fetchRegistry: true
     region: tangshan
     availability-zones:
-      tangshan: DC1,DC2,DC3
+      tangshan: DC1,DC2
     service-url:
       DC1: http://peer1.com:9801/eureka/
       DC2: http://peer2.com:9802/eureka/
-      DC3: http://peer3.com:9803/eureka/
+    prefer-same-zone-eureka: true
 spring:
-  profiles: peer1
+  config:
+    activate:
+      on-profile: peer1
   application:
-    name: application-peer1
+    name: registry-center
 ---
 server:
   port: 9802
@@ -75,19 +86,28 @@ eureka:
   datacenter: DC2
   instance:
     hostname: peer2.com
-    appname: eureka-server-cluster
+    appname: registry-center
+    instance-id: eureka-9802
+    metadata-map:
+      zone: DC2
   client:
+    # 是否向注册中心注册自己
+    registerWithEureka: true
+    # 是否向注册中心获取注册信息
+    fetchRegistry: true
     region: tangshan
     availability-zones:
-      tangshan: DC2,DC1,DC3
+      tangshan: DC2,DC1
     service-url:
       DC1: http://peer1.com:9801/eureka/
       DC2: http://peer2.com:9802/eureka/
-      DC3: http://peer3.com:9803/eureka/
+    prefer-same-zone-eureka: true
 spring:
-  profiles: peer2
+  config:
+    activate:
+      on-profile: peer2
   application:
-    name: application-peer2
+    name: registry-center
 ---
 server:
   port: 9803
@@ -97,6 +117,10 @@ eureka:
     hostname: peer3.com
     appname: eureka-server-cluster
   client:
+    # 是否向注册中心注册自己
+    registerWithEureka: true
+    # 是否向注册中心获取注册信息
+    fetchRegistry: true
     region: shijiazhuang
     availability-zones:
       shijiazhuang: DC3,DC1,DC2
@@ -105,7 +129,9 @@ eureka:
       DC2: http://peer2.com:9802/eureka/
       DC3: http://peer3.com:9803/eureka/
 spring:
-  profiles: peer3
+  config:
+    activate:
+      on-profile: peer3
   application:
     name: application-peer3
 
