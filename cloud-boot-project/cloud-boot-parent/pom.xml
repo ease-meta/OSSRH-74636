@@ -27,8 +27,8 @@
         <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
         <maven.sTracerConfigurationListenerurefire.plugin>2.21.0</maven.sTracerConfigurationListenerurefire.plugin>
 
-        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>
+        <!-- <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
 
         <spring-boot.version>2.4.1</spring-boot.version>
         <spring-cloud.version>2020.0.0</spring-cloud.version>
@@ -42,13 +42,13 @@
         <sofa-boot.version>3.4.6</sofa-boot.version>
         <sofa-boot-enterprise.version>3.4.6</sofa-boot-enterprise.version>
         <jboot.version>[3.0.5,)</jboot.version>
-        <spring-cloud-huawei.version>1.3.8</spring-cloud-huawei.version>
+        <spring-cloud-huawei.version>1.3.9</spring-cloud-huawei.version>
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
         <vaadin.version>14.2.0</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
         <!--消息中间件-->
-        <rocketmq.version>4.7.1</rocketmq.version>
+        <rocketmq.version>4.8.0</rocketmq.version>
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
         <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
         <!--数据库操作-->

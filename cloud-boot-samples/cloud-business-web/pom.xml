@@ -23,9 +23,10 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -262,10 +263,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-couchbase</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.springframework.geode</groupId>
-            <artifactId>spring-geode-starter</artifactId>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.springframework.geode</groupId>
+             <artifactId>spring-geode-starter</artifactId>
+         </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-integration</artifactId>
@@ -298,10 +299,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-spring-boot-starter</artifactId>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>org.apache.camel.springboot</groupId>
+             <artifactId>camel-spring-boot-starter</artifactId>
+         </dependency>-->
         <dependency>
             <groupId>com.solace.spring.boot</groupId>
             <artifactId>solace-spring-boot-starter</artifactId>
@@ -354,10 +355,10 @@
             <artifactId>micrometer-registry-new-relic</artifactId>
             <scope>runtime</scope>
         </dependency>
-       <!-- <dependency>
-            <groupId>com.wavefront</groupId>
-            <artifactId>wavefront-spring-boot-starter</artifactId>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.wavefront</groupId>
+             <artifactId>wavefront-spring-boot-starter</artifactId>
+         </dependency>-->
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
@@ -502,14 +503,14 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId>
         </dependency>
-       <!-- <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>cola-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.aliyun</groupId>
-            <artifactId>cola-common</artifactId>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.aliyun</groupId>
+             <artifactId>cola-core</artifactId>
+         </dependency>
+         <dependency>
+             <groupId>com.aliyun</groupId>
+             <artifactId>cola-common</artifactId>
+         </dependency>-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
