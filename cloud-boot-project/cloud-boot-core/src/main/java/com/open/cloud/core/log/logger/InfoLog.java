@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core.moc.logger;
+package com.open.cloud.core.log.logger;
 
 /**
  * @author Leijian

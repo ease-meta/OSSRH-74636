@@ -36,6 +36,10 @@
         <module>cloud-boot-flowable</module>
         <module>cloud-boot-rocketmq</module>
         <module>cloud-boot-security</module>
+        <module>cloud-boot-mybatis</module>
+        <module>cloud-boot-jpa</module>
+        <!--对象存储-->
+        <module>cloud-boot-oss</module>
     </modules>
 
     <properties>

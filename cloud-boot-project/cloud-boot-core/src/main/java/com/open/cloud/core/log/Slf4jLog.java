@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core.moc;
+package com.open.cloud.core.log;
 
 import org.slf4j.Logger;
 import org.slf4j.helpers.FormattingTuple;
@@ -25,17 +25,17 @@ import org.slf4j.spi.LocationAwareLogger;
  * @author Leijian
  * @date 2020/11/15
  */
-public class Slf4jLog extends BizLog {
+public class Slf4jLog extends MiddleLogger {
 
-    private final Logger log;
+	private final Logger log;
 
-    private static final Object[] NULL_ARGS = new Object[0];
+	private static final Object[] NULL_ARGS = new Object[0];
 
-    private final boolean isLocationAwareLogger;
+	private final boolean isLocationAwareLogger;
 
-    private static final String callerFQCN = Slf4jLog.class.getName();
+	private static final String callerFQCN = Slf4jLog.class.getName();
 
-    Slf4jLog(Logger log) {
+	Slf4jLog(Logger log) {
         this.log = log;
         this.isLocationAwareLogger = (log instanceof LocationAwareLogger);
     }

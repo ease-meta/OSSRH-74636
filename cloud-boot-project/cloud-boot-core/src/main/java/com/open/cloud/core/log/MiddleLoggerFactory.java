@@ -14,7 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core.moc;
+package com.open.cloud.core.log;
+
+
+import com.open.cloud.core.commons.NewInstanceServiceLoader;
+
+import java.util.Collection;
 
 /**
  * 日志服务.enable=true
@@ -47,11 +52,22 @@ package com.open.cloud.core.moc;
  * 日志服务.业务日志.日志级别定义[8].id=9
  * 日志服务.业务日志.日志级别定义[8].类型=parm,method,debug,info,profile,sql
  * @author Leijian
- * @date 2020/11/15
+ * @date 2020/11/
  */
-public class BizLoggerFactory {
+public class MiddleLoggerFactory {
 
 	private static ILogFactory defaultLogFactory = null;
+
+	private static Collection<ILogFactory> extensions = NewInstanceServiceLoader.newServiceInstances(ILogFactory.class);
+
+	static {
+		NewInstanceServiceLoader.register(ILogFactory.class);
+		extensions = NewInstanceServiceLoader.newServiceInstances(ILogFactory.class);
+	}
+
+	private MiddleLoggerFactory() {
+
+	}
 
 	static {
 		init();
@@ -60,20 +76,18 @@ public class BizLoggerFactory {
 	static void init() {
 		if (defaultLogFactory == null) {
 			try {
-				Class<?> log4jLogFactoryClass = Class
-						.forName("com.open.cloud.core.moc.Slf4jLogFactory");
-				defaultLogFactory = (ILogFactory) log4jLogFactoryClass.newInstance(); // return new Log4jLogFactory();
+				defaultLogFactory = extensions.stream().findFirst().get();
 			} catch (Exception e) {
 				//defaultLogFactory = new JdkLogFactory();
 			}
 		}
 	}
 
-	public static BizLog getLog(Class<?> clazz) {
+	public static MiddleLogger getLogger(Class<?> clazz) {
 		return defaultLogFactory.getLog(clazz);
 	}
 
-	public static BizLog getLog(String name) {
+	public static MiddleLogger getLogger(String name) {
 		return defaultLogFactory.getLog(name);
 	}
 }

@@ -14,16 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.core;
+package com.open.cloud.core.log;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+/**
+ * @author Leijian
+ * @date 2020/11/15
+ */
+public interface ILogFactory {
 
-public class BaseLog {
+	MiddleLogger getLog(Class<?> clazz);
 
-    protected Logger log = null;
-
-    public BaseLog() {
-        log = LoggerFactory.getLogger(this.getClass().getName());
-    }
+	MiddleLogger getLog(String name);
 }

@@ -1,4 +1,4 @@
-package com.open.cloud.core.moc.logger;
+package com.open.cloud.core.log.logger;
 
 /**
  * @author Leijian

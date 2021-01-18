@@ -11,7 +11,6 @@
     <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-    <description>The demo consumer module of dubbo project</description>
 
     <properties>
         <skip_maven_deploy>true</skip_maven_deploy>
@@ -28,28 +27,5 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-webmvc</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

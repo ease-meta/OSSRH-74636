@@ -17,8 +17,8 @@
 package com.open.cloud.sofa.provider;
 
 
-import com.open.cloud.core.moc.BizLog;
-import com.open.cloud.core.moc.BizLoggerFactory;
+import com.open.cloud.core.log.MiddleLogger;
+import com.open.cloud.core.log.MiddleLoggerFactory;
 
 /**
  * <p></p>
@@ -35,7 +35,7 @@ public class ZookeeperBoltServerMain {
 		chkCycle("1", "2", "3");
 	}
 
-	private final static BizLog bizLog = BizLoggerFactory.getLog(ZookeeperBoltServerMain.class);
+	private final static MiddleLogger bizLog = MiddleLoggerFactory.getLogger(ZookeeperBoltServerMain.class);
 
 	public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
 		bizLog.method(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
