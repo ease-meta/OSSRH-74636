@@ -1,5 +1,8 @@
 package com.open.cloud.boot.autoconfigure.oss.alibaba;
 
+/**
+ * The enum Ali cloud authorization mode.
+ */
 public enum AliCloudAuthorizationMode {
 
 	/**

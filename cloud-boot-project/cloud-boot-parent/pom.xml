@@ -94,7 +94,7 @@
         <!--公共及工具类-->
         <aliyun-sdk-oss.version>[3.4.2,)</aliyun-sdk-oss.version>
         <arthas.version>3.4.3</arthas.version>
-        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
         <velocity.version>[1.7,)</velocity.version>
         <guava.version>[20.0,)</guava.version>
         <easypoi.version>4.2.0</easypoi.version>
@@ -115,7 +115,7 @@
         <reflections.version>[0.9.12,)</reflections.version>
         <commons-lang3.version>[3.9,)</commons-lang3.version>
         <commons-codec.version>[1.11,)</commons-codec.version>
-        <commons-io.version>[2.6,)</commons-io.version>
+        <commons-io.version>2.8.0</commons-io.version>
         <commons-configuration2.version>[2.6,)</commons-configuration2.version>
         <commons-text.version>[1.8,)</commons-text.version>
         <commons-collections4.version>[4.4,)</commons-collections4.version>
@@ -134,6 +134,12 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.plugin</groupId>
                 <artifactId>spring-plugin-core</artifactId>
@@ -699,6 +705,24 @@
                 <artifactId>tio-core</artifactId>
                 <version>[3.7.0.v20201010-RELEASE,)</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
             <!--硬件信息获取-->
             <dependency>
                 <groupId>com.github.oshi</groupId>
@@ -719,11 +743,6 @@
                 <version>${commons-codec.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -902,22 +921,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>${mapstruct.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>${mapstruct.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-jdk8</artifactId>
-            <version>${mapstruct.version}</version>
         </dependency>
 
         <dependency>

@@ -1,5 +1,8 @@
 package com.open.cloud.boot.autoconfigure.oss;
 
+/**
+ * The type Oss constants.
+ */
 public final class OssConstants {
 
 	/**
