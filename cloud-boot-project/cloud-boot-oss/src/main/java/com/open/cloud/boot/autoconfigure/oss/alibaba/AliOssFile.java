@@ -53,6 +53,12 @@ public class AliOssFile extends FileBase {
 	}
 
 	@Override
+	public TransResult recursiveDownloadFolder(DownloadFileRequest downloadFileRequest) {
+		//TODO
+		return null;
+	}
+
+	@Override
 	public TransResult upload(UploadFileRequest uploadFileRequest) {
 		PutObjectRequest putObjectRequest = new PutObjectRequest(uploadFileRequest.getBucketName(), uploadFileRequest.getObjectName(), uploadFileRequest.getLocalFile()).withProgressListener(new PutObjectProgressListener());
 		ossClient.putObject(putObjectRequest);

@@ -8,8 +8,11 @@ import java.io.File;
  * @since
  */
 public class BaseFileRequest {
+
 	private String objectName;
+
 	private String bucketName;
+
 	private File localFile;
 
 	public String getBucketName() {

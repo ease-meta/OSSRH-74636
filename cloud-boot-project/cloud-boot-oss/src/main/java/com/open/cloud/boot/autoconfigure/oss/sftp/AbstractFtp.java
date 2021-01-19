@@ -1,10 +1,12 @@
 package com.open.cloud.boot.autoconfigure.oss.sftp;
 
+import com.open.cloud.boot.autoconfigure.oss.DownloadFileRequest;
 import com.open.cloud.boot.autoconfigure.oss.FileBase;
+import com.open.cloud.boot.autoconfigure.oss.TransResult;
+import com.open.cloud.boot.autoconfigure.oss.UploadFileRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.tio.utils.hutool.StrUtil;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -116,17 +118,17 @@ public abstract class AbstractFtp extends FileBase {
 	 *
 	 * @param dir 文件夹路径，绝对路径
 	 */
-	public void mkDirs(String dir) {
-		final String[] dirs = StrUtil.trim(dir).split("[\\\\/]+");
+	private void mkDirs(String dir) {
+		final String[] dirs = StringUtils.trim(dir).split("[\\\\/]+");
 
 		final String now = pwd();
-		if (dirs.length > 0 && StrUtil.isEmpty(dirs[0])) {
+		if (dirs.length > 0 && StringUtils.isEmpty(dirs[0])) {
 			//首位为空，表示以/开头
-			cd("\\\\/");
+			cd("\\/");
 		}
 		for (String s : dirs) {
 			if (StringUtils.isNotEmpty(s)) {
-				if (false == cd(s)) {
+				if (!cd(s)) {
 					//目录不存在时创建
 					mkdir(s);
 					cd(s);
@@ -145,7 +147,18 @@ public abstract class AbstractFtp extends FileBase {
 	 * @param file     需要上传的文件
 	 * @return 是否成功
 	 */
+	@Deprecated
 	public abstract boolean upload(String destPath, File file);
+
+	@Override
+	public abstract TransResult upload(final UploadFileRequest uploadFileRequest);
+
+	@Override
+	public abstract TransResult download(final DownloadFileRequest downloadFileRequest);
+
+
+	@Override
+	public abstract TransResult recursiveDownloadFolder(DownloadFileRequest downloadFileRequest);
 
 	/**
 	 * 下载文件
@@ -153,6 +166,7 @@ public abstract class AbstractFtp extends FileBase {
 	 * @param path    文件路径
 	 * @param outFile 输出文件或目录
 	 */
+	@Deprecated
 	public abstract void download(String path, File outFile);
 
 	/**
@@ -162,6 +176,7 @@ public abstract class AbstractFtp extends FileBase {
 	 * @param destDir    本地目录
 	 * @since 5.3.5
 	 */
+	@Deprecated
 	public abstract void recursiveDownloadFolder(String sourcePath, File destDir);
 
 	// ---------------------------------------------------------------------------------------------------------------------------------------- Private method start

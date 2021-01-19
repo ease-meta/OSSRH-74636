@@ -113,6 +113,8 @@
         <activiti.version>[7.1.0.M5,)</activiti.version>
         <commons-beanutils.version>[1.9.4,)</commons-beanutils.version>
         <reflections.version>[0.9.12,)</reflections.version>
+        <commons-net.version>3.7.2</commons-net.version>
+        <jsch.version>0.1.55</jsch.version>
         <commons-lang3.version>[3.9,)</commons-lang3.version>
         <commons-codec.version>[1.11,)</commons-codec.version>
         <commons-io.version>2.8.0</commons-io.version>
@@ -728,6 +730,18 @@
                 <groupId>com.github.oshi</groupId>
                 <artifactId>oshi-core</artifactId>
                 <version>${oshi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${jsch.version}</version>
             </dependency>
 
             <dependency>
