@@ -23,18 +23,18 @@ package decorator;
  **/
 public class BufferedReader implements IReader {
 
-    private IReader mReader;
+	private IReader mReader;
 
-    public BufferedReader(IReader reader) {
-        // TODO Auto-generated constructor stub
-        this.mReader = reader;
-    }
+	public BufferedReader(IReader reader) {
+		// TODO Auto-generated constructor stub
+		this.mReader = reader;
+	}
 
-    @Override
-    public void read() {
-        // TODO Auto-generated method stub
-        System.out.println("read of BufferedReader.");
-        mReader.read();
-    }
+	@Override
+	public void read() {
+		// TODO Auto-generated method stub
+		System.out.println("read of BufferedReader.");
+		mReader.read();
+	}
 
 }

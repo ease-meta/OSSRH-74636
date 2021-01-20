@@ -28,28 +28,28 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 
 @EnableSwagger2WebMvc
 public class Swagger2AutoConfiguration {
-    @Autowired
-    Environment environment;
+	@Autowired
+	Environment environment;
 
-    @Bean
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-            .genericModelSubstitutes(DeferredResult.class).useDefaultResponseMessages(false)
-            .forCodeGeneration(false).pathMapping("/").select().build().apiInfo(apiInfo());
-    }
+	@Bean
+	public Docket createRestApi() {
+		return new Docket(DocumentationType.SWAGGER_2)
+				.genericModelSubstitutes(DeferredResult.class).useDefaultResponseMessages(false)
+				.forCodeGeneration(false).pathMapping("/").select().build().apiInfo(apiInfo());
+	}
 
-    private ApiInfo apiInfo() {
-        String appName = environment.getProperty("spring.application.name");
-        return new ApiInfoBuilder()
-            // //大标题
-            .title("开放发云平台")
-            // 版本号
-            .version("1.0")
-            //                .termsOfServiceUrl("NO terms of service")
-            // 描述
-            .description(appName)
-            //作者
-            .license("The Apache License, Version 2.0")
-            .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html").build();
-    }
+	private ApiInfo apiInfo() {
+		String appName = environment.getProperty("spring.application.name");
+		return new ApiInfoBuilder()
+				// //大标题
+				.title("开放发云平台")
+				// 版本号
+				.version("1.0")
+				//                .termsOfServiceUrl("NO terms of service")
+				// 描述
+				.description(appName)
+				//作者
+				.license("The Apache License, Version 2.0")
+				.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html").build();
+	}
 }

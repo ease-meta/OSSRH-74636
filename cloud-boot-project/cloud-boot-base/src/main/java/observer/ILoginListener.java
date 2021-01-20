@@ -22,5 +22,5 @@ package observer;
  * @Fun 监听 当用户登录后
  **/
 public interface ILoginListener {
-    void onLogined();
+	void onLogined();
 }

@@ -25,24 +25,24 @@ import java.util.Observer;
  * @Fun 观察目标
  **/
 public class UpdateObservable extends Observable {
-    private int data;
+	private int data;
 
-    public UpdateObservable(Observer obserer) {
-        // TODO Auto-generated constructor stub
-        addObserver(obserer);
-    }
+	public UpdateObservable(Observer obserer) {
+		// TODO Auto-generated constructor stub
+		addObserver(obserer);
+	}
 
-    public int getData() {
-        return this.data;
-    }
+	public int getData() {
+		return this.data;
+	}
 
-    public void setData(int data) {
-        if (data != this.data) {
-            this.data = data;
-            //标记 改变 只有标记后才能通知到
-            setChanged();
-            //通知
-            notifyObservers();
-        }
-    }
+	public void setData(int data) {
+		if (data != this.data) {
+			this.data = data;
+			//标记 改变 只有标记后才能通知到
+			setChanged();
+			//通知
+			notifyObservers();
+		}
+	}
 }

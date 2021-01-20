@@ -28,12 +28,12 @@ import org.springframework.context.annotation.ImportResource;
 @EnableCaching
 public class ProviderApplication {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        SpringApplication.run(ProviderApplication.class, args);
-        UserThreadPool userThreadPool = new UserThreadPool();
-        UserThreadPoolManager.registerUserThread("com.open.cloud.sofa.api.HelloService",
-            userThreadPool);
+		SpringApplication.run(ProviderApplication.class, args);
+		UserThreadPool userThreadPool = new UserThreadPool();
+		UserThreadPoolManager.registerUserThread("com.open.cloud.sofa.api.HelloService",
+				userThreadPool);
 
-    }
+	}
 }

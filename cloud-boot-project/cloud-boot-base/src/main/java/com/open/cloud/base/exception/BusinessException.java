@@ -25,50 +25,48 @@ import java.io.Serializable;
  */
 public class BusinessException extends RuntimeException implements Serializable {
 
-    private static final long serialVersionUID = 1905122041950251207L;
+	private static final long serialVersionUID = 1905122041950251207L;
+	private String code;
+	private transient Object[] args;
 
-    public BusinessException(final String code, Throwable cause) {
-        super(code, cause);
-    }
+	public BusinessException(final String code, Throwable cause) {
+		super(code, cause);
+	}
 
-    public BusinessException(final String code) {
-        this.code = code;
-    }
+	public BusinessException(final String code) {
+		this.code = code;
+	}
 
-    public BusinessException(final String code, final Object[] args) {
-        this.code = code;
-        this.args = args;
-    }
+	public BusinessException(final String code, final Object[] args) {
+		this.code = code;
+		this.args = args;
+	}
 
-    private String             code;
+	@Override
+	public String getMessage() {
+		String message = null;
+		if (!StringUtils.isEmpty(code)) {
+			//todo 国际化
+			// message = MessageUtils.message(code, args);
+		} else {
+			message = code;
+		}
+		return message;
+	}
 
-    private transient Object[] args;
+	public Object[] getArgs() {
+		return args;
+	}
 
-    @Override
-    public String getMessage() {
-        String message = null;
-        if (!StringUtils.isEmpty(code)) {
-            //todo 国际化
-            // message = MessageUtils.message(code, args);
-        } else {
-            message = code;
-        }
-        return message;
-    }
+	public void setArgs(final Object[] args) {
+		this.args = args;
+	}
 
-    public Object[] getArgs() {
-        return args;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setArgs(final Object[] args) {
-        this.args = args;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(final String code) {
-        this.code = code;
-    }
+	public void setCode(final String code) {
+		this.code = code;
+	}
 }

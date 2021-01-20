@@ -23,16 +23,16 @@ package bridge;
  **/
 public abstract class BaseCellphone {
 
-    private BaseCellphoneShell shell;
+	private BaseCellphoneShell shell;
 
-    public void setShell(BaseCellphoneShell shell) {
-        this.shell = shell;
-    }
+	public BaseCellphoneShell getShell() {
+		return this.shell;
+	}
 
-    public BaseCellphoneShell getShell() {
-        return this.shell;
-    }
+	public void setShell(BaseCellphoneShell shell) {
+		this.shell = shell;
+	}
 
-    //对应哪种壳
-    public abstract void mapping();
+	//对应哪种壳
+	public abstract void mapping();
 }

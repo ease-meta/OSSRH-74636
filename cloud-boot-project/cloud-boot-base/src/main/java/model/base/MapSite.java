@@ -22,5 +22,5 @@ package model.base;
  * @author shadow
  */
 public abstract class MapSite implements Cloneable {
-    public abstract void Enter();
+	public abstract void Enter();
 }

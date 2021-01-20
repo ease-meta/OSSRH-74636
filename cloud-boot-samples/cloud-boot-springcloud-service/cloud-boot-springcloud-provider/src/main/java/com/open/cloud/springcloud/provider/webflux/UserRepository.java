@@ -44,11 +44,6 @@ public class UserRepository {
 		return userMap;
 	}
 
-	public Map<Integer, User> getUsers() {
-		printlnThread("调用getUsers");
-		return userMap;
-	}
-
 	/**
 	 * 打印当前线程
 	 * @param object
@@ -56,5 +51,10 @@ public class UserRepository {
 	private void printlnThread(Object object) {
 		String threadName = Thread.currentThread().getName();
 		System.out.println("HelloWorldAsyncController[" + threadName + "]: " + object);
+	}
+
+	public Map<Integer, User> getUsers() {
+		printlnThread("调用getUsers");
+		return userMap;
 	}
 }

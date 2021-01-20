@@ -23,10 +23,10 @@ package strategy;
  **/
 public class CashNormal implements ICashSuper {
 
-    @Override
-    public double acceptCash(double money) {
-        // TODO Auto-generated method stub
-        return money;
-    }
+	@Override
+	public double acceptCash(double money) {
+		// TODO Auto-generated method stub
+		return money;
+	}
 
 }

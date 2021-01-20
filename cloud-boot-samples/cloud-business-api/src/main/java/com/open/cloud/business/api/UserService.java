@@ -25,10 +25,10 @@ import java.util.Collection;
  */
 public interface UserService {
 
-    boolean save(User user);
+	boolean save(User user);
 
-    boolean remove(Long userId);
+	boolean remove(Long userId);
 
-    Collection<User> findAll();
+	Collection<User> findAll();
 
 }

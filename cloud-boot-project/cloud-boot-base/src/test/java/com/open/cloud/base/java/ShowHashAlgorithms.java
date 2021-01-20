@@ -28,6 +28,14 @@ import java.util.Set;
 
 public class ShowHashAlgorithms {
 
+	public static void main(String[] args) {
+		Security.addProvider(new BouncyCastleProvider());
+		Provider[] providers = Security.getProviders();
+		for (Provider provider : providers) {
+			showHashAlgorithms(provider, MessageDigest.class);
+		}
+	}
+
 	private static final void showHashAlgorithms(Provider prov, Class<?> typeClass) {
 		String type = typeClass.getSimpleName();
 
@@ -59,14 +67,6 @@ public class ShowHashAlgorithms {
 				System.out.printf("Alias: \"%s\" -> \"%s\"%n",
 						key.toString().substring(prefix.length()), value);
 			}
-		}
-	}
-
-	public static void main(String[] args) {
-		Security.addProvider(new BouncyCastleProvider());
-		Provider[] providers = Security.getProviders();
-		for (Provider provider : providers) {
-			showHashAlgorithms(provider, MessageDigest.class);
 		}
 	}
 }

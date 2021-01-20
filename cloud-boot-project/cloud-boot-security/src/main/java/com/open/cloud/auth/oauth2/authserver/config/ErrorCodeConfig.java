@@ -16,22 +16,22 @@ import java.util.Map;
 @SuppressWarnings("all")
 public class ErrorCodeConfig {
 
-  private static final String UNKNOWN_ERROR_CODE = "未知的错误代码，";
+	private static final String UNKNOWN_ERROR_CODE = "未知的错误代码，";
 
-  private static Map<String, String> code = new HashMap<String, String>();
+	private static Map<String, String> code = new HashMap<String, String>();
 
-  public static String getErrorMessage(String errorCode) {
-    if (code.containsKey(errorCode)) {
-      return code.get(errorCode);
-    }
-    return UNKNOWN_ERROR_CODE;
-  }
+	public static String getErrorMessage(String errorCode) {
+		if (code.containsKey(errorCode)) {
+			return code.get(errorCode);
+		}
+		return UNKNOWN_ERROR_CODE;
+	}
 
-  public Map<String, String> getCode() {
-    return code;
-  }
+	public Map<String, String> getCode() {
+		return code;
+	}
 
-  public void setCode(Map<String, String> code) {
-    ErrorCodeConfig.code = code;
-  }
+	public void setCode(Map<String, String> code) {
+		ErrorCodeConfig.code = code;
+	}
 }

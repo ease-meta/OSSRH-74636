@@ -1,4 +1,3 @@
-
 package com.open.cloud.springcloud.provider.service;
 
 import lombok.Data;

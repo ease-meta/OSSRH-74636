@@ -20,7 +20,7 @@ import lombok.Data;
 
 @Data
 public class SubTarget {
-    private Boolean result;
+	private Boolean result;
 
-    private String  name;
+	private String name;
 }

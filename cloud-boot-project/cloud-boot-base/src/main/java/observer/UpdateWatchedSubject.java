@@ -26,38 +26,38 @@ import java.util.List;
  **/
 public class UpdateWatchedSubject implements IWathedSubject {
 
-    private List<IWatcher> list;
+	private List<IWatcher> list;
 
-    public UpdateWatchedSubject() {
-        // TODO Auto-generated constructor stub
-        this.list = new ArrayList<>();
-    }
+	public UpdateWatchedSubject() {
+		// TODO Auto-generated constructor stub
+		this.list = new ArrayList<>();
+	}
 
-    @Override
-    public void add(IWatcher watcher) {
-        // TODO Auto-generated method stub
-        this.list.add(watcher);
-    }
+	@Override
+	public void add(IWatcher watcher) {
+		// TODO Auto-generated method stub
+		this.list.add(watcher);
+	}
 
-    @Override
-    public void remove(IWatcher watcher) {
-        // TODO Auto-generated method stub
-        this.list.add(watcher);
-    }
+	@Override
+	public void remove(IWatcher watcher) {
+		// TODO Auto-generated method stub
+		this.list.add(watcher);
+	}
 
-    @Override
-    public void notifyWatchers() {
-        // TODO Auto-generated method stub
-        for (IWatcher watcher : list) {
-            watcher.update();
-        }
-    }
+	@Override
+	public void notifyWatchers() {
+		// TODO Auto-generated method stub
+		for (IWatcher watcher : list) {
+			watcher.update();
+		}
+	}
 
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        System.out.println("目标更新中....");
-        notifyWatchers();
-    }
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		System.out.println("目标更新中....");
+		notifyWatchers();
+	}
 
 }

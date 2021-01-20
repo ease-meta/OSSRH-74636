@@ -24,18 +24,16 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class HiController {
-    @Autowired
-    private RestTemplate restTemplate;
+	@Autowired
+	private RestTemplate restTemplate;
+	@Autowired
+	private HiClient hiClient;
 
-    @RequestMapping(value = "/consumer")
-    @HystrixCommand(fallbackMethod = "addServiceFallback")
-    public String hi() {
-        return restTemplate.getForObject("http://cloud-boot-springcloud-provider/hi", String.class);
-    }
-
-    public String addServiceFallback() {
-        return "error";
-    }
+	@RequestMapping(value = "/consumer")
+	@HystrixCommand(fallbackMethod = "addServiceFallback")
+	public String hi() {
+		return restTemplate.getForObject("http://cloud-boot-springcloud-provider/hi", String.class);
+	}
 
     /*@Autowired
     private WebClient.Builder webClientBuilder;
@@ -50,8 +48,9 @@ public class HiController {
     	return result;
     }*/
 
-    @Autowired
-    private HiClient hiClient;
+	public String addServiceFallback() {
+		return "error";
+	}
 
     /*@GetMapping("/feign")
     public Flux<String> feign() {
@@ -59,8 +58,8 @@ public class HiController {
     	return result;
     }*/
 
-    @RequestMapping(value = "/openfeign")
-    public String openfeign() {
-        return hiClient.hi();
-    }
+	@RequestMapping(value = "/openfeign")
+	public String openfeign() {
+		return hiClient.hi();
+	}
 }

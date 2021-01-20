@@ -35,7 +35,7 @@ public interface SourceMapper {
 		}
 		SubTarget subTarget = new SubTarget();
 		subTarget.setResult(!subSource.getDeleted().equals(0));
-		subTarget.setName(subSource.getName()==null?"":subSource.getName()+subSource.getName());
+		subTarget.setName(subSource.getName() == null ? "" : subSource.getName() + subSource.getName());
 		return subTarget;
 	}
 

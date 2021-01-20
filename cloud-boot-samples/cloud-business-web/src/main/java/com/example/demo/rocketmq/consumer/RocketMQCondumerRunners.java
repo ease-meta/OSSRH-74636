@@ -28,27 +28,27 @@ import org.springframework.core.ParameterizedTypeReference;
 @Configuration
 public class RocketMQCondumerRunners {
 
-    @Bean(name = "consumerCustomRunner")
-    public ConsumerCustomRunner customRunner() {
-        return new ConsumerCustomRunner();
-    }
+	@Bean(name = "consumerCustomRunner")
+	public ConsumerCustomRunner customRunner() {
+		return new ConsumerCustomRunner();
+	}
 
-    public static class ConsumerCustomRunner implements CommandLineRunner {
+	public static class ConsumerCustomRunner implements CommandLineRunner {
 
-        @Autowired
-        private MySink mySink;
+		@Autowired
+		private MySink mySink;
 
-        @Override
-        public void run(String... args) throws InterruptedException {
-            while (true) {
-                mySink.input5().poll(m -> {
-                    String payload = (String) m.getPayload();
-                    System.out.println("pull msg: " + payload);
-                }, new ParameterizedTypeReference<String>() {
-                });
-                Thread.sleep(2_000);
-            }
-        }
-    }
+		@Override
+		public void run(String... args) throws InterruptedException {
+			while (true) {
+				mySink.input5().poll(m -> {
+					String payload = (String) m.getPayload();
+					System.out.println("pull msg: " + payload);
+				}, new ParameterizedTypeReference<String>() {
+				});
+				Thread.sleep(2_000);
+			}
+		}
+	}
 
 }

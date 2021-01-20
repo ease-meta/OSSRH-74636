@@ -21,11 +21,11 @@ import lombok.Data;
 @Data
 public class Target {
 
-    private String    id;
+	private String id;
 
-    private Integer   num;
+	private Integer num;
 
-    private Integer   count;
+	private Integer count;
 
-    private SubTarget subTarget;
+	private SubTarget subTarget;
 }

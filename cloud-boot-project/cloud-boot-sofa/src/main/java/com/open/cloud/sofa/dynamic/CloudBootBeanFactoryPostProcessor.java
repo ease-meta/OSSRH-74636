@@ -27,27 +27,27 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor,
-                                              BeanPostProcessor {
-    private static final Logger    logger = LoggerFactory
-                                              .getLogger(CloudBootBeanFactoryPostProcessor.class);
-    private BeanDefinitionRegistry registry;
+		BeanPostProcessor {
+	private static final Logger logger = LoggerFactory
+			.getLogger(CloudBootBeanFactoryPostProcessor.class);
+	private BeanDefinitionRegistry registry;
 
-    public CloudBootBeanFactoryPostProcessor() {
-    }
+	public CloudBootBeanFactoryPostProcessor() {
+	}
 
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
+	@Override
+	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 
-    }
+	}
 
-    @Override
-    public Object postProcessAfterInitialization(Object bean, String beanName)
-                                                                              throws BeansException {
-        return bean;
-    }
+	@Override
+	public Object postProcessAfterInitialization(Object bean, String beanName)
+			throws BeansException {
+		return bean;
+	}
 
-    @Override
-    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
-                                                                                  throws BeansException {
-    }
+	@Override
+	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
+			throws BeansException {
+	}
 }

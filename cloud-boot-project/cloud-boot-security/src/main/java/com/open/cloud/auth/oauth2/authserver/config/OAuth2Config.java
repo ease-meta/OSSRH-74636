@@ -48,6 +48,31 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 	private TokenEnhancer jwtTokenEnhancer;
 
 	@Override
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		security.allowFormAuthenticationForClients();
+		security.checkTokenAccess("isAuthenticated()");
+		security.tokenKeyAccess("isAuthenticated()");
+	}
+
+	@Override
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		clients.jdbc(dataSource);
+
+//        clients.inMemory()
+//                .withClient("order-client")
+//                .secret(passwordEncoder.encode("order-secret-8888"))
+//                .authorizedGrantTypes("refresh_token", "authorization_code", "password")
+//                .accessTokenValiditySeconds(3600)
+//                .scopes("all")
+//                .and()
+//                .withClient("user-client")
+//                .secret(passwordEncoder.encode("user-secret-8888"))
+//                .authorizedGrantTypes("refresh_token", "authorization_code", "password")
+//                .accessTokenValiditySeconds(3600)
+//                .scopes("all");
+	}
+
+	@Override
 	public void configure(final AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		/**
 		 * 普通 jwt 模式
@@ -84,30 +109,5 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 //                .tokenStore(redisTokenStore)
 //                .userDetailsService(kiteUserDetailsService);
 
-	}
-
-	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.jdbc(dataSource);
-
-//        clients.inMemory()
-//                .withClient("order-client")
-//                .secret(passwordEncoder.encode("order-secret-8888"))
-//                .authorizedGrantTypes("refresh_token", "authorization_code", "password")
-//                .accessTokenValiditySeconds(3600)
-//                .scopes("all")
-//                .and()
-//                .withClient("user-client")
-//                .secret(passwordEncoder.encode("user-secret-8888"))
-//                .authorizedGrantTypes("refresh_token", "authorization_code", "password")
-//                .accessTokenValiditySeconds(3600)
-//                .scopes("all");
-	}
-
-	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-		security.allowFormAuthenticationForClients();
-		security.checkTokenAccess("isAuthenticated()");
-		security.tokenKeyAccess("isAuthenticated()");
 	}
 }

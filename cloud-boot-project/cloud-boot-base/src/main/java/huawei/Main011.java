@@ -28,13 +28,13 @@ import java.util.Scanner;
  */
 public class Main011 {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < str.length(); i++) {
-            stringBuffer.append(str.charAt(i));
-        }
-        System.out.println(stringBuffer.reverse().toString());
-    }
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String str = scanner.nextLine();
+		StringBuffer stringBuffer = new StringBuffer();
+		for (int i = 0; i < str.length(); i++) {
+			stringBuffer.append(str.charAt(i));
+		}
+		System.out.println(stringBuffer.reverse().toString());
+	}
 }

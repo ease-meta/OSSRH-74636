@@ -33,24 +33,24 @@ import java.util.Iterator;
  * @since
  **/
 public class MainTest {
-    public static void main(String[] args) throws CloneNotSupportedException {
-        Maze maze = new Maze();
-        Room room = new Room(1);
-        Wall wall = new Wall();
-        Door door = new Door(room, room);
-        MazeGame game = new MazePrototypeFactory(maze, wall, room, door);
-        //创建原型对象
-        Maze maze2 = game.CreateMaze();
+	public static void main(String[] args) throws CloneNotSupportedException {
+		Maze maze = new Maze();
+		Room room = new Room(1);
+		Wall wall = new Wall();
+		Door door = new Door(room, room);
+		MazeGame game = new MazePrototypeFactory(maze, wall, room, door);
+		//创建原型对象
+		Maze maze2 = game.CreateMaze();
 
-        System.err.println(maze.getRoomCount());
-        System.err.println(maze2.getRoomCount());
+		System.err.println(maze.getRoomCount());
+		System.err.println(maze2.getRoomCount());
 
-        Iterator<Room> iterator = maze2.iterator();
+		Iterator<Room> iterator = maze2.iterator();
 
-        while (iterator.hasNext()) {
-            System.err.println("RoomNumber : " + iterator.next().getRoomNumber());
-        }
-    }
+		while (iterator.hasNext()) {
+			System.err.println("RoomNumber : " + iterator.next().getRoomNumber());
+		}
+	}
 }
 /**
  * 推荐博客：http://blog.csdn.net/jason0539/article/details/23158081

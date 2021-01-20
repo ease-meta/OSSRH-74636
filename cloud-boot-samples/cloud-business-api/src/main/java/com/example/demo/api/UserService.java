@@ -23,7 +23,7 @@ import com.example.demo.api.model.UserModel;
  */
 public interface UserService {
 
-    String getUserName(Long id);
+	String getUserName(Long id);
 
 	UserModel addUser(UserModel user);
 }

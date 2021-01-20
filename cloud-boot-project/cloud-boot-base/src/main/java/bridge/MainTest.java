@@ -25,11 +25,11 @@ package bridge;
  * 也就是指在一个软件系统的抽象化和实现化之间使用组合/聚合关系，而不是继承关系，从而使两者可以独立的改变。
  **/
 public class MainTest {
-    public static void main(String[] args) {
-        BaseCellphone cellphone = new CellPhone();
-        cellphone.setShell(new CellphoneShell());
-        cellphone.mapping();
-    }
+	public static void main(String[] args) {
+		BaseCellphone cellphone = new CellPhone();
+		cellphone.setShell(new CellphoneShell());
+		cellphone.mapping();
+	}
 }
 /**
  * @Date 2016年8月20日19:07:14

@@ -9,7 +9,8 @@
     <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
     #foreach($consumer in $lists)
 
-        <sofa:reference id="$consumer.id" interface="$consumer.interfaceName" #if("$!consumer.uniqueId" == "") #else unique-id="$consumer.uniqueId" #end>
+        <sofa:reference id="$consumer.id" interface="$consumer.interfaceName" #if("$!consumer.uniqueId" == "") #else
+                        unique-id="$consumer.uniqueId" #end>
             <sofa:binding.bolt>
                 <sofa:global-attrs timeout="15000"/>
             </sofa:binding.bolt>

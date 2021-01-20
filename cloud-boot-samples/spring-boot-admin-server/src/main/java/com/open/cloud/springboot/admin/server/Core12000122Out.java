@@ -1,4 +1,3 @@
-
 package com.open.cloud.springboot.admin.server;
 
 import lombok.Data;

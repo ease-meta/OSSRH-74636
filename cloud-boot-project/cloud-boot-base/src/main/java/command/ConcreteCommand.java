@@ -23,17 +23,17 @@ package command;
  **/
 public class ConcreteCommand implements ICommand {
 
-    private Receiver receiver;
+	private Receiver receiver;
 
-    public ConcreteCommand(Receiver receiver) {
-        // TODO Auto-generated constructor stub
-        this.receiver = receiver;
-    }
+	public ConcreteCommand(Receiver receiver) {
+		// TODO Auto-generated constructor stub
+		this.receiver = receiver;
+	}
 
-    @Override
-    public void execute() {
-        // TODO Auto-generated method stub
-        this.receiver.action();
-    }
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		this.receiver.action();
+	}
 
 }

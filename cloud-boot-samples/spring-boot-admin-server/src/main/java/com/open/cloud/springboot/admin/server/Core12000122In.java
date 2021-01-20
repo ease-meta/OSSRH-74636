@@ -1,4 +1,3 @@
-
 package com.open.cloud.springboot.admin.server;
 
 import lombok.Data;
@@ -14,45 +13,45 @@ import java.io.Serializable;
 @Data
 public class Core12000122In {
 
-    /***
-     * @fields serialVersionUID
-     */
-    private static final long serialVersionUID = 1L;
+	/***
+	 * @fields serialVersionUID
+	 */
+	private static final long serialVersionUID = 1L;
 
 
-    private Body body;
+	private Body body;
 
-    /**
-     * @return body : return the property body.
-     */
-    @Data
-    public static class Body implements Serializable {
+	/**
+	 * @return body : return the property body.
+	 */
+	@Data
+	public static class Body implements Serializable {
 
-        private static final long serialVersionUID = 1L;
+		private static final long serialVersionUID = 1L;
 
-        private String option;
+		private String option;
 
-        private String narrative;
+		private String narrative;
 
-        private String clientNo;
+		private String clientNo;
 
-        private String restraintSeqNo;
+		private String restraintSeqNo;
 
-        private String restraintType;
+		private String restraintType;
 
-        private String startDate;
+		private String startDate;
 
-        private String term;
+		private String term;
 
-        private String termType;
+		private String termType;
 
-        private String endDate;
+		private String endDate;
 
-        private String dealClass;
+		private String dealClass;
 
-        private String dealType;
+		private String dealType;
 
-        private String maintainType;
+		private String maintainType;
 
-    }
+	}
 }

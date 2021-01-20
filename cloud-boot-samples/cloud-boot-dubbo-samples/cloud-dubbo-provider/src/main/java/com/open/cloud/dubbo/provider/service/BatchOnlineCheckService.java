@@ -27,5 +27,5 @@ import com.open.cloud.dubbo.provider.entity.BatchOnlineCheckEntity;
  * @date 2020-04-19 20:14:13
  */
 public interface BatchOnlineCheckService extends IService<BatchOnlineCheckEntity> {
-    BatchOnlineCheckEntity getByJobId(String id);
+	BatchOnlineCheckEntity getByJobId(String id);
 }

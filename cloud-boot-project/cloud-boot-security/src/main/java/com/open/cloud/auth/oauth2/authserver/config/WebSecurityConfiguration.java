@@ -22,9 +22,23 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private KiteUserDetailsService userService;
 
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth
+				.userDetailsService(userService)
+				.passwordEncoder(passwordEncoder());
+	}
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	//不定义没有password grant_type
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 
 	@Override
@@ -34,19 +48,5 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				anyRequest().authenticated()
 				.and()
 				.csrf().disable();
-	}
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth
-				.userDetailsService(userService)
-				.passwordEncoder(passwordEncoder());
-	}
-
-	//不定义没有password grant_type
-	@Override
-	@Bean
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManagerBean();
 	}
 }

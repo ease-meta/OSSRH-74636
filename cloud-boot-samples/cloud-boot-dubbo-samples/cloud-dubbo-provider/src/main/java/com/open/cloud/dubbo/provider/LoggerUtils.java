@@ -22,16 +22,16 @@ import org.slf4j.LoggerFactory;
 
 public abstract class LoggerUtils {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoggerUtils.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoggerUtils.class);
 
-    public static void log(String url, Object result) {
-        String message = String.format("The client[%s] uses '%s' protocol to call %s : %s",
-            RpcContext.getContext().getRemoteHostName(),
-            RpcContext.getContext().getUrl() == null ? "N/A" : RpcContext.getContext().getUrl()
-                .getProtocol(), url, result);
-        if (logger.isInfoEnabled()) {
-            logger.info(message);
-        }
-    }
+	public static void log(String url, Object result) {
+		String message = String.format("The client[%s] uses '%s' protocol to call %s : %s",
+				RpcContext.getContext().getRemoteHostName(),
+				RpcContext.getContext().getUrl() == null ? "N/A" : RpcContext.getContext().getUrl()
+						.getProtocol(), url, result);
+		if (logger.isInfoEnabled()) {
+			logger.info(message);
+		}
+	}
 
 }

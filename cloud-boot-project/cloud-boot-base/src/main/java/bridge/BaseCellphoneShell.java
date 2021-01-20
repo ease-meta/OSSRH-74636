@@ -22,6 +22,6 @@ package bridge;
  * @Fun 手机壳、套
  **/
 public abstract class BaseCellphoneShell {
-    //对应匹配哪种手机
-    public abstract void mapping();
+	//对应匹配哪种手机
+	public abstract void mapping();
 }

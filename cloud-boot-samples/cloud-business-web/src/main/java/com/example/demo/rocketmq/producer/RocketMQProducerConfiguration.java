@@ -29,9 +29,9 @@ import org.springframework.context.annotation.Configuration;
 @EnableBinding({MySource.class})
 public class RocketMQProducerConfiguration {
 
-    @Bean
-    public ObjectMapper objectMapper() {
-        JsonMapper mapper = new JsonMapper();
-        return mapper;
-    }
+	@Bean
+	public ObjectMapper objectMapper() {
+		JsonMapper mapper = new JsonMapper();
+		return mapper;
+	}
 }

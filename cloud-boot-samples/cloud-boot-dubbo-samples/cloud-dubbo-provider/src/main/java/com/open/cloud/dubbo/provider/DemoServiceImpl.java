@@ -25,8 +25,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DemoServiceImpl implements DemoService {
-    @Override
-    public String sayHello(String message) {
-        return message;
-    }
+	@Override
+	public String sayHello(String message) {
+		return message;
+	}
 }

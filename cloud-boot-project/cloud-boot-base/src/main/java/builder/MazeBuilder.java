@@ -25,20 +25,20 @@ import model.base.Maze;
  * @fun Builder
  */
 public abstract class MazeBuilder {
-    public abstract void Buildmaze();
+	protected MazeFactory factory;
+	protected Maze currentMaze;
 
-    public abstract void BuildRoom(int number);
+	protected MazeBuilder(MazeFactory factory) {
+		this.factory = factory;
+	}
 
-    public abstract void BuildDoor(int roomFrom, int roomTo);
+	public abstract void Buildmaze();
 
-    public abstract Maze GetMaze();
+	public abstract void BuildRoom(int number);
 
-    public abstract MazeFactory getMazeFactory();
+	public abstract void BuildDoor(int roomFrom, int roomTo);
 
-    protected MazeBuilder(MazeFactory factory) {
-        this.factory = factory;
-    }
+	public abstract Maze GetMaze();
 
-    protected MazeFactory factory;
-    protected Maze        currentMaze;
+	public abstract MazeFactory getMazeFactory();
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-boot-parent</artifactId>
@@ -14,33 +14,33 @@
     </properties>
     <artifactId>cloud-boot-dubbo</artifactId>
 
-     <dependencies>
-         <dependency>
-             <groupId>org.apache.dubbo</groupId>
-             <artifactId>dubbo-spring-boot-starter</artifactId>
-         </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+        </dependency>
 
-         <dependency>
-             <groupId>org.apache.dubbo</groupId>
-             <artifactId>dubbo-api-docs-annotations</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-api-docs-annotations</artifactId>
+        </dependency>
 
-         <dependency>
-             <groupId>org.apache.dubbo</groupId>
-             <artifactId>dubbo-api-docs-core</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-api-docs-core</artifactId>
+        </dependency>
 
-         <dependency>
-             <groupId>org.apache.curator</groupId>
-             <artifactId>curator-recipes</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+        </dependency>
 
-         <dependency>
-             <groupId>redis.clients</groupId>
-             <artifactId>jedis</artifactId>
-         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
 
-         <dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>

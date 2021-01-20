@@ -30,43 +30,43 @@ import model.bombed.RoomWithABomb;
  */
 public class BombedMazeGame extends MazeGame {
 
-    //	public Maze CreateMaze(){
-    //		return MakeMaze();
-    //	}
+	//	public Maze CreateMaze(){
+	//		return MakeMaze();
+	//	}
 
-    public BombedMazeGame() {
-        // TODO Auto-generated constructor stub
-    }
+	public BombedMazeGame() {
+		// TODO Auto-generated constructor stub
+	}
 
-    @Override
-    public Maze MakeMaze() {
-        // TODO Auto-generated method stub
-        return new Maze();
-    }
+	public static void main(String[] args) {
+		MazeGame game = new BombedMazeGame();
+		Maze aMaze = game.CreateMaze();
+		Room room = aMaze.getRoom(1);
+		System.err.println("Rooms : " + aMaze.getRoomCount());
+		room.Enter();
+	}
 
-    @Override
-    public Room MakeRoom(int number) {
-        // TODO Auto-generated method stub
-        return new RoomWithABomb(number);
-    }
+	@Override
+	public Maze MakeMaze() {
+		// TODO Auto-generated method stub
+		return new Maze();
+	}
 
-    @Override
-    public Wall MakeWall() {
-        // TODO Auto-generated method stub
-        return new BombedWall();
-    }
+	@Override
+	public Room MakeRoom(int number) {
+		// TODO Auto-generated method stub
+		return new RoomWithABomb(number);
+	}
 
-    @Override
-    public Door MakeDoor(Room r1, Room r2) {
-        // TODO Auto-generated method stub
-        return new Door(r1, r2);
-    }
+	@Override
+	public Door MakeDoor(Room r1, Room r2) {
+		// TODO Auto-generated method stub
+		return new Door(r1, r2);
+	}
 
-    public static void main(String[] args) {
-        MazeGame game = new BombedMazeGame();
-        Maze aMaze = game.CreateMaze();
-        Room room = aMaze.getRoom(1);
-        System.err.println("Rooms : " + aMaze.getRoomCount());
-        room.Enter();
-    }
+	@Override
+	public Wall MakeWall() {
+		// TODO Auto-generated method stub
+		return new BombedWall();
+	}
 }

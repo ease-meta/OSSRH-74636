@@ -23,11 +23,11 @@ package iterator;
  * 用于遍历集合类ICollection的数据
  **/
 public interface IIterator<T> {
-    boolean hasNext();
+	boolean hasNext();
 
-    boolean hasPrevious();
+	boolean hasPrevious();
 
-    T next();
+	T next();
 
-    T previous();
+	T previous();
 }

@@ -16,7 +16,6 @@
  */
 package com.open.cloud.core.log;
 
-
 import com.open.cloud.core.commons.NewInstanceServiceLoader;
 
 import java.util.Collection;
@@ -58,19 +57,20 @@ public class MiddleLoggerFactory {
 
 	private static ILogFactory defaultLogFactory = null;
 
-	private static Collection<ILogFactory> extensions = NewInstanceServiceLoader.newServiceInstances(ILogFactory.class);
+	private static Collection<ILogFactory> extensions = NewInstanceServiceLoader
+			.newServiceInstances(ILogFactory.class);
 
 	static {
 		NewInstanceServiceLoader.register(ILogFactory.class);
 		extensions = NewInstanceServiceLoader.newServiceInstances(ILogFactory.class);
 	}
 
-	private MiddleLoggerFactory() {
-
-	}
-
 	static {
 		init();
+	}
+
+	private MiddleLoggerFactory() {
+
 	}
 
 	static void init() {

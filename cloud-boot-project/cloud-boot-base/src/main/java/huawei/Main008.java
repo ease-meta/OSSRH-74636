@@ -27,7 +27,7 @@ import java.util.TreeMap;
  * @date 2020/2/11
  */
 public class Main008 {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int num = Integer.parseInt(scanner.nextLine());
 		SortedMap<Integer, Integer> map = new TreeMap<>();

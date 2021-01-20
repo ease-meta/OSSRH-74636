@@ -23,16 +23,16 @@ package adapter;
 
 public class DefaultDrawAdapter implements IDraw {
 
-    @Override
-    public void drawCircle() {
-        // TODO Auto-generated method stub
+	@Override
+	public void drawCircle() {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
-    @Override
-    public void drawRectangle() {
-        // TODO Auto-generated method stub
+	@Override
+	public void drawRectangle() {
+		// TODO Auto-generated method stub
 
-    }
+	}
 
 }

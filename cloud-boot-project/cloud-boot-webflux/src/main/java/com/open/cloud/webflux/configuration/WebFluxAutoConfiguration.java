@@ -28,9 +28,9 @@ import org.springframework.core.annotation.Order;
 @Configuration
 public class WebFluxAutoConfiguration {
 
-    @Bean
-    @Order(-1)
-    public WebfluxFilter webMvcFilter() {
-        return new WebfluxFilter();
-    }
+	@Bean
+	@Order(-1)
+	public WebfluxFilter webMvcFilter() {
+		return new WebfluxFilter();
+	}
 }

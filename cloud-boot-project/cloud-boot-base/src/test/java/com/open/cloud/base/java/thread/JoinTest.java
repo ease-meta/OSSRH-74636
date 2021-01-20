@@ -17,7 +17,7 @@
 package com.open.cloud.base.java.thread;
 
 public class JoinTest {
-    public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException {
 		Thread AliThread = new Thread(() -> {
 			System.out.println(Thread.currentThread().getName());
 		}, "Ali");

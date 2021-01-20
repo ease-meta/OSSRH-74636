@@ -11,6 +11,10 @@ import java.util.Enumeration;
  * @since
  */
 public class NetUtils {
+	public static void main(String[] args) {
+		System.out.println(getHostIp());
+	}
+
 	public static String getHostIp() {
 		try {
 			Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
@@ -31,9 +35,5 @@ public class NetUtils {
 			e.printStackTrace();
 		}
 		return null;
-	}
-
-	public static void main(String[] args) {
-		System.out.println(getHostIp());
 	}
 }

@@ -21,14 +21,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication(scanBasePackages = { "com.open.cloud.dubbo" })
+@SpringBootApplication(scanBasePackages = {"com.open.cloud.dubbo"})
 @ImportResource(value = "classpath:META-INF/spring/*.xml")
 @EnableCaching
 public class ProviderApplication {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-        SpringApplication.run(ProviderApplication.class, args);
+		SpringApplication.run(ProviderApplication.class, args);
 
-    }
+	}
 }

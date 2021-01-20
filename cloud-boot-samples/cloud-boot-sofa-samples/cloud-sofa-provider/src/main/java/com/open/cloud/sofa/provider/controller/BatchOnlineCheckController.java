@@ -40,49 +40,47 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("generator/batchonlinecheck")
 public class BatchOnlineCheckController {
-    @Autowired
-    private BatchOnlineCheckService batchOnlineCheckService;
+	@Autowired
+	PlatformTransactionManager platformTransactionManager;
+	@Autowired
+	private BatchOnlineCheckService batchOnlineCheckService;
+	private TransactionDefinition definition = new DefaultTransactionDefinition(
+			TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 
-    private TransactionDefinition   definition = new DefaultTransactionDefinition(
-                                                   TransactionDefinition.PROPAGATION_REQUIRES_NEW);
+	/**
+	 * 信息
+	 */
+	@RequestMapping("/info/{jobId}")
+	public R info(@PathVariable("jobId") String jobId) {
+		BatchOnlineCheckEntity batchOnlineCheck = batchOnlineCheckService.getByJobId(jobId);
+		return R.ok().put("batchOnlineCheck", batchOnlineCheck);
+	}
 
-    @Autowired
-    PlatformTransactionManager      platformTransactionManager;
+	/**
+	 * 保存
+	 */
+	@RequestMapping("/save")
+	public R save(@RequestBody BatchOnlineCheckEntity batchOnlineCheck) {
+		batchOnlineCheckService.save(batchOnlineCheck);
+		return R.ok();
+	}
 
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{jobId}")
-    public R info(@PathVariable("jobId") String jobId) {
-        BatchOnlineCheckEntity batchOnlineCheck = batchOnlineCheckService.getByJobId(jobId);
-        return R.ok().put("batchOnlineCheck", batchOnlineCheck);
-    }
+	/**
+	 * 修改
+	 */
+	@RequestMapping("/update")
+	public R update(@RequestBody BatchOnlineCheckEntity batchOnlineCheck) {
+		batchOnlineCheckService.updateById(batchOnlineCheck);
+		return R.ok();
+	}
 
-    /**
-     * 保存
-     */
-    @RequestMapping("/save")
-    public R save(@RequestBody BatchOnlineCheckEntity batchOnlineCheck) {
-        batchOnlineCheckService.save(batchOnlineCheck);
-        return R.ok();
-    }
-
-    /**
-     * 修改
-     */
-    @RequestMapping("/update")
-    public R update(@RequestBody BatchOnlineCheckEntity batchOnlineCheck) {
-        batchOnlineCheckService.updateById(batchOnlineCheck);
-        return R.ok();
-    }
-
-    /**
-     * 删除
-     */
-    @RequestMapping("/delete")
-    public R delete(@RequestBody String[] jobIds) {
-        batchOnlineCheckService.removeByIds(Arrays.asList(jobIds));
-        return R.ok();
-    }
+	/**
+	 * 删除
+	 */
+	@RequestMapping("/delete")
+	public R delete(@RequestBody String[] jobIds) {
+		batchOnlineCheckService.removeByIds(Arrays.asList(jobIds));
+		return R.ok();
+	}
 
 }

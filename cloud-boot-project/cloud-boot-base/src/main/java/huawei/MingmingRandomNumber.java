@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * @date 2020/2/11
  */
 public class MingmingRandomNumber {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int n;
 		while (scanner.hasNext()) {

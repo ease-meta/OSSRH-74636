@@ -16,7 +16,6 @@
  */
 package com.open.cloud.core.log;
 
-
 import com.open.cloud.core.log.logger.DebugLog;
 import com.open.cloud.core.log.logger.ErrorLog;
 import com.open.cloud.core.log.logger.InfoLog;
@@ -40,7 +39,7 @@ import com.open.cloud.core.log.logger.WarnLog;
  *  @date 2020/11/15
  *
  */
-public abstract class MiddleLogger implements TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog, ParmLog,
-		MethodLog, SqlLog, ProfileLog, PlatformLog {
+public abstract class MiddleLogger implements TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog,
+		ParmLog, MethodLog, SqlLog, ProfileLog, PlatformLog {
 
 }

@@ -23,22 +23,22 @@ package throwableAndException;
  **/
 public class Main {
 
-    public static void main(String[] args) {
-        Tstep tstep = new Tstep();
-        try {
-            tstep.execute();
-        } catch (Exception e) {
-            System.out.println(123);
-            e.printStackTrace();
-        }
-    }
+	public static void main(String[] args) {
+		Tstep tstep = new Tstep();
+		try {
+			tstep.execute();
+		} catch (Exception e) {
+			System.out.println(123);
+			e.printStackTrace();
+		}
+	}
 
-    private void rethrow(Throwable t) {
-        if (t instanceof RuntimeException) {
-            throw (RuntimeException) t;
-        } else if (t instanceof Error) {
-            throw (Error) t;
-        }
-        throw new IllegalStateException(t);
-    }
+	private void rethrow(Throwable t) {
+		if (t instanceof RuntimeException) {
+			throw (RuntimeException) t;
+		} else if (t instanceof Error) {
+			throw (Error) t;
+		}
+		throw new IllegalStateException(t);
+	}
 }

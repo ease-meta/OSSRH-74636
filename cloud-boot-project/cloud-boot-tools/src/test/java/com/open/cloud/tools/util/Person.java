@@ -25,15 +25,15 @@ import lombok.Data;
 @Data
 public class Person extends BasePo {
 
-    private Body body;
+	private Body body;
 
-    @Data
-    public static class Body {
+	@Data
+	public static class Body {
 
-        private int     age;
+		private int age;
 
-        private boolean sex;
+		private boolean sex;
 
-        private String  acctName;
-    }
+		private String acctName;
+	}
 }

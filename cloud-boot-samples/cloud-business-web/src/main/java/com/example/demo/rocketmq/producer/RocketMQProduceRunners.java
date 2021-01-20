@@ -29,78 +29,76 @@ import org.springframework.messaging.support.MessageBuilder;
 @Configuration
 public class RocketMQProduceRunners {
 
-    @Bean(name = "customRunner1")
-    public CustomRunner customRunner() {
-        return new CustomRunner("output1");
-    }
+	@Bean(name = "customRunner1")
+	public CustomRunner customRunner() {
+		return new CustomRunner("output1");
+	}
 
-    @Bean(name = "customRunner2")
-    public CustomRunner customRunner2() {
-        return new CustomRunner("output3");
-    }
+	@Bean(name = "customRunner2")
+	public CustomRunner customRunner2() {
+		return new CustomRunner("output3");
+	}
 
-    @Bean(name = "customRunnerWithTransactional")
-    public CustomRunnerWithTransactional customRunnerWithTransactional() {
-        return new CustomRunnerWithTransactional();
-    }
+	@Bean(name = "customRunnerWithTransactional")
+	public CustomRunnerWithTransactional customRunnerWithTransactional() {
+		return new CustomRunnerWithTransactional();
+	}
 
-    public static class CustomRunner implements CommandLineRunner {
+	public static class CustomRunner implements CommandLineRunner {
 
-        private final String bindingName;
+		private final String bindingName;
+		@Autowired
+		private SenderService senderService;
+		@Autowired
+		private MySource mySource;
 
-        public CustomRunner(String bindingName) {
-            this.bindingName = bindingName;
-        }
+		public CustomRunner(String bindingName) {
+			this.bindingName = bindingName;
+		}
 
-        @Autowired
-        private SenderService senderService;
+		@Override
+		public void run(String... args) throws Exception {
+			if (this.bindingName.equals("output1")) {
+				int count = 5;
+				for (int index = 1; index <= count; index++) {
+					String msgContent = "msg-" + index;
+					if (index % 3 == 0) {
+						senderService.send(msgContent);
+					} else if (index % 3 == 1) {
+						senderService.sendWithTags(msgContent, "tagStr");
+					} else {
+						senderService.sendObject(new Foo(index, "foo"), "tagObj");
+					}
+				}
+			} else if (this.bindingName.equals("output3")) {
+				int count = 20;
+				for (int index = 1; index <= count; index++) {
+					String msgContent = "pullMsg-" + index;
+					mySource.output3().send(MessageBuilder.withPayload(msgContent).build());
+				}
+			}
 
-        @Autowired
-        private MySource mySource;
+		}
 
-        @Override
-        public void run(String... args) throws Exception {
-            if (this.bindingName.equals("output1")) {
-                int count = 5;
-                for (int index = 1; index <= count; index++) {
-                    String msgContent = "msg-" + index;
-                    if (index % 3 == 0) {
-                        senderService.send(msgContent);
-                    } else if (index % 3 == 1) {
-                        senderService.sendWithTags(msgContent, "tagStr");
-                    } else {
-                        senderService.sendObject(new Foo(index, "foo"), "tagObj");
-                    }
-                }
-            } else if (this.bindingName.equals("output3")) {
-                int count = 20;
-                for (int index = 1; index <= count; index++) {
-                    String msgContent = "pullMsg-" + index;
-                    mySource.output3().send(MessageBuilder.withPayload(msgContent).build());
-                }
-            }
+	}
 
-        }
+	public static class CustomRunnerWithTransactional implements CommandLineRunner {
 
-    }
+		@Autowired
+		private SenderService senderService;
 
-    public static class CustomRunnerWithTransactional implements CommandLineRunner {
+		@Override
+		public void run(String... args) throws Exception {
+			// COMMIT_MESSAGE message
+			senderService.sendTransactionalMsg("transactional-msg1", 1);
+			// ROLLBACK_MESSAGE message
+			senderService.sendTransactionalMsg("transactional-msg2", 2);
+			// ROLLBACK_MESSAGE message
+			senderService.sendTransactionalMsg("transactional-msg3", 3);
+			// COMMIT_MESSAGE message
+			senderService.sendTransactionalMsg("transactional-msg4", 4);
+		}
 
-        @Autowired
-        private SenderService senderService;
-
-        @Override
-        public void run(String... args) throws Exception {
-            // COMMIT_MESSAGE message
-            senderService.sendTransactionalMsg("transactional-msg1", 1);
-            // ROLLBACK_MESSAGE message
-            senderService.sendTransactionalMsg("transactional-msg2", 2);
-            // ROLLBACK_MESSAGE message
-            senderService.sendTransactionalMsg("transactional-msg3", 3);
-            // COMMIT_MESSAGE message
-            senderService.sendTransactionalMsg("transactional-msg4", 4);
-        }
-
-    }
+	}
 
 }

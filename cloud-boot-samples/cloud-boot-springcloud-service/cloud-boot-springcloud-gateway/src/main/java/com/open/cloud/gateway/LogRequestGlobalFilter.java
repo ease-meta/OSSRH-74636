@@ -86,6 +86,67 @@ public class LogRequestGlobalFilter
 	}
 
 	/**
+	 * ReadJsonBody
+	 *
+	 * @param exchange
+	 * @param chain
+	 * @return
+	 */
+	private Mono<Void> readBody(
+			ServerWebExchange exchange,
+			GatewayFilterChain chain,
+			GatewayContext gatewayContext) {
+		/**
+		 * join the body
+		 */
+		return DataBufferUtils.join(exchange.getRequest().getBody())
+				.flatMap(dataBuffer -> {
+					/*
+					 * read the body Flux<DataBuffer>, and release the buffer
+					 * //TODO when SpringCloudGateway Version Release To G.SR2,this can be update with the new version's feature
+					 * see PR https://github.com/spring-cloud/spring-cloud-gateway/pull/1095
+					 */
+					byte[] bytes = new byte[dataBuffer.readableByteCount()];
+					dataBuffer.read(bytes);
+					DataBufferUtils.release(dataBuffer);
+					Flux<DataBuffer> cachedFlux = Flux.defer(() -> {
+						DataBuffer buffer =
+								exchange.getResponse().bufferFactory().wrap(bytes);
+						DataBufferUtils.retain(buffer);
+						return Mono.just(buffer);
+					});
+					/**
+					 * repackage ServerHttpRequest
+					 */
+					ServerHttpRequest mutatedRequest =
+							new ServerHttpRequestDecorator(exchange.getRequest()) {
+								@Override
+								public Flux<DataBuffer> getBody() {
+									return cachedFlux;
+								}
+							};
+					/**
+					 * mutate exchage with new ServerHttpRequest
+					 */
+					ServerWebExchange mutatedExchange =
+							exchange.mutate().request(mutatedRequest).build();
+					/**
+					 * read body string with default messageReaders
+					 */
+					return ServerRequest.create(mutatedExchange, messageReaders)
+							.bodyToMono(String.class)
+							.doOnNext(objectValue -> {
+								log.info("PostBody:{}", objectValue);
+								log.info(
+										"end-------------------------------------------------");
+								gatewayContext.setCacheBody(objectValue);
+                        /*  log.debug("[GatewayContext]Read JsonBody:{}",
+                              objectValue);*/
+							}).then(chain.filter(mutatedExchange));
+				});
+	}
+
+	/**
 	 * ReadFormData
 	 *
 	 * @param exchange
@@ -202,67 +263,6 @@ public class LogRequestGlobalFilter
 
 					return chain.filter(mutateExchange);
 				}));
-	}
-
-	/**
-	 * ReadJsonBody
-	 *
-	 * @param exchange
-	 * @param chain
-	 * @return
-	 */
-	private Mono<Void> readBody(
-			ServerWebExchange exchange,
-			GatewayFilterChain chain,
-			GatewayContext gatewayContext) {
-		/**
-		 * join the body
-		 */
-		return DataBufferUtils.join(exchange.getRequest().getBody())
-				.flatMap(dataBuffer -> {
-					/*
-					 * read the body Flux<DataBuffer>, and release the buffer
-					 * //TODO when SpringCloudGateway Version Release To G.SR2,this can be update with the new version's feature
-					 * see PR https://github.com/spring-cloud/spring-cloud-gateway/pull/1095
-					 */
-					byte[] bytes = new byte[dataBuffer.readableByteCount()];
-					dataBuffer.read(bytes);
-					DataBufferUtils.release(dataBuffer);
-					Flux<DataBuffer> cachedFlux = Flux.defer(() -> {
-						DataBuffer buffer =
-								exchange.getResponse().bufferFactory().wrap(bytes);
-						DataBufferUtils.retain(buffer);
-						return Mono.just(buffer);
-					});
-					/**
-					 * repackage ServerHttpRequest
-					 */
-					ServerHttpRequest mutatedRequest =
-							new ServerHttpRequestDecorator(exchange.getRequest()) {
-								@Override
-								public Flux<DataBuffer> getBody() {
-									return cachedFlux;
-								}
-							};
-					/**
-					 * mutate exchage with new ServerHttpRequest
-					 */
-					ServerWebExchange mutatedExchange =
-							exchange.mutate().request(mutatedRequest).build();
-					/**
-					 * read body string with default messageReaders
-					 */
-					return ServerRequest.create(mutatedExchange, messageReaders)
-							.bodyToMono(String.class)
-							.doOnNext(objectValue -> {
-								log.info("PostBody:{}", objectValue);
-								log.info(
-										"end-------------------------------------------------");
-								gatewayContext.setCacheBody(objectValue);
-                        /*  log.debug("[GatewayContext]Read JsonBody:{}",
-                              objectValue);*/
-							}).then(chain.filter(mutatedExchange));
-				});
 	}
 
 }

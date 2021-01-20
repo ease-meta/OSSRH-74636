@@ -22,13 +22,13 @@ package interpreter;
  * @Fun 包含解释器之外的一些信息。
  **/
 public class Context {
-    private String data;
+	private String data;
 
-    public String getData() {
-        return this.data;
-    }
+	public String getData() {
+		return this.data;
+	}
 
-    public void setData(String data) {
-        this.data = data;
-    }
+	public void setData(String data) {
+		this.data = data;
+	}
 }

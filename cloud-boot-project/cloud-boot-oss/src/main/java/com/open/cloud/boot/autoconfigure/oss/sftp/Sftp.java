@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.boot.autoconfigure.oss.sftp;
 
 import cn.hutool.core.collection.CollUtil;
@@ -80,6 +96,59 @@ public class Sftp extends AbstractFtp {
 	}
 
 	/**
+	 * 初始化
+	 *
+	 * @param config FTP配置
+	 * @since 5.3.3
+	 */
+	public void init(FtpConfig config) {
+		init(config.getHost(), config.getPort(), config.getUser(), config.getPassword(),
+				config.getCharset());
+	}
+
+	/**
+	 * 构造
+	 *
+	 * @param sshHost 远程主机
+	 * @param sshPort 远程主机端口
+	 * @param sshUser 远程主机用户名
+	 * @param sshPass 远程主机密码
+	 * @param charset 编码
+	 */
+	public void init(String sshHost, int sshPort, String sshUser, String sshPass, Charset charset) {
+		init(JschUtil.getSession(sshHost, sshPort, sshUser, sshPass), charset);
+	}
+
+	/**
+	 * 初始化
+	 *
+	 * @param session {@link Session}
+	 * @param charset 编码
+	 */
+	public void init(Session session, Charset charset) {
+		this.session = session;
+		init(JschUtil.openSftp(session, (int) this.ftpConfig.getConnectionTimeout()), charset);
+	}
+
+	// ---------------------------------------------------------------------------------------- Constructor end
+
+	/**
+	 * 初始化
+	 *
+	 * @param channel {@link ChannelSftp}
+	 * @param charset 编码
+	 */
+	public void init(ChannelSftp channel, Charset charset) {
+		this.ftpConfig.setCharset(charset);
+		try {
+			channel.setFilenameEncoding(charset.toString());
+		} catch (SftpException e) {
+			throw new JschRuntimeException(e);
+		}
+		this.channel = channel;
+	}
+
+	/**
 	 * 构造
 	 *
 	 * @param session {@link Session}
@@ -110,20 +179,6 @@ public class Sftp extends AbstractFtp {
 		super(FtpConfig.create().setCharset(charset));
 		init(channel, charset);
 	}
-	// ---------------------------------------------------------------------------------------- Constructor end
-
-	/**
-	 * 构造
-	 *
-	 * @param sshHost 远程主机
-	 * @param sshPort 远程主机端口
-	 * @param sshUser 远程主机用户名
-	 * @param sshPass 远程主机密码
-	 * @param charset 编码
-	 */
-	public void init(String sshHost, int sshPort, String sshUser, String sshPass, Charset charset) {
-		init(JschUtil.getSession(sshHost, sshPort, sshUser, sshPass), charset);
-	}
 
 	/**
 	 * 初始化
@@ -132,43 +187,6 @@ public class Sftp extends AbstractFtp {
 	 */
 	public void init() {
 		init(this.ftpConfig);
-	}
-
-	/**
-	 * 初始化
-	 *
-	 * @param config FTP配置
-	 * @since 5.3.3
-	 */
-	public void init(FtpConfig config) {
-		init(config.getHost(), config.getPort(), config.getUser(), config.getPassword(), config.getCharset());
-	}
-
-	/**
-	 * 初始化
-	 *
-	 * @param session {@link Session}
-	 * @param charset 编码
-	 */
-	public void init(Session session, Charset charset) {
-		this.session = session;
-		init(JschUtil.openSftp(session, (int) this.ftpConfig.getConnectionTimeout()), charset);
-	}
-
-	/**
-	 * 初始化
-	 *
-	 * @param channel {@link ChannelSftp}
-	 * @param charset 编码
-	 */
-	public void init(ChannelSftp channel, Charset charset) {
-		this.ftpConfig.setCharset(charset);
-		try {
-			channel.setFilenameEncoding(charset.toString());
-		} catch (SftpException e) {
-			throw new JschRuntimeException(e);
-		}
-		this.channel = channel;
 	}
 
 	@Override
@@ -180,13 +198,23 @@ public class Sftp extends AbstractFtp {
 	}
 
 	/**
-	 * 获取SFTP通道客户端
+	 * 打开指定目录，如果指定路径非目录或不存在返回false
 	 *
-	 * @return 通道客户端
-	 * @since 4.1.14
+	 * @param directory directory
+	 * @return 是否打开目录
 	 */
-	public ChannelSftp getClient() {
-		return this.channel;
+	@Override
+	public boolean cd(String directory) {
+		if (StrUtil.isBlank(directory)) {
+			// 当前目录
+			return true;
+		}
+		try {
+			channel.cd(directory.replaceAll("\\\\", "/"));
+			return true;
+		} catch (SftpException e) {
+			return false;
+		}
 	}
 
 	/**
@@ -203,15 +231,11 @@ public class Sftp extends AbstractFtp {
 		}
 	}
 
-	/**
-	 * 获取HOME路径
-	 *
-	 * @return HOME路径
-	 * @since 4.0.5
-	 */
-	public String home() {
+	@Override
+	public boolean mkdir(String dir) {
 		try {
-			return channel.getHome();
+			this.channel.mkdir(dir);
+			return true;
 		} catch (SftpException e) {
 			throw new JschRuntimeException(e);
 		}
@@ -230,28 +254,6 @@ public class Sftp extends AbstractFtp {
 	}
 
 	/**
-	 * 遍历某个目录下所有目录，不会递归遍历
-	 *
-	 * @param path 遍历某个目录下所有目录
-	 * @return 目录名列表
-	 * @since 4.0.5
-	 */
-	public List<String> lsDirs(String path) {
-		return ls(path, t -> t.getAttrs().isDir());
-	}
-
-	/**
-	 * 遍历某个目录下所有文件，不会递归遍历
-	 *
-	 * @param path 遍历某个目录下所有文件
-	 * @return 文件名列表
-	 * @since 4.0.5
-	 */
-	public List<String> lsFiles(String path) {
-		return ls(path, t -> false == t.getAttrs().isDir());
-	}
-
-	/**
 	 * 遍历某个目录下所有文件或目录，不会递归遍历<br>
 	 * 此方法自动过滤"."和".."两种目录
 	 *
@@ -266,18 +268,6 @@ public class Sftp extends AbstractFtp {
 			return ListUtil.empty();
 		}
 		return CollUtil.map(entries, LsEntry::getFilename, true);
-	}
-
-	/**
-	 * 遍历某个目录下所有文件或目录，生成LsEntry列表，不会递归遍历<br>
-	 * 此方法自动过滤"."和".."两种目录
-	 *
-	 * @param path 遍历某个目录下所有文件或目录
-	 * @return 目录或文件名列表
-	 * @since 5.3.5
-	 */
-	public List<LsEntry> lsEntries(String path) {
-		return lsEntries(path, null);
 	}
 
 	/**
@@ -308,36 +298,6 @@ public class Sftp extends AbstractFtp {
 			// 文件不存在忽略
 		}
 		return entryList;
-	}
-
-	@Override
-	public boolean mkdir(String dir) {
-		try {
-			this.channel.mkdir(dir);
-			return true;
-		} catch (SftpException e) {
-			throw new JschRuntimeException(e);
-		}
-	}
-
-	/**
-	 * 打开指定目录，如果指定路径非目录或不存在返回false
-	 *
-	 * @param directory directory
-	 * @return 是否打开目录
-	 */
-	@Override
-	public boolean cd(String directory) {
-		if (StrUtil.isBlank(directory)) {
-			// 当前目录
-			return true;
-		}
-		try {
-			channel.cd(directory.replaceAll("\\\\", "/"));
-			return true;
-		} catch (SftpException e) {
-			return false;
-		}
 	}
 
 	/**
@@ -460,7 +420,8 @@ public class Sftp extends AbstractFtp {
 	 * @param destDir    本地目录
 	 */
 	@Override
-	public void recursiveDownloadFolder(String sourcePath, File destDir) throws JschRuntimeException {
+	public void recursiveDownloadFolder(String sourcePath, File destDir)
+			throws JschRuntimeException {
 		String fileName;
 		String srcFile;
 		File destFile;
@@ -482,6 +443,64 @@ public class Sftp extends AbstractFtp {
 			}
 		}
 
+	}
+
+	/**
+	 * 获取SFTP通道客户端
+	 *
+	 * @return 通道客户端
+	 * @since 4.1.14
+	 */
+	public ChannelSftp getClient() {
+		return this.channel;
+	}
+
+	/**
+	 * 获取HOME路径
+	 *
+	 * @return HOME路径
+	 * @since 4.0.5
+	 */
+	public String home() {
+		try {
+			return channel.getHome();
+		} catch (SftpException e) {
+			throw new JschRuntimeException(e);
+		}
+	}
+
+	/**
+	 * 遍历某个目录下所有目录，不会递归遍历
+	 *
+	 * @param path 遍历某个目录下所有目录
+	 * @return 目录名列表
+	 * @since 4.0.5
+	 */
+	public List<String> lsDirs(String path) {
+		return ls(path, t -> t.getAttrs().isDir());
+	}
+
+	/**
+	 * 遍历某个目录下所有文件，不会递归遍历
+	 *
+	 * @param path 遍历某个目录下所有文件
+	 * @return 文件名列表
+	 * @since 4.0.5
+	 */
+	public List<String> lsFiles(String path) {
+		return ls(path, t -> false == t.getAttrs().isDir());
+	}
+
+	/**
+	 * 遍历某个目录下所有文件或目录，生成LsEntry列表，不会递归遍历<br>
+	 * 此方法自动过滤"."和".."两种目录
+	 *
+	 * @param path 遍历某个目录下所有文件或目录
+	 * @return 目录或文件名列表
+	 * @since 5.3.5
+	 */
+	public List<LsEntry> lsEntries(String path) {
+		return lsEntries(path, null);
 	}
 
 	/**
@@ -508,11 +527,8 @@ public class Sftp extends AbstractFtp {
 
 	@Override
 	public String toString() {
-		return "Sftp{" +
-				"host='" + this.ftpConfig.getHost() + '\'' +
-				", port=" + this.ftpConfig.getPort() +
-				", user='" + this.ftpConfig.getUser() + '\'' +
-				'}';
+		return "Sftp{" + "host='" + this.ftpConfig.getHost() + '\'' + ", port="
+				+ this.ftpConfig.getPort() + ", user='" + this.ftpConfig.getUser() + '\'' + '}';
 	}
 
 	/**

@@ -24,16 +24,14 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class LockTest {
 
-    //value1：线程不安全 //value3：使用悲观锁
-    private static int           value1 = 0, value3 = 0;
-    //value2：使用乐观锁
-    private static AtomicInteger value2 = new AtomicInteger(0);
+	//value1：线程不安全 //value3：使用悲观锁
+	private static int value1 = 0, value3 = 0;
+	//value2：使用乐观锁
+	private static AtomicInteger value2 = new AtomicInteger(0);
+	private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+	private ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
 
-    private static synchronized void increaseValue3() {
-        value3++;
-    }
-
-    @org.testng.annotations.Test
+	@org.testng.annotations.Test
 	public void testLoadFirst() throws InterruptedException {
 		CountDownLatch countDownLatch = new CountDownLatch(10000);
 		for (int i = 0; i < 10000; ++i) {
@@ -55,25 +53,26 @@ public class LockTest {
 		System.out.println("悲观锁(synchronized)：" + value3);
 	}
 
-    private ReadWriteLock     readWriteLock     = new ReentrantReadWriteLock();
-    private ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
+	private static synchronized void increaseValue3() {
+		value3++;
+	}
 
-    public void getDate(String key) {
-        readWriteLock.readLock().lock();
-        Object value = null;
-        if (concurrentHashMap.containsValue(key)) {
-            readWriteLock.readLock().unlock();
-            return;
-        }
-        try {
-            readWriteLock.readLock().unlock();
-            readWriteLock.writeLock().lock();
-            if (value == null) {
-                concurrentHashMap.put(key, "张三");
-            }
-        } finally {
-            readWriteLock.writeLock().unlock();
-        }
+	public void getDate(String key) {
+		readWriteLock.readLock().lock();
+		Object value = null;
+		if (concurrentHashMap.containsValue(key)) {
+			readWriteLock.readLock().unlock();
+			return;
+		}
+		try {
+			readWriteLock.readLock().unlock();
+			readWriteLock.writeLock().lock();
+			if (value == null) {
+				concurrentHashMap.put(key, "张三");
+			}
+		} finally {
+			readWriteLock.writeLock().unlock();
+		}
 
-    }
+	}
 }

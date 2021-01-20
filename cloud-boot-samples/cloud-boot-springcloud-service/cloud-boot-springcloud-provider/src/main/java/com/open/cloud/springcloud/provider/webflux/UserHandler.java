@@ -39,13 +39,6 @@ public class UserHandler {
 						Integer.valueOf(serverRequest.pathVariable("userId")))), User.class);
 	}
 
-	public Mono<ServerResponse> getAll(ServerRequest serverRequest) {
-		printlnThread("获取所有用户");
-		Flux<User> userFlux = Flux.fromStream(userRepository.getUsers().entrySet().stream().map(Map.Entry::getValue));
-		return ServerResponse.ok()
-				.body(userFlux, User.class);
-	}
-
 	/**
 	 * 打印当前线程
 	 * @param object
@@ -53,5 +46,12 @@ public class UserHandler {
 	private void printlnThread(Object object) {
 		String threadName = Thread.currentThread().getName();
 		System.out.println("HelloWorldAsyncController[" + threadName + "]: " + object);
+	}
+
+	public Mono<ServerResponse> getAll(ServerRequest serverRequest) {
+		printlnThread("获取所有用户");
+		Flux<User> userFlux = Flux.fromStream(userRepository.getUsers().entrySet().stream().map(Map.Entry::getValue));
+		return ServerResponse.ok()
+				.body(userFlux, User.class);
 	}
 }

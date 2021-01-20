@@ -31,18 +31,18 @@ import java.util.Map;
 
 @Component
 public class UserThreadPoolListener implements ApplicationListener<SofaBootRpcStartAfterEvent> {
-    @Override
-    public void onApplicationEvent(SofaBootRpcStartAfterEvent event) {
-        Map<Class<?>, Object> interfaceMapRef = new HashMap<>();
-        List<ProviderBootstrap> providerBootstraps = RpcRuntimeContext.getProviderConfigs();
-        for (ProviderBootstrap providerBootstrap : providerBootstraps) {
-            ProviderConfig providerConfig = providerBootstrap.getProviderConfig();
-            List<ServerConfig> server = providerConfig.getServer();
-            for (ServerConfig serverConfig : server) {
-                UserThreadPool userThreadPool = new UserThreadPool();
-                interfaceMapRef.put(providerConfig.getProxyClass(), providerConfig.getRef());
-            }
-        }
+	@Override
+	public void onApplicationEvent(SofaBootRpcStartAfterEvent event) {
+		Map<Class<?>, Object> interfaceMapRef = new HashMap<>();
+		List<ProviderBootstrap> providerBootstraps = RpcRuntimeContext.getProviderConfigs();
+		for (ProviderBootstrap providerBootstrap : providerBootstraps) {
+			ProviderConfig providerConfig = providerBootstrap.getProviderConfig();
+			List<ServerConfig> server = providerConfig.getServer();
+			for (ServerConfig serverConfig : server) {
+				UserThreadPool userThreadPool = new UserThreadPool();
+				interfaceMapRef.put(providerConfig.getProxyClass(), providerConfig.getRef());
+			}
+		}
 
-    }
+	}
 }

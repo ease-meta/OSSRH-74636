@@ -26,16 +26,16 @@ import java.util.Observer;
  **/
 public class UpdateObserver implements Observer {
 
-    @Override
-    public void update(Observable o, Object arg) {
-        // TODO Auto-generated method stub
-        System.out.println("接受到数据变化的通知：");
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		System.out.println("接受到数据变化的通知：");
 
-        if (o instanceof UpdateObservable) {
-            UpdateObservable uObservable = (UpdateObservable) o;
-            System.out.println("数据变更为：" + uObservable.getData());
-        }
+		if (o instanceof UpdateObservable) {
+			UpdateObservable uObservable = (UpdateObservable) o;
+			System.out.println("数据变更为：" + uObservable.getData());
+		}
 
-    }
+	}
 
 }

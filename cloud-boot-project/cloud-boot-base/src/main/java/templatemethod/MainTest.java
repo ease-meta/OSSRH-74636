@@ -27,15 +27,15 @@ package templatemethod;
  * 综上，建造者模式灵活于模板方法模式。<br/>
  **/
 public class MainTest {
-    public static void main(String[] args) {
-        BaseTemplate template = new TemplateMethod();
-        template.useTemplateMethod();
+	public static void main(String[] args) {
+		BaseTemplate template = new TemplateMethod();
+		template.useTemplateMethod();
 
-        System.out.println();
+		System.out.println();
 
-        template = new TemplateMethod2();
-        template.useTemplateMethod();
-    }
+		template = new TemplateMethod2();
+		template.useTemplateMethod();
+	}
 }
 /**
  * 推荐博客：http://blog.csdn.net/hguisu/article/details/7564039

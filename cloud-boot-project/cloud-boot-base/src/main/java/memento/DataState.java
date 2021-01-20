@@ -22,13 +22,13 @@ package memento;
  * @Fun 数据对象
  **/
 public class DataState {
-    private String action;
+	private String action;
 
-    public void setAction(String action) {
-        this.action = action;
-    }
+	public String getAction() {
+		return this.action;
+	}
 
-    public String getAction() {
-        return this.action;
-    }
+	public void setAction(String action) {
+		this.action = action;
+	}
 }

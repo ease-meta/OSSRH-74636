@@ -22,5 +22,5 @@ package command;
  * @Fun Command total interface
  **/
 public interface ICommand {
-    void execute();
+	void execute();
 }

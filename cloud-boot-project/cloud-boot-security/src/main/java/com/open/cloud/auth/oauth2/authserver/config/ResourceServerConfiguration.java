@@ -16,9 +16,9 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 @SuppressWarnings("all")
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-	@Bean
-	public AccessDeniedHandler getAccessDeniedHandler() {
-		return new CustomAccessDeniedHandler();
+	@Override
+	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
+		resources.authenticationEntryPoint(new AuthExceptionEntryPoint());
 	}
 
 	@Override
@@ -51,8 +51,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 				.httpBasic();
 	}
 
-	@Override
-	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		resources.authenticationEntryPoint(new AuthExceptionEntryPoint());
+	@Bean
+	public AccessDeniedHandler getAccessDeniedHandler() {
+		return new CustomAccessDeniedHandler();
 	}
 }

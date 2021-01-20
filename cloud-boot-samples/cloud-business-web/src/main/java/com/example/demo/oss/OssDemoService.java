@@ -40,36 +40,36 @@ import java.io.OutputStream;
 @Service
 public class OssDemoService {
 
-    @Autowired
+	@Autowired
 	private OSS ossClient;
 
-    /**
-     * the file in local machine.
-     */
-    @Value("classpath:/oss-test.json")
-    private Resource localFile;
+	/**
+	 * the file in local machine.
+	 */
+	@Value("classpath:/oss-test.json")
+	private Resource localFile;
 
-    /**
-     * the file in oss remote server.
-     */
-    @Value("oss://" + OssConfig.BUCKET_NAME + "/oss-test.json")
-    private Resource remoteFile;
+	/**
+	 * the file in oss remote server.
+	 */
+	@Value("oss://" + OssConfig.BUCKET_NAME + "/oss-test.json")
+	private Resource remoteFile;
 
-    public String readRemoteFileViaResource() throws IOException {
-        return IOUtils.readStreamAsString(remoteFile.getInputStream(), CharEncoding.UTF_8);
-    }
+	public String readRemoteFileViaResource() throws IOException {
+		return IOUtils.readStreamAsString(remoteFile.getInputStream(), CharEncoding.UTF_8);
+	}
 
-    public String readRemoteFileViaClient() throws IOException {
-        OSSObject ossObject = ossClient.getObject(OssConfig.BUCKET_NAME, "oss-test.json");
-        return IOUtils.readStreamAsString(ossObject.getObjectContent(), CharEncoding.UTF_8);
-    }
+	public String readRemoteFileViaClient() throws IOException {
+		OSSObject ossObject = ossClient.getObject(OssConfig.BUCKET_NAME, "oss-test.json");
+		return IOUtils.readStreamAsString(ossObject.getObjectContent(), CharEncoding.UTF_8);
+	}
 
-    public void uploadWithClient() {
+	public void uploadWithClient() {
 		ossClient.putObject(OssConfig.BUCKET_NAME, "oss-test.json", this.getClass()
 				.getClassLoader().getResourceAsStream("oss-test.json"));
 	}
 
-    public void uploadWithOutputStream() throws IOException {
+	public void uploadWithOutputStream() throws IOException {
 		try (OutputStream out = ((WritableResource) this.remoteFile).getOutputStream();
 			 InputStream in = localFile.getInputStream()) {
 			StreamUtils.copy(in, out);

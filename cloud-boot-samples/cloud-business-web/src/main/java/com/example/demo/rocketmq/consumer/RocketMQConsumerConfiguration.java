@@ -23,7 +23,7 @@ import org.springframework.context.annotation.Configuration;
  * @author <a href="mailto:fangjian0423@gmail.com">Jim</a>
  */
 @Configuration
-@EnableBinding({ MySink.class })
+@EnableBinding({MySink.class})
 public class RocketMQConsumerConfiguration {
 
 }

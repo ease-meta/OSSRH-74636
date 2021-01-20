@@ -25,47 +25,47 @@ import java.util.Arrays;
  **/
 public class MyCollection<T> implements ICollection<T> {
 
-    private T[] arys;
-    private int index    = -1;
-    private int capacity = 6;
+	private T[] arys;
+	private int index = -1;
+	private int capacity = 6;
 
-    @SuppressWarnings("unchecked")
-    public MyCollection() {
-        // TODO Auto-generated constructor stub
-        this.arys = (T[]) new Object[capacity];
-    }
+	@SuppressWarnings("unchecked")
+	public MyCollection() {
+		// TODO Auto-generated constructor stub
+		this.arys = (T[]) new Object[capacity];
+	}
 
-    @Override
-    public IIterator<T> iterator() {
-        // TODO Auto-generated method stub
-        return new MyIterator<>(this);
-    }
+	@Override
+	public IIterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return new MyIterator<>(this);
+	}
 
-    @Override
-    public void add(T t) {
-        // TODO Auto-generated method stub
-        index++;
-        if (index == capacity) {
-            capacity += 6;
-            this.arys = Arrays.copyOf(arys, capacity);
-        }
-        this.arys[index] = t;
-    }
+	@Override
+	public void add(T t) {
+		// TODO Auto-generated method stub
+		index++;
+		if (index == capacity) {
+			capacity += 6;
+			this.arys = Arrays.copyOf(arys, capacity);
+		}
+		this.arys[index] = t;
+	}
 
-    @Override
-    public T get(int index) {
-        // TODO Auto-generated method stub
-        if (index < size()) {
-            return this.arys[index];
-        }
+	@Override
+	public T get(int index) {
+		// TODO Auto-generated method stub
+		if (index < size()) {
+			return this.arys[index];
+		}
 
-        return null;
-    }
+		return null;
+	}
 
-    @Override
-    public int size() {
-        // TODO Auto-generated method stub
-        return index + 1;
-    }
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return index + 1;
+	}
 
 }

@@ -48,140 +48,112 @@ import static org.junit.Assert.assertNotNull;
 
 @SuppressWarnings("serial")
 public class TestMapFiltering {
-    @Target({ ElementType.FIELD })
-    @Retention(RetentionPolicy.RUNTIME)
-    public @interface CustomOffset {
-        public int value();
-    }
+	final ObjectMapper MAPPER = new ObjectMapper();
 
-    @JsonFilter("filterForMaps")
-    static class FilteredBean extends LinkedHashMap<String, Integer> {
-    }
+	@Test
+	public void testMapFilteringViaProps() throws Exception {
+		FilterProvider prov = new SimpleFilterProvider().addFilter("filterX",
+				SimpleBeanPropertyFilter.filterOutAllExcept("b"));
+		String json = MAPPER.writer(prov).writeValueAsString(new MapBean());
+		System.out.println(json);
+	}
 
-    static class MapBean {
-        @JsonFilter("filterX")
-        @CustomOffset(1)
-        public Map<String, Integer> values;
+	@Test
+	public void testMapFilteringViaClass() throws Exception {
+		FilteredBean bean = new FilteredBean();
+		bean.put("a", 4);
+		bean.put("b", 3);
+		FilterProvider prov = new SimpleFilterProvider().addFilter("filterForMaps",
+				SimpleBeanPropertyFilter.filterOutAllExcept("b"));
+		String json = MAPPER.writer(prov).writeValueAsString(bean);
+		System.out.println(json);
+	}
 
-        public MapBean() {
-            values = new LinkedHashMap<String, Integer>();
-            values.put("a", 1);
-            values.put("b", 5);
-            values.put("c", 9);
-        }
-    }
+	// [databind#527]
+	@Test
+	public void testNonNullValueMapViaProp() throws IOException {
+		String json = MAPPER.writeValueAsString(new NoNullValuesMapContainer().add("a", "foo")
+				.add("b", null).add("c", "bar"));
+		System.out.println(json);
+	}
 
-    static class MapBeanNoOffset {
-        @JsonFilter("filterX")
-        public Map<String, Integer> values;
+	// [databind#522]
+	@Test
+	public void testMapFilteringWithAnnotations() throws Exception {
+		FilterProvider prov = new SimpleFilterProvider().addFilter("filterX", new TestMapFilter());
+		String json = MAPPER.writer(prov).writeValueAsString(new MapBean());
+		// a=1 should become a=2
+		System.out.println(json);
 
-        public MapBeanNoOffset() {
-            values = new LinkedHashMap<String, Integer>();
-            values.put("a", 1);
-            values.put("b", 2);
-            values.put("c", 3);
-        }
-    }
+		// and then one without annotation as contrast
+		json = MAPPER.writer(prov).writeValueAsString(new MapBeanNoOffset());
+		System.out.println(json);
+	}
 
-    static class TestMapFilter implements PropertyFilter {
-        @Override
-        public void serializeAsField(Object bean, JsonGenerator g, SerializerProvider provider,
-                                     PropertyWriter writer) throws Exception {
-            String name = writer.getName();
+	// [databind#527]
+	@Test
+	public void testMapNonNullValue() throws IOException {
+		String json = MAPPER.writeValueAsString(new NoNullsStringMap().add("a", "foo")
+				.add("b", null).add("c", "bar"));
+		System.out.println(json);
+	}
 
-            // sanity checks
-            assertNotNull(writer.getType());
-            assertEquals(name, writer.getFullName().getSimpleName());
+	// [databind#527]
+	@Test
+	public void testMapNonEmptyValue() throws IOException {
+		String json = MAPPER.writeValueAsString(new NoEmptyStringsMap().add("a", "foo")
+				.add("b", "bar").add("c", ""));
+		System.out.println(json);
+	}
 
-            if (!"a".equals(name)) {
-                return;
-            }
-            CustomOffset n = writer.findAnnotation(CustomOffset.class);
-            int offset = (n == null) ? 0 : n.value();
+	// Test to ensure absent content of AtomicReference handled properly
+	// [databind#527]
+	@Test
+	public void testMapAbsentValue() throws IOException {
+		String json = MAPPER.writeValueAsString(new NoAbsentStringMap().add("a", "foo").add("b",
+				null));
+		System.out.println(json);
+	}
 
-            // 12-Jun-2017, tatu: With 2.9, `value` is the surrounding POJO, so
-            //    need to do casting
-            MapProperty prop = (MapProperty) writer;
-            Integer old = (Integer) prop.getValue();
-            prop.setValue(Integer.valueOf(offset + old.intValue()));
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testMapNullSerialization() throws IOException {
+		ObjectMapper m = new ObjectMapper();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("a", null);
+		// by default, should output null-valued entries:
+		assertEquals("{\"a\":null}", m.writeValueAsString(map));
+		// but not if explicitly asked not to (note: config value is dynamic here)
 
-            writer.serializeAsField(bean, g, provider);
-        }
+		m = new ObjectMapper();
+		m.disable(SerializationFeature.WRITE_NULL_MAP_VALUES);
+		assertEquals("{}", m.writeValueAsString(map));
+	}
 
-        @Override
-        public void serializeAsElement(Object elementValue, JsonGenerator jgen,
-                                       SerializerProvider prov, PropertyWriter writer)
-                                                                                      throws Exception {
-            // not needed for testing
-        }
+	// [databind#527]
+	@Test
+	public void testMapWithOnlyEmptyValues() throws IOException {
+		String json;
 
-        @Override
-        @Deprecated
-        public void depositSchemaProperty(PropertyWriter writer, ObjectNode propertiesNode,
-                                          SerializerProvider provider) throws JsonMappingException {
-        }
+		// First, non empty:
+		json = MAPPER.writeValueAsString(new Wrapper497(new StringMap497().add("a", "123")));
+		System.out.println(json);
 
-        @Override
-        public void depositSchemaProperty(PropertyWriter writer,
-                                          JsonObjectFormatVisitor objectVisitor,
-                                          SerializerProvider provider) throws JsonMappingException {
-        }
-    }
+		// then empty
+		json = MAPPER.writeValueAsString(new Wrapper497(new StringMap497().add("a", "").add("b",
+				null)));
+		System.out.println(json);
+	}
 
-    // [databind#527]
-    static class NoNullValuesMapContainer {
-        @JsonInclude(content = JsonInclude.Include.NON_NULL)
-        public Map<String, String> stuff = new LinkedHashMap<String, String>();
-
-        public NoNullValuesMapContainer add(String key, String value) {
-            stuff.put(key, value);
-            return this;
-        }
-    }
-
-    // [databind#527]
-    @JsonInclude(content = JsonInclude.Include.NON_NULL)
-    static class NoNullsStringMap extends LinkedHashMap<String, String> {
-        public NoNullsStringMap add(String key, String value) {
-            put(key, value);
-            return this;
-        }
-    }
-
-    // [databind#527]
-    @JsonInclude(content = JsonInclude.Include.NON_ABSENT)
-    static class NoAbsentStringMap extends LinkedHashMap<String, AtomicReference<?>> {
-        public NoAbsentStringMap add(String key, Object value) {
-            put(key, new AtomicReference<Object>(value));
-            return this;
-        }
-    }
-
-    // [databind#527]
-    @JsonInclude(content = JsonInclude.Include.NON_EMPTY)
-    static class NoEmptyStringsMap extends LinkedHashMap<String, String> {
-        public NoEmptyStringsMap add(String key, String value) {
-            put(key, value);
-            return this;
-        }
-    }
-
-    // [databind#497]: both Map AND contents excluded if empty
-    static class Wrapper497 {
-        @JsonInclude(content = JsonInclude.Include.NON_EMPTY, value = JsonInclude.Include.NON_EMPTY)
-        public StringMap497 values;
-
-        public Wrapper497(StringMap497 v) {
-            values = v;
-        }
-    }
-
-    static class StringMap497 extends LinkedHashMap<String, String> {
-        public StringMap497 add(String key, String value) {
-            put(key, value);
-            return this;
-        }
-    }
+	@Test
+	public void testMapViaGlobalNonEmpty() throws Exception {
+		// basic Map<String,String> subclass:
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setDefaultPropertyInclusion(JsonInclude.Value.empty().withContentInclusion(
+				JsonInclude.Include.NON_EMPTY));
+		System.out
+				.println(mapper.writeValueAsString(new StringMap497().add("x", "").add("a", "b")));
+	}
 
     /*
     /**********************************************************
@@ -189,120 +161,148 @@ public class TestMapFiltering {
     /**********************************************************
      */
 
-    final ObjectMapper MAPPER = new ObjectMapper();
+	@Test
+	public void testMapViaTypeOverride() throws Exception {
+		// basic Map<String,String> subclass:
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configOverride(Map.class).setInclude(
+				JsonInclude.Value.empty().withContentInclusion(JsonInclude.Include.NON_EMPTY));
+		System.out.println(mapper.writeValueAsString(new StringMap497().add("foo", "")
+				.add("a", "b")));
+	}
 
-    @Test
-    public void testMapFilteringViaProps() throws Exception {
-        FilterProvider prov = new SimpleFilterProvider().addFilter("filterX",
-            SimpleBeanPropertyFilter.filterOutAllExcept("b"));
-        String json = MAPPER.writer(prov).writeValueAsString(new MapBean());
-        System.out.println(json);
-    }
+	@Target({ElementType.FIELD})
+	@Retention(RetentionPolicy.RUNTIME)
+	public @interface CustomOffset {
+		public int value();
+	}
 
-    @Test
-    public void testMapFilteringViaClass() throws Exception {
-        FilteredBean bean = new FilteredBean();
-        bean.put("a", 4);
-        bean.put("b", 3);
-        FilterProvider prov = new SimpleFilterProvider().addFilter("filterForMaps",
-            SimpleBeanPropertyFilter.filterOutAllExcept("b"));
-        String json = MAPPER.writer(prov).writeValueAsString(bean);
-        System.out.println(json);
-    }
+	@JsonFilter("filterForMaps")
+	static class FilteredBean extends LinkedHashMap<String, Integer> {
+	}
 
-    // [databind#527]
-    @Test
-    public void testNonNullValueMapViaProp() throws IOException {
-        String json = MAPPER.writeValueAsString(new NoNullValuesMapContainer().add("a", "foo")
-            .add("b", null).add("c", "bar"));
-        System.out.println(json);
-    }
+	static class MapBean {
+		@JsonFilter("filterX")
+		@CustomOffset(1)
+		public Map<String, Integer> values;
 
-    // [databind#522]
-    @Test
-    public void testMapFilteringWithAnnotations() throws Exception {
-        FilterProvider prov = new SimpleFilterProvider().addFilter("filterX", new TestMapFilter());
-        String json = MAPPER.writer(prov).writeValueAsString(new MapBean());
-        // a=1 should become a=2
-        System.out.println(json);
+		public MapBean() {
+			values = new LinkedHashMap<String, Integer>();
+			values.put("a", 1);
+			values.put("b", 5);
+			values.put("c", 9);
+		}
+	}
 
-        // and then one without annotation as contrast
-        json = MAPPER.writer(prov).writeValueAsString(new MapBeanNoOffset());
-        System.out.println(json);
-    }
+	static class MapBeanNoOffset {
+		@JsonFilter("filterX")
+		public Map<String, Integer> values;
 
-    // [databind#527]
-    @Test
-    public void testMapNonNullValue() throws IOException {
-        String json = MAPPER.writeValueAsString(new NoNullsStringMap().add("a", "foo")
-            .add("b", null).add("c", "bar"));
-        System.out.println(json);
-    }
+		public MapBeanNoOffset() {
+			values = new LinkedHashMap<String, Integer>();
+			values.put("a", 1);
+			values.put("b", 2);
+			values.put("c", 3);
+		}
+	}
 
-    // [databind#527]
-    @Test
-    public void testMapNonEmptyValue() throws IOException {
-        String json = MAPPER.writeValueAsString(new NoEmptyStringsMap().add("a", "foo")
-            .add("b", "bar").add("c", ""));
-        System.out.println(json);
-    }
+	static class TestMapFilter implements PropertyFilter {
+		@Override
+		public void serializeAsField(Object bean, JsonGenerator g, SerializerProvider provider,
+									 PropertyWriter writer) throws Exception {
+			String name = writer.getName();
 
-    // Test to ensure absent content of AtomicReference handled properly
-    // [databind#527]
-    @Test
-    public void testMapAbsentValue() throws IOException {
-        String json = MAPPER.writeValueAsString(new NoAbsentStringMap().add("a", "foo").add("b",
-            null));
-        System.out.println(json);
-    }
+			// sanity checks
+			assertNotNull(writer.getType());
+			assertEquals(name, writer.getFullName().getSimpleName());
 
-    @SuppressWarnings("deprecation")
-    @Test
-    public void testMapNullSerialization() throws IOException {
-        ObjectMapper m = new ObjectMapper();
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("a", null);
-        // by default, should output null-valued entries:
-        assertEquals("{\"a\":null}", m.writeValueAsString(map));
-        // but not if explicitly asked not to (note: config value is dynamic here)
+			if (!"a".equals(name)) {
+				return;
+			}
+			CustomOffset n = writer.findAnnotation(CustomOffset.class);
+			int offset = (n == null) ? 0 : n.value();
 
-        m = new ObjectMapper();
-        m.disable(SerializationFeature.WRITE_NULL_MAP_VALUES);
-        assertEquals("{}", m.writeValueAsString(map));
-    }
+			// 12-Jun-2017, tatu: With 2.9, `value` is the surrounding POJO, so
+			//    need to do casting
+			MapProperty prop = (MapProperty) writer;
+			Integer old = (Integer) prop.getValue();
+			prop.setValue(Integer.valueOf(offset + old.intValue()));
 
-    // [databind#527]
-    @Test
-    public void testMapWithOnlyEmptyValues() throws IOException {
-        String json;
+			writer.serializeAsField(bean, g, provider);
+		}
 
-        // First, non empty:
-        json = MAPPER.writeValueAsString(new Wrapper497(new StringMap497().add("a", "123")));
-        System.out.println(json);
+		@Override
+		public void serializeAsElement(Object elementValue, JsonGenerator jgen,
+									   SerializerProvider prov, PropertyWriter writer)
+				throws Exception {
+			// not needed for testing
+		}
 
-        // then empty
-        json = MAPPER.writeValueAsString(new Wrapper497(new StringMap497().add("a", "").add("b",
-            null)));
-        System.out.println(json);
-    }
+		@Override
+		@Deprecated
+		public void depositSchemaProperty(PropertyWriter writer, ObjectNode propertiesNode,
+										  SerializerProvider provider) throws JsonMappingException {
+		}
 
-    @Test
-    public void testMapViaGlobalNonEmpty() throws Exception {
-        // basic Map<String,String> subclass:
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setDefaultPropertyInclusion(JsonInclude.Value.empty().withContentInclusion(
-            JsonInclude.Include.NON_EMPTY));
-        System.out
-            .println(mapper.writeValueAsString(new StringMap497().add("x", "").add("a", "b")));
-    }
+		@Override
+		public void depositSchemaProperty(PropertyWriter writer,
+										  JsonObjectFormatVisitor objectVisitor,
+										  SerializerProvider provider) throws JsonMappingException {
+		}
+	}
 
-    @Test
-    public void testMapViaTypeOverride() throws Exception {
-        // basic Map<String,String> subclass:
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.configOverride(Map.class).setInclude(
-            JsonInclude.Value.empty().withContentInclusion(JsonInclude.Include.NON_EMPTY));
-        System.out.println(mapper.writeValueAsString(new StringMap497().add("foo", "")
-            .add("a", "b")));
-    }
+	// [databind#527]
+	static class NoNullValuesMapContainer {
+		@JsonInclude(content = JsonInclude.Include.NON_NULL)
+		public Map<String, String> stuff = new LinkedHashMap<String, String>();
+
+		public NoNullValuesMapContainer add(String key, String value) {
+			stuff.put(key, value);
+			return this;
+		}
+	}
+
+	// [databind#527]
+	@JsonInclude(content = JsonInclude.Include.NON_NULL)
+	static class NoNullsStringMap extends LinkedHashMap<String, String> {
+		public NoNullsStringMap add(String key, String value) {
+			put(key, value);
+			return this;
+		}
+	}
+
+	// [databind#527]
+	@JsonInclude(content = JsonInclude.Include.NON_ABSENT)
+	static class NoAbsentStringMap extends LinkedHashMap<String, AtomicReference<?>> {
+		public NoAbsentStringMap add(String key, Object value) {
+			put(key, new AtomicReference<Object>(value));
+			return this;
+		}
+	}
+
+	// [databind#527]
+	@JsonInclude(content = JsonInclude.Include.NON_EMPTY)
+	static class NoEmptyStringsMap extends LinkedHashMap<String, String> {
+		public NoEmptyStringsMap add(String key, String value) {
+			put(key, value);
+			return this;
+		}
+	}
+
+	// [databind#497]: both Map AND contents excluded if empty
+	static class Wrapper497 {
+		@JsonInclude(content = JsonInclude.Include.NON_EMPTY, value = JsonInclude.Include.NON_EMPTY)
+		public StringMap497 values;
+
+		public Wrapper497(StringMap497 v) {
+			values = v;
+		}
+	}
+
+	static class StringMap497 extends LinkedHashMap<String, String> {
+		public StringMap497 add(String key, String value) {
+			put(key, value);
+			return this;
+		}
+	}
 }

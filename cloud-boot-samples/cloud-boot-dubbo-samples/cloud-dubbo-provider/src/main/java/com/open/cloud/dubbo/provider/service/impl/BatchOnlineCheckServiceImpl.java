@@ -25,12 +25,12 @@ import org.springframework.stereotype.Service;
 
 @Service("batchOnlineCheckService")
 public class BatchOnlineCheckServiceImpl extends
-                                        ServiceImpl<BatchOnlineCheckDao, BatchOnlineCheckEntity>
-                                                                                                implements
-                                                                                                BatchOnlineCheckService {
+		ServiceImpl<BatchOnlineCheckDao, BatchOnlineCheckEntity>
+		implements
+		BatchOnlineCheckService {
 
-    @Cacheable(value = "business#6*10")
-    public BatchOnlineCheckEntity getByJobId(String id) {
-        return list().get(0);
-    }
+	@Cacheable(value = "business#6*10")
+	public BatchOnlineCheckEntity getByJobId(String id) {
+		return list().get(0);
+	}
 }

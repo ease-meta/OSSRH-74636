@@ -23,7 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableHasor
 @SpringBootApplication
 public class ExampleApp {
-    public static void main(String[] args) {
-        SpringApplication.run(ExampleApp.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(ExampleApp.class, args);
+	}
 }

@@ -24,12 +24,12 @@ package observer;
  **/
 public interface IWathedSubject {
 
-    void add(IWatcher watcher);
+	void add(IWatcher watcher);
 
-    void remove(IWatcher watcher);
+	void remove(IWatcher watcher);
 
-    void notifyWatchers();
+	void notifyWatchers();
 
-    //被观察业务变化的接口
-    void update();
+	//被观察业务变化的接口
+	void update();
 }

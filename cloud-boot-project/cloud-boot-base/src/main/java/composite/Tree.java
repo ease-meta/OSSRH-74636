@@ -22,13 +22,13 @@ package composite;
  * @Fun 树 整体
  **/
 public class Tree {
-    private TreeNode root;
+	private TreeNode root;
 
-    public Tree(String name) {
-        this.root = new TreeNode(name);
-    }
+	public Tree(String name) {
+		this.root = new TreeNode(name);
+	}
 
-    public TreeNode getRoot() {
-        return root;
-    }
+	public TreeNode getRoot() {
+		return root;
+	}
 }

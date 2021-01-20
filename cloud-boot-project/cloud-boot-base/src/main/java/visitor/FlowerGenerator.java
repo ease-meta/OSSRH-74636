@@ -24,15 +24,15 @@ import java.util.Random;
  * @Fun 花生产器
  **/
 public class FlowerGenerator {
-    private static Random random = new Random();
+	private static Random random = new Random();
 
-    public static Flower newFlower() {
-        switch (random.nextInt(2)) {
-            default:
-            case 0:
-                return new Gladiolus();
-            case 1:
-                return new Chrysanthemum();
-        }
-    }
+	public static Flower newFlower() {
+		switch (random.nextInt(2)) {
+			default:
+			case 0:
+				return new Gladiolus();
+			case 1:
+				return new Chrysanthemum();
+		}
+	}
 }

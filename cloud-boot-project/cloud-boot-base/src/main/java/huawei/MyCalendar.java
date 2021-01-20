@@ -26,11 +26,11 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class MyCalendar {
 
-    private static ConcurrentHashMap<Long, Book> concurrentHashMap = new ConcurrentHashMap();
-    private static TreeSet<Book>                 treeSet           = new TreeSet<>();
-    private AtomicLong                           atomicLong        = new AtomicLong();
+	private static ConcurrentHashMap<Long, Book> concurrentHashMap = new ConcurrentHashMap();
+	private static TreeSet<Book> treeSet = new TreeSet<>();
+	private AtomicLong atomicLong = new AtomicLong();
 
-    public boolean book(final int start, final int end) {
+	public boolean book(final int start, final int end) {
 		Book book = new Book(start, end, 1);
 		Long index = atomicLong.getAndIncrement();
 		concurrentHashMap.forEach((k, v) -> {
@@ -56,68 +56,68 @@ public class MyCalendar {
 		return flag;
 	}
 
-    class Book implements Comparable<Book> {
+	class Book implements Comparable<Book> {
 
-        private Book() {
+		int start, end, level;
 
-        }
+		private Book() {
 
-        /**
-         * @param start 起始时间
-         * @param end   结束时间
-         * @param level 重预定次数
-         */
-        Book(int start, int end, int level) {
-            this.start = start;
-            this.end = end;
-            this.level = level;
-        }
+		}
 
-        int start, end, level;
+		/**
+		 * @param start 起始时间
+		 * @param end   结束时间
+		 * @param level 重预定次数
+		 */
+		Book(int start, int end, int level) {
+			this.start = start;
+			this.end = end;
+			this.level = level;
+		}
 
-        public void setLevel(int level) {
-            this.level = level;
-        }
+		public int getLevel() {
+			return level;
+		}
 
-        public int getLevel() {
-            return level;
-        }
+		public void setLevel(int level) {
+			this.level = level;
+		}
 
-        public void setEnd(int end) {
-            this.end = end;
-        }
+		@Override
+		public boolean equals(Object o) {
+			if (this == o) {
+				return true;
+			}
+			if (o == null || getClass() != o.getClass()) {
+				return false;
+			}
+			Book book = (Book) o;
+			return start == book.start && end == book.end;
+		}
 
-        public int getEnd() {
-            return end;
-        }
+		@Override
+		public int compareTo(Book o) {
+			if (this.getStart() - o.getStart() == 0) {
+				return this.getEnd() - o.getEnd();
+			} else {
+				return this.getStart() - o.getStart();
+			}
+		}
 
-        public void setStart(int start) {
-            this.start = start;
-        }
+		public int getStart() {
+			return start;
+		}
 
-        public int getStart() {
-            return start;
-        }
+		public int getEnd() {
+			return end;
+		}
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) {
-                return true;
-            }
-            if (o == null || getClass() != o.getClass()) {
-                return false;
-            }
-            Book book = (Book) o;
-            return start == book.start && end == book.end;
-        }
+		public void setEnd(int end) {
+			this.end = end;
+		}
 
-        @Override
-        public int compareTo(Book o) {
-            if (this.getStart() - o.getStart() == 0) {
-                return this.getEnd() - o.getEnd();
-            } else {
-                return this.getStart() - o.getStart();
-            }
-        }
-    }
+		public void setStart(int start) {
+			this.start = start;
+		}
+	}
 }

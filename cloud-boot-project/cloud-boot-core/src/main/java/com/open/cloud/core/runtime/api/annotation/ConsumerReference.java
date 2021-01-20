@@ -23,17 +23,17 @@ package com.open.cloud.core.runtime.api.annotation;
  */
 public @interface ConsumerReference {
 
-    /**
-     * restful uri rpc interfaceType.getName()
-     */
-    String value() default "";
+	/**
+	 * restful uri rpc interfaceType.getName()
+	 */
+	String value() default "";
 
-    /**
-     * rpc jvmFirst restful primary is false invoke jvm service first
-     *
-     * @return is jvm first or not
-     */
-    boolean jvmFirst() default true;
+	/**
+	 * rpc jvmFirst restful primary is false invoke jvm service first
+	 *
+	 * @return is jvm first or not
+	 */
+	boolean jvmFirst() default true;
 
-    Class<?> interfaceType() default void.class;
+	Class<?> interfaceType() default void.class;
 }

@@ -9,7 +9,8 @@
     <!-- 声明需要暴露的服务接口 -->
     #foreach($provider in $lists)
 
-        <sofa:service interface="$provider.interfaceName" ref="$provider.ref" #if("$!provider.uniqueId" == "") #else unique-id="$provider.uniqueId" #end>
+        <sofa:service interface="$provider.interfaceName" ref="$provider.ref" #if("$!provider.uniqueId" == "") #else
+                      unique-id="$provider.uniqueId" #end>
             <sofa:binding.bolt>
                 <sofa:global-attrs timeout="15000"/>
             </sofa:binding.bolt>

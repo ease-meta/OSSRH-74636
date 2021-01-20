@@ -30,12 +30,12 @@ import com.open.cloud.core.log.MiddleLoggerFactory;
 public class ZookeeperBoltServerMain {
 
 
+	private final static MiddleLogger bizLog = MiddleLoggerFactory.getLogger(ZookeeperBoltServerMain.class);
+
 	public static void main(String[] args) {
 
 		chkCycle("1", "2", "3");
 	}
-
-	private final static MiddleLogger bizLog = MiddleLoggerFactory.getLogger(ZookeeperBoltServerMain.class);
 
 	public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
 		bizLog.method(">>>>>>>>>>>>Begin>>>>>>>>>>>>");

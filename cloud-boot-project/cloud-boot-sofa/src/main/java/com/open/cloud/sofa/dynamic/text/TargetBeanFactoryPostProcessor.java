@@ -33,41 +33,38 @@ import org.springframework.core.env.Environment;
  * @date 2020/5/12
  */
 public class TargetBeanFactoryPostProcessor implements BeanFactoryPostProcessor, PriorityOrdered,
-                                           EnvironmentAware {
+		EnvironmentAware {
 
-    private Logger                          logger = LoggerFactory
-                                                       .getLogger(TargetBeanFactoryPostProcessor.class);
+	protected final SofaRuntimeContext sofaRuntimeContext;
+	protected final BindingConverterFactory bindingConverterFactory;
+	/** binding adapter factory */
+	protected final BindingAdapterFactory bindingAdapterFactory;
+	private Logger logger = LoggerFactory
+			.getLogger(TargetBeanFactoryPostProcessor.class);
+	private Environment environment;
 
-    private Environment                     environment;
+	public TargetBeanFactoryPostProcessor(Environment environment,
+										  SofaRuntimeContext sofaRuntimeContext,
+										  BindingConverterFactory bindingConverterFactory,
+										  BindingAdapterFactory bindingAdapterFactory) {
+		this.environment = environment;
+		this.sofaRuntimeContext = sofaRuntimeContext;
+		this.bindingConverterFactory = bindingConverterFactory;
+		this.bindingAdapterFactory = bindingAdapterFactory;
+	}
 
-    protected final SofaRuntimeContext      sofaRuntimeContext;
+	@Override
+	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
+			throws BeansException {
+	}
 
-    protected final BindingConverterFactory bindingConverterFactory;
-    /** binding adapter factory */
-    protected final BindingAdapterFactory   bindingAdapterFactory;
+	@Override
+	public void setEnvironment(Environment environment) {
+		this.environment = environment;
+	}
 
-    public TargetBeanFactoryPostProcessor(Environment environment,
-                                          SofaRuntimeContext sofaRuntimeContext,
-                                          BindingConverterFactory bindingConverterFactory,
-                                          BindingAdapterFactory bindingAdapterFactory) {
-        this.environment = environment;
-        this.sofaRuntimeContext = sofaRuntimeContext;
-        this.bindingConverterFactory = bindingConverterFactory;
-        this.bindingAdapterFactory = bindingAdapterFactory;
-    }
-
-    @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory)
-                                                                                   throws BeansException {
-    }
-
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
+	@Override
+	public int getOrder() {
+		return 0;
+	}
 }

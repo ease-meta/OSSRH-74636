@@ -23,10 +23,10 @@ package observer;
  **/
 public class UpdateWatcher implements IWatcher {
 
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        System.out.println(this + " 观察到：目标已经更新了。");
-    }
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		System.out.println(this + " 观察到：目标已经更新了。");
+	}
 
 }

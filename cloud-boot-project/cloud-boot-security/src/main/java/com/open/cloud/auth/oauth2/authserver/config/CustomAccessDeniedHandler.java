@@ -18,24 +18,24 @@ import java.util.Map;
 
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
-  @Autowired
-  private ObjectMapper objectMapper;
+	@Autowired
+	private ObjectMapper objectMapper;
 
-  @Override
-  public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-    response.setContentType("application/json;charset=UTF-8");
-    Map<String, String> map = new HashMap<>();
+	@Override
+	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+		response.setContentType("application/json;charset=UTF-8");
+		Map<String, String> map = new HashMap<>();
 //        map.put("exception", accessDeniedException.getMessage());
-    map.put("path", request.getServletPath());
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-    map.put("reqTime", sdf.format(new Date()));
-    response.setContentType("application/json");
-    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-    response.getWriter().write(objectMapper.writeValueAsString(new CommonResult()
-            .setCode(ErrorCode.NO_AUTH)
-            .setMessage(ErrorCodeConfig.getErrorMessage(ErrorCode.NO_AUTH))
-            .setData(map)));
-  }
+		map.put("path", request.getServletPath());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		map.put("reqTime", sdf.format(new Date()));
+		response.setContentType("application/json");
+		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+		response.getWriter().write(objectMapper.writeValueAsString(new CommonResult()
+				.setCode(ErrorCode.NO_AUTH)
+				.setMessage(ErrorCodeConfig.getErrorMessage(ErrorCode.NO_AUTH))
+				.setData(map)));
+	}
 
 
 }

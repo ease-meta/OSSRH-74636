@@ -31,32 +31,6 @@ import java.util.List;
  */
 public class Test {
 
-	@Data
-	@NoArgsConstructor
-	@AllArgsConstructor
-	@ToString
-	class Result {
-		/**
-		 * 在线人数
-		 */
-		Integer onlineUser;
-
-		/**
-		 * 注册人数
-		 */
-		Integer registered;
-
-		/**
-		 * 订单总额
-		 */
-		BigDecimal orderAmount;
-
-		/**
-		 * 支出总额
-		 */
-		BigDecimal outlayAmount;
-	}
-
 	@org.junit.Test
 	public void collect() {
 		System.out.println("数据汇总开始");
@@ -66,25 +40,6 @@ public class Test {
 		BigDecimal orderAmount = queryOrderAmount();
 		BigDecimal outlayAmount = queryOutlayAmount();
 		Result result = new Result(onlineUser, registered, orderAmount, outlayAmount);
-		long endTime = System.currentTimeMillis();
-		System.out.println("获取汇总数据结束，result = " + result);
-		System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
-	}
-
-	@org.junit.Test
-	public void collecta() {
-		System.out.println("数据汇总开始");
-		long startTime = System.currentTimeMillis();
-		Result result = new Result();
-		List<Runnable> taskList = new ArrayList<Runnable>() {
-			{
-				add(() -> result.setOnlineUser(queryOnlineUser()));
-				add(() -> result.setRegistered(queryRegistered()));
-				add(() -> result.setOrderAmount(queryOrderAmount()));
-				add(() -> result.setOutlayAmount(queryOutlayAmount()));
-			}
-		};
-		taskList.parallelStream().forEach(v -> v.run());
 		long endTime = System.currentTimeMillis();
 		System.out.println("获取汇总数据结束，result = " + result);
 		System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
@@ -128,5 +83,50 @@ public class Test {
 		}
 		System.out.println("查询支出总额 耗时3秒");
 		return BigDecimal.valueOf(1000);
+	}
+
+	@org.junit.Test
+	public void collecta() {
+		System.out.println("数据汇总开始");
+		long startTime = System.currentTimeMillis();
+		Result result = new Result();
+		List<Runnable> taskList = new ArrayList<Runnable>() {
+			{
+				add(() -> result.setOnlineUser(queryOnlineUser()));
+				add(() -> result.setRegistered(queryRegistered()));
+				add(() -> result.setOrderAmount(queryOrderAmount()));
+				add(() -> result.setOutlayAmount(queryOutlayAmount()));
+			}
+		};
+		taskList.parallelStream().forEach(v -> v.run());
+		long endTime = System.currentTimeMillis();
+		System.out.println("获取汇总数据结束，result = " + result);
+		System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
+	}
+
+	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@ToString
+	class Result {
+		/**
+		 * 在线人数
+		 */
+		Integer onlineUser;
+
+		/**
+		 * 注册人数
+		 */
+		Integer registered;
+
+		/**
+		 * 订单总额
+		 */
+		BigDecimal orderAmount;
+
+		/**
+		 * 支出总额
+		 */
+		BigDecimal outlayAmount;
 	}
 }

@@ -31,36 +31,36 @@ import model.enchanted.Spell;
  */
 public class EnchantedMazeGame extends MazeGame {
 
-    @Override
-    public Maze MakeMaze() {
-        // TODO Auto-generated method stub
-        return new Maze();
-    }
+	public static void main(String[] args) {
+		MazeGame game = new EnchantedMazeGame();
+		Maze aMaze = game.CreateMaze();
+		Room room = aMaze.getRoom(1);
+		System.err.println("Rooms : " + aMaze.getRoomCount());
+		room.Enter();
+	}
 
-    @Override
-    public Room MakeRoom(int number) {
-        // TODO Auto-generated method stub
-        return new EnchantedRoom(number, new Spell());
-    }
+	@Override
+	public Maze MakeMaze() {
+		// TODO Auto-generated method stub
+		return new Maze();
+	}
 
-    @Override
-    public Wall MakeWall() {
-        // TODO Auto-generated method stub
-        return new Wall();
-    }
+	@Override
+	public Room MakeRoom(int number) {
+		// TODO Auto-generated method stub
+		return new EnchantedRoom(number, new Spell());
+	}
 
-    @Override
-    public Door MakeDoor(Room r1, Room r2) {
-        // TODO Auto-generated method stub
-        return new DoorNeedingSpell(r1, r2);
-    }
+	@Override
+	public Door MakeDoor(Room r1, Room r2) {
+		// TODO Auto-generated method stub
+		return new DoorNeedingSpell(r1, r2);
+	}
 
-    public static void main(String[] args) {
-        MazeGame game = new EnchantedMazeGame();
-        Maze aMaze = game.CreateMaze();
-        Room room = aMaze.getRoom(1);
-        System.err.println("Rooms : " + aMaze.getRoomCount());
-        room.Enter();
-    }
+	@Override
+	public Wall MakeWall() {
+		// TODO Auto-generated method stub
+		return new Wall();
+	}
 
 }

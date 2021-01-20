@@ -24,10 +24,10 @@ package mediator;
  **/
 public class XmlPreview implements IWork {
 
-    @Override
-    public void work() {
-        // TODO Auto-generated method stub
-        System.out.println("预览里的组件变化了");
-    }
+	@Override
+	public void work() {
+		// TODO Auto-generated method stub
+		System.out.println("预览里的组件变化了");
+	}
 
 }

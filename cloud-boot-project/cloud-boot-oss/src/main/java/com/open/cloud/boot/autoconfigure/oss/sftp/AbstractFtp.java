@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.boot.autoconfigure.oss.sftp;
 
 import com.open.cloud.boot.autoconfigure.oss.DownloadFileRequest;
@@ -43,14 +59,6 @@ public abstract class AbstractFtp extends FileBase {
 	public abstract AbstractFtp reconnectIfTimeout();
 
 	/**
-	 * 打开指定目录
-	 *
-	 * @param directory directory
-	 * @return 是否打开目录
-	 */
-	abstract boolean cd(String directory);
-
-	/**
 	 * 打开上级目录
 	 *
 	 * @return 是否打开目录
@@ -61,19 +69,12 @@ public abstract class AbstractFtp extends FileBase {
 	}
 
 	/**
-	 * 远程当前目录（工作目录）
+	 * 打开指定目录
 	 *
-	 * @return 远程当前目录
+	 * @param directory directory
+	 * @return 是否打开目录
 	 */
-	abstract String pwd();
-
-	/**
-	 * 在当前远程目录（工作目录）下创建新的目录
-	 *
-	 * @param dir 目录名
-	 * @return 是否创建成功
-	 */
-	abstract boolean mkdir(String dir);
+	abstract boolean cd(String directory);
 
 	/**
 	 * 文件或目录是否存在
@@ -98,6 +99,28 @@ public abstract class AbstractFtp extends FileBase {
 	public abstract List<String> ls(String path);
 
 	/**
+	 * 是否包含指定字符串，忽略大小写
+	 *
+	 * @param names      文件或目录名列表
+	 * @param nameToFind 要查找的文件或目录名
+	 * @return 是否包含
+	 */
+	private static boolean containsIgnoreCase(List<String> names, String nameToFind) {
+		if (CollectionUtils.isEmpty(names)) {
+			return false;
+		}
+		if (StringUtils.isEmpty(nameToFind)) {
+			return false;
+		}
+		for (String name : names) {
+			if (nameToFind.equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * 删除指定目录下的指定文件
 	 *
 	 * @param path 目录路径
@@ -118,7 +141,7 @@ public abstract class AbstractFtp extends FileBase {
 	 *
 	 * @param dir 文件夹路径，绝对路径
 	 */
-	private void mkDirs(String dir) {
+	protected void mkDirs(String dir) {
 		final String[] dirs = StringUtils.trim(dir).split("[\\\\/]+");
 
 		final String now = pwd();
@@ -140,6 +163,21 @@ public abstract class AbstractFtp extends FileBase {
 	}
 
 	/**
+	 * 远程当前目录（工作目录）
+	 *
+	 * @return 远程当前目录
+	 */
+	abstract String pwd();
+
+	/**
+	 * 在当前远程目录（工作目录）下创建新的目录
+	 *
+	 * @param dir 目录名
+	 * @return 是否创建成功
+	 */
+	abstract boolean mkdir(String dir);
+
+	/**
 	 * 将本地文件上传到目标服务器，目标文件名为destPath，若destPath为目录，则目标文件名将与file文件名相同。
 	 * 覆盖模式
 	 *
@@ -147,8 +185,7 @@ public abstract class AbstractFtp extends FileBase {
 	 * @param file     需要上传的文件
 	 * @return 是否成功
 	 */
-	@Deprecated
-	public abstract boolean upload(String destPath, File file);
+	protected abstract boolean upload(String destPath, File file);
 
 	@Override
 	public abstract TransResult upload(final UploadFileRequest uploadFileRequest);
@@ -156,9 +193,10 @@ public abstract class AbstractFtp extends FileBase {
 	@Override
 	public abstract TransResult download(final DownloadFileRequest downloadFileRequest);
 
-
 	@Override
 	public abstract TransResult recursiveDownloadFolder(DownloadFileRequest downloadFileRequest);
+
+	// ---------------------------------------------------------------------------------------------------------------------------------------- Private method start
 
 	/**
 	 * 下载文件
@@ -166,41 +204,6 @@ public abstract class AbstractFtp extends FileBase {
 	 * @param path    文件路径
 	 * @param outFile 输出文件或目录
 	 */
-	@Deprecated
-	public abstract void download(String path, File outFile);
-
-	/**
-	 * 递归下载FTP服务器上文件到本地(文件目录和服务器同步), 服务器上有新文件会覆盖本地文件
-	 *
-	 * @param sourcePath ftp服务器目录
-	 * @param destDir    本地目录
-	 * @since 5.3.5
-	 */
-	@Deprecated
-	public abstract void recursiveDownloadFolder(String sourcePath, File destDir);
-
-	// ---------------------------------------------------------------------------------------------------------------------------------------- Private method start
-
-	/**
-	 * 是否包含指定字符串，忽略大小写
-	 *
-	 * @param names      文件或目录名列表
-	 * @param nameToFind 要查找的文件或目录名
-	 * @return 是否包含
-	 */
-	private static boolean containsIgnoreCase(List<String> names, String nameToFind) {
-		if (CollectionUtils.isEmpty(names)) {
-			return false;
-		}
-		if (StringUtils.isEmpty(nameToFind)) {
-			return false;
-		}
-		for (String name : names) {
-			if (nameToFind.equalsIgnoreCase(name)) {
-				return true;
-			}
-		}
-		return false;
-	}
+	protected abstract void download(String path, File outFile);
 	// ---------------------------------------------------------------------------------------------------------------------------------------- Private method end
 }

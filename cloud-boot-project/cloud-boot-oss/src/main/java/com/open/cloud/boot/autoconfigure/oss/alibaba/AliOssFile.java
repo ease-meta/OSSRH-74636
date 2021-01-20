@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.boot.autoconfigure.oss.alibaba;
 
 import com.aliyun.oss.OSS;
@@ -43,11 +59,16 @@ public class AliOssFile extends FileBase {
 
 	@Override
 	public TransResult download(DownloadFileRequest downloadFileRequest) {
-		Assert.notNull(downloadFileRequest.getBucketName(), "[bucketName] argument is required; it must not be null");
-		Assert.notNull(downloadFileRequest.getObjectName(), "[bucketName] argument is required; it must not be null");
-		GetObjectRequest getObjectRequest = new GetObjectRequest(downloadFileRequest.getBucketName(), downloadFileRequest.getObjectName()).withProgressListener(new GetObjectProgressListener());
+		Assert.notNull(downloadFileRequest.getBucketName(),
+				"[bucketName] argument is required; it must not be null");
+		Assert.notNull(downloadFileRequest.getObjectName(),
+				"[bucketName] argument is required; it must not be null");
+		GetObjectRequest getObjectRequest = new GetObjectRequest(
+				downloadFileRequest.getBucketName(), downloadFileRequest.getObjectName())
+				.withProgressListener(new GetObjectProgressListener());
 		//下载OSS文件到本地文件。如果指定的本地文件存在会覆盖，不存在则新建。
-		ObjectMetadata metadata = ossClient.getObject(getObjectRequest, downloadFileRequest.getLocalFile());
+		ObjectMetadata metadata = ossClient.getObject(getObjectRequest,
+				downloadFileRequest.getLocalFile());
 		TransResult.TransResultBuilder transResultBuilder = new TransResult.TransResultBuilder();
 		return transResultBuilder.totalFileNumber(1).succNumber(1).build();
 	}
@@ -60,7 +81,9 @@ public class AliOssFile extends FileBase {
 
 	@Override
 	public TransResult upload(UploadFileRequest uploadFileRequest) {
-		PutObjectRequest putObjectRequest = new PutObjectRequest(uploadFileRequest.getBucketName(), uploadFileRequest.getObjectName(), uploadFileRequest.getLocalFile()).withProgressListener(new PutObjectProgressListener());
+		PutObjectRequest putObjectRequest = new PutObjectRequest(uploadFileRequest.getBucketName(),
+				uploadFileRequest.getObjectName(), uploadFileRequest.getLocalFile())
+				.withProgressListener(new PutObjectProgressListener());
 		ossClient.putObject(putObjectRequest);
 		TransResult.TransResultBuilder transResultBuilder = new TransResult.TransResultBuilder();
 		return transResultBuilder.totalFileNumber(1).succNumber(1).build();
@@ -92,28 +115,33 @@ public class AliOssFile extends FileBase {
 
 				case RESPONSE_CONTENT_LENGTH_EVENT:
 					this.totalBytes = bytes;
-					logger.info(this.totalBytes + " bytes in total will be downloaded to a local file");
+					logger.info(this.totalBytes
+							+ " bytes in total will be downloaded to a local file");
 					break;
 
 				case RESPONSE_BYTE_TRANSFER_EVENT:
 					this.bytesRead += bytes;
 					if (this.totalBytes != -1) {
 						int percent = (int) (this.bytesRead * 100.0 / this.totalBytes);
-						logger.info(bytes + " bytes have been read at this time, download progress: " +
-								percent + "%(" + this.bytesRead + "/" + this.totalBytes + ")");
+						logger
+								.info(bytes + " bytes have been read at this time, download progress: "
+										+ percent + "%(" + this.bytesRead + "/" + this.totalBytes + ")");
 					} else {
-						logger.info(bytes + " bytes have been read at this time, download ratio: unknown" +
-								"(" + this.bytesRead + "/...)");
+						logger.info(bytes
+								+ " bytes have been read at this time, download ratio: unknown"
+								+ "(" + this.bytesRead + "/...)");
 					}
 					break;
 
 				case TRANSFER_COMPLETED_EVENT:
 					this.succeed = true;
-					logger.info("Succeed to download, " + this.bytesRead + " bytes have been transferred in total");
+					logger.info("Succeed to download, " + this.bytesRead
+							+ " bytes have been transferred in total");
 					break;
 
 				case TRANSFER_FAILED_EVENT:
-					logger.info("Failed to download, " + this.bytesRead + " bytes have been transferred");
+					logger.info("Failed to download, " + this.bytesRead
+							+ " bytes have been transferred");
 					break;
 
 				default:
@@ -130,7 +158,6 @@ public class AliOssFile extends FileBase {
 			return succeed;
 		}
 	}
-
 
 	/**
 	 * The type Put object progress listener.
@@ -155,19 +182,26 @@ public class AliOssFile extends FileBase {
 				case REQUEST_BYTE_TRANSFER_EVENT:
 					this.bytesWritten += bytes;
 					if (this.totalBytes != -1) {
-						int percent = (int) (this.bytesWritten * 100.0 / this.
-								totalBytes);
-						logger.info(bytes + " bytes have been written at this time, upload progress:" + percent + " % (" + this.bytesWritten + "/" + this.totalBytes + ")");
+						int percent = (int) (this.bytesWritten * 100.0 / this.totalBytes);
+						logger.info(bytes
+								+ " bytes have been written at this time, upload progress:"
+								+ percent + " % (" + this.bytesWritten + "/" + this.totalBytes
+								+ ")");
 					} else {
-						logger.info(bytes + " bytes have been written at this time, upload ratio: unknown " + " (" + this.bytesWritten + "/...)");
+						logger
+								.info(bytes
+										+ " bytes have been written at this time, upload ratio: unknown "
+										+ " (" + this.bytesWritten + "/...)");
 					}
 					break;
 				case TRANSFER_COMPLETED_EVENT:
 					this.succeed = true;
-					logger.info("Succeed to upload, " + this.bytesWritten + " bytes have been transferred in total");
+					logger.info("Succeed to upload, " + this.bytesWritten
+							+ " bytes have been transferred in total");
 					break;
 				case TRANSFER_FAILED_EVENT:
-					logger.info("Failed to upload, " + this.bytesWritten + " bytes have been transferred");
+					logger.info("Failed to upload, " + this.bytesWritten
+							+ " bytes have been transferred");
 					break;
 				default:
 					break;

@@ -30,23 +30,22 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserMapper userMapper;
+	private static final BeanCopier copier = BeanCopier
+			.create(UserModel.class, UserDO.class, false);
+	@Autowired
+	private UserMapper userMapper;
 
-    private static final BeanCopier copier = BeanCopier
-            .create(UserModel.class, UserDO.class, false);
+	public String getUserName(Long id) {
+		UserDO userDO = userMapper.getById(id);
+		return userDO != null ? userDO.getName() : null;
+	}
 
-    public String getUserName(Long id) {
-        UserDO userDO = userMapper.getById(id);
-        return userDO != null ? userDO.getName() : null;
-    }
+	public UserModel addUser(UserModel user) {
+		UserDO userDO = new UserDO();
+		copier.copy(user, userDO, null);
 
-    public UserModel addUser(UserModel user) {
-        UserDO userDO = new UserDO();
-        copier.copy(user, userDO, null);
-
-        Long id = userMapper.insert(userDO);
-        user.setId(id);
-        return user;
-    }
+		Long id = userMapper.insert(userDO);
+		user.setId(id);
+		return user;
+	}
 }

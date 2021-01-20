@@ -26,38 +26,38 @@ import com.leijian.moc.SubClass2;
  **/
 public class Factory implements IFactory {
 
-    @Override
-    public SubClass1 createSubClass1() {
-        return null;
-    }
+	@Override
+	public SubClass1 createSubClass1() {
+		return null;
+	}
 
-    @Override
-    public SubClass2 createSubClass2() {
-        return null;
-    }
+	@Override
+	public SubClass2 createSubClass2() {
+		return null;
+	}
 
-    @Override
-    public IProduct1 createProduct1A() {
-        // TODO Auto-generated method stub
-        return new GradeProduct1A();
-    }
+	@Override
+	public IProduct1 createProduct1A() {
+		// TODO Auto-generated method stub
+		return new GradeProduct1A();
+	}
 
-    @Override
-    public IProduct1 createProduct1B() {
-        // TODO Auto-generated method stub
-        return new GradeProduct1B();
-    }
+	@Override
+	public IProduct1 createProduct1B() {
+		// TODO Auto-generated method stub
+		return new GradeProduct1B();
+	}
 
-    @Override
-    public IProduct2 createProduct2A() {
-        // TODO Auto-generated method stub
-        return new GradeProduct2A();
-    }
+	@Override
+	public IProduct2 createProduct2A() {
+		// TODO Auto-generated method stub
+		return new GradeProduct2A();
+	}
 
-    @Override
-    public IProduct2 createProduct2B() {
-        // TODO Auto-generated method stub
-        return new GradeProduct2B();
-    }
+	@Override
+	public IProduct2 createProduct2B() {
+		// TODO Auto-generated method stub
+		return new GradeProduct2B();
+	}
 
 }

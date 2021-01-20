@@ -15,20 +15,6 @@ public class SM3Utils {
 	}
 
 	/**
-	 * 计算SM3摘要值
-	 *
-	 * @param srcData 原文
-	 * @return 摘要值，对于SM3算法来说是32字节
-	 */
-	public static byte[] hash(byte[] srcData) {
-		SM3Digest digest = new SM3Digest();
-		digest.update(srcData, 0, srcData.length);
-		byte[] hash = new byte[digest.getDigestSize()];
-		digest.doFinal(hash, 0);
-		return hash;
-	}
-
-	/**
 	 * 验证摘要
 	 *
 	 * @param srcData 原文
@@ -42,6 +28,20 @@ public class SM3Utils {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * 计算SM3摘要值
+	 *
+	 * @param srcData 原文
+	 * @return 摘要值，对于SM3算法来说是32字节
+	 */
+	public static byte[] hash(byte[] srcData) {
+		SM3Digest digest = new SM3Digest();
+		digest.update(srcData, 0, srcData.length);
+		byte[] hash = new byte[digest.getDigestSize()];
+		digest.doFinal(hash, 0);
+		return hash;
 	}
 
 	/**

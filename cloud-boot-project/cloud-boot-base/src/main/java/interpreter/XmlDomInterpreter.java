@@ -22,9 +22,9 @@ package interpreter;
  * @Fun
  **/
 public class XmlDomInterpreter implements Interpreter {
-    @Override
-    public void interpreter(Context context) {
-        // TODO Auto-generated method stub
-        System.out.println("xml dom Interpreter : " + context.getData());
-    }
+	@Override
+	public void interpreter(Context context) {
+		// TODO Auto-generated method stub
+		System.out.println("xml dom Interpreter : " + context.getData());
+	}
 }

@@ -31,83 +31,83 @@ import model.enchanted.EnchantedMazeFactory;
  * @author shadow
  */
 public class MazeGame {
-    //Normal
-    public Maze CreateMaze() {
-        Maze aMaze = new Maze();
+	public static void main(String[] args) {
+		// MazeGame game = new MazeGame();
+		// MazeFactory factory = new MazeFactory();
+		// Maze amaze = game.CreateMaze(factory);
+		// System.err.println(amaze.getRoomCount());
 
-        Room room1 = new Room(1);
-        Room room2 = new Room(2);
-        Door theDoor = new Door(room1, room2);
-        aMaze.AddRoom(room1);
-        aMaze.AddRoom(room2);
+		MazeGame game = new MazeGame();
+		//		EnchantedMazeFactory factory = new EnchantedMazeFactory();
+		//		Maze amaze = game.CreateMaze(factory);
 
-        room1.SetSide(Direction.North, new Wall());
-        room1.SetSide(Direction.East, theDoor);
-        room1.SetSide(Direction.South, new Wall());
-        room1.SetSide(Direction.West, new Wall());
+		MazeFactory factory = new EnchantedMazeFactory();
+		MazeBuilder builder = new StandardMazeBuilder(factory);
+		Maze amaze = game.CreateMaze(builder);
 
-        room2.SetSide(Direction.North, new Wall());
-        room2.SetSide(Direction.East, new Wall());
-        room2.SetSide(Direction.South, new Wall());
-        room2.SetSide(Direction.West, theDoor);
+		System.err.println(amaze.getRoomCount());
+		Room room = amaze.getRoom(1);
+		room.Enter();
+		// EnchantedRoom room = (EnchantedRoom) amaze.getRoom(1);
+		// System.err.println(room.getSpell().getSpell());
 
-        return aMaze;
-    }
+	}
 
-    //Abstract Factory
-    public Maze CreateMaze(MazeFactory factory) {
+	//Builder
+	public Maze CreateMaze(MazeBuilder builder) {
+		builder.Buildmaze();
 
-        Maze maze = factory.MakeMaze();
-        Room room1 = factory.MakeRoom(1);
-        Room room2 = factory.MakeRoom(2);
-        Door door = factory.MakeDoor(room1, room2);
+		builder.BuildRoom(1);
+		builder.BuildRoom(2);
+		builder.BuildDoor(1, 2);
 
-        maze.AddRoom(room1);
-        maze.AddRoom(room2);
+		return builder.GetMaze();
+	}
 
-        room1.SetSide(Direction.North, factory.MakeWall());
-        room1.SetSide(Direction.East, door);
-        room1.SetSide(Direction.South, factory.MakeWall());
-        room1.SetSide(Direction.West, factory.MakeWall());
+	//Normal
+	public Maze CreateMaze() {
+		Maze aMaze = new Maze();
 
-        room2.SetSide(Direction.North, factory.MakeWall());
-        room2.SetSide(Direction.East, factory.MakeWall());
-        room2.SetSide(Direction.South, factory.MakeWall());
-        room2.SetSide(Direction.West, door);
+		Room room1 = new Room(1);
+		Room room2 = new Room(2);
+		Door theDoor = new Door(room1, room2);
+		aMaze.AddRoom(room1);
+		aMaze.AddRoom(room2);
 
-        return maze;
-    }
+		room1.SetSide(Direction.North, new Wall());
+		room1.SetSide(Direction.East, theDoor);
+		room1.SetSide(Direction.South, new Wall());
+		room1.SetSide(Direction.West, new Wall());
 
-    //Builder
-    public Maze CreateMaze(MazeBuilder builder) {
-        builder.Buildmaze();
+		room2.SetSide(Direction.North, new Wall());
+		room2.SetSide(Direction.East, new Wall());
+		room2.SetSide(Direction.South, new Wall());
+		room2.SetSide(Direction.West, theDoor);
 
-        builder.BuildRoom(1);
-        builder.BuildRoom(2);
-        builder.BuildDoor(1, 2);
+		return aMaze;
+	}
 
-        return builder.GetMaze();
-    }
+	//Abstract Factory
+	public Maze CreateMaze(MazeFactory factory) {
 
-    public static void main(String[] args) {
-        // MazeGame game = new MazeGame();
-        // MazeFactory factory = new MazeFactory();
-        // Maze amaze = game.CreateMaze(factory);
-        // System.err.println(amaze.getRoomCount());
+		Maze maze = factory.MakeMaze();
+		Room room1 = factory.MakeRoom(1);
+		Room room2 = factory.MakeRoom(2);
+		Door door = factory.MakeDoor(room1, room2);
 
-        MazeGame game = new MazeGame();
-        //		EnchantedMazeFactory factory = new EnchantedMazeFactory();
-        //		Maze amaze = game.CreateMaze(factory);
+		maze.AddRoom(room1);
+		maze.AddRoom(room2);
 
-        MazeFactory factory = new EnchantedMazeFactory();
-        MazeBuilder builder = new StandardMazeBuilder(factory);
-        Maze amaze = game.CreateMaze(builder);
+		room1.SetSide(Direction.North, factory.MakeWall());
+		room1.SetSide(Direction.East, door);
+		room1.SetSide(Direction.South, factory.MakeWall());
+		room1.SetSide(Direction.West, factory.MakeWall());
 
-        System.err.println(amaze.getRoomCount());
-        Room room = amaze.getRoom(1);
-        room.Enter();
-        // EnchantedRoom room = (EnchantedRoom) amaze.getRoom(1);
-        // System.err.println(room.getSpell().getSpell());
+		room2.SetSide(Direction.North, factory.MakeWall());
+		room2.SetSide(Direction.East, factory.MakeWall());
+		room2.SetSide(Direction.South, factory.MakeWall());
+		room2.SetSide(Direction.West, door);
 
-    }
+		return maze;
+	}
 }

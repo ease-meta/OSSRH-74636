@@ -89,26 +89,26 @@ public class HomeController {
 		}
 
 		return SUCCESS;
-    }
+	}
 
-    @GlobalTransactional(timeoutMills = 300000, name = "spring-cloud-demo-tx")
-    @GetMapping(value = "/seata/feign", produces = "application/json")
-    public String feign() {
+	@GlobalTransactional(timeoutMills = 300000, name = "spring-cloud-demo-tx")
+	@GetMapping(value = "/seata/feign", produces = "application/json")
+	public String feign() {
 
-        String result = storageService.storage(COMMODITY_CODE, ORDER_COUNT);
+		String result = storageService.storage(COMMODITY_CODE, ORDER_COUNT);
 
-        if (!SUCCESS.equals(result)) {
-            throw new RuntimeException();
-        }
+		if (!SUCCESS.equals(result)) {
+			throw new RuntimeException();
+		}
 
-        result = orderService.order(USER_ID, COMMODITY_CODE, ORDER_COUNT);
+		result = orderService.order(USER_ID, COMMODITY_CODE, ORDER_COUNT);
 
-        if (!SUCCESS.equals(result)) {
-            throw new RuntimeException();
-        }
+		if (!SUCCESS.equals(result)) {
+			throw new RuntimeException();
+		}
 
-        return SUCCESS;
+		return SUCCESS;
 
-    }
+	}
 
 }

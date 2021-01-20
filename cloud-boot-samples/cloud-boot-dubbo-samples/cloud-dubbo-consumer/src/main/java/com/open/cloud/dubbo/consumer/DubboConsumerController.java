@@ -30,11 +30,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "${spring.application.name}", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DubboConsumerController {
 
-    @Autowired
-    private DemoService demoService;
+	@Autowired
+	private DemoService demoService;
 
-    @PostMapping(value = "/dubboconsumercontroller/sayHello")
-    public String sayHello(String message) {
-        return demoService.sayHello(message);
-    }
+	@PostMapping(value = "/dubboconsumercontroller/sayHello")
+	public String sayHello(String message) {
+		return demoService.sayHello(message);
+	}
 }

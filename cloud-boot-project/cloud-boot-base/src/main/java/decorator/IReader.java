@@ -22,5 +22,5 @@ package decorator;
  * @Fun
  **/
 public interface IReader {
-    void read();
+	void read();
 }

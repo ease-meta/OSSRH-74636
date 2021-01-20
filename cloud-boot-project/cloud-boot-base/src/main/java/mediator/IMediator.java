@@ -22,7 +22,7 @@ package mediator;
  * @Fun 中介者接口
  **/
 public interface IMediator {
-    public void creareMediator();
+	public void creareMediator();
 
-    public void work();
+	public void work();
 }

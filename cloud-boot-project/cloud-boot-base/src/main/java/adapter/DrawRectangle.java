@@ -22,7 +22,7 @@
 package adapter;
 
 public class DrawRectangle {
-    public void drawRectangle(String msg) {
-        System.out.println("draw Rectangle: " + msg);
-    }
+	public void drawRectangle(String msg) {
+		System.out.println("draw Rectangle: " + msg);
+	}
 }

@@ -24,13 +24,13 @@ import reactor.core.publisher.Mono;
 /**
  *
  * @author Leijian
- * @date   2020/6/22 17:09
+ * @date 2020/6/22 17:09
  */
 public class WebfluxFilter implements WebFilter {
 
-    @Override
-    public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
-        return webFilterChain.filter(serverWebExchange);
-    }
+	@Override
+	public Mono<Void> filter(ServerWebExchange serverWebExchange, WebFilterChain webFilterChain) {
+		return webFilterChain.filter(serverWebExchange);
+	}
 
 }

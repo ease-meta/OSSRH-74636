@@ -22,5 +22,5 @@ package observer;
  * @Fun 监听 用户在注册后
  **/
 public interface IRegisterListener {
-    void onRegistered();
+	void onRegistered();
 }

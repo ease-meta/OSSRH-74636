@@ -22,7 +22,7 @@ package command;
  * @Fun 接受者类实现
  **/
 public class Receiver {
-    public void action() {
-        System.out.println("receiver do something.");
-    }
+	public void action() {
+		System.out.println("receiver do something.");
+	}
 }

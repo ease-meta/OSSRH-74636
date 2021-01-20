@@ -25,17 +25,17 @@ import java.math.BigDecimal;
  **/
 public class CashRebate implements ICashSuper {
 
-    private double rebate;
+	private double rebate;
 
-    public CashRebate(double rebate) {
-        // TODO Auto-generated constructor stub
-        this.rebate = rebate;
-    }
+	public CashRebate(double rebate) {
+		// TODO Auto-generated constructor stub
+		this.rebate = rebate;
+	}
 
-    @Override
-    public double acceptCash(double money) {
-        // TODO Auto-generated method stub
-        return new BigDecimal(money * rebate / 10).setScale(2, BigDecimal.ROUND_HALF_UP)
-            .doubleValue();
-    }
+	@Override
+	public double acceptCash(double money) {
+		// TODO Auto-generated method stub
+		return new BigDecimal(money * rebate / 10).setScale(2, BigDecimal.ROUND_HALF_UP)
+				.doubleValue();
+	}
 }

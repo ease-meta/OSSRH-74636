@@ -33,44 +33,44 @@ import java.util.Collections;
  */
 public class RedisCacheResolver extends AbstractCacheResolver {
 
-    public RedisCacheResolver(CacheManager cacheManager) {
-        super(cacheManager);
-    }
+	public RedisCacheResolver(CacheManager cacheManager) {
+		super(cacheManager);
+	}
 
-    @Nullable
-    static RedisCacheResolver of(@Nullable CacheManager cacheManager) {
-        return (cacheManager != null ? new RedisCacheResolver(cacheManager) : null);
-    }
+	@Nullable
+	static RedisCacheResolver of(@Nullable CacheManager cacheManager) {
+		return (cacheManager != null ? new RedisCacheResolver(cacheManager) : null);
+	}
 
-    @Override
-    protected Collection<String> getCacheNames(CacheOperationInvocationContext<?> context) {
-        return context.getOperation().getCacheNames();
-    }
+	@Override
+	public Collection<? extends Cache> resolveCaches(CacheOperationInvocationContext<?> context) {
+		Collection<String> cacheNames = getCacheNames(context);
+		if (cacheNames == null) {
+			return Collections.emptyList();
+		}
+		Collection<Cache> result = new ArrayList<Cache>(cacheNames.size());
+		for (String cacheName : cacheNames) {
+			if (StringUtils.isBlank(cacheName)) {
+				throw new IllegalArgumentException("Cached name cannot be empty");
+			}
+			if (cacheName.startsWith(CacheConstant.PARAM)
+					|| cacheName.startsWith(CacheConstant.BUSINESS)) {
+				Cache cache = getCacheManager().getCache(cacheName);
+				if (cache == null) {
+					throw new IllegalArgumentException("Cannot find cache named '" + cacheName
+							+ "' for " + context.getOperation());
+				}
+				result.add(cache);
+			} else {
+				throw new IllegalArgumentException("Cannot find cache named '" + cacheName
+						+ "' for " + context.getOperation());
+			}
+		}
+		return result;
+	}
 
-    @Override
-    public Collection<? extends Cache> resolveCaches(CacheOperationInvocationContext<?> context) {
-        Collection<String> cacheNames = getCacheNames(context);
-        if (cacheNames == null) {
-            return Collections.emptyList();
-        }
-        Collection<Cache> result = new ArrayList<Cache>(cacheNames.size());
-        for (String cacheName : cacheNames) {
-            if (StringUtils.isBlank(cacheName)) {
-                throw new IllegalArgumentException("Cached name cannot be empty");
-            }
-            if (cacheName.startsWith(CacheConstant.PARAM)
-                || cacheName.startsWith(CacheConstant.BUSINESS)) {
-                Cache cache = getCacheManager().getCache(cacheName);
-                if (cache == null) {
-                    throw new IllegalArgumentException("Cannot find cache named '" + cacheName
-                                                       + "' for " + context.getOperation());
-                }
-                result.add(cache);
-            } else {
-                throw new IllegalArgumentException("Cannot find cache named '" + cacheName
-                                                   + "' for " + context.getOperation());
-            }
-        }
-        return result;
-    }
+	@Override
+	protected Collection<String> getCacheNames(CacheOperationInvocationContext<?> context) {
+		return context.getOperation().getCacheNames();
+	}
 }

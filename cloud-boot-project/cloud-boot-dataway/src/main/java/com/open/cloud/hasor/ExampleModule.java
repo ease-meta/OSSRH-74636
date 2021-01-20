@@ -26,15 +26,15 @@ import javax.sql.DataSource;
 
 //@Component
 public class ExampleModule implements SpringModule {
-    @Autowired
-    private DataSource dataSource = null;
+	@Autowired
+	private DataSource dataSource = null;
 
-    @Override
-    public void loadModule(ApiBinder apiBinder) throws Throwable {
-        // .DataSource form Spring boot into Hasor
-        apiBinder.installModule(new JdbcModule(Level.Full, this.dataSource));
-        // .custom DataQL
-        //apiBinder.tryCast(QueryApiBinder.class).loadUdfSource(apiBinder.findClass(DimUdfSource.class));
-        //apiBinder.tryCast(QueryApiBinder.class).bindFragment("sql", SqlFragment.class);
-    }
+	@Override
+	public void loadModule(ApiBinder apiBinder) throws Throwable {
+		// .DataSource form Spring boot into Hasor
+		apiBinder.installModule(new JdbcModule(Level.Full, this.dataSource));
+		// .custom DataQL
+		//apiBinder.tryCast(QueryApiBinder.class).loadUdfSource(apiBinder.findClass(DimUdfSource.class));
+		//apiBinder.tryCast(QueryApiBinder.class).bindFragment("sql", SqlFragment.class);
+	}
 }

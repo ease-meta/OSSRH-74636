@@ -29,20 +29,19 @@ import java.security.Security;
 
 public class SM4Utils {
 
-	static {
-		Security.addProvider(new BouncyCastleProvider());
-	}
-
 	public static final String ALGORITHM_NAME = "SM4";
 	public static final String ALGORITHM_NAME_ECB_PADDING = "SM4/ECB/PKCS5Padding";
 	public static final String ALGORITHM_NAME_ECB_NOPADDING = "SM4/ECB/NoPadding";
 	public static final String ALGORITHM_NAME_CBC_PADDING = "SM4/CBC/PKCS5Padding";
 	public static final String ALGORITHM_NAME_CBC_NOPADDING = "SM4/CBC/NoPadding";
-
 	/**
 	 * SM4算法目前只支持128位（即密钥16字节）
 	 */
 	public static final int DEFAULT_KEY_SIZE = 128;
+
+	static {
+		Security.addProvider(new BouncyCastleProvider());
+	}
 
 	public static byte[] generateKey() throws NoSuchAlgorithmException, NoSuchProviderException {
 		return generateKey(DEFAULT_KEY_SIZE);
@@ -59,6 +58,15 @@ public class SM4Utils {
 			NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
 		Cipher cipher = generateECBCipher(ALGORITHM_NAME_ECB_PADDING, Cipher.ENCRYPT_MODE, key);
 		return cipher.doFinal(data);
+	}
+
+	private static Cipher generateECBCipher(String algorithmName, int mode, byte[] key)
+			throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException,
+			InvalidKeyException {
+		Cipher cipher = Cipher.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
+		Key sm4Key = new SecretKeySpec(key, ALGORITHM_NAME);
+		cipher.init(mode, sm4Key);
+		return cipher;
 	}
 
 	public static byte[] decrypt_ECB_Padding(byte[] key, byte[] cipherText)
@@ -88,6 +96,16 @@ public class SM4Utils {
 			InvalidAlgorithmParameterException {
 		Cipher cipher = generateCBCCipher(ALGORITHM_NAME_CBC_PADDING, Cipher.ENCRYPT_MODE, key, iv);
 		return cipher.doFinal(data);
+	}
+
+	private static Cipher generateCBCCipher(String algorithmName, int mode, byte[] key, byte[] iv)
+			throws InvalidKeyException, InvalidAlgorithmParameterException, NoSuchAlgorithmException,
+			NoSuchProviderException, NoSuchPaddingException {
+		Cipher cipher = Cipher.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
+		Key sm4Key = new SecretKeySpec(key, ALGORITHM_NAME);
+		IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
+		cipher.init(mode, sm4Key, ivParameterSpec);
+		return cipher;
 	}
 
 	public static byte[] decrypt_CBC_Padding(byte[] key, byte[] iv, byte[] cipherText)
@@ -120,9 +138,26 @@ public class SM4Utils {
 		return doMac("SM4-CMAC", keyObj, data);
 	}
 
+	private static byte[] doMac(String algorithmName, Key key, byte[] data) throws NoSuchProviderException,
+			NoSuchAlgorithmException, InvalidKeyException {
+		Mac mac = Mac.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
+		mac.init(key);
+		mac.update(data);
+		return mac.doFinal();
+	}
+
 	public static byte[] doGMac(byte[] key, byte[] iv, int tagLength, byte[] data) {
 		org.bouncycastle.crypto.Mac mac = new GMac(new GCMBlockCipher(new SM4Engine()), tagLength * 8);
 		return doMac(mac, key, iv, data);
+	}
+
+	private static byte[] doMac(org.bouncycastle.crypto.Mac mac, byte[] key, byte[] iv, byte[] data) {
+		CipherParameters cipherParameters = new KeyParameter(key);
+		mac.init(new ParametersWithIV(cipherParameters, iv));
+		mac.update(data, 0, data.length);
+		byte[] result = new byte[mac.getMacSize()];
+		mac.doFinal(result, 0);
+		return result;
 	}
 
 	/**
@@ -156,42 +191,5 @@ public class SM4Utils {
 		}
 		org.bouncycastle.crypto.Mac mac = new CBCBlockCipherMac(engine, engine.getBlockSize() * 8, padding);
 		return doMac(mac, key, iv, data);
-	}
-
-
-	private static byte[] doMac(org.bouncycastle.crypto.Mac mac, byte[] key, byte[] iv, byte[] data) {
-		CipherParameters cipherParameters = new KeyParameter(key);
-		mac.init(new ParametersWithIV(cipherParameters, iv));
-		mac.update(data, 0, data.length);
-		byte[] result = new byte[mac.getMacSize()];
-		mac.doFinal(result, 0);
-		return result;
-	}
-
-	private static byte[] doMac(String algorithmName, Key key, byte[] data) throws NoSuchProviderException,
-			NoSuchAlgorithmException, InvalidKeyException {
-		Mac mac = Mac.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
-		mac.init(key);
-		mac.update(data);
-		return mac.doFinal();
-	}
-
-	private static Cipher generateECBCipher(String algorithmName, int mode, byte[] key)
-			throws NoSuchAlgorithmException, NoSuchProviderException, NoSuchPaddingException,
-			InvalidKeyException {
-		Cipher cipher = Cipher.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
-		Key sm4Key = new SecretKeySpec(key, ALGORITHM_NAME);
-		cipher.init(mode, sm4Key);
-		return cipher;
-	}
-
-	private static Cipher generateCBCCipher(String algorithmName, int mode, byte[] key, byte[] iv)
-			throws InvalidKeyException, InvalidAlgorithmParameterException, NoSuchAlgorithmException,
-			NoSuchProviderException, NoSuchPaddingException {
-		Cipher cipher = Cipher.getInstance(algorithmName, BouncyCastleProvider.PROVIDER_NAME);
-		Key sm4Key = new SecretKeySpec(key, ALGORITHM_NAME);
-		IvParameterSpec ivParameterSpec = new IvParameterSpec(iv);
-		cipher.init(mode, sm4Key, ivParameterSpec);
-		return cipher;
 	}
 }

@@ -26,18 +26,18 @@ import model.base.Maze;
  * @since
  **/
 public class MainTest {
-    public static void main(String[] args) {
-        MazeGame game = new BombedMazeGame();
-        Maze aMaze = game.CreateMaze();
-        System.out.println("" + aMaze.getRoomCount());
-        aMaze.getRoom(1).Enter();
+	public static void main(String[] args) {
+		MazeGame game = new BombedMazeGame();
+		Maze aMaze = game.CreateMaze();
+		System.out.println("" + aMaze.getRoomCount());
+		aMaze.getRoom(1).Enter();
 
-        game = new EnchantedMazeGame();
-        aMaze = game.CreateMaze();
-        System.out.println("" + aMaze.getRoomCount());
-        aMaze.getRoom(1).Enter();
+		game = new EnchantedMazeGame();
+		aMaze = game.CreateMaze();
+		System.out.println("" + aMaze.getRoomCount());
+		aMaze.getRoom(1).Enter();
 
-    }
+	}
 }
 
 /**

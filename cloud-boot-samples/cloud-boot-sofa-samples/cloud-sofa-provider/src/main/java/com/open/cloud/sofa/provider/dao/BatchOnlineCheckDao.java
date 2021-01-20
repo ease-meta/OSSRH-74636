@@ -22,7 +22,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 文件登记表(UPRGHT)
- * 
+ *
  * @author chenshun
  * @email sunlightcs@gmail.com
  * @date 2020-04-19 20:14:13

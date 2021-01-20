@@ -23,10 +23,10 @@ package interpreter;
  **/
 public class XmlSaxInterpreter implements Interpreter {
 
-    @Override
-    public void interpreter(Context context) {
-        // TODO Auto-generated method stub
-        System.out.println("xml sax Interpreter : " + context.getData());
-    }
+	@Override
+	public void interpreter(Context context) {
+		// TODO Auto-generated method stub
+		System.out.println("xml sax Interpreter : " + context.getData());
+	}
 
 }

@@ -21,7 +21,7 @@ import lombok.Data;
 @Data
 public class SubSource {
 
-    private Integer deleted;
+	private Integer deleted;
 
-    private String  name;
+	private String name;
 }

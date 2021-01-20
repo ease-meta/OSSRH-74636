@@ -25,20 +25,20 @@ package builder;
  * @since
  **/
 public class Director {
-    private MazeBuilder builder;
+	private MazeBuilder builder;
 
-    public Director(MazeBuilder builder) {
-        // TODO Auto-generated constructor stub
-        this.builder = builder;
-    }
+	public Director(MazeBuilder builder) {
+		// TODO Auto-generated constructor stub
+		this.builder = builder;
+	}
 
-    /**
-     * 建造方法：定义了建造的流程
-     */
-    public void construct() {
-        builder.Buildmaze();
-        builder.BuildRoom(1);
-        builder.BuildRoom(2);
-        builder.BuildDoor(1, 2);
-    }
+	/**
+	 * 建造方法：定义了建造的流程
+	 */
+	public void construct() {
+		builder.Buildmaze();
+		builder.BuildRoom(1);
+		builder.BuildRoom(2);
+		builder.BuildDoor(1, 2);
+	}
 }

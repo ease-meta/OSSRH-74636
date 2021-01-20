@@ -26,15 +26,15 @@ import java.util.Scanner;
  */
 public class Main010 {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String str = scanner.nextLine();
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < str.length(); i++) {
-            if (!stringBuffer.toString().contains(str.charAt(i) + "")) {
-                stringBuffer.append(str.charAt(i));
-            }
-        }
-        System.out.println(stringBuffer.toString().length());
-    }
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		String str = scanner.nextLine();
+		StringBuffer stringBuffer = new StringBuffer();
+		for (int i = 0; i < str.length(); i++) {
+			if (!stringBuffer.toString().contains(str.charAt(i) + "")) {
+				stringBuffer.append(str.charAt(i));
+			}
+		}
+		System.out.println(stringBuffer.toString().length());
+	}
 }
