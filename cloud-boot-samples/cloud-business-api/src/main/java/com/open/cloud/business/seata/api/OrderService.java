@@ -14,12 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.business.api;
+package com.open.cloud.business.seata.api;
 
-public interface AccountService {
+import java.sql.SQLException;
+
+public interface OrderService extends DataResetService {
 
 	/**
-	 * 从用户账户中借出
+	 * Sets account service.
+	 *
+	 * @param accountService the account service
 	 */
-	void debit(String userId, int money);
+	void setAccountService(AccountService accountService);
+
+	/**
+	 * Create.
+	 *
+	 * @param userId        the user id
+	 * @param commodityCode the commodity code
+	 * @param count         the count
+	 * @throws SQLException the sql exception
+	 */
+	void create(String userId, String commodityCode, Integer count) throws SQLException;
 }

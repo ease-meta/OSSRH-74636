@@ -14,14 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.business.api;
+package com.open.cloud.business.seata.api;
 
-import com.open.cloud.business.Order;
+import java.sql.SQLException;
 
-public interface OrderService {
+/**
+ * @author Leijian
+ */
+public interface AccountService extends DataResetService {
 
 	/**
-	 * 创建订单
+	 * Reduce.
+	 *
+	 * @param userId the user id
+	 * @param money  the money
+	 * @throws SQLException the sql exception
 	 */
-	Order create(String userId, String commodityCode, int orderCount);
+	void reduce(String userId, int money) throws SQLException;
 }

@@ -27,6 +27,11 @@
 
         <dependency>
             <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-dubbo</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-cache</artifactId>
         </dependency>
 

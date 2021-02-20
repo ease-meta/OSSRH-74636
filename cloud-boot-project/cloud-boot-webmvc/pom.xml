@@ -91,11 +91,11 @@
             <optional>true</optional>
         </dependency>
 
-        <dependency>
+      <!--  <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-alibaba-seata</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
         <!-- <dependency>
              <groupId>com.github.xiaoymin</groupId>
              <artifactId>knife4j-spring-boot-starter</artifactId>

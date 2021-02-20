@@ -14,32 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.dubbo.bootstrap;
+package com.open.cloud.business.seata.api;
 
-import com.open.cloud.business.api.EchoService;
-import org.apache.dubbo.config.annotation.DubboReference;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import java.sql.SQLException;
 
-/**
- * Dubbo Spring Cloud Client Bootstrap.
- */
-@EnableDiscoveryClient
-@SpringBootApplication
-public class DubboSpringCloudClientBootstrap {
-
-	@DubboReference
-	private EchoService echoService;
-
-	public static void main(String[] args) {
-		SpringApplication.run(DubboSpringCloudClientBootstrap.class);
-	}
-
-	@GetMapping("/echo")
-	public String echo(String message) {
-		return echoService.echo(message);
-	}
-
+public interface StorageService extends DataResetService {
+	/**
+	 * Deduct.
+	 *
+	 * @param commodityCode the commodity code
+	 * @param count         the count
+	 * @throws SQLException the sql exception
+	 */
+	void deduct(String commodityCode, int count) throws SQLException;
 }
