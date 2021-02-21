@@ -41,6 +41,7 @@
         <module>cloud-boot-jpa</module>
         <!--对象存储-->
         <module>cloud-boot-oss</module>
+        <module>cloud-boot-elasticsearch</module>
     </modules>
 
     <properties>
