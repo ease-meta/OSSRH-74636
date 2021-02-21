@@ -19,5 +19,10 @@
             <artifactId>rocketmq-spring-boot-starter</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.openmessaging</groupId>
+            <artifactId>openmessaging-api</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
