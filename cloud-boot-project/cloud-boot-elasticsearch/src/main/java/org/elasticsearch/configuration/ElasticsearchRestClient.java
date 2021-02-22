@@ -49,8 +49,7 @@ public class ElasticsearchRestClient {
 
     @Bean(name = "highLevelClient")
     public RestHighLevelClient highLevelClient(@Autowired RestClientBuilder restClientBuilder) {
-        restClientBuilder.setMaxRetryTimeoutMillis(60000);
-        return new RestHighLevelClient(restClientBuilder.build());
+        return new RestHighLevelClient(restClientBuilder);
     }
 
 

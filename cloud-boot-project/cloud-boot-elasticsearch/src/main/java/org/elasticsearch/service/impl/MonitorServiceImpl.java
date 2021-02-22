@@ -1,20 +1,21 @@
 package org.elasticsearch.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import org.elasticsearch.entity.Monitor;
-import org.elasticsearch.service.MonitorService;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
+import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.entity.Monitor;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.service.MonitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,7 +57,7 @@ public class MonitorServiceImpl implements MonitorService{
             sourceBuilder.query(termQueryBuilder).from(from).size(size);
             sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
             searchRequest.source(sourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
+            SearchResponse response = highLevelClient.search(searchRequest, RequestOptions.DEFAULT);
             SearchHit[] hits = response.getHits().getHits();
             for (SearchHit hit : hits) {
                 Monitor monitor =  JSONObject.parseObject(hit.getSourceAsString(), Monitor.class);
@@ -81,8 +82,8 @@ public class MonitorServiceImpl implements MonitorService{
             SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder().size(0);
             searchSourceBuilder.query(QueryBuilders.boolQuery().must(QueryBuilders.prefixQuery("retCode","9")));
             searchRequest.source(searchSourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
-            return response.getHits().getTotalHits();
+            SearchResponse response = highLevelClient.search(searchRequest,RequestOptions.DEFAULT);
+            return response.getHits().getTotalHits().value;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,7 +99,7 @@ public class MonitorServiceImpl implements MonitorService{
             Monitor monitor = getMonitor(_id);
             DeleteRequest deleteRequest = new DeleteRequest(monitor.getIndex(),_TYPE,_id);
             try {
-                highLevelClient.delete(deleteRequest);
+                highLevelClient.delete(deleteRequest,RequestOptions.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -119,7 +120,7 @@ public class MonitorServiceImpl implements MonitorService{
         try {
             sourceBuilder.query(queryBuilder);
             searchRequest.source(sourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
+            SearchResponse response = highLevelClient.search(searchRequest,RequestOptions.DEFAULT);
             response.getHits().getHits();
             SearchHit[] hits = response.getHits().getHits();
             for (SearchHit hit : hits) {
@@ -144,7 +145,7 @@ public class MonitorServiceImpl implements MonitorService{
             UpdateRequest updateRequest = new UpdateRequest(monitor.getIndex(),_TYPE,_id)
                     .doc(map);
             try {
-                highLevelClient.update(updateRequest);
+                highLevelClient.update(updateRequest,RequestOptions.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }

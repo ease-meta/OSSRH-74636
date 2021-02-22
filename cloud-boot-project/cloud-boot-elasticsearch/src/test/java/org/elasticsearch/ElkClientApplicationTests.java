@@ -2,6 +2,7 @@ package org.elasticsearch;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.entity.Monitor;
 import org.elasticsearch.service.impl.ChartsServiceImpl;
 import org.elasticsearch.service.impl.MonitorServiceImpl;
@@ -54,14 +55,14 @@ public class ElkClientApplicationTests {
             sourceBuilder.sort("transDate");
             //sourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
             searchRequest.source(sourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
+            SearchResponse response = highLevelClient.search(searchRequest, RequestOptions.DEFAULT);
             SearchHit[] hits = response.getHits().getHits();
             for (SearchHit hit : hits) {
                 Monitor monitor =  JSONObject.parseObject(hit.getSourceAsString(), Monitor.class);
                 monitor.setId(hit.getId()); monitor.setIndex(hit.getIndex());
                 System.out.println(monitor);
             }
-            total = response.getHits().totalHits;
+            total = response.getHits().getTotalHits().value;
             System.out.println("测试:[" + total + "][" + from + "-" + (from + hits.length) + ")");
             from += hits.length;
         } catch (IOException e) {
@@ -95,7 +96,7 @@ public class ElkClientApplicationTests {
         try {
             sourceBuilder.query(QueryBuilders.matchAllQuery()).aggregation(aggregationBuilder).size(0);
             searchRequest.source(sourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
+            SearchResponse response = highLevelClient.search(searchRequest,RequestOptions.DEFAULT);
             Aggregations aggregations = response.getAggregations();
             Terms terms= aggregations.get("by_date");
             for (Bucket bucket:terms.getBuckets()){

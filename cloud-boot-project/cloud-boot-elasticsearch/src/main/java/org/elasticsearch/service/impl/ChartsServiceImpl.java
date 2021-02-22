@@ -1,10 +1,10 @@
 package org.elasticsearch.service.impl;
 
-import org.elasticsearch.entity.ChartsModel;
-import org.elasticsearch.service.ChartsService;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.entity.ChartsModel;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -13,11 +13,16 @@ import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.service.ChartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChartsServiceImpl implements ChartsService {
@@ -54,7 +59,7 @@ public class ChartsServiceImpl implements ChartsService {
             //每日总交易量分组
             sourceBuilder.query(queryBuilder).aggregation(aggregationBuilder.size(360)).size(0);
             searchRequest.source(sourceBuilder);
-            SearchResponse response = highLevelClient.search(searchRequest);
+            SearchResponse response = highLevelClient.search(searchRequest,RequestOptions.DEFAULT);
             Aggregations aggregations = response.getAggregations();
             Terms terms= aggregations.get("by_date");
             for (Terms.Bucket bucket:terms.getBuckets()){
