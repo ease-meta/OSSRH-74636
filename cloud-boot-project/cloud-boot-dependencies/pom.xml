@@ -13,11 +13,11 @@
     <distributionManagement>
         <repository>
             <id>rdc-releases</id>
-            <url>https://repo.rdc.aliyun.com/repository/42889-release-ONfbyh/</url>
+            <url>https://packages.aliyun.com/maven/repository/2083988-release-4FiY23/</url>
         </repository>
         <snapshotRepository>
             <id>rdc-snapshots</id>
-            <url>https://repo.rdc.aliyun.com/repository/42889-snapshot-PMGiNA/</url>
+            <url>https://packages.aliyun.com/maven/repository/2083988-snapshot-AlrTlP/</url>
         </snapshotRepository>
     </distributionManagement>
 

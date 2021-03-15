@@ -13,8 +13,9 @@
     <artifactId>cloud-boot-project</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
-        <module>cloud-boot-core</module>
+        <!-- <module>cloud-boot-core</module>
         <module>cloud-boot-jboot</module>
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-springcloud</module>
@@ -24,7 +25,6 @@
         <module>cloud-boot-datalake</module>
         <module>cloud-boot-dataway</module>
         <module>cloud-boot-tools</module>
-        <module>cloud-boot-parent</module>
         <module>cloud-boot-flyway</module>
         <module>cloud-boot-dubbo</module>
         <module>cloud-boot-server</module>
@@ -39,9 +39,9 @@
         <module>cloud-boot-security</module>
         <module>cloud-boot-mybatis</module>
         <module>cloud-boot-jpa</module>
-        <!--对象存储-->
+       
         <module>cloud-boot-oss</module>
-        <module>cloud-boot-elasticsearch</module>
+        <module>cloud-boot-elasticsearch</module> -->
     </modules>
 
     <properties>
