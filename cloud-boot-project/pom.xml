@@ -15,9 +15,11 @@
     <modules>
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
-        <!-- <module>cloud-boot-core</module>
-        <module>cloud-boot-jboot</module>
         <module>cloud-boot-sofa</module>
+        <module>cloud-boot-dubbo</module>
+         <module>cloud-boot-core</module>
+        <module>cloud-boot-jboot</module>
+
         <module>cloud-boot-springcloud</module>
         <module>cloud-boot-plugins</module>
         <module>cloud-boot-actuator</module>
@@ -26,7 +28,7 @@
         <module>cloud-boot-dataway</module>
         <module>cloud-boot-tools</module>
         <module>cloud-boot-flyway</module>
-        <module>cloud-boot-dubbo</module>
+
         <module>cloud-boot-server</module>
         <module>cloud-boot-base</module>
         <module>cloud-boot-api</module>
@@ -41,7 +43,7 @@
         <module>cloud-boot-jpa</module>
        
         <module>cloud-boot-oss</module>
-        <module>cloud-boot-elasticsearch</module> -->
+        <module>cloud-boot-elasticsearch</module>
     </modules>
 
     <properties>

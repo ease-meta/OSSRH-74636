@@ -17,6 +17,8 @@ dubbo:
     port: -1
   registry:
     address: zookeeper://122.51.108.224:2181
+  application:
+    environment:
 server:
   port: 8080
 

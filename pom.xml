@@ -24,7 +24,6 @@
     <modules>
         <module>cloud-boot-project</module>
         <module>cloud-boot-samples</module>
-        <module>cloud-boot-samples/cloud-boot-seata-sample</module>
     </modules>
 
     <reporting>

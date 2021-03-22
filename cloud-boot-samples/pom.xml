@@ -12,16 +12,17 @@
     <artifactId>cloud-boot-samples</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <!-- <module>cloud-business-api</module>
-        <module>cloud-boot-dubbo-samples</module>
-        <module>cloud-boot-sofa-samples</module>
+        <module>cloud-business-api</module>
+
         <module>cloud-boot-springcloud-service</module>
         <module>cloud-business-dao</module>
         <module>cloud-business-service</module>
         <module>cloud-business-web</module>
         <module>spring-boot-admin-server</module>
         <module>cloud-boot-seata-sample</module>
-        <module>cloud-boot-ssh</module> -->
+        <module>cloud-boot-ssh</module>
+        <module>cloud-boot-dubbo-samples</module>
+        <module>cloud-boot-sofa-samples</module>
         <module>cloud-boot-jsf</module>
     </modules>
 
