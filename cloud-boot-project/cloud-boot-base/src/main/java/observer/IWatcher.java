@@ -23,11 +23,11 @@ package observer;
  * 观察 更新
  **/
 public interface IWatcher {
-	/**
-	 * 通知接口：
-	 * 1.简单通知。
-	 * 2.观察者需要目标的变化的数据，那么可以将目标用作参数，见java的Observer和Observable
-	 */
+    /**
+     * 通知接口：
+     * 1.简单通知。
+     * 2.观察者需要目标的变化的数据，那么可以将目标用作参数，见java的Observer和Observable
+     */
 
-	void update();
+    void update();
 }

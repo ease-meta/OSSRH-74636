@@ -21,6 +21,6 @@ package callback;
  */
 public interface Callback {
 
-	public void tellAnswer(int answer);
+    public void tellAnswer(int answer);
 
 }

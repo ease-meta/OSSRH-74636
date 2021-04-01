@@ -23,23 +23,23 @@ package templatemethod;
  **/
 public class TemplateMethod2 extends BaseTemplate {
 
-	@Override
-	public void part1() {
-		// TODO Auto-generated method stub
-		System.out.println("模板方法21");
-	}
+    @Override
+    public void part1() {
+        // TODO Auto-generated method stub
+        System.out.println("模板方法21");
+    }
 
-	@Override
-	public void part2() {
-		// TODO Auto-generated method stub
-		System.out.println("模板方法22");
-	}
+    @Override
+    public void part2() {
+        // TODO Auto-generated method stub
+        System.out.println("模板方法22");
+    }
 
-	@Override
-	public void part3() {
-		// TODO Auto-generated method stub
-		System.out.println("模板方法23");
+    @Override
+    public void part3() {
+        // TODO Auto-generated method stub
+        System.out.println("模板方法23");
 
-	}
+    }
 
 }

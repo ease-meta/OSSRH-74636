@@ -26,41 +26,41 @@ import java.util.List;
  * 也可以自身代表树：一堆节点组成了一颗树
  **/
 public class TreeNode {
-	private String name;
-	private TreeNode parent;
-	private List<TreeNode> children;
+    private String name;
+    private TreeNode parent;
+    private List<TreeNode> children;
 
-	public TreeNode(String name) {
-		// TODO Auto-generated constructor stub
-		this.name = name;
-		this.children = new LinkedList<>();
-	}
+    public TreeNode(String name) {
+        // TODO Auto-generated constructor stub
+        this.name = name;
+        this.children = new LinkedList<>();
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public TreeNode getParent() {
-		return this.parent;
-	}
+    public TreeNode getParent() {
+        return this.parent;
+    }
 
-	public void setParent(TreeNode parent) {
-		this.parent = parent;
-	}
+    public void setParent(TreeNode parent) {
+        this.parent = parent;
+    }
 
-	public List<TreeNode> getChildren() {
-		return this.children;
-	}
+    public List<TreeNode> getChildren() {
+        return this.children;
+    }
 
-	public void add(TreeNode node) {
-		this.children.add(node);
-	}
+    public void add(TreeNode node) {
+        this.children.add(node);
+    }
 
-	public void remove(TreeNode node) {
-		this.children.remove(node);
-	}
+    public void remove(TreeNode node) {
+        this.children.remove(node);
+    }
 }

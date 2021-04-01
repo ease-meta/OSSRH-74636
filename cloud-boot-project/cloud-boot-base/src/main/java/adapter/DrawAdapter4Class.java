@@ -23,10 +23,10 @@ package adapter;
 
 public class DrawAdapter4Class extends DrawRectangle implements IDrawCircle {
 
-	@Override
-	public void drawCircle() {
-		// TODO Auto-generated method stub
-		System.out.println("DrawAdpater4Class : drawCircle");
-	}
+    @Override
+    public void drawCircle() {
+        // TODO Auto-generated method stub
+        System.out.println("DrawAdpater4Class : drawCircle");
+    }
 
 }

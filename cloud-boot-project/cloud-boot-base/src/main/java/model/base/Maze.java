@@ -23,67 +23,67 @@ import java.util.Iterator;
  * @author shadow
  */
 public class Maze implements Cloneable {
-	private ArrayList<Room> rooms;
+    private ArrayList<Room> rooms;
 
-	public Maze() {
-		rooms = new ArrayList<>();
-	}
+    public Maze() {
+        rooms = new ArrayList<>();
+    }
 
-	public static void main(String[] args) throws CloneNotSupportedException {
-		Room room = new Room(1);
-		Maze maze = new Maze();
-		maze.AddRoom(room);
-		System.err.println(maze.rooms);
-		System.err.println(maze);
-		System.err.println(maze.getRoomCount());
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Room room = new Room(1);
+        Maze maze = new Maze();
+        maze.AddRoom(room);
+        System.err.println(maze.rooms);
+        System.err.println(maze);
+        System.err.println(maze.getRoomCount());
 
-		Maze maze2 = maze.clone();
-		maze2.AddRoom(room.clone());
-		System.err.println(maze.rooms);
-		System.err.println(maze2);
-		System.err.println(maze2.getRoomCount());
+        Maze maze2 = maze.clone();
+        maze2.AddRoom(room.clone());
+        System.err.println(maze.rooms);
+        System.err.println(maze2);
+        System.err.println(maze2.getRoomCount());
 
-		System.err.println(maze.rooms);
-		System.err.println(maze.getRoomCount());
-	}
+        System.err.println(maze.rooms);
+        System.err.println(maze.getRoomCount());
+    }
 
-	public void AddRoom(Room room) {
-		if (room == null) {
-			throw new RuntimeException("The room is null.");
-		}
+    public void AddRoom(Room room) {
+        if (room == null) {
+            throw new RuntimeException("The room is null.");
+        }
 
-		rooms.add(room);
+        rooms.add(room);
 
-	}
+    }
 
-	public int getRoomCount() {
-		return this.rooms.size();
-	}
+    public int getRoomCount() {
+        return this.rooms.size();
+    }
 
-	@Override
-	public Maze clone() throws CloneNotSupportedException {
-		Maze cloneMaze = (Maze) super.clone();
-		clone(cloneMaze);
-		return cloneMaze;
-	}
+    @Override
+    public Maze clone() throws CloneNotSupportedException {
+        Maze cloneMaze = (Maze) super.clone();
+        clone(cloneMaze);
+        return cloneMaze;
+    }
 
-	private void clone(Maze maze) throws CloneNotSupportedException {
-		maze.rooms = new ArrayList<>();
-		for (int i = 0; i < this.rooms.size(); i++) {
-			maze.rooms.add(this.rooms.get(i).clone());
-		}
-	}
+    private void clone(Maze maze) throws CloneNotSupportedException {
+        maze.rooms = new ArrayList<>();
+        for (int i = 0; i < this.rooms.size(); i++) {
+            maze.rooms.add(this.rooms.get(i).clone());
+        }
+    }
 
-	public Room getRoom(final int number) {
-		for (int i = 0; i < rooms.size(); i++) {
-			if (rooms.get(i).getRoomNumber() == number) {
-				return rooms.get(i);
-			}
-		}
-		return null;
-	}
+    public Room getRoom(final int number) {
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).getRoomNumber() == number) {
+                return rooms.get(i);
+            }
+        }
+        return null;
+    }
 
-	public Iterator<Room> iterator() {
-		return rooms.iterator();
-	}
+    public Iterator<Room> iterator() {
+        return rooms.iterator();
+    }
 }

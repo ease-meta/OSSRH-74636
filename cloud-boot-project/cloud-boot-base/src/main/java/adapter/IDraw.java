@@ -23,7 +23,7 @@
 package adapter;
 
 public interface IDraw {
-	void drawCircle();
+    void drawCircle();
 
-	void drawRectangle();
+    void drawRectangle();
 }

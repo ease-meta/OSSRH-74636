@@ -25,15 +25,15 @@ import java.util.Scanner;
  * @date 2020/2/11
  */
 public class Main007 {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		double dd = scanner.nextDouble();
-		String str = String.valueOf(dd);
-		String[] strings = str.split("[.]");
-		if (strings.length > 1 && !strings[1].startsWith("0") && Integer.parseInt(strings[1]) >= 5) {
-			System.out.println(1 + Integer.parseInt(strings[0]));
-		} else {
-			System.out.println(Integer.parseInt(strings[0]));
-		}
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double dd = scanner.nextDouble();
+        String str = String.valueOf(dd);
+        String[] strings = str.split("[.]");
+        if (strings.length > 1 && !strings[1].startsWith("0") && Integer.parseInt(strings[1]) >= 5) {
+            System.out.println(1 + Integer.parseInt(strings[0]));
+        } else {
+            System.out.println(Integer.parseInt(strings[0]));
+        }
+    }
 }

@@ -22,15 +22,15 @@ package facade;
  * @Fun 场景
  **/
 public class Scene {
-	public Scene(String name) {
-		System.out.println("创建了场景：" + name);
-	}
+    public Scene(String name) {
+        System.out.println("创建了场景：" + name);
+    }
 
-	public void load() {
-		System.out.println("场景加载。");
-	}
+    public void load() {
+        System.out.println("场景加载。");
+    }
 
-	public void unload() {
-		System.out.println("场景卸载。");
-	}
+    public void unload() {
+        System.out.println("场景卸载。");
+    }
 }

@@ -24,14 +24,14 @@ import java.util.Random;
  * @author shadow
  */
 public class Spell {
-	private String spell;
+    private String spell;
 
-	public Spell() {
-		// TODO Auto-generated constructor stub
-		spell = "spell" + (char) new Random().nextInt(10);
-	}
+    public Spell() {
+        // TODO Auto-generated constructor stub
+        spell = "spell" + (char) new Random().nextInt(10);
+    }
 
-	public String getSpell() {
-		return spell;
-	}
+    public String getSpell() {
+        return spell;
+    }
 }

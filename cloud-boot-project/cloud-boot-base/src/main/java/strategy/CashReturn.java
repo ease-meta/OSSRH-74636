@@ -23,25 +23,25 @@ package strategy;
  **/
 public class CashReturn implements ICashSuper {
 
-	//返现底限金额
-	private double moneyCondition;
-	//返现金额
-	private double returnMoney;
+    //返现底限金额
+    private double moneyCondition;
+    //返现金额
+    private double returnMoney;
 
-	public CashReturn(double moneyCondition, double returnMoney) {
-		// TODO Auto-generated constructor stub
-		this.moneyCondition = moneyCondition;
-		this.returnMoney = returnMoney;
-	}
+    public CashReturn(double moneyCondition, double returnMoney) {
+        // TODO Auto-generated constructor stub
+        this.moneyCondition = moneyCondition;
+        this.returnMoney = returnMoney;
+    }
 
-	//多重返利
-	@Override
-	public double acceptCash(double money) {
-		// TODO Auto-generated method stub
-		if (money >= moneyCondition) {
-			return money - Math.floor(money / moneyCondition) * returnMoney;
-		}
-		return 0;
-	}
+    //多重返利
+    @Override
+    public double acceptCash(double money) {
+        // TODO Auto-generated method stub
+        if (money >= moneyCondition) {
+            return money - Math.floor(money / moneyCondition) * returnMoney;
+        }
+        return 0;
+    }
 
 }

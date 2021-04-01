@@ -1,0 +1,27 @@
+package rules.second;
+
+import com.learn.model.Student
+
+rule "match one"
+	dialect "java"
+	no-loop true
+	lock-on-active true
+    activation-group "match"
+    salience 30
+	when
+        std:Student(age < 18);
+	then
+        std.setName(std.getName() + "-未成年");
+end
+
+rule "match two"
+	dialect "java"
+	no-loop true
+	lock-on-active true
+    activation-group "match"
+    salience 20
+	when
+        std:Student(age >= 18);
+	then
+        std.setName(std.getName() + "-已成年");
+end

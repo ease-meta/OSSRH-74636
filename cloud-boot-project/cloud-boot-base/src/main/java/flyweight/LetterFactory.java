@@ -25,26 +25,26 @@ import java.util.Map;
  * @Fun 一个产生字母对象的 享元工厂（单例工厂）
  **/
 public class LetterFactory {
-	private static LetterFactory instance = new LetterFactory();
-	private Map<String, Letter> map;
+    private static LetterFactory instance = new LetterFactory();
+    private Map<String, Letter> map;
 
-	private LetterFactory() {
-		map = new HashMap<>();
-	}
+    private LetterFactory() {
+        map = new HashMap<>();
+    }
 
-	public static LetterFactory getInstance() {
-		return instance;
-	}
+    public static LetterFactory getInstance() {
+        return instance;
+    }
 
-	public void add(Letter letter) {
-		if (letter != null && !map.containsKey(letter.getName())) {
-			map.put(letter.getName(), letter);
-		}
+    public void add(Letter letter) {
+        if (letter != null && !map.containsKey(letter.getName())) {
+            map.put(letter.getName(), letter);
+        }
 
-		System.out.println("map.size ==== " + map.size());
-	}
+        System.out.println("map.size ==== " + map.size());
+    }
 
-	public Letter get(String name) {
-		return map.get(name);
-	}
+    public Letter get(String name) {
+        return map.get(name);
+    }
 }

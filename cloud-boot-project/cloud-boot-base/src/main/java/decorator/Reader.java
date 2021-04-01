@@ -23,10 +23,10 @@ package decorator;
  **/
 public class Reader implements IReader {
 
-	@Override
-	public void read() {
-		// TODO Auto-generated method stub
-		System.out.println("read of Reader.");
-	}
+    @Override
+    public void read() {
+        // TODO Auto-generated method stub
+        System.out.println("read of Reader.");
+    }
 
 }

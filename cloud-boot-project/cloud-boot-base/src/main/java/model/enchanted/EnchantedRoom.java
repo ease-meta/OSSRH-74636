@@ -20,27 +20,27 @@ import model.base.Room;
 
 public class EnchantedRoom extends Room {
 
-	private Spell spell;
+    private Spell spell;
 
-	public EnchantedRoom(int roomNo) {
-		super(roomNo);
-		// TODO Auto-generated constructor stub
+    public EnchantedRoom(int roomNo) {
+        super(roomNo);
+        // TODO Auto-generated constructor stub
 
-	}
+    }
 
-	public EnchantedRoom(int roomNo, Spell spell) {
-		super(roomNo);
-		this.spell = spell;
-	}
+    public EnchantedRoom(int roomNo, Spell spell) {
+        super(roomNo);
+        this.spell = spell;
+    }
 
-	@Override
-	public void Enter() {
-		// TODO Auto-generated method stub
-		super.Enter();
-		System.err.println("EnchatedRoom");
-	}
+    @Override
+    public void Enter() {
+        // TODO Auto-generated method stub
+        super.Enter();
+        System.err.println("EnchatedRoom");
+    }
 
-	public Spell getSpell() {
-		return this.spell;
-	}
+    public Spell getSpell() {
+        return this.spell;
+    }
 }

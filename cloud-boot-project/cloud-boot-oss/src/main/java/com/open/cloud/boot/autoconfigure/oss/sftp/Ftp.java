@@ -43,7 +43,6 @@ import java.util.List;
 /**
  * FTP客户端封装<br>
  * 此客户端基于Apache-Commons-Net
- *
  */
 public class Ftp extends AbstractFtp {
 

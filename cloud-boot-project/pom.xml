@@ -17,7 +17,7 @@
         <module>cloud-boot-dependencies</module>
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-dubbo</module>
-         <module>cloud-boot-core</module>
+        <module>cloud-boot-core</module>
         <module>cloud-boot-jboot</module>
 
         <module>cloud-boot-springcloud</module>
@@ -41,9 +41,12 @@
         <module>cloud-boot-security</module>
         <module>cloud-boot-mybatis</module>
         <module>cloud-boot-jpa</module>
-       
+
         <module>cloud-boot-oss</module>
         <module>cloud-boot-elasticsearch</module>
+
+        <module>cloud-boot-drools</module>
+        <module>cloud-boot-transaction</module>
     </modules>
 
     <properties>

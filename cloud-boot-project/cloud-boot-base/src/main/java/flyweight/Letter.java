@@ -22,13 +22,13 @@ package flyweight;
  * @Fun 字母
  **/
 public class Letter {
-	private String name;
+    private String name;
 
-	public Letter(String name) {
-		this.name = name;
-	}
+    public Letter(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public String getName() {
+        return this.name;
+    }
 }

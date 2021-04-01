@@ -27,23 +27,23 @@ import model.base.Wall;
  * @author shadow
  */
 public class MazeFactory {
-	public MazeFactory() {
-		// TODO Auto-generated constructor stub
-	}
+    public MazeFactory() {
+        // TODO Auto-generated constructor stub
+    }
 
-	public Maze MakeMaze() {
-		return new Maze();
-	}
+    public Maze MakeMaze() {
+        return new Maze();
+    }
 
-	public Wall MakeWall() {
-		return new Wall();
-	}
+    public Wall MakeWall() {
+        return new Wall();
+    }
 
-	public Room MakeRoom(final int number) {
-		return new Room(number);
-	}
+    public Room MakeRoom(final int number) {
+        return new Room(number);
+    }
 
-	public Door MakeDoor(final Room room1, final Room room2) {
-		return new Door(room1, room2);
-	}
+    public Door MakeDoor(final Room room1, final Room room2) {
+        return new Door(room1, room2);
+    }
 }

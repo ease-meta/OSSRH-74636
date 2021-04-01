@@ -23,7 +23,6 @@
         <module>cloud-boot-ssh</module>
         <module>cloud-boot-dubbo-samples</module>
         <module>cloud-boot-sofa-samples</module>
-        <module>cloud-boot-jsf</module>
     </modules>
 
     <properties>

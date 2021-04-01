@@ -25,23 +25,31 @@ package absfactory;
  * 缺点：当需要添加一个产品（由抽象和实体构成），工厂都需要修改。<br/>
  **/
 public class MainTest {
-	public static void main(String[] args) {
-		IFactory factory = new Factory();
-		IProduct1 product1 = factory.createProduct1A();
-		product1.show();
+    public static void main(String[] args) {
+        IFactory factory = new Factory();
+        IProduct1 product1 = factory.createProduct1A();
+        product1.show();
 
-		IProduct1 product12 = factory.createProduct1B();
-		product12.show();
+        IProduct1 product12 = factory.createProduct1B();
+        product12.show();
 
-		IProduct2 product2 = factory.createProduct2A();
-		product2.show();
+        IProduct2 product2 = factory.createProduct2A();
+        product2.show();
 
-		IProduct2 product22 = factory.createProduct2B();
-		product22.show();
-	}
+        IProduct2 product22 = factory.createProduct2B();
+        product22.show();
+    }
 }
 /**
  * 参考博客：http://blog.csdn.net/zhengzhb/article/details/7359385
+ * <p>
+ * 适用情况：
+ * 1.系统中有多个产品族，而系统一次只可能消费其中一族产品。
+ * 2.同属于同一个产品族的产品以其使用。
+ * <p>
+ * 适用情况：
+ * 1.系统中有多个产品族，而系统一次只可能消费其中一族产品。
+ * 2.同属于同一个产品族的产品以其使用。
  * <p>
  * 适用情况：
  * 1.系统中有多个产品族，而系统一次只可能消费其中一族产品。

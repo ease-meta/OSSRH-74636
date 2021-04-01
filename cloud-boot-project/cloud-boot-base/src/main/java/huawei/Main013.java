@@ -26,13 +26,13 @@ import java.util.Scanner;
  * @date 2020/2/12
  */
 public class Main013 {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int num = Integer.parseInt(scanner.nextLine());
-		LinkedList linkedList = new LinkedList();
-		for (int i = 0; i < num; i++) {
-			linkedList.add(scanner.nextLine());
-		}
-		linkedList.stream().sorted().forEach(v -> System.out.println(v));
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = Integer.parseInt(scanner.nextLine());
+        LinkedList linkedList = new LinkedList();
+        for (int i = 0; i < num; i++) {
+            linkedList.add(scanner.nextLine());
+        }
+        linkedList.stream().sorted().forEach(v -> System.out.println(v));
+    }
 }

@@ -22,5 +22,5 @@ package visitor;
  * @Fun 花接口
  **/
 public interface Flower {
-	void accept(Visitor v);
+    void accept(Visitor v);
 }

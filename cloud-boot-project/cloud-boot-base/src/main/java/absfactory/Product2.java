@@ -23,10 +23,10 @@ package absfactory;
  **/
 public class Product2 implements IProduct2 {
 
-	@Override
-	public void show() {
-		// TODO Auto-generated method stub
-		System.out.println("创建了2型产品");
-	}
+    @Override
+    public void show() {
+        // TODO Auto-generated method stub
+        System.out.println("创建了2型产品");
+    }
 
 }

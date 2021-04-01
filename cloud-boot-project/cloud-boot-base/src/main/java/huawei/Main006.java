@@ -27,31 +27,31 @@ import java.util.Scanner;
  * @date 2020/2/11
  */
 public class Main006 {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNextLine()) {
-			String str = scanner.nextLine();
-			long num = Long.parseLong(str);
-			System.out.println(getResult(num));
-		}
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String str = scanner.nextLine();
+            long num = Long.parseLong(str);
+            System.out.println(getResult(num));
+        }
+    }
 
-	public static String getResult(long ulDataInput) {
-		StringBuilder stringBuilder = new StringBuilder();
-		int index = 2;
-		while (index <= ulDataInput) {
-			if (ulDataInput % index == 0) {
-				if (index == ulDataInput) {
-					stringBuilder.append(index).append(" ");
-					break;
-				} else {
-					stringBuilder.append(index).append(" ");
-					ulDataInput = ulDataInput / index;
-				}
-			} else {
-				index++;
-			}
-		}
-		return stringBuilder.toString();
-	}
+    public static String getResult(long ulDataInput) {
+        StringBuilder stringBuilder = new StringBuilder();
+        int index = 2;
+        while (index <= ulDataInput) {
+            if (ulDataInput % index == 0) {
+                if (index == ulDataInput) {
+                    stringBuilder.append(index).append(" ");
+                    break;
+                } else {
+                    stringBuilder.append(index).append(" ");
+                    ulDataInput = ulDataInput / index;
+                }
+            } else {
+                index++;
+            }
+        }
+        return stringBuilder.toString();
+    }
 }

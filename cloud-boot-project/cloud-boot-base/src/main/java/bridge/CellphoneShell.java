@@ -23,9 +23,9 @@ package bridge;
  **/
 public class CellphoneShell extends BaseCellphoneShell {
 
-	@Override
-	public void mapping() {
-		// TODO Auto-generated method stub
-		System.out.println("壳--iphone6");
-	}
+    @Override
+    public void mapping() {
+        // TODO Auto-generated method stub
+        System.out.println("壳--iphone6");
+    }
 }

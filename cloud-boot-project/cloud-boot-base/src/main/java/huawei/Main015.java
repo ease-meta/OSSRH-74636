@@ -34,53 +34,53 @@ import java.util.Scanner;
  * @date 2020/2/12
  */
 public class Main015 {
-	/**
-	 * 背包算法
-	 *
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		String string = scanner.nextLine();
-		String[] strings = string.split(" ");
-		int n = Integer.parseInt(strings[0]);
-		int m = Integer.parseInt(strings[1]);
-		int[] p = new int[m];
-		int[] v = new int[m];
-		int[] q = new int[m];
-		for (int i = 0; i < m; i++) {
-			String[] TEMP = scanner.nextLine().split(" ");
-			v[i] = Integer.parseInt(TEMP[0]);
-			p[i] = Integer.parseInt(TEMP[1]) * v[i];
-			q[i] = Integer.parseInt(TEMP[2]);
-		}
-		System.out.println(getMaxValue(v, p, q, m, n));
-	}
+    /**
+     * 背包算法
+     *
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String string = scanner.nextLine();
+        String[] strings = string.split(" ");
+        int n = Integer.parseInt(strings[0]);
+        int m = Integer.parseInt(strings[1]);
+        int[] p = new int[m];
+        int[] v = new int[m];
+        int[] q = new int[m];
+        for (int i = 0; i < m; i++) {
+            String[] TEMP = scanner.nextLine().split(" ");
+            v[i] = Integer.parseInt(TEMP[0]);
+            p[i] = Integer.parseInt(TEMP[1]) * v[i];
+            q[i] = Integer.parseInt(TEMP[2]);
+        }
+        System.out.println(getMaxValue(v, p, q, m, n));
+    }
 
-	/**
-	 * @param val    价钱
-	 * @param weight 物品重要程度
-	 * @param q      是主见还是附件
-	 * @param n      总物品个数
-	 * @param w      总钱数
-	 * @return
-	 */
-	public static int getMaxValue(int[] val, int[] weight, int[] q, int n, int w) {
-		int[][] dp = new int[n + 1][w + 1];
+    /**
+     * @param val    价钱
+     * @param weight 物品重要程度
+     * @param q      是主见还是附件
+     * @param n      总物品个数
+     * @param w      总钱数
+     * @return
+     */
+    public static int getMaxValue(int[] val, int[] weight, int[] q, int n, int w) {
+        int[][] dp = new int[n + 1][w + 1];
 
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= w; j++) {
-				if (q[i - 1] == 0) { // 主件
-					if (weight[i - 1] <= j) // 用j这么多钱去买 i 件商品 可以获得最大价值
-						dp[i][j] = Math
-								.max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
-				} else { //附件
-					if (weight[i - 1] + weight[q[i - 1]] <= j) //附件的话 加上主件一起算
-						dp[i][j] = Math
-								.max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
-				}
-			}
-		}
-		return dp[n][w];
-	}
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= w; j++) {
+                if (q[i - 1] == 0) { // 主件
+                    if (weight[i - 1] <= j) // 用j这么多钱去买 i 件商品 可以获得最大价值
+                        dp[i][j] = Math
+                                .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
+                } else { //附件
+                    if (weight[i - 1] + weight[q[i - 1]] <= j) //附件的话 加上主件一起算
+                        dp[i][j] = Math
+                                .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
+                }
+            }
+        }
+        return dp[n][w];
+    }
 }

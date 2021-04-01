@@ -22,22 +22,22 @@ package singleton;
  * @Fun 单例模式
  **/
 public class MazeFactory {
-	private static MazeFactory instance;
+    private static MazeFactory instance;
 
-	private MazeFactory() {
+    private MazeFactory() {
 
-	}
+    }
 
-	public static MazeFactory getInstance() {
-		if (instance == null) {
-			synchronized (MazeFactory.class) {
-				if (instance == null) {
-					instance = new MazeFactory();
-				}
-			}
-		}
+    public static MazeFactory getInstance() {
+        if (instance == null) {
+            synchronized (MazeFactory.class) {
+                if (instance == null) {
+                    instance = new MazeFactory();
+                }
+            }
+        }
 
-		return instance;
-	}
+        return instance;
+    }
 
 }

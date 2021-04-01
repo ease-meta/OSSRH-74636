@@ -27,23 +27,23 @@ import java.util.TreeMap;
  * @date 2020/2/11
  */
 public class Main008 {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int num = Integer.parseInt(scanner.nextLine());
-		SortedMap<Integer, Integer> map = new TreeMap<>();
-		for (int i = 0; i < num; i++) {
-			String string = scanner.nextLine();
-			String[] strings = string.split("\\s+");
-			int key = Integer.parseInt(strings[0]);
-			int value = Integer.parseInt(strings[1]);
-			if (map.containsKey(key)) {
-				map.put(key, map.get(key) + value);
-			} else {
-				map.put(key, value);
-			}
-		}
-		map.forEach((k, v) -> {
-			System.out.println(k + " " + v);
-		});
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = Integer.parseInt(scanner.nextLine());
+        SortedMap<Integer, Integer> map = new TreeMap<>();
+        for (int i = 0; i < num; i++) {
+            String string = scanner.nextLine();
+            String[] strings = string.split("\\s+");
+            int key = Integer.parseInt(strings[0]);
+            int value = Integer.parseInt(strings[1]);
+            if (map.containsKey(key)) {
+                map.put(key, map.get(key) + value);
+            } else {
+                map.put(key, value);
+            }
+        }
+        map.forEach((k, v) -> {
+            System.out.println(k + " " + v);
+        });
+    }
 }

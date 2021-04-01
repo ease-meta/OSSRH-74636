@@ -32,50 +32,50 @@ import model.base.Wall;
  **/
 public class MazePrototypeFactory extends MazeGame {
 
-	private Maze prototypeMaze;
-	private Room prototypeRoom;
-	private Wall prototypewall;
-	private Door prototypeDoor;
+    private Maze prototypeMaze;
+    private Room prototypeRoom;
+    private Wall prototypewall;
+    private Door prototypeDoor;
 
-	public MazePrototypeFactory(Maze maze, Wall wall, Room room, Door door) {
-		this.prototypeMaze = maze;
-		this.prototypewall = wall;
-		this.prototypeRoom = room;
-		this.prototypeDoor = door;
-	}
+    public MazePrototypeFactory(Maze maze, Wall wall, Room room, Door door) {
+        this.prototypeMaze = maze;
+        this.prototypewall = wall;
+        this.prototypeRoom = room;
+        this.prototypeDoor = door;
+    }
 
-	@Override
-	public Maze MakeMaze() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return this.prototypeMaze.clone();
-	}
+    @Override
+    public Maze MakeMaze() throws CloneNotSupportedException {
+        // TODO Auto-generated method stub
+        return this.prototypeMaze.clone();
+    }
 
-	@Override
-	public Room MakeRoom(int number) throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		Room room = this.prototypeRoom.clone();
-		room.Initialize(number);
-		return room;
-	}
+    @Override
+    public Room MakeRoom(int number) throws CloneNotSupportedException {
+        // TODO Auto-generated method stub
+        Room room = this.prototypeRoom.clone();
+        room.Initialize(number);
+        return room;
+    }
 
-	@Override
-	public Door MakeDoor(Room room1, Room room2) throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		Door door = this.prototypeDoor.clone();
-		door.Initialize(room1, room2);
-		return null;
-	}
+    @Override
+    public Door MakeDoor(Room room1, Room room2) throws CloneNotSupportedException {
+        // TODO Auto-generated method stub
+        Door door = this.prototypeDoor.clone();
+        door.Initialize(room1, room2);
+        return null;
+    }
 
-	@Override
-	public Wall MakeWall() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return this.prototypewall.clone();
-	}
+    @Override
+    public Wall MakeWall() throws CloneNotSupportedException {
+        // TODO Auto-generated method stub
+        return this.prototypewall.clone();
+    }
 
-	@Override
-	public int GetRoomCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int GetRoomCount() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

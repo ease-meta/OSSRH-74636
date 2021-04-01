@@ -25,5 +25,5 @@ package strategy;
  * 本接口为：收取现金的类
  **/
 public interface ICashSuper {
-	double acceptCash(double money);
+    double acceptCash(double money);
 }

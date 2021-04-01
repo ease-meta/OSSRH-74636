@@ -22,21 +22,21 @@ package facade;
  * @Fun 组合相关类
  **/
 public class Facade {
-	Actor actor;
-	Scene scene;
+    Actor actor;
+    Scene scene;
 
-	public Facade() {
-		this.actor = new Actor("lisi");
-		this.scene = new Scene("海天盛筵");
-	}
+    public Facade() {
+        this.actor = new Actor("lisi");
+        this.scene = new Scene("海天盛筵");
+    }
 
-	public void startGame() {
-		actor.load();
-		scene.load();
-	}
+    public void startGame() {
+        actor.load();
+        scene.load();
+    }
 
-	public void endGame() {
-		actor.unload();
-		scene.unload();
-	}
+    public void endGame() {
+        actor.unload();
+        scene.unload();
+    }
 }

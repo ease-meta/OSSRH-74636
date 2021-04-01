@@ -23,21 +23,21 @@ package mediator;
  **/
 public class Mediator implements IMediator {
 
-	private XmlCode xmlCode;
-	private XmlPreview xmlPreview;
+    private XmlCode xmlCode;
+    private XmlPreview xmlPreview;
 
-	@Override
-	public void creareMediator() {
-		// TODO Auto-generated method stub
-		this.xmlCode = new XmlCode();
-		this.xmlPreview = new XmlPreview();
-	}
+    @Override
+    public void creareMediator() {
+        // TODO Auto-generated method stub
+        this.xmlCode = new XmlCode();
+        this.xmlPreview = new XmlPreview();
+    }
 
-	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-		this.xmlCode.work();
-		this.xmlPreview.work();
-	}
+    @Override
+    public void work() {
+        // TODO Auto-generated method stub
+        this.xmlCode.work();
+        this.xmlPreview.work();
+    }
 
 }

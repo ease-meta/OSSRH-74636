@@ -25,33 +25,33 @@ import java.io.File;
  */
 public class BaseFileRequest {
 
-	private String objectName;
+    private String objectName;
 
-	private String bucketName;
+    private String bucketName;
 
-	private File localFile;
+    private File localFile;
 
-	public String getBucketName() {
-		return bucketName;
-	}
+    public String getBucketName() {
+        return bucketName;
+    }
 
-	public void setBucketName(String bucketName) {
-		this.bucketName = bucketName;
-	}
+    public void setBucketName(String bucketName) {
+        this.bucketName = bucketName;
+    }
 
-	public File getLocalFile() {
-		return localFile;
-	}
+    public File getLocalFile() {
+        return localFile;
+    }
 
-	public void setLocalFile(File localFile) {
-		this.localFile = localFile;
-	}
+    public void setLocalFile(File localFile) {
+        this.localFile = localFile;
+    }
 
-	public String getObjectName() {
-		return objectName;
-	}
+    public String getObjectName() {
+        return objectName;
+    }
 
-	public void setObjectName(String objectName) {
-		this.objectName = objectName;
-	}
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
+    }
 }

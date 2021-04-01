@@ -27,20 +27,20 @@ import java.util.stream.Collectors;
  * @date 2020/2/11
  */
 public class MingmingRandomNumber {
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int n;
-		while (scanner.hasNext()) {
-			n = scanner.nextInt();
-			HashMap sortedMap = new HashMap();
-			for (int i = 0; i < n; i++) {
-				int num = ThreadLocalRandom.current().nextInt(1, 1000);
-				sortedMap.putIfAbsent(num, num);
-			}
-			LinkedList linkedList = new LinkedList();
-			sortedMap.forEach((k, v) -> linkedList.add(k));
-			System.out.println("sortedMap = " + linkedList.stream().sorted().collect(Collectors.toList()));
-			linkedList.toArray();
-		}
-	}
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n;
+        while (scanner.hasNext()) {
+            n = scanner.nextInt();
+            HashMap sortedMap = new HashMap();
+            for (int i = 0; i < n; i++) {
+                int num = ThreadLocalRandom.current().nextInt(1, 1000);
+                sortedMap.putIfAbsent(num, num);
+            }
+            LinkedList linkedList = new LinkedList();
+            sortedMap.forEach((k, v) -> linkedList.add(k));
+            System.out.println("sortedMap = " + linkedList.stream().sorted().collect(Collectors.toList()));
+            linkedList.toArray();
+        }
+    }
 }
