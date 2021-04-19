@@ -24,33 +24,32 @@ import org.springframework.stereotype.Component;
 import java.beans.PropertyDescriptor;
 
 /**
- *
  * @author Leijian
  * @date 2020/5/4 22:09
  */
 @Component
 public class CloudBootInstantiationAwareBeanPostProcessor extends
-		InstantiationAwareBeanPostProcessorAdapter {
+        InstantiationAwareBeanPostProcessorAdapter {
 
-	public CloudBootInstantiationAwareBeanPostProcessor() {
-	}
+    public CloudBootInstantiationAwareBeanPostProcessor() {
+    }
 
-	@Override
-	public Object postProcessBeforeInstantiation(Class beanClass, String beanName)
-			throws BeansException {
-		return beanClass;
-	}
+    @Override
+    public Object postProcessBeforeInstantiation(Class beanClass, String beanName)
+            throws BeansException {
+        return beanClass;
+    }
 
-	@Override
-	public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds,
-													Object bean, String beanName)
-			throws BeansException {
-		return pvs;
-	}
+    @Override
+    public PropertyValues postProcessPropertyValues(PropertyValues pvs, PropertyDescriptor[] pds,
+                                                    Object bean, String beanName)
+            throws BeansException {
+        return pvs;
+    }
 
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
-		return bean;
-	}
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
+        return bean;
+    }
 }

@@ -21,8 +21,8 @@ package model.base;
  */
 public class Door extends MapSite {
 
-    private Room room1;
-    private Room room2;
+    private Room    room1;
+    private Room    room2;
     private boolean isOpen;
 
     public Door(Room room1, Room room2) {

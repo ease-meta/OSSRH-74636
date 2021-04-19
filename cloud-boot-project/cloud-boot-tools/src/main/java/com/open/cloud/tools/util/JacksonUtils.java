@@ -33,167 +33,167 @@ import java.util.Map;
  */
 public class JacksonUtils {
 
-	private final static ObjectMapper objectMapper = new ObjectMapper();
+    private final static ObjectMapper objectMapper = new ObjectMapper();
 
-	/**
-	 * javaBean、列表数组转换为json字符串
-	 */
-	public static String writeValueAsString(Object obj) throws Exception {
-		return objectMapper.writeValueAsString(obj);
-	}
+    /**
+     * javaBean、列表数组转换为json字符串
+     */
+    public static String writeValueAsString(Object obj) throws Exception {
+        return objectMapper.writeValueAsString(obj);
+    }
 
-	/**
-	 * javaBean、列表数组转换为json字符串,忽略空值
-	 */
-	public static String writeValueAsStringIgnoreNull(Object obj) throws Exception {
-		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-		objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
-		objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
-		objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-		return objectMapper.writeValueAsString(obj);
-	}
+    /**
+     * javaBean、列表数组转换为json字符串,忽略空值
+     */
+    public static String writeValueAsStringIgnoreNull(Object obj) throws Exception {
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
+        objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
+        objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+        return objectMapper.writeValueAsString(obj);
+    }
 
-	/**
-	 * json 转JavaBean
-	 */
+    /**
+     * json 转JavaBean
+     */
 
-	public static <T> T readValue(String jsonString, Class<T> clazz) throws Exception {
-		objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
-		return objectMapper.readValue(jsonString, clazz);
-	}
+    public static <T> T readValue(String jsonString, Class<T> clazz) throws Exception {
+        objectMapper.configure(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY, true);
+        return objectMapper.readValue(jsonString, clazz);
+    }
 
-	/**
-	 * json字符串转换为map
-	 */
-	public static <T> Map<String, Object> readValue(String jsonString) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-		return mapper.readValue(jsonString, Map.class);
-	}
+    /**
+     * json字符串转换为map
+     */
+    public static <T> Map<String, Object> readValue(String jsonString) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return mapper.readValue(jsonString, Map.class);
+    }
 
-	/**
-	 * 深度转换json成map
-	 *
-	 * @param json
-	 * @return
-	 */
-	public static Map<String, Object> json2MapRecursion(String json) throws Exception {
-		return json2MapRecursion(json, objectMapper);
-	}
+    /**
+     * 深度转换json成map
+     *
+     * @param json
+     * @return
+     */
+    public static Map<String, Object> json2MapRecursion(String json) throws Exception {
+        return json2MapRecursion(json, objectMapper);
+    }
 
-	/**
-	 * 把json解析成list，如果list内部的元素存在jsonString，继续解析
-	 *
-	 * @param json
-	 * @param mapper 解析工具
-	 * @return
-	 * @throws Exception
-	 */
-	private static List<Object> json2ListRecursion(String json, ObjectMapper mapper)
-			throws Exception {
-		if (json == null) {
-			return null;
-		}
+    /**
+     * 把json解析成list，如果list内部的元素存在jsonString，继续解析
+     *
+     * @param json
+     * @param mapper 解析工具
+     * @return
+     * @throws Exception
+     */
+    private static List<Object> json2ListRecursion(String json, ObjectMapper mapper)
+            throws Exception {
+        if (json == null) {
+            return null;
+        }
 
-		List<Object> list = mapper.readValue(json, List.class);
+        List<Object> list = mapper.readValue(json, List.class);
 
-		for (Object obj : list) {
-			if (obj != null && obj instanceof String) {
-				String str = (String) obj;
-				if (str.startsWith("[")) {
-					obj = json2ListRecursion(str, mapper);
-				} else if (obj.toString().startsWith("{")) {
-					obj = json2MapRecursion(str, mapper);
-				}
-			}
-		}
+        for (Object obj : list) {
+            if (obj != null && obj instanceof String) {
+                String str = (String) obj;
+                if (str.startsWith("[")) {
+                    obj = json2ListRecursion(str, mapper);
+                } else if (obj.toString().startsWith("{")) {
+                    obj = json2MapRecursion(str, mapper);
+                }
+            }
+        }
 
-		return list;
-	}
+        return list;
+    }
 
-	/**
-	 * 把json解析成map，如果map内部的value存在jsonString，继续解析
-	 *
-	 * @param json
-	 * @param mapper
-	 * @return
-	 * @throws Exception
-	 */
-	private static Map<String, Object> json2MapRecursion(String json, ObjectMapper mapper)
-			throws Exception {
-		if (json == null) {
-			return null;
-		}
+    /**
+     * 把json解析成map，如果map内部的value存在jsonString，继续解析
+     *
+     * @param json
+     * @param mapper
+     * @return
+     * @throws Exception
+     */
+    private static Map<String, Object> json2MapRecursion(String json, ObjectMapper mapper)
+            throws Exception {
+        if (json == null) {
+            return null;
+        }
 
-		Map<String, Object> map = mapper.readValue(json, Map.class);
+        Map<String, Object> map = mapper.readValue(json, Map.class);
 
-		for (Map.Entry<String, Object> entry : map.entrySet()) {
-			Object obj = entry.getValue();
-			if (obj != null && obj instanceof String) {
-				String str = ((String) obj);
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            Object obj = entry.getValue();
+            if (obj != null && obj instanceof String) {
+                String str = ((String) obj);
 
-				if (str.startsWith("[")) {
-					List<?> list = json2ListRecursion(str, mapper);
-					map.put(entry.getKey(), list);
-				} else if (str.startsWith("{")) {
-					Map<String, Object> mapRecursion = json2MapRecursion(str, mapper);
-					map.put(entry.getKey(), mapRecursion);
-				}
-			}
-		}
+                if (str.startsWith("[")) {
+                    List<?> list = json2ListRecursion(str, mapper);
+                    map.put(entry.getKey(), list);
+                } else if (str.startsWith("{")) {
+                    Map<String, Object> mapRecursion = json2MapRecursion(str, mapper);
+                    map.put(entry.getKey(), mapRecursion);
+                }
+            }
+        }
 
-		return map;
-	}
+        return map;
+    }
 
-	/**
-	 * 与javaBean json数组字符串转换为列表
-	 */
-	public static <T> List<T> json2list(String jsonArrayStr, Class<T> clazz) throws Exception {
+    /**
+     * 与javaBean json数组字符串转换为列表
+     */
+    public static <T> List<T> json2list(String jsonArrayStr, Class<T> clazz) throws Exception {
 
-		JavaType javaType = getCollectionType(ArrayList.class, clazz);
-		List<T> lst = (List<T>) objectMapper.readValue(jsonArrayStr, javaType);
-		return lst;
-	}
+        JavaType javaType = getCollectionType(ArrayList.class, clazz);
+        List<T> lst = (List<T>) objectMapper.readValue(jsonArrayStr, javaType);
+        return lst;
+    }
 
-	/**
-	 * 获取泛型的Collection Type
-	 *
-	 * @param collectionClass 泛型的Collection
-	 * @param elementClasses  元素类
-	 * @return JavaType Java类型
-	 * @since 1.0
-	 */
-	public static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
-		return objectMapper.getTypeFactory().constructParametricType(collectionClass,
-				elementClasses);
-	}
+    /**
+     * 获取泛型的Collection Type
+     *
+     * @param collectionClass 泛型的Collection
+     * @param elementClasses  元素类
+     * @return JavaType Java类型
+     * @since 1.0
+     */
+    public static JavaType getCollectionType(Class<?> collectionClass, Class<?>... elementClasses) {
+        return objectMapper.getTypeFactory().constructParametricType(collectionClass,
+                elementClasses);
+    }
 
-	/**
-	 * map  转JavaBean
-	 */
-	public static <T> T map2pojo(Map map, Class<T> clazz) {
-		return objectMapper.convertValue(map, clazz);
-	}
+    /**
+     * map  转JavaBean
+     */
+    public static <T> T map2pojo(Map map, Class<T> clazz) {
+        return objectMapper.convertValue(map, clazz);
+    }
 
-	/**
-	 * map 转json
-	 *
-	 * @param map
-	 * @return
-	 */
-	public static String mapToJson(Map map) {
-		try {
-			return objectMapper.writeValueAsString(map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
+    /**
+     * map 转json
+     *
+     * @param map
+     * @return
+     */
+    public static String mapToJson(Map map) {
+        try {
+            return objectMapper.writeValueAsString(map);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 
-	/**
-	 * map  转JavaBean
-	 */
-	public static <T> T obj2pojo(Object obj, Class<T> clazz) {
-		return objectMapper.convertValue(obj, clazz);
-	}
+    /**
+     * map  转JavaBean
+     */
+    public static <T> T obj2pojo(Object obj, Class<T> clazz) {
+        return objectMapper.convertValue(obj, clazz);
+    }
 }

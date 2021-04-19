@@ -43,7 +43,7 @@ public class Main019 {
 
     public static boolean isContentQualified(String s) {
         int count = 0;
-        String[] str = {"[a-z]", "[A-Z]", "[0-9]", "[^a-zA-Z0-9]"};
+        String[] str = { "[a-z]", "[A-Z]", "[0-9]", "[^a-zA-Z0-9]" };
         for (int i = 0; i < str.length; i++) {
             Pattern p = Pattern.compile(str[i]);
             Matcher m = p.matcher(s);

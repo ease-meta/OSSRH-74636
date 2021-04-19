@@ -79,7 +79,7 @@ public class Main017 {
                     } else if (i >= 128 && i <= 191) {//b
                         b++;
                         if (i == 172 && Integer.parseInt(ip[1]) >= 16
-                                && Integer.parseInt(ip[1]) <= 31) {
+                            && Integer.parseInt(ip[1]) <= 31) {
                             pri++;
                         }
                     } else if (i >= 192 && i <= 223) {//c
@@ -111,16 +111,16 @@ public class Main017 {
             if (mask_arr[1].equals("255")) {
                 if (mask_arr[2].equals("255")) {
                     if (mask_arr[3].equals("254") || mask_arr[3].equals("252")
-                            || mask_arr[3].equals("248") || mask_arr[3].equals("240")
-                            || mask_arr[3].equals("224") || mask_arr[3].equals("192")
-                            || mask_arr[3].equals("128") || mask_arr[3].equals("0"))
+                        || mask_arr[3].equals("248") || mask_arr[3].equals("240")
+                        || mask_arr[3].equals("224") || mask_arr[3].equals("192")
+                        || mask_arr[3].equals("128") || mask_arr[3].equals("0"))
                         return true;
                     else
                         return false;
                 } else if (mask_arr[2].equals("254") || mask_arr[2].equals("252")
-                        || mask_arr[2].equals("248") || mask_arr[2].equals("240")
-                        || mask_arr[2].equals("224") || mask_arr[2].equals("192")
-                        || mask_arr[2].equals("128") || mask_arr[2].equals("0")) {
+                           || mask_arr[2].equals("248") || mask_arr[2].equals("240")
+                           || mask_arr[2].equals("224") || mask_arr[2].equals("192")
+                           || mask_arr[2].equals("128") || mask_arr[2].equals("0")) {
                     if (mask_arr[3].equals("0"))
                         return true;
                     else
@@ -129,9 +129,9 @@ public class Main017 {
                     return false;
 
             } else if (mask_arr[1].equals("254") || mask_arr[1].equals("252")
-                    || mask_arr[1].equals("248") || mask_arr[1].equals("240")
-                    || mask_arr[1].equals("224") || mask_arr[1].equals("192")
-                    || mask_arr[1].equals("128") || mask_arr[1].equals("0")) {
+                       || mask_arr[1].equals("248") || mask_arr[1].equals("240")
+                       || mask_arr[1].equals("224") || mask_arr[1].equals("192")
+                       || mask_arr[1].equals("128") || mask_arr[1].equals("0")) {
                 if (mask_arr[2].equals("0") && mask_arr[3].equals("0"))
                     return true;
                 else
@@ -141,9 +141,9 @@ public class Main017 {
             }
 
         } else if (mask_arr[0].equals("254") || mask_arr[0].equals("252")
-                || mask_arr[0].equals("248") || mask_arr[0].equals("240")
-                || mask_arr[0].equals("224") || mask_arr[0].equals("192")
-                || mask_arr[0].equals("128") || mask_arr[0].equals("0")) {
+                   || mask_arr[0].equals("248") || mask_arr[0].equals("240")
+                   || mask_arr[0].equals("224") || mask_arr[0].equals("192")
+                   || mask_arr[0].equals("128") || mask_arr[0].equals("0")) {
             if (mask_arr[1].equals("0") && mask_arr[2].equals("0") && mask_arr[3].equals("0"))
                 return true;
             else
@@ -156,7 +156,7 @@ public class Main017 {
 
     static boolean checkIp(String[] ip) {
         if (ip.length == 4 && !ip[0].equals("") && !ip[1].equals("") && !ip[2].equals("")
-                && !ip[3].equals("")) {
+            && !ip[3].equals("")) {
             return true;
         }
         return false;

@@ -41,7 +41,7 @@ public class GamePlayerProxy3 {
 
     public IGamePlayer getProxy() {
         return (IGamePlayer) Proxy.newProxyInstance(this.getClass().getClassLoader(),
-                new Class[]{IGamePlayer.class}, new MyInvocationHandler());
+            new Class[] { IGamePlayer.class }, new MyInvocationHandler());
     }
 
     private class MyInvocationHandler implements InvocationHandler {

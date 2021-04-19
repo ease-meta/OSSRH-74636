@@ -35,11 +35,11 @@ import com.open.cloud.core.log.logger.WarnLog;
  * 4. WARN
  * 5. ERROR
  * 6. FATAL (the most serious)
- *  @author Leijian
- *  @date 2020/11/15
  *
+ * @author Leijian
+ * @date 2020/11/15
  */
 public abstract class MiddleLogger implements TraceLog, DebugLog, InfoLog, WarnLog, ErrorLog,
-		ParmLog, MethodLog, SqlLog, ProfileLog, PlatformLog {
+        ParmLog, MethodLog, SqlLog, ProfileLog, PlatformLog {
 
 }

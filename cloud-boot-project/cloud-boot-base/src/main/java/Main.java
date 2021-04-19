@@ -28,7 +28,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) throws ParseException {
         System.out.println(hexStr2Str("0x02"));
-        final byte[] b1 = {0x02};
+        final byte[] b1 = { 0x02 };
         System.out.println(new String(b1));
 
     }

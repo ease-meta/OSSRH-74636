@@ -23,7 +23,7 @@ package mediator;
  **/
 public class Mediator implements IMediator {
 
-    private XmlCode xmlCode;
+    private XmlCode    xmlCode;
     private XmlPreview xmlPreview;
 
     @Override

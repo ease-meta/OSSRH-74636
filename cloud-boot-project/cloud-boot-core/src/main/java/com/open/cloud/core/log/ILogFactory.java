@@ -22,7 +22,7 @@ package com.open.cloud.core.log;
  */
 public interface ILogFactory {
 
-	MiddleLogger getLog(Class<?> clazz);
+    MiddleLogger getLog(Class<?> clazz);
 
-	MiddleLogger getLog(String name);
+    MiddleLogger getLog(String name);
 }

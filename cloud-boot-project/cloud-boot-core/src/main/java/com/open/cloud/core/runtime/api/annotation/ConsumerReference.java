@@ -18,22 +18,23 @@ package com.open.cloud.core.runtime.api.annotation;
 
 /**
  * 服务消费者
+ *
  * @author Leijian
  * @date 2020/5/5
  */
 public @interface ConsumerReference {
 
-	/**
-	 * restful uri rpc interfaceType.getName()
-	 */
-	String value() default "";
+    /**
+     * restful uri rpc interfaceType.getName()
+     */
+    String value() default "";
 
-	/**
-	 * rpc jvmFirst restful primary is false invoke jvm service first
-	 *
-	 * @return is jvm first or not
-	 */
-	boolean jvmFirst() default true;
+    /**
+     * rpc jvmFirst restful primary is false invoke jvm service first
+     *
+     * @return is jvm first or not
+     */
+    boolean jvmFirst() default true;
 
-	Class<?> interfaceType() default void.class;
+    Class<?> interfaceType() default void.class;
 }

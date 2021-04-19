@@ -22,68 +22,68 @@ package com.open.cloud.core.log.logger;
  */
 public interface MethodLog {
 
-	/**
-	 * Is the logger instance enabled for the METHOD level?
-	 *
-	 * @return True if this Logger is enabled for the METHOD level,
-	 *         false otherwise.
-	 */
-	public boolean isMethodEnabled();
+    /**
+     * Is the logger instance enabled for the METHOD level?
+     *
+     * @return True if this Logger is enabled for the METHOD level,
+     * false otherwise.
+     */
+    public boolean isMethodEnabled();
 
-	/**
-	 * Log a message at the METHOD level.
-	 *
-	 * @param msg the message string to be logged
-	 */
-	public void method(String msg);
+    /**
+     * Log a message at the METHOD level.
+     *
+     * @param msg the message string to be logged
+     */
+    public void method(String msg);
 
-	/**
-	 * Log a message at the METHOD level according to the specified format
-	 * and argument.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the METHOD level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg    the argument
-	 */
-	public void method(String format, Object arg);
+    /**
+     * Log a message at the METHOD level according to the specified format
+     * and argument.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the METHOD level. </p>
+     *
+     * @param format the format string
+     * @param arg    the argument
+     */
+    public void method(String format, Object arg);
 
-	/**
-	 * Log a message at the METHOD level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the METHOD level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg1   the first argument
-	 * @param arg2   the second argument
-	 */
-	public void method(String format, Object arg1, Object arg2);
+    /**
+     * Log a message at the METHOD level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the METHOD level. </p>
+     *
+     * @param format the format string
+     * @param arg1   the first argument
+     * @param arg2   the second argument
+     */
+    public void method(String format, Object arg1, Object arg2);
 
-	/**
-	 * Log a message at the METHOD level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous string concatenation when the logger
-	 * is disabled for the METHOD level. However, this variant incurs the hidden
-	 * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
-	 * even if this logger is disabled for METHOD. The variants taking
-	 * {@link #method(String, Object) one} and {@link #method(String, Object, Object) two}
-	 * arguments exist solely in order to avoid this hidden cost.</p>
-	 *
-	 * @param format    the format string
-	 * @param arguments a list of 3 or more arguments
-	 */
-	public void method(String format, Object... arguments);
+    /**
+     * Log a message at the METHOD level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous string concatenation when the logger
+     * is disabled for the METHOD level. However, this variant incurs the hidden
+     * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
+     * even if this logger is disabled for METHOD. The variants taking
+     * {@link #method(String, Object) one} and {@link #method(String, Object, Object) two}
+     * arguments exist solely in order to avoid this hidden cost.</p>
+     *
+     * @param format    the format string
+     * @param arguments a list of 3 or more arguments
+     */
+    public void method(String format, Object... arguments);
 
-	/**
-	 * Log an exception (throwable) at the METHOD level with an
-	 * accompanying message.
-	 *
-	 * @param msg the message accompanying the exception
-	 * @param t   the exception (throwable) to log
-	 */
-	public void method(String msg, Throwable t);
+    /**
+     * Log an exception (throwable) at the METHOD level with an
+     * accompanying message.
+     *
+     * @param msg the message accompanying the exception
+     * @param t   the exception (throwable) to log
+     */
+    public void method(String msg, Throwable t);
 }

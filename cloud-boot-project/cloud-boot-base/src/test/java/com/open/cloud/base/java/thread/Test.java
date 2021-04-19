@@ -31,61 +31,61 @@ import java.util.List;
  */
 public class Test {
 
-	@org.junit.Test
-	public void collect() {
-		System.out.println("数据汇总开始");
-		long startTime = System.currentTimeMillis();
-		Integer onlineUser = queryOnlineUser();
-		Integer registered = queryRegistered();
-		BigDecimal orderAmount = queryOrderAmount();
-		BigDecimal outlayAmount = queryOutlayAmount();
-		Result result = new Result(onlineUser, registered, orderAmount, outlayAmount);
-		long endTime = System.currentTimeMillis();
-		System.out.println("获取汇总数据结束，result = " + result);
-		System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
-	}
+    @org.junit.Test
+    public void collect() {
+        System.out.println("数据汇总开始");
+        long startTime = System.currentTimeMillis();
+        Integer onlineUser = queryOnlineUser();
+        Integer registered = queryRegistered();
+        BigDecimal orderAmount = queryOrderAmount();
+        BigDecimal outlayAmount = queryOutlayAmount();
+        Result result = new Result(onlineUser, registered, orderAmount, outlayAmount);
+        long endTime = System.currentTimeMillis();
+        System.out.println("获取汇总数据结束，result = " + result);
+        System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
+    }
 
-	public Integer queryOnlineUser() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("查询在线人数 耗时2秒");
-		return 10;
-	}
+    public Integer queryOnlineUser() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("查询在线人数 耗时2秒");
+        return 10;
+    }
 
-	public Integer queryRegistered() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("查询注册人数 耗时2秒");
-		return 10086;
-	}
+    public Integer queryRegistered() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("查询注册人数 耗时2秒");
+        return 10086;
+    }
 
-	public BigDecimal queryOrderAmount() {
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("查询订单总额 耗时3秒");
-		return BigDecimal.valueOf(2000);
-	}
+    public BigDecimal queryOrderAmount() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("查询订单总额 耗时3秒");
+        return BigDecimal.valueOf(2000);
+    }
 
-	public BigDecimal queryOutlayAmount() {
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("查询支出总额 耗时3秒");
-		return BigDecimal.valueOf(1000);
-	}
+    public BigDecimal queryOutlayAmount() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("查询支出总额 耗时3秒");
+        return BigDecimal.valueOf(1000);
+    }
 
-	@org.junit.Test
+    @org.junit.Test
 	public void collecta() {
 		System.out.println("数据汇总开始");
 		long startTime = System.currentTimeMillis();
@@ -104,29 +104,29 @@ public class Test {
 		System.out.println("总耗时 = " + (endTime - startTime) + "毫秒");
 	}
 
-	@Data
-	@NoArgsConstructor
-	@AllArgsConstructor
-	@ToString
-	class Result {
-		/**
-		 * 在线人数
-		 */
-		Integer onlineUser;
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @ToString
+    class Result {
+        /**
+         * 在线人数
+         */
+        Integer    onlineUser;
 
-		/**
-		 * 注册人数
-		 */
-		Integer registered;
+        /**
+         * 注册人数
+         */
+        Integer    registered;
 
-		/**
-		 * 订单总额
-		 */
-		BigDecimal orderAmount;
+        /**
+         * 订单总额
+         */
+        BigDecimal orderAmount;
 
-		/**
-		 * 支出总额
-		 */
-		BigDecimal outlayAmount;
-	}
+        /**
+         * 支出总额
+         */
+        BigDecimal outlayAmount;
+    }
 }

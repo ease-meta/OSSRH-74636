@@ -25,8 +25,8 @@ import java.io.Serializable;
  */
 public class BusinessException extends RuntimeException implements Serializable {
 
-    private static final long serialVersionUID = 1905122041950251207L;
-    private String code;
+    private static final long  serialVersionUID = 1905122041950251207L;
+    private String             code;
     private transient Object[] args;
 
     public BusinessException(final String code, Throwable cause) {

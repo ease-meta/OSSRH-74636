@@ -22,7 +22,7 @@ package model.base;
 public class Room extends MapSite {
 
     private MapSite[] sides;
-    private int roomNumber;
+    private int       roomNumber;
 
     public Room(int roomNo) {
         // TODO Auto-generated constructor stub

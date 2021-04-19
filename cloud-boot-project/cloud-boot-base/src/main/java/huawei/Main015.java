@@ -73,11 +73,11 @@ public class Main015 {
                 if (q[i - 1] == 0) { // 主件
                     if (weight[i - 1] <= j) // 用j这么多钱去买 i 件商品 可以获得最大价值
                         dp[i][j] = Math
-                                .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
+                            .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
                 } else { //附件
                     if (weight[i - 1] + weight[q[i - 1]] <= j) //附件的话 加上主件一起算
                         dp[i][j] = Math
-                                .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
+                            .max(dp[i - 1][j], dp[i - 1][j - weight[i - 1]] + val[i - 1]);
                 }
             }
         }

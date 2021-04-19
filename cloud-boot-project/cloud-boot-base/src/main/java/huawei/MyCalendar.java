@@ -27,8 +27,8 @@ import java.util.concurrent.atomic.AtomicLong;
 public class MyCalendar {
 
     private static ConcurrentHashMap<Long, Book> concurrentHashMap = new ConcurrentHashMap();
-    private static TreeSet<Book> treeSet = new TreeSet<>();
-    private AtomicLong atomicLong = new AtomicLong();
+    private static TreeSet<Book>                 treeSet           = new TreeSet<>();
+    private AtomicLong                           atomicLong        = new AtomicLong();
 
     public boolean book(final int start, final int end) {
         Book book = new Book(start, end, 1);

@@ -22,68 +22,68 @@ package com.open.cloud.core.log.logger;
  */
 public interface DebugLog {
 
-	/**
-	 * Is the logger instance enabled for the DEBUG level?
-	 *
-	 * @return True if this Logger is enabled for the DEBUG level,
-	 *         false otherwise.
-	 */
-	public boolean isDebugEnabled();
+    /**
+     * Is the logger instance enabled for the DEBUG level?
+     *
+     * @return True if this Logger is enabled for the DEBUG level,
+     * false otherwise.
+     */
+    public boolean isDebugEnabled();
 
-	/**
-	 * Log a message at the DEBUG level.
-	 *
-	 * @param msg the message string to be logged
-	 */
-	public void debug(String msg);
+    /**
+     * Log a message at the DEBUG level.
+     *
+     * @param msg the message string to be logged
+     */
+    public void debug(String msg);
 
-	/**
-	 * Log a message at the DEBUG level according to the specified format
-	 * and argument.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the DEBUG level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg    the argument
-	 */
-	public void debug(String format, Object arg);
+    /**
+     * Log a message at the DEBUG level according to the specified format
+     * and argument.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the DEBUG level. </p>
+     *
+     * @param format the format string
+     * @param arg    the argument
+     */
+    public void debug(String format, Object arg);
 
-	/**
-	 * Log a message at the DEBUG level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the DEBUG level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg1   the first argument
-	 * @param arg2   the second argument
-	 */
-	public void debug(String format, Object arg1, Object arg2);
+    /**
+     * Log a message at the DEBUG level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the DEBUG level. </p>
+     *
+     * @param format the format string
+     * @param arg1   the first argument
+     * @param arg2   the second argument
+     */
+    public void debug(String format, Object arg1, Object arg2);
 
-	/**
-	 * Log a message at the DEBUG level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous string concatenation when the logger
-	 * is disabled for the DEBUG level. However, this variant incurs the hidden
-	 * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
-	 * even if this logger is disabled for DEBUG. The variants taking
-	 * {@link #debug(String, Object) one} and {@link #debug(String, Object, Object) two}
-	 * arguments exist solely in order to avoid this hidden cost.</p>
-	 *
-	 * @param format    the format string
-	 * @param arguments a list of 3 or more arguments
-	 */
-	public void debug(String format, Object... arguments);
+    /**
+     * Log a message at the DEBUG level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous string concatenation when the logger
+     * is disabled for the DEBUG level. However, this variant incurs the hidden
+     * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
+     * even if this logger is disabled for DEBUG. The variants taking
+     * {@link #debug(String, Object) one} and {@link #debug(String, Object, Object) two}
+     * arguments exist solely in order to avoid this hidden cost.</p>
+     *
+     * @param format    the format string
+     * @param arguments a list of 3 or more arguments
+     */
+    public void debug(String format, Object... arguments);
 
-	/**
-	 * Log an exception (throwable) at the DEBUG level with an
-	 * accompanying message.
-	 *
-	 * @param msg the message accompanying the exception
-	 * @param t   the exception (throwable) to log
-	 */
-	public void debug(String msg, Throwable t);
+    /**
+     * Log an exception (throwable) at the DEBUG level with an
+     * accompanying message.
+     *
+     * @param msg the message accompanying the exception
+     * @param t   the exception (throwable) to log
+     */
+    public void debug(String msg, Throwable t);
 }

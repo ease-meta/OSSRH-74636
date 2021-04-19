@@ -25,13 +25,13 @@ import org.tio.core.intf.PacketListener;
  * @date 2020/4/12
  */
 public class PackDemo implements PacketListener {
-	public static void main(String[] args) {
-		System.out.println(PackDemo.class.getSimpleName());
-	}
+    public static void main(String[] args) {
+        System.out.println(PackDemo.class.getSimpleName());
+    }
 
-	@Override
-	public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess)
-			throws Exception {
-		System.out.println(1);
-	}
+    @Override
+    public void onAfterSent(ChannelContext channelContext, Packet packet, boolean isSentSuccess)
+            throws Exception {
+        System.out.println(1);
+    }
 }

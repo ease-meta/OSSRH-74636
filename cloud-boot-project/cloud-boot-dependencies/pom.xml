@@ -3,23 +3,32 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <!-- <parent>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-parent</artifactId>
+         <version>2.1.13.RELEASE</version>
+         &lt;!&ndash; Add this to resolve to repository &ndash;&gt;
+         <relativePath />
+     </parent>-->
 
     <artifactId>cloud-boot-dependencies</artifactId>
-
     <groupId>com.open.cloud</groupId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <distributionManagement>
-        <repository>
-            <id>rdc-releases</id>
-            <url>https://packages.aliyun.com/maven/repository/2083988-release-4FiY23/</url>
-        </repository>
-        <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://packages.aliyun.com/maven/repository/2083988-snapshot-AlrTlP/</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>leijian</name>
+            <email>leijian0128@163.com</email>
+        </developer>
+    </developers>
 
     <dependencyManagement>
         <dependencies>
@@ -116,25 +125,124 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <properties>
-        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
-        <maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-        <project.encoding>UTF-8</project.encoding>
-        <java.version>1.8</java.version>
-        <maven.compiler.plugin>3.1</maven.compiler.plugin>
-    </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin}</version>
-                <configuration>
-                    <encoding>${project.encoding}</encoding>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
+    <!-- <profiles>
+         <profile>
+             <id>release</id>
+             <build>
+                 <plugins>
+                     &lt;!&ndash;nexus本身有一套发布jar的流程,下面这个插件可以是nexus流程处理的客户端.&ndash;&gt;
+                     <plugin>
+                         <groupId>org.sonatype.plugins</groupId>
+                         <artifactId>nexus-staging-maven-plugin</artifactId>
+                         <version>1.6.7</version>
+                         <extensions>true</extensions>
+                         <configuration>
+                             <serverId>ossrh</serverId>
+                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                             <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                         </configuration>
+                     </plugin>
+                     <plugin>
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-gpg-plugin</artifactId>
+                         <version>${maven.gpg.pluign}</version>
+                         <executions>
+                             <execution>
+                                 <id>sign-artifacts</id>
+                                 <phase>verify</phase>
+                                 <goals>
+                                     <goal>sign</goal>
+                                 </goals>
+                             </execution>
+                         </executions>
+                     </plugin>
+                 </plugins>
+             </build>
+             <distributionManagement>
+                 <repository>
+                     <id>ossrh</id>
+                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                 </repository>
+             </distributionManagement>
+         </profile>
+
+         <profile>
+             <id>snapshot</id>
+             <build>
+                 <plugins>
+                     <plugin>
+                         <groupId>org.sonatype.plugins</groupId>
+                         <artifactId>nexus-staging-maven-plugin</artifactId>
+                         <version>${maven.staging.plugin}</version>
+                         <extensions>true</extensions>
+                         <configuration>
+                             <serverId>ossrh</serverId>
+                             <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                             <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                         </configuration>
+                     </plugin>
+                     <plugin>
+                         <groupId>org.apache.maven.plugins</groupId>
+                         <artifactId>maven-gpg-plugin</artifactId>
+                         <version>${maven.gpg.pluign}</version>
+                         <executions>
+                             <execution>
+                                 <id>sign-artifacts</id>
+                                 <phase>verify</phase>
+                                 <goals>
+                                     <goal>sign</goal>
+                                 </goals>
+                             </execution>
+                         </executions>
+                     </plugin>
+                 </plugins>
+             </build>
+             <distributionManagement>
+                 <snapshotRepository>
+                     <id>ossrh</id>
+                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                 </snapshotRepository>
+             </distributionManagement>
+         </profile>
+         <profile>
+             <id>default</id>
+             <activation>
+                 <activeByDefault>true</activeByDefault>
+             </activation>
+             <repositories>
+                 <repository>
+                     <snapshots>
+                         <enabled>false</enabled>
+                     </snapshots>
+                     <id>release</id>
+                     <url>https://oss.sonatype.org/content/repositories/releases</url>
+                 </repository>
+                 <repository>
+                     <snapshots>
+                         <enabled>true</enabled>
+                     </snapshots>
+                     <id>snapshot</id>
+                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                 </repository>
+             </repositories>
+             <pluginRepositories>
+                 <pluginRepository>
+                     <snapshots>
+                         <enabled>false</enabled>
+                     </snapshots>
+                     <id>releases</id>
+                     <url>https://oss.sonatype.org/content/repositories/releases</url>
+                 </pluginRepository>
+                 <pluginRepository>
+                     <snapshots>
+                         <enabled>true</enabled>
+                     </snapshots>
+                     <id>snapshot</id>
+                     <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                 </pluginRepository>
+             </pluginRepositories>
+         </profile>
+     </profiles>-->
+
 </project>

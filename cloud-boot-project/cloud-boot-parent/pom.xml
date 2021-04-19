@@ -13,25 +13,40 @@
     <artifactId>cloud-boot-parent</artifactId>
 
     <properties>
-        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+
         <main.user.dir>${basedir}/../..</main.user.dir>
         <project.encoding>UTF-8</project.encoding>
         <java.version>1.8</java.version>
-
-        <jacoco.maven.plugin>0.7.9</jacoco.maven.plugin>
-        <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
-        <license.maven.plugin>3.0</license.maven.plugin>
-        <maven.java.formatter.plugin>0.4</maven.java.formatter.plugin>
-        <maven.compiler.plugin>3.1</maven.compiler.plugin>
-        <maven.source.plugin>3.0.0</maven.source.plugin>
-        <maven.javadoc.plugin>2.9.1</maven.javadoc.plugin>
+        <!-- Build args -->
+        <argline>-server -Xms256m -Xmx512m -Dfile.encoding=UTF-8
+            -Djava.net.preferIPv4Stack=true -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m
+        </argline>
+        <arguments/>
+        <jacocoArgLine/>
+        <maven_pmd_plugin_version>3.13.0</maven_pmd_plugin_version>
+        <maven_jar_version>3.2.0</maven_jar_version>
+        <maven_surefire_version>2.22.1</maven_surefire_version>
+        <maven_deploy_version>2.8.2</maven_deploy_version>
+        <maven_compiler_version>3.6.0</maven_compiler_version>
+        <maven_source_version>3.2.1</maven_source_version>
+        <maven_javadoc_version>3.0.1</maven_javadoc_version>
+        <maven_jetty_version>9.4.11.v20180605</maven_jetty_version>
+        <maven_checkstyle_version>3.0.0</maven_checkstyle_version>
+        <maven_jacoco_version>0.8.2</maven_jacoco_version>
+        <maven_flatten_version>1.1.0</maven_flatten_version>
+        <maven_enforce_version>3.0.0-M2</maven_enforce_version>
+        <maven_java_formatter_plugin>0.4</maven_java_formatter_plugin>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <maven.sTracerConfigurationListenerurefire.plugin>2.21.0</maven.sTracerConfigurationListenerurefire.plugin>
+        <skip_maven_deploy>false</skip_maven_deploy>
 
-         <!--<spring-boot.version>2.3.8.RELEASE</spring-boot.version>
-         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
-
-        <spring-boot.version>2.4.4</spring-boot.version>
+        <license_maven_plugin>3.0</license_maven_plugin>
+        <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
+        <!--<spring-boot.version>2.3.8.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
+        <spring-boot.version>2.4.5</spring-boot.version>
         <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-native.version>0.9.1</spring-native.version>
         <seata.version>1.4.1</seata.version>
         <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
@@ -111,7 +126,7 @@
         <jline.version>[3.13.3,)</jline.version>
         <oshi.version>[3.9.1,)</oshi.version>
         <activiti.version>[7.1.0.M5,)</activiti.version>
-        <commons-beanutils.version>[1.9.4,)</commons-beanutils.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <reflections.version>[0.9.12,)</reflections.version>
         <commons-net.version>3.7.2</commons-net.version>
         <jsch.version>0.1.55</jsch.version>
@@ -166,6 +181,12 @@
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-native</artifactId>
+                <version>${spring-native.version}</version>
             </dependency>
 
             <dependency>
@@ -889,13 +910,11 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-configuration2</artifactId>
-            <version>[2.2,)</version>
         </dependency>
 
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>[1.9.3,)</version>
         </dependency>
 
         <dependency>
@@ -914,15 +933,15 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
+        <!-- <dependency>
+             <groupId>ch.qos.logback</groupId>
+             <artifactId>logback-classic</artifactId>
+         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-        </dependency>-->
+         <dependency>
+             <groupId>ch.qos.logback</groupId>
+             <artifactId>logback-core</artifactId>
+         </dependency>-->
 
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -989,12 +1008,118 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <build>
+        <!-- Used for packaging NOTICE & LICENSE to each sub-module jar-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>${maven.multiModuleProjectDirectory}</directory>
+                <targetPath>META-INF/</targetPath>
+                <filtering>false</filtering>
+                <includes>
+                    <include>NOTICE</include>
+                    <include>LICENSE</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- git commit info -->
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>4.0.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <verbose>true</verbose>
+                    <skipPoms>false</skipPoms>
+                    <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
+                    </generateGitPropertiesFilename>
+                    <excludeProperties>
+                        <excludeProperty>git.branch</excludeProperty>
+                        <excludeProperty>git.build.host</excludeProperty>
+                        <excludeProperty>git.build.time</excludeProperty>
+                        <excludeProperty>git.build.user.email</excludeProperty>
+                        <excludeProperty>git.build.user.name</excludeProperty>
+                        <excludeProperty>git.remote.origin.url</excludeProperty>
+                        <excludeProperty>git.total.commit.count</excludeProperty>
+                        <excludeProperty>git.commit.time</excludeProperty>
+                        <excludeProperty>git.local.branch.ahead</excludeProperty>
+                        <excludeProperty>git.local.branch.behind</excludeProperty>
+                        <excludeProperty>git.tags</excludeProperty>
+                    </excludeProperties>
+                    <injectAllReactorProjects>true</injectAllReactorProjects>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven_jar_version}</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>true</addMavenDescriptor>
+                        <index>true</index>
+                        <manifest>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Specification-Version>${project.version}</Specification-Version>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!--我们会经常碰到这样的问题，在pom中引入了一个jar，里面默认依赖了其他的jar包。jar包一多的时候，我们很难确认哪些jar是我们需要的，哪些jar是冲突的。此时会出现很多莫名其妙的问题，什么类找不到啦，方法找不到啦，这种可能的原因就是jar的版本不是我们所设想的版本，但是我们也不知道低版本的jar是从哪个maven里面引用的。此时我们的maven-enforcer-plugin就可以登场了。-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven_enforce_version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce-no-releases</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireSnapshotVersion>
+                                    <message>No Releases Allowed!</message>
+                                    <failWhenParentIsRelease>false</failWhenParentIsRelease>
+                                </requireSnapshotVersion>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>${license.maven.plugin}</version>
+                <version>${license_maven_plugin}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -1021,9 +1146,10 @@
             <plugin>
                 <groupId>com.googlecode.maven-java-formatter-plugin</groupId>
                 <artifactId>maven-java-formatter-plugin</artifactId>
-                <version>${maven.java.formatter.plugin}</version>
+                <version>${maven_java_formatter_plugin}</version>
                 <executions>
                     <execution>
+                        <phase>validate</phase>
                         <goals>
                             <goal>format</goal>
                         </goals>
@@ -1036,20 +1162,164 @@
             </plugin>
 
             <plugin>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofa-version-maven-plugin</artifactId>
-                <version>${sofa.version.maven.plugin}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven_pmd_plugin_version}</version>
                 <configuration>
-                    <dotGitDirectory>${main.user.dir}/.git</dotGitDirectory>
-                    <defaultPropertiesFileEntries>
-                        <Doc-Url>http://www.sofastack.tech/sofa-boot/docs/Home</Doc-Url>
-                    </defaultPropertiesFileEntries>
+                    <sourceEncoding>${project.encoding}</sourceEncoding>
+                    <targetJdk>${java.version}</targetJdk>
+                    <printFailingErrors>true</printFailingErrors>
+                    <linkXRef>false</linkXRef>
+                    <includeTests>true</includeTests>
+                    <rulesets>
+                        <ruleset>${main.user.dir}/tools/pmd-ruleset.xml</ruleset>
+                    </rulesets>
                 </configuration>
                 <executions>
                     <execution>
+                        <id>check</id>
+                        <phase>validate</phase>
                         <goals>
-                            <goal>gen</goal>
-                            <goal>write</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>com.alibaba.p3c</groupId>
+                        <artifactId>p3c-pmd</artifactId>
+                        <version>2.1.1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>${maven_deploy_version}</version>
+                <configuration>
+                    <skip>${skip_maven_deploy}</skip>
+                </configuration>
+            </plugin>
+            <!-- <plugin>
+                 <groupId>org.apache.rat</groupId>
+                 <artifactId>apache-rat-plugin</artifactId>
+                 <version>${apache-rat-plugin.version}</version>
+                 <executions>
+                     <execution>
+                         <id>verify.rat</id>
+                         <phase>verify</phase>
+                         <goals>
+                             <goal>check</goal>
+                         </goals>
+                         <configuration>
+                             <excludes>
+                                 <exclude>**/*.versionsBackup</exclude>
+                                 <exclude>**/.idea/</exclude>
+                                 <exclude>**/*.iml</exclude>
+                                 <exclude>**/*.txt</exclude>
+                                 <exclude>**/*.load</exclude>
+                                 <exclude>**/*.flex</exclude>
+                                 <exclude>**/*.fc</exclude>
+                                 <exclude>**/*.javascript</exclude>
+                                 <exclude>**/*.properties</exclude>
+                                 <exclude>**/*.thrift</exclude>
+                                 <exclude>**/*.sh</exclude>
+                                 <exclude>**/*.bat</exclude>
+                                 <exclude>**/*.md</exclude>
+                                 <exclude>.git/</exclude>
+                                 <exclude>.gitignore</exclude>
+                                 &lt;!&ndash; ASF jenkins box puts the Maven repo in our root directory. &ndash;&gt;
+                                 <exclude>.repository/</exclude>
+                                 <exclude>**/.settings/*</exclude>
+                                 <exclude>**/.classpath</exclude>
+                                 <exclude>**/.project</exclude>
+                                 <exclude>**/target/**</exclude>
+                                 <exclude>**/*.log</exclude>
+                                 <exclude>CODE_OF_CONDUCT.md</exclude>
+                                 <exclude>.codecov.yml</exclude>
+                                 <exclude>.travis.yml</exclude>
+                                 <exclude>PULL_REQUEST_TEMPLATE.md</exclude>
+                                 <exclude>CONTRIBUTING.md</exclude>
+                                 <exclude>README.md</exclude>
+                                 <exclude>Jenkinsfile</exclude>
+                                 <exclude>**/codestyle/*</exclude>
+                                 <exclude>**/resources/META-INF/**</exclude>
+                                 &lt;!&ndash; exclude the netty files &ndash;&gt;
+                                 <exclude>**/org/apache/dubbo/common/threadlocal/InternalThreadLocal.java</exclude>
+                                 <exclude>**/org/apache/dubbo/common/threadlocal/InternalThreadLocalMap.java</exclude>
+                                 <exclude>**/org/apache/dubbo/common/timer/TimerTask.java</exclude>
+                                 <exclude>**/org/apache/dubbo/common/timer/Timer.java</exclude>
+                                 <exclude>**/org/apache/dubbo/common/timer/Timeout.java</exclude>
+                                 <exclude>**/org/apache/dubbo/common/timer/HashedWheelTimer.java</exclude>
+                                 &lt;!&ndash; exclude the edazdarevic files &ndash;&gt;
+                                 <exclude>**/org/apache/dubbo/common/utils/CIDRUtils.java</exclude>
+                                 &lt;!&ndash; exclude protobuf generated files &ndash;&gt;
+                                 <exclude>**/org/apache/dubbo/common/serialize/protobuf/support/wrapper/MapValue.java
+                                 </exclude>
+                                 <exclude>
+                                     **/org/apache/dubbo/common/serialize/protobuf/support/wrapper/ThrowablePB.java
+                                 </exclude>
+                                 <exclude>
+                                     **/org/apache/dubbo/common/utils/Utf8Utils.java
+                                 </exclude>
+                                 <exclude>.github/**</exclude>
+                                 <exclude>compiler/**</exclude>
+                                 &lt;!&ndash; exclude mockito extensions spi files &ndash;&gt;
+                                 <exclude>**/mockito-extensions/*</exclude>
+                             </excludes>
+                         </configuration>
+                     </execution>
+                 </executions>
+             </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <useReleaseProfile>false</useReleaseProfile>
+                    <releaseProfiles>release</releaseProfiles>
+                    <goals>deploy</goals>
+                    <arguments>${arguments}</arguments>
+                </configuration>
+            </plugin>
+            <!--使用flatten-maven-plugin对发布的POM进行精简-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <version>${maven_flatten_version}</version>
+                <configuration>
+                    <updatePomFile>true</updatePomFile>
+                    <!--<flattenMode>resolveCiFriendliesOnly</flattenMode>-->
+                    <flattenMode>bom</flattenMode>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -1058,18 +1328,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin}</version>
+                <version>${maven_compiler_version}</version>
                 <configuration>
+                    <!--<compilerArgs>
+                        <compilerArg>-proc:none</compilerArg>
+                        <compilerArg>-parameters</compilerArg>
+                    </compilerArgs>-->
+                    <fork>true</fork>
                     <encoding>${project.encoding}</encoding>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
+            <!--source-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>${maven.source.plugin}</version>
+                <version>${maven_source_version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -1079,53 +1354,91 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <!--javadoc-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.1</version>
-                <configuration>
-                    <charset>UTF-8</charset>
-                    <encoding>UTF-8</encoding>
-                    <docencoding>UTF-8</docencoding>
-                    <aggregate>true</aggregate>
-                </configuration>
+                <version>2.10.4</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
+                            <goal>aggregate</goal>
                         </goals>
                         <configuration>
                             <additionalparam>-Xdoclint:none</additionalparam>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!--<plugin>
-                <groupId>org.jacoco</groupId>
-                <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.maven.plugin}</version>
                 <configuration>
-                    <skip>false</skip>
+                    <includeDependencySources>true</includeDependencySources>
+                    <!-- <dependencySourceIncludes>
+                         <dependencySourceInclude>org.apache.dubbo:dubbo-*</dependencySourceInclude>
+                         <dependencySourceExclude>com.alibaba:hessian-*</dependencySourceExclude>
+                     </dependencySourceIncludes>-->
+                    <show>public</show>
+                    <charset>UTF-8</charset>
+                    <encoding>UTF-8</encoding>
+                    <docencoding>UTF-8</docencoding>
+                    <sourcepath>src/main/java/</sourcepath>
+                    <!-- <doclint>none</doclint>-->
+                    <links>
+                        <link>http://docs.oracle.com/javase/8/docs/api</link>
+                    </links>
+                    <doctitle>Cloud Boot ${project.version} API</doctitle>
+                    <windowtitle>Cloud Boot ${project.version} API</windowtitle>
                 </configuration>
+            </plugin>
+            <!--签名-->
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>default-prepare-agent</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${maven_jacoco_version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>default-report</id>
-                        <phase>test</phase>
+                        <id>report-aggregate</id>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>report-aggregate</goal>
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
+
+            <!-- common shared -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <useSystemClassLoader>true</useSystemClassLoader>
+                    <forkMode>once</forkMode>
+                    <argLine>${argline}</argLine>
+                    <systemProperties>
+                        <!-- common shared -->
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+
         </plugins>
     </build>
 </project>

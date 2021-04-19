@@ -12,10 +12,6 @@
 
     <artifactId>cloud-boot-jpa</artifactId>
 
-    <properties>
-        <main.user.dir>${basedir}/../..</main.user.dir>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -12,10 +12,6 @@
 
     <artifactId>cloud-boot-mybatis</artifactId>
 
-    <properties>
-        <main.user.dir>${basedir}/../..</main.user.dir>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>

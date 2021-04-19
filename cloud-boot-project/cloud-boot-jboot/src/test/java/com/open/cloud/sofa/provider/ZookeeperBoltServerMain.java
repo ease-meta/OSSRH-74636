@@ -16,39 +16,33 @@
  */
 package com.open.cloud.sofa.provider;
 
-
 import com.jfinal.log.Log;
 
 /**
  * <p></p>
  * <p>
  *
- *
  * @author <a href=mailto:zhanggeng.zg@antfin.com>GengZhang</a>
  */
 public class ZookeeperBoltServerMain {
 
-	private final static Log bizLog = Log.getLog(ZookeeperBoltServerMain.class);
+    private final static Log bizLog = Log.getLog(ZookeeperBoltServerMain.class);
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		chkCycle("1", "2", "3");
-	}
+        chkCycle("1", "2", "3");
+    }
 
-	public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
+    public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
 
+        bizLog.info(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
+        bizLog.debug("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
+        bizLog.info("boolean [true]");
+        bizLog.error("<<<<<<<<<<<<End<<<<<<<<<<<<");
+        bizLog.debug("boolean [false]");
+        bizLog.debug("<<<<<<<<<<<<End<<<<<<<<<<<<");
 
-		bizLog.info(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
-		bizLog.debug("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
-		String sCalJtriq = "";// 计算计提日期值
-		if (true) {
-			bizLog.info("boolean [true]");
-			bizLog.error("<<<<<<<<<<<<End<<<<<<<<<<<<");
-		}
-		bizLog.debug("boolean [false]");
-		bizLog.debug("<<<<<<<<<<<<End<<<<<<<<<<<<");
-
-		return false;
-	}
+        return false;
+    }
 
 }

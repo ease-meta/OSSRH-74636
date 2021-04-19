@@ -30,7 +30,7 @@ public class MainTest {
     public static void main(String[] args) {
         ICollection<Integer> collection = new MyCollection<>();
         add(collection, 3, 5, 6, 8, 9, 10, 56, 96, 5);
-        for (IIterator<Integer> iterator = collection.iterator(); iterator.hasNext(); ) {
+        for (IIterator<Integer> iterator = collection.iterator(); iterator.hasNext();) {
             System.out.println(iterator.next());
         }
 
@@ -38,7 +38,7 @@ public class MainTest {
 
         ICollection<Object> collection2 = new MyCollection<>();
         add(collection2, "a", "b", "c", "d", 3, 5, 6, 7);
-        for (IIterator<Object> iterator = collection2.iterator(); iterator.hasNext(); ) {
+        for (IIterator<Object> iterator = collection2.iterator(); iterator.hasNext();) {
             System.out.println(iterator.next());
         }
     }

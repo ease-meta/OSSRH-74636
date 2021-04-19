@@ -21,14 +21,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Test {
 
-	//value1：线程不安全
-	private static int value1 = 0;
-	//value2：使用乐观锁
-	private static AtomicInteger value2 = new AtomicInteger(0);
-	//value3：使用悲观锁
-	private static int value3 = 0;
+    //value1：线程不安全
+    private static int           value1 = 0;
+    //value2：使用乐观锁
+    private static AtomicInteger value2 = new AtomicInteger(0);
+    //value3：使用悲观锁
+    private static int           value3 = 0;
 
-	public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
 		//开启1000个线程，并执行自增操作
 		for (int i = 0; i < 1000; ++i) {
 			new Thread(() -> {
@@ -49,7 +49,7 @@ public class Test {
 		hashMap.put("2", "2");
 	}
 
-	private static synchronized void increaseValue3() {
-		value3++;
-	}
+    private static synchronized void increaseValue3() {
+        value3++;
+    }
 }

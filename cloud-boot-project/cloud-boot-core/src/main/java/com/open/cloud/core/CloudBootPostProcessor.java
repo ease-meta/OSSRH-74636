@@ -21,27 +21,26 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.stereotype.Component;
 
 /**
- *
  * @author Leijian
  * @date 2020/5/4 22:08
  */
 @Component
 public class CloudBootPostProcessor implements BeanPostProcessor {
 
-	public CloudBootPostProcessor() {
-	}
+    public CloudBootPostProcessor() {
+    }
 
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName)
-			throws BeansException {
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName)
+            throws BeansException {
 
-		return bean;
-	}
+        return bean;
+    }
 
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
 
-		return bean;
-	}
+        return bean;
+    }
 }

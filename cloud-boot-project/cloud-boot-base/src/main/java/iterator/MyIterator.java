@@ -24,7 +24,7 @@ package iterator;
 public class MyIterator<T> implements IIterator<T> {
 
     private ICollection<T> collection;
-    private int index = 0;
+    private int            index = 0;
 
     public MyIterator(ICollection<T> collection) {
         // TODO Auto-generated constructor stub

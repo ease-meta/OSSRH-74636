@@ -33,7 +33,7 @@ public class Memento implements Serializable {
     //	private int number;
     //	private File file = null;
 
-    private DataState state;
+    private DataState         state;
 
     public Memento(Originator o) {
         this.state = o.getState();

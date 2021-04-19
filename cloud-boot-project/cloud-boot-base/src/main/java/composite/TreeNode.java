@@ -26,8 +26,8 @@ import java.util.List;
  * 也可以自身代表树：一堆节点组成了一颗树
  **/
 public class TreeNode {
-    private String name;
-    private TreeNode parent;
+    private String         name;
+    private TreeNode       parent;
     private List<TreeNode> children;
 
     public TreeNode(String name) {

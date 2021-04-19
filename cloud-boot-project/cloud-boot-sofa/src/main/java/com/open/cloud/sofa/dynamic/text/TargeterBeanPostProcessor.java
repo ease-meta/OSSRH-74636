@@ -28,44 +28,46 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
- *openfeign
+ * openfeign
  */
 @Component
 public class TargeterBeanPostProcessor implements BeanPostProcessor, BeanClassLoaderAware {
 
-	protected final SofaRuntimeContext sofaRuntimeContext;
-	protected final BindingConverterFactory bindingConverterFactory;
-	/** binding adapter factory */
-	protected final BindingAdapterFactory bindingAdapterFactory;
-	private final Environment environment;
-	private Logger logger = LoggerFactory
-			.getLogger(TargeterBeanPostProcessor.class);
-	private ClassLoader classLoader;
+    protected final SofaRuntimeContext sofaRuntimeContext;
+    protected final BindingConverterFactory bindingConverterFactory;
+    /**
+     * binding adapter factory
+     */
+    protected final BindingAdapterFactory bindingAdapterFactory;
+    private final Environment environment;
+    private Logger logger = LoggerFactory
+            .getLogger(TargeterBeanPostProcessor.class);
+    private ClassLoader classLoader;
 
-	public TargeterBeanPostProcessor(Environment environment,
-									 SofaRuntimeContext sofaRuntimeContext,
-									 BindingConverterFactory bindingConverterFactory,
-									 BindingAdapterFactory bindingAdapterFactory) {
-		this.environment = environment;
-		this.sofaRuntimeContext = sofaRuntimeContext;
-		this.bindingConverterFactory = bindingConverterFactory;
-		this.bindingAdapterFactory = bindingAdapterFactory;
-	}
+    public TargeterBeanPostProcessor(Environment environment,
+                                     SofaRuntimeContext sofaRuntimeContext,
+                                     BindingConverterFactory bindingConverterFactory,
+                                     BindingAdapterFactory bindingAdapterFactory) {
+        this.environment = environment;
+        this.sofaRuntimeContext = sofaRuntimeContext;
+        this.bindingConverterFactory = bindingConverterFactory;
+        this.bindingAdapterFactory = bindingAdapterFactory;
+    }
 
-	@Override
-	public void setBeanClassLoader(ClassLoader classLoader) {
-		this.classLoader = classLoader;
-	}
+    @Override
+    public void setBeanClassLoader(ClassLoader classLoader) {
+        this.classLoader = classLoader;
+    }
 
-	@Override
-	public Object postProcessBeforeInitialization(Object bean, String beanName)
-			throws BeansException {
-		return bean;
-	}
+    @Override
+    public Object postProcessBeforeInitialization(Object bean, String beanName)
+            throws BeansException {
+        return bean;
+    }
 
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
-		return bean;
-	}
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
+        return bean;
+    }
 }

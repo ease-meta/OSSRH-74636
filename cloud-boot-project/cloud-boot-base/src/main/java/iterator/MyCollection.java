@@ -26,7 +26,7 @@ import java.util.Arrays;
 public class MyCollection<T> implements ICollection<T> {
 
     private T[] arys;
-    private int index = -1;
+    private int index    = -1;
     private int capacity = 6;
 
     @SuppressWarnings("unchecked")

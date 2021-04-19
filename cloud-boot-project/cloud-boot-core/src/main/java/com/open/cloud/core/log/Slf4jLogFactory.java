@@ -25,15 +25,15 @@ import org.slf4j.LoggerFactory;
  */
 public class Slf4jLogFactory implements ILogFactory {
 
-	@Override
-	public MiddleLogger getLog(Class<?> clazz) {
-		Logger log = LoggerFactory.getLogger(clazz);
-		return new Slf4jLog(log);
-	}
+    @Override
+    public MiddleLogger getLog(Class<?> clazz) {
+        Logger log = LoggerFactory.getLogger(clazz);
+        return new Slf4jLog(log);
+    }
 
-	@Override
-	public MiddleLogger getLog(String name) {
-		Logger log = LoggerFactory.getLogger(name);
-		return new Slf4jLog(log);
-	}
+    @Override
+    public MiddleLogger getLog(String name) {
+        Logger log = LoggerFactory.getLogger(name);
+        return new Slf4jLog(log);
+    }
 }

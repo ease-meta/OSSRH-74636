@@ -25,24 +25,23 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 /**
- *
  * @author Leijian
  * @date 2020/6/22 16:36
  */
 public class WebMvcFilter implements Filter {
-	@Override
-	public void init(FilterConfig filterConfig) throws ServletException {
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
 
-	}
+    }
 
-	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
-						 FilterChain filterChain) throws IOException, ServletException {
-		filterChain.doFilter(servletRequest, servletResponse);
-	}
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
+                         FilterChain filterChain) throws IOException, ServletException {
+        filterChain.doFilter(servletRequest, servletResponse);
+    }
 
-	@Override
-	public void destroy() {
+    @Override
+    public void destroy() {
 
-	}
+    }
 }

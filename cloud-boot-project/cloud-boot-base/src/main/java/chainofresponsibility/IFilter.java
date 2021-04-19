@@ -22,22 +22,22 @@ package chainofresponsibility;
  * @Fun 抽象责任
  **/
 public abstract class IFilter {
-	private IFilter successor;
+    private IFilter successor;
 
-	//获取下一级处理单元
-	public IFilter getSuccessor() {
-		return successor;
-	}
+    //获取下一级处理单元
+    public IFilter getSuccessor() {
+        return successor;
+    }
 
-	//设置下一级处理单元
-	public void setSuccessor(IFilter successor) {
-		this.successor = successor;
-	}
+    //设置下一级处理单元
+    public void setSuccessor(IFilter successor) {
+        this.successor = successor;
+    }
 
-	/**
-	 * 处理事件
-	 */
-	public abstract void handleFilter();
+    /**
+     * 处理事件
+     */
+    public abstract void handleFilter();
 
-	public abstract void handleFilter2();
+    public abstract void handleFilter2();
 }

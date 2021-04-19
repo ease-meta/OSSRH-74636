@@ -22,69 +22,69 @@ package com.open.cloud.core.log.logger;
  */
 public interface InfoLog {
 
-	/**
-	 * Is the logger instance enabled for the INFO level?
-	 *
-	 * @return True if this Logger is enabled for the INFO level,
-	 *         false otherwise.
-	 */
-	public boolean isInfoEnabled();
+    /**
+     * Is the logger instance enabled for the INFO level?
+     *
+     * @return True if this Logger is enabled for the INFO level,
+     * false otherwise.
+     */
+    public boolean isInfoEnabled();
 
-	/**
-	 * Log a message at the INFO level.
-	 *
-	 * @param msg the message string to be logged
-	 */
-	public void info(String msg);
+    /**
+     * Log a message at the INFO level.
+     *
+     * @param msg the message string to be logged
+     */
+    public void info(String msg);
 
-	/**
-	 * Log a message at the INFO level according to the specified format
-	 * and argument.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the INFO level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg    the argument
-	 */
-	public void info(String format, Object arg);
+    /**
+     * Log a message at the INFO level according to the specified format
+     * and argument.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the INFO level. </p>
+     *
+     * @param format the format string
+     * @param arg    the argument
+     */
+    public void info(String format, Object arg);
 
-	/**
-	 * Log a message at the INFO level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous object creation when the logger
-	 * is disabled for the INFO level. </p>
-	 *
-	 * @param format the format string
-	 * @param arg1   the first argument
-	 * @param arg2   the second argument
-	 */
-	public void info(String format, Object arg1, Object arg2);
+    /**
+     * Log a message at the INFO level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous object creation when the logger
+     * is disabled for the INFO level. </p>
+     *
+     * @param format the format string
+     * @param arg1   the first argument
+     * @param arg2   the second argument
+     */
+    public void info(String format, Object arg1, Object arg2);
 
-	/**
-	 * Log a message at the INFO level according to the specified format
-	 * and arguments.
-	 * <p/>
-	 * <p>This form avoids superfluous string concatenation when the logger
-	 * is disabled for the INFO level. However, this variant incurs the hidden
-	 * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
-	 * even if this logger is disabled for INFO. The variants taking
-	 * {@link #info(String, Object) one} and {@link #info(String, Object, Object) two}
-	 * arguments exist solely in order to avoid this hidden cost.</p>
-	 *
-	 * @param format    the format string
-	 * @param arguments a list of 3 or more arguments
-	 */
-	public void info(String format, Object... arguments);
+    /**
+     * Log a message at the INFO level according to the specified format
+     * and arguments.
+     * <p/>
+     * <p>This form avoids superfluous string concatenation when the logger
+     * is disabled for the INFO level. However, this variant incurs the hidden
+     * (and relatively small) cost of creating an <code>Object[]</code> before invoking the method,
+     * even if this logger is disabled for INFO. The variants taking
+     * {@link #info(String, Object) one} and {@link #info(String, Object, Object) two}
+     * arguments exist solely in order to avoid this hidden cost.</p>
+     *
+     * @param format    the format string
+     * @param arguments a list of 3 or more arguments
+     */
+    public void info(String format, Object... arguments);
 
-	/**
-	 * Log an exception (throwable) at the INFO level with an
-	 * accompanying message.
-	 *
-	 * @param msg the message accompanying the exception
-	 * @param t   the exception (throwable) to log
-	 */
-	public void info(String msg, Throwable t);
+    /**
+     * Log an exception (throwable) at the INFO level with an
+     * accompanying message.
+     *
+     * @param msg the message accompanying the exception
+     * @param t   the exception (throwable) to log
+     */
+    public void info(String msg, Throwable t);
 
 }

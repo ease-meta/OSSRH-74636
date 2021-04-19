@@ -26,10 +26,10 @@ import javax.servlet.Filter;
 @Configuration
 public class WebMvcAutoConfiguration {
 
-	@Bean
-	@Order(-1)
-	public Filter webMvcFilter() {
-		return new WebMvcFilter();
-	}
+    @Bean
+    @Order(-1)
+    public Filter webMvcFilter() {
+        return new WebMvcFilter();
+    }
 
 }

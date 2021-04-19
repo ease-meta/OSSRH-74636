@@ -22,7 +22,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class LockDemo {
 
     //悲观锁
-    private ReentrantLock lock = new ReentrantLock();
+    private ReentrantLock lock          = new ReentrantLock();
     //乐观锁的使用方式
     private AtomicInteger atomicInteger = new AtomicInteger();
 

@@ -26,7 +26,7 @@ import model.base.Maze;
  */
 public abstract class MazeBuilder {
     protected MazeFactory factory;
-    protected Maze currentMaze;
+    protected Maze        currentMaze;
 
     protected MazeBuilder(MazeFactory factory) {
         this.factory = factory;

@@ -24,31 +24,27 @@ import com.open.cloud.core.log.MiddleLoggerFactory;
  * <p></p>
  * <p>
  *
- *
  * @author <a href=mailto:zhanggeng.zg@antfin.com>GengZhang</a>
  */
 public class ZookeeperBoltServerMain {
 
 
-	private final static MiddleLogger bizLog = MiddleLoggerFactory.getLogger(ZookeeperBoltServerMain.class);
+    private final static MiddleLogger bizLog = MiddleLoggerFactory.getLogger(ZookeeperBoltServerMain.class);
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		chkCycle("1", "2", "3");
-	}
+        chkCycle("1", "2", "3");
+    }
 
-	public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
-		bizLog.method(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
-		bizLog.parm("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
-		String sCalJtriq = "";// 计算计提日期值
-		if (true) {
-			bizLog.info("boolean [true]");
-			bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
-		}
-		bizLog.debug("boolean [false]");
-		bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
+    public static boolean chkCycle(String sJiaoyirq, String eRqjsfshi, String eSjinzlei) {
+        bizLog.method(">>>>>>>>>>>>Begin>>>>>>>>>>>>");
+        bizLog.parm("sJiaoyirq{},eRqjsfshi[{}]，eSjinzlei{}", sJiaoyirq, eRqjsfshi, eSjinzlei);
+        bizLog.info("boolean [true]");
+        bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
+        bizLog.debug("boolean [false]");
+        bizLog.method("<<<<<<<<<<<<End<<<<<<<<<<<<");
 
-		return false;
-	}
+        return false;
+    }
 
 }

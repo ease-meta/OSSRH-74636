@@ -36,6 +36,6 @@ public class CashRebate implements ICashSuper {
     public double acceptCash(double money) {
         // TODO Auto-generated method stub
         return new BigDecimal(money * rebate / 10).setScale(2, BigDecimal.ROUND_HALF_UP)
-                .doubleValue();
+            .doubleValue();
     }
 }

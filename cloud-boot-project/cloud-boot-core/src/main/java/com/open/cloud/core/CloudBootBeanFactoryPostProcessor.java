@@ -24,41 +24,40 @@ import org.springframework.beans.factory.support.BeanDefinitionRegistryPostProce
 import org.springframework.stereotype.Component;
 
 /**
- *
  * @author Leijian
  * @date 2020/5/4 22:07
  */
 @Component
 public class CloudBootBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor,
-		BeanPostProcessor {
-	private BeanDefinitionRegistry registry;
+        BeanPostProcessor {
+    private BeanDefinitionRegistry registry;
 
-	public CloudBootBeanFactoryPostProcessor() {
-	}
+    public CloudBootBeanFactoryPostProcessor() {
+    }
 
-	@Override
-	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-		System.out
-				.println("【1BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-						+ beanFactory);
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
+        System.out
+                .println("【1BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                        + beanFactory);
 
-	}
+    }
 
-	@Override
-	public Object postProcessAfterInitialization(Object bean, String beanName)
-			throws BeansException {
-		System.out
-				.println("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-						+ beanName);
-		return bean;
-	}
+    @Override
+    public Object postProcessAfterInitialization(Object bean, String beanName)
+            throws BeansException {
+        System.out
+                .println("【2BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                        + beanName);
+        return bean;
+    }
 
-	@Override
-	public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
-			throws BeansException {
-		this.registry = registry;
-		System.out
-				.println("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
-						+ registry);
-	}
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry)
+            throws BeansException {
+        this.registry = registry;
+        System.out
+                .println("【3BeanFactoryPostProcessor接口】调用BeanFactoryPostProcessor接口的postProcessBeanFactory方法:"
+                        + registry);
+    }
 }

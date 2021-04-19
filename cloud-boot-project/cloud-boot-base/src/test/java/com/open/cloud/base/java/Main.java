@@ -34,18 +34,18 @@ import java.security.Security;
  */
 public class Main {
 
-	@SneakyThrows
-	@Test
-	public void testSM3() throws NoSuchProviderException, NoSuchAlgorithmException {
-		Security.addProvider(new BouncyCastleProvider());
-		byte[] message = "123".getBytes("UTF-8");
-		System.out.println(new String(message));
-		MessageDigest digest = MessageDigest.getInstance("SM3");
-		byte[] result = digest.digest(message);
-		//System.out.println(new String(result));
-		System.out.println(HexUtil.encodeHexStr(result));
-		System.out.println(SM3.create().digestHex("123", "utf-8"));
-		SM4 sm4 = new SM4();
-		System.out.println(sm4.decryptStr(sm4.encrypt("123", "utf-8")));
-	}
+    @SneakyThrows
+    @Test
+    public void testSM3() throws NoSuchProviderException, NoSuchAlgorithmException {
+        Security.addProvider(new BouncyCastleProvider());
+        byte[] message = "123".getBytes("UTF-8");
+        System.out.println(new String(message));
+        MessageDigest digest = MessageDigest.getInstance("SM3");
+        byte[] result = digest.digest(message);
+        //System.out.println(new String(result));
+        System.out.println(HexUtil.encodeHexStr(result));
+        System.out.println(SM3.create().digestHex("123", "utf-8"));
+        SM4 sm4 = new SM4();
+        System.out.println(sm4.decryptStr(sm4.encrypt("123", "utf-8")));
+    }
 }

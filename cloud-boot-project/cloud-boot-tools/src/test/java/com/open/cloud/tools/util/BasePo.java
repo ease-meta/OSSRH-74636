@@ -27,10 +27,10 @@ import java.io.Serializable;
 @Data
 public abstract class BasePo implements Serializable {
 
-	private static final long serialVersionUID = -6707173699291858544L;
+    private static final long serialVersionUID = -6707173699291858544L;
 
-	private String name;
+    private String name;
 
-	private Integer id;
+    private Integer id;
 
 }

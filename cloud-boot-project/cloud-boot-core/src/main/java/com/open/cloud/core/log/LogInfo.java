@@ -20,6 +20,6 @@ package com.open.cloud.core.log;
  * 可变参数最后一个元素为 Throwable 类型时封装为 LogInfo
  */
 public class LogInfo {
-	public String message;
-	public Throwable throwable;
+    public String message;
+    public Throwable throwable;
 }

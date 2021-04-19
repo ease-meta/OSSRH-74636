@@ -26,7 +26,7 @@ import java.util.Map;
  **/
 public class LetterFactory {
     private static LetterFactory instance = new LetterFactory();
-    private Map<String, Letter> map;
+    private Map<String, Letter>  map;
 
     private LetterFactory() {
         map = new HashMap<>();

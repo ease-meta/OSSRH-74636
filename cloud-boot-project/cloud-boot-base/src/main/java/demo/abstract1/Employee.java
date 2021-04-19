@@ -20,7 +20,7 @@ package demo.abstract1;
 public abstract class Employee {
     private String name;
     private String address;
-    private int number;
+    private int    number;
 
     public Employee(String name, String address, int number) {
         System.out.println("Constructing an Employee");
