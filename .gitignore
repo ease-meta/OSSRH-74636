@@ -12,6 +12,7 @@ bak
 *.iml
 *.ipr
 *.iws
+*.flattened-pom.xml
 bak
 null/
 tree.log

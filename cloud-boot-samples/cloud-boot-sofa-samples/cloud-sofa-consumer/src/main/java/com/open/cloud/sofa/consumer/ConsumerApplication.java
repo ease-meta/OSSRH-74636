@@ -24,9 +24,11 @@ import org.springframework.context.annotation.ImportResource;
 @ImportResource(value = "classpath:META-INF/spring/*.xml")
 public class ConsumerApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
+        Class[] primarySources;
+        SpringApplication springApplication = new SpringApplication(ConsumerApplication.class);
+        springApplication.run(args);
+        SpringApplication.run(ConsumerApplication.class, args);
 
-		SpringApplication.run(ConsumerApplication.class, args);
-
-	}
+    }
 }

@@ -39,46 +39,48 @@
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
         <maven.sTracerConfigurationListenerurefire.plugin>2.21.0</maven.sTracerConfigurationListenerurefire.plugin>
         <skip_maven_deploy>false</skip_maven_deploy>
+        <spring-plugin.vrsion>2.0.0.RELEASE</spring-plugin.vrsion>
 
         <license_maven_plugin>3.0</license_maven_plugin>
         <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
         <!--<spring-boot.version>2.3.8.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
-        <spring-boot.version>2.4.5</spring-boot.version>
+        <spring-boot.version>2.5.0</spring-boot.version>
         <spring-cloud.version>2020.0.2</spring-cloud.version>
         <spring-native.version>0.9.1</spring-native.version>
-        <seata.version>1.4.1</seata.version>
+        <seata.version>1.4.2</seata.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
         <solace-spring-boot.version>1.1.0</solace-spring-boot.version>
-        <dubbo.version>[2.7.6,)</dubbo.version>
-        <dubbo-api.version>[2.7.8.1,)</dubbo-api.version>
-        <retrofit.version>[2.2.2,)</retrofit.version>
+        <dubbo.version>[2.7.11,)</dubbo.version>
+        <dubbo-api.version>[2.7.8.3,)</dubbo-api.version>
+        <retrofit.version>[2.2.10,)</retrofit.version>
 
         <sofa-boot.version>3.6.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.5.0</sofa-boot-enterprise.version>
-        <jboot.version>[3.0.5,)</jboot.version>
-        <spring-cloud-huawei.version>1.5.1-Hoxton</spring-cloud-huawei.version>
-        <spring-boot-admin.version>2.4.0</spring-boot-admin.version>
+        <jboot.version>[3.9.12,)</jboot.version>
+        <spring-cloud-huawei.version>1.5.7-Hoxton</spring-cloud-huawei.version>
+        <spring-boot-admin.version>2.4.1</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
-        <vaadin.version>14.2.0</vaadin.version>
+        <vaadin.version>19.0.8</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
+        <tio-core.version>3.7.2.v20210316-RELEASE</tio-core.version>
         <!--消息中间件-->
         <rocketmq.version>4.8.0</rocketmq.version>
+        <spring-rocketmq.version>[2.2.0,)</spring-rocketmq.version>
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
-        <spring-rocketmq.version>[2.0.4,)</spring-rocketmq.version>
+
         <!--数据库操作-->
-        <github-pageHelper>[5.1.4,)</github-pageHelper>
-        <github-pageHelper-starter>[1.2.5,)</github-pageHelper-starter>
+        <github-pageHelper-starter>[1.3.0,)</github-pageHelper-starter>
         <druid.version>[1.1.9,)</druid.version>
-        <druid-boot.version>[1.1.9,)</druid-boot.version>
-        <mybatis.boot.version>[2.1.1,)</mybatis.boot.version>
-        <mybatis.plus.version>[3.3.1,)</mybatis.plus.version>
-        <mybatis.version>[3.3.0,)</mybatis.version>
-        <shardingsphere.version>[4.0.0,)</shardingsphere.version>
+        <mybatis.boot.version>[2.1.4,)</mybatis.boot.version>
+        <mybatis.plus.version>[3.4.2,)</mybatis.plus.version>
+        <mybatis.version>[3.5.7,)</mybatis.version>
+        <shardingsphere.version>[4.1.1,)</shardingsphere.version>
         <ojdbc6>11.2.0.4</ojdbc6>
         <ojdbc8>12.2.0.1</ojdbc8>
         <ojdbc10>[19.3.0.0,)</ojdbc10>
+        <mariadb-java-client>[2.0.2,)</mariadb-java-client>
         <!--缓存-->
         <jedis.version>3.1.0</jedis.version>
         <caffeine.version>[2.8.1,)</caffeine.version>
@@ -87,16 +89,18 @@
         <disruptor.version>[3.4.2,)</disruptor.version>
         <!--安全鉴权-->
         <spring-statemachine.version>2.1.3.RELEASE</spring-statemachine.version>
-        <security.oauth.version>[2.3.6.RELEASE,)</security.oauth.version>
+        <security.oauth.version>[2.5.1.RELEASE,)</security.oauth.version>
         <jjwt.version>[0.9.1,)</jjwt.version>
-        <java-jwt.version>[3.2.0,)</java-jwt.version>
-        <shiro-spring.version>[1.4.2,)</shiro-spring.version>
+        <java-jwt.version>[3.16.0,)</java-jwt.version>
+        <shiro-spring.version>[1.7.1,)</shiro-spring.version>
         <!--链路跟踪-->
-        <zipkin.version>2.20.0</zipkin.version>
+        <zipkin.version>2.23.2</zipkin.version>
+        <micrometer-registry-prometheus.version>[1.1.0,)</micrometer-registry-prometheus.version>
+        <pcollections.version>[2.1.3,)</pcollections.version>
         <apollo.version>1.8.0</apollo.version>
         <perf4j.version>[0.9.16,)</perf4j.version>
-        <p6spy.version>[3.8.7,)</p6spy.version>
-        <nacos.version>2.0.0</nacos.version>
+        <p6spy.version>[3.9.1,)</p6spy.version>
+        <nacos.version>2.0.1</nacos.version>
         <curator.version>4.3.0</curator.version>
         <javamelody.spring.boot.version>[1.80.0,)</javamelody.spring.boot.version>
         <huaweicloud-dws-jdbc.version>[1.5.301,)</huaweicloud-dws-jdbc.version>
@@ -108,11 +112,11 @@
         <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
         <aliyun-sdk-oss.version>[3.4.2,)</aliyun-sdk-oss.version>
-        <arthas.version>3.5.0</arthas.version>
+        <arthas.version>3.5.1</arthas.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <velocity.version>[1.7,)</velocity.version>
         <guava.version>[20.0,)</guava.version>
-        <easypoi.version>4.2.0</easypoi.version>
+        <easypoi.version>4.3.0</easypoi.version>
         <kotlin.version>1.3.72</kotlin.version>
         <protobuf.java.version>3.6.0</protobuf.java.version>
         <itextpdf.version>[5.5.13,)</itextpdf.version>
@@ -141,6 +145,7 @@
         <easyexcel.version>[2.1.6,)</easyexcel.version>
         <jasypt.version>[3.0.2,)</jasypt.version>
         <hutool-all.version>[5.1.2,)</hutool-all.version>
+        <xk-time.version>[3.1.0,)</xk-time.version>
         <esapi.version>[2.2.1.1,)</esapi.version>
         <joda-time.version>[2.10.5,)</joda-time.version>
         <okhttp.version>[4.3.1,)</okhttp.version>
@@ -160,13 +165,13 @@
             <dependency>
                 <groupId>org.springframework.plugin</groupId>
                 <artifactId>spring-plugin-core</artifactId>
-                <version>2.0.0.RELEASE</version>
+                <version>${spring-plugin.vrsion}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.springframework.plugin</groupId>
                 <artifactId>spring-plugin-metadata</artifactId>
-                <version>2.0.0.RELEASE</version>
+                <version>${spring-plugin.vrsion}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.springframework.plugin</groupId>
@@ -257,6 +262,21 @@
             </dependency>
 
             <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>aliyun-spring-boot-dependencies</artifactId>
+                <version>${aliyun-spring-boot-dependencies}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--限流熔断-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.alipay.sofa</groupId>
                 <artifactId>sofaboot-dependencies</artifactId>
                 <version>${sofa-boot.version}</version>
@@ -271,14 +291,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.alibaba.cloud/aliyun-spring-boot-dependencies -->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>aliyun-spring-boot-dependencies</artifactId>
-                <version>${aliyun-spring-boot-dependencies}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>com.vaadin</groupId>
@@ -287,6 +299,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.solace.spring.boot</groupId>
                 <artifactId>solace-spring-boot-bom</artifactId>
@@ -307,11 +320,10 @@
                 <version>${ojdbc6}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid-boot.version}</version>
+                <version>${druid.version}</version>
             </dependency>
 
             <dependency>
@@ -356,7 +368,6 @@
                 <version>${curator.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>com.huaweicloud</groupId>
                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
@@ -368,16 +379,8 @@
             <dependency>
                 <groupId>org.mariadb.jdbc</groupId>
                 <artifactId>mariadb-java-client</artifactId>
-                <version>[2.0.2,)</version>
+                <version>${mariadb-java-client}</version>
             </dependency>
-
-            <!--限流熔断-->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-            </dependency>
-
 
             <!--稳定版本，替代spring security bom内置-->
             <dependency>
@@ -385,6 +388,7 @@
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${security.oauth.version}</version>
             </dependency>
+
             <!--携程配置中心-->
             <dependency>
                 <groupId>com.ctrip.framework.apollo</groupId>
@@ -402,17 +406,10 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
                 <artifactId>rocketmq-spring-boot-starter</artifactId>
                 <version>${spring-rocketmq.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.kafka</groupId>
-                <artifactId>spring-kafka</artifactId>
-                <version>${spring-kafka.version}</version>
             </dependency>
 
             <!--监控、链路跟踪-->
@@ -430,7 +427,6 @@
                 <version>${zipkin.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>net.bull.javamelody</groupId>
                 <artifactId>javamelody-spring-boot-starter</artifactId>
@@ -440,13 +436,13 @@
             <dependency>
                 <groupId>io.micrometer</groupId>
                 <artifactId>micrometer-registry-prometheus</artifactId>
-                <version>[1.1.0,)</version>
+                <version>${micrometer-registry-prometheus.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.github.ibodrov.pcollections</groupId>
                 <artifactId>pcollections</artifactId>
-                <version>[2.1.3,)</version>
+                <version>${pcollections.version}</version>
             </dependency>
             <!--三方jar包-->
             <dependency>
@@ -475,7 +471,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>cn.afterturn</groupId>
                 <artifactId>easypoi-spring-boot-starter</artifactId>
@@ -593,12 +588,6 @@
 
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper</artifactId>
-                <version>${github-pageHelper}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${github-pageHelper-starter}</version>
             </dependency>
@@ -607,6 +596,12 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool-all.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xkzhangsan</groupId>
+                <artifactId>xk-time</artifactId>
+                <version>${xk-time.version}</version>
             </dependency>
 
             <dependency>
@@ -619,18 +614,6 @@
                 <artifactId>velocity</artifactId>
                 <groupId>org.apache.velocity</groupId>
                 <version>${velocity.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>redis.clients</groupId>
-                <artifactId>jedis</artifactId>
-                <version>${jedis.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
             </dependency>
 
             <dependency>
@@ -729,7 +712,7 @@
             <dependency>
                 <groupId>org.t-io</groupId>
                 <artifactId>tio-core</artifactId>
-                <version>[3.7.0.v20201010-RELEASE,)</version>
+                <version>${tio-core.version}</version>
             </dependency>
 
             <dependency>
@@ -781,7 +764,6 @@
                 <version>${commons-codec.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-compress</artifactId>
@@ -818,12 +800,6 @@
                 <version>${reflections.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.eclipse.osgi/org.eclipse.osgi.services -->
-            <dependency>
-                <groupId>org.eclipse.osgi</groupId>
-                <artifactId>org.eclipse.osgi.services</artifactId>
-                <version>3.2.100.v20100503</version>
-            </dependency>
             <!--阿里json工具类 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
