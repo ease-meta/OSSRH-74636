@@ -45,8 +45,8 @@
         <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
         <!--<spring-boot.version>2.3.8.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
-        <spring-boot.version>2.5.0</spring-boot.version>
-        <spring-cloud.version>2020.0.2</spring-cloud.version>
+        <spring-boot.version>2.4.3</spring-boot.version>
+        <spring-cloud.version>2020.0.1</spring-cloud.version>
         <spring-native.version>0.9.1</spring-native.version>
         <seata.version>1.4.2</seata.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
@@ -56,7 +56,7 @@
         <dubbo-api.version>[2.7.8.3,)</dubbo-api.version>
         <retrofit.version>[2.2.10,)</retrofit.version>
 
-        <sofa-boot.version>3.6.0</sofa-boot.version>
+        <sofa-boot.version>3.7.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.5.0</sofa-boot-enterprise.version>
         <jboot.version>[3.9.12,)</jboot.version>
         <spring-cloud-huawei.version>1.5.7-Hoxton</spring-cloud-huawei.version>

@@ -48,6 +48,8 @@
 
         <module>cloud-boot-drools</module>
         <module>cloud-boot-transaction</module>
+
+        <module>cloud-boot-maven</module>
     </modules>
 
     <properties>
