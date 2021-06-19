@@ -38,8 +38,8 @@ public class Deploy {
     public static final String BASE_CMD = "cmd /c mvn " +
             "-s D:\\work-tools\\apache-maven-3.8.1\\conf\\settings.xml " +
             "deploy:deploy-file " +
-            "-Durl=http://10.7.19.173:8081/nexus/content/repositories/Galaxy3-release/ " +
-            "-DrepositoryId=Galaxy3-release " +
+            "-Durl=http://10.7.19.173:8081/nexus/content/repositories/Galaxy3-snapshot/ " +
+            "-DrepositoryId=Galaxy3-snapshot " +
             "-DgeneratePom=false";
 
     public static final Pattern DATE_PATTERN = Pattern.compile("-[\\d]{8}\\.[\\d]{6}-");
@@ -63,7 +63,7 @@ public class Deploy {
 
     //mvn -s D:\work-tools\apache-maven-3.8.1\conf\settings.xml deploy:deploy-file -Durl=http://10.7.19.173:8081/nexus/content/repositories/Galaxy3-release/ -DrepositoryId=Galaxy3-release -DgeneratePom=false -DpomFile=D:\dcits\botj\dcits\comet-adapter\3.3.8\comet-adapter-3.3.8.pom -Dfile=D:\dcits\botj\dcits\comet-adapter\3.3.8\comet-adapter-3.3.8.pom
     public static void main(String[] args) {
-        deploy(Objects.requireNonNull(new File("D:\\dcits\\botj\\dcits").listFiles()));
+        deploy(Objects.requireNonNull(new File("D:\\dcits\\dcits20210616\\dcits").listFiles()));
 //        if(checkArgs(args)){
 //            File file = new File(args[0]);
 //            deploy(file.listFiles());
@@ -124,15 +124,19 @@ public class Deploy {
                 if (DATE_PATTERN.matcher(name).find()) {
                     //skip
                 } else if (name.contains("SNAPSHOT") || name.contains("snapshot")) {
-                    //skip
+                    if (name.endsWith(".pom")) {
+                        pom = file;
+                    } else if (name.endsWith(".jar")) {
+                        jar = file;
+                    }
                 } else if (name.endsWith(".pom")) {
-                    pom = file;
+                    //pom = file;
                 } else if (name.endsWith("-javadoc.jar")) {
-                    javadoc = file;
+                    //javadoc = file;
                 } else if (name.endsWith("-sources.jar")) {
-                    source = file;
+                    //source = file;
                 } else if (name.endsWith(".jar")) {
-                    jar = file;
+                    //jar = file;
                 }
             }
             if (pom != null) {
