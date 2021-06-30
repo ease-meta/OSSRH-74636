@@ -50,6 +50,7 @@
         <module>cloud-boot-transaction</module>
 
         <module>cloud-boot-maven</module>
+        <module>cloud-boot-javaparser</module>
     </modules>
 
     <properties>
