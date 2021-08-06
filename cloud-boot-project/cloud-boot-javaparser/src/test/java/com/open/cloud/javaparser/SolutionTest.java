@@ -32,7 +32,10 @@ public class SolutionTest {
         //methodDeclaration.setType("AnyReturnType");
 
         List<MethodDeclaration> mds = compilationUnit.findAll(MethodDeclaration.class);
-        mds.forEach(md -> System.out.println(md.toString() + "\n------------------------------\n"));
+        mds.forEach(md -> {
+            System.out.println(md.toString() + "\n------------------------------\n");
+
+        });
     }
 
 

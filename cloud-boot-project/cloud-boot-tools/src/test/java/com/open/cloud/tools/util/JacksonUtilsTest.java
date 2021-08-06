@@ -16,8 +16,13 @@
  */
 package com.open.cloud.tools.util;
 
+import com.alibaba.druid.DbType;
+import com.alibaba.druid.sql.SQLUtils;
+import com.alibaba.druid.sql.ast.SQLStatement;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
+
+import java.util.List;
 
 public class JacksonUtilsTest {
     String string = "{\n" + "  \"appHead\" : {\n" + "    \"currentNum\" : \"0\",\n"
@@ -58,6 +63,15 @@ public class JacksonUtilsTest {
         person.setId(2);
         String obj2json = JacksonHelper.writeValueAsStringIgnoreNull(person);
         System.out.println(obj2json);
+
+        Runnable target = new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        };
+        target.run();
+        Thread thread = new Thread(target);
     }
 
     @Test
@@ -94,6 +108,22 @@ public class JacksonUtilsTest {
         person.setId(2);
         String obj2json = JacksonHelper.writeValueAsStringUpperCameLCaseIgnoreNull(person);
         System.out.println(obj2json);
+    }
+
+    @Test
+    public void testSql() {
+        List<SQLStatement> statementList = SQLUtils.parseStatements("-- ----------------------------\n" +
+                "-- Table structure for sys_api\n" +
+                "-- ----------------------------\n" +
+                "DROP TABLE IF EXISTS sys_api;\n" +
+                "CREATE TABLE sys_api (\n" +
+                "   api_id bigint(20) NOT NULL AUTO_INCREMENT,\n" +
+                "   api_name varchar(200) DEFAULT NULL,\n" +
+                "   url varchar(300) DEFAULT NULL,\n" +
+                "   method varchar(10) DEFAULT NULL,\n" +
+                "   api_des varchar(1000) DEFAULT NULL,\n" +
+                "   PRIMARY KEY (api_id)\n" +
+                ") ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8;", DbType.mysql);
     }
 
 }

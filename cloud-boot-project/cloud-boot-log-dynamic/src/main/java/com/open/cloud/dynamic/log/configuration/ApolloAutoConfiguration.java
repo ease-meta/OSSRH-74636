@@ -14,17 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.springboot.admin.server;
+package com.open.cloud.dynamic.log.configuration;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.open.cloud.dynamic.log.ApolloConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@EnableAdminServer
-public class AdminServerApplication {
+/**
+ * @author leijian
+ * @version 1.0
+ * @date 2021/7/6 11:13
+ */
+@Configuration
+public class ApolloAutoConfiguration {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AdminServerApplication.class, args);
+    private static final Logger logger = LoggerFactory.getLogger(ApolloAutoConfiguration.class);
+
+    @Bean
+    public ApolloConfig apolloConfig() {
+        return new ApolloConfig();
     }
 }

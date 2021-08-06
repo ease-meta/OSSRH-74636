@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>cloud-business-api</module>
-
         <module>cloud-boot-springcloud-service</module>
         <module>cloud-business-dao</module>
         <module>cloud-business-service</module>

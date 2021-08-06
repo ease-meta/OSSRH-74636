@@ -105,24 +105,24 @@
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>guardian-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
         </dependency>
         <!--MQ-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>mq-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
         </dependency>
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>security-enterprise-sofa-boot</artifactId>
-            <optional>true</optional>
+            <!-- <optional>true</optional>-->
         </dependency>
         <!--RPC-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>rpc-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!-- <optional>true</optional>-->
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.log4j</groupId>
@@ -130,29 +130,35 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>rest-enterprise-sofa-boot-starter</artifactId>
+        </dependency>
+
         <!--链路跟踪-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>tracer-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!-- <optional>true</optional>-->
         </dependency>
         <!--分布式事务-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>dtx-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!-- <optional>true</optional>-->
         </dependency>
         <!--动态配置-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>ddcs-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
         </dependency>
         <!--定时任务-->
         <dependency>
             <groupId>com.alipay.sofa</groupId>
             <artifactId>scheduler-enterprise-sofa-boot-starter</artifactId>
-            <optional>true</optional>
+            <!-- <optional>true</optional>-->
         </dependency>
     </dependencies>
 </project>

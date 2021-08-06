@@ -15,7 +15,7 @@
     <modules>
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
-        <module>cloud-boot-native</module>
+        <!--<module>cloud-boot-native</module>-->
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-dubbo</module>
         <module>cloud-boot-core</module>
@@ -51,6 +51,7 @@
 
         <module>cloud-boot-maven</module>
         <module>cloud-boot-javaparser</module>
+        <module>cloud-boot-log-dynamic</module>
     </modules>
 
     <properties>
