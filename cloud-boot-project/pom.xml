@@ -41,6 +41,7 @@
         <module>cloud-boot-kafka</module>
         <module>cloud-boot-security</module>
         <module>cloud-boot-mybatis</module>
+        <module>cloud-boot-fluent-mybatis</module>
         <module>cloud-boot-jpa</module>
 
         <module>cloud-boot-oss</module>

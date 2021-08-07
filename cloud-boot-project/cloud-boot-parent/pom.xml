@@ -82,6 +82,7 @@
         <mybatis.boot.version>[2.1.4,)</mybatis.boot.version>
         <mybatis.plus.version>[3.4.2,)</mybatis.plus.version>
         <mybatis.version>[3.5.7,)</mybatis.version>
+        <fluent-mybatis>[1.6.8,)</fluent-mybatis>
         <shardingsphere.version>[4.1.1,)</shardingsphere.version>
         <ojdbc6>11.2.0.4</ojdbc6>
         <ojdbc8>12.2.0.1</ojdbc8>
@@ -590,6 +591,19 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${github-pageHelper-starter}</version>
+            </dependency>
+
+            <!-- 引入fluent-mybatis 运行依赖包, scope为compile -->
+            <dependency>
+                <groupId>com.github.atool</groupId>
+                <artifactId>fluent-mybatis</artifactId>
+                <version>${fluent-mybatis}</version>
+            </dependency>
+            <!-- 引入fluent-mybatis-processor, scope设置为provider 编译需要，运行时不需要 -->
+            <dependency>
+                <groupId>com.github.atool</groupId>
+                <artifactId>fluent-mybatis-processor</artifactId>
+                <version>${fluent-mybatis}</version>
             </dependency>
 
             <dependency>
