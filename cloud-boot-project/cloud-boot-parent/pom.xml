@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cloud-boot-dependencies</artifactId>
         <groupId>com.open.cloud</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
         <relativePath>../cloud-boot-dependencies</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -46,36 +46,37 @@
         <!--<spring-boot.version>2.3.8.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR9</spring-cloud.version>-->
 
-        <!-- <spring-boot.version>2.5.3</spring-boot.version>
-         <spring-cloud.version>2020.0.3</spring-cloud.version>-->
+        <spring-boot.version>2.5.5</spring-boot.version>
+        <spring-cloud.version>2020.0.4</spring-cloud.version>
 
-        <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
-        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <!--<spring-boot.version>2.4.2</spring-boot.version>
+        <spring-cloud.version>2020.0.1</spring-cloud.version>-->
 
-        <spring-native.version>0.10.1</spring-native.version>
-        <seata.version>1.4.2</seata.version>
-        <spring-cloud-alibaba.version>2.2.6.RELEASE</spring-cloud-alibaba.version>
+        <!--https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E-->
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <seata.version>1.3.0</seata.version>
+
+        <spring-native.version>0.10.2</spring-native.version>
+
         <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
-        <solace-spring-boot.version>1.1.0</solace-spring-boot.version>
-        <dubbo-spring.version>[2.7.11,)</dubbo-spring.version>
-        <dubbo.version>3.0.0</dubbo.version>
-        <dubbo-api.version>[2.7.8.3,)</dubbo-api.version>
+        <!-- <solace-spring-boot.version>1.1.0</solace-spring-boot.version>-->
+        <dubbo-spring.version>2.7.8</dubbo-spring.version>
+        <dubbo-api.version>2.7.8.3</dubbo-api.version>
         <retrofit.version>[2.2.10,)</retrofit.version>
 
         <sofa-boot.version>3.8.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.6.0</sofa-boot-enterprise.version>
         <jboot.version>[3.9.12,)</jboot.version>
-        <spring-cloud-huawei.version>1.5.7-Hoxton</spring-cloud-huawei.version>
+        <spring-cloud-huawei.version>1.7.0-2020.0.x</spring-cloud-huawei.version>
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <spring-cloud-services.version>2.2.1.RELEASE</spring-cloud-services.version>
-        <vaadin.version>19.0.8</vaadin.version>
+        <vaadin.version>20.0.7</vaadin.version>
         <wavefront.version>2.0.0-RC1</wavefront.version>
         <tio-core.version>3.7.3.v20210706-RELEASE</tio-core.version>
         <!--消息中间件-->
         <rocketmq.version>4.9.0</rocketmq.version>
         <spring-rocketmq.version>[2.2.0,)</spring-rocketmq.version>
         <spring-kafka.version>[2.4.1.RELEASE,)</spring-kafka.version>
-
         <!--数据库操作-->
         <github-pageHelper-starter>[1.3.0,)</github-pageHelper-starter>
         <druid.version>[1.1.9,)</druid.version>
@@ -84,9 +85,8 @@
         <mybatis.version>[3.5.7,)</mybatis.version>
         <fluent-mybatis>[1.6.8,)</fluent-mybatis>
         <shardingsphere.version>[4.1.1,)</shardingsphere.version>
-        <ojdbc6>11.2.0.4</ojdbc6>
-        <ojdbc8>12.2.0.1</ojdbc8>
-        <ojdbc10>[19.3.0.0,)</ojdbc10>
+
+        <ojdbc8>[12.2.0.1,)</ojdbc8>
         <mariadb-java-client>[2.0.2,)</mariadb-java-client>
         <!--缓存-->
         <jedis.version>3.1.0</jedis.version>
@@ -119,7 +119,7 @@
         <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
         <aliyun-sdk-oss.version>[3.4.2,)</aliyun-sdk-oss.version>
-        <arthas.version>3.5.1</arthas.version>
+        <arthas.version>3.5.3</arthas.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
         <velocity.version>[1.7,)</velocity.version>
         <guava.version>[20.0,)</guava.version>
@@ -163,6 +163,133 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+            <!--微服务原生组件-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofaboot-dependencies</artifactId>
+                <version>${sofa-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alipay.sofa</groupId>
+                <artifactId>sofaboot-enterprise-dependencies</artifactId>
+                <version>${sofa-boot-enterprise.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>aliyun-spring-boot-dependencies</artifactId>
+                <version>${aliyun-spring-boot-dependencies}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-native</artifactId>
+                <version>${spring-native.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.huaweicloud</groupId>
+                <artifactId>spring-cloud-huawei-dependencies</artifactId>
+                <version>${spring-cloud-huawei.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <!--携程配置中心-->
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo</artifactId>
+                <version>${apollo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--MQ中间件-->
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-all</artifactId>
+                <version>${rocketmq.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-spring-boot-starter</artifactId>
+                <version>${spring-rocketmq.version}</version>
+            </dependency>
+            <!--监控、链路跟踪-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi</artifactId>
+                <version>${easypoi.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.afterturn</groupId>
+                <artifactId>easypoi-spring-boot-starter</artifactId>
+                <version>${easypoi.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
@@ -186,48 +313,12 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!--微服务原生组件-->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.experimental</groupId>
-                <artifactId>spring-native</artifactId>
-                <version>${spring-native.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!--dubbo、阿里、蚂蚁金服、华为组件-->
-
-            <dependency>
-                <groupId>com.aliyun.oss</groupId>
-                <artifactId>aliyun-sdk-oss</artifactId>
-                <version>${aliyun-sdk-oss.version}</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.taobao.arthas</groupId>
                 <artifactId>arthas-spring-boot-starter</artifactId>
                 <version>${arthas.version}</version>
                 <type>jar</type>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
             </dependency>
 
             <dependency>
@@ -260,53 +351,6 @@
                 <version>${seata.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>aliyun-spring-boot-dependencies</artifactId>
-                <version>${aliyun-spring-boot-dependencies}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!--限流熔断-->
-            <dependency>
-                <groupId>com.alibaba.cloud</groupId>
-                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofaboot-dependencies</artifactId>
-                <version>${sofa-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofaboot-enterprise-dependencies</artifactId>
-                <version>${sofa-boot-enterprise.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.vaadin</groupId>
-                <artifactId>vaadin-bom</artifactId>
-                <version>${vaadin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
             <!-- <dependency>
                  <groupId>com.solace.spring.boot</groupId>
                  <artifactId>solace-spring-boot-bom</artifactId>
@@ -316,29 +360,31 @@
              </dependency>-->
 
             <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter</artifactId>
+                <version>${activiti.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.ulisesbocchio</groupId>
+                <artifactId>jasypt-spring-boot-starter</artifactId>
+                <version>${jasypt.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.cloud</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
                 <groupId>com.oracle.database.jdbc</groupId>
                 <artifactId>ojdbc8</artifactId>
                 <version>${ojdbc8}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-
-            <!--nacos-->
-            <dependency>
-                <groupId>com.alibaba.nacos</groupId>
-                <artifactId>nacos-all</artifactId>
-                <version>${nacos.version}</version>
-                <type>pom</type>
             </dependency>
 
             <dependency>
@@ -369,57 +415,11 @@
                 <version>${curator.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.huaweicloud</groupId>
-                <artifactId>spring-cloud-huawei-dependencies</artifactId>
-                <version>${spring-cloud-huawei.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-
-            <dependency>
-                <groupId>org.mariadb.jdbc</groupId>
-                <artifactId>mariadb-java-client</artifactId>
-                <version>${mariadb-java-client}</version>
-            </dependency>
-
             <!--稳定版本，替代spring security bom内置-->
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${security.oauth.version}</version>
-            </dependency>
-
-            <!--携程配置中心-->
-            <dependency>
-                <groupId>com.ctrip.framework.apollo</groupId>
-                <artifactId>apollo</artifactId>
-                <version>${apollo.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!--MQ中间件-->
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-all</artifactId>
-                <version>${rocketmq.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-spring-boot-starter</artifactId>
-                <version>${spring-rocketmq.version}</version>
-            </dependency>
-
-            <!--监控、链路跟踪-->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-dependencies</artifactId>
-                <version>${spring-boot-admin.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
 
             <dependency>
@@ -466,24 +466,10 @@
             </dependency>
 
             <dependency>
-                <groupId>cn.afterturn</groupId>
-                <artifactId>easypoi</artifactId>
-                <version>${easypoi.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.afterturn</groupId>
-                <artifactId>easypoi-spring-boot-starter</artifactId>
-                <version>${easypoi.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring</artifactId>
                 <version>${shiro-spring.version}</version>
             </dependency>
-
             <!--JWT token应用 -->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
@@ -495,12 +481,6 @@
                 <groupId>com.auth0</groupId>
                 <artifactId>java-jwt</artifactId>
                 <version>${java-jwt.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.activiti</groupId>
-                <artifactId>activiti-spring-boot-starter</artifactId>
-                <version>${activiti.version}</version>
             </dependency>
 
             <dependency>
@@ -685,28 +665,6 @@
             </dependency>
 
             <dependency>
-                <groupId>com.huaweicloud.dws</groupId>
-                <artifactId>huaweicloud-dws-jdbc</artifactId>
-                <version>${huaweicloud-dws-jdbc.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.ulisesbocchio</groupId>
-                <artifactId>jasypt-spring-boot-starter</artifactId>
-                <version>${jasypt.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.springframework.cloud</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-
-            <dependency>
                 <groupId>p6spy</groupId>
                 <artifactId>p6spy</artifactId>
                 <version>${p6spy.version}</version>
@@ -886,8 +844,7 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <dependency>
+        <!--<dependency>
             <groupId>com.taobao.arthas</groupId>
             <artifactId>arthas-spring-boot-starter</artifactId>
         </dependency>
@@ -921,7 +878,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- <dependency>
              <groupId>ch.qos.logback</groupId>
@@ -933,69 +890,71 @@
              <artifactId>logback-core</artifactId>
          </dependency>-->
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
+        <!-- <dependency>
+             <groupId>com.google.guava</groupId>
+             <artifactId>guava</artifactId>
+         </dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
+         <dependency>
+             <groupId>javax.servlet</groupId>
+             <artifactId>javax.servlet-api</artifactId>
+         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
-        </dependency>
+         <dependency>
+             <groupId>org.projectlombok</groupId>
+             <artifactId>lombok</artifactId>
+             <scope>provided</scope>
+         </dependency>
 
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
+         <dependency>
+             <groupId>org.testng</groupId>
+             <artifactId>testng</artifactId>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.mockito</groupId>
+             <artifactId>mockito-core</artifactId>
+             <scope>test</scope>
+         </dependency>
+         <dependency>
+             <groupId>org.openjdk.jmh</groupId>
+             <artifactId>jmh-core</artifactId>
+             <scope>test</scope>
+         </dependency>
 
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-reflect</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
+         <dependency>
+             <groupId>org.openjdk.jmh</groupId>
+             <artifactId>jmh-generator-annprocess</artifactId>
+             <scope>test</scope>
+         </dependency>
 
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-        </dependency>
+         <dependency>
+             <groupId>junit</groupId>
+             <artifactId>junit</artifactId>
+             <scope>test</scope>
+         </dependency>
 
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-        </dependency>
+         <dependency>
+             <groupId>org.jetbrains.kotlin</groupId>
+             <artifactId>kotlin-reflect</artifactId>
+             <version>${kotlin.version}</version>
+         </dependency>
 
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+         <dependency>
+             <groupId>org.jetbrains.kotlin</groupId>
+             <artifactId>kotlin-stdlib-jdk8</artifactId>
+         </dependency>
+
+         <dependency>
+             <groupId>org.jetbrains.kotlin</groupId>
+             <artifactId>kotlin-stdlib</artifactId>
+         </dependency>
+
+         <dependency>
+             <groupId>org.jetbrains.kotlin</groupId>
+             <artifactId>kotlin-test</artifactId>
+             <scope>test</scope>
+         </dependency>-->
     </dependencies>
 
     <reporting>
@@ -1204,77 +1163,6 @@
                     <skip>${skip_maven_deploy}</skip>
                 </configuration>
             </plugin>
-            <!-- <plugin>
-                 <groupId>org.apache.rat</groupId>
-                 <artifactId>apache-rat-plugin</artifactId>
-                 <version>${apache-rat-plugin.version}</version>
-                 <executions>
-                     <execution>
-                         <id>verify.rat</id>
-                         <phase>verify</phase>
-                         <goals>
-                             <goal>check</goal>
-                         </goals>
-                         <configuration>
-                             <excludes>
-                                 <exclude>**/*.versionsBackup</exclude>
-                                 <exclude>**/.idea/</exclude>
-                                 <exclude>**/*.iml</exclude>
-                                 <exclude>**/*.txt</exclude>
-                                 <exclude>**/*.load</exclude>
-                                 <exclude>**/*.flex</exclude>
-                                 <exclude>**/*.fc</exclude>
-                                 <exclude>**/*.javascript</exclude>
-                                 <exclude>**/*.properties</exclude>
-                                 <exclude>**/*.thrift</exclude>
-                                 <exclude>**/*.sh</exclude>
-                                 <exclude>**/*.bat</exclude>
-                                 <exclude>**/*.md</exclude>
-                                 <exclude>.git/</exclude>
-                                 <exclude>.gitignore</exclude>
-                                 &lt;!&ndash; ASF jenkins box puts the Maven repo in our root directory. &ndash;&gt;
-                                 <exclude>.repository/</exclude>
-                                 <exclude>**/.settings/*</exclude>
-                                 <exclude>**/.classpath</exclude>
-                                 <exclude>**/.project</exclude>
-                                 <exclude>**/target/**</exclude>
-                                 <exclude>**/*.log</exclude>
-                                 <exclude>CODE_OF_CONDUCT.md</exclude>
-                                 <exclude>.codecov.yml</exclude>
-                                 <exclude>.travis.yml</exclude>
-                                 <exclude>PULL_REQUEST_TEMPLATE.md</exclude>
-                                 <exclude>CONTRIBUTING.md</exclude>
-                                 <exclude>README.md</exclude>
-                                 <exclude>Jenkinsfile</exclude>
-                                 <exclude>**/codestyle/*</exclude>
-                                 <exclude>**/resources/META-INF/**</exclude>
-                                 &lt;!&ndash; exclude the netty files &ndash;&gt;
-                                 <exclude>**/org/apache/dubbo/common/threadlocal/InternalThreadLocal.java</exclude>
-                                 <exclude>**/org/apache/dubbo/common/threadlocal/InternalThreadLocalMap.java</exclude>
-                                 <exclude>**/org/apache/dubbo/common/timer/TimerTask.java</exclude>
-                                 <exclude>**/org/apache/dubbo/common/timer/Timer.java</exclude>
-                                 <exclude>**/org/apache/dubbo/common/timer/Timeout.java</exclude>
-                                 <exclude>**/org/apache/dubbo/common/timer/HashedWheelTimer.java</exclude>
-                                 &lt;!&ndash; exclude the edazdarevic files &ndash;&gt;
-                                 <exclude>**/org/apache/dubbo/common/utils/CIDRUtils.java</exclude>
-                                 &lt;!&ndash; exclude protobuf generated files &ndash;&gt;
-                                 <exclude>**/org/apache/dubbo/common/serialize/protobuf/support/wrapper/MapValue.java
-                                 </exclude>
-                                 <exclude>
-                                     **/org/apache/dubbo/common/serialize/protobuf/support/wrapper/ThrowablePB.java
-                                 </exclude>
-                                 <exclude>
-                                     **/org/apache/dubbo/common/utils/Utf8Utils.java
-                                 </exclude>
-                                 <exclude>.github/**</exclude>
-                                 <exclude>compiler/**</exclude>
-                                 &lt;!&ndash; exclude mockito extensions spi files &ndash;&gt;
-                                 <exclude>**/mockito-extensions/*</exclude>
-                             </excludes>
-                         </configuration>
-                     </execution>
-                 </executions>
-             </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
@@ -1428,8 +1316,6 @@
                     </systemProperties>
                 </configuration>
             </plugin>
-
-
         </plugins>
     </build>
 </project>

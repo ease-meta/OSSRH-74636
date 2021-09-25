@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.open.cloud.webflux.configuration.WebFluxAutoConfiguration,\
-com.open.cloud.webflux.swagger.Swagger2AutoConfiguration

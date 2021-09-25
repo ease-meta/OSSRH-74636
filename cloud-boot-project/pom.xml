@@ -5,138 +5,23 @@
     <parent>
         <artifactId>cloud-boot-build</artifactId>
         <groupId>com.open.cloud</groupId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cloud-boot-project</artifactId>
     <packaging>pom</packaging>
+    <name>Cloud Boot Project</name>
+    <description>Cloud Boot Project</description>
 
     <modules>
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
-        <!--<module>cloud-boot-native</module>-->
-        <module>cloud-boot-sofa</module>
-        <module>cloud-boot-dubbo</module>
-        <module>cloud-boot-core</module>
-        <module>cloud-boot-jboot</module>
-
-        <module>cloud-boot-springcloud</module>
-        <module>cloud-boot-plugins</module>
-        <module>cloud-boot-actuator</module>
-        <module>cloud-boot-autoconfigure</module>
-        <module>cloud-boot-datalake</module>
-        <module>cloud-boot-dataway</module>
-        <module>cloud-boot-tools</module>
-        <module>cloud-boot-flyway</module>
-
-        <module>cloud-boot-server</module>
-        <!-- <module>cloud-boot-base</module>-->
-        <module>cloud-boot-api</module>
-        <module>cloud-boot-webmvc</module>
-        <module>cloud-boot-webflux</module>
-        <module>cloud-boot-cache</module>
-        <module>cloud-boot-flowable</module>
-        <module>cloud-boot-rocketmq</module>
-        <module>cloud-boot-kafka</module>
-        <module>cloud-boot-security</module>
-        <module>cloud-boot-mybatis</module>
-        <module>cloud-boot-fluent-mybatis</module>
-        <module>cloud-boot-jpa</module>
-
-        <module>cloud-boot-oss</module>
-        <module>cloud-boot-elasticsearch</module>
-
-        <module>cloud-boot-drools</module>
-        <module>cloud-boot-transaction</module>
-
-        <module>cloud-boot-maven</module>
-        <module>cloud-boot-javaparser</module>
-        <module>cloud-boot-log-dynamic</module>
     </modules>
 
     <properties>
         <main.user.dir>${basedir}/..</main.user.dir>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     </properties>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.8.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.2.0</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-release-plugin</artifactId>
-                    <version>3.0.0-M1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-antrun-plugin</artifactId>
-                    <version>1.8</version>
-                </plugin>
-                <!--This plugin's configuration is used to store Eclipse m2e settings
-                    only. It has no influence on the Maven build itself. -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>${lifecycle-mapping.version}</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.apache.maven.plugins
-                                        </groupId>
-                                        <artifactId>
-                                            maven-invoker-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [1.0.0,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>
-                                                install
-                                            </goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore/>
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>
-                                            org.codehaus.mojo
-                                        </groupId>
-                                        <artifactId>
-                                            flatten-maven-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [1.0.0,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>flatten</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>
