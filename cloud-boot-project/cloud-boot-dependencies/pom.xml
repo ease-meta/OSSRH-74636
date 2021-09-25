@@ -41,94 +41,94 @@
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-actuator</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-autoconfigure</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-base</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-cache</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-core</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-datalake</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-dataway</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-dubbo</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-flyway</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-jboot</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-server</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-sofa</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-springcloud</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-webmvc</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-webflux</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-tools</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${revision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
