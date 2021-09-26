@@ -18,6 +18,10 @@
     <modules>
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
+
+        <module>cloud-boot-core</module>
+        <module>cloud-boot-mybatis</module>
+        <module>cloud-boot-logging</module>
     </modules>
 
     <properties>

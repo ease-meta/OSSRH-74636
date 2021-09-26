@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.mariadb.jdbc.Driver
+    druid:
+      url: jdbc:mariadb://127.0.0.1:3306/botj?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      username: root
+      password: 123456
+mybatis-plus:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:META-INF/mapper/**/*.xml,classpath*:mapper/**/*.xml
+
+logging:
+  level:
+    com.baomidou.mybatisplus: debug

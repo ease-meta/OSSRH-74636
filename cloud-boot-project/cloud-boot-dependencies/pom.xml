@@ -40,96 +40,20 @@
         <dependencies>
             <dependency>
                 <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-actuator</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-api</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-autoconfigure</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-base</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-cache</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-core</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-datalake</artifactId>
+                <artifactId>cloud-boot-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-dataway</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-dubbo</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-flyway</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-jboot</artifactId>
+                <artifactId>cloud-boot-logging</artifactId>
                 <version>${revision}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-server</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-sofa</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-springcloud</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-webmvc</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-webflux</artifactId>
-                <version>${revision}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.open.cloud</groupId>
-                <artifactId>cloud-boot-tools</artifactId>
-                <version>${revision}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

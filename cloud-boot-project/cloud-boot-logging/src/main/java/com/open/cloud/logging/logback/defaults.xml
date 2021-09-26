@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Default logback configuration provided for import
+-->
+<included>
+    <springProperty scop="context" name="spring.application.name" source="spring.application.name"
+                    defaultValue="ensemble"></springProperty>
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <property name="logging.path" value="../../logs"/>
+    <!--<property name="spring.application.name" value="ensemble-cif-service"/>-->
+    <property name="logging.maxHistory" value="30"/>
+    <property name="logging.maxFileSize" value="10MB"/>
+    <property name="logging.totalSizeCap" value="100GB"/>
+    <property name="logging.pattern"
+              value="#%d{yyyy-MM-dd HH:mm:ss.SSS} [${spring.application.name}] [%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{channelSeqNo},%X{jobRunId},%X{stepRunId}] [%X{serviceCode}-%X{messageType}-%X{messageCode}] [%thread] %-5level %logger{50} %line - %msg%n"/>
+    <property name="logging.console"
+              value="#%d{yyyy-MM-dd HH:mm:ss.SSS} [${spring.application.name}] [%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{channelSeqNo},%X{jobRunId},%X{stepRunId}] [%X{serviceCode}-%X{messageType}-%X{messageCode}] [%thread] %-5level %logger{50} %line - %msg%n"/>
+    <property name="logging.dev.console"
+              value="%red(#%d{yyyy-MM-dd HH:mm:ss.SSS}) %yellow([${spring.application.name}]) %blue([%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{channelSeqNo},%X{jobRunId},%X{stepRunId}]) %red([%X{serviceCode}-%X{messageType}-%X{messageCode}] [%thread]) %green(%-5level) %blue(%logger{50} %line) - %red(%msg%n)"/>
+
+    <conversionRule conversionWord="msg" converterClass="com.dcits.comet.log.SensitiveDataConverter"></conversionRule>
+    <!-- batch日志输出 -->
+    <!-- 按照每天生成日志文件，tranMode ： 交易模式为batch-->
+    <appender name="BATCH-APPENDER" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <!-- This is MDC value -->
+        <discriminator>
+            <key>stepName</key>
+            <defaultValue>ensemble</defaultValue>
+        </discriminator>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+                <expression>
+                    e.mdc?.get("tranMode") == ~/batch/
+                </expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <sift>
+            <appender name="SIFT-ROLLING-BATCH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>
+                        ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/batch/${stepName}/batch-${stepName}-%d{yyyyMMdd}.%i.log
+                    </fileNamePattern>
+                    <maxHistory>${logging.maxHistory}</maxHistory>
+                    <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                    <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${logging.pattern}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- timer日志输出 -->
+    <!-- 按照每天生成日志文件 tranMode ： 交易模式为timer-->
+    <appender name="TIMER-APPENDER" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <!-- This is MDC value -->
+        <discriminator>
+            <key>timerId</key>
+            <defaultValue>ensemble</defaultValue>
+        </discriminator>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+                <expression>
+                    e.mdc?.get("tranMode") ==~/timer/
+                </expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <sift>
+            <appender name="SIFT-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>
+                        ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/timer/timer-default-%d{yyyyMMdd}.%i.log
+                    </fileNamePattern>
+                    <maxHistory>${logging.maxHistory}</maxHistory>
+                    <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                    <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${logging.pattern}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- monitor日志输出 tranMode ：交易模式为monitor-->
+    <appender name="MONITOR-APPENDER" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <!-- This is MDC value -->
+        <discriminator>
+            <key>monitorId</key>
+            <defaultValue>ensemble</defaultValue>
+        </discriminator>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+                <expression>
+                    e.mdc?.get("tranMode") ==~/monitor/
+                </expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <sift>
+            <appender name="SIFT-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>
+                        ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/monitor/monitor-default-%d{yyyyMMdd}.%i.log
+                    </fileNamePattern>
+                    <maxHistory>${logging.maxHistory}</maxHistory>
+                    <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                    <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${logging.pattern}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+
+    <!-- error日志文件输出 -->
+    <appender name="ERROR-APPENDER" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>def</key>
+            <defaultValue>def</defaultValue>
+        </discriminator>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+                <expression>
+                    !(e.mdc?.get("tranMode") =~/timer|monitor/)
+                </expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <sift>
+            <appender name="SIFT-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                    <level>ERROR</level>
+                </filter>
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>
+                        ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/error/error-default-%d{yyyyMMdd}.%i.log
+                    </fileNamePattern>
+                    <maxHistory>${logging.maxHistory}</maxHistory>
+                    <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                    <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${logging.pattern}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+
+    <appender name="APP-APPENDER" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>def</key>
+            <defaultValue>def</defaultValue>
+        </discriminator>
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+                <expression>
+                    !(e.mdc?.get("tranMode") =~/timer|monitor/)
+                </expression>
+            </evaluator>
+            <OnMatch>ACCEPT</OnMatch>
+            <OnMismatch>DENY</OnMismatch>
+        </filter>
+        <sift>
+            <appender name="SIFT-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                    <fileNamePattern>
+                        ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/common/common-default-%d{yyyyMMdd}.%i.log
+                    </fileNamePattern>
+                    <maxHistory>${logging.maxHistory}</maxHistory>
+                    <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                    <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+                </rollingPolicy>
+                <encoder>
+                    <pattern>${logging.pattern}</pattern>
+                    <charset>UTF-8</charset>
+                </encoder>
+            </appender>
+        </sift>
+    </appender>
+
+    <!-- SpringMvcTracerFilter-->
+    <appender name="SPRING-MVC-SPAN-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>${logging.path}/${spring.application.name}/trace-default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>
+                ${logging.path}/${spring.application.name}/%d{yyyyMMdd}/trace/trace-default-%d{yyyyMMdd}.%i.log
+            </fileNamePattern>
+            <maxHistory>${logging.maxHistory}</maxHistory>
+            <maxFileSize>${logging.maxFileSize}</maxFileSize>
+            <totalSizeCap>${logging.totalSizeCap}</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+    <!-- 异步输出 -->
+    <appender name="MONITOR-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="MONITOR-APPENDER"/>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="ERROR-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="ERROR-APPENDER"/>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="APP-ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>512</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="APP-APPENDER"/>
+    </appender>
+
+    <springProfile name="pro">
+        <!-- 控制台日志文件输出  -->
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <target>System.err</target>
+            <encoder>
+                <pattern>${logging.pattern}</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+
+        <root level="TRACE">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="BATCH-APPENDER"/>
+            <appender-ref ref="TIMER-APPENDER"/>
+            <appender-ref ref="ERROR-ASYNC"/>
+            <appender-ref ref="APP-ASYNC"/>
+            <appender-ref ref="MONITOR-ASYNC"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="!pro">
+        <!-- 控制台日志文件输出  -->
+        <if condition='property("os.name").contains("Windows")'>
+            <then>
+                <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                    <encoder>
+                        <pattern>${logging.dev.console}</pattern>
+                        <charset>UTF-8</charset>
+                    </encoder>
+                </appender>
+            </then>
+            <else>
+                <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+                    <encoder>
+                        <pattern>${logging.pattern}</pattern>
+                        <charset>UTF-8</charset>
+                    </encoder>
+                </appender>
+            </else>
+        </if>
+
+        <root level="TRACE">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="BATCH-APPENDER"/>
+            <appender-ref ref="TIMER-APPENDER"/>
+            <appender-ref ref="ERROR-ASYNC"/>
+            <appender-ref ref="APP-ASYNC"/>
+            <appender-ref ref="MONITOR-ASYNC"/>
+        </root>
+    </springProfile>
+    <logger name="ShardingSphere-SQL" level="error"/>
+    <logger name="springfox.documentation.spring" level="warn"/>
+    <logger name="org.springframework" level="warn"/>
+    <logger name="org.mybatis.spring" level="warn"/>
+    <logger name="org.apache.catalina" level="warn"/>
+    <logger name="com.dcits.gravity.chain.DefaultGravityFilterChain" level="off"/>
+
+    <logger name="com.dcits.ensemble" level="debug"/>
+
+    <!--应用框架日志-->
+    <logger name="com.dcits.gravity" level="info"/>
+    <!--应用框架节点输入输出日志-->
+    <logger name="com.dcits.gravity.filter.impl.NodeGravityFilter" level="warn"/>
+    <!--调度中心日志-->
+    <logger name="com.dcits.sonic" level="info"/>
+    <!--缓存访问日志-->
+    <logger name="com.dcits.orbit" level="error"/>
+    <logger name="com.dcits.orbit.redis.cache.RedisCache" level="error"/>
+    <!--序列访问日志-->
+    <logger name="com.dcits.mars" level="error"/>
+    <logger name="com.netflix.loadbalancer.BaseLoadBalancer" level="off"/>
+    <logger name="com.netflix" level="warn"/>
+    <logger name="com.dcits.comet" level="info"/>
+    <logger name="com.dcits.comet.flow" level="info"/>
+    <logger name="com.dcits.comet.flow.DefaultFlowChain" level="debug"/>
+    <logger name="com.dcits.comet.dao.interceptor.StateTimeOutInterceptor" level="error"/>
+    <logger name="com.dcits.jupiter.webmvc.support.filter" level="error"/>
+    <logger name="com.dcits.comet.notice.core.impl.MQSender" level="error"/>
+    <logger name="com.dcits.comet.ig.cbs.ext.tracer.plugins.springmvc.SpringMvcTracerFilter" level="info"
+            additivity="false">
+        <appender-ref ref="SPRING-MVC-SPAN-APPENDER"/>
+    </logger>
+
+</included>
