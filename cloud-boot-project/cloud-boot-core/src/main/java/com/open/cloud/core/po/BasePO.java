@@ -8,6 +8,6 @@ package com.open.cloud.core.po;
  * @version 1.0
  * @date 2021/9/25 20:52
  */
-public class BasePO<T> {
+public  class BasePO {
 
 }
