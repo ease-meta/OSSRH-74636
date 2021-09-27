@@ -24,7 +24,7 @@ public class FastAutoGeneratorOracleMain {
     private static final BizLogger logger = BizLoggerFactory.getLogger(FastAutoGeneratorOracleMain.class);
 
     public static void main(String[] args) {
-
+        //TODO 1.生成扩展类；2.entity父类;3.mapper父类；4.xml格式重新定义；5.
         FastAutoGenerator.create("jdbc:oracle:thin:@127.0.0.1:1521/orcl", "ENS_CIF", "ENS_CIF")
                 .globalConfig((GlobalConfig.Builder builder) -> {
                     builder.author("leijian")
@@ -37,8 +37,8 @@ public class FastAutoGeneratorOracleMain {
                 .packageConfig(builder -> {
                     builder.parent("")
                             .moduleName("")
-                            .entity("com.open.cloud.mybatis.entity")
-                            .mapper("com.open.cloud.mybatis.mapper")
+                            .entity("com.open.cloud.mybatis.demo.entity")
+                            .mapper("com.open.cloud.mybatis.demo.mapper")
                             .xml("mapper.xml")
                             .other("_ext")
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, System.getProperty("user.dir")+ File.separator+"cloud-boot-project\\cloud-boot-mybatis\\src\\test\\resources\\mapper\\"))

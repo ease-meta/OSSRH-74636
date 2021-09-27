@@ -83,7 +83,7 @@
         <include refid="Table_Name"/>
         <set>
             <#list cloums as c>
-            <#if c.pkFlag == "N" && c.shardFlag=="N">
+            <#if c.pkFlag == "N">
             <#if c.javaType ?? &&  c.javaType =="String">
             <if test="${c.columnName} != null and  ${c.columnName} != '' ">
                 <#else>
@@ -97,7 +97,7 @@
         <where>
             <trim suffixOverrides="AND">
                 <#list cloums as c>
-                <#if c.pkFlag == "Y" || c.shardFlag=="Y">
+                <#if c.pkFlag == "Y">
                 <#if c.javaType ?? &&  c.javaType =="String">
                 <if test="${c.columnName} != null and  ${c.columnName} != '' ">
                     <#else>

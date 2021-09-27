@@ -1,6 +1,5 @@
 package com.open.cloud.mybatis.generator.annotion;
 
-import com.open.cloud.mybatis.generator.config.MapperConfig;
 import com.open.cloud.mybatis.generator.entity.GeneratorProperties;
 import com.open.cloud.mybatis.generator.service.CodeGeneratorService;
 import org.springframework.context.annotation.Import;
@@ -15,7 +14,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({MapperConfig.class, GeneratorProperties.class, CodeGeneratorService.class})
+@Import({GeneratorProperties.class, CodeGeneratorService.class})
 @Documented
 @Inherited
 public @interface EnableGenerator {

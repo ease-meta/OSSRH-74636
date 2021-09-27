@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.open.cloud.mybatis.generator.mapper.CodeGeneratorMapper">
+    <!--根据表名称获取表描述-->
+    <select id="getTableComment" parameterType="java.util.Map" resultType="String">
+        <if test="dbType == 'mysql'">
+            select TABLE_COMMENT from information_schema.TABLES t
+            where t.TABLE_SCHEMA=#{dbName} and TABLE_NAME = #{tableName}
+        </if>
+        <if test="dbType == 'oracle'">
+            SELECT DISTINCT
+            t.comments
+            FROM
+            user_tab_comments t
+            INNER JOIN USER_CONS_COLUMNS A ON A.TABLE_NAME = T.TABLE_NAME
+            AND A.OWNER=#{dbName}
+            WHERE
+            t.TABLE_NAME=#{tableName}
+        </if>
+    </select>
+    <!-- 根据数据库名称获取所有表名称及描述 -->
+    <select id="getTablesList" parameterType="java.util.Map" resultType="java.util.Map">
+        <if test="dbType == 'mysql'">
+            select TABLE_NAME ,TABLE_COMMENT
+            from information_schema.TABLES t
+            where t.TABLE_SCHEMA=#{dbName}
+        </if>
+        <if test="dbType == 'oracle'">
+            SELECT DISTINCT
+            t.TABLE_NAME,
+            t.comments TABLE_COMMENT
+            FROM
+            user_tab_comments t
+            INNER JOIN USER_CONS_COLUMNS A ON A.TABLE_NAME = T.TABLE_NAME
+            AND A.OWNER = #{dbName}
+            WHERE T.TABLE_NAME NOT LIKE 'ACT%'
+            ORDER BY TABLE_NAME
+        </if>
+        <if test="dbType == 'mssql'">
+            select name as TABLENAME from sysobjects where xtype='u'
+        </if>
+
+    </select>
+
+
+    <!-- 获取列数据 -->
+    <select id="getListMap" parameterType="java.util.Map" resultType="java.util.Map">
+        <if test="dbType == 'mysql'">
+            SELECT COLUMN_NAME COLUMNNAME,COLUMN_TYPE COLUMNTYPE,COLUMN_KEY COLUMNKEY ,CHARACTER_MAXIMUM_LENGTH DATALENGTH,
+            IS_NULLABLE ISNULLABLE,COLUMN_COMMENT COLUMNCOMMENT
+            FROM INFORMATION_SCHEMA.COLUMNS T
+            WHERE TABLE_NAME = #{tableName} AND T.TABLE_SCHEMA=#{dbName}
+        </if>
+
+        <if test="dbType == 'oracle'">
+            SELECT DISTINCT
+            t.column_name COLUMNNAME,
+            t.data_type COLUMNTYPE,
+            t.DATA_SCALE,
+            a.COMMENTS COLUMNCOMMENT
+            FROM
+            user_tab_columns t
+            INNER JOIN USER_COL_COMMENTS a ON t.table_name = a.table_NAME
+            AND t.COLUMN_NAME = a.COLUMN_NAME
+            INNER JOIN USER_CONS_COLUMNS C ON C.TABLE_NAME = T.TABLE_NAME
+            WHERE
+            C.OWNER = #{dbName}
+            AND T.TABLE_NAME = #{tableName}
+        </if>
+
+        <if test="dbType == 'mssql'">
+            SELECT COLUMN_NAME COLUMNNAME,DATA_TYPE COLUMNTYPE,CHARACTER_MAXIMUM_LENGTH DATALENGTH,
+            IS_NULLABLE ISNULLABLE,'' COLUMNCOMMENT FROM INFORMATION_SCHEMA.columns WHERE TABLE_NAME=#{tableName}
+        </if>
+    </select>
+
+
+    <!--获取表的主键-->
+    <select id="getTableKeys" parameterType="java.util.Map" resultType="java.lang.String">
+        <if test="dbType == 'mysql'">
+            SELECT DISTINCT column_name FROM INFORMATION_SCHEMA.`KEY_COLUMN_USAGE`
+            WHERE TABLE_NAME = #{tableName} AND constraint_name='PRIMARY' AND TABLE_SCHEMA=#{dbName}
+        </if>
+
+        <if test="dbType == 'oracle'">
+            SELECT
+            A.COLUMN_NAME
+            FROM
+            USER_CONS_COLUMNS A
+            INNER JOIN USER_CONSTRAINTS B ON A.CONSTRAINT_NAME = B.CONSTRAINT_NAME
+            AND B.CONSTRAINT_TYPE = 'P'
+            WHERE
+            A.TABLE_NAME = #{tableName}
+            AND A.OWNER = #{dbName}
+        </if>
+
+        <if test="dbType == 'mssql'">
+
+        </if>
+    </select>
+
+
+</mapper>

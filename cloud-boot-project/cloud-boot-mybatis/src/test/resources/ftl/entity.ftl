@@ -4,6 +4,9 @@ import ${parentClassPackage}.${entityParentClass};
 <#if tablePkSize =="Y">
   import com.dcits.comet.dao.annotation.TablePk;
 </#if>
+<#if tablePkSize =="Y">
+  import com.open.cloud.mybatis.annotation.TableName;
+</#if>
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,8 +19,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-<#if tableType ??>
-  @TableType(name = "${tableName}", value = TableTypeEnum.${tableType})
+<#if tableName ??>
+  @TableName(name = "${tableName}")
 </#if>
 public class ${className} extends ${entityParentClass} {
 
@@ -27,9 +30,7 @@ public class ${className} extends ${entityParentClass} {
   *
   * @Description ${ c.columnComment}
   */
-    <#if c.partitonKey ??>
-        ${c.partitonKey}
-    </#if>
+
     <#if c.cloumsTop ??>
         ${c.cloumsTop}
     </#if>
