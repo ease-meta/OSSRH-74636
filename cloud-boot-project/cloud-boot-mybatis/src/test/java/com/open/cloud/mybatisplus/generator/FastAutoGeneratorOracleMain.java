@@ -1,4 +1,4 @@
-package com.open.cloud.mybatis;
+package com.open.cloud.mybatisplus.generator;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.open.cloud.core.po.BasePO;
 import com.open.cloud.logging.BizLogger;
 import com.open.cloud.logging.BizLoggerFactory;
+import com.open.cloud.mybatis.BaseDaoAction;
 
 import java.io.File;
 import java.util.Collections;
