@@ -21,6 +21,8 @@
 
         <module>cloud-boot-core</module>
         <module>cloud-boot-mybatis</module>
+        <module>cloud-boot-jpa</module>
+        <module>cloud-boot-generator</module>
         <module>cloud-boot-logging</module>
     </modules>
 

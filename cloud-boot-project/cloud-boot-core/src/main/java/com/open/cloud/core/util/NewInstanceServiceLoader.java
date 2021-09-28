@@ -15,11 +15,11 @@ import java.util.ServiceLoader;
  */
 public final class NewInstanceServiceLoader {
 
+    private static final Map<Class, Collection<Class<?>>> SERVICE_MAP = new HashMap<>();
+
     private NewInstanceServiceLoader() {
 
     }
-
-    private static final Map<Class, Collection<Class<?>>> SERVICE_MAP = new HashMap<>();
 
     /**
      * Register.

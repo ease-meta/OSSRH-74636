@@ -15,7 +15,10 @@ public class NamedThreadFactory implements ThreadFactory {
      * 系统全局线程池计数器
      */
     private static final AtomicInteger POOL_COUNT = new AtomicInteger();
-
+    /**
+     * 线程名第一前缀
+     */
+    private static final String FIRST_PREFIX = "COMET-";
     /**
      * 当前线程池计数器
      */
@@ -32,10 +35,6 @@ public class NamedThreadFactory implements ThreadFactory {
      * 是否守护线程，true的话随主线程退出而退出，false的话则要主动退出
      */
     private final boolean isDaemon;
-    /**
-     * 线程名第一前缀
-     */
-    private static final String FIRST_PREFIX = "COMET-";
 
     /**
      * 构造函数，默认非守护线程

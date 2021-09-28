@@ -1,16 +1,15 @@
-package com.open.cloud.mybatisplus.generator;
+package com.boot.generator.mybatis.test;
 
-import com.baomidou.mybatisplus.generator.FastAutoGenerator;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.OutputFile;
-import com.baomidou.mybatisplus.generator.config.TemplateConfig;
-import com.baomidou.mybatisplus.generator.config.TemplateType;
-import com.baomidou.mybatisplus.generator.config.rules.DateType;
-import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
-import com.open.cloud.core.po.BasePO;
+import com.boot.generator.mybatis.FastAutoGenerator;
+import com.boot.generator.mybatis.config.DataSourceConfig;
+import com.boot.generator.mybatis.config.GlobalConfig;
+import com.boot.generator.mybatis.config.OutputFile;
+import com.boot.generator.mybatis.config.TemplateConfig;
+import com.boot.generator.mybatis.config.TemplateType;
+import com.boot.generator.mybatis.config.rules.DateType;
+import com.boot.generator.mybatis.engine.FreemarkerTemplateEngine;
 import com.open.cloud.logging.BizLogger;
 import com.open.cloud.logging.BizLoggerFactory;
-import com.open.cloud.mybatis.BaseDaoAction;
 
 import java.io.File;
 import java.util.Collections;
@@ -25,12 +24,15 @@ public class FastAutoGeneratorOracleMain {
     private static final BizLogger logger = BizLoggerFactory.getLogger(FastAutoGeneratorOracleMain.class);
 
     public static void main(String[] args) {
-        //TODO 1.Éú³ÉÀ©Õ¹Àà£»2.entity¸¸Àà;3.mapper¸¸Àà£»4.xml¸ñÊ½ÖØÐÂ¶¨Òå£»5.
-        FastAutoGenerator.create("jdbc:oracle:thin:@127.0.0.1:1521/orcl", "ENS_CIF", "ENS_CIF")
+        //TODO 1.ç”Ÿæˆæ‰©å±•ç±»ï¼›2.entityçˆ¶ç±»;3.mapperçˆ¶ç±»ï¼›4.xmlæ ¼å¼é‡æ–°å®šä¹‰ï¼›5.
+        FastAutoGenerator.create(new DataSourceConfig.Builder()
+                .url("jdbc:oracle:thin:@127.0.0.1:1521/orcl")
+                .username("ENS_CIF")
+                .password("ENS_CIF"))
                 .globalConfig((GlobalConfig.Builder builder) -> {
                     builder.author("leijian")
                             .fileOverride()
-                            .outputDir(System.getProperty("user.dir")+ File.separator+"cloud-boot-project\\cloud-boot-mybatis\\src\\test\\java\\")
+                            .outputDir(System.getProperty("user.dir") + File.separator + "cloud-boot-project\\cloud-boot-mybatis\\src\\test\\java\\")
                             .dateType(DateType.TIME_PACK)
                             .commentDate("yyyy-MM-dd")
                             .build();
@@ -42,10 +44,10 @@ public class FastAutoGeneratorOracleMain {
                             .mapper("com.open.cloud.mybatis.demo.mapper")
                             .xml("mapper.xml")
                             .other("_ext")
-                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, System.getProperty("user.dir")+ File.separator+"cloud-boot-project\\cloud-boot-mybatis\\src\\test\\resources\\mapper\\"))
+                            .pathInfo(Collections.singletonMap(OutputFile.mapperXml, System.getProperty("user.dir") + File.separator + "cloud-boot-project\\cloud-boot-mybatis\\src\\test\\resources\\mapper\\"))
                             .build();
                 })
-                .templateEngine(new FreemarkerTemplateEngine()) // Ê¹ÓÃFreemarkerÒýÇæÄ£°å£¬Ä¬ÈÏµÄÊÇVelocityÒýÇæÄ£°å
+                .templateEngine(new FreemarkerTemplateEngine()) // ä½¿ç”¨Freemarkerå¼•æ“Žæ¨¡æ¿ï¼Œé»˜è®¤çš„æ˜¯Velocityå¼•æ“Žæ¨¡æ¿
                 .templateConfig((TemplateConfig.Builder builder) -> {
                     builder.disable(TemplateType.SERVICE, TemplateType.SERVICEIMPL, TemplateType.CONTROLLER)
                             .build();
@@ -54,8 +56,8 @@ public class FastAutoGeneratorOracleMain {
                     System.out.println("tableInfo: " + tableInfo.getEntityName() + " objectMap: " + objectMap.size());
                 }))
                 .strategyConfig(builder -> {
-                    builder.entityBuilder().enableChainModel().superClass(BasePO.class);
-                    builder.mapperBuilder().enableBaseResultMap().enableBaseColumnList().superClass(BaseDaoAction.class);
+                    //builder.entityBuilder().enableChainModel().superClass(BasePO.class);
+                    //builder.mapperBuilder().enableBaseResultMap().enableBaseColumnList().superClass(BaseDaoAction.class);
                 })
                 .execute();
     }

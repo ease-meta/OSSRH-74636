@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #driver-class-name: org.mariadb.jdbc.Driver
+    druid:
+      #url: jdbc:mariadb://127.0.0.1:3306/botj?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      url: jdbc:oracle:thin:@127.0.0.1:1521/orcl
+      username: ENS_CIF
+      password: ENS_CIF
+    driver-class-name: oracle.jdbc.OracleDriver
+#mybatis-plus:
+#  config-location: classpath:mybatis/mybatis-config.xml
+#  mapper-locations: classpath*:META-INF/mapper/**/*.xml,classpath*:mapper/**/*.xml
+logging:
+  level:
+    com.baomidou.mybatisplus: debug
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath*:META-INF/mapper/**/*.xml,classpath*:mapper/**/*.xml
