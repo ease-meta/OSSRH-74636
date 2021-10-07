@@ -6,14 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.springframework.stereotype.Component;
 
 /**
  * @author leijian
  * @version 1.0
  * @date 2021/9/30 23:10
  */
-@Component
 public class ProcessBeanPostProcessor implements BeanPostProcessor {
 
     private static final Logger logger = LoggerFactory.getLogger(ProcessBeanPostProcessor.class);

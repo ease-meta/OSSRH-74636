@@ -11,8 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
 
-import javax.annotation.Resource;
-
 /**
  * @author leijian
  * @version 1.0
@@ -27,7 +25,7 @@ public class SimpleBusinessEngine<T extends BaseRequest, R extends BaseResponse>
     /**
      * Spring事务管理器
      */
-    @Resource
+    //@Resource
     private PlatformTransactionManager transactionManager;
 
     //controller调用service入口

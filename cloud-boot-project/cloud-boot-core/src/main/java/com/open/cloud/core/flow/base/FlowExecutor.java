@@ -8,7 +8,6 @@ import com.open.cloud.core.flow.api.BusinessEngine;
 import com.open.cloud.core.flow.api.IProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
@@ -18,14 +17,18 @@ import javax.annotation.Resource;
  * @version 1.0
  * @date 2021/9/30 22:49
  */
-@Component
 public class FlowExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(FlowExecutor.class);
 
     @Resource
-    private static BusinessEngine businessEngine;
+    private BusinessEngine businessEngine;
 
+    private static FlowExecutor flowExecutor;
+
+    public FlowExecutor() {
+        flowExecutor = this;
+    }
 
     static Multimap<String, IProcess> ALL_IPROCESS = ArrayListMultimap.create();
 
@@ -36,7 +39,7 @@ public class FlowExecutor {
                 logger.warn("");
             }
             IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().findFirst().get();
-            return (R) FlowExecutor.businessEngine.execFlow(iProcess, request);
+            return (R) flowExecutor.businessEngine.execFlow(iProcess, request);
         } catch (Exception exception) {
             //TODO 兜底异常？
         }
