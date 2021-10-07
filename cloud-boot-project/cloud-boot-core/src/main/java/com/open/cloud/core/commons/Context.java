@@ -1,29 +1,29 @@
 
 package com.open.cloud.core.commons;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.open.cloud.core.domain.BaseRequest;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Stack;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 /**
- * @author Tim
- * @version V1.0
- * @description 基于统一缓存实现的交易全局上下文
- * @update 2014年11月13日 下午4:36:49
- * @modify 2016年09月20日 下午13:07:22 修改本地缓存存储上下文
+ * 基于ThreadLocal的面向业务开发者使用的上下文传递对象
  */
 
-public class Context implements Serializable {
+public final class Context {
 
-    private static Logger logger = LoggerFactory.getLogger(Context.class);
+    /**
+     * 线程上下文变量
+     */
+    protected static final ThreadLocal<Context> LOCAL = new ThreadLocal<Context>();
 
-    private static final long serialVersionUID = -1L;
+    /**
+     * 自定义属性
+     */
+    protected ConcurrentMap<String, Object> map = new ConcurrentHashMap<String, Object>();
 
     public static final String BATCH_THREAD_NAME = "GalaxyBatchTask";
     public static final String ADD_BATCH_KEY = "GalaxyBatchAddBatch";
@@ -31,6 +31,10 @@ public class Context implements Serializable {
     public static final String ADD_BATCH_UPDATE_KEY = "addUpdateBatchMap";
     public static final String ADD_BATCH_DELETE_KEY = "addDeleteBatchMap";
 
+    /**
+     * 请求入参模型
+     */
+    private BaseRequest baseRequest;
 
     private String runDate;
 
@@ -66,19 +70,10 @@ public class Context implements Serializable {
     private String routerKey;
 
     /**
-     * @fields platformId
-     */
-    private String platformId = ThreadLocalManager.getUID();
-
-    /**
      * @fields properties
      */
     private Properties properties = new Properties();
 
-    /**
-     * @fields map
-     */
-    private Map<String, Object> map = new HashMap<>();
 
     /**
      * 累加的交易发生额 add by Tim 2017/10/30
@@ -88,56 +83,85 @@ public class Context implements Serializable {
     private Map<String, BigDecimal> acctBalance;
 
     /**
-     * 获取上下文
+     * 得到上下文，没有则初始化
      *
-     * @return
+     * @return 调用上下文
      */
-    public static Context getInstance() {
-        Stack<Context> contexts = getContextStack();
-        if (contexts.empty()) {
-            contexts.push(new Context());
-            logger.info("Pressing context into context stack!");
+    public static Context getContext() {
+        Context context = LOCAL.get();
+        if (context == null) {
+            context = new Context();
+            LOCAL.set(context);
         }
-        return contexts.peek();
+        return context;
+    }
+
+
+    public void initBaseRequest(BaseRequest baseRequest) {
+        this.baseRequest = baseRequest;
     }
 
     /**
-     * 获取上下文栈对象
+     * 查看上下文
      *
-     * @return
+     * @return 调用上下文，可能为空
      */
-    private static Stack<Context> getContextStack() {
-        Stack<Context> contexts = ThreadLocalManager.getTranContext();
-        if (null == contexts) {
-            contexts = new Stack<>();
-            ThreadLocalManager.setTranContext(contexts);
-            logger.info("Create a stack and fill in ThreadLocal!");
-        }
-        return contexts;
+    public static Context peekContext() {
+        return LOCAL.get();
     }
 
     /**
-     * 将上下文压入栈顶
-     *
-     * @param context
+     * 删除上下文
      */
-    public static Context pushContext(Context context) {
-        logger.info("Press the context into the top of the stack!");
-        Stack<Context> contexts = getContextStack();
-        return contexts.push(context);
+    public static void removeContext() {
+        LOCAL.remove();
     }
 
     /**
-     * 移除栈顶对象
+     * 设置上下文
      *
-     * @return
+     * @param context 调用上下文
      */
-    public static Context popContext() {
-        Stack<Context> contexts = getContextStack();
-        if (contexts.size() == 0) {
-            return null;
+    private static void setContext(Context context) {
+        LOCAL.set(context);
+    }
+
+    /**
+     * 设置一个调用上下文数据
+     *
+     * @param key   Key
+     * @param value Value
+     */
+    public void put(String key, Object value) {
+        if (key != null && value != null) {
+            map.put(key, value);
         }
-        return contexts.pop();
+    }
+
+    /**
+     * 获取一个调用上下文数据
+     *
+     * @param key Key
+     * @return 值
+     */
+    public Object get(String key) {
+        if (key != null) {
+            return map.get(key);
+        }
+        return null;
+    }
+
+    /**
+     * 删除一个调用上下文数据
+     *
+     * @param key Key
+     * @return 删除前的值
+     */
+    public Object remove(String key) {
+        if (key != null) {
+            return map.remove(key);
+        }
+        return null;
     }
 
   /*  public ISysHead getSysHead() {

@@ -32,18 +32,13 @@ public class FlowExecutor {
 
     static Multimap<String, IProcess> ALL_IPROCESS = ArrayListMultimap.create();
 
+    @lombok.SneakyThrows
     public static <T extends BaseRequest, R extends BaseResponse> R execute2Resp(T request) {
-        try {
-            String serviceName = ServiceHandler.getServiceName(request.getClass());
-            if (ALL_IPROCESS.get(serviceName).size() > 1) {
-                logger.warn("");
-            }
-            IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().findFirst().get();
-            return (R) flowExecutor.businessEngine.execFlow(iProcess, request);
-        } catch (Exception exception) {
-            //TODO 兜底异常？
+        String serviceName = ServiceHandler.getServiceName(request.getClass());
+        if (ALL_IPROCESS.get(serviceName).size() > 1) {
+            logger.warn("");
         }
-        return null;
-
+        IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().findFirst().orElseThrow();
+        return (R) flowExecutor.businessEngine.execFlow(iProcess, request);
     }
 }

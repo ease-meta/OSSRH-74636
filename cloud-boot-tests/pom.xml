@@ -22,6 +22,10 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-mybatis</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public abstract class AbstractService<T extends BaseRequest, R extends BaseResponse> implements BusinessEngine {
+public abstract class AbstractService<T extends BaseRequest, R extends BaseResponse> implements BusinessEngine<T, R> {
 
     private transient final Logger logger = LoggerFactory.getLogger(AbstractService.class);
 
@@ -36,41 +36,6 @@ public abstract class AbstractService<T extends BaseRequest, R extends BaseRespo
                         + validatedObj.getClass().getName() + "]");
             }
         }
-    }
-
-    /**
-     * 服务后处理
-     *
-     * @param request
-     * @param br
-     * @description
-     * @version 1.0
-     * @author Tim
-     * @update 2015年1月19日 下午3:29:13
-     */
-    protected void executeAfterService(BaseRequest request, BaseResponse br) {
-        /*long start = -1L;
-        if (logger.isInfoEnabled()) {
-            start = System.currentTimeMillis();
-        }
-        try {
-            AfterService afterService = ServiceHandler.getAfterService();
-            if (null == afterService) {
-                if (logger.isWarnEnabled()) {
-                    logger.warn("AfterService Service not exist, skip afterService process!");
-                }
-            } else {
-                afterService.afterProcess(request, br);
-            }
-        } catch (Throwable t) {
-            if (logger.isWarnEnabled()) {
-                logger.warn("AfterService Service execute Exception, " + ExceptionUtils.getStackTrace(t));
-            }
-        } finally {
-            if (logger.isInfoEnabled()) {
-                logger.info("AfterService execute time:" + (System.currentTimeMillis() - start));
-            }
-        }*/
     }
 
     /**
