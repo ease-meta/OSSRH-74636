@@ -16,7 +16,9 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
 
     @Override
     public Ease14006001Out process(Ease14006001In request) {
-        return null;
+        Ease14006001Out ease14006001Out = new Ease14006001Out();
+        ease14006001Out.setName(request.getName());
+        return ease14006001Out;
     }
 
     @Override

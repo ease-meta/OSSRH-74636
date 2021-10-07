@@ -4,6 +4,7 @@ import com.open.cloud.core.flow.api.BusinessEngine;
 import com.open.cloud.core.flow.base.FlowExecutor;
 import com.open.cloud.core.flow.base.ProcessBeanPostProcessor;
 import com.open.cloud.core.flow.base.SimpleBusinessEngine;
+import com.open.cloud.core.flow.web.CometConsumerMessageConvert;
 import com.open.cloud.core.flow.web.CustomerExceptionHandler;
 import com.open.cloud.core.flow.web.ResponseAdvice;
 import org.springframework.context.annotation.Bean;
@@ -42,4 +43,8 @@ public class CloudBootCoreAutoConfiguration {
         return new ResponseAdvice();
     }
 
+    @Bean
+    public CometConsumerMessageConvert cometConsumerMessageConvert() {
+        return new CometConsumerMessageConvert();
+    }
 }
