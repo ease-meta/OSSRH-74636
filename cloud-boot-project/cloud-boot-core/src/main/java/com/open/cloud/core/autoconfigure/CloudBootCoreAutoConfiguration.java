@@ -4,6 +4,8 @@ import com.open.cloud.core.flow.api.BusinessEngine;
 import com.open.cloud.core.flow.base.FlowExecutor;
 import com.open.cloud.core.flow.base.ProcessBeanPostProcessor;
 import com.open.cloud.core.flow.base.SimpleBusinessEngine;
+import com.open.cloud.core.flow.web.CustomerExceptionHandler;
+import com.open.cloud.core.flow.web.ResponseAdvice;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -29,4 +31,15 @@ public class CloudBootCoreAutoConfiguration {
     public FlowExecutor flowExecutor(BusinessEngine businessEngine) {
         return new FlowExecutor();
     }
+
+    @Bean
+    public CustomerExceptionHandler customerExceptionHandler() {
+        return new CustomerExceptionHandler();
+    }
+
+    @Bean
+    public ResponseAdvice responseAdvice() {
+        return new ResponseAdvice();
+    }
+
 }
