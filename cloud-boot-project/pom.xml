@@ -24,6 +24,7 @@
         <module>cloud-boot-jpa</module>
         <module>cloud-boot-generator</module>
         <module>cloud-boot-logging</module>
+        <module>cloud-boot-cache</module>
     </modules>
 
     <properties>

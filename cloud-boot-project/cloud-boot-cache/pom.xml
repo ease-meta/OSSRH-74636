@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-boot-parent</artifactId>
@@ -10,18 +10,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-boot-logging</artifactId>
-
+    <artifactId>cloud-boot-cache</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-logging</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-boot-core</artifactId>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-starter-redis-springdata</artifactId>
         </dependency>
     </dependencies>
 </project>
