@@ -2,7 +2,6 @@ package com.open.cloud.mybatis;
 
 
 import com.open.cloud.core.po.BasePO;
-import org.mybatis.spring.SqlSessionTemplate;
 
 import java.util.List;
 
@@ -14,7 +13,6 @@ import java.util.List;
  */
 public abstract class BaseDaoAction implements BaseAction {
 
-    private SqlSessionTemplate sqlSessionTemplate;
 
     //todo 注入mybatis的BaseDaoAction实现类map即可。
     //使用mapper的好处是可以快速找到不同的业务领域
