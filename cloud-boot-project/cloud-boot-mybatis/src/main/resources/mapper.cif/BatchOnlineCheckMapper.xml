@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.open.cloud.mybatis.generator.com.open.cloud.mybatis.demo.entity.BatchOnlineCheck">
+    <resultMap id="BaseResultMap" type="com.open.cloud.mybatis.generator.com.open.cloud.mybatis.demo.entity.BatchOnlineCheck">
+            <result column="RUN_DATE" property="runDate" jdbcType="DATE"/>
+            <result column="FILE_MD5" property="fileMd5" jdbcType="VARCHAR"/>
+            <result column="STEP_TYPE" property="stepType" jdbcType="VARCHAR"/>
+            <result column="STEP_DESC" property="stepDesc" jdbcType="VARCHAR"/>
+            <result column="FILE_TYPE" property="fileType" jdbcType="VARCHAR"/>
+            <result column="SUCCESS_NUMBER" property="successNumber" jdbcType="NUMERIC"/>
+            <result column="FAILURE_NUMBER" property="failureNumber" jdbcType="NUMERIC"/>
+            <result column="APP_HEAD" property="appHead" jdbcType="OTHER"/>
+            <result column="OPERATION_ID" property="operationId" jdbcType="VARCHAR"/>
+            <result column="FILE_NAME" property="fileName" jdbcType="VARCHAR"/>
+            <result column="FILE_PATH" property="filePath" jdbcType="VARCHAR"/>
+            <result column="ERROR_CODE" property="errorCode" jdbcType="VARCHAR"/>
+            <result column="HOST_IP" property="hostIp" jdbcType="VARCHAR"/>
+            <result column="SYS_HEAD" property="sysHead" jdbcType="OTHER"/>
+            <result column="ATTR_JSON" property="attrJson" jdbcType="OTHER"/>
+            <result column="JOB_ID" property="jobId" jdbcType="VARCHAR"/>
+            <result column="START_TIME" property="startTime" jdbcType="DATE"/>
+            <result column="PROCESS_TYPE" property="processType" jdbcType="VARCHAR"/>
+            <result column="ERROR_DESC" property="errorDesc" jdbcType="VARCHAR"/>
+            <result column="JOB_RUN_ID" property="jobRunId" jdbcType="VARCHAR"/>
+            <result column="CHANNEL_SEQ_NO" property="channelSeqNo" jdbcType="VARCHAR"/>
+            <result column="BATCH_NO" property="batchNo" jdbcType="VARCHAR"/>
+            <result column="TRAN_DATE" property="tranDate" jdbcType="DATE"/>
+            <result column="END_TIME" property="endTime" jdbcType="DATE"/>
+            <result column="TOTAL_NUMBER" property="totalNumber" jdbcType="NUMERIC"/>
+            <result column="TRAN_STATUS" property="tranStatus" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Table_Name">
+        BATCH_ONLINE_CHECK
+    </sql>
+
+    <sql id="Base_Column">
+                RUN_DATE,
+                FILE_MD5,
+                STEP_TYPE,
+                STEP_DESC,
+                FILE_TYPE,
+                SUCCESS_NUMBER,
+                FAILURE_NUMBER,
+                APP_HEAD,
+                OPERATION_ID,
+                FILE_NAME,
+                FILE_PATH,
+                ERROR_CODE,
+                HOST_IP,
+                SYS_HEAD,
+                ATTR_JSON,
+                JOB_ID,
+                START_TIME,
+                PROCESS_TYPE,
+                ERROR_DESC,
+                JOB_RUN_ID,
+                CHANNEL_SEQ_NO,
+                BATCH_NO,
+                TRAN_DATE,
+                END_TIME,
+                TOTAL_NUMBER,
+                TRAN_STATUS
+    </sql>
+
+    <sql id="Base_Where">
+        <trim suffixOverrides="AND">
+                <if test="runDate != null ">
+                    RUN_DATE = #{runDate} AND
+                </if>
+            <if test="fileMd5 != null and  fileMd5 != '' ">
+                    FILE_MD5 = #{fileMd5} AND
+                </if>
+            <if test="stepType != null and  stepType != '' ">
+                    STEP_TYPE = #{stepType} AND
+                </if>
+            <if test="stepDesc != null and  stepDesc != '' ">
+                    STEP_DESC = #{stepDesc} AND
+                </if>
+            <if test="fileType != null and  fileType != '' ">
+                    FILE_TYPE = #{fileType} AND
+                </if>
+                <if test="successNumber != null ">
+                    SUCCESS_NUMBER = #{successNumber} AND
+                </if>
+                <if test="failureNumber != null ">
+                    FAILURE_NUMBER = #{failureNumber} AND
+                </if>
+            <if test="appHead != null and  appHead != '' ">
+                    APP_HEAD = #{appHead} AND
+                </if>
+            <if test="operationId != null and  operationId != '' ">
+                    OPERATION_ID = #{operationId} AND
+                </if>
+            <if test="fileName != null and  fileName != '' ">
+                    FILE_NAME = #{fileName} AND
+                </if>
+            <if test="filePath != null and  filePath != '' ">
+                    FILE_PATH = #{filePath} AND
+                </if>
+            <if test="errorCode != null and  errorCode != '' ">
+                    ERROR_CODE = #{errorCode} AND
+                </if>
+            <if test="hostIp != null and  hostIp != '' ">
+                    HOST_IP = #{hostIp} AND
+                </if>
+            <if test="sysHead != null and  sysHead != '' ">
+                    SYS_HEAD = #{sysHead} AND
+                </if>
+            <if test="attrJson != null and  attrJson != '' ">
+                    ATTR_JSON = #{attrJson} AND
+                </if>
+            <if test="jobId != null and  jobId != '' ">
+                    JOB_ID = #{jobId} AND
+                </if>
+                <if test="startTime != null ">
+                    START_TIME = #{startTime} AND
+                </if>
+            <if test="processType != null and  processType != '' ">
+                    PROCESS_TYPE = #{processType} AND
+                </if>
+            <if test="errorDesc != null and  errorDesc != '' ">
+                    ERROR_DESC = #{errorDesc} AND
+                </if>
+            <if test="jobRunId != null and  jobRunId != '' ">
+                    JOB_RUN_ID = #{jobRunId} AND
+                </if>
+            <if test="channelSeqNo != null and  channelSeqNo != '' ">
+                    CHANNEL_SEQ_NO = #{channelSeqNo} AND
+                </if>
+            <if test="batchNo != null and  batchNo != '' ">
+                    BATCH_NO = #{batchNo} AND
+                </if>
+                <if test="tranDate != null ">
+                    TRAN_DATE = #{tranDate} AND
+                </if>
+                <if test="endTime != null ">
+                    END_TIME = #{endTime} AND
+                </if>
+                <if test="totalNumber != null ">
+                    TOTAL_NUMBER = #{totalNumber} AND
+                </if>
+            <if test="tranStatus != null and  tranStatus != '' ">
+                    TRAN_STATUS = #{tranStatus} AND
+                </if>
+        </trim>
+    </sql>
+
+    <sql id="Base_Select">
+        SELECT
+        <include refid="Base_Column"/>
+        FROM
+        <include refid="Table_Name"/>
+        <where>
+            <include refid="Base_Where"/>
+        </where>
+    </sql>
+
+    <insert id="insert">
+        insert into
+        <include refid="Table_Name"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="runDate != null ">
+                    RUN_DATE,
+                </if>
+            <if test="fileMd5 != null and  fileMd5 != '' ">
+                    FILE_MD5,
+                </if>
+            <if test="stepType != null and  stepType != '' ">
+                    STEP_TYPE,
+                </if>
+            <if test="stepDesc != null and  stepDesc != '' ">
+                    STEP_DESC,
+                </if>
+            <if test="fileType != null and  fileType != '' ">
+                    FILE_TYPE,
+                </if>
+                <if test="successNumber != null ">
+                    SUCCESS_NUMBER,
+                </if>
+                <if test="failureNumber != null ">
+                    FAILURE_NUMBER,
+                </if>
+            <if test="appHead != null and  appHead != '' ">
+                    APP_HEAD,
+                </if>
+            <if test="operationId != null and  operationId != '' ">
+                    OPERATION_ID,
+                </if>
+            <if test="fileName != null and  fileName != '' ">
+                    FILE_NAME,
+                </if>
+            <if test="filePath != null and  filePath != '' ">
+                    FILE_PATH,
+                </if>
+            <if test="errorCode != null and  errorCode != '' ">
+                    ERROR_CODE,
+                </if>
+            <if test="hostIp != null and  hostIp != '' ">
+                    HOST_IP,
+                </if>
+            <if test="sysHead != null and  sysHead != '' ">
+                    SYS_HEAD,
+                </if>
+            <if test="attrJson != null and  attrJson != '' ">
+                    ATTR_JSON,
+                </if>
+            <if test="jobId != null and  jobId != '' ">
+                    JOB_ID,
+                </if>
+                <if test="startTime != null ">
+                    START_TIME,
+                </if>
+            <if test="processType != null and  processType != '' ">
+                    PROCESS_TYPE,
+                </if>
+            <if test="errorDesc != null and  errorDesc != '' ">
+                    ERROR_DESC,
+                </if>
+            <if test="jobRunId != null and  jobRunId != '' ">
+                    JOB_RUN_ID,
+                </if>
+            <if test="channelSeqNo != null and  channelSeqNo != '' ">
+                    CHANNEL_SEQ_NO,
+                </if>
+            <if test="batchNo != null and  batchNo != '' ">
+                    BATCH_NO,
+                </if>
+                <if test="tranDate != null ">
+                    TRAN_DATE,
+                </if>
+                <if test="endTime != null ">
+                    END_TIME,
+                </if>
+                <if test="totalNumber != null ">
+                    TOTAL_NUMBER,
+                </if>
+            <if test="tranStatus != null and  tranStatus != '' ">
+                    TRAN_STATUS,
+                </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="runDate != null ">
+                    #{runDate},
+                </if>
+            <if test="fileMd5 != null and  fileMd5 != '' ">
+                    #{fileMd5},
+                </if>
+            <if test="stepType != null and  stepType != '' ">
+                    #{stepType},
+                </if>
+            <if test="stepDesc != null and  stepDesc != '' ">
+                    #{stepDesc},
+                </if>
+            <if test="fileType != null and  fileType != '' ">
+                    #{fileType},
+                </if>
+                <if test="successNumber != null ">
+                    #{successNumber},
+                </if>
+                <if test="failureNumber != null ">
+                    #{failureNumber},
+                </if>
+            <if test="appHead != null and  appHead != '' ">
+                    #{appHead},
+                </if>
+            <if test="operationId != null and  operationId != '' ">
+                    #{operationId},
+                </if>
+            <if test="fileName != null and  fileName != '' ">
+                    #{fileName},
+                </if>
+            <if test="filePath != null and  filePath != '' ">
+                    #{filePath},
+                </if>
+            <if test="errorCode != null and  errorCode != '' ">
+                    #{errorCode},
+                </if>
+            <if test="hostIp != null and  hostIp != '' ">
+                    #{hostIp},
+                </if>
+            <if test="sysHead != null and  sysHead != '' ">
+                    #{sysHead},
+                </if>
+            <if test="attrJson != null and  attrJson != '' ">
+                    #{attrJson},
+                </if>
+            <if test="jobId != null and  jobId != '' ">
+                    #{jobId},
+                </if>
+                <if test="startTime != null ">
+                    #{startTime},
+                </if>
+            <if test="processType != null and  processType != '' ">
+                    #{processType},
+                </if>
+            <if test="errorDesc != null and  errorDesc != '' ">
+                    #{errorDesc},
+                </if>
+            <if test="jobRunId != null and  jobRunId != '' ">
+                    #{jobRunId},
+                </if>
+            <if test="channelSeqNo != null and  channelSeqNo != '' ">
+                    #{channelSeqNo},
+                </if>
+            <if test="batchNo != null and  batchNo != '' ">
+                    #{batchNo},
+                </if>
+                <if test="tranDate != null ">
+                    #{tranDate},
+                </if>
+                <if test="endTime != null ">
+                    #{endTime},
+                </if>
+                <if test="totalNumber != null ">
+                    #{totalNumber},
+                </if>
+            <if test="tranStatus != null and  tranStatus != '' ">
+                    #{tranStatus},
+                </if>
+        </trim>
+    </insert>
+
+    <update id="update">
+        UPDATE
+        <include refid="Table_Name"/>
+        <set>
+                <if test="runDate != null ">
+                    RUN_DATE = #{runDate},
+                </if>
+            <if test="fileMd5 != null and  fileMd5 != '' ">
+                    FILE_MD5 = #{fileMd5},
+                </if>
+            <if test="stepType != null and  stepType != '' ">
+                    STEP_TYPE = #{stepType},
+                </if>
+            <if test="stepDesc != null and  stepDesc != '' ">
+                    STEP_DESC = #{stepDesc},
+                </if>
+            <if test="fileType != null and  fileType != '' ">
+                    FILE_TYPE = #{fileType},
+                </if>
+                <if test="successNumber != null ">
+                    SUCCESS_NUMBER = #{successNumber},
+                </if>
+                <if test="failureNumber != null ">
+                    FAILURE_NUMBER = #{failureNumber},
+                </if>
+            <if test="appHead != null and  appHead != '' ">
+                    APP_HEAD = #{appHead},
+                </if>
+            <if test="operationId != null and  operationId != '' ">
+                    OPERATION_ID = #{operationId},
+                </if>
+            <if test="fileName != null and  fileName != '' ">
+                    FILE_NAME = #{fileName},
+                </if>
+            <if test="filePath != null and  filePath != '' ">
+                    FILE_PATH = #{filePath},
+                </if>
+            <if test="errorCode != null and  errorCode != '' ">
+                    ERROR_CODE = #{errorCode},
+                </if>
+            <if test="hostIp != null and  hostIp != '' ">
+                    HOST_IP = #{hostIp},
+                </if>
+            <if test="sysHead != null and  sysHead != '' ">
+                    SYS_HEAD = #{sysHead},
+                </if>
+            <if test="attrJson != null and  attrJson != '' ">
+                    ATTR_JSON = #{attrJson},
+                </if>
+            <if test="jobId != null and  jobId != '' ">
+                    JOB_ID = #{jobId},
+                </if>
+                <if test="startTime != null ">
+                    START_TIME = #{startTime},
+                </if>
+            <if test="processType != null and  processType != '' ">
+                    PROCESS_TYPE = #{processType},
+                </if>
+            <if test="errorDesc != null and  errorDesc != '' ">
+                    ERROR_DESC = #{errorDesc},
+                </if>
+            <if test="jobRunId != null and  jobRunId != '' ">
+                    JOB_RUN_ID = #{jobRunId},
+                </if>
+            <if test="channelSeqNo != null and  channelSeqNo != '' ">
+                    CHANNEL_SEQ_NO = #{channelSeqNo},
+                </if>
+            <if test="batchNo != null and  batchNo != '' ">
+                    BATCH_NO = #{batchNo},
+                </if>
+                <if test="tranDate != null ">
+                    TRAN_DATE = #{tranDate},
+                </if>
+                <if test="endTime != null ">
+                    END_TIME = #{endTime},
+                </if>
+                <if test="totalNumber != null ">
+                    TOTAL_NUMBER = #{totalNumber},
+                </if>
+            <if test="tranStatus != null and  tranStatus != '' ">
+                    TRAN_STATUS = #{tranStatus},
+                </if>
+        </set>
+        <where>
+            <trim suffixOverrides="AND">
+            </trim>
+        </where>
+    </update>
+
+    <update id="updateByEntity">
+        UPDATE
+        <include refid="Table_Name"/>
+        <set>
+                <if test="s.runDate != null ">
+                    RUN_DATE = #{s.runDate},
+                </if>
+            <if test="s.fileMd5 != null and s.fileMd5 != '' ">
+                    FILE_MD5 = #{s.fileMd5},
+                </if>
+            <if test="s.stepType != null and s.stepType != '' ">
+                    STEP_TYPE = #{s.stepType},
+                </if>
+            <if test="s.stepDesc != null and s.stepDesc != '' ">
+                    STEP_DESC = #{s.stepDesc},
+                </if>
+            <if test="s.fileType != null and s.fileType != '' ">
+                    FILE_TYPE = #{s.fileType},
+                </if>
+                <if test="s.successNumber != null ">
+                    SUCCESS_NUMBER = #{s.successNumber},
+                </if>
+                <if test="s.failureNumber != null ">
+                    FAILURE_NUMBER = #{s.failureNumber},
+                </if>
+            <if test="s.appHead != null and s.appHead != '' ">
+                    APP_HEAD = #{s.appHead},
+                </if>
+            <if test="s.operationId != null and s.operationId != '' ">
+                    OPERATION_ID = #{s.operationId},
+                </if>
+            <if test="s.fileName != null and s.fileName != '' ">
+                    FILE_NAME = #{s.fileName},
+                </if>
+            <if test="s.filePath != null and s.filePath != '' ">
+                    FILE_PATH = #{s.filePath},
+                </if>
+            <if test="s.errorCode != null and s.errorCode != '' ">
+                    ERROR_CODE = #{s.errorCode},
+                </if>
+            <if test="s.hostIp != null and s.hostIp != '' ">
+                    HOST_IP = #{s.hostIp},
+                </if>
+            <if test="s.sysHead != null and s.sysHead != '' ">
+                    SYS_HEAD = #{s.sysHead},
+                </if>
+            <if test="s.attrJson != null and s.attrJson != '' ">
+                    ATTR_JSON = #{s.attrJson},
+                </if>
+            <if test="s.jobId != null and s.jobId != '' ">
+                    JOB_ID = #{s.jobId},
+                </if>
+                <if test="s.startTime != null ">
+                    START_TIME = #{s.startTime},
+                </if>
+            <if test="s.processType != null and s.processType != '' ">
+                    PROCESS_TYPE = #{s.processType},
+                </if>
+            <if test="s.errorDesc != null and s.errorDesc != '' ">
+                    ERROR_DESC = #{s.errorDesc},
+                </if>
+            <if test="s.jobRunId != null and s.jobRunId != '' ">
+                    JOB_RUN_ID = #{s.jobRunId},
+                </if>
+            <if test="s.channelSeqNo != null and s.channelSeqNo != '' ">
+                    CHANNEL_SEQ_NO = #{s.channelSeqNo},
+                </if>
+            <if test="s.batchNo != null and s.batchNo != '' ">
+                    BATCH_NO = #{s.batchNo},
+                </if>
+                <if test="s.tranDate != null ">
+                    TRAN_DATE = #{s.tranDate},
+                </if>
+                <if test="s.endTime != null ">
+                    END_TIME = #{s.endTime},
+                </if>
+                <if test="s.totalNumber != null ">
+                    TOTAL_NUMBER = #{s.totalNumber},
+                </if>
+            <if test="s.tranStatus != null and s.tranStatus != '' ">
+                    TRAN_STATUS = #{s.tranStatus},
+                </if>
+        </set>
+        <where>
+            <trim prefix="(" suffix=")" suffixOverrides="AND">
+                    <if test="w.runDate != null ">
+                        RUN_DATE = #{w.runDate}
+                        AND
+                    </if>
+                <if test="w.fileMd5 != null and w.fileMd5 != '' ">
+                        FILE_MD5 = #{w.fileMd5}
+                        AND
+                    </if>
+                <if test="w.stepType != null and w.stepType != '' ">
+                        STEP_TYPE = #{w.stepType}
+                        AND
+                    </if>
+                <if test="w.stepDesc != null and w.stepDesc != '' ">
+                        STEP_DESC = #{w.stepDesc}
+                        AND
+                    </if>
+                <if test="w.fileType != null and w.fileType != '' ">
+                        FILE_TYPE = #{w.fileType}
+                        AND
+                    </if>
+                    <if test="w.successNumber != null ">
+                        SUCCESS_NUMBER = #{w.successNumber}
+                        AND
+                    </if>
+                    <if test="w.failureNumber != null ">
+                        FAILURE_NUMBER = #{w.failureNumber}
+                        AND
+                    </if>
+                <if test="w.appHead != null and w.appHead != '' ">
+                        APP_HEAD = #{w.appHead}
+                        AND
+                    </if>
+                <if test="w.operationId != null and w.operationId != '' ">
+                        OPERATION_ID = #{w.operationId}
+                        AND
+                    </if>
+                <if test="w.fileName != null and w.fileName != '' ">
+                        FILE_NAME = #{w.fileName}
+                        AND
+                    </if>
+                <if test="w.filePath != null and w.filePath != '' ">
+                        FILE_PATH = #{w.filePath}
+                        AND
+                    </if>
+                <if test="w.errorCode != null and w.errorCode != '' ">
+                        ERROR_CODE = #{w.errorCode}
+                        AND
+                    </if>
+                <if test="w.hostIp != null and w.hostIp != '' ">
+                        HOST_IP = #{w.hostIp}
+                        AND
+                    </if>
+                <if test="w.sysHead != null and w.sysHead != '' ">
+                        SYS_HEAD = #{w.sysHead}
+                        AND
+                    </if>
+                <if test="w.attrJson != null and w.attrJson != '' ">
+                        ATTR_JSON = #{w.attrJson}
+                        AND
+                    </if>
+                <if test="w.jobId != null and w.jobId != '' ">
+                        JOB_ID = #{w.jobId}
+                        AND
+                    </if>
+                    <if test="w.startTime != null ">
+                        START_TIME = #{w.startTime}
+                        AND
+                    </if>
+                <if test="w.processType != null and w.processType != '' ">
+                        PROCESS_TYPE = #{w.processType}
+                        AND
+                    </if>
+                <if test="w.errorDesc != null and w.errorDesc != '' ">
+                        ERROR_DESC = #{w.errorDesc}
+                        AND
+                    </if>
+                <if test="w.jobRunId != null and w.jobRunId != '' ">
+                        JOB_RUN_ID = #{w.jobRunId}
+                        AND
+                    </if>
+                <if test="w.channelSeqNo != null and w.channelSeqNo != '' ">
+                        CHANNEL_SEQ_NO = #{w.channelSeqNo}
+                        AND
+                    </if>
+                <if test="w.batchNo != null and w.batchNo != '' ">
+                        BATCH_NO = #{w.batchNo}
+                        AND
+                    </if>
+                    <if test="w.tranDate != null ">
+                        TRAN_DATE = #{w.tranDate}
+                        AND
+                    </if>
+                    <if test="w.endTime != null ">
+                        END_TIME = #{w.endTime}
+                        AND
+                    </if>
+                    <if test="w.totalNumber != null ">
+                        TOTAL_NUMBER = #{w.totalNumber}
+                        AND
+                    </if>
+                <if test="w.tranStatus != null and w.tranStatus != '' ">
+                        TRAN_STATUS = #{w.tranStatus}
+                        AND
+                    </if>
+            </trim>
+        </where>
+    </update>
+    <delete id="delete">
+        DELETE FROM
+        <include refid="Table_Name"/>
+        <where>
+            <include refid="Base_Where"/>
+        </where>
+    </delete>
+
+    <select id="count" parameterType="java.util.Map" resultType="int">
+        select count(1) from
+        <include refid="Table_Name"/>
+        <where>
+            <include refid="Base_Where"/>
+        </where>
+    </select>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        <include refid="Base_Select"/>
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        <include refid="Base_Select"/>
+    </select>
+
+    <select id="selectForUpdate" resultMap="BaseResultMap" useCache="false">
+        <include refid="Base_Select"/>
+        for update
+    </select>
+
+
+</mapper>

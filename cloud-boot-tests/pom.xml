@@ -12,7 +12,6 @@
 
     <artifactId>cloud-boot-tests</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
