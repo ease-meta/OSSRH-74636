@@ -28,6 +28,7 @@
         <module>cloud-boot-generator</module>
         <module>cloud-boot-logging</module>
         <module>cloud-boot-cache</module>
+        <module>cloud-boot-flow</module>
     </modules>
 
     <properties>
