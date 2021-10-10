@@ -22,6 +22,7 @@
         <module>cloud-boot-aspect</module>
         <module>cloud-boot-sdk</module>
         <module>cloud-boot-webmvc</module>
+        <module>cloud-boot-swagger</module>
         <module>cloud-boot-core</module>
         <module>cloud-boot-mybatis</module>
         <module>cloud-boot-jpa</module>

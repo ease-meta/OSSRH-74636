@@ -238,13 +238,13 @@
                 <version>${spring-native.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>com.huaweicloud</groupId>
-                <artifactId>spring-cloud-huawei-dependencies</artifactId>
-                <version>${spring-cloud-huawei.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
+            <!-- <dependency>
+                 <groupId>com.huaweicloud</groupId>
+                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
+                 <version>${spring-cloud-huawei.version}</version>
+                 <scope>import</scope>
+                 <type>pom</type>
+             </dependency>-->
             <!--携程配置中心-->
             <dependency>
                 <groupId>com.ctrip.framework.apollo</groupId>
