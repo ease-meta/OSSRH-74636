@@ -5,10 +5,6 @@ import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
-import org.springframework.expression.EvaluationContext;
-import org.springframework.expression.ExpressionParser;
-import org.springframework.expression.spel.standard.SpelExpressionParser;
-import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -54,7 +50,7 @@ public class RedisCacheTtlManager extends RedisCacheManager {
 			throw new IllegalArgumentException("Cached names do not comply ,use 'param' or 'business'");
 		}
 
-		if (CacheConstant.PARAM.equals(cacheName) && null != RedisThreadLoaclManager.getRedisThreadLoacl()) {
+		/*if (CacheConstant.PARAM.equals(cacheName) && null != RedisThreadLoaclManager.getRedisThreadLoacl()) {
 			cacheName = cacheName.concat(CacheConstant.COLON).concat(RedisThreadLoaclManager.getRedisThreadLoacl());
 		} else if (cacheParams.length > 1) {
 			ExpressionParser parser = new SpelExpressionParser();
@@ -62,7 +58,7 @@ public class RedisCacheTtlManager extends RedisCacheManager {
 			Long expirationSecondTime = parser.parseExpression(cacheParams[1]).getValue(context, Long.class);
 			cacheName = cacheName + CacheConstant.COLON + expirationSecondTime;
 			expires.put(cacheName, expirationSecondTime);
-		}
+		}*/
 		return super.getCache(cacheName);
 	}
 
