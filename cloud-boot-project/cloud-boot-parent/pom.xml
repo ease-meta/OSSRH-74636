@@ -64,7 +64,7 @@
         <dubbo-api.version>2.7.8.3</dubbo-api.version>
         <retrofit.version>[2.2.10,)</retrofit.version>
 
-        <sofa-boot.version>3.8.0</sofa-boot.version>
+        <sofa-boot.version>3.9.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.6.0</sofa-boot-enterprise.version>
         <jboot.version>[3.9.12,)</jboot.version>
         <spring-cloud-huawei.version>1.7.0-2020.0.x</spring-cloud-huawei.version>
@@ -550,6 +550,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${github-pageHelper-starter}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
@@ -559,12 +565,6 @@
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-generator</artifactId>
                 <version>${mybatis.plus.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.github.pagehelper</groupId>
-                <artifactId>pagehelper-spring-boot-starter</artifactId>
-                <version>${github-pageHelper-starter}</version>
             </dependency>
 
             <!-- 引入fluent-mybatis 运行依赖包, scope为compile -->
