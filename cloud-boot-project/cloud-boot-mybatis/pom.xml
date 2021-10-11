@@ -39,6 +39,7 @@
             <artifactId>fluent-mybatis-processor</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
