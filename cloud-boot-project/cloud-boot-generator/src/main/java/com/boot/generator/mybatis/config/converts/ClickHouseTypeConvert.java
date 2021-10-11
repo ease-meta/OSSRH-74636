@@ -9,15 +9,7 @@ import javax.annotation.Nonnull;
 
 import static com.boot.generator.mybatis.config.converts.TypeConverts.contains;
 import static com.boot.generator.mybatis.config.converts.TypeConverts.containsAny;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BIG_DECIMAL;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BIG_INTEGER;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.DOUBLE;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.FLOAT;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.INTEGER;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LONG;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.MAP;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.OBJECT;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.STRING;
+import static com.boot.generator.mybatis.config.rules.DbColumnType.*;
 
 /**
  * ClickHouse 字段类型转换

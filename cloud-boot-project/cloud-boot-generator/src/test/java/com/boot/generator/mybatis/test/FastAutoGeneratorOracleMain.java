@@ -1,11 +1,7 @@
 package com.boot.generator.mybatis.test;
 
 import com.boot.generator.mybatis.FastAutoGenerator;
-import com.boot.generator.mybatis.config.DataSourceConfig;
-import com.boot.generator.mybatis.config.GlobalConfig;
-import com.boot.generator.mybatis.config.OutputFile;
-import com.boot.generator.mybatis.config.TemplateConfig;
-import com.boot.generator.mybatis.config.TemplateType;
+import com.boot.generator.mybatis.config.*;
 import com.boot.generator.mybatis.config.rules.DateType;
 import com.boot.generator.mybatis.engine.FreemarkerTemplateEngine;
 import com.open.cloud.logging.BizLogger;
@@ -26,9 +22,9 @@ public class FastAutoGeneratorOracleMain {
     public static void main(String[] args) {
         //TODO 1.生成扩展类；2.entity父类;3.mapper父类；4.xml格式重新定义；5.
         FastAutoGenerator.create(new DataSourceConfig.Builder()
-                .url("jdbc:mariadb://127.0.0.1:3306/botj?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true")
-                .username("root")
-                .password("123456"))
+                        .url("jdbc:mariadb://127.0.0.1:3306/botj?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true")
+                        .username("root")
+                        .password("123456"))
                 .globalConfig((GlobalConfig.Builder builder) -> {
                     builder.author("leijian")
                             .fileOverride()
@@ -56,6 +52,7 @@ public class FastAutoGeneratorOracleMain {
                     System.out.println("tableInfo: " + tableInfo.getEntityName() + " objectMap: " + objectMap.size());
                 }))
                 .strategyConfig(builder -> {
+                    //builder.addTablePrefix("SYS_USER").build();
                     //builder.entityBuilder().enableChainModel().superClass(BasePO.class);
                     //builder.mapperBuilder().enableBaseResultMap().enableBaseColumnList().superClass(BaseDaoAction.class);
                 })

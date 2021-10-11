@@ -18,11 +18,7 @@ package com.boot.generator.mybatis.keywords;
 import com.boot.generator.mybatis.config.IKeyWordsHandler;
 
 import javax.annotation.Nonnull;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 基类关键字处理

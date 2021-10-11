@@ -1,4 +1,3 @@
-
 package com.open.cloud.core.flow.base;
 
 import com.open.cloud.core.domain.BaseRequest;

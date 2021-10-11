@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class CacheConfiguration {
 
 
-	/**
-	 * 配置自定义redisTemplate
-	 */
+    /**
+     * 配置自定义redisTemplate
+     */
 	/*@Bean
 	@ConditionalOnMissingBean(RedisTemplate.class)
 	public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory connectionFactory, RedisSerializer redisSerializer) {
@@ -27,9 +27,9 @@ public class CacheConfiguration {
 		return template;
 	}*/
 
-	/**
-	 * json序列化
-	 */
+    /**
+     * json序列化
+     */
 	/*@Bean
 	public RedisSerializer<Object> jackson2JsonRedisSerializer() {
 		//使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值

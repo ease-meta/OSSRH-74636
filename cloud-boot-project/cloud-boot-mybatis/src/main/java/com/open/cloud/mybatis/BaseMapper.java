@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2021/9/27 9:19
  * @see com.baomidou.mybatisplus.core.mapper.BaseMapper
  */
-interface BaseAction {
+public interface BaseMapper<T> {
 
     /**
      * 插入一条记录

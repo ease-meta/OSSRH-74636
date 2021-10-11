@@ -1,11 +1,6 @@
 package com.open.cloud.core.util;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.ServiceLoader;
+import java.util.*;
 
 /**
  * The type New instance service loader.

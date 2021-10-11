@@ -15,11 +15,7 @@
  */
 package com.boot.generator.mybatis.config.builder;
 
-import com.boot.generator.mybatis.config.GlobalConfig;
-import com.boot.generator.mybatis.config.InjectionConfig;
-import com.boot.generator.mybatis.config.PackageConfig;
-import com.boot.generator.mybatis.config.StrategyConfig;
-import com.boot.generator.mybatis.config.TemplateConfig;
+import com.boot.generator.mybatis.config.*;
 
 /**
  * 生成器 Builder

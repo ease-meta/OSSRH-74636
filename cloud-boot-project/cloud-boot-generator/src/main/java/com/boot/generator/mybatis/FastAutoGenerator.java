@@ -15,12 +15,7 @@
  */
 package com.boot.generator.mybatis;
 
-import com.boot.generator.mybatis.config.DataSourceConfig;
-import com.boot.generator.mybatis.config.GlobalConfig;
-import com.boot.generator.mybatis.config.InjectionConfig;
-import com.boot.generator.mybatis.config.PackageConfig;
-import com.boot.generator.mybatis.config.StrategyConfig;
-import com.boot.generator.mybatis.config.TemplateConfig;
+import com.boot.generator.mybatis.config.*;
 import com.boot.generator.mybatis.engine.AbstractTemplateEngine;
 import com.boot.generator.mybatis.util.StringUtils;
 

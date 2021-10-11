@@ -23,15 +23,7 @@ import com.boot.generator.mybatis.config.rules.IColumnType;
 import static com.boot.generator.mybatis.config.converts.MySqlTypeConvert.toDateType;
 import static com.boot.generator.mybatis.config.converts.TypeConverts.contains;
 import static com.boot.generator.mybatis.config.converts.TypeConverts.containsAny;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BIG_DECIMAL;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BLOB;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BOOLEAN;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.CLOB;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.DOUBLE;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.FLOAT;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.INTEGER;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LONG;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.STRING;
+import static com.boot.generator.mybatis.config.rules.DbColumnType.*;
 
 /**
  * SQLite 字段类型转换

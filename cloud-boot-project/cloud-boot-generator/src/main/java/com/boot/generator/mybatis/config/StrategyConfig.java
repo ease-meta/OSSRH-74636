@@ -16,11 +16,7 @@
 package com.boot.generator.mybatis.config;
 
 
-import com.boot.generator.mybatis.config.builder.BaseBuilder;
-import com.boot.generator.mybatis.config.builder.Controller;
-import com.boot.generator.mybatis.config.builder.Entity;
-import com.boot.generator.mybatis.config.builder.Mapper;
-import com.boot.generator.mybatis.config.builder.Service;
+import com.boot.generator.mybatis.config.builder.*;
 import com.boot.generator.mybatis.config.po.LikeTable;
 import com.boot.generator.mybatis.util.StringUtils;
 

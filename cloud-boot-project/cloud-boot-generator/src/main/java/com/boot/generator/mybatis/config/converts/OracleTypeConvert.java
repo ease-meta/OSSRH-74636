@@ -22,10 +22,7 @@ import com.boot.generator.mybatis.config.rules.IColumnType;
 
 import static com.boot.generator.mybatis.config.converts.TypeConverts.contains;
 import static com.boot.generator.mybatis.config.converts.TypeConverts.containsAny;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BLOB;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BYTE_ARRAY;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.FLOAT;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.STRING;
+import static com.boot.generator.mybatis.config.rules.DbColumnType.*;
 
 /**
  * Oracle 数据库生成对应实体类时字段类型转换，跟据 Oracle 中的数据类型，返回对应的 Java 类型

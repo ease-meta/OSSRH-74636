@@ -21,14 +21,10 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.UnknownTypeHandler;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
- * ±í×Ö¶Î±êÊ¶
+ * ï¿½ï¿½ï¿½Ö¶Î±ï¿½Ê¶
  *
  * @author hubin sjy tantan
  * @since 2016-09-09
@@ -39,96 +35,96 @@ import java.lang.annotation.Target;
 public @interface TableField {
 
     /**
-     * Êý¾Ý¿â×Ö¶ÎÖµ
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ö¶ï¿½Öµ
      * <p>
-     * ²»ÐèÒªÅäÖÃ¸ÃÖµµÄÇé¿ö:
-     * <li> µ± {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Îª true Ê±,
-     * (mpÏÂÄ¬ÈÏÊÇtrue,mybatisÄ¬ÈÏÊÇfalse), Êý¾Ý¿â×Ö¶ÎÖµ.replace("_","").toUpperCase() == ÊµÌåÊôÐÔÃû.toUpperCase() </li>
-     * <li> µ± {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Îª false Ê±,
-     * Êý¾Ý¿â×Ö¶ÎÖµ.toUpperCase() == ÊµÌåÊôÐÔÃû.toUpperCase() </li>
+     * ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã¸ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½:
+     * <li> ï¿½ï¿½ {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Îª true Ê±,
+     * (mpï¿½ï¿½Ä¬ï¿½ï¿½ï¿½ï¿½true,mybatisÄ¬ï¿½ï¿½ï¿½ï¿½false), ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ö¶ï¿½Öµ.replace("_","").toUpperCase() == Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.toUpperCase() </li>
+     * <li> ï¿½ï¿½ {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Îª false Ê±,
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ö¶ï¿½Öµ.toUpperCase() == Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.toUpperCase() </li>
      */
     String value() default "";
 
     /**
-     * ÊÇ·ñÎªÊý¾Ý¿â±í×Ö¶Î
+     * ï¿½Ç·ï¿½Îªï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½Ö¶ï¿½
      * <p>
-     * Ä¬ÈÏ true ´æÔÚ£¬false ²»´æÔÚ
+     * Ä¬ï¿½ï¿½ true ï¿½ï¿½ï¿½Ú£ï¿½false ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     boolean exist() default true;
 
     /**
-     * ×Ö¶Î where ÊµÌå²éÑ¯±È½ÏÌõ¼þ
+     * ï¿½Ö¶ï¿½ where Êµï¿½ï¿½ï¿½Ñ¯ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½
      * <p>
-     * Ä¬ÈÏ {@link SqlCondition#EQUAL}
+     * Ä¬ï¿½ï¿½ {@link SqlCondition#EQUAL}
      */
     String condition() default "";
 
     /**
-     * ×Ö¶Î update set ²¿·Ö×¢Èë, ¸Ã×¢½âÓÅÓÚ el ×¢½âÊ¹ÓÃ
+     * ï¿½Ö¶ï¿½ update set ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½, ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ el ×¢ï¿½ï¿½Ê¹ï¿½ï¿½
      * <p>
-     * Àý1£º@TableField(.. , update="%s+1") ÆäÖÐ %s »áÌî³äÎª×Ö¶Î
-     * Êä³ö SQL Îª£ºupdate ±í set ×Ö¶Î=×Ö¶Î+1 where ...
+     * ï¿½ï¿½1ï¿½ï¿½@TableField(.. , update="%s+1") ï¿½ï¿½ï¿½ï¿½ %s ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ö¶ï¿½
+     * ï¿½ï¿½ï¿½ SQL Îªï¿½ï¿½update ï¿½ï¿½ set ï¿½Ö¶ï¿½=ï¿½Ö¶ï¿½+1 where ...
      * <p>
-     * Àý2£º@TableField(.. , update="now()") Ê¹ÓÃÊý¾Ý¿âÊ±¼ä
-     * Êä³ö SQL Îª£ºupdate ±í set ×Ö¶Î=now() where ...
+     * ï¿½ï¿½2ï¿½ï¿½@TableField(.. , update="now()") Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½Ê±ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ SQL Îªï¿½ï¿½update ï¿½ï¿½ set ï¿½Ö¶ï¿½=now() where ...
      */
     String update() default "";
 
     /**
-     * ×Ö¶ÎÑéÖ¤²ßÂÔÖ® insert: µ±insert²Ù×÷Ê±£¬¸Ã×Ö¶ÎÆ´½ÓinsertÓï¾äÊ±µÄ²ßÂÔ
+     * ï¿½Ö¶ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ö® insert: ï¿½ï¿½insertï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½Æ´ï¿½ï¿½insertï¿½ï¿½ï¿½Ê±ï¿½Ä²ï¿½ï¿½ï¿½
      * <p>
-     * IGNORED: Ö±½ÓÆ´½Ó insert into table_a(column) values (#{columnProperty});
+     * IGNORED: Ö±ï¿½ï¿½Æ´ï¿½ï¿½ insert into table_a(column) values (#{columnProperty});
      * NOT_NULL: insert into table_a(<if test="columnProperty != null">column</if>) values (<if test="columnProperty != null">#{columnProperty}</if>)
      * NOT_EMPTY: insert into table_a(<if test="columnProperty != null and columnProperty!=''">column</if>) values (<if test="columnProperty != null and columnProperty!=''">#{columnProperty}</if>)
-     * NOT_EMPTY Èç¹ûÕë¶ÔµÄÊÇ·Ç CharSequence ÀàÐÍµÄ×Ö¶ÎÔòÐ§¹ûµÈÓÚ NOT_NULL
+     * NOT_EMPTY ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½Ç·ï¿½ CharSequence ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NOT_NULL
      *
      * @since 3.1.2
      */
     // FieldStrategy insertStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * ×Ö¶ÎÑéÖ¤²ßÂÔÖ® update: µ±¸üÐÂ²Ù×÷Ê±£¬¸Ã×Ö¶ÎÆ´½ÓsetÓï¾äÊ±µÄ²ßÂÔ
+     * ï¿½Ö¶ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ö® update: ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½Æ´ï¿½ï¿½setï¿½ï¿½ï¿½Ê±ï¿½Ä²ï¿½ï¿½ï¿½
      * <p>
-     * IGNORED: Ö±½ÓÆ´½Ó update table_a set column=#{columnProperty}, ÊôÐÔÎªnull/¿Õstring¶¼»á±»set½øÈ¥
+     * IGNORED: Ö±ï¿½ï¿½Æ´ï¿½ï¿½ update table_a set column=#{columnProperty}, ï¿½ï¿½ï¿½ï¿½Îªnull/ï¿½ï¿½stringï¿½ï¿½ï¿½á±»setï¿½ï¿½È¥
      * NOT_NULL: update table_a set <if test="columnProperty != null">column=#{columnProperty}</if>
      * NOT_EMPTY: update table_a set <if test="columnProperty != null and columnProperty!=''">column=#{columnProperty}</if>
-     * NOT_EMPTY Èç¹ûÕë¶ÔµÄÊÇ·Ç CharSequence ÀàÐÍµÄ×Ö¶ÎÔòÐ§¹ûµÈÓÚ NOT_NULL
+     * NOT_EMPTY ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½Ç·ï¿½ CharSequence ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NOT_NULL
      *
      * @since 3.1.2
      */
     // FieldStrategy updateStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * ×Ö¶ÎÑéÖ¤²ßÂÔÖ® where: ±íÊ¾¸Ã×Ö¶ÎÔÚÆ´½ÓwhereÌõ¼þÊ±µÄ²ßÂÔ
+     * ï¿½Ö¶ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ö® where: ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Æ´ï¿½ï¿½whereï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä²ï¿½ï¿½ï¿½
      * <p>
-     * IGNORED: Ö±½ÓÆ´½Ó column=#{columnProperty}
+     * IGNORED: Ö±ï¿½ï¿½Æ´ï¿½ï¿½ column=#{columnProperty}
      * NOT_NULL: <if test="columnProperty != null">column=#{columnProperty}</if>
      * NOT_EMPTY: <if test="columnProperty != null and columnProperty!=''">column=#{columnProperty}</if>
-     * NOT_EMPTY Èç¹ûÕë¶ÔµÄÊÇ·Ç CharSequence ÀàÐÍµÄ×Ö¶ÎÔòÐ§¹ûµÈÓÚ NOT_NULL
+     * NOT_EMPTY ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½ï¿½Ç·ï¿½ CharSequence ï¿½ï¿½ï¿½Íµï¿½ï¿½Ö¶ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ NOT_NULL
      *
      * @since 3.1.2
      */
     // FieldStrategy whereStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * ×Ö¶Î×Ô¶¯Ìî³ä²ßÂÔ
+     * ï¿½Ö¶ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * <p>
-     * ÔÚ¶ÔÓ¦Ä£Ê½ÏÂ½«»áºöÂÔ insertStrategy »ò updateStrategy µÄÅäÖÃ,µÈÓÚ¶ÏÑÔ¸Ã×Ö¶Î±ØÓÐÖµ
+     * ï¿½Ú¶ï¿½Ó¦Ä£Ê½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ insertStrategy ï¿½ï¿½ updateStrategy ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Ô¸ï¿½ï¿½Ö¶Î±ï¿½ï¿½ï¿½Öµ
      */
     FieldFill fill() default FieldFill.DEFAULT;
 
     /**
-     * ÊÇ·ñ½øÐÐ select ²éÑ¯
+     * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ select ï¿½ï¿½Ñ¯
      * <p>
-     * ´ó×Ö¶Î¿ÉÉèÖÃÎª false ²»¼ÓÈë select ²éÑ¯·¶Î§
+     * ï¿½ï¿½ï¿½Ö¶Î¿ï¿½ï¿½ï¿½ï¿½ï¿½Îª false ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ select ï¿½ï¿½Ñ¯ï¿½ï¿½Î§
      */
     boolean select() default true;
 
     /**
-     * ÊÇ·ñ±£³ÖÊ¹ÓÃÈ«¾ÖµÄ columnFormat µÄÖµ
+     * ï¿½Ç·ñ±£³ï¿½Ê¹ï¿½ï¿½È«ï¿½Öµï¿½ columnFormat ï¿½ï¿½Öµ
      * <p>
-     * Ö»ÉúÐ§ÓÚ ¼ÈÉèÖÃÁËÈ«¾ÖµÄ columnFormat Ò²ÉèÖÃÁËÉÏÃæ {@link #value()} µÄÖµ
-     * Èç¹ûÊÇ false , È«¾ÖµÄ columnFormat ²»ÉúÐ§
+     * Ö»ï¿½ï¿½Ð§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½Öµï¿½ columnFormat Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {@link #value()} ï¿½ï¿½Öµ
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ false , È«ï¿½Öµï¿½ columnFormat ï¿½ï¿½ï¿½ï¿½Ð§
      *
      * @since 3.1.1
      */
@@ -142,9 +138,9 @@ public @interface TableField {
     String property() default "";
 
     /**
-     * JDBCÀàÐÍ (¸ÃÄ¬ÈÏÖµ²»´ú±í»á°´ÕÕ¸ÃÖµÉúÐ§),
-     * Ö»ÉúÐ§ÓÚ mp ×Ô¶¯×¢ÈëµÄ method,
-     * ½¨ÒéÅäºÏ {@link TableName#autoResultMap()} Ò»ÆðÊ¹ÓÃ
+     * JDBCï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á°´ï¿½Õ¸ï¿½Öµï¿½ï¿½Ð§),
+     * Ö»ï¿½ï¿½Ð§ï¿½ï¿½ mp ï¿½Ô¶ï¿½×¢ï¿½ï¿½ï¿½ method,
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {@link TableName#autoResultMap()} Ò»ï¿½ï¿½Ê¹ï¿½ï¿½
      * <p>
      * {@link ResultMapping#jdbcType} and {@link ParameterMapping#jdbcType}
      *
@@ -153,9 +149,9 @@ public @interface TableField {
     JdbcType jdbcType() default JdbcType.UNDEFINED;
 
     /**
-     * ÀàÐÍ´¦ÀíÆ÷ (¸ÃÄ¬ÈÏÖµ²»´ú±í»á°´ÕÕ¸ÃÖµÉúÐ§),
-     * Ö»ÉúÐ§ÓÚ mp ×Ô¶¯×¢ÈëµÄ method,
-     * ½¨ÒéÅäºÏ {@link TableName#autoResultMap()} Ò»ÆðÊ¹ÓÃ
+     * ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½Ä¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á°´ï¿½Õ¸ï¿½Öµï¿½ï¿½Ð§),
+     * Ö»ï¿½ï¿½Ð§ï¿½ï¿½ mp ï¿½Ô¶ï¿½×¢ï¿½ï¿½ï¿½ method,
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {@link TableName#autoResultMap()} Ò»ï¿½ï¿½Ê¹ï¿½ï¿½
      * <p>
      * {@link ResultMapping#typeHandler} and {@link ParameterMapping#typeHandler}
      *
@@ -164,9 +160,9 @@ public @interface TableField {
     Class<? extends TypeHandler> typeHandler() default UnknownTypeHandler.class;
 
     /**
-     * Ö»ÔÚÊ¹ÓÃÁË {@link #typeHandler()} Ê±ÅÐ¶ÏÊÇ·ñ¸¨Öú×·¼Ó javaType
+     * Ö»ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ {@link #typeHandler()} Ê±ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½×·ï¿½ï¿½ javaType
      * <p>
-     * Ò»°ãÇé¿öÏÂ²»ÍÆ¼öÊ¹ÓÃ
+     * Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½Æ¼ï¿½Ê¹ï¿½ï¿½
      * {@link ParameterMapping#javaType}
      *
      * @since 3.4.0 @2020-07-23
@@ -174,9 +170,9 @@ public @interface TableField {
     boolean javaType() default false;
 
     /**
-     * Ö¸¶¨Ð¡Êýµãºó±£ÁôµÄÎ»Êý,
-     * Ö»ÉúÐ§ÓÚ mp ×Ô¶¯×¢ÈëµÄ method,
-     * ½¨ÒéÅäºÏ {@link TableName#autoResultMap()} Ò»ÆðÊ¹ÓÃ
+     * Ö¸ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½,
+     * Ö»ï¿½ï¿½Ð§ï¿½ï¿½ mp ï¿½Ô¶ï¿½×¢ï¿½ï¿½ï¿½ method,
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {@link TableName#autoResultMap()} Ò»ï¿½ï¿½Ê¹ï¿½ï¿½
      * <p>
      * {@link ParameterMapping#numericScale}
      *

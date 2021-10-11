@@ -21,21 +21,7 @@ import com.boot.generator.mybatis.config.rules.IColumnType;
 
 import static com.boot.generator.mybatis.config.converts.TypeConverts.contains;
 import static com.boot.generator.mybatis.config.converts.TypeConverts.containsAny;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BIG_DECIMAL;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BOOLEAN;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.BYTE_ARRAY;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.DATE;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.DATE_SQL;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.DOUBLE;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.FLOAT;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.INTEGER;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LOCAL_DATE;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LOCAL_DATE_TIME;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LOCAL_TIME;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.LONG;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.STRING;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.TIME;
-import static com.boot.generator.mybatis.config.rules.DbColumnType.TIMESTAMP;
+import static com.boot.generator.mybatis.config.rules.DbColumnType.*;
 
 /**
  * SQLServer 字段类型转换

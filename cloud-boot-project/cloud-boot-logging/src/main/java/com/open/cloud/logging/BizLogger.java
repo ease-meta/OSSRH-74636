@@ -17,16 +17,7 @@
 package com.open.cloud.logging;
 
 
-import com.open.cloud.logging.logger.DebugLog;
-import com.open.cloud.logging.logger.ErrorLog;
-import com.open.cloud.logging.logger.InfoLog;
-import com.open.cloud.logging.logger.MethodLog;
-import com.open.cloud.logging.logger.ParmLog;
-import com.open.cloud.logging.logger.PlatformLog;
-import com.open.cloud.logging.logger.ProfileLog;
-import com.open.cloud.logging.logger.SqlLog;
-import com.open.cloud.logging.logger.TraceLog;
-import com.open.cloud.logging.logger.WarnLog;
+import com.open.cloud.logging.logger.*;
 
 /**
  * The six logging levels used by Log are (in order):

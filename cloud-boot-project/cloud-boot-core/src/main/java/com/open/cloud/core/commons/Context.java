@@ -1,4 +1,3 @@
-
 package com.open.cloud.core.commons;
 
 import com.open.cloud.core.domain.BaseRequest;

@@ -90,6 +90,168 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>
  * Gets stop watch.
  * @return the stop watch
+ * @param context RPC内置上下文
+ * <p>
+ * 得到上下文，为空则自动创建
+ * @return RPC内置上下文
+ * <p>
+ * 查看上下文，为空不自动创建
+ * @return RPC内置上下文
+ * <p>
+ * 清理上下文
+ * <p>
+ * 上下文往下放一层（例如服务端B接到A的请求后再作为C的客户端调用，调用前这里就先把放A-B的上下文存起来）
+ * <p>
+ * 上下文往上取一层（例如服务端B接到A的请求后再作为C的客户端调用，调用完毕后这里就先把放A-B的上下文取起来）
+ * <p>
+ * 清理全部上下文
+ * <p>
+ * Instantiates a new Rpc context.
+ * <p>
+ * The Local address.
+ * <p>
+ * The Remote address.
+ * <p>
+ * 附带属性功能，遵循谁使用谁清理的原则。Key必须为 "_" 和 "."开头<br>
+ * 如果关闭了 {@link #ATTACHMENT_ENABLE} 功能，"_" 开头的Key将不被保持和传递。
+ * @return the boolean
+ * <p>
+ * Sets provider side.
+ * @param isProviderSide the is provider side
+ * @return the provider side
+ * <p>
+ * Is consumer side.
+ * @return the boolean
+ * <p>
+ * set local address.
+ * @param address the address
+ * @return context local address
+ * <p>
+ * 本地地址InetSocketAddress
+ * @return local address
+ * <p>
+ * set remote address.
+ * @param address the address
+ * @return context remote address
+ * <p>
+ * set remote address.
+ * @param host the host
+ * @param port the port
+ * @return context remote address
+ * <p>
+ * 远程地址InetSocketAddress
+ * @return remote address
+ * <p>
+ * get attachment.
+ * @param key the key
+ * @return attachment attachment
+ * <p>
+ * remove attachment.
+ * @param key the key
+ * @return Old value
+ * <p>
+ * get attachments.
+ * @return attachments attachments
+ * <p>
+ * Clear attachments.
+ * @return the rpc internal context
+ * <p>
+ * Gets stop watch.
+ * @return the stop watch
+ * @param context RPC内置上下文
+ * <p>
+ * 得到上下文，为空则自动创建
+ * @return RPC内置上下文
+ * <p>
+ * 查看上下文，为空不自动创建
+ * @return RPC内置上下文
+ * <p>
+ * 清理上下文
+ * <p>
+ * 上下文往下放一层（例如服务端B接到A的请求后再作为C的客户端调用，调用前这里就先把放A-B的上下文存起来）
+ * <p>
+ * 上下文往上取一层（例如服务端B接到A的请求后再作为C的客户端调用，调用完毕后这里就先把放A-B的上下文取起来）
+ * <p>
+ * 清理全部上下文
+ * <p>
+ * Instantiates a new Rpc context.
+ * <p>
+ * The Local address.
+ * <p>
+ * The Remote address.
+ * <p>
+ * 附带属性功能，遵循谁使用谁清理的原则。Key必须为 "_" 和 "."开头<br>
+ * 如果关闭了 {@link #ATTACHMENT_ENABLE} 功能，"_" 开头的Key将不被保持和传递。
+ * @return the boolean
+ * <p>
+ * Sets provider side.
+ * @param isProviderSide the is provider side
+ * @return the provider side
+ * <p>
+ * Is consumer side.
+ * @return the boolean
+ * <p>
+ * set local address.
+ * @param address the address
+ * @return context local address
+ * <p>
+ * 本地地址InetSocketAddress
+ * @return local address
+ * <p>
+ * set remote address.
+ * @param address the address
+ * @return context remote address
+ * <p>
+ * set remote address.
+ * @param host the host
+ * @param port the port
+ * @return context remote address
+ * <p>
+ * 远程地址InetSocketAddress
+ * @return remote address
+ * <p>
+ * get attachment.
+ * @param key the key
+ * @return attachment attachment
+ * <p>
+ * remove attachment.
+ * @param key the key
+ * @return Old value
+ * <p>
+ * get attachments.
+ * @return attachments attachments
+ * <p>
+ * Clear attachments.
+ * @return the rpc internal context
+ * <p>
+ * Gets stop watch.
+ * @return the stop watch
+ * @see #ATTACHMENT_ENABLE
+ * <p>
+ * The Stopwatch
+ * <p>
+ * The Provider side.
+ * <p>
+ * Is provider side.
+ * <p>
+ * The constant LOCAL.
+ * <p>
+ * The constant DEQUE_LOCAL.
+ * <p>
+ * 设置上下文
+ * @see #ATTACHMENT_ENABLE
+ * <p>
+ * The Stopwatch
+ * <p>
+ * The Provider side.
+ * <p>
+ * Is provider side.
+ * <p>
+ * The constant LOCAL.
+ * <p>
+ * The constant DEQUE_LOCAL.
+ * <p>
+ * 设置上下文
  * @see #ATTACHMENT_ENABLE
  * <p>
  * The Stopwatch

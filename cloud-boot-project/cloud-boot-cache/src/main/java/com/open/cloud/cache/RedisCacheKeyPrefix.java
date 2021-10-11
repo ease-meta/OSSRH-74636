@@ -8,26 +8,26 @@ import org.springframework.data.redis.cache.CacheKeyPrefix;
  */
 public class RedisCacheKeyPrefix implements CacheKeyPrefix {
 
-	private String delimiter;
+    private String delimiter;
 
-	public RedisCacheKeyPrefix() {
+    public RedisCacheKeyPrefix() {
 
-	}
+    }
 
-	public RedisCacheKeyPrefix(String delimiter) {
-		this.delimiter = delimiter;
-	}
+    public RedisCacheKeyPrefix(String delimiter) {
+        this.delimiter = delimiter;
+    }
 
-	@Override
-	public String compute(String cacheName) {
-		return delimiter != null ? cacheName.concat(delimiter) : cacheName.concat(CacheConstant.COLON);
-	}
+    @Override
+    public String compute(String cacheName) {
+        return delimiter != null ? cacheName.concat(delimiter) : cacheName.concat(CacheConstant.COLON);
+    }
 
-	public void setDelimiter(String delimiter) {
-		this.delimiter = delimiter;
-	}
+    public void setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
+    }
 
-	public String getDelimiter() {
-		return delimiter;
-	}
+    public String getDelimiter() {
+        return delimiter;
+    }
 }

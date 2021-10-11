@@ -16,22 +16,12 @@
 package com.boot.generator.mybatis.config.builder;
 
 import com.boot.generator.mybatis.IDatabaseQuery;
-import com.boot.generator.mybatis.config.DataSourceConfig;
-import com.boot.generator.mybatis.config.GlobalConfig;
-import com.boot.generator.mybatis.config.InjectionConfig;
-import com.boot.generator.mybatis.config.OutputFile;
-import com.boot.generator.mybatis.config.PackageConfig;
-import com.boot.generator.mybatis.config.StrategyConfig;
-import com.boot.generator.mybatis.config.TemplateConfig;
+import com.boot.generator.mybatis.config.*;
 import com.boot.generator.mybatis.config.po.TableInfo;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**

@@ -17,11 +17,7 @@ package com.boot.generator.mybatis.keywords;
 
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * h2数据库关键字处理

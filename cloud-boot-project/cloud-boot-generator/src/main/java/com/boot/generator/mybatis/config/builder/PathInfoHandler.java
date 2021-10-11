@@ -16,11 +16,7 @@
 package com.boot.generator.mybatis.config.builder;
 
 import cn.hutool.core.collection.CollectionUtil;
-import com.boot.generator.mybatis.config.ConstVal;
-import com.boot.generator.mybatis.config.GlobalConfig;
-import com.boot.generator.mybatis.config.OutputFile;
-import com.boot.generator.mybatis.config.PackageConfig;
-import com.boot.generator.mybatis.config.TemplateConfig;
+import com.boot.generator.mybatis.config.*;
 import com.boot.generator.mybatis.util.StringPool;
 import com.boot.generator.mybatis.util.StringUtils;
 
