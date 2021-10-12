@@ -1,5 +1,6 @@
 package com.open.cloud.test.web.service;
 
+import cn.hutool.db.Page;
 import com.github.pagehelper.ISelect;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -13,6 +14,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 
 /**
  * @author leijian
@@ -33,7 +35,10 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
         PageInfo<SysUser> p = PageHelper.startPage(1, 3).doSelectPageInfo(new ISelect() {
             @Override
             public void doSelect() {
-                sysUserMapper.selectByPage();
+                HashMap hashMap = new HashMap();
+                hashMap.put("userId", "9999");
+                hashMap.put("page", new Page());
+                sysUserMapper.deleteByPage(hashMap);
             }
         });
         Ease14006001Out ease14006001Out = new Ease14006001Out();
