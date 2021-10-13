@@ -15,6 +15,44 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-quartz</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.enragedginger/akka-quartz-scheduler -->
+        <dependency>
+            <groupId>com.enragedginger</groupId>
+            <artifactId>akka-quartz-scheduler_2.13</artifactId>
+            <version>1.9.1-akka-2.6.x</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.xwiki.platform/xwiki-platform-scheduler-ui -->
+        <dependency>
+            <groupId>org.xwiki.platform</groupId>
+            <artifactId>xwiki-platform-scheduler-ui</artifactId>
+            <version>13.8</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.tharwaninitin/etlflow-core -->
+        <dependency>
+            <groupId>com.github.tharwaninitin</groupId>
+            <artifactId>etlflow-core_2.12</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.quarkus/quarkus-quartz -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-quartz</artifactId>
+            <version>2.4.0.CR1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
                 <exclusion>

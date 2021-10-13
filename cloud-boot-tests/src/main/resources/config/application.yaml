@@ -8,5 +8,5 @@ spring:
 logging:
   level:
     com.open.cloud.test.web.mybatis.demo.mapper: debug
-
-shutd
+server:
+  shutdown: graceful
