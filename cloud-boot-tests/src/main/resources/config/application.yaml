@@ -5,8 +5,8 @@ spring:
       url: jdbc:mariadb://127.0.0.1:3306/botj?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       username: root
       password: 123456
-  autoconfigure:
-    exclude: com.github.pagehelper.autoconfigure.PageHelperAutoConfiguration
 logging:
   level:
     com.open.cloud.test.web.mybatis.demo.mapper: debug
+
+shutd
