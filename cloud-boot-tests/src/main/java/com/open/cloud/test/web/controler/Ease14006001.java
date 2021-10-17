@@ -21,6 +21,7 @@ public class Ease14006001 implements IEase14006001 {
     @Override
     @PostMapping("/ease/14006001/")
     public Ease14006001Out runService(@RequestBody Ease14006001In in) {
+
         return FlowExecutor.execute2Resp(in);
     }
 }

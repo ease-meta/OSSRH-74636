@@ -60,6 +60,7 @@ public class ScheduleServiceImpl {
     public Boolean cancelScheduleJob(String jobName) {
         boolean success = false;
         try {
+            scheduler.shutdown(true);
             // 暂停触发器
             scheduler.pauseTrigger(new TriggerKey(jobName, defaultGroup));
             // 移除触发器中的任务

@@ -5,6 +5,7 @@
 * 2020年4月19号 整合人人开源的代码生成
 * http://localhost:28082/hystrix
 * http://localhost:28082/hystrix.stream
+  CommonDbSchemaManager
 
 #### 介绍
 

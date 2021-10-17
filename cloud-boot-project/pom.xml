@@ -30,6 +30,7 @@
         <module>cloud-boot-logging</module>
         <module>cloud-boot-cache</module>
         <module>cloud-boot-flow</module>
+        <module>cloud-boot-flowable</module>
     </modules>
 
     <properties>

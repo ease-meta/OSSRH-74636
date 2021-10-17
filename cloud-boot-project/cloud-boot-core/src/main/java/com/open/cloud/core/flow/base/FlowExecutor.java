@@ -38,7 +38,7 @@ public class FlowExecutor {
         if (ALL_IPROCESS.get(serviceName).size() > 1) {
             logger.warn("");
         }
-        IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().sorted().findFirst().orElseThrow();
+        IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().sorted().findFirst().get();
         return (R) flowExecutor.businessEngine.execFlow(iProcess, request);
     }
 }

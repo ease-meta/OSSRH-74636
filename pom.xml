@@ -23,20 +23,20 @@
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 
         <project.encoding>UTF-8</project.encoding>
-        <java.version>17</java.version>
+        <java.version>1.8</java.version>
 
         <main.user.dir>${basedir}</main.user.dir>
         <revision>2021.0.0-SNAPSHOT</revision>
     </properties>
 
     <reporting>
-        <plugins>
+        <!--<plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
             </plugin>
-        </plugins>
+        </plugins>-->
     </reporting>
 
     <build>
