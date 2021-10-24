@@ -52,10 +52,67 @@
 
 #### 参与贡献
 
-1.
+1. 
 2. 新建 Feat_xxx 分支
 3. 提交代码
 4. 新建 Pull Request
+5. feat：新功能（feature）
+   * fix：修补bug
+   * docs：文档（documentation）
+   * style： 格式（不影响代码运行的变动）
+   * refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+   * test：增加测试
+   * chore：构建过程或辅助工具的变动
+   * tag: 针对与每次版本的提交
+   * revert: 撤销，版本回退
+   * perf: 性能优化
+* Commit message规范在rrd-fe落地使用情况
+  针对团队目前使用的情况，我们讨论后拟定了commit message每一部分的填写规则。
+
+1. type
+   type为必填项，用于指定commit的类型，约定了feat、fix两个主要type，以及docs、style、build、refactor、revert五个特殊type，其余type暂不使用。
+
+# 主要type
+feat:     增加新功能
+fix:      修复bug
+
+# 特殊type
+docs:     只改动了文档相关的内容
+style:    不影响代码含义的改动，例如去掉空格、改变缩进、增删分号
+build:    构造工具的或者外部依赖的改动，例如webpack，npm
+refactor: 代码重构时使用
+revert:   执行git revert打印的message
+
+# 暂不使用type
+test:     添加测试或者修改现有测试
+perf:     提高性能的改动
+ci:       与CI（持续集成服务）有关的改动
+chore:    不修改src或者test的其余修改，例如构建过程或辅助工具的变动
+
+当一次改动包括主要type与特殊type时，统一采用主要type。
+
+2. scope
+   scope也为必填项，用于描述改动的范围，格式为项目名/模块名，例如：node-pc/common rrd-h5/activity，而we-sdk不需指定模块名。如果一次commit修改多个模块，建议拆分成多次commit，以便更好追踪和维护。
+
+3. body
+   body填写详细描述，主要描述改动之前的情况及修改动机，对于小的修改不作要求，但是重大需求、更新等必须添加body来作说明。
+
+4. break changes
+   break changes指明是否产生了破坏性修改，涉及break changes的改动必须指明该项，类似版本升级、接口参数减少、接口删除、迁移等。
+
+5. affect issues
+   affect issues指明是否影响了某个问题。例如我们使用jira时，我们在commit message中可以填写其影响的JIRA_ID，若要开启该功能需要先打通jira与gitlab。参考文档：docs.gitlab.com/ee/user/pro…
+
+填写方式例如：
+
+re #JIRA_ID
+fix #JIRA_ID
+
+示例
+完整的commit message示例
+
+
+  
 
 ### 版本号规范
 
