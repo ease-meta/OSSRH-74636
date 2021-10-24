@@ -23,7 +23,7 @@
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
 
         <project.encoding>UTF-8</project.encoding>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
 
         <main.user.dir>${basedir}</main.user.dir>
         <revision>2021.0.0-SNAPSHOT</revision>

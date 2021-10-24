@@ -31,6 +31,8 @@
         <module>cloud-boot-cache</module>
         <module>cloud-boot-flow</module>
         <module>cloud-boot-flowable</module>
+        <module>cloud-boot-transaction</module>
+        <module>cloud-boot-asynctool</module>
     </modules>
 
     <properties>
