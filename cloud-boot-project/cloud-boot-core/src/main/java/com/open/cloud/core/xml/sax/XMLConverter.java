@@ -10,6 +10,15 @@ import javax.xml.parsers.SAXParserFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+/*<sarray target="BODY.AUTH_ARRAY" source="Document.AdminInfo.AuthrtyInf" >
+//data.get("Document.AdminInfo.AuthrtyInf").get(0).get("InitPtcpt")
+<item target='InitPtcpt' source="InitPtcpt"/>
+//data.get("Document.AdminInfo.AuthrtyInf").get(0).get("BizAuthInfo.SndBizAuthrtyInf.PrmsnInf")
+<sarray target="SndBizAuthrtyInf" source="BizAuthInfo.SndBizAuthrtyInf.PrmsnInf" >
+<item target='mt' source="MT"/>
+</sarray>
+</sarray>
+</sarray>*/
 
 public class XMLConverter {
     public static void main(String[] args) {
