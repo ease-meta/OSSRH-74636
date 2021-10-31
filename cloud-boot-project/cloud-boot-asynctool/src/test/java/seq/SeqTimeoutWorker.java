@@ -16,11 +16,11 @@
  */
 package seq;
 
-import com.open.cloud.async.callback.ICallback;
-import com.open.cloud.async.callback.IWorker;
-import com.open.cloud.async.executor.timer.SystemClock;
-import com.open.cloud.async.worker.WorkResult;
-import com.open.cloud.async.wrapper.WorkerWrapper;
+import io.github.meta.ease.async.callback.ICallback;
+import io.github.meta.ease.async.callback.IWorker;
+import io.github.meta.ease.async.executor.timer.SystemClock;
+import io.github.meta.ease.async.worker.WorkResult;
+import io.github.meta.ease.async.wrapper.WorkerWrapper;
 
 import java.util.Map;
 

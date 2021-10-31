@@ -5,7 +5,7 @@ import ${parentClassPackage}.${entityParentClass};
     import com.dcits.comet.dao.annotation.TablePk;
 </#if>
 <#if tablePkSize =="Y">
-    import com.open.cloud.mybatis.annotation.TableName;
+    import TableName;
 </#if>
 import lombok.Data;
 import lombok.EqualsAndHashCode;

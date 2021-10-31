@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>io.github.ease-meta</groupId>
+        <groupId>io.github.meta-ease</groupId>
         <artifactId>cloud-boot-build</artifactId>
         <version>2021.0.0-SNAPSHOT</version>
         <relativePath>../..</relativePath>
@@ -41,97 +41,97 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-aspect</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-sdk</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-webmvc</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-webflux</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-swagger</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-core</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-mybatis</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-jpa</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-generator</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-logging</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-cache</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-flow</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-flowable</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-transaction</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-asynctool</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-adapter</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-domain</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-sequence</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
-                <groupId>io.github.ease-meta</groupId>
+                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-scheduler</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>

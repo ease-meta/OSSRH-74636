@@ -16,8 +16,8 @@
  */
 package dependnew;
 
-import com.open.cloud.async.executor.Async;
-import com.open.cloud.async.wrapper.WorkerWrapper;
+import io.github.meta.ease.async.executor.Async;
+import io.github.meta.ease.async.wrapper.WorkerWrapper;
 
 import java.util.concurrent.ExecutionException;
 
