@@ -14,30 +14,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.test.web.controler;
+package com.open.cloud.async.callback;
 
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.test.web.api.IEase14006001;
-import com.open.cloud.test.web.module.Ease14006001In;
-import com.open.cloud.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.open.cloud.async.wrapper.WorkerWrapper;
+
+import java.util.Map;
 
 /**
- * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:10
+ * 每个最小执行单元需要实现该接口
+ *
+ * @author wuweifeng wrote on 2019-11-19.
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
+@FunctionalInterface
+public interface IWorker<T, V> {
+    /**
+     * 在这里做耗时操作，如rpc请求、IO等
+     *
+     * @param object      object
+     * @param allWrappers 任务包装
+     */
+    V action(T object, Map<String, WorkerWrapper> allWrappers);
 
-    @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
-
-        return FlowExecutor.execute2Resp(in);
+    /**
+     * 超时、异常时，返回的默认值
+     *
+     * @return 默认值
+     */
+    default V defaultValue() {
+        return null;
     }
 }

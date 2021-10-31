@@ -16,10 +16,10 @@
  */
 package dependnew;
 
-import com.jd.platform.async.callback.ICallback;
-import com.jd.platform.async.callback.IWorker;
-import com.jd.platform.async.worker.WorkResult;
-import com.jd.platform.async.wrapper.WorkerWrapper;
+import com.open.cloud.async.callback.ICallback;
+import com.open.cloud.async.callback.IWorker;
+import com.open.cloud.async.worker.WorkResult;
+import com.open.cloud.async.wrapper.WorkerWrapper;
 
 import java.util.Map;
 

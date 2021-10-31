@@ -20,14 +20,18 @@ import cn.hutool.db.Page;
 import com.github.pagehelper.ISelect;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.open.cloud.async.callback.IWorker;
+import com.open.cloud.async.executor.Async;
+import com.open.cloud.async.wrapper.WorkerWrapper;
 import com.open.cloud.core.commons.SpringApplicationContext;
 import com.open.cloud.domain.api.BaseRequest;
-import com.open.cloud.flow.base.AbstractProcess;
+import com.open.cloud.flow.busi.api.AbstractProcess;
 import com.open.cloud.test.web.controler.Hello;
 import com.open.cloud.test.web.module.Ease14006001In;
 import com.open.cloud.test.web.module.Ease14006001Out;
 import com.open.cloud.test.web.mybatis.demo.entity.SysUser;
 import com.open.cloud.test.web.mybatis.demo.mapper.SysUserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
@@ -36,6 +40,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author leijian
@@ -43,6 +48,7 @@ import java.util.HashMap;
  * @date 2021/10/1 18:13
  */
 @Service
+@Slf4j
 public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease14006001Out> {
 
     @Resource
@@ -53,6 +59,26 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
 
     @Override
     public Ease14006001Out process(Ease14006001In request) {
+        IWorker worker1 = (IWorker<Ease14006001In, Ease14006001Out>) (request1, allWrappers) -> {
+            log.info("1{}", request1);
+            return new Ease14006001Out();
+        };
+
+        IWorker worker2 = (IWorker<Ease14006001In, Ease14006001Out>) (request1, allWrappers) -> {
+            log.info("2{}", request1);
+            return new Ease14006001Out();
+        };
+
+        WorkerWrapper<Ease14006001In, Ease14006001Out> workerWrapper = new WorkerWrapper.Builder<Ease14006001In, Ease14006001Out>().worker(worker1).build();
+        try {
+            Async.beginWork(90000, workerWrapper);
+            Async.shutDown();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Hello hello = SpringApplicationContext.getContext().getBean(Hello.class);
 
         ExpressionParser parser = new SpelExpressionParser();

@@ -14,30 +14,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.test.web.controler;
+package com.open.cloud.async.callback;
 
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.test.web.api.IEase14006001;
-import com.open.cloud.test.web.module.Ease14006001In;
-import com.open.cloud.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.open.cloud.async.worker.WorkResult;
 
 /**
- * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:10
+ * 默认回调类，如果不设置的话，会默认给这个回调
+ *
+ * @author wuweifeng wrote on 2019-11-19.
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
+public class DefaultCallback<T, V> implements ICallback<T, V> {
+    @Override
+    public void begin() {
+
+    }
 
     @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
+    public void result(boolean success, T param, WorkResult<V> workResult) {
 
-        return FlowExecutor.execute2Resp(in);
     }
+
 }

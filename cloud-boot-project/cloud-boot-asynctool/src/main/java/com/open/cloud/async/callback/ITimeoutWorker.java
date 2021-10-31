@@ -14,30 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.test.web.controler;
-
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.test.web.api.IEase14006001;
-import com.open.cloud.test.web.module.Ease14006001In;
-import com.open.cloud.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+package com.open.cloud.async.callback;
 
 /**
- * @author leijian
+ * @author wuweifeng wrote on 2019-12-20
  * @version 1.0
- * @date 2021/10/1 18:10
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
+public interface ITimeoutWorker<T, V> extends IWorker<T, V> {
+    /**
+     * 每个worker都可以设置超时时间
+     *
+     * @return 毫秒超时时间
+     */
+    long timeOut();
 
-    @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
-
-        return FlowExecutor.execute2Resp(in);
-    }
+    /**
+     * 是否开启单个执行单元的超时功能（有时是一个group设置个超时，而不具备关心单个worker的超时）
+     * <p>注意，如果开启了单个执行单元的超时检测，将使线程池数量多出一倍</p>
+     *
+     * @return 是否开启
+     */
+    boolean enableTimeOut();
 }

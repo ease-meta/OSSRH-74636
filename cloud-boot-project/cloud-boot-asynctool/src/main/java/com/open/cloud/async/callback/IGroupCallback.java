@@ -14,30 +14,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.test.web.controler;
+package com.open.cloud.async.callback;
 
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.test.web.api.IEase14006001;
-import com.open.cloud.test.web.module.Ease14006001In;
-import com.open.cloud.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.open.cloud.async.wrapper.WorkerWrapper;
+
+import java.util.List;
 
 /**
- * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:10
+ * 如果是异步执行整组的话，可以用这个组回调。不推荐使用
+ *
+ * @author wuweifeng wrote on 2019-11-19.
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
+public interface IGroupCallback {
+    /**
+     * 成功后，可以从wrapper里去getWorkResult
+     */
+    void success(List<WorkerWrapper> workerWrappers);
 
-    @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
-
-        return FlowExecutor.execute2Resp(in);
-    }
+    /**
+     * 失败了，也可以从wrapper里去getWorkResult
+     */
+    void failure(List<WorkerWrapper> workerWrappers, Exception e);
 }

@@ -17,7 +17,10 @@
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-domain</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-asynctool</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-core</artifactId>

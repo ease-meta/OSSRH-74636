@@ -16,9 +16,9 @@
  */
 package seq;
 
-import com.jd.platform.async.executor.Async;
-import com.jd.platform.async.executor.timer.SystemClock;
-import com.jd.platform.async.wrapper.WorkerWrapper;
+import com.open.cloud.async.executor.Async;
+import com.open.cloud.async.executor.timer.SystemClock;
+import com.open.cloud.async.wrapper.WorkerWrapper;
 
 import java.util.concurrent.ExecutionException;
 

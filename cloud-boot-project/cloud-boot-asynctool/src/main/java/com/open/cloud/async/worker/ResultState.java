@@ -14,30 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.test.web.controler;
-
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.test.web.api.IEase14006001;
-import com.open.cloud.test.web.module.Ease14006001In;
-import com.open.cloud.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+package com.open.cloud.async.worker;
 
 /**
- * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:10
+ * 结果状态
+ *
+ * @author wuweifeng wrote on 2019-11-19.
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
-
-    @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
-
-        return FlowExecutor.execute2Resp(in);
-    }
+public enum ResultState {
+    SUCCESS, TIMEOUT, EXCEPTION, DEFAULT //默认状态
 }

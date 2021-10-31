@@ -14,36 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.open.cloud.flow.autoconfigure;
+package com.open.cloud.flow.busi.api;
 
-import com.open.cloud.flow.stria.api.BusinessEngine;
-import com.open.cloud.flow.stria.api.FlowExecutor;
-import com.open.cloud.flow.stria.api.ProcessBeanPostProcessor;
-import com.open.cloud.flow.stria.api.SimpleBusinessEngine;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.open.cloud.domain.api.BaseRequest;
+import com.open.cloud.domain.api.BaseResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author leijian
  * @version 1.0
- * @date 2021/10/7 11:21
+ * @date 2021/9/30 22:09
  */
-@Configuration(proxyBeanMethods = false)
-public class FlowAutoConfiguration {
+public abstract class AbstractProcess<T extends BaseRequest, R extends BaseResponse> implements
+        IProcess<T, R> {
 
-    @Bean
-    public ProcessBeanPostProcessor processBeanPostProcessor() {
-        return new ProcessBeanPostProcessor();
-    }
-
-    @Bean
-    public BusinessEngine simpleBusinessEngine() {
-        return new SimpleBusinessEngine();
-    }
-
-    @Bean
-    public FlowExecutor flowExecutor(BusinessEngine businessEngine) {
-        return new FlowExecutor();
-    }
+    private static final Logger logger = LoggerFactory.getLogger(AbstractProcess.class);
 
 }
