@@ -33,6 +33,10 @@
         <module>cloud-boot-flowable</module>
         <module>cloud-boot-transaction</module>
         <module>cloud-boot-asynctool</module>
+        <module>cloud-boot-adapter</module>
+        <module>cloud-boot-domain</module>
+        <module>cloud-boot-sequence</module>
+        <module>cloud-boot-scheduler</module>
     </modules>
 
     <properties>

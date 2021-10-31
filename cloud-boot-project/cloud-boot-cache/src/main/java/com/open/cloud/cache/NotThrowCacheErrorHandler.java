@@ -3,11 +3,6 @@ package com.open.cloud.cache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.Cache;
 import org.springframework.cache.interceptor.CacheErrorHandler;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
-
-import java.util.Set;
 
 /**
  * @author Leijian
@@ -15,11 +10,7 @@ import java.util.Set;
  */
 @Slf4j
 public class NotThrowCacheErrorHandler implements CacheErrorHandler {
-    private RedisTemplate redisTemplate;
 
-    NotThrowCacheErrorHandler(RedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
 
     @Override
     public void handleCacheGetError(RuntimeException exception, Cache cache, Object key) {
@@ -42,17 +33,7 @@ public class NotThrowCacheErrorHandler implements CacheErrorHandler {
     @Override
     public void handleCacheClearError(RuntimeException exception, Cache cache) {
         log.error("cache Clear error, cacheName:{}", cache.getName());
-        try {
-            if (StringUtils.hasText(cache.getName())) {
-                Set<String> keys = redisTemplate.keys(cache.getName());
-                log.error("cache clear error,手工清除{},大小{}", cache.getName(), keys.size());
-                if (!CollectionUtils.isEmpty(keys)) {
-                    redisTemplate.delete(keys);
-                }
-            }
-        } catch (Exception e) {
-            log.error("{},{}", e, e.getMessage());
-        }
+
     }
 
     protected void logError(String oper, Object key, Throwable e) {

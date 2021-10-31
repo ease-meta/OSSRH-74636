@@ -1,6 +1,7 @@
 package com.open.cloud.test.web.module;
 
-import com.open.cloud.core.domain.BaseRequest;
+
+import com.open.cloud.domain.api.BaseRequest;
 
 /**
  * @author leijian

@@ -15,7 +15,8 @@ import java.util.Map;
 <item target='InitPtcpt' source="InitPtcpt"/>
 //data.get("Document.AdminInfo.AuthrtyInf").get(0).get("BizAuthInfo.SndBizAuthrtyInf.PrmsnInf")
 <sarray target="SndBizAuthrtyInf" source="BizAuthInfo.SndBizAuthrtyInf.PrmsnInf" >
-<item target='mt' source="MT"/>
+<item target='mt' source="MT"/>\
+
 </sarray>
 </sarray>
 </sarray>*/

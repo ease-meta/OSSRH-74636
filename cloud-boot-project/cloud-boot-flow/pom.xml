@@ -12,4 +12,15 @@
 
     <artifactId>cloud-boot-flow</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-domain</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.open.cloud</groupId>
+            <artifactId>cloud-boot-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

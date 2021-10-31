@@ -1,6 +1,6 @@
 package com.open.cloud.test.javassist;
 
-import javassist.*;
+import org.apache.ibatis.javassist.*;
 
 /**
  * Hello world!

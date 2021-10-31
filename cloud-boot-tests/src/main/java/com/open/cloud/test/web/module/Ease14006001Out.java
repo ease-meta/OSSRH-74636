@@ -1,6 +1,7 @@
 package com.open.cloud.test.web.module;
 
-import com.open.cloud.core.domain.BaseResponse;
+
+import com.open.cloud.domain.api.BaseResponse;
 
 import java.time.LocalDateTime;
 

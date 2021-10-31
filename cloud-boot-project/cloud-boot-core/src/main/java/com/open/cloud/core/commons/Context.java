@@ -1,6 +1,7 @@
 package com.open.cloud.core.commons;
 
-import com.open.cloud.core.domain.BaseRequest;
+
+import com.open.cloud.domain.api.BaseRequest;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -24,11 +25,6 @@ public final class Context {
      */
     protected ConcurrentMap<String, Object> map = new ConcurrentHashMap<String, Object>();
 
-    public static final String BATCH_THREAD_NAME = "GalaxyBatchTask";
-    public static final String ADD_BATCH_KEY = "GalaxyBatchAddBatch";
-    public static final String ADD_BATCH_INSERT_KEY = "addInsertBatchMap";
-    public static final String ADD_BATCH_UPDATE_KEY = "addUpdateBatchMap";
-    public static final String ADD_BATCH_DELETE_KEY = "addDeleteBatchMap";
 
     /**
      * 请求入参模型
