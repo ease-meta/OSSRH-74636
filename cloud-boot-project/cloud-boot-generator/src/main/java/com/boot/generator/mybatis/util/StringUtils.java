@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.boot.generator.mybatis.util;
 
 import java.util.regex.Pattern;
@@ -9,42 +25,42 @@ import java.util.regex.Pattern;
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
     /**
-     * ¿Õ×Ö·û
+     * ï¿½ï¿½ï¿½Ö·ï¿½
      */
     public static final String EMPTY = StringPool.EMPTY;
     /**
-     * ×Ö·û´® is
+     * ï¿½Ö·ï¿½ï¿½ï¿½ is
      */
     public static final String IS = "is";
     /**
-     * ÏÂ»®Ïß×Ö·û
+     * ï¿½Â»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
      */
     public static final char UNDERLINE = '_';
     /**
-     * MP ÄÚ¶¨ÒåµÄ SQL Õ¼Î»·û±í´ïÊ½£¬Æ¥ÅäÖîÈç {0},{1},{2} ... µÄÐÎÊ½
+     * MP ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ SQL Õ¼Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {0},{1},{2} ... ï¿½ï¿½ï¿½ï¿½Ê½
      */
     public final static Pattern MP_SQL_PLACE_HOLDER = Pattern.compile("[{](?<idx>\\d+)}");
     /**
-     * ÑéÖ¤×Ö·û´®ÊÇ·ñÊÇÊý¾Ý¿â×Ö¶Î
+     * ï¿½ï¿½Ö¤ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ö¶ï¿½
      */
     private static final Pattern P_IS_COLUMN = Pattern.compile("^\\w\\S*[\\w\\d]*$");
 
     /**
-     * ÊÇ·ñÎª´óÐ´ÃüÃû
+     * ï¿½Ç·ï¿½Îªï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
      */
     private static final Pattern CAPITAL_MODE = Pattern.compile("^[0-9A-Z/_]+$");
 
     /**
-     * ×Ö·û´®È¥³ý¿Õ°×ÄÚÈÝ
+     * ï¿½Ö·ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½Õ°ï¿½ï¿½ï¿½ï¿½ï¿½
      *
-     * <ul> <li>\n »Ø³µ</li> <li>\t Ë®Æ½ÖÆ±í·û</li> <li>\s ¿Õ¸ñ</li> <li>\r »»ÐÐ</li> </ul>
+     * <ul> <li>\n ï¿½Ø³ï¿½</li> <li>\t Ë®Æ½ï¿½Æ±ï¿½ï¿½</li> <li>\s ï¿½Õ¸ï¿½</li> <li>\r ï¿½ï¿½ï¿½ï¿½</li> </ul>
      */
     private static final Pattern REPLACE_BLANK = Pattern.compile("\\s*|\t|\r|\n");
 
     /**
-     * ÊÇ·ñÎª´óÐ´ÃüÃû
+     * ï¿½Ç·ï¿½Îªï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
      *
-     * @param word ´ýÅÐ¶Ï×Ö·û´®
+     * @param word ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      * @return ignore
      */
     public static boolean isCapitalMode(String word) {
@@ -52,9 +68,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * ÊÇ·ñÎªÍÕ·åÏÂ»®Ïß»ìºÏÃüÃû
+     * ï¿½Ç·ï¿½Îªï¿½Õ·ï¿½ï¿½Â»ï¿½ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      *
-     * @param word ´ýÅÐ¶Ï×Ö·û´®
+     * @param word ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      * @return ignore
      */
     public static boolean isMixedMode(String word) {
@@ -62,12 +78,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * É¾³ý×Ö·ûÇ°×ºÖ®ºó,Ê××ÖÄ¸Ð¡Ð´,Ö®ºó×Ö·û´óÐ¡Ð´µÄ²»±ä
+     * É¾ï¿½ï¿½ï¿½Ö·ï¿½Ç°×ºÖ®ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ä¸Ð¡Ð´,Ö®ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ð¡Ð´ï¿½Ä²ï¿½ï¿½ï¿½
      * <p>StringUtils.removePrefixAfterPrefixToLower( "isUser", 2 )     = user</p>
      * <p>StringUtils.removePrefixAfterPrefixToLower( "isUserInfo", 2 ) = userInfo</p>
      *
-     * @param rawString ÐèÒª´¦ÀíµÄ×Ö·û´®
-     * @param index     É¾³ý¶àÉÙ¸ö×Ö·û(´Ó×óÖÁÓÒ)
+     * @param rawString ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param index     É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½Ö·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
      * @return ignore
      */
     public static String removePrefixAfterPrefixToLower(String rawString, int index) {
@@ -75,10 +91,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * Ç°n¸öÊ××ÖÄ¸Ð¡Ð´,Ö®ºó×Ö·û´óÐ¡Ð´µÄ²»±ä
+     * Ç°nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸Ð¡Ð´,Ö®ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ð¡Ð´ï¿½Ä²ï¿½ï¿½ï¿½
      *
-     * @param rawString ÐèÒª´¦ÀíµÄ×Ö·û´®
-     * @param index     ¶àÉÙ¸ö×Ö·û(´Ó×óÖÁÓÒ)
+     * @param rawString ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param index     ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½Ö·ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
      * @return ignore
      */
     public static String prefixToLower(String rawString, int index) {
@@ -89,10 +105,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * ×Ö·û´®ÍÕ·å×ªÏÂ»®Ïß¸ñÊ½
+     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Õ·ï¿½×ªï¿½Â»ï¿½ï¿½ß¸ï¿½Ê½
      *
-     * @param param ÐèÒª×ª»»µÄ×Ö·û´®
-     * @return ×ª»»ºÃµÄ×Ö·û´®
+     * @param param ï¿½ï¿½Òª×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @return ×ªï¿½ï¿½ï¿½Ãµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      */
     public static String camelToUnderline(String param) {
         if (isBlank(param)) {
@@ -111,10 +127,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * ×Ö·û´®ÏÂ»®Ïß×ªÍÕ·å¸ñÊ½
+     * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½×ªï¿½Õ·ï¿½ï¿½Ê½
      *
-     * @param param ÐèÒª×ª»»µÄ×Ö·û´®
-     * @return ×ª»»ºÃµÄ×Ö·û´®
+     * @param param ï¿½ï¿½Òª×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @return ×ªï¿½ï¿½ï¿½Ãµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      */
     public static String underlineToCamel(String param) {
         if (isBlank(param)) {
@@ -137,10 +153,10 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * Ê××ÖÄ¸×ª»»Ð¡Ð´
+     * ï¿½ï¿½ï¿½ï¿½Ä¸×ªï¿½ï¿½Ð¡Ð´
      *
-     * @param param ÐèÒª×ª»»µÄ×Ö·û´®
-     * @return ×ª»»ºÃµÄ×Ö·û´®
+     * @param param ï¿½ï¿½Òª×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @return ×ªï¿½ï¿½ï¿½Ãµï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      */
     public static String firstToLowerCase(String param) {
         if (isBlank(param)) {
@@ -150,11 +166,11 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * ÕýÔò±í´ïÊ½Æ¥Åä
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½Æ¥ï¿½ï¿½
      *
-     * @param regex ÕýÔò±í´ïÊ½×Ö·û´®
-     * @param input ÒªÆ¥ÅäµÄ×Ö·û´®
-     * @return Èç¹û input ·ûºÏ regex ÕýÔò±í´ïÊ½¸ñÊ½, ·µ»Øtrue, ·ñÔò·µ»Ø false;
+     * @param regex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @param input ÒªÆ¥ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * @return ï¿½ï¿½ï¿½ input ï¿½ï¿½ï¿½ï¿½ regex ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ê½, ï¿½ï¿½ï¿½ï¿½true, ï¿½ï¿½ï¿½ò·µ»ï¿½ false;
      */
     public static boolean matches(String regex, String input) {
         if (null == regex || null == input) {
@@ -164,11 +180,11 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
     }
 
     /**
-     * ÍÕ·å×ªÁ¬×Ö·û
+     * ï¿½Õ·ï¿½×ªï¿½ï¿½ï¿½Ö·ï¿½
      * <p>StringUtils.camelToHyphen( "managerAdminUserService" ) = manager-admin-user-service</p>
      *
      * @param input ignore
-     * @return ÒÔ'-'·Ö¸ô
+     * @return ï¿½ï¿½'-'ï¿½Ö¸ï¿½
      * @see <a href="https://github.com/krasa/StringManipulation">document</a>
      */
     public static String camelToHyphen(String input) {
@@ -180,12 +196,15 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         char previousChar = ' ';
         char[] chars = input.toCharArray();
         for (char c : chars) {
-            boolean isUpperCaseAndPreviousIsLowerCase = (Character.isLowerCase(previousChar)) && (Character.isUpperCase(c));
+            boolean isUpperCaseAndPreviousIsLowerCase = (Character.isLowerCase(previousChar))
+                    && (Character.isUpperCase(c));
 
             boolean previousIsWhitespace = Character.isWhitespace(previousChar);
-            boolean lastOneIsNotUnderscore = (buf.length() > 0) && (buf.charAt(buf.length() - 1) != '_');
+            boolean lastOneIsNotUnderscore = (buf.length() > 0)
+                    && (buf.charAt(buf.length() - 1) != '_');
             boolean isNotUnderscore = c != '_';
-            if (lastOneIsNotUnderscore && (isUpperCaseAndPreviousIsLowerCase || previousIsWhitespace)) {
+            if (lastOneIsNotUnderscore
+                    && (isUpperCaseAndPreviousIsLowerCase || previousIsWhitespace)) {
                 buf.append(StringPool.UNDERSCORE);
             } else if ((Character.isDigit(previousChar) && Character.isLetter(c))) {
                 buf.append('_');
@@ -211,9 +230,8 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
         StringBuilder buf = new StringBuilder();
         char lastChar = 'a';
         for (char c : s.toCharArray()) {
-            if ((Character.isWhitespace(lastChar)) && (!Character.isWhitespace(c))
-                    && ('-' != c) && (buf.length() > 0)
-                    && (buf.charAt(buf.length() - 1) != '-')) {
+            if ((Character.isWhitespace(lastChar)) && (!Character.isWhitespace(c)) && ('-' != c)
+                    && (buf.length() > 0) && (buf.charAt(buf.length() - 1) != '-')) {
                 buf.append(StringPool.DASH);
             }
             if ('_' == c) {

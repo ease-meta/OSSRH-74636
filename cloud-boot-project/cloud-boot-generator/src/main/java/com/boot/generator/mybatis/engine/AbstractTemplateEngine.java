@@ -1,17 +1,18 @@
 /*
- * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * <p>
- * https://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.boot.generator.mybatis.engine;
 
@@ -33,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
-
 
 /**
  * 模板引擎抽象类
@@ -172,7 +172,8 @@ public abstract class AbstractTemplateEngine {
      * @param templatePath 模板路径
      * @since 3.5.0
      */
-    protected void outputFile(@Nonnull File file, @Nonnull Map<String, Object> objectMap, @Nonnull String templatePath) {
+    protected void outputFile(@Nonnull File file, @Nonnull Map<String, Object> objectMap,
+                              @Nonnull String templatePath) {
         if (isCreate(file)) {
             try {
                 // 全局判断【默认】
@@ -256,7 +257,8 @@ public abstract class AbstractTemplateEngine {
      * @deprecated 3.5.0
      */
     @Deprecated
-    protected void writerFile(Map<String, Object> objectMap, String templatePath, String outputFile) throws Exception {
+    protected void writerFile(Map<String, Object> objectMap, String templatePath, String outputFile)
+            throws Exception {
         if (StringUtils.isNotBlank(templatePath)) {
             this.writer(objectMap, templatePath, outputFile);
         }
@@ -272,7 +274,8 @@ public abstract class AbstractTemplateEngine {
      * @deprecated 3.5.0
      */
     @Deprecated
-    public void writer(@Nonnull Map<String, Object> objectMap, @Nonnull String templatePath, @Nonnull String outputFile) throws Exception {
+    public void writer(@Nonnull Map<String, Object> objectMap, @Nonnull String templatePath,
+                       @Nonnull String outputFile) throws Exception {
 
     }
 
@@ -285,7 +288,8 @@ public abstract class AbstractTemplateEngine {
      * @throws Exception 异常
      * @since 3.5.0
      */
-    public void writer(@Nonnull Map<String, Object> objectMap, @Nonnull String templatePath, @Nonnull File outputFile) throws Exception {
+    public void writer(@Nonnull Map<String, Object> objectMap, @Nonnull String templatePath,
+                       @Nonnull File outputFile) throws Exception {
         this.writer(objectMap, templatePath, outputFile.getPath());
         logger.debug("模板:" + templatePath + ";  文件:" + outputFile);
     }
@@ -314,7 +318,8 @@ public abstract class AbstractTemplateEngine {
      * @return ignore
      */
     @Nonnull
-    public Map<String, Object> getObjectMap(@Nonnull ConfigBuilder config, @Nonnull TableInfo tableInfo) {
+    public Map<String, Object> getObjectMap(@Nonnull ConfigBuilder config,
+                                            @Nonnull TableInfo tableInfo) {
         StrategyConfig strategyConfig = config.getStrategyConfig();
         Map<String, Object> controllerData = strategyConfig.controller().renderData(tableInfo);
         Map<String, Object> objectMap = new HashMap<>(controllerData);
@@ -383,7 +388,8 @@ public abstract class AbstractTemplateEngine {
      * 文件后缀
      */
     protected String suffixJavaOrKt() {
-        return getConfigBuilder().getGlobalConfig().isKotlin() ? ConstVal.KT_SUFFIX : ConstVal.JAVA_SUFFIX;
+        return getConfigBuilder().getGlobalConfig().isKotlin() ? ConstVal.KT_SUFFIX
+                : ConstVal.JAVA_SUFFIX;
     }
 
     @Nonnull

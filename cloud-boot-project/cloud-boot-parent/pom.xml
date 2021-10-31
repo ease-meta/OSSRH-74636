@@ -16,7 +16,7 @@
 
         <main.user.dir>${basedir}/../..</main.user.dir>
         <project.encoding>UTF-8</project.encoding>
-        <java.version>17</java.version>
+        <java.version>1.8</java.version>
         <!-- Build args -->
         <argline>-server -Xms256m -Xmx512m -Dfile.encoding=UTF-8
             -Djava.net.preferIPv4Stack=true -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m
@@ -1266,7 +1266,7 @@
                         <sourcepath>src/main/java/</sourcepath>
                         <!-- <doclint>none</doclint>-->
                         <links>
-                            <link>https://docs.oracle.com/en/java/javase/17/docs/api/index.html</link>
+                            <link>https://docs.oracle.com/en/java/javase/1.8/docs/api/index.html</link>
                         </links>
                         <doctitle>Cloud Boot ${project.version} API</doctitle>
                         <windowtitle>Cloud Boot ${project.version} API</windowtitle>

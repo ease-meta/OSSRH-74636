@@ -562,6 +562,7 @@ public class Slf4jLog extends BizLogger {
             }
         }
     }
+
     /**End*************************Warn*****************************************/
 
     /**
@@ -636,6 +637,7 @@ public class Slf4jLog extends BizLogger {
             }
         }
     }
+
     /**End*************************Platform*****************************************/
 
     /**
@@ -710,6 +712,7 @@ public class Slf4jLog extends BizLogger {
             }
         }
     }
+
     /**End*************************Profile*****************************************/
 
     /**

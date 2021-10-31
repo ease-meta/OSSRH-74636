@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.core.xml.sax;
 
 import com.open.cloud.core.xml.CommonData;
@@ -10,6 +26,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 /*<sarray target="BODY.AUTH_ARRAY" source="Document.AdminInfo.AuthrtyInf" >
 //data.get("Document.AdminInfo.AuthrtyInf").get(0).get("InitPtcpt")
 <item target='InitPtcpt' source="InitPtcpt"/>
@@ -25,7 +42,11 @@ public class XMLConverter {
     public static void main(String[] args) {
         XMLConverter xmlConverter = new XMLConverter();
         CommonData commonData = new XMLCommonData();
-        xmlConverter.load(commonData, new InputSource("D:\\IdeaProjects\\open-cloud-platform\\cloud-boot-project\\cloud-boot-core\\src\\test\\data_10k.xml"));
+        xmlConverter
+                .load(
+                        commonData,
+                        new InputSource(
+                                "D:\\IdeaProjects\\open-cloud-platform\\cloud-boot-project\\cloud-boot-core\\src\\test\\data_10k.xml"));
         System.out.println(commonData);
 
         Map data = new FormatHashMap();
@@ -81,14 +102,16 @@ public class XMLConverter {
 
                     List<Map> arr = (List<Map>) data.get(commonData.getName());
                     Map rec = new FormatHashMap();
-                    rec.put(commonData.getName(), commonData.getValue() == null ? "" : commonData.getValue());
+                    rec.put(commonData.getName(),
+                            commonData.getValue() == null ? "" : commonData.getValue());
                     arr.add(rec);
 
                 } else {
 
                     List<Map> arr = new ArrayList<>();
                     Map rec = new FormatHashMap();
-                    rec.put(commonData.getName(), commonData.getValue() == null ? "" : commonData.getValue());
+                    rec.put(commonData.getName(),
+                            commonData.getValue() == null ? "" : commonData.getValue());
                     arr.add(rec);
 
                     data.put(commonData.getName(), arr);
@@ -103,7 +126,8 @@ public class XMLConverter {
 
                 data.put(commonData.getName(), amountData);
             } else {
-                data.put(commonData.getName(), commonData.getValue() == null ? "" : commonData.getValue());
+                data.put(commonData.getName(),
+                        commonData.getValue() == null ? "" : commonData.getValue());
             }
         }
 
@@ -148,10 +172,10 @@ public class XMLConverter {
             this.parser.parse(in);
         } catch (Exception var6) {
             System.out.println(var6);
-           /* BaseException se = new BaseException("parse_xml_error");
-            se.addScene("msg", "Parse xml error!");
-            se.addScene("exception", var6);
-            throw se;*/
+            /* BaseException se = new BaseException("parse_xml_error");
+             se.addScene("msg", "Parse xml error!");
+             se.addScene("exception", var6);
+             throw se;*/
         }
     }
 

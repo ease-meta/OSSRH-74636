@@ -1,8 +1,23 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.mybatis.generator.config;
 
-
 /**
- * È«¾ÖÅäÖÃ
+ * È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * @author hubin
  * @since 2016-12-02
@@ -10,17 +25,18 @@ package com.open.cloud.mybatis.generator.config;
 public class GlobalConfig {
 
     /**
-     * Éú³ÉÎÄ¼þµÄÊä³öÄ¿Â¼¡¾ windows:D://  linux or mac:/tmp ¡¿
+     * ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ windows:D://  linux or mac:/tmp ï¿½ï¿½
      */
-    private String outputDir = System.getProperty("os.name").toLowerCase().contains("windows") ? "D://" : "/tmp";
+    private String outputDir = System.getProperty("os.name").toLowerCase().contains("windows") ? "D://"
+            : "/tmp";
     /**
-     * ÊÇ·ñ¸²¸ÇÒÑÓÐÎÄ¼þ£¨Ä¬ÈÏ false£©
+     * ï¿½Ç·ñ¸²¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½ falseï¿½ï¿½
      */
     private boolean fileOverride;
     /**
-     * ×÷Õß
+     * ï¿½ï¿½ï¿½ï¿½
      */
-    private String author = "×÷Õß";
+    private String author = "ï¿½ï¿½ï¿½ï¿½";
 
     private GlobalConfig() {
     }
@@ -33,16 +49,15 @@ public class GlobalConfig {
         return fileOverride;
     }
 
-
     public String getAuthor() {
         return author;
     }
 
-
     public static final class GlobalConfigBuilder {
-        private String outputDir = System.getProperty("os.name").toLowerCase().contains("windows") ? "D://" : "/tmp";
+        private String outputDir = System.getProperty("os.name").toLowerCase().contains("windows") ? "D://"
+                : "/tmp";
         private boolean fileOverride;
-        private String author = "×÷Õß";
+        private String author = "ï¿½ï¿½ï¿½ï¿½";
 
         private GlobalConfigBuilder() {
         }

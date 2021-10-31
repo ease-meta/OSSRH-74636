@@ -16,7 +16,6 @@
  */
 package com.open.cloud.logging;
 
-
 import com.open.cloud.logging.logger.*;
 
 /**

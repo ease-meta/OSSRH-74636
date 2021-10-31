@@ -1,5 +1,20 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.mybatis.generator.util;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -107,7 +122,6 @@ public class PbUtils {
         }
     }
 
-
     /**
      * 获取当前时间
      *
@@ -197,7 +211,8 @@ public class PbUtils {
      * 返回首字母和第二个字母小写的字符串
      */
     public static String fristAndSecondStrToLowerCase(String str) {
-        String resultStr = str.substring(0, 1).toLowerCase() + str.substring(1, 2).toLowerCase() + str.substring(2);
+        String resultStr = str.substring(0, 1).toLowerCase() + str.substring(1, 2).toLowerCase()
+                + str.substring(2);
         return resultStr;
     }
 
@@ -208,7 +223,6 @@ public class PbUtils {
         String resultStr = str.substring(0, 1).toLowerCase() + str.substring(1);
         return resultStr;
     }
-
 
     /**
      * String 转化 Date
@@ -265,7 +279,8 @@ public class PbUtils {
             javaType = "float";
         } else if (type.contains("DOUBLE") || type.contains("FLOAT")) {
             javaType = "double";
-        } else if (type.contains("BINARY") || type.contains("VARBINARY") || type.contains("LONGVARBINARY")) {
+        } else if (type.contains("BINARY") || type.contains("VARBINARY")
+                || type.contains("LONGVARBINARY")) {
             javaType = "byte[]";
         } else if (type.contains("DATE")) {
             javaType = "java.util.Date";
@@ -328,16 +343,12 @@ public class PbUtils {
     public static String convertType(String databaseType) {
         String javaType = "";
         String databaseTypeStr = databaseType.trim().toLowerCase();
-        if (databaseTypeStr.startsWith("int")
-                || "smallint".equals(databaseTypeStr)
-                || "tinyint".equals(databaseTypeStr)
-        ) {
+        if (databaseTypeStr.startsWith("int") || "smallint".equals(databaseTypeStr)
+                || "tinyint".equals(databaseTypeStr)) {
             javaType = "Integer";
         } else if ("char".equals(databaseTypeStr)) {
             javaType = "String";
-        } else if ("number".equals(databaseTypeStr)
-                || "numeric".equals(databaseTypeStr)
-        ) {
+        } else if ("number".equals(databaseTypeStr) || "numeric".equals(databaseTypeStr)) {
             javaType = "Integer";
         } else if (databaseTypeStr.indexOf("varchar") != -1) {
             javaType = "String";

@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -15,11 +16,10 @@
  */
 package com.boot.generator.mybatis.util;
 
-
 import com.boot.generator.mybatis.exceptions.MybatisPlusException;
 
 /**
- * Òì³£¸¨Öú¹¤¾ßÀà
+ * ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * @author HCL
  * @since 2018-07-24
@@ -30,31 +30,31 @@ public final class ExceptionUtils {
     }
 
     /**
-     * ·µ»ØÒ»¸öÐÂµÄÒì³££¬Í³Ò»¹¹½¨£¬·½±ãÍ³Ò»´¦Àí
+     * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ì³£ï¿½ï¿½Í³Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³Ò»ï¿½ï¿½ï¿½ï¿½
      *
-     * @param msg ÏûÏ¢
-     * @param t   Òì³£ÐÅÏ¢
-     * @return ·µ»ØÒì³£
+     * @param msg ï¿½ï¿½Ï¢
+     * @param t   ï¿½ì³£ï¿½ï¿½Ï¢
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
      */
     public static MybatisPlusException mpe(String msg, Throwable t, Object... params) {
         return new MybatisPlusException(String.format(msg, params), t);
     }
 
     /**
-     * ÖØÔØµÄ·½·¨
+     * ï¿½ï¿½ï¿½ØµÄ·ï¿½ï¿½ï¿½
      *
-     * @param msg ÏûÏ¢
-     * @return ·µ»ØÒì³£
+     * @param msg ï¿½ï¿½Ï¢
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
      */
     public static MybatisPlusException mpe(String msg, Object... params) {
         return new MybatisPlusException(String.format(msg, params));
     }
 
     /**
-     * ÖØÔØµÄ·½·¨
+     * ï¿½ï¿½ï¿½ØµÄ·ï¿½ï¿½ï¿½
      *
-     * @param t Òì³£
-     * @return ·µ»ØÒì³£
+     * @param t ï¿½ì³£
+     * @return ï¿½ï¿½ï¿½ï¿½ï¿½ì³£
      */
     public static MybatisPlusException mpe(Throwable t) {
         return new MybatisPlusException(t);

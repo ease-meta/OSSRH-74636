@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.jd.platform.async.wrapper;
 
 import com.jd.platform.async.callback.DefaultCallback;
@@ -96,7 +112,8 @@ public class WorkerWrapper<T, V> {
      * 开始工作
      * fromWrapper代表这次work是由哪个上游wrapper发起的
      */
-    private void work(ExecutorService executorService, WorkerWrapper fromWrapper, long remainTime, Map<String, WorkerWrapper> forParamUseWrappers) {
+    private void work(ExecutorService executorService, WorkerWrapper fromWrapper, long remainTime,
+                      Map<String, WorkerWrapper> forParamUseWrappers) {
         this.forParamUseWrappers = forParamUseWrappers;
         //将自己放到所有wrapper的集合里去
         forParamUseWrappers.put(id, this);
@@ -147,8 +164,8 @@ public class WorkerWrapper<T, V> {
 
     }
 
-
-    public void work(ExecutorService executorService, long remainTime, Map<String, WorkerWrapper> forParamUseWrappers) {
+    public void work(ExecutorService executorService, long remainTime,
+                     Map<String, WorkerWrapper> forParamUseWrappers) {
         work(executorService, null, remainTime, forParamUseWrappers);
     }
 
@@ -215,7 +232,9 @@ public class WorkerWrapper<T, V> {
         }
     }
 
-    private synchronized void doDependsJobs(ExecutorService executorService, List<DependWrapper> dependWrappers, WorkerWrapper fromWrapper, long now, long remainTime) {
+    private synchronized void doDependsJobs(ExecutorService executorService,
+                                            List<DependWrapper> dependWrappers,
+                                            WorkerWrapper fromWrapper, long now, long remainTime) {
         boolean nowDependIsMust = false;
         //创建必须完成的上游wrapper集合
         Set<DependWrapper> mustWrapper = new HashSet<>();
@@ -432,7 +451,6 @@ public class WorkerWrapper<T, V> {
         return workResult;
     }
 
-
     private int getState() {
         return state.get();
     }
@@ -458,19 +476,18 @@ public class WorkerWrapper<T, V> {
             return false;
         }
         WorkerWrapper<?, ?> that = (WorkerWrapper<?, ?>) o;
-        return needCheckNextWrapperResult == that.needCheckNextWrapperResult &&
-                Objects.equals(param, that.param) &&
-                Objects.equals(worker, that.worker) &&
-                Objects.equals(callback, that.callback) &&
-                Objects.equals(nextWrappers, that.nextWrappers) &&
-                Objects.equals(dependWrappers, that.dependWrappers) &&
-                Objects.equals(state, that.state) &&
-                Objects.equals(workResult, that.workResult);
+        return needCheckNextWrapperResult == that.needCheckNextWrapperResult
+                && Objects.equals(param, that.param) && Objects.equals(worker, that.worker)
+                && Objects.equals(callback, that.callback)
+                && Objects.equals(nextWrappers, that.nextWrappers)
+                && Objects.equals(dependWrappers, that.dependWrappers)
+                && Objects.equals(state, that.state) && Objects.equals(workResult, that.workResult);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(param, worker, callback, nextWrappers, dependWrappers, state, workResult, needCheckNextWrapperResult);
+        return Objects.hash(param, worker, callback, nextWrappers, dependWrappers, state,
+                workResult, needCheckNextWrapperResult);
     }
 
     public static class Builder<W, C> {

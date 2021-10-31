@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -18,7 +19,7 @@ package com.boot.generator.mybatis.annotation;
 import lombok.Getter;
 
 /**
- * Éú³ÉIDÀàĞÍÃ¶¾ÙÀà
+ * ï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½
  *
  * @author hubin
  * @since 2015-11-10
@@ -26,31 +27,31 @@ import lombok.Getter;
 @Getter
 public enum IdType {
     /**
-     * Êı¾İ¿âID×ÔÔö
-     * <p>¸ÃÀàĞÍÇëÈ·±£Êı¾İ¿âÉèÖÃÁË ID×ÔÔö ·ñÔòÎŞĞ§</p>
+     * ï¿½ï¿½ï¿½İ¿ï¿½IDï¿½ï¿½ï¿½ï¿½
+     * <p>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ§</p>
      */
     AUTO(0),
     /**
-     * ¸ÃÀàĞÍÎªÎ´ÉèÖÃÖ÷¼üÀàĞÍ(×¢½âÀïµÈÓÚ¸úËæÈ«¾Ö,È«¾ÖÀïÔ¼µÈÓÚ INPUT)
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½ï¿½È«ï¿½ï¿½,È«ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ INPUT)
      */
     NONE(1),
     /**
-     * ÓÃ»§ÊäÈëID
-     * <p>¸ÃÀàĞÍ¿ÉÒÔÍ¨¹ı×Ô¼º×¢²á×Ô¶¯Ìî³ä²å¼ş½øĞĞÌî³ä</p>
+     * ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ID
+     * <p>ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ô¼ï¿½×¢ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</p>
      */
     INPUT(2),
 
-    /* ÒÔÏÂ3ÖÖÀàĞÍ¡¢Ö»ÓĞµ±²åÈë¶ÔÏóID Îª¿Õ£¬²Å×Ô¶¯Ìî³ä¡£ */
+    /* ï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½Ö»ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ä¡£ */
     /**
-     * ·ÖÅäID (Ö÷¼üÀàĞÍÎªnumber»òstring£©,
-     * Ä¬ÈÏÊµÏÖÀà {@link com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator}(Ñ©»¨Ëã·¨)
+     * ï¿½ï¿½ï¿½ï¿½ID (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnumberï¿½ï¿½stringï¿½ï¿½,
+     * Ä¬ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ {@link com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator}(Ñ©ï¿½ï¿½ï¿½ã·¨)
      *
      * @since 3.3.0
      */
     ASSIGN_ID(3),
     /**
-     * ·ÖÅäUUID (Ö÷¼üÀàĞÍÎª string)
-     * Ä¬ÈÏÊµÏÖÀà {@link com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator}(UUID.replace("-",""))
+     * ï¿½ï¿½ï¿½ï¿½UUID (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª string)
+     * Ä¬ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ {@link com.baomidou.mybatisplus.core.incrementer.DefaultIdentifierGenerator}(UUID.replace("-",""))
      */
     ASSIGN_UUID(4);
 

@@ -1,10 +1,26 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.mybatis.generator.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * MybatisPlus Ö§³ÖµÄÊý¾Ý¿âÀàÐÍ,Ö÷ÒªÓÃÓÚ·ÖÒ³·½ÑÔ
+ * MybatisPlus Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Òªï¿½ï¿½ï¿½Ú·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
  *
  * @author hubin
  * @since 2018-06-23
@@ -16,129 +32,127 @@ public enum DbType {
     /**
      * MYSQL
      */
-    MYSQL("mysql", "MySqlÊý¾Ý¿â"),
+    MYSQL("mysql", "MySqlï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * MARIADB
      */
-    MARIADB("mariadb", "MariaDBÊý¾Ý¿â"),
+    MARIADB("mariadb", "MariaDBï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * ORACLE
      */
-    ORACLE("oracle", "Oracle11g¼°ÒÔÏÂÊý¾Ý¿â(¸ß°æ±¾ÍÆ¼öÊ¹ÓÃORACLE_NEW)"),
+    ORACLE("oracle", "Oracle11gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½(ï¿½ß°æ±¾ï¿½Æ¼ï¿½Ê¹ï¿½ï¿½ORACLE_NEW)"),
     /**
      * oracle12c new pagination
      */
-    ORACLE_12C("oracle12c", "Oracle12c+Êý¾Ý¿â"),
+    ORACLE_12C("oracle12c", "Oracle12c+ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * DB2
      */
-    DB2("db2", "DB2Êý¾Ý¿â"),
+    DB2("db2", "DB2ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * H2
      */
-    H2("h2", "H2Êý¾Ý¿â"),
+    H2("h2", "H2ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * HSQL
      */
-    HSQL("hsql", "HSQLÊý¾Ý¿â"),
+    HSQL("hsql", "HSQLï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * SQLITE
      */
-    SQLITE("sqlite", "SQLiteÊý¾Ý¿â"),
+    SQLITE("sqlite", "SQLiteï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * POSTGRE
      */
-    POSTGRE_SQL("postgresql", "PostgreÊý¾Ý¿â"),
+    POSTGRE_SQL("postgresql", "Postgreï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * SQLSERVER2005
      */
-    SQL_SERVER2005("sqlserver2005", "SQLServer2005Êý¾Ý¿â"),
+    SQL_SERVER2005("sqlserver2005", "SQLServer2005ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * SQLSERVER
      */
-    SQL_SERVER("sqlserver", "SQLServerÊý¾Ý¿â"),
+    SQL_SERVER("sqlserver", "SQLServerï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * DM
      */
-    DM("dm", "´ïÃÎÊý¾Ý¿â"),
+    DM("dm", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * xugu
      */
-    XU_GU("xugu", "Ðé¹ÈÊý¾Ý¿â"),
+    XU_GU("xugu", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Kingbase
      */
-    KINGBASE_ES("kingbasees", "ÈË´ó½ð²ÖÊý¾Ý¿â"),
+    KINGBASE_ES("kingbasees", "ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Phoenix
      */
-    PHOENIX("phoenix", "Phoenix HBaseÊý¾Ý¿â"),
+    PHOENIX("phoenix", "Phoenix HBaseï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Gauss
      */
-    GAUSS("zenith", "Gauss Êý¾Ý¿â"),
+    GAUSS("zenith", "Gauss ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * ClickHouse
      */
-    CLICK_HOUSE("clickhouse", "clickhouse Êý¾Ý¿â"),
+    CLICK_HOUSE("clickhouse", "clickhouse ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * GBase
      */
-    GBASE("gbase", "ÄÏ´óÍ¨ÓÃ(»ª¿â)Êý¾Ý¿â"),
-    GBASEDBT("gbasedbt", "ÄÏ´óÍ¨ÓÃÊý¾Ý¿â"),
+    GBASE("gbase", "ï¿½Ï´ï¿½Í¨ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½Ý¿ï¿½"), GBASEDBT("gbasedbt", "ï¿½Ï´ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Oscar
      */
-    OSCAR("oscar", "ÉñÍ¨Êý¾Ý¿â"),
+    OSCAR("oscar", "ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Sybase
      */
-    SYBASE("sybase", "Sybase ASE Êý¾Ý¿â"),
+    SYBASE("sybase", "Sybase ASE ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * OceanBase
      */
-    OCEAN_BASE("oceanbase", "OceanBase Êý¾Ý¿â"),
+    OCEAN_BASE("oceanbase", "OceanBase ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * Firebird
      */
-    FIREBIRD("Firebird", "Firebird Êý¾Ý¿â"),
+    FIREBIRD("Firebird", "Firebird ï¿½ï¿½ï¿½Ý¿ï¿½"),
 
     /**
      * HighGo
      */
-    HIGH_GO("highgo", "å«¸ßÊý¾Ý¿â"),
+    HIGH_GO("highgo", "å«¸ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * CUBRID
      */
-    CUBRID("cubrid", "CUBRIDÊý¾Ý¿â"),
+    CUBRID("cubrid", "CUBRIDï¿½ï¿½ï¿½Ý¿ï¿½"),
 
     /**
      * GOLDILOCKS
      */
-    GOLDILOCKS("goldilocks", "GOLDILOCKSÊý¾Ý¿â"),
+    GOLDILOCKS("goldilocks", "GOLDILOCKSï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * CSIIDB
      */
-    CSIIDB("csiidb", "CSIIDBÊý¾Ý¿â"),
+    CSIIDB("csiidb", "CSIIDBï¿½ï¿½ï¿½Ý¿ï¿½"),
     /**
      * UNKONWN DB
      */
-    OTHER("other", "ÆäËûÊý¾Ý¿â");
+    OTHER("other", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½");
 
     /**
-     * Êý¾Ý¿âÃû³Æ
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     private final String db;
     /**
-     * ÃèÊö
+     * ï¿½ï¿½ï¿½ï¿½
      */
     private final String desc;
 
-
     /**
-     * »ñÈ¡Êý¾Ý¿âÀàÐÍ
+     * ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
      *
-     * @param dbType Êý¾Ý¿âÀàÐÍ×Ö·û´®
+     * @param dbType ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      */
     public static DbType getDbType(String dbType) {
         for (DbType type : DbType.values()) {

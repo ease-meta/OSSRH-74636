@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.cache.redis;
 
 import com.open.cloud.cache.CacheConstant;
@@ -21,7 +37,6 @@ public class RedisCacheResolver extends AbstractCacheResolver {
         super(cacheManager);
     }
 
-
     static RedisCacheResolver of(CacheManager cacheManager) {
         return (cacheManager != null ? new RedisCacheResolver(cacheManager) : null);
     }
@@ -42,16 +57,17 @@ public class RedisCacheResolver extends AbstractCacheResolver {
             if (StringUtils.hasText(cacheName)) {
                 throw new IllegalArgumentException("Cached name cannot be empty");
             }
-            if (cacheName.startsWith(CacheConstant.PARAM) || cacheName.startsWith(CacheConstant.BUSINESS)) {
+            if (cacheName.startsWith(CacheConstant.PARAM)
+                    || cacheName.startsWith(CacheConstant.BUSINESS)) {
                 Cache cache = getCacheManager().getCache(cacheName);
                 if (cache == null) {
-                    throw new IllegalArgumentException("Cannot find cache named '" +
-                            cacheName + "' for " + context.getOperation());
+                    throw new IllegalArgumentException("Cannot find cache named '" + cacheName
+                            + "' for " + context.getOperation());
                 }
                 result.add(cache);
             } else {
-                throw new IllegalArgumentException("Cannot find cache named '" +
-                        cacheName + "' for " + context.getOperation());
+                throw new IllegalArgumentException("Cannot find cache named '" + cacheName
+                        + "' for " + context.getOperation());
             }
         }
         return result;

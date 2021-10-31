@@ -1,17 +1,18 @@
 /*
- * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
- * <p>
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * <p>
- * https://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.boot.generator.mybatis.config.querys;
 
@@ -28,21 +29,22 @@ public class SqlServerQuery extends AbstractDbQuery {
 
     @Override
     public String tablesSql() {
-        return "select * from (select cast(so.name as varchar(500)) as TABLE_NAME, " +
-                "cast(sep.value as varchar(500)) as COMMENTS from sysobjects so " +
-                "left JOIN sys.extended_properties sep on sep.major_id=so.id and sep.minor_id=0 " +
-                "where (xtype='U' or xtype='v')) a where 1=1 ";
+        return "select * from (select cast(so.name as varchar(500)) as TABLE_NAME, "
+                + "cast(sep.value as varchar(500)) as COMMENTS from sysobjects so "
+                + "left JOIN sys.extended_properties sep on sep.major_id=so.id and sep.minor_id=0 "
+                + "where (xtype='U' or xtype='v')) a where 1=1 ";
     }
-
 
     @Override
     public String tableFieldsSql() {
         return "SELECT  cast(a.name AS VARCHAR(500)) AS TABLE_NAME,cast(b.name AS VARCHAR(500)) AS COLUMN_NAME, "
                 + "cast(c.VALUE AS NVARCHAR(500)) AS COMMENTS,cast(sys.types.name AS VARCHAR (500)) AS DATA_TYPE,"
-                + "(" + " SELECT CASE count(1) WHEN 1 then 'PRI' ELSE '' END"
+                + "("
+                + " SELECT CASE count(1) WHEN 1 then 'PRI' ELSE '' END"
                 + " FROM syscolumns,sysobjects,sysindexes,sysindexkeys,systypes "
                 + " WHERE syscolumns.xusertype = systypes.xusertype AND syscolumns.id = object_id (a.name) AND sysobjects.xtype = 'PK'"
-                + " AND sysobjects.parent_obj = syscolumns.id " + " AND sysindexes.id = syscolumns.id "
+                + " AND sysobjects.parent_obj = syscolumns.id "
+                + " AND sysindexes.id = syscolumns.id "
                 + " AND sysobjects.name = sysindexes.name AND sysindexkeys.id = syscolumns.id "
                 + " AND sysindexkeys.indid = sysindexes.indid "
                 + " AND syscolumns.colid = sysindexkeys.colid AND syscolumns.name = b.name) as 'KEY',"
@@ -59,36 +61,30 @@ public class SqlServerQuery extends AbstractDbQuery {
         return "TABLE_NAME";
     }
 
-
     @Override
     public String tableComment() {
         return "COMMENTS";
     }
-
 
     @Override
     public String fieldName() {
         return "COLUMN_NAME";
     }
 
-
     @Override
     public String fieldType() {
         return "DATA_TYPE";
     }
-
 
     @Override
     public String fieldComment() {
         return "COMMENTS";
     }
 
-
     @Override
     public String fieldKey() {
         return "KEY";
     }
-
 
     @Override
     public boolean isKeyIdentity(ResultSet results) throws SQLException {

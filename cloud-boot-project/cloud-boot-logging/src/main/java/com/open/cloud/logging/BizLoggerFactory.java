@@ -16,7 +16,6 @@
  */
 package com.open.cloud.logging;
 
-
 import com.open.cloud.core.util.NewInstanceServiceLoader;
 
 import java.util.Collection;
@@ -59,7 +58,8 @@ public class BizLoggerFactory {
 
     private static ILogFactory defaultLogFactory = null;
 
-    private static Collection<ILogFactory> extensions = NewInstanceServiceLoader.newServiceInstances(ILogFactory.class);
+    private static Collection<ILogFactory> extensions = NewInstanceServiceLoader
+            .newServiceInstances(ILogFactory.class);
 
     static {
         NewInstanceServiceLoader.register(ILogFactory.class);

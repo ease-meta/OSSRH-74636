@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.mybatis.generator.config;
 
 import com.open.cloud.mybatis.generator.util.DbType;
@@ -10,7 +26,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Êý¾Ý¿âÅäÖÃ
+ * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * @author YangHu, hcl, hubin
  * @since 2016/8/30
@@ -19,25 +35,25 @@ public class DataSourceConfig {
 
     public SqlSession getSqlSessionFactory;
     /**
-     * Çý¶¯Á¬½ÓµÄURL
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½URL
      */
     private String url;
     /**
-     * Êý¾Ý¿âÁ¬½ÓÓÃ»§Ãû
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
      */
     private String username;
     /**
-     * Êý¾Ý¿âÁ¬½ÓÃÜÂë
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     private String password;
     /**
-     * Êý¾ÝÔ´ÊµÀý
+     * ï¿½ï¿½ï¿½ï¿½Ô´Êµï¿½ï¿½
      *
      * @since 3.5.0
      */
     private DataSource dataSource;
     /**
-     * Êý¾Ý¿âÁ¬½Ó
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
      *
      * @since 3.5.0
      */
@@ -55,7 +71,6 @@ public class DataSourceConfig {
         return this.getDbType(this.url.toLowerCase());
     }
 
-
     private DbType getDbType(String str) {
         if (str.contains(":mysql:")) {
             return DbType.MYSQL;
@@ -68,10 +83,9 @@ public class DataSourceConfig {
         }
     }
 
-
     /**
-     * ´´½¨Êý¾Ý¿âÁ¬½Ó¶ÔÏó
-     * Õâ·½·¨½¨ÒéÖ»µ÷ÓÃÒ»´Î£¬±Ï¾¹Ö»ÊÇ´úÂëÉú³É£¬ÓÃÒ»¸öÁ¬½Ó¾ÍÐÐ¡£
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½
+     * ï¿½â·½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Î£ï¿½ï¿½Ï¾ï¿½Ö»ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ó¾ï¿½ï¿½Ð¡ï¿½
      *
      * @return Connection
      */
@@ -94,24 +108,20 @@ public class DataSourceConfig {
         return connection;
     }
 
-
     public String getUrl() {
         return url;
     }
-
 
     public String getUsername() {
         return username;
     }
 
-
     public String getPassword() {
         return password;
     }
 
-
     /**
-     * Êý¾Ý¿âÅäÖÃ¹¹½¨Õß
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½
      *
      * @author nieqiurong 2020/10/10.
      * @since 3.5.0
@@ -125,16 +135,16 @@ public class DataSourceConfig {
         }
 
         /**
-         * ¹¹Ôì³õÊ¼»¯·½·¨
+         * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          *
-         * @param url      Êý¾Ý¿âÁ¬½ÓµØÖ·
-         * @param username Êý¾Ý¿âÕËºÅ
-         * @param password Êý¾Ý¿âÃÜÂë
+         * @param url      ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö·
+         * @param username ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ëºï¿½
+         * @param password ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
          */
         public Builder(String url, String username, String password) {
             this();
             if (StringUtils.isBlank(url)) {
-                throw new RuntimeException("ÎÞ·¨´´½¨ÎÄ¼þ£¬ÇëÕýÈ·ÊäÈë url ÅäÖÃÐÅÏ¢£¡");
+                throw new RuntimeException("ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ url ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
             }
             this.dataSourceConfig.url = url;
             this.dataSourceConfig.username = username;
@@ -142,9 +152,9 @@ public class DataSourceConfig {
         }
 
         /**
-         * ¹¹Ôì³õÊ¼»¯·½·¨
+         * ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
          *
-         * @param dataSource Íâ²¿Êý¾ÝÔ´ÊµÀý
+         * @param dataSource ï¿½â²¿ï¿½ï¿½ï¿½ï¿½Ô´Êµï¿½ï¿½
          */
         public Builder(DataSource dataSource) {
             this();
@@ -156,14 +166,14 @@ public class DataSourceConfig {
                 this.dataSourceConfig.connection = conn;
                 this.dataSourceConfig.username = conn.getMetaData().getUserName();
             } catch (SQLException ex) {
-                throw new RuntimeException("¹¹½¨Êý¾Ý¿âÅäÖÃ¶ÔÏóÊ§°Ü!", ex);
+                throw new RuntimeException("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½Ê§ï¿½ï¿½!", ex);
             }
         }
 
         /**
-         * ¹¹½¨Êý¾Ý¿âÅäÖÃ
+         * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
          *
-         * @return Êý¾Ý¿âÅäÖÃ
+         * @return ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½
          */
         public DataSourceConfig build() {
             return this.dataSourceConfig;

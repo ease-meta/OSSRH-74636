@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.core.thread.pool;
 
 import com.open.cloud.core.thread.NamedThreadFactory;
@@ -22,7 +38,8 @@ public class UserThreadPool {
      * The constant CBS_USER_PROCESSOR.
      */
     public static final String CBS_USER_PROCESSOR = "CbsUserProcessor";
-    private static final Logger logger = LoggerFactory.getLogger(UserThreadPool.class);
+    private static final Logger logger = LoggerFactory
+            .getLogger(UserThreadPool.class);
     /**
      * 线程池
      */
@@ -85,8 +102,9 @@ public class UserThreadPool {
      * 初始化线程池
      */
     public void init() {
-        executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, TimeUnit.MILLISECONDS,
-                ThreadPoolUtils.buildQueue(queueSize), new NamedThreadFactory(threadPoolName));
+        executor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
+                TimeUnit.MILLISECONDS, ThreadPoolUtils.buildQueue(queueSize), new NamedThreadFactory(
+                threadPoolName));
         if (allowCoreThreadTimeOut) {
             executor.allowCoreThreadTimeOut(true);
         }
@@ -94,18 +112,18 @@ public class UserThreadPool {
             executor.prestartAllCoreThreads();
         }
         //注册钩子关闭
-       /* ProcessExitEvent.register(() -> {
-            try {
-                executor.shutdown();
-                if (!executor.awaitTermination(this.timeout, TimeUnit.SECONDS)) {
-                    logger.info("UserThreadPool shutdown immediately due to wait timeout.");
-                    executor.shutdownNow();
-                }
-                logger.info("UserThreadPool shutdown complete.");
-            } catch (Exception e) {
-                logger.error("ShutdownHook for UserThreadPool error.{}", e.getMessage());
-            }
-        }, Integer.MAX_VALUE, false);*/
+        /* ProcessExitEvent.register(() -> {
+             try {
+                 executor.shutdown();
+                 if (!executor.awaitTermination(this.timeout, TimeUnit.SECONDS)) {
+                     logger.info("UserThreadPool shutdown immediately due to wait timeout.");
+                     executor.shutdownNow();
+                 }
+                 logger.info("UserThreadPool shutdown complete.");
+             } catch (Exception e) {
+                 logger.error("ShutdownHook for UserThreadPool error.{}", e.getMessage());
+             }
+         }, Integer.MAX_VALUE, false);*/
     }
 
     /**
