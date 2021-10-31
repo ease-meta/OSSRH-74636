@@ -1,3 +1,19 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.open.cloud.test.javassist;
 
 import javassist.*;
@@ -11,7 +27,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
-
 /**
  * 使用Javassist操作类的工具类
  */
@@ -24,7 +39,6 @@ public final class JavassistClassUtils {
     static {
         POOL.appendClassPath(new ClassClassPath(JavassistClassUtils.class));
     }
-
 
     private static CtClass getCtClass(ClassPool pool, String name) throws Exception {
         return pool.get(name);
@@ -69,7 +83,8 @@ public final class JavassistClassUtils {
         return pool.makeClass(className);
     }
 
-    private static void addInterfaceAndLog(ClassPool pool, CtClass ctClass, String name) throws Exception {
+    private static void addInterfaceAndLog(ClassPool pool, CtClass ctClass, String name)
+            throws Exception {
         if (name == null) {
             return;
         }
@@ -92,12 +107,13 @@ public final class JavassistClassUtils {
         if (Map.class == clazz) {
             return true;
         }
-        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream().anyMatch(new Predicate<Class<?>>() {
-            @Override
-            public boolean test(Class<?> aClass) {
-                return Map.class == aClass;
-            }
-        });
+        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream()
+                .anyMatch(new Predicate<Class<?>>() {
+                    @Override
+                    public boolean test(Class<?> aClass) {
+                        return Map.class == aClass;
+                    }
+                });
     }
 
     public static boolean isBean(Class clazz) {
@@ -108,23 +124,25 @@ public final class JavassistClassUtils {
         if (Set.class == clazz) {
             return true;
         }
-        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream().anyMatch(new Predicate<Class<?>>() {
-            @Override
-            public boolean test(Class<?> aClass) {
-                return Set.class == aClass;
-            }
-        });
+        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream()
+                .anyMatch(new Predicate<Class<?>>() {
+                    @Override
+                    public boolean test(Class<?> aClass) {
+                        return Set.class == aClass;
+                    }
+                });
     }
 
     public static boolean isList(Class clazz) {
         if (List.class == clazz) {
             return true;
         }
-        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream().anyMatch(new Predicate<Class<?>>() {
-            @Override
-            public boolean test(Class<?> aClass) {
-                return List.class == aClass;
-            }
-        });
+        return ClassUtils.getAllInterfacesForClassAsSet(clazz).stream()
+                .anyMatch(new Predicate<Class<?>>() {
+                    @Override
+                    public boolean test(Class<?> aClass) {
+                        return List.class == aClass;
+                    }
+                });
     }
 }

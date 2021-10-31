@@ -33,6 +33,10 @@
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
         <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.open.cloud</groupId>
             <artifactId>cloud-boot-flow</artifactId>
         </dependency>

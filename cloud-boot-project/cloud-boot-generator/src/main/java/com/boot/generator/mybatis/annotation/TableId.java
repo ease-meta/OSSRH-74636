@@ -18,25 +18,12 @@ package com.boot.generator.mybatis.annotation;
 
 import java.lang.annotation.*;
 
-/**
- * ��������ʶ
- *
- * @author hubin
- * @since 2016-01-23
- */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 public @interface TableId {
 
-    /**
-     * �ֶ�������ֵ���ޣ�
-     */
     String value() default "";
 
-    /**
-     * ��������
-     * {@link IdType}
-     */
     IdType type() default IdType.NONE;
 }

@@ -1,9 +1,10 @@
 /*
- * Copyright (c) 2011-2021, baomidou (jobob@qq.com).
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -42,15 +43,23 @@ import java.util.Properties;
  * @since 3.4.0
  */
 @SuppressWarnings({"rawtypes"})
-@Intercepts(
-        {
-                @Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}),
-                @Signature(type = StatementHandler.class, method = "getBoundSql", args = {}),
-                @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
-                @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
-                @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class, CacheKey.class, BoundSql.class}),
-        }
-)
+@Intercepts({
+        @Signature(type = StatementHandler.class, method = "prepare", args = {
+                Connection.class,
+                Integer.class}),
+        @Signature(type = StatementHandler.class, method = "getBoundSql", args = {}),
+        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class,
+                Object.class}),
+        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class,
+                Object.class,
+                RowBounds.class,
+                ResultHandler.class}),
+        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class,
+                Object.class,
+                RowBounds.class,
+                ResultHandler.class,
+                CacheKey.class,
+                BoundSql.class}),})
 public class MybatisInterceptor extends PageInterceptor {
 
     private String default_dialect_class = "com.open.cloud.test.web.mybatis.MybatisPageHelper";
@@ -101,14 +110,16 @@ public class MybatisInterceptor extends PageInterceptor {
     }
 
     private Long count(Executor executor, MappedStatement ms, Object parameter,
-                       RowBounds rowBounds, ResultHandler resultHandler,
-                       BoundSql boundSql) throws SQLException {
+                       RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)
+            throws SQLException {
         String countMsId = ms.getId() + countSuffix;
         Long count;
         //先判断是否存在手写的 count 查询
-        MappedStatement countMs = ExecutorUtil.getExistedMappedStatement(ms.getConfiguration(), countMsId);
+        MappedStatement countMs = ExecutorUtil.getExistedMappedStatement(ms.getConfiguration(),
+                countMsId);
         if (countMs != null) {
-            count = ExecutorUtil.executeManualCount(executor, countMs, parameter, boundSql, resultHandler);
+            count = ExecutorUtil.executeManualCount(executor, countMs, parameter, boundSql,
+                    resultHandler);
         } else {
             if (msCountMap != null) {
                 countMs = msCountMap.get(countMsId);
@@ -121,13 +132,15 @@ public class MybatisInterceptor extends PageInterceptor {
                     msCountMap.put(countMsId, countMs);
                 }
             }
-            count = ExecutorUtil.executeAutoCount(this.dialect, executor, countMs, parameter, boundSql, rowBounds, resultHandler);
+            count = ExecutorUtil.executeAutoCount(this.dialect, executor, countMs, parameter,
+                    boundSql, rowBounds, resultHandler);
         }
         return count;
     }
 
     public static MappedStatement newCountMappedStatement(MappedStatement ms, String newMsId) {
-        MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), newMsId, ms.getSqlSource(), SqlCommandType.SELECT);
+        MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(),
+                newMsId, ms.getSqlSource(), SqlCommandType.SELECT);
         builder.resource(ms.getResource());
         builder.fetchSize(ms.getFetchSize());
         builder.statementType(ms.getStatementType());
@@ -144,7 +157,8 @@ public class MybatisInterceptor extends PageInterceptor {
         builder.parameterMap(ms.getParameterMap());
         //count查询返回值int
         List<ResultMap> resultMaps = new ArrayList<ResultMap>();
-        ResultMap resultMap = new ResultMap.Builder(ms.getConfiguration(), ms.getId(), Long.class, EMPTY_RESULTMAPPING).build();
+        ResultMap resultMap = new ResultMap.Builder(ms.getConfiguration(), ms.getId(), Long.class,
+                EMPTY_RESULTMAPPING).build();
         resultMaps.add(resultMap);
         builder.resultMaps(resultMaps);
         builder.resultSetType(ms.getResultSetType());
@@ -162,7 +176,6 @@ public class MybatisInterceptor extends PageInterceptor {
         }
         return target;
     }
-
 
     /**
      * 使用内部规则,拿分页插件举个栗子:

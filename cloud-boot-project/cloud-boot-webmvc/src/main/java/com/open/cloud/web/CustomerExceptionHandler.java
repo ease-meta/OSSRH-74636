@@ -17,6 +17,7 @@
 package com.open.cloud.web;
 
 import com.open.cloud.core.exception.BusinessException;
+import com.open.cloud.domain.api.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -32,9 +33,8 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public Result Execption(Exception e) {
+    public BaseResponse Execption(Exception e) {
         log.error("未知异常！", e);
-        return Result.error(ResultMsgEnum.SERVER_BUSY.getCode(),
-                ResultMsgEnum.SERVER_BUSY.getMessage());
+        return BaseResponse.fail();
     }
 }

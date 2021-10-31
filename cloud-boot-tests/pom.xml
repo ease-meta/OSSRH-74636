@@ -12,12 +12,12 @@
 
     <artifactId>cloud-boot-tests</artifactId>
     <properties>
-        <main.user.dir>${basedir}</main.user.dir>
+        <main.user.dir>${basedir}/../</main.user.dir>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.open.cloud</groupId>
-            <artifactId>cloud-boot-webmvc</artifactId>
+            <artifactId>cloud-boot-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>com.open.cloud</groupId>

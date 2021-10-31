@@ -21,9 +21,7 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.stereotype.Component;
 
-@Component
 public class SpringApplicationContext implements ApplicationContextAware, BeanFactoryPostProcessor {
     private static ApplicationContext context;
 

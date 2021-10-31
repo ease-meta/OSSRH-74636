@@ -17,12 +17,12 @@
 package com.boot.generator.mybatis.annotation;
 
 /**
- * �ֶ�������ö����
+ * 字段填充策略枚举类
  *
  * <p>
- * �ж�ע��� insert �� update �� sql �ű��Ƿ��ڶ�Ӧ����º��Ե��ֶε� if ��ǩ����
+ * 判断注入的 insert 和 update 的 sql 脚本是否在对应情况下忽略掉字段的 if 标签生成
  * <if test="...">......</if>
- * �ж����ȼ��� {@link FieldStrategy} ��
+ * 判断优先级比 {@link FieldStrategy} 高
  * </p>
  *
  * @author hubin
@@ -30,19 +30,19 @@ package com.boot.generator.mybatis.annotation;
  */
 public enum FieldFill {
     /**
-     * Ĭ�ϲ�����
+     * 默认不处理
      */
     DEFAULT,
     /**
-     * ����ʱ����ֶ�
+     * 插入时填充字段
      */
     INSERT,
     /**
-     * ����ʱ����ֶ�
+     * 更新时填充字段
      */
     UPDATE,
     /**
-     * ����͸���ʱ����ֶ�
+     * 插入和更新时填充字段
      */
     INSERT_UPDATE
 }

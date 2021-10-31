@@ -25,7 +25,7 @@ import org.apache.ibatis.type.UnknownTypeHandler;
 import java.lang.annotation.*;
 
 /**
- * ���ֶα�ʶ
+ * 表字段标识
  *
  * @author hubin sjy tantan
  * @since 2016-09-09
@@ -36,96 +36,96 @@ import java.lang.annotation.*;
 public @interface TableField {
 
     /**
-     * ���ݿ��ֶ�ֵ
+     * 数据库字段值
      * <p>
-     * ����Ҫ���ø�ֵ�����:
-     * <li> �� {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Ϊ true ʱ,
-     * (mp��Ĭ����true,mybatisĬ����false), ���ݿ��ֶ�ֵ.replace("_","").toUpperCase() == ʵ��������.toUpperCase() </li>
-     * <li> �� {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} Ϊ false ʱ,
-     * ���ݿ��ֶ�ֵ.toUpperCase() == ʵ��������.toUpperCase() </li>
+     * 不需要配置该值的情况:
+     * <li> 当 {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} 为 true 时,
+     * (mp下默认是true,mybatis默认是false), 数据库字段值.replace("_","").toUpperCase() == 实体属性名.toUpperCase() </li>
+     * <li> 当 {@link com.baomidou.mybatisplus.core.MybatisConfiguration#mapUnderscoreToCamelCase} 为 false 时,
+     * 数据库字段值.toUpperCase() == 实体属性名.toUpperCase() </li>
      */
     String value() default "";
 
     /**
-     * �Ƿ�Ϊ���ݿ���ֶ�
+     * 是否为数据库表字段
      * <p>
-     * Ĭ�� true ���ڣ�false ������
+     * 默认 true 存在，false 不存在
      */
     boolean exist() default true;
 
     /**
-     * �ֶ� where ʵ���ѯ�Ƚ�����
+     * 字段 where 实体查询比较条件
      * <p>
-     * Ĭ�� {@link SqlCondition#EQUAL}
+     * 默认 {@link SqlCondition#EQUAL}
      */
     String condition() default "";
 
     /**
-     * �ֶ� update set ����ע��, ��ע������ el ע��ʹ��
+     * 字段 update set 部分注入, 该注解优于 el 注解使用
      * <p>
-     * ��1��@TableField(.. , update="%s+1") ���� %s �����Ϊ�ֶ�
-     * ��� SQL Ϊ��update �� set �ֶ�=�ֶ�+1 where ...
+     * 例1：@TableField(.. , update="%s+1") 其中 %s 会填充为字段
+     * 输出 SQL 为：update 表 set 字段=字段+1 where ...
      * <p>
-     * ��2��@TableField(.. , update="now()") ʹ�����ݿ�ʱ��
-     * ��� SQL Ϊ��update �� set �ֶ�=now() where ...
+     * 例2：@TableField(.. , update="now()") 使用数据库时间
+     * 输出 SQL 为：update 表 set 字段=now() where ...
      */
     String update() default "";
 
     /**
-     * �ֶ���֤����֮ insert: ��insert����ʱ�����ֶ�ƴ��insert���ʱ�Ĳ���
+     * 字段验证策略之 insert: 当insert操作时，该字段拼接insert语句时的策略
      * <p>
-     * IGNORED: ֱ��ƴ�� insert into table_a(column) values (#{columnProperty});
+     * IGNORED: 直接拼接 insert into table_a(column) values (#{columnProperty});
      * NOT_NULL: insert into table_a(<if test="columnProperty != null">column</if>) values (<if test="columnProperty != null">#{columnProperty}</if>)
      * NOT_EMPTY: insert into table_a(<if test="columnProperty != null and columnProperty!=''">column</if>) values (<if test="columnProperty != null and columnProperty!=''">#{columnProperty}</if>)
-     * NOT_EMPTY �����Ե��Ƿ� CharSequence ���͵��ֶ���Ч������ NOT_NULL
+     * NOT_EMPTY 如果针对的是非 CharSequence 类型的字段则效果等于 NOT_NULL
      *
      * @since 3.1.2
      */
-    // FieldStrategy insertStrategy() default FieldStrategy.DEFAULT;
+    //FieldStrategy insertStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * �ֶ���֤����֮ update: �����²���ʱ�����ֶ�ƴ��set���ʱ�Ĳ���
+     * 字段验证策略之 update: 当更新操作时，该字段拼接set语句时的策略
      * <p>
-     * IGNORED: ֱ��ƴ�� update table_a set column=#{columnProperty}, ����Ϊnull/��string���ᱻset��ȥ
+     * IGNORED: 直接拼接 update table_a set column=#{columnProperty}, 属性为null/空string都会被set进去
      * NOT_NULL: update table_a set <if test="columnProperty != null">column=#{columnProperty}</if>
      * NOT_EMPTY: update table_a set <if test="columnProperty != null and columnProperty!=''">column=#{columnProperty}</if>
-     * NOT_EMPTY �����Ե��Ƿ� CharSequence ���͵��ֶ���Ч������ NOT_NULL
+     * NOT_EMPTY 如果针对的是非 CharSequence 类型的字段则效果等于 NOT_NULL
      *
      * @since 3.1.2
      */
-    // FieldStrategy updateStrategy() default FieldStrategy.DEFAULT;
+    //FieldStrategy updateStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * �ֶ���֤����֮ where: ��ʾ���ֶ���ƴ��where����ʱ�Ĳ���
+     * 字段验证策略之 where: 表示该字段在拼接where条件时的策略
      * <p>
-     * IGNORED: ֱ��ƴ�� column=#{columnProperty}
+     * IGNORED: 直接拼接 column=#{columnProperty}
      * NOT_NULL: <if test="columnProperty != null">column=#{columnProperty}</if>
      * NOT_EMPTY: <if test="columnProperty != null and columnProperty!=''">column=#{columnProperty}</if>
-     * NOT_EMPTY �����Ե��Ƿ� CharSequence ���͵��ֶ���Ч������ NOT_NULL
+     * NOT_EMPTY 如果针对的是非 CharSequence 类型的字段则效果等于 NOT_NULL
      *
      * @since 3.1.2
      */
-    // FieldStrategy whereStrategy() default FieldStrategy.DEFAULT;
+    //FieldStrategy whereStrategy() default FieldStrategy.DEFAULT;
 
     /**
-     * �ֶ��Զ�������
+     * 字段自动填充策略
      * <p>
-     * �ڶ�Ӧģʽ�½������ insertStrategy �� updateStrategy ������,���ڶ��Ը��ֶα���ֵ
+     * 在对应模式下将会忽略 insertStrategy 或 updateStrategy 的配置,等于断言该字段必有值
      */
     FieldFill fill() default FieldFill.DEFAULT;
 
     /**
-     * �Ƿ���� select ��ѯ
+     * 是否进行 select 查询
      * <p>
-     * ���ֶο�����Ϊ false ������ select ��ѯ��Χ
+     * 大字段可设置为 false 不加入 select 查询范围
      */
     boolean select() default true;
 
     /**
-     * �Ƿ񱣳�ʹ��ȫ�ֵ� columnFormat ��ֵ
+     * 是否保持使用全局的 columnFormat 的值
      * <p>
-     * ֻ��Ч�� ��������ȫ�ֵ� columnFormat Ҳ���������� {@link #value()} ��ֵ
-     * ����� false , ȫ�ֵ� columnFormat ����Ч
+     * 只生效于 既设置了全局的 columnFormat 也设置了上面 {@link #value()} 的值
+     * 如果是 false , 全局的 columnFormat 不生效
      *
      * @since 3.1.1
      */
@@ -139,9 +139,9 @@ public @interface TableField {
     String property() default "";
 
     /**
-     * JDBC���� (��Ĭ��ֵ������ᰴ�ո�ֵ��Ч),
-     * ֻ��Ч�� mp �Զ�ע��� method,
-     * ������� {@link TableName#autoResultMap()} һ��ʹ��
+     * JDBC类型 (该默认值不代表会按照该值生效),
+     * 只生效于 mp 自动注入的 method,
+     * 建议配合 {@link TableName#autoResultMap()} 一起使用
      * <p>
      * {@link ResultMapping#jdbcType} and {@link ParameterMapping#jdbcType}
      *
@@ -150,9 +150,9 @@ public @interface TableField {
     JdbcType jdbcType() default JdbcType.UNDEFINED;
 
     /**
-     * ���ʹ����� (��Ĭ��ֵ������ᰴ�ո�ֵ��Ч),
-     * ֻ��Ч�� mp �Զ�ע��� method,
-     * ������� {@link TableName#autoResultMap()} һ��ʹ��
+     * 类型处理器 (该默认值不代表会按照该值生效),
+     * 只生效于 mp 自动注入的 method,
+     * 建议配合 {@link TableName#autoResultMap()} 一起使用
      * <p>
      * {@link ResultMapping#typeHandler} and {@link ParameterMapping#typeHandler}
      *
@@ -161,9 +161,9 @@ public @interface TableField {
     Class<? extends TypeHandler> typeHandler() default UnknownTypeHandler.class;
 
     /**
-     * ֻ��ʹ���� {@link #typeHandler()} ʱ�ж��Ƿ���׷�� javaType
+     * 只在使用了 {@link #typeHandler()} 时判断是否辅助追加 javaType
      * <p>
-     * һ������²��Ƽ�ʹ��
+     * 一般情况下不推荐使用
      * {@link ParameterMapping#javaType}
      *
      * @since 3.4.0 @2020-07-23
@@ -171,9 +171,9 @@ public @interface TableField {
     boolean javaType() default false;
 
     /**
-     * ָ��С���������λ��,
-     * ֻ��Ч�� mp �Զ�ע��� method,
-     * ������� {@link TableName#autoResultMap()} һ��ʹ��
+     * 指定小数点后保留的位数,
+     * 只生效于 mp 自动注入的 method,
+     * 建议配合 {@link TableName#autoResultMap()} 一起使用
      * <p>
      * {@link ParameterMapping#numericScale}
      *
