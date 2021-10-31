@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * MybatisPlus Ö§³ÖµÄÊı¾İ¿âÀàĞÍ,Ö÷ÒªÓÃÓÚ·ÖÒ³·½ÑÔ
+ * MybatisPlus æ”¯æŒçš„æ•°æ®åº“ç±»å‹,ä¸»è¦ç”¨äºåˆ†é¡µæ–¹è¨€
  *
  * @author hubin
  * @since 2018-06-23
@@ -16,129 +16,129 @@ public enum DbType {
     /**
      * MYSQL
      */
-    MYSQL("mysql", "MySqlÊı¾İ¿â"),
+    MYSQL("mysql", "MySqlæ•°æ®åº“"),
     /**
      * MARIADB
      */
-    MARIADB("mariadb", "MariaDBÊı¾İ¿â"),
+    MARIADB("mariadb", "MariaDBæ•°æ®åº“"),
     /**
      * ORACLE
      */
-    ORACLE("oracle", "Oracle11g¼°ÒÔÏÂÊı¾İ¿â(¸ß°æ±¾ÍÆ¼öÊ¹ÓÃORACLE_NEW)"),
+    ORACLE("oracle", "Oracle11gåŠä»¥ä¸‹æ•°æ®åº“(é«˜ç‰ˆæœ¬æ¨èä½¿ç”¨ORACLE_NEW)"),
     /**
      * oracle12c new pagination
      */
-    ORACLE_12C("oracle12c", "Oracle12c+Êı¾İ¿â"),
+    ORACLE_12C("oracle12c", "Oracle12c+æ•°æ®åº“"),
     /**
      * DB2
      */
-    DB2("db2", "DB2Êı¾İ¿â"),
+    DB2("db2", "DB2æ•°æ®åº“"),
     /**
      * H2
      */
-    H2("h2", "H2Êı¾İ¿â"),
+    H2("h2", "H2æ•°æ®åº“"),
     /**
      * HSQL
      */
-    HSQL("hsql", "HSQLÊı¾İ¿â"),
+    HSQL("hsql", "HSQLæ•°æ®åº“"),
     /**
      * SQLITE
      */
-    SQLITE("sqlite", "SQLiteÊı¾İ¿â"),
+    SQLITE("sqlite", "SQLiteæ•°æ®åº“"),
     /**
      * POSTGRE
      */
-    POSTGRE_SQL("postgresql", "PostgreÊı¾İ¿â"),
+    POSTGRE_SQL("postgresql", "Postgreæ•°æ®åº“"),
     /**
      * SQLSERVER2005
      */
-    SQL_SERVER2005("sqlserver2005", "SQLServer2005Êı¾İ¿â"),
+    SQL_SERVER2005("sqlserver2005", "SQLServer2005æ•°æ®åº“"),
     /**
      * SQLSERVER
      */
-    SQL_SERVER("sqlserver", "SQLServerÊı¾İ¿â"),
+    SQL_SERVER("sqlserver", "SQLServeræ•°æ®åº“"),
     /**
      * DM
      */
-    DM("dm", "´ïÃÎÊı¾İ¿â"),
+    DM("dm", "è¾¾æ¢¦æ•°æ®åº“"),
     /**
      * xugu
      */
-    XU_GU("xugu", "Ğé¹ÈÊı¾İ¿â"),
+    XU_GU("xugu", "è™šè°·æ•°æ®åº“"),
     /**
      * Kingbase
      */
-    KINGBASE_ES("kingbasees", "ÈË´ó½ğ²ÖÊı¾İ¿â"),
+    KINGBASE_ES("kingbasees", "äººå¤§é‡‘ä»“æ•°æ®åº“"),
     /**
      * Phoenix
      */
-    PHOENIX("phoenix", "Phoenix HBaseÊı¾İ¿â"),
+    PHOENIX("phoenix", "Phoenix HBaseæ•°æ®åº“"),
     /**
      * Gauss
      */
-    GAUSS("zenith", "Gauss Êı¾İ¿â"),
+    GAUSS("zenith", "Gauss æ•°æ®åº“"),
     /**
      * ClickHouse
      */
-    CLICK_HOUSE("clickhouse", "clickhouse Êı¾İ¿â"),
+    CLICK_HOUSE("clickhouse", "clickhouse æ•°æ®åº“"),
     /**
      * GBase
      */
-    GBASE("gbase", "ÄÏ´óÍ¨ÓÃ(»ª¿â)Êı¾İ¿â"),
-    GBASEDBT("gbasedbt", "ÄÏ´óÍ¨ÓÃÊı¾İ¿â"),
+    GBASE("gbase", "å—å¤§é€šç”¨(ååº“)æ•°æ®åº“"),
+    GBASEDBT("gbasedbt", "å—å¤§é€šç”¨æ•°æ®åº“"),
     /**
      * Oscar
      */
-    OSCAR("oscar", "ÉñÍ¨Êı¾İ¿â"),
+    OSCAR("oscar", "ç¥é€šæ•°æ®åº“"),
     /**
      * Sybase
      */
-    SYBASE("sybase", "Sybase ASE Êı¾İ¿â"),
+    SYBASE("sybase", "Sybase ASE æ•°æ®åº“"),
     /**
      * OceanBase
      */
-    OCEAN_BASE("oceanbase", "OceanBase Êı¾İ¿â"),
+    OCEAN_BASE("oceanbase", "OceanBase æ•°æ®åº“"),
     /**
      * Firebird
      */
-    FIREBIRD("Firebird", "Firebird Êı¾İ¿â"),
+    FIREBIRD("Firebird", "Firebird æ•°æ®åº“"),
 
     /**
      * HighGo
      */
-    HIGH_GO("highgo", "å«¸ßÊı¾İ¿â"),
+    HIGH_GO("highgo", "ç€šé«˜æ•°æ®åº“"),
     /**
      * CUBRID
      */
-    CUBRID("cubrid", "CUBRIDÊı¾İ¿â"),
+    CUBRID("cubrid", "CUBRIDæ•°æ®åº“"),
 
     /**
      * GOLDILOCKS
      */
-    GOLDILOCKS("goldilocks", "GOLDILOCKSÊı¾İ¿â"),
+    GOLDILOCKS("goldilocks", "GOLDILOCKSæ•°æ®åº“"),
     /**
      * CSIIDB
      */
-    CSIIDB("csiidb", "CSIIDBÊı¾İ¿â"),
+    CSIIDB("csiidb", "CSIIDBæ•°æ®åº“"),
     /**
      * UNKONWN DB
      */
-    OTHER("other", "ÆäËûÊı¾İ¿â");
+    OTHER("other", "å…¶ä»–æ•°æ®åº“");
 
     /**
-     * Êı¾İ¿âÃû³Æ
+     * æ•°æ®åº“åç§°
      */
     private final String db;
     /**
-     * ÃèÊö
+     * æè¿°
      */
     private final String desc;
 
 
     /**
-     * »ñÈ¡Êı¾İ¿âÀàĞÍ
+     * è·å–æ•°æ®åº“ç±»å‹
      *
-     * @param dbType Êı¾İ¿âÀàĞÍ×Ö·û´®
+     * @param dbType æ•°æ®åº“ç±»å‹å­—ç¬¦ä¸²
      */
     public static DbType getDbType(String dbType) {
         for (DbType type : DbType.values()) {

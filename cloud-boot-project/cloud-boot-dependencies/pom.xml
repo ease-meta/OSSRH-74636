@@ -6,13 +6,15 @@
     <parent>
         <groupId>com.open.cloud</groupId>
         <artifactId>cloud-boot-build</artifactId>
-        <version>${revision}</version>
+        <version>2021.0.0-SNAPSHOT</version>
         <relativePath>../..</relativePath>
     </parent>
 
     <artifactId>cloud-boot-dependencies</artifactId>
     <packaging>pom</packaging>
-
+    <properties>
+        <main.user.dir>${basedir}/../../</main.user.dir>
+    </properties>
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
@@ -41,93 +43,97 @@
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-aspect</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-sdk</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-webmvc</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.open.cloud</groupId>
+                <artifactId>cloud-boot-webflux</artifactId>
+                <version>2021.0.0-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-swagger</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-core</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-mybatis</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-jpa</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-generator</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-logging</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-cache</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-flow</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-flowable</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-transaction</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-asynctool</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-adapter</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-domain</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-sequence</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.open.cloud</groupId>
                 <artifactId>cloud-boot-scheduler</artifactId>
-                <version>${revision}</version>
+                <version>2021.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

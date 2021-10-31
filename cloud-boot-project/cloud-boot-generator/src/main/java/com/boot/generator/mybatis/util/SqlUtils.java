@@ -16,10 +16,10 @@ public class SqlUtils {
     private static final Logger logger = LoggerFactory.getLogger(SqlUtils.class);
 
     /**
-     * ÓÃ%Á¬½Ólike
+     * ï¿½ï¿½%ï¿½ï¿½ï¿½ï¿½like
      *
-     * @param str Ô­×Ö·û´®
-     * @return like µÄÖµ
+     * @param str Ô­ï¿½Ö·ï¿½ï¿½ï¿½
+     * @return like ï¿½ï¿½Öµ
      */
     public static String concatLike(Object str, SqlLike type) {
         switch (type) {

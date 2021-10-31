@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cloud-boot-build</artifactId>
         <groupId>com.open.cloud</groupId>
-        <version>${revision}</version>
+        <version>2021.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -22,6 +22,7 @@
         <module>cloud-boot-aspect</module>
         <module>cloud-boot-sdk</module>
         <module>cloud-boot-webmvc</module>
+        <module>cloud-boot-webflux</module>
         <module>cloud-boot-swagger</module>
         <module>cloud-boot-core</module>
         <module>cloud-boot-mybatis</module>

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/10/7 11:21
  */
 @Configuration(proxyBeanMethods = false)
-public class CloudBootCoreAutoConfiguration {
+public class WebMvcCoreAutoConfiguration {
 
 
     @Bean
