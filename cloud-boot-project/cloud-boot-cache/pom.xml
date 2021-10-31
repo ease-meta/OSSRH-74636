@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>cloud-boot-parent</artifactId>
-        <groupId>io.gitee.ease-meta</groupId>
+        <groupId>io.github.ease-meta</groupId>
         <version>2021.0.0-SNAPSHOT</version>
         <relativePath>../cloud-boot-parent</relativePath>
     </parent>
@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>io.gitee.ease-meta</groupId>
+            <groupId>io.github.ease-meta</groupId>
             <artifactId>cloud-boot-domain</artifactId>
         </dependency>
 
