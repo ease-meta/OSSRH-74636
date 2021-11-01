@@ -21,7 +21,12 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
+    <scm>
+        <tag></tag>
+        <url></url>
+        <connection>scm:git:</connection>
+        <developerConnection></developerConnection>
+    </scm>
     <developers>
         <developer>
             <name>leijian</name>
