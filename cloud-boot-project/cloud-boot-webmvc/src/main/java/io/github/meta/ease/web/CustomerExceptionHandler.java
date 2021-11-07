@@ -17,7 +17,7 @@
 package io.github.meta.ease.web;
 
 import io.github.meta.ease.core.exception.BusinessException;
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.api.BaseResponseBack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -33,8 +33,8 @@ public class CustomerExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public BaseResponse Execption(Exception e) {
+    public BaseResponseBack Execption(Exception e) {
         log.error("未知异常！", e);
-        return BaseResponse.fail();
+        return BaseResponseBack.fail();
     }
 }

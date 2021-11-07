@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.flow.stria.api;
+package io.github.meta.ease.flow.engine;
 
 import io.github.meta.ease.core.commons.ServiceHandler;
 import io.github.meta.ease.domain.api.BaseRequest;
-import io.github.meta.ease.flow.busi.api.IProcess;
+import io.github.meta.ease.flow.engine.process.IProcess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

@@ -21,7 +21,7 @@ package io.github.meta.ease.core.exception;
  * Created by macro on 2019/4/19.
  */
 public interface IErrorCode {
-    long getCode();
+    String getCode();
 
     String getMessage();
 }

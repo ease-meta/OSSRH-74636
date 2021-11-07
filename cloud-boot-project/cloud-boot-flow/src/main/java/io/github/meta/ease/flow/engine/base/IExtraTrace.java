@@ -14,15 +14,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.flow.busi.api;
+package io.github.meta.ease.flow.engine.base;
 
-public interface BusinessTraceNo {
+import io.github.meta.ease.domain.api.BaseRequest;
+
+public interface IExtraTrace {
 
     /**
-     * 生成交易参考号
+     * 登记平台流水
      *
-     * @return 交易参考号
+     * @param baseRequest 流程入参
      */
-    String generator();
-
+    void trace(BaseRequest baseRequest);
 }

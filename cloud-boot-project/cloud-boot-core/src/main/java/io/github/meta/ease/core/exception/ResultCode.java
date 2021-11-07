@@ -21,23 +21,43 @@ package io.github.meta.ease.core.exception;
  * Created by macro on 2019/4/19.
  */
 public enum ResultCode implements IErrorCode {
-    SUCCESS(200, "操作成功"), FAILED(500, "操作失败"), VALIDATE_FAILED(404, "参数检验失败"), UNAUTHORIZED(401,
-            "暂未登录或token已经过期"), FORBIDDEN(
-            403,
-            "没有相关权限");
-    private long code;
+    SUCCESS("200", "操作成功", "S"),
+    FAILED("500", "操作失败", "F"),
+    VALIDATE_FAILED("404", "参数检验失败", "F"),
+    UNAUTHORIZED("401", "暂未登录或token已经过期", "F"),
+    FORBIDDEN("403", "没有相关权限", "F");
+    private String code;
     private String message;
+    private String status;
 
-    private ResultCode(long code, String message) {
+    private ResultCode(String code, String message, String status) {
         this.code = code;
         this.message = message;
     }
 
-    public long getCode() {
+    @Override
+    public String getCode() {
         return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    @Override
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

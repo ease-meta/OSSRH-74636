@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.cache.api;
 
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.api.BaseResponseBack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,17 +36,17 @@ public class ClearCache {
     private Cache cache;
 
     @DeleteMapping("/api/cache/evict")
-    public BaseResponse evict(@RequestBody CacheBaseRequest cacheBaseRequest) {
+    public BaseResponseBack evict(@RequestBody CacheBaseRequest cacheBaseRequest) {
         if ("*".equalsIgnoreCase(cacheBaseRequest.getKey())) {
             cache.clear();
         } else {
             cache.evict(cacheBaseRequest.getKey());
         }
-        return BaseResponse.success();
+        return BaseResponseBack.success();
     }
 
     @PostMapping("/api/cache/get")
-    public BaseResponse get(@RequestBody CacheBaseRequest cacheBaseRequest) {
-        return BaseResponse.success(cache.get(cacheBaseRequest.getKey()));
+    public BaseResponseBack get(@RequestBody CacheBaseRequest cacheBaseRequest) {
+        return BaseResponseBack.success(cache.get(cacheBaseRequest.getKey()));
     }
 }

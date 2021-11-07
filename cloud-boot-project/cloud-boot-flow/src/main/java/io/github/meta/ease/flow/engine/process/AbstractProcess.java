@@ -14,36 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.domain.api;
+package io.github.meta.ease.flow.engine.process;
 
-import lombok.Data;
+import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.api.BaseResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+/**
+ * @author leijian
+ * @version 1.0
+ * @date 2021/9/30 22:09
+ */
+public abstract class AbstractProcess<T extends BaseRequest, R extends BaseResponse> implements
+        IProcess<T, R> {
 
-@Data
-public class BaseData implements Serializable {
-
-    private String flowId;
-
-    private Integer id;
-
-    private String processStatus;
-
-    private LocalDateTime updateTime;
-
-    private String updateUser;
-
-    private String createUser;
-
-    private LocalDateTime createTime;
-
-    private String tenantId;
-
-    private String appId;
-
-    private String processId;
-
-    private String operationType;
+    private static final Logger logger = LoggerFactory.getLogger(AbstractProcess.class);
 
 }

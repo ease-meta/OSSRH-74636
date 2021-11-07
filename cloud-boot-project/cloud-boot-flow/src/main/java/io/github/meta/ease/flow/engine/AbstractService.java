@@ -14,15 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.flow.stria.api;
+package io.github.meta.ease.flow.engine;
 
-import io.github.meta.ease.core.exception.BusinessException;
 import io.github.meta.ease.domain.api.BaseRequest;
 import io.github.meta.ease.domain.api.BaseResponse;
-import io.github.meta.ease.flow.busi.api.IProcess;
+import io.github.meta.ease.flow.engine.base.BusinessEngine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public interface BusinessEngine<T extends BaseRequest, R extends BaseResponse> {
+public abstract class AbstractService<T extends BaseRequest, R extends BaseResponse> implements BusinessEngine<T, R> {
 
-    R execFlow(IProcess iProcess, T request) throws BusinessException;
+    private transient final Logger logger = LoggerFactory.getLogger(AbstractService.class);
 
+
+    abstract void executeSystemCheck(T req);
+
+
+    abstract void idempotenCheck(T req);
+
+
+    void initPlatformId(T req) {
+
+    }
 }

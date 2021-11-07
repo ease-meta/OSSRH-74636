@@ -14,30 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.web.controler;
+package io.github.meta.ease.flow.engine.base;
 
-import io.github.meta.ease.flow.engine.FlowExecutor;
-import io.github.meta.ease.test.web.api.IEase14006001;
-import io.github.meta.ease.test.web.module.Ease14006001In;
-import io.github.meta.ease.test.web.module.Ease14006001Out;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:10
+ * 每个执行单元执行完毕后，会回调该接口</p>
+ * 需要监听执行结果的，实现该接口即可
+ *
+ * @author wuweifeng wrote on 2019-11-19.
  */
-@RestController
-@Service
-public class Ease14006001 implements IEase14006001 {
+public interface ICallback<T, R> {
 
-    @Override
-    @PostMapping("/ease/14006001/")
-    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
+    /**
+     * 任务开始的监听
+     */
+    default void begin() {
 
-        return FlowExecutor.execute2Resp(in);
+    }
+
+    /**
+     * 耗时操作执行完毕后，就给value注入值
+     */
+    default void result(boolean success, T param, WorkResult<R> workResult) {
+    }
+
+    default R HanlerExceptionRsovler(T request, R response, Throwable throwable) throws Throwable {
+        return null;
     }
 }

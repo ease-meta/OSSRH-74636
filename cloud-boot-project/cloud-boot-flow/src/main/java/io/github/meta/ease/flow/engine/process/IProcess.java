@@ -14,11 +14,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.flow.busi.api;
+package io.github.meta.ease.flow.engine.process;
+
 
 import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.flow.engine.base.ICallback;
 
-public interface SystemCheck<T extends BaseRequest> {
+import java.lang.reflect.ParameterizedType;
 
-    void systemCheck(T request);
+public interface IProcess<T extends BaseRequest, R extends BaseResponse> extends ICallback<T, R> {
+
+    R process(T request);
+
+    /**
+     * @param request
+     * @return R
+     */
+    default R asyncProcess(T request) {
+        return null;
+    }
+
+    default Class<? extends BaseRequest> getRequestModel() {
+        return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    }
+
+    default Class<? extends BaseResponse> getResponseModel() {
+        return (Class<R>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
+    }
 }

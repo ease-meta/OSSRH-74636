@@ -16,10 +16,10 @@
  */
 package io.github.meta.ease.flow.autoconfigure;
 
-import io.github.meta.ease.flow.stria.api.BusinessEngine;
-import io.github.meta.ease.flow.stria.api.FlowExecutor;
-import io.github.meta.ease.flow.stria.api.ProcessBeanPostProcessor;
-import io.github.meta.ease.flow.stria.api.SimpleBusinessEngine;
+import io.github.meta.ease.flow.engine.FlowExecutor;
+import io.github.meta.ease.flow.engine.ProcessBeanPostProcessor;
+import io.github.meta.ease.flow.engine.SimpleBusinessEngine;
+import io.github.meta.ease.flow.engine.base.BusinessEngine;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

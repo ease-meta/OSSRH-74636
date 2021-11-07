@@ -38,6 +38,7 @@
         <module>cloud-boot-domain</module>
         <module>cloud-boot-sequence</module>
         <module>cloud-boot-scheduler</module>
+        <module>cloud-boot-gateway</module>
     </modules>
 
     <properties>

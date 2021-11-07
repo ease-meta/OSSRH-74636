@@ -14,14 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.domain.api;
+package io.github.meta.ease.flow.engine.base;
 
-import io.github.meta.ease.domain.BaseDTO;
-import lombok.Data;
+import io.github.meta.ease.core.exception.BusinessException;
+import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.flow.engine.process.IProcess;
 
-@Data
-public class BaseRequest extends BaseDTO {
+public interface BusinessEngine<T extends BaseRequest, R extends BaseResponse> {
 
-    private Head head;
+    R execFlow(IProcess iProcess, T request) throws BusinessException;
+
+    void init(T request);
 
 }
