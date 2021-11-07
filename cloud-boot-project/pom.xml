@@ -39,6 +39,7 @@
         <module>cloud-boot-sequence</module>
         <module>cloud-boot-scheduler</module>
         <module>cloud-boot-gateway</module>
+        <module>cloud-boot-springcloud</module>
     </modules>
 
     <properties>
