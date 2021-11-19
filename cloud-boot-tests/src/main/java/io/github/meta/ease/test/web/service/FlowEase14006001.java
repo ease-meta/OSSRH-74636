@@ -16,10 +16,7 @@
  */
 package io.github.meta.ease.test.web.service;
 
-import cn.hutool.db.Page;
-import com.github.pagehelper.ISelect;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+
 import io.github.meta.ease.async.callback.IWorker;
 import io.github.meta.ease.async.executor.Async;
 import io.github.meta.ease.async.wrapper.WorkerWrapper;
@@ -29,7 +26,6 @@ import io.github.meta.ease.flow.engine.process.AbstractProcess;
 import io.github.meta.ease.test.web.controler.Hello;
 import io.github.meta.ease.test.web.module.Ease14006001In;
 import io.github.meta.ease.test.web.module.Ease14006001Out;
-import io.github.meta.ease.test.web.mybatis.demo.entity.SysUser;
 import io.github.meta.ease.test.web.mybatis.demo.mapper.SysUserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,7 +35,6 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -84,15 +79,6 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
         ExpressionParser parser = new SpelExpressionParser();
         StandardEvaluationContext context = new StandardEvaluationContext(request);
 
-        PageInfo<SysUser> p = PageHelper.startPage(1, 3).doSelectPageInfo(new ISelect() {
-            @Override
-            public void doSelect() {
-                HashMap hashMap = new HashMap();
-                hashMap.put("userId", "9999");
-                hashMap.put("page", new Page());
-                sysUserMapper.deleteByPage(hashMap);
-            }
-        });
         Ease14006001Out ease14006001Out = new Ease14006001Out();
         ease14006001Out.setName(request.getName());
         return ease14006001Out;
