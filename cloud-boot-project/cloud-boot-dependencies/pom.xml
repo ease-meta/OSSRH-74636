@@ -140,6 +140,11 @@
                 <artifactId>cloud-boot-scheduler</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
+            <dependency>
+                <groupId>io.github.meta-ease</groupId>
+                <artifactId>cloud-boot-sofa</artifactId>
+                <version>2021.0.0-SNAPSHOT</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

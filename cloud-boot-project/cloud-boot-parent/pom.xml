@@ -65,7 +65,7 @@
         <dubbo-api.version>2.7.8.3</dubbo-api.version>
         <retrofit.version>[2.2.10,)</retrofit.version>
 
-        <sofa-boot.version>3.9.0</sofa-boot.version>
+        <sofa-boot.version>3.9.1</sofa-boot.version>
         <sofa-boot-enterprise.version>3.6.0</sofa-boot-enterprise.version>
         <jboot.version>[3.9.12,)</jboot.version>
         <!--https://github.com/huaweicloud/spring-cloud-huawei-->
@@ -190,6 +190,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>io.github.resilience4j</groupId>
                 <artifactId>resilience4j-bom</artifactId>
