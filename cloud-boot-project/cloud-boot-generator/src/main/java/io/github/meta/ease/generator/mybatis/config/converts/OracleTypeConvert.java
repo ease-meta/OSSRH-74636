@@ -35,25 +35,6 @@ public class OracleTypeConvert implements ITypeConvert {
     public static final OracleTypeConvert INSTANCE = new OracleTypeConvert();
 
     /**
-     * 处理类型转换
-     *
-     * @param config    全局配置
-     * @param fieldType 字段类型
-     * @return 返回的对应的列类型
-     */
-    @Override
-    public IColumnType processTypeConvert(GlobalConfig config, String fieldType) {
-        return TypeConverts.use(fieldType)
-                .test(containsAny("char", "clob").then(STRING))
-                .test(containsAny("date", "timestamp").then(p -> toDateType(config)))
-                .test(contains("number").then(OracleTypeConvert::toNumberType))
-                .test(contains("float").then(FLOAT))
-                .test(contains("blob").then(BLOB))
-                .test(containsAny("binary", "raw").then(BYTE_ARRAY))
-                .or(STRING);
-    }
-
-    /**
      * 将对应的类型名称转换为对应的 java 类类型
      * <p>
      * String.valueOf(Integer.MAX_VALUE).length() == 10
@@ -92,6 +73,25 @@ public class OracleTypeConvert implements ITypeConvert {
             default:
                 return STRING;
         }
+    }
+
+    /**
+     * 处理类型转换
+     *
+     * @param config    全局配置
+     * @param fieldType 字段类型
+     * @return 返回的对应的列类型
+     */
+    @Override
+    public IColumnType processTypeConvert(GlobalConfig config, String fieldType) {
+        return TypeConverts.use(fieldType)
+                .test(containsAny("char", "clob").then(STRING))
+                .test(containsAny("date", "timestamp").then(p -> toDateType(config)))
+                .test(contains("number").then(OracleTypeConvert::toNumberType))
+                .test(contains("float").then(FLOAT))
+                .test(contains("blob").then(BLOB))
+                .test(containsAny("binary", "raw").then(BYTE_ARRAY))
+                .or(STRING);
     }
 
 }

@@ -29,16 +29,6 @@ import java.util.function.Predicate;
 public interface Branch<P, T> {
 
     /**
-     * @return 分支进入条件
-     */
-    Predicate<P> tester();
-
-    /**
-     * @return 值工厂
-     */
-    Function<P, T> factory();
-
-    /**
      * 工厂方法，快速创建分支
      *
      * @param tester  测试器
@@ -62,4 +52,14 @@ public interface Branch<P, T> {
 
         };
     }
+
+    /**
+     * @return 分支进入条件
+     */
+    Predicate<P> tester();
+
+    /**
+     * @return 值工厂
+     */
+    Function<P, T> factory();
 }

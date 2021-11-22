@@ -39,6 +39,28 @@ import java.util.Map;
 </sarray>*/
 
 public class XMLConverter {
+    private static SAXParserFactory factory = SAXParserFactory.newInstance();
+
+    static {
+        factory.setValidating(false);
+    }
+
+    private XMLReader parser;
+    private SaxHandler handler;
+
+    public XMLConverter() {
+        try {
+            this.parser = factory.newSAXParser().getXMLReader();
+            this.handler = new SaxHandler();
+            this.parser.setDTDHandler(this.handler);
+            this.parser.setEntityResolver(this.handler);
+            this.parser.setErrorHandler(this.handler);
+            this.parser.setContentHandler(this.handler);
+        } catch (Exception var3) {
+
+        }
+    }
+
     public static void main(String[] args) {
         XMLConverter xmlConverter = new XMLConverter();
         CommonData commonData = new XMLCommonData();
@@ -162,10 +184,6 @@ public class XMLConverter {
         return array.contains(tagName + ";");
     }
 
-    private static SAXParserFactory factory = SAXParserFactory.newInstance();
-    private XMLReader parser;
-    private SaxHandler handler;
-
     public void load(CommonData root, InputSource in) {
         this.handler.setRoot(root);
         try {
@@ -177,22 +195,5 @@ public class XMLConverter {
              se.addScene("exception", var6);
              throw se;*/
         }
-    }
-
-    public XMLConverter() {
-        try {
-            this.parser = factory.newSAXParser().getXMLReader();
-            this.handler = new SaxHandler();
-            this.parser.setDTDHandler(this.handler);
-            this.parser.setEntityResolver(this.handler);
-            this.parser.setErrorHandler(this.handler);
-            this.parser.setContentHandler(this.handler);
-        } catch (Exception var3) {
-
-        }
-    }
-
-    static {
-        factory.setValidating(false);
     }
 }

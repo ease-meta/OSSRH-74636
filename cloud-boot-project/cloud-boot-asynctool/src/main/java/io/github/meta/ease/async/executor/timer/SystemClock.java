@@ -32,10 +32,6 @@ public class SystemClock {
 
     private final AtomicLong now;
 
-    private static class InstanceHolder {
-        private static final SystemClock INSTANCE = new SystemClock(1);
-    }
-
     private SystemClock(int period) {
         this.period = period;
         this.now = new AtomicLong(System.currentTimeMillis());
@@ -44,6 +40,13 @@ public class SystemClock {
 
     private static SystemClock instance() {
         return InstanceHolder.INSTANCE;
+    }
+
+    /**
+     * 用来替换原来的System.currentTimeMillis()
+     */
+    public static long now() {
+        return instance().currentTimeMillis();
     }
 
     private void scheduleClockUpdating() {
@@ -59,10 +62,7 @@ public class SystemClock {
         return now.get();
     }
 
-    /**
-     * 用来替换原来的System.currentTimeMillis()
-     */
-    public static long now() {
-        return instance().currentTimeMillis();
+    private static class InstanceHolder {
+        private static final SystemClock INSTANCE = new SystemClock(1);
     }
 }

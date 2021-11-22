@@ -34,6 +34,15 @@ import static io.github.meta.ease.generator.mybatis.config.rules.DbColumnType.*;
 public class DmTypeConvert implements ITypeConvert {
     public static final DmTypeConvert INSTANCE = new DmTypeConvert();
 
+    private static IColumnType toNumberType(String typeName) {
+        if (typeName.matches("number\\([0-9]\\)")) {
+            return DbColumnType.INTEGER;
+        } else if (typeName.matches("number\\(1[0-8]\\)")) {
+            return DbColumnType.LONG;
+        }
+        return DbColumnType.BIG_DECIMAL;
+    }
+
     /**
      * 字符数据类型: CHAR,CHARACTER,VARCHAR
      * <p>
@@ -70,14 +79,5 @@ public class DmTypeConvert implements ITypeConvert {
                 .test(contains("blob").then(BLOB))
                 .test(contains("image").then(BYTE_ARRAY))
                 .or(STRING);
-    }
-
-    private static IColumnType toNumberType(String typeName) {
-        if (typeName.matches("number\\([0-9]\\)")) {
-            return DbColumnType.INTEGER;
-        } else if (typeName.matches("number\\(1[0-8]\\)")) {
-            return DbColumnType.LONG;
-        }
-        return DbColumnType.BIG_DECIMAL;
     }
 }

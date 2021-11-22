@@ -34,50 +34,42 @@ import java.util.regex.Pattern;
 public class ConfigBuilder {
 
     /**
-     * 模板路径配置信息
-     */
-    private final TemplateConfig templateConfig;
-
-    /**
-     * 数据库表信息
-     */
-    private final List<TableInfo> tableInfoList = new ArrayList<>();
-
-    /**
-     * 路径配置信息
-     */
-    private final Map<OutputFile, String> pathInfo = new HashMap<>();
-
-    /**
-     * 策略配置
-     */
-    private StrategyConfig strategyConfig;
-
-    /**
-     * 全局配置信息
-     */
-    private GlobalConfig globalConfig;
-
-    /**
-     * 注入配置信息
-     */
-    private InjectionConfig injectionConfig;
-
-    /**
      * 过滤正则
      */
     private static final Pattern REGX = Pattern
             .compile("[~!/@#$%^&*()+\\\\\\[\\]|{};:'\",<.>?]+");
-
+    /**
+     * 模板路径配置信息
+     */
+    private final TemplateConfig templateConfig;
+    /**
+     * 数据库表信息
+     */
+    private final List<TableInfo> tableInfoList = new ArrayList<>();
+    /**
+     * 路径配置信息
+     */
+    private final Map<OutputFile, String> pathInfo = new HashMap<>();
     /**
      * 包配置信息
      */
     private final PackageConfig packageConfig;
-
     /**
      * 数据库配置信息
      */
     private final DataSourceConfig dataSourceConfig;
+    /**
+     * 策略配置
+     */
+    private StrategyConfig strategyConfig;
+    /**
+     * 全局配置信息
+     */
+    private GlobalConfig globalConfig;
+    /**
+     * 注入配置信息
+     */
+    private InjectionConfig injectionConfig;
 
     /**
      * 在构造器中处理配置
@@ -112,24 +104,6 @@ public class ConfigBuilder {
     }
 
     @Nonnull
-    public ConfigBuilder setStrategyConfig(@Nonnull StrategyConfig strategyConfig) {
-        this.strategyConfig = strategyConfig;
-        return this;
-    }
-
-    @Nonnull
-    public ConfigBuilder setGlobalConfig(@Nonnull GlobalConfig globalConfig) {
-        this.globalConfig = globalConfig;
-        return this;
-    }
-
-    @Nonnull
-    public ConfigBuilder setInjectionConfig(@Nonnull InjectionConfig injectionConfig) {
-        this.injectionConfig = injectionConfig;
-        return this;
-    }
-
-    @Nonnull
     public TemplateConfig getTemplateConfig() {
         return templateConfig;
     }
@@ -158,13 +132,31 @@ public class ConfigBuilder {
     }
 
     @Nonnull
+    public ConfigBuilder setStrategyConfig(@Nonnull StrategyConfig strategyConfig) {
+        this.strategyConfig = strategyConfig;
+        return this;
+    }
+
+    @Nonnull
     public GlobalConfig getGlobalConfig() {
         return globalConfig;
+    }
+
+    @Nonnull
+    public ConfigBuilder setGlobalConfig(@Nonnull GlobalConfig globalConfig) {
+        this.globalConfig = globalConfig;
+        return this;
     }
 
     @Nullable
     public InjectionConfig getInjectionConfig() {
         return injectionConfig;
+    }
+
+    @Nonnull
+    public ConfigBuilder setInjectionConfig(@Nonnull InjectionConfig injectionConfig) {
+        this.injectionConfig = injectionConfig;
+        return this;
     }
 
     @Nonnull

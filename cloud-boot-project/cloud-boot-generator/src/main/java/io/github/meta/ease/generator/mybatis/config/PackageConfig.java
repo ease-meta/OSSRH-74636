@@ -32,9 +32,12 @@ import java.util.Map;
  */
 public class PackageConfig {
 
-    private PackageConfig() {
-    }
-
+    /**
+     * 包配置信息
+     *
+     * @since 3.5.0
+     */
+    private final Map<String, String> packageInfo = new HashMap<>();
     /**
      * 父包名。如果为空，将下面子包名必须写全部， 否则就只需写子包名
      */
@@ -85,12 +88,8 @@ public class PackageConfig {
      */
     private Map<OutputFile, String> pathInfo;
 
-    /**
-     * 包配置信息
-     *
-     * @since 3.5.0
-     */
-    private final Map<String, String> packageInfo = new HashMap<>();
+    private PackageConfig() {
+    }
 
     /**
      * 父包名

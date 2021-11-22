@@ -63,7 +63,10 @@ public final class FastAutoGenerator {
      * 模板配置 Builder
      */
     private final TemplateConfig.Builder templateConfigBuilder;
-
+    /**
+     * 读取控制台输入内容
+     */
+    private final Scanner scanner = new Scanner(System.in);
     /**
      * 模板引擎
      */
@@ -81,11 +84,6 @@ public final class FastAutoGenerator {
     public static FastAutoGenerator create(@Nonnull DataSourceConfig.Builder dataSourceConfigBuilder) {
         return new FastAutoGenerator(dataSourceConfigBuilder);
     }
-
-    /**
-     * 读取控制台输入内容
-     */
-    private final Scanner scanner = new Scanner(System.in);
 
     /**
      * 控制台输入内容读取并打印提示信息

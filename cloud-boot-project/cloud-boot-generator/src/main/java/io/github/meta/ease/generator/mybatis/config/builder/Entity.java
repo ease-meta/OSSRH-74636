@@ -43,31 +43,27 @@ import java.util.*;
 public class Entity implements ITemplate {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(Entity.class);
-
-    private Entity() {
-    }
-
-    /**
-     * 名称转换
-     */
-    private INameConvert nameConvert;
-
-    /**
-     * 自定义继承的Entity类全称，带包名
-     */
-    private String superClass;
-
     /**
      * 自定义基础的Entity类，公共字段
      */
     private final Set<String> superEntityColumns = new HashSet<>();
-
     /**
      * 自定义忽略字段
      * https://github.com/baomidou/generator/issues/46
      */
     private final Set<String> ignoreColumns = new HashSet<>();
-
+    /**
+     * 表填充字段
+     */
+    private final List<IFill> tableFillList = new ArrayList<>();
+    /**
+     * 名称转换
+     */
+    private INameConvert nameConvert;
+    /**
+     * 自定义继承的Entity类全称，带包名
+     */
+    private String superClass;
     /**
      * 实体是否生成 serialVersionUID
      */
@@ -133,43 +129,36 @@ public class Entity implements ITemplate {
      * @since 3.5.0
      */
     private String logicDeletePropertyName;
-
-    /**
-     * 表填充字段
-     */
-    private final List<IFill> tableFillList = new ArrayList<>();
-
     /**
      * 数据库表映射到实体的命名策略，默认下划线转驼峰命名
      */
     private NamingStrategy naming = NamingStrategy.underline_to_camel;
-
     /**
      * 数据库表字段映射到实体的命名策略
      * <p>未指定按照 naming 执行</p>
      */
     private NamingStrategy columnNaming = null;
-
     /**
      * 开启 ActiveRecord 模式（默认 false）
      *
      * @since 3.5.0
      */
     private boolean activeRecord;
-
     /**
      * 指定生成的主键的ID类型
      *
      * @since 3.5.0
      */
     private IdType idType;
-
     /**
      * 转换输出文件名称
      *
      * @since 3.5.0
      */
     private ConverterFileName converterFileName = (entityName -> entityName);
+
+    private Entity() {
+    }
 
     /**
      * <p>

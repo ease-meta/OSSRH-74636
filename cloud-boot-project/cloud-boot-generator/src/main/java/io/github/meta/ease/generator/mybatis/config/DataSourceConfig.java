@@ -39,59 +39,51 @@ import java.util.Optional;
  */
 public class DataSourceConfig {
 
-    private DataSourceConfig() {
-    }
-
     /**
      * 数据库信息查询
      */
     private IDbQuery dbQuery;
-
     /**
      * schemaName
      */
     private String schemaName;
-
     /**
      * 类型转换
      */
     private ITypeConvert typeConvert;
-
     /**
      * 关键字处理器
      *
      * @since 3.3.2
      */
     private IKeyWordsHandler keyWordsHandler;
-
     /**
      * 驱动连接的URL
      */
     private String url;
-
     /**
      * 数据库连接用户名
      */
     private String username;
-
     /**
      * 数据库连接密码
      */
     private String password;
-
     /**
      * 数据源实例
      *
      * @since 3.5.0
      */
     private DataSource dataSource;
-
     /**
      * 数据库连接
      *
      * @since 3.5.0
      */
     private Connection connection;
+
+    private DataSourceConfig() {
+    }
 
     /**
      * 获取数据库查询
@@ -269,39 +261,21 @@ public class DataSourceConfig {
     public static class Builder implements IConfigBuilder<DataSourceConfig> {
 
         private DataSourceConfig dataSourceConfig;
-
-        public Builder() {
-            this.dataSourceConfig = new DataSourceConfig();
-        }
-
         /**
          * 驱动连接的URL
          */
         private String url;
-
         /**
          * 数据库连接用户名
          */
         private String username;
-
         /**
          * 数据库连接密码
          */
         private String password;
 
-        public Builder url(String url) {
-            this.url = url;
-            return this;
-        }
-
-        public Builder username(String username) {
-            this.username = username;
-            return this;
-        }
-
-        public Builder password(String password) {
-            this.password = password;
-            return this;
+        public Builder() {
+            this.dataSourceConfig = new DataSourceConfig();
         }
 
         /**
@@ -321,6 +295,21 @@ public class DataSourceConfig {
             } catch (SQLException ex) {
                 throw new RuntimeException("构建数据库配置对象失败!", ex);
             }
+        }
+
+        public Builder url(String url) {
+            this.url = url;
+            return this;
+        }
+
+        public Builder username(String username) {
+            this.username = username;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.password = password;
+            return this;
         }
 
         /**

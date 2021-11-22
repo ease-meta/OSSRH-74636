@@ -36,17 +36,14 @@ import javax.annotation.Resource;
 public class FlowExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(FlowExecutor.class);
-
+    static Multimap<String, IProcess> ALL_IPROCESS = ArrayListMultimap.create();
+    private static FlowExecutor flowExecutor;
     @Resource
     private BusinessEngine businessEngine;
-
-    private static FlowExecutor flowExecutor;
 
     public FlowExecutor() {
         flowExecutor = this;
     }
-
-    static Multimap<String, IProcess> ALL_IPROCESS = ArrayListMultimap.create();
 
     @lombok.SneakyThrows
     public static <T extends BaseRequest, R extends BaseResponse> R execute2Resp(T request) {

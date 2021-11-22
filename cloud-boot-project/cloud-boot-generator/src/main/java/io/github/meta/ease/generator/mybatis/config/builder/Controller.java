@@ -37,9 +37,6 @@ import java.util.Map;
  */
 public class Controller implements ITemplate {
 
-    private Controller() {
-    }
-
     /**
      * 生成 <code>@RestController</code> 控制器（默认 false）
      * <pre>
@@ -47,7 +44,6 @@ public class Controller implements ITemplate {
      * </pre>
      */
     private boolean restStyle;
-
     /**
      * 驼峰转连字符（默认 false）
      * <pre>
@@ -55,18 +51,19 @@ public class Controller implements ITemplate {
      * </pre>
      */
     private boolean hyphenStyle;
-
     /**
      * 自定义继承的Controller类全称，带包名
      */
     private String superClass;
-
     /**
      * 转换输出控制器文件名称
      *
      * @since 3.5.0
      */
     private ConverterFileName converterFileName = (entityName -> entityName + ConstVal.CONTROLLER);
+
+    private Controller() {
+    }
 
     public boolean isRestStyle() {
         return restStyle;

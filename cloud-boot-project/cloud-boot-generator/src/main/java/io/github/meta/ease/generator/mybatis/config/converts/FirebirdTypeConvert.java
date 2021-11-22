@@ -35,23 +35,6 @@ public class FirebirdTypeConvert implements ITypeConvert {
     public static final FirebirdTypeConvert INSTANCE = new FirebirdTypeConvert();
 
     /**
-     * @inheritDoc
-     */
-    @Override
-    public IColumnType processTypeConvert(GlobalConfig config, String fieldType) {
-        return TypeConverts.use(fieldType)
-                .test(containsAny("cstring", "text").then(STRING))
-                .test(contains("short").then(SHORT))
-                .test(contains("long").then(LONG))
-                .test(contains("float").then(FLOAT))
-                .test(contains("double").then(DOUBLE))
-                .test(contains("blob").then(BLOB))
-                .test(contains("int64").then(LONG))
-                .test(containsAny("date", "time", "year").then(t -> toDateType(config, t)))
-                .or(STRING);
-    }
-
-    /**
      * 转换为日期类型
      *
      * @param config 配置信息
@@ -85,6 +68,23 @@ public class FirebirdTypeConvert implements ITypeConvert {
                 }
         }
         return STRING;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    @Override
+    public IColumnType processTypeConvert(GlobalConfig config, String fieldType) {
+        return TypeConverts.use(fieldType)
+                .test(containsAny("cstring", "text").then(STRING))
+                .test(contains("short").then(SHORT))
+                .test(contains("long").then(LONG))
+                .test(contains("float").then(FLOAT))
+                .test(contains("double").then(DOUBLE))
+                .test(contains("blob").then(BLOB))
+                .test(contains("int64").then(LONG))
+                .test(containsAny("date", "time", "year").then(t -> toDateType(config, t)))
+                .or(STRING);
     }
 
 }

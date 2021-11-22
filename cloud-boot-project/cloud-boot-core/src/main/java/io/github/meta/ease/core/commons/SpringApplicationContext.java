@@ -28,13 +28,13 @@ public class SpringApplicationContext implements ApplicationContextAware, BeanFa
     public SpringApplicationContext() {
     }
 
+    public static ApplicationContext getContext() {
+        return context;
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         context = applicationContext;
-    }
-
-    public static ApplicationContext getContext() {
-        return context;
     }
 
     @Override

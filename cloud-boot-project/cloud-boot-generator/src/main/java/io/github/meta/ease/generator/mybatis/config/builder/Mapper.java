@@ -37,55 +37,49 @@ import java.util.Map;
  */
 public class Mapper implements ITemplate {
 
-    private Mapper() {
-    }
-
     /**
      * 自定义继承的Mapper类全称，带包名
      */
     private String superClass = ConstVal.SUPER_MAPPER_CLASS;
-
     /**
      * 是否添加 @Mapper 注解（默认 false）
      *
      * @since 3.5.1
      */
     private boolean mapperAnnotation;
-
     /**
      * 是否开启BaseResultMap（默认 false）
      *
      * @since 3.5.0
      */
     private boolean baseResultMap;
-
     /**
      * 是否开启baseColumnList（默认 false）
      *
      * @since 3.5.0
      */
     private boolean baseColumnList;
-
     /**
      * 转换输出Mapper文件名称
      *
      * @since 3.5.0
      */
     private ConverterFileName converterMapperFileName = (entityName -> entityName + ConstVal.MAPPER);
-
     /**
      * 转换输出Xml文件名称
      *
      * @since 3.5.0
      */
     private ConverterFileName converterXmlFileName = (entityName -> entityName + ConstVal.MAPPER);
-
     /**
      * 设置缓存实现类
      *
      * @since 3.5.0
      */
     private Class<? extends Cache> cache;
+
+    private Mapper() {
+    }
 
     @Nonnull
     public String getSuperClass() {

@@ -39,6 +39,9 @@ import java.util.Map;
  * @since 2016-12-03
  */
 public class TableField {
+    private final Entity entity;
+    private final DataSourceConfig dataSourceConfig;
+    private final GlobalConfig globalConfig;
     private boolean convert;
     private boolean keyFlag;
     /**
@@ -67,19 +70,12 @@ public class TableField {
      * 自定义查询字段列表
      */
     private Map<String, Object> customMap;
-
     /**
      * 字段元数据信息
      *
      * @since 3.5.0
      */
     private MetaInfo metaInfo;
-
-    private final Entity entity;
-
-    private final DataSourceConfig dataSourceConfig;
-
-    private final GlobalConfig globalConfig;
 
     /**
      * 构造方法
@@ -202,33 +198,6 @@ public class TableField {
         return this;
     }
 
-    public TableField setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public TableField setComment(String comment) {
-        //TODO 暂时挪动到这
-        this.comment = this.globalConfig.isSwagger() && StringUtils.isNotBlank(comment) ? comment
-                .replace("\"", "\\\"") : comment;
-        return this;
-    }
-
-    public TableField setColumnName(String columnName) {
-        this.columnName = columnName;
-        IKeyWordsHandler keyWordsHandler = dataSourceConfig.getKeyWordsHandler();
-        if (keyWordsHandler != null && keyWordsHandler.isKeyWords(columnName)) {
-            this.keyWords = true;
-            this.columnName = keyWordsHandler.formatColumn(columnName);
-        }
-        return this;
-    }
-
-    public TableField setCustomMap(Map<String, Object> customMap) {
-        this.customMap = customMap;
-        return this;
-    }
-
     public boolean isConvert() {
         return convert;
     }
@@ -249,6 +218,11 @@ public class TableField {
         return type;
     }
 
+    public TableField setType(String type) {
+        this.type = type;
+        return this;
+    }
+
     public String getPropertyName() {
         return propertyName;
     }
@@ -259,6 +233,13 @@ public class TableField {
 
     public String getComment() {
         return comment;
+    }
+
+    public TableField setComment(String comment) {
+        //TODO 暂时挪动到这
+        this.comment = this.globalConfig.isSwagger() && StringUtils.isNotBlank(comment) ? comment
+                .replace("\"", "\\\"") : comment;
+        return this;
     }
 
     public String getFill() {
@@ -280,8 +261,23 @@ public class TableField {
         return columnName;
     }
 
+    public TableField setColumnName(String columnName) {
+        this.columnName = columnName;
+        IKeyWordsHandler keyWordsHandler = dataSourceConfig.getKeyWordsHandler();
+        if (keyWordsHandler != null && keyWordsHandler.isKeyWords(columnName)) {
+            this.keyWords = true;
+            this.columnName = keyWordsHandler.formatColumn(columnName);
+        }
+        return this;
+    }
+
     public Map<String, Object> getCustomMap() {
         return customMap;
+    }
+
+    public TableField setCustomMap(Map<String, Object> customMap) {
+        this.customMap = customMap;
+        return this;
     }
 
     public MetaInfo getMetaInfo() {

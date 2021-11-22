@@ -32,50 +32,43 @@ import java.util.function.Supplier;
  */
 public class GlobalConfig {
 
-    private GlobalConfig() {
-    }
-
     /**
      * 生成文件的输出目录【 windows:D://  linux or mac:/tmp 】
      */
     private String outputDir = System.getProperty("os.name").toLowerCase().contains("windows") ? "D://" : "/tmp";
-
     /**
      * 是否覆盖已有文件（默认 false）
      */
     private boolean fileOverride;
-
     /**
      * 是否打开输出目录
      */
     private boolean open = true;
-
     /**
      * 作者
      */
     private String author = "作者";
-
     /**
      * 开启 Kotlin 模式（默认 false）
      */
     private boolean kotlin;
-
     /**
      * 开启 swagger 模式（默认 false）
      */
     private boolean swagger;
-
     /**
      * 时间类型对应策略
      */
     private DateType dateType = DateType.TIME_PACK;
-
     /**
      * 获取注释日期
      *
      * @since 3.5.0
      */
     private Supplier<String> commentDate = () -> new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+    private GlobalConfig() {
+    }
 
     public String getOutputDir() {
         return outputDir;

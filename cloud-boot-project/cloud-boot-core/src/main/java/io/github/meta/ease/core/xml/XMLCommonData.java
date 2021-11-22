@@ -25,10 +25,6 @@ public final class XMLCommonData implements CommonData {
     private Map attributes;
     private CommonData parent;
 
-    private void init() {
-        this.attributes = new HashMap(5);
-    }
-
     public XMLCommonData() {
         this.name = "$ROOT$";
 
@@ -41,6 +37,10 @@ public final class XMLCommonData implements CommonData {
         this.name = name;
 
         this.parent = parent;
+    }
+
+    private void init() {
+        this.attributes = new HashMap(5);
     }
 
     public String getName() {

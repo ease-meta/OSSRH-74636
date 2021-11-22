@@ -37,6 +37,10 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author wuweifeng wrote on 2019-11-19.
  */
 public class WorkerWrapper<T, V> {
+    private static final int FINISH = 1;
+    private static final int ERROR = 2;
+    private static final int WORKING = 3;
+    private static final int INIT = 0;
     /**
      * 该wrapper的唯一标识
      */
@@ -88,11 +92,6 @@ public class WorkerWrapper<T, V> {
      * 注意，该属性仅在nextWrapper数量<=1时有效，>1时的情况是不存在的
      */
     private volatile boolean needCheckNextWrapperResult = true;
-
-    private static final int FINISH = 1;
-    private static final int ERROR = 2;
-    private static final int WORKING = 3;
-    private static final int INIT = 0;
 
     private WorkerWrapper(String id, IWorker<T, V> worker, T param, ICallback<T, V> callback) {
         if (worker == null) {

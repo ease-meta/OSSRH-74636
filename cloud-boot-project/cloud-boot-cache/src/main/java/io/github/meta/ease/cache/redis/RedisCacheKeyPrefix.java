@@ -41,11 +41,11 @@ public class RedisCacheKeyPrefix implements CacheKeyPrefix {
                 .concat(CacheConstant.COLON);
     }
 
-    public void setDelimiter(String delimiter) {
-        this.delimiter = delimiter;
-    }
-
     public String getDelimiter() {
         return delimiter;
+    }
+
+    public void setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
     }
 }

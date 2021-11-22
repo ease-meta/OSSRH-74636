@@ -47,14 +47,13 @@ public class SimpleBusinessEngine<T extends BaseRequest, R extends BaseResponse>
         extends
         AbstractService<T, R> {
 
+    private final TransactionDefinition newTransactionDefinition = new DefaultTransactionDefinition(
+            TransactionDefinition.PROPAGATION_REQUIRES_NEW);
     /**
      * Spring事务管理器
      */
     @Resource
     private PlatformTransactionManager transactionManager;
-
-    private final TransactionDefinition newTransactionDefinition = new DefaultTransactionDefinition(
-            TransactionDefinition.PROPAGATION_REQUIRES_NEW);
 
     //controller调用service入口
     @Override

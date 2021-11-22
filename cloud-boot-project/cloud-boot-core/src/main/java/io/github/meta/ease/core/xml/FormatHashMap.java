@@ -31,20 +31,37 @@ public class FormatHashMap<K, V> extends HashMap<K, V> {
     private static final long serialVersionUID = -1289427183568570036L;
     private StringBuilder prefix = new StringBuilder("  ");
 
-    public String getPrefix() {
-        return prefix.toString();
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix.append(prefix);
-    }
-
     public FormatHashMap(Map<K, V> map) {
         super(map);
     }
 
     public FormatHashMap() {
         super();
+    }
+
+    public static void main(String[] args) {
+        FormatHashMap<String, String> map = new FormatHashMap<>();
+        map.put("cest2", "2");
+        map.put("best2", "2");
+        map.put("test2", "2");
+        map.put("test1", "2");
+        map.put("atest1", "2");
+        map.put("btest1", "2");
+        map.put("2test1", "2");
+        map.put("Xtest1", "2");
+        map.put("a", "2");
+        map.put("abc---", "2");
+        map.put("abc   ", "2");
+        System.out.println(map);
+        System.out.println(map.toUrlString());
+    }
+
+    public String getPrefix() {
+        return prefix.toString();
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix.append(prefix);
     }
 
     @Override
@@ -198,22 +215,5 @@ public class FormatHashMap<K, V> extends HashMap<K, V> {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        FormatHashMap<String, String> map = new FormatHashMap<>();
-        map.put("cest2", "2");
-        map.put("best2", "2");
-        map.put("test2", "2");
-        map.put("test1", "2");
-        map.put("atest1", "2");
-        map.put("btest1", "2");
-        map.put("2test1", "2");
-        map.put("Xtest1", "2");
-        map.put("a", "2");
-        map.put("abc---", "2");
-        map.put("abc   ", "2");
-        System.out.println(map);
-        System.out.println(map.toUrlString());
     }
 }

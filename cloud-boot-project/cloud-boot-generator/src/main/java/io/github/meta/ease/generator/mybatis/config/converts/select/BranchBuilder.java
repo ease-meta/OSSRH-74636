@@ -28,6 +28,18 @@ import java.util.function.Predicate;
 public interface BranchBuilder<P, T> {
 
     /**
+     * 工厂函数，用于创建分支构建者
+     *
+     * @param tester 测试器
+     * @param <P>    参数类型
+     * @param <T>    返回值类型
+     * @return 返回一个分支创建者
+     */
+    static <P, T> BranchBuilder<P, T> of(Predicate<P> tester) {
+        return factory -> Branch.of(tester, factory);
+    }
+
+    /**
      * 使用一个值工厂构造出一个分支
      *
      * @param factory 值工厂
@@ -43,18 +55,6 @@ public interface BranchBuilder<P, T> {
      */
     default Branch<P, T> then(T value) {
         return then(p -> value);
-    }
-
-    /**
-     * 工厂函数，用于创建分支构建者
-     *
-     * @param tester 测试器
-     * @param <P>    参数类型
-     * @param <T>    返回值类型
-     * @return 返回一个分支创建者
-     */
-    static <P, T> BranchBuilder<P, T> of(Predicate<P> tester) {
-        return factory -> Branch.of(tester, factory);
     }
 
 }

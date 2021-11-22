@@ -31,19 +31,19 @@ public class Ease14006001Out extends BaseResponse {
 
     private LocalDateTime localDateTime = LocalDateTime.now();
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 }

@@ -15,11 +15,11 @@ public class RedisKeyGenerator {
     @Value("${" + APP_NAME + "}")
     private String gatewayCode;
 
-    public void setGatewayCode(String gatewayCode) {
-        this.gatewayCode = gatewayCode;
-    }
-
     public String getGatewayCode() {
         return gatewayCode;
+    }
+
+    public void setGatewayCode(String gatewayCode) {
+        this.gatewayCode = gatewayCode;
     }
 }

@@ -104,8 +104,13 @@ public final class Context {
         return context;
     }
 
-    public void initBaseRequest(BaseRequest baseRequest) {
-        this.baseRequest = baseRequest;
+    /**
+     * 设置上下文
+     *
+     * @param context 调用上下文
+     */
+    private static void setContext(Context context) {
+        LOCAL.set(context);
     }
 
     /**
@@ -124,13 +129,8 @@ public final class Context {
         LOCAL.remove();
     }
 
-    /**
-     * 设置上下文
-     *
-     * @param context 调用上下文
-     */
-    private static void setContext(Context context) {
-        LOCAL.set(context);
+    public void initBaseRequest(BaseRequest baseRequest) {
+        this.baseRequest = baseRequest;
     }
 
     /**

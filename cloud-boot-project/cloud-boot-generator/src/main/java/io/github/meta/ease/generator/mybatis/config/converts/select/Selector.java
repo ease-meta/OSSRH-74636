@@ -30,13 +30,12 @@ import java.util.function.Supplier;
  * Created at 2020/6/11 16:55
  */
 public class Selector<P, T> {
-    private boolean selected = false;
-    private Function<P, T> factory;
-
     /**
      * 选择器参数，该参数会在进行条件判断和结果获取时会被当做条件传入
      */
     private final P param;
+    private boolean selected = false;
+    private Function<P, T> factory;
 
     /**
      * @param param 参数

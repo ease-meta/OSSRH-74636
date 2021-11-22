@@ -35,18 +35,29 @@ import java.util.Map;
  */
 public class Service implements ITemplate {
 
-    private Service() {
-    }
-
     /**
      * 自定义继承的Service类全称，带包名
      */
     private String superServiceClass = ConstVal.SUPER_SERVICE_CLASS;
-
     /**
      * 自定义继承的ServiceImpl类全称，带包名
      */
     private String superServiceImplClass = ConstVal.SUPER_SERVICE_IMPL_CLASS;
+    /**
+     * 转换输出Service文件名称
+     *
+     * @since 3.5.0
+     */
+    private ConverterFileName converterServiceFileName = (entityName -> "I" + entityName + ConstVal.SERVICE);
+    /**
+     * 转换输出ServiceImpl文件名称
+     *
+     * @since 3.5.0
+     */
+    private ConverterFileName converterServiceImplFileName = (entityName -> entityName + ConstVal.SERVICE_IMPL);
+
+    private Service() {
+    }
 
     @Nonnull
     public String getSuperServiceClass() {
@@ -57,20 +68,6 @@ public class Service implements ITemplate {
     public String getSuperServiceImplClass() {
         return superServiceImplClass;
     }
-
-    /**
-     * 转换输出Service文件名称
-     *
-     * @since 3.5.0
-     */
-    private ConverterFileName converterServiceFileName = (entityName -> "I" + entityName + ConstVal.SERVICE);
-
-    /**
-     * 转换输出ServiceImpl文件名称
-     *
-     * @since 3.5.0
-     */
-    private ConverterFileName converterServiceImplFileName = (entityName -> entityName + ConstVal.SERVICE_IMPL);
 
     @Nonnull
     public ConverterFileName getConverterServiceFileName() {
