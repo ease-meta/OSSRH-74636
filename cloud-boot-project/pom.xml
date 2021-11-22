@@ -41,6 +41,7 @@
         <module>cloud-boot-gateway</module>
         <module>cloud-boot-springcloud</module>
         <module>cloud-boot-sofa</module>
+        <module>cloud-boot-kettle</module>
     </modules>
 
     <properties>
