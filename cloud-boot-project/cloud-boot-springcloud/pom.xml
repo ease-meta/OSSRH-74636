@@ -106,5 +106,4 @@
             <artifactId>spring-cloud-starter-kubernetes-client-all</artifactId>
         </dependency>
     </dependencies>
-
 </project>
