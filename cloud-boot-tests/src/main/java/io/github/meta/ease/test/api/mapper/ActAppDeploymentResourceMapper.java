@@ -14,10 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.demo.mapper;
+package io.github.meta.ease.test.api.mapper;
 
 import io.github.meta.ease.mybatis.BaseMapper;
-import io.github.meta.ease.test.cloud.web.demo.entity.ActAppDeploymentResource;
+import io.github.meta.ease.test.api.entity.ActAppDeploymentResource;
 
 /**
  * <p>

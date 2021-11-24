@@ -17,9 +17,9 @@
 package io.github.meta.ease.test.cloud.web.controler;
 
 import io.github.meta.ease.flow.engine.FlowExecutor;
-import io.github.meta.ease.test.cloud.web.api.IEase14006001;
-import io.github.meta.ease.test.cloud.web.module.Ease14006001In;
-import io.github.meta.ease.test.cloud.web.module.Ease14006001Out;
+import io.github.meta.ease.test.api.IEase14006001;
+import io.github.meta.ease.test.api.module.Ease14006001In;
+import io.github.meta.ease.test.api.module.Ease14006001Out;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

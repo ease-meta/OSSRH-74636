@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.demo.mapper;
+package io.github.meta.ease.test.api;
 
-import io.github.meta.ease.mybatis.BaseMapper;
-import io.github.meta.ease.test.cloud.web.demo.entity.ActAppDeployment;
+
+import io.github.meta.ease.test.api.module.Ease14006001In;
+import io.github.meta.ease.test.api.module.Ease14006001Out;
 
 /**
- * <p>
- * Mapper 接口
- * </p>
- *
  * @author leijian
- * @since 2021-10-11
+ * @version 1.0
+ * @date 2021/10/1 18:06
  */
-public interface ActAppDeploymentMapper extends BaseMapper<ActAppDeployment> {
+public interface IEase14006001 {
+
+    Ease14006001Out runService(Ease14006001In in);
 
 }

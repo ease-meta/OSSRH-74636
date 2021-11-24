@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.module;
+package io.github.meta.ease.test.api.module;
 
 import io.github.meta.ease.domain.api.BaseRequest;
 

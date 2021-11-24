@@ -16,6 +16,7 @@
  */
 package io.github.meta.ease.test.cloud.web;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -24,7 +25,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @version 1.0
  * @date 2021/9/25 21:14
  */
-@SpringBootApplication()
+@SpringBootApplication(scanBasePackages={"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
+@MapperScan({"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
 public class TestWebSpringBootApplication {
 
     public static void main(String[] args) throws Exception {

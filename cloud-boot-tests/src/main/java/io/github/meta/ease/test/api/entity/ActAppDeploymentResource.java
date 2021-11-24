@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.demo.entity;
+package io.github.meta.ease.test.api.entity;
 
 import io.github.meta.ease.mybatis.annotation.TableName;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.sql.Blob;
 
 /**
  * <p>
@@ -29,54 +29,54 @@ import java.time.LocalDateTime;
  * @author leijian
  * @since 2021-10-11
  */
-@TableName("act_app_databasechangeloglock")
-public class ActAppDatabasechangeloglock implements Serializable {
+@TableName("act_app_deployment_resource")
+public class ActAppDeploymentResource implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private String id;
 
-    private Boolean locked;
+    private String name;
 
-    private LocalDateTime lockgranted;
+    private String deploymentId;
 
-    private String lockedby;
+    private Blob resourceBytes;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public Boolean getLocked() {
-        return locked;
+    public String getName() {
+        return name;
     }
 
-    public void setLocked(Boolean locked) {
-        this.locked = locked;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public LocalDateTime getLockgranted() {
-        return lockgranted;
+    public String getDeploymentId() {
+        return deploymentId;
     }
 
-    public void setLockgranted(LocalDateTime lockgranted) {
-        this.lockgranted = lockgranted;
+    public void setDeploymentId(String deploymentId) {
+        this.deploymentId = deploymentId;
     }
 
-    public String getLockedby() {
-        return lockedby;
+    public Blob getResourceBytes() {
+        return resourceBytes;
     }
 
-    public void setLockedby(String lockedby) {
-        this.lockedby = lockedby;
+    public void setResourceBytes(Blob resourceBytes) {
+        this.resourceBytes = resourceBytes;
     }
 
     @Override
     public String toString() {
-        return "ActAppDatabasechangeloglock{" + "id=" + id + ", locked=" + locked
-                + ", lockgranted=" + lockgranted + ", lockedby=" + lockedby + "}";
+        return "ActAppDeploymentResource{" + "id=" + id + ", name=" + name + ", deploymentId="
+                + deploymentId + ", resourceBytes=" + resourceBytes + "}";
     }
 }

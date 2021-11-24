@@ -14,19 +14,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.demo.mapper;
+package io.github.meta.ease.test.api.module;
 
-import io.github.meta.ease.mybatis.BaseMapper;
-import io.github.meta.ease.test.cloud.web.demo.entity.ActAppDatabasechangeloglock;
+import io.github.meta.ease.domain.api.BaseResponse;
+
+import java.time.LocalDateTime;
 
 /**
- * <p>
- * Mapper 接口
- * </p>
- *
  * @author leijian
- * @since 2021-10-11
+ * @version 1.0
+ * @date 2021/10/1 18:09
  */
-public interface ActAppDatabasechangeloglockMapper extends BaseMapper<ActAppDatabasechangeloglock> {
+public class Ease14006001Out extends BaseResponse {
 
+    private String name;
+
+    private LocalDateTime localDateTime = LocalDateTime.now();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
+    }
 }

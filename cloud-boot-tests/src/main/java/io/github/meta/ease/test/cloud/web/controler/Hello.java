@@ -16,8 +16,8 @@
  */
 package io.github.meta.ease.test.cloud.web.controler;
 
-import io.github.meta.ease.test.cloud.web.module.Ease14006001In;
-import io.github.meta.ease.test.cloud.web.module.Ease14006001Out;
+import io.github.meta.ease.test.api.module.Ease14006001In;
+import io.github.meta.ease.test.api.module.Ease14006001Out;
 import org.springframework.stereotype.Component;
 
 /**

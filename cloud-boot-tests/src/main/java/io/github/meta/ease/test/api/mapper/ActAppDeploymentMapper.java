@@ -14,36 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.module;
+package io.github.meta.ease.test.api.mapper;
 
-import io.github.meta.ease.domain.api.BaseResponse;
-
-import java.time.LocalDateTime;
+import io.github.meta.ease.mybatis.BaseMapper;
+import io.github.meta.ease.test.api.entity.ActAppDeployment;
 
 /**
+ * <p>
+ * Mapper 接口
+ * </p>
+ *
  * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:09
+ * @since 2021-10-11
  */
-public class Ease14006001Out extends BaseResponse {
+public interface ActAppDeploymentMapper extends BaseMapper<ActAppDeployment> {
 
-    private String name;
-
-    private LocalDateTime localDateTime = LocalDateTime.now();
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
 }

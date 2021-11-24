@@ -14,18 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.api;
+package io.github.meta.ease.test.api.mapper;
 
-import io.github.meta.ease.test.cloud.web.module.Ease14006001In;
-import io.github.meta.ease.test.cloud.web.module.Ease14006001Out;
+import io.github.meta.ease.mybatis.BaseMapper;
+import io.github.meta.ease.test.api.entity.ActAppDatabasechangeloglock;
 
 /**
+ * <p>
+ * Mapper 接口
+ * </p>
+ *
  * @author leijian
- * @version 1.0
- * @date 2021/10/1 18:06
+ * @since 2021-10-11
  */
-public interface IEase14006001 {
-
-    Ease14006001Out runService(Ease14006001In in);
+public interface ActAppDatabasechangeloglockMapper extends BaseMapper<ActAppDatabasechangeloglock> {
 
 }

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web.demo.entity;
+package io.github.meta.ease.test.api.entity;
 
 import io.github.meta.ease.mybatis.annotation.TableName;
 
