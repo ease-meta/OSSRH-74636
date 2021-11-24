@@ -14,24 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.cloud.web;
+package io.github.meta.ease.test.dubbo.provider.web;
 
-import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.github.meta.ease.test.api.IEase14006001;
+import io.github.meta.ease.test.api.module.Ease14006001In;
+import io.github.meta.ease.test.api.module.Ease14006001Out;
+import org.apache.dubbo.config.annotation.DubboService;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author leijian
  * @version 1.0
- * @date 2021/9/25 21:14
+ * @date 2021/10/1 18:10
  */
-@SpringBootApplication(scanBasePackages={"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
-@MapperScan({"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
-public class TestWebSpringBootApplication {
+@Service
+@DubboService
+public class Ease14006001 implements IEase14006001 {
 
-    public static void main(String[] args) throws Exception {
-        new SpringApplication(TestWebSpringBootApplication.class).run(args);
-
+    @Override
+    public Ease14006001Out runService(@RequestBody Ease14006001In in) {
+        return new Ease14006001Out();
     }
-
 }

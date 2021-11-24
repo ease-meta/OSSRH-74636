@@ -62,6 +62,7 @@
         <aliyun-spring-boot-dependencies>1.0.0</aliyun-spring-boot-dependencies>
         <!-- <solace-spring-boot.version>1.1.0</solace-spring-boot.version>-->
         <dubbo-spring.version>2.7.8</dubbo-spring.version>
+        <dubbo.version>2.7.8</dubbo.version>
         <dubbo-api.version>2.7.8.3</dubbo-api.version>
         <retrofit.version>[2.2.10,)</retrofit.version>
 
@@ -331,6 +332,11 @@
                 <artifactId>arthas-spring-boot-starter</artifactId>
                 <version>${arthas.version}</version>
                 <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
             </dependency>
 
             <dependency>
