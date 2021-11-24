@@ -42,6 +42,7 @@
         <module>cloud-boot-springcloud</module>
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-kettle</module>
+        <module>cloud-boot-dubbo</module>
     </modules>
 
     <properties>
