@@ -43,6 +43,7 @@
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-kettle</module>
         <module>cloud-boot-dubbo</module>
+        <module>cloud-boot-resilience4j</module>
     </modules>
 
     <properties>

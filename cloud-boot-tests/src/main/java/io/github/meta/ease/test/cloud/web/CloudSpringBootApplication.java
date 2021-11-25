@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.test.dubbo.provider.web;
+package io.github.meta.ease.test.cloud.web;
 
-import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -27,14 +26,13 @@ import org.springframework.context.annotation.PropertySource;
  * @version 1.0
  * @date 2021/9/25 21:14
  */
-@SpringBootApplication(scanBasePackages={"io.github.meta.ease.test.dubbo.provider.web","io.github.meta.ease.test.api"})
-@MapperScan({"io.github.meta.ease.test.dubbo.provider.web","io.github.meta.ease.test.api"})
-@EnableDubbo(scanBasePackages = "io.github.meta.ease.test.dubbo.provider.web")
+@SpringBootApplication(scanBasePackages={"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
+@MapperScan({"io.github.meta.ease.test.cloud.web","io.github.meta.ease.test.api"})
 @PropertySource("classpath:/config/dubbo-provider.properties")
-public class DubboProviderSpringBootApplication {
+public class CloudSpringBootApplication {
 
     public static void main(String[] args) throws Exception {
-        new SpringApplication(DubboProviderSpringBootApplication.class).run(args);
+        new SpringApplication(CloudSpringBootApplication.class).run(args);
 
     }
 

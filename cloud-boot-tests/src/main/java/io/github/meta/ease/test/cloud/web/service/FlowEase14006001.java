@@ -17,25 +17,24 @@
 package io.github.meta.ease.test.cloud.web.service;
 
 
-import io.github.meta.ease.async.callback.IWorker;
-import io.github.meta.ease.async.executor.Async;
-import io.github.meta.ease.async.wrapper.WorkerWrapper;
-import io.github.meta.ease.core.commons.SpringApplicationContext;
 import io.github.meta.ease.domain.api.BaseRequest;
 import io.github.meta.ease.flow.engine.process.AbstractProcess;
-import io.github.meta.ease.test.cloud.web.controler.Hello;
+import io.github.meta.ease.resilience4j.CircuitBreakerUtil;
 import io.github.meta.ease.test.api.mapper.SysUserMapper;
 import io.github.meta.ease.test.api.module.Ease14006001In;
 import io.github.meta.ease.test.api.module.Ease14006001Out;
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.concurrent.ExecutionException;
 
 /**
  * @author leijian
@@ -52,9 +51,16 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
     @Resource
     SqlSessionFactory sqlSessionFactory;
 
+    @Autowired
+    private CircuitBreakerRegistry circuitBreakerRegistry;
+
+    @SneakyThrows
     @Override
-    public Ease14006001Out process(Ease14006001In request) {
-        IWorker worker1 = (IWorker<Ease14006001In, Ease14006001Out>) (request1, allWrappers) -> {
+    public Ease14006001Out process(Ease14006001In request)  {
+        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker("backendA");
+        CircuitBreakerUtil.getCircuitBreakerStatus("执行开始前：", circuitBreaker);
+        circuitBreaker.executeCheckedSupplier(Ease14006001Out::new);
+        /*IWorker worker1 = (IWorker<Ease14006001In, Ease14006001Out>) (request1, allWrappers) -> {
             log.info("1{}", request1);
             return new Ease14006001Out();
         };
@@ -72,9 +78,8 @@ public class FlowEase14006001 extends AbstractProcess<Ease14006001In, Ease140060
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        Hello hello = SpringApplicationContext.getContext().getBean(Hello.class);
 
         ExpressionParser parser = new SpelExpressionParser();
         StandardEvaluationContext context = new StandardEvaluationContext(request);
