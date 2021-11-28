@@ -38,7 +38,6 @@
             <groupId>io.github.meta-ease</groupId>
             <artifactId>cloud-boot-dubbo</artifactId>
         </dependency>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
