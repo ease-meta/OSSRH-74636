@@ -28,10 +28,11 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
-        </dependency>-->
+        </dependency>
+
         <!-- 引入fluent-mybatis 运行依赖包, scope为compile -->
         <dependency>
             <groupId>com.github.atool</groupId>

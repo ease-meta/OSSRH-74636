@@ -46,11 +46,12 @@ public class FlowExecutor {
     }
 
     @lombok.SneakyThrows
-    public static <T extends BaseRequest, R extends BaseResponse> R execute2Resp(T request) {
+    public synchronized static <T extends BaseRequest, R extends BaseResponse> R execute2Resp(T request) {
         String serviceName = ServiceHandler.getServiceName(request.getClass());
         if (ALL_IPROCESS.get(serviceName).size() > 1) {
             logger.warn("");
         }
+
         IProcess iProcess = ALL_IPROCESS.get(serviceName).stream().sorted().findFirst().get();
         return (R) flowExecutor.businessEngine.execFlow(iProcess, request);
     }
