@@ -14,9 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.domain.api;
+package io.github.meta.ease.domain.dto;
 
-import io.github.meta.ease.domain.BaseDTO;
 import lombok.Data;
 
 @Data

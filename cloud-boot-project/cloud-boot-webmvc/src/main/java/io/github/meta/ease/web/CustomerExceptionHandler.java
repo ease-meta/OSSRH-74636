@@ -17,7 +17,7 @@
 package io.github.meta.ease.web;
 
 import io.github.meta.ease.core.exception.BusinessException;
-import io.github.meta.ease.domain.api.BaseResponseBack;
+import io.github.meta.ease.domain.dto.BaseResponseBack;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

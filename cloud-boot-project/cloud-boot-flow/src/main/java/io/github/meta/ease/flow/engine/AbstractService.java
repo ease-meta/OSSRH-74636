@@ -16,8 +16,8 @@
  */
 package io.github.meta.ease.flow.engine;
 
-import io.github.meta.ease.domain.api.BaseRequest;
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.dto.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseResponse;
 import io.github.meta.ease.flow.engine.base.BusinessEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

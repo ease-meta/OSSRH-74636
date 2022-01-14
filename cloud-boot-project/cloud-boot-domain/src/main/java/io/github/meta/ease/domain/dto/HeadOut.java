@@ -1,4 +1,4 @@
-package io.github.meta.ease.domain.api;
+package io.github.meta.ease.domain.dto;
 
 import lombok.Data;
 

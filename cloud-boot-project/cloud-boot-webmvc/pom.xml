@@ -16,6 +16,14 @@
     <dependencies>
         <dependency>
             <groupId>io.github.meta-ease</groupId>
+            <artifactId>cloud-boot-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>cloud-boot-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
             <artifactId>cloud-boot-resilience4j</artifactId>
         </dependency>
         <dependency>
@@ -41,12 +49,12 @@
             <artifactId>spring-boot-starter-jetty</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.github.meta-ease</groupId>
-            <artifactId>cloud-boot-flow</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
         </dependency>
     </dependencies>
 </project>

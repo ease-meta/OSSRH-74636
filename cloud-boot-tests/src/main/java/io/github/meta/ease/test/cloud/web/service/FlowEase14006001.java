@@ -17,7 +17,7 @@
 package io.github.meta.ease.test.cloud.web.service;
 
 
-import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseRequest;
 import io.github.meta.ease.flow.engine.process.AbstractProcess;
 import io.github.meta.ease.resilience4j.CircuitBreakerUtil;
 import io.github.meta.ease.test.api.mapper.SysUserMapper;

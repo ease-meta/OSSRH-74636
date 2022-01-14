@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.domain;
+package io.github.meta.ease.domain.dto;
 
 import java.io.Serializable;
 
@@ -25,7 +25,8 @@ import java.io.Serializable;
  * @version 1.0
  * @date 2021/9/25 20:55
  */
-public class BaseDTO implements Serializable {
+public abstract class BaseDTO implements Serializable {
 
+    private static final long serialVersionUID = 1L;
 
 }

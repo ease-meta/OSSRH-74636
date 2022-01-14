@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.cache.api;
 
-import io.github.meta.ease.domain.api.BaseResponseBack;
+import io.github.meta.ease.domain.dto.BaseResponseBack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.Cache;
 import org.springframework.web.bind.annotation.DeleteMapping;

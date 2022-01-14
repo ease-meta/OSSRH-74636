@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.cache.api;
 
-import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseRequest;
 import lombok.Data;
 
 /**

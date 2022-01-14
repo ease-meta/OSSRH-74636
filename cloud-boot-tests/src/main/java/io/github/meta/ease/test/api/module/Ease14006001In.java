@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.test.api.module;
 
-import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseRequest;
 
 /**
  * @author leijian

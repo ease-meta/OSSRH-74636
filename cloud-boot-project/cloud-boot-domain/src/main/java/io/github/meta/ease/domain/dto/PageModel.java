@@ -14,12 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.meta.ease.domain.api;
+package io.github.meta.ease.domain.dto;
 
-import io.github.meta.ease.domain.BaseDTO;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Data
-public class BaseResponse extends BaseDTO {
-    private HeadOut head;
+@AllArgsConstructor
+public class PageModel<T> implements Serializable {
+
+    private Integer total;
+
+    private List<T> data;
+
 }

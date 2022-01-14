@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.core.commons;
 
-import io.github.meta.ease.domain.api.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseRequest;
 
 import java.math.BigDecimal;
 import java.util.Map;
@@ -81,7 +81,7 @@ public final class Context {
     /**
      * @fields properties
      */
-    private Properties properties = new Properties();
+    private final Properties properties = new Properties();
 
     /**
      * 累加的交易发生额 add by Tim 2017/10/30

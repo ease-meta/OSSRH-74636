@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.web;
 
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.dto.BaseResponse;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 public class CometConsumerMessageConvert extends MappingJackson2HttpMessageConverter {

@@ -1,7 +1,7 @@
 package io.github.meta.ease.flow.engine.base;
 
-import io.github.meta.ease.domain.api.BaseRequest;
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.dto.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseResponse;
 import io.github.meta.ease.flow.engine.process.IProcess;
 
 /**

@@ -1,8 +1,8 @@
 package io.github.meta.ease.flow.engine;
 
-import io.github.meta.ease.domain.api.BaseRequest;
-import io.github.meta.ease.domain.api.BaseResponse;
-import io.github.meta.ease.domain.api.HeadOut;
+import io.github.meta.ease.domain.dto.BaseRequest;
+import io.github.meta.ease.domain.dto.BaseResponse;
+import io.github.meta.ease.domain.dto.HeadOut;
 import io.github.meta.ease.flow.engine.process.IProcessHead;
 import org.springframework.beans.BeanUtils;
 

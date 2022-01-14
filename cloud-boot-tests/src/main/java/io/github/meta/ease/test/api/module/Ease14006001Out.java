@@ -16,7 +16,7 @@
  */
 package io.github.meta.ease.test.api.module;
 
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.dto.BaseResponse;
 
 import java.time.LocalDateTime;
 

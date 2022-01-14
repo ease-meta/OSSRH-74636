@@ -18,7 +18,7 @@ package io.github.meta.ease.web;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.meta.ease.domain.api.BaseResponse;
+import io.github.meta.ease.domain.dto.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -40,11 +40,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter methodParameter,
                             Class<? extends HttpMessageConverter<?>> aClass) {
-        if (BaseResponse.class.isAssignableFrom(methodParameter.getParameterType())) {
-            return true;
-        } else {
-            return false;
-        }
+        return BaseResponse.class.isAssignableFrom(methodParameter.getParameterType());
     }
 
     /**

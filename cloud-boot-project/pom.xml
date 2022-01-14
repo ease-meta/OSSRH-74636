@@ -5,7 +5,7 @@
     <parent>
         <artifactId>cloud-boot-build</artifactId>
         <groupId>io.github.meta-ease</groupId>
-        <version>2021.0.0-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -18,6 +18,9 @@
     <modules>
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
+        <module>cloud-boot-dependencies-springcloud</module>
+        <module>cloud-boot-dependencies-alibaba</module>
+        <module>cloud-boot-dependencies-huawei</module>
 
         <module>cloud-boot-aspect</module>
         <module>cloud-boot-sdk</module>
@@ -39,14 +42,15 @@
         <module>cloud-boot-sequence</module>
         <module>cloud-boot-scheduler</module>
         <module>cloud-boot-gateway</module>
-        <module>cloud-boot-springcloud</module>
         <module>cloud-boot-sofa</module>
         <module>cloud-boot-kettle</module>
         <module>cloud-boot-dubbo</module>
         <module>cloud-boot-resilience4j</module>
+
     </modules>
 
     <properties>
+        <main.basedir>${basedir}/..</main.basedir>
         <main.user.dir>${basedir}/..</main.user.dir>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     </properties>
