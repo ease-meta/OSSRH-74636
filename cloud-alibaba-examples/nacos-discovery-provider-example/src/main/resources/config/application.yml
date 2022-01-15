@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: alibaba-provider-examples
+  cloud:
+    nacos:
+      discovery:
+        ip: 127.0.0.1:8848
+logging:
+  #logback地址
+  config: classpath:logback-spring.xml
+  level:
+    root: INFO

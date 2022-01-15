@@ -16,7 +16,8 @@
  */
 package io.github.meta.ease.logging;
 
-import io.github.meta.ease.core.util.NewInstanceServiceLoader;
+
+import io.github.meta.ease.common.util.NewInstanceServiceLoader;
 
 import java.util.Collection;
 

@@ -1,5 +1,0 @@
-spring:
-  cloud:
-    nacos:
-      discovery:
-        ip: 42.192.87.137:18848

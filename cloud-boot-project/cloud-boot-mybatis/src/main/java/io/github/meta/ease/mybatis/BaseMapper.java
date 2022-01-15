@@ -16,6 +16,7 @@
  */
 package io.github.meta.ease.mybatis;
 
+
 import io.github.meta.ease.domain.BasePO;
 
 import java.util.List;
