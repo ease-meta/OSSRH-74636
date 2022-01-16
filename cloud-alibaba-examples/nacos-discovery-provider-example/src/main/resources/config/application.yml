@@ -4,7 +4,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 42.192.87.137:18848
+        server-addr: 127.0.0.1:8848
 logging:
   #logback地址
   config: classpath:logback-spring.xml
