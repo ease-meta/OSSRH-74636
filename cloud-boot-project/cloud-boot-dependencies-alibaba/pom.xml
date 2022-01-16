@@ -14,8 +14,8 @@
 
     <properties>
         <!--https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E-->
-        <!--<spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>-->
-        <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <!--<spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>-->
     </properties>
     <dependencyManagement>
         <dependencies>

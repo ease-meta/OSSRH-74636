@@ -21,6 +21,7 @@
         <module>cloud-boot-dependencies-springcloud</module>
         <module>cloud-boot-dependencies-alibaba</module>
         <module>cloud-boot-dependencies-huawei</module>
+        <module>cloud-boot-dependencies-sofa</module>
         <module>cloud-boot-common</module>
         <module>cloud-boot-aspect</module>
         <module>cloud-boot-sdk</module>
