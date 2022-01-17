@@ -5,6 +5,10 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    loadbalancer:
+      retry:
+        enabled: false
+      configurations: zone-preference
 logging:
   #logback地址
   config: classpath:logback-spring.xml

@@ -11,7 +11,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class ProviderAlibabaApplication {
 
     public static void main(String[] args) {
-        System.setProperty("spring.application.name", "alibaba-provider-examples");
         SpringApplication.run(ProviderAlibabaApplication.class, args);
     }
 }

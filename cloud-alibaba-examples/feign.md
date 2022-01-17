@@ -225,13 +225,21 @@ protected AnnotationConfigApplicationContext createContext(String name) {
 	@Override
 	// see original
 	// https://github.com/Netflix/ocelli/blob/master/ocelli-core/
-	// src/main/java/netflix/ocelli/loadbalancer/RoundRobinLoadBalancer.java
-	public Mono<Response<ServiceInstance>> choose(Request request) {
+// src/main/java/netflix/ocelli/loadbalancer/RoundRobinLoadBalancer.java
+public Mono<Response<ServiceInstance>>choose(Request request){
         //通过ServiceInstanceListSupplier对象获取到当前请求所有符合要求的实例，再进行筛选实现负载均衡的。ServiceInstanceListSupplier是通过loadBalancerClientFactory加载,配置在LoadBalancerClientConfiguration，比如ZonePreferenceServiceInstanceListSupplier同区域优先，SameInstancePreferenceServiceInstanceListSupplier和上次实例相同优先
-		ServiceInstanceListSupplier supplier = serviceInstanceListSupplierProvider
-				.getIfAvailable(NoopServiceInstanceListSupplier::new);
-		return supplier.get(request).next()
-				.map(serviceInstances -> processInstanceResponse(supplier, serviceInstances));
-	}
+        ServiceInstanceListSupplier supplier=serviceInstanceListSupplierProvider
+        .getIfAvailable(NoopServiceInstanceListSupplier::new);
+        return supplier.get(request).next()
+        .map(serviceInstances->processInstanceResponse(supplier,serviceInstances));
+        }
 ```
+
+## 3.接口
+
+`FeignContext`--->`FeignClientsConfiguration` 通过`FeignAutoConfiguration`注入
+
+`TraceFeignContext`--->FeignClientsConfiguration 通过TraceFeignClientAutoConfiguration，FeignContextBeanPostProcessor注入
+
+`LoadBalancerClientFactory`--->`LoadBalancerClientConfiguration` 通过LoadBalancerAutoConfiguration注入
 
