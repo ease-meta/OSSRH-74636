@@ -1,16 +1,14 @@
 spring:
-  application:
-    name: alibaba-provider-examples
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        metadata:
+          node: ${spring.application.name}
     loadbalancer:
       retry:
         enabled: false
       configurations: zone-preference
-  profiles:
-    active: dev
 logging:
   #logback地址
   config: classpath:logback-spring.xml

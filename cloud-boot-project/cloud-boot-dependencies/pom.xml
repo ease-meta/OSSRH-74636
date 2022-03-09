@@ -123,7 +123,7 @@
         <commons-compress.version>[1.19,)</commons-compress.version>
         <fastjson.version>[1.2.62,)</fastjson.version>
         <easyexcel.version>[2.1.6,)</easyexcel.version>
-        <jasypt.version>[3.0.2,)</jasypt.version>
+        <jasypt.version>[3.0.4,)</jasypt.version>
         <hutool-all.version>[5.7.16,)</hutool-all.version>
         <xk-time.version>[3.1.0,)</xk-time.version>
         <esapi.version>[2.2.1.1,)</esapi.version>

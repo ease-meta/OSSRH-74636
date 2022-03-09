@@ -16,6 +16,7 @@ import java.net.URISyntaxException;
 public class ProviderAlibabaApplicationTest {
 
     public static void main(String[] args) throws URISyntaxException {
+       // ApplicationConversionService.getSharedInstance().convert(, );
         String host = new URI("http://127.0.0.1").getHost();
         ServiceInstanceListSupplierBuilder serviceInstanceListSupplierBuilder = ServiceInstanceListSupplier.builder().withDiscoveryClient().withZonePreference().withCaching();
         ServiceInstanceListSupplierBuilder.DelegateCreator delegateCreator = (configurableApplicationContext, serviceInstanceListSupplier) -> new ZonePreferenceServiceInstanceListSupplier(serviceInstanceListSupplier, configurableApplicationContext.getBean(LoadBalancerZoneConfig.class));
