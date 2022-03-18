@@ -1,6 +1,5 @@
 ## 1.`FeignClientsRegistrar`
-
-根据注解上`FeignClient`、`EnableFeignClients`属性注入容器
+InstanceRegisteredEvent Registration 可以给注册的服务加上自己的定义的属性 根据注解上`FeignClient`、`EnableFeignClients`属性注入容器
 
 ### 1.1 注入`FeignClientSpecification`
 
