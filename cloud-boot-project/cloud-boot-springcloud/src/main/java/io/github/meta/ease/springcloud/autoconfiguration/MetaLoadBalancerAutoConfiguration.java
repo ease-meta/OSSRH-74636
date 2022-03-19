@@ -3,7 +3,7 @@ package io.github.meta.ease.springcloud.autoconfiguration;
 import io.github.meta.ease.springcloud.MetaLoadBalancerClientSpecification;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.client.loadbalancer.LoadBalancerProperties;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClientsProperties;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClientSpecification;
 import org.springframework.cloud.loadbalancer.annotation.LoadBalancerClients;
 import org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration;
@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @LoadBalancerClients
-@EnableConfigurationProperties(LoadBalancerProperties.class)
+@EnableConfigurationProperties(LoadBalancerClientsProperties.class)
 @AutoConfigureBefore({LoadBalancerAutoConfiguration.class})
 public class MetaLoadBalancerAutoConfiguration {
 

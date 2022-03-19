@@ -24,13 +24,13 @@ Default logback configuration provided for import
             <defaultValue>def</defaultValue>
         </discriminator>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+            <!--<evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
                 <expression>
                     !(e.mdc?.get("tranMode") =~/timer|monitor/)
                 </expression>
             </evaluator>
             <OnMatch>ACCEPT</OnMatch>
-            <OnMismatch>DENY</OnMismatch>
+            <OnMismatch>DENY</OnMismatch>-->
         </filter>
         <sift>
             <appender name="SIFT-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -61,11 +61,11 @@ Default logback configuration provided for import
             <defaultValue>def</defaultValue>
         </discriminator>
         <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-            <evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
+            <!--<evaluator class="ch.qos.logback.classic.boolex.GEventEvaluator">
                 <expression>
                     !(e.mdc?.get("tranMode") =~/timer|monitor/)
                 </expression>
-            </evaluator>
+            </evaluator>-->
             <OnMatch>ACCEPT</OnMatch>
             <OnMismatch>DENY</OnMismatch>
         </filter>

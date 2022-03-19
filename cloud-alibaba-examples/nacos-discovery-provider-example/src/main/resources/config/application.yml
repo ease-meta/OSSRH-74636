@@ -12,7 +12,5 @@ spring:
   profiles:
     active: dev
 logging:
-  #logback地址
-  config: classpath:logback-spring.xml
   level:
     root: INFO
