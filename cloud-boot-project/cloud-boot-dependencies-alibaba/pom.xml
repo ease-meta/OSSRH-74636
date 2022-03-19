@@ -30,79 +30,68 @@
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>cola-core</artifactId>
-                <version>3.0.0</version>
-
+                <version>[3.0.0,)</version>
             </dependency>
             <!--cola框架通用组件-->
             <dependency>
                 <groupId>com.aliyun</groupId>
                 <artifactId>cola-common</artifactId>
-                <version>3.0.0</version>
-
+                <version>[3.0.0,)</version>
             </dependency>
             <!--cola异常层-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-exception</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--cola DTO-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-dto</artifactId>
-                <version>4.0.1</version>
+                <version>[4.0.1,)</version>
             </dependency>
             <!--拓展点组件-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-extension-starter</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--状态机-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-statemachine</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--组件测试-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-test-container</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--SPRING 托管的领域实体-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-domain-starter</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--cola框架web层-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-framework-archetype-web</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--cola框架服务层-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-framework-archetype-service</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
             <!--异常处理和日志组件-->
             <dependency>
                 <groupId>com.alibaba.cola</groupId>
                 <artifactId>cola-component-catchlog-starter</artifactId>
-                <version>4.0.1</version>
-
+                <version>[4.0.1,)</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 </project>
