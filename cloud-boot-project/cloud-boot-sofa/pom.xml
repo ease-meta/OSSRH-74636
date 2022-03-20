@@ -65,7 +65,7 @@
         </dependency>
     </dependencies>
 
-  <!--  <dependencyManagement>
+    <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
@@ -75,5 +75,5 @@
                 <scope>import</scope>
             </dependency>
         </dependencies>
-    </dependencyManagement>-->
+    </dependencyManagement>
 </project>

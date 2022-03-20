@@ -24,13 +24,6 @@
         <dependencies>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
-                <artifactId>cloud-boot-dependencies-alibaba</artifactId>
-                <version>2021.0.0-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-dependencies</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
                 <type>pom</type>

@@ -26,9 +26,6 @@
 
         <resilience4j.version>1.7.0</resilience4j.version>
 
-        <sofa-boot.version>3.11.0</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.6.1</sofa-boot-enterprise.version>
-
         <kettle.version>9.3.0.0-375</kettle.version>
         <spring-native.version>0.11.3</spring-native.version>
         <solace-spring-boot.version>1.2.1</solace-spring-boot.version>
@@ -174,22 +171,6 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofaboot-dependencies</artifactId>
-                <version>${sofa-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>com.alipay.sofa</groupId>
-                <artifactId>sofaboot-enterprise-dependencies</artifactId>
-                <version>${sofa-boot-enterprise.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -749,6 +730,14 @@
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.meta-ease</groupId>
+                <artifactId>cloud-boot-dependencies-alibaba</artifactId>
+                <version>2021.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
 
             <dependency>
