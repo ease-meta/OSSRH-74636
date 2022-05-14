@@ -12,10 +12,14 @@
     <artifactId>nacos-discovery-provider-example</artifactId>
 
     <dependencies>
-     <!--   <dependency>
-            <groupId>com.alibaba.cola</groupId>
-            <artifactId>cola-framework-archetype-web</artifactId>
-        </dependency>-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+        </dependency>
+        <!--   <dependency>
+               <groupId>com.alibaba.cola</groupId>
+               <artifactId>cola-framework-archetype-web</artifactId>
+           </dependency>-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>

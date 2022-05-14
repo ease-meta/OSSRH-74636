@@ -13,7 +13,7 @@
     <artifactId>cloud-boot-dependencies-sofa</artifactId>
 
     <properties>
-        <sofa-boot.version>3.11.0</sofa-boot.version>
+        <sofa-boot.version>3.11.1</sofa-boot.version>
         <sofa-boot-enterprise.version>3.6.1</sofa-boot-enterprise.version>
     </properties>
     <dependencyManagement>
