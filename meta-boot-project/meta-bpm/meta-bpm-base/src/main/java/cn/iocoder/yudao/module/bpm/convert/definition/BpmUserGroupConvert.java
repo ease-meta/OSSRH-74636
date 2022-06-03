@@ -16,11 +16,11 @@
  */
 package cn.iocoder.yudao.module.bpm.convert.definition;
 
-import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupRespVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
+import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;

@@ -17,12 +17,12 @@
 package cn.iocoder.yudao.module.bpm.service.definition;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.iocoder.yudao.framework.common.pojo.PageResult;
-import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
+import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.CollectionUtils;
 
 import javax.validation.Valid;
 import java.util.Collection;

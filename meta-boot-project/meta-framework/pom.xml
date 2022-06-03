@@ -14,11 +14,12 @@
 
     <modules>
         <module>meta-common</module>
-        <module>meta-boot-sofa</module>
+       <!-- <module>meta-boot-sofa</module>-->
         <module>meta-boot-springcloud</module>
         <module>meta-boot-webmvc</module>
         <module>meta-biz-operatelog</module>
         <module>meta-boot-swagger</module>
+        <module>meta-boot-mybatis</module>
     </modules>
 
 </project>

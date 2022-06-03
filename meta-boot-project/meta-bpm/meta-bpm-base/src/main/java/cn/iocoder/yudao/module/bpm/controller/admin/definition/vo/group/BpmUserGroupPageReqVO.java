@@ -16,8 +16,8 @@
  */
 package cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group;
 
-import cn.iocoder.yudao.framework.common.pojo.PageParam;
-import cn.iocoder.yudao.framework.common.util.date.DateUtils;
+import io.github.meta.ease.common.pojo.PageParam;
+import io.github.meta.ease.common.util.date.DateUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

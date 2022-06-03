@@ -16,7 +16,7 @@
  */
 package cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model;
 
-import cn.iocoder.yudao.framework.common.pojo.PageParam;
+import io.github.meta.ease.common.pojo.PageParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -16,6 +16,8 @@
  */
 package cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
