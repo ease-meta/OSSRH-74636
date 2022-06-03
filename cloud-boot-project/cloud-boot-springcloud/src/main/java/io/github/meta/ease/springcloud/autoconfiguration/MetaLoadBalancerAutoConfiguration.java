@@ -34,23 +34,23 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @LoadBalancerClients
 @EnableConfigurationProperties(LoadBalancerClientsProperties.class)
-@AutoConfigureBefore({ LoadBalancerAutoConfiguration.class })
+@AutoConfigureBefore({LoadBalancerAutoConfiguration.class})
 public class MetaLoadBalancerAutoConfiguration {
 
-    /**
-     * @return
-     * @see org.springframework.cloud.context.named.NamedContextFactory#createContext(String)
-     * @see org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory
-     * @see org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration#configurations
-     */
-    @Bean
-    public LoadBalancerClientSpecification metaLoadBalancerClientSpecification() {
-        LoadBalancerClientSpecification loadBalancerClientSpecification = new LoadBalancerClientSpecification();
-        loadBalancerClientSpecification.setName("default."
-                                                + MetaLoadBalancerClientSpecification.class
-                                                    .getName());
-        loadBalancerClientSpecification.setConfiguration(MetaLoadBalancerClientSpecification.class
-            .getClasses());
-        return loadBalancerClientSpecification;
-    }
+	/**
+	 * @return
+	 * @see org.springframework.cloud.context.named.NamedContextFactory#createContext(String)
+	 * @see org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory
+	 * @see org.springframework.cloud.loadbalancer.config.LoadBalancerAutoConfiguration#configurations
+	 */
+	@Bean
+	public LoadBalancerClientSpecification metaLoadBalancerClientSpecification() {
+		LoadBalancerClientSpecification loadBalancerClientSpecification = new LoadBalancerClientSpecification();
+		loadBalancerClientSpecification.setName(
+				"default." + MetaLoadBalancerClientSpecification.class.getName());
+		loadBalancerClientSpecification
+				.setConfiguration(MetaLoadBalancerClientSpecification.class.getClasses());
+		return loadBalancerClientSpecification;
+	}
+
 }
