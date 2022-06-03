@@ -121,6 +121,7 @@
                 <version>${maven_pmd_plugin_version}</version>
                 <configuration>
                     <printFailingErrors>true</printFailingErrors>
+                    <skip>true</skip>
                     <linkXRef>false</linkXRef>
                     <includeTests>true</includeTests>
                     <rulesets>

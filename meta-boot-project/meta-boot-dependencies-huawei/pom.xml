@@ -17,7 +17,7 @@
         <spring-cloud-huawei.version>1.10.0-2021.0.x</spring-cloud-huawei.version>
     </properties>
     <dependencyManagement>
-        <dependencies>
+        <!--<dependencies>
             <dependency>
                 <groupId>com.huaweicloud</groupId>
                 <artifactId>spring-cloud-huawei-dependencies</artifactId>
@@ -25,6 +25,6 @@
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
-        </dependencies>
+        </dependencies>-->
     </dependencyManagement>
 </project>

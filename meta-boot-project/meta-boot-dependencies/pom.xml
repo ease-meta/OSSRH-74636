@@ -76,7 +76,8 @@
         <!-- <javamelody.spring.boot.version>[1.80.0,)</javamelody.spring.boot.version>-->
         <!--单元测试-->
         <jmh.version>[1.19,)</jmh.version>
-        <org.mockito.version>[3.2.4,)</org.mockito.version>
+        <podam.version>7.2.6.RELEASE</podam.version>
+        <jedis-mock.version>0.1.16</jedis-mock.version>
         <testng.version>[7.1.0,)</testng.version>
         <easymock.version>[4.1,)</easymock.version>
         <!--公共及工具类-->
@@ -117,8 +118,9 @@
         <okhttp.version>[4.3.1,)</okhttp.version>
         <guice.version>[4.2.2,)</guice.version>
         <kaptcha.version>[2.3.2,)</kaptcha.version>
-        <springfox-swagger2.version>[3.0.0,)</springfox-swagger2.version>
-        <knife4j.version>[2.0.0,)</knife4j.version>
+        <!--swagger2-->
+        <knife4j.version>3.0.3</knife4j.version>
+        <swagger-annotations.v3.version>2.2.0</swagger-annotations.v3.version>
         <swagger-annotations.version>1.6.6</swagger-annotations.version>
     </properties>
     <licenses>
@@ -702,9 +704,14 @@
             </dependency>
             <!--接口包-->
             <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-boot-starter</artifactId>
-                <version>${springfox-swagger2.version}</version>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.v3.version}</version>
             </dependency>
             <!--不涉及到UI前端-->
             <dependency>
@@ -748,46 +755,11 @@
             </dependency>
 
             <dependency>
-                <groupId>io.swagger</groupId>
-                <artifactId>swagger-annotations</artifactId>
-                <version>${swagger-annotations.version}</version>
-            </dependency>
-            <!--单元测试-->
-            <dependency>
-                <groupId>org.openjdk.jmh</groupId>
-                <artifactId>jmh-core</artifactId>
-                <version>${jmh.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openjdk.jmh</groupId>
-                <artifactId>jmh-generator-annprocess</artifactId>
-                <version>${jmh.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${org.mockito.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>${testng.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.easymock</groupId>
-                <artifactId>easymock</artifactId>
-                <version>${easymock.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
                 <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-aspect</artifactId>
                 <version>2021.0.0-SNAPSHOT</version>
             </dependency>
+
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
                 <artifactId>cloud-boot-sdk</artifactId>
@@ -795,8 +767,8 @@
             </dependency>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
-                <artifactId>cloud-boot-webmvc</artifactId>
-                <version>2021.0.0-SNAPSHOT</version>
+                <artifactId>meta-boot-webmvc</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
@@ -806,12 +778,12 @@
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
                 <artifactId>meta-common</artifactId>
-                <version>2021.0.0-SNAPSHOT</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>
-                <artifactId>cloud-boot-swagger</artifactId>
-                <version>2021.0.0-SNAPSHOT</version>
+                <artifactId>meta-boot-swagger</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.meta-ease</groupId>

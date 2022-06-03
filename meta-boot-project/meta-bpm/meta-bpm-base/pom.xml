@@ -13,4 +13,12 @@
     <properties>
         <main.user.dir>${basedir}/../../..</main.user.dir>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-bpm-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
