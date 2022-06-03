@@ -4,17 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>io.github.meta-ease</groupId>
-        <artifactId>cloud-boot-build</artifactId>
+        <artifactId>cloud-boot-project</artifactId>
         <version>${revision}</version>
-        <relativePath>../..</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
     <artifactId>cloud-boot-dependencies-sofa</artifactId>
 
     <properties>
-        <sofa-boot.version>3.11.1</sofa-boot.version>
-        <sofa-boot-enterprise.version>3.6.1</sofa-boot-enterprise.version>
+        <sofa-boot.version>3.12.1</sofa-boot.version>
+        <sofa-boot-enterprise.version>3.7.0</sofa-boot-enterprise.version>
     </properties>
     <dependencyManagement>
         <dependencies>

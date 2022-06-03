@@ -3,10 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>cloud-boot-parent</artifactId>
         <groupId>io.github.meta-ease</groupId>
-        <version>2021.0.0-SNAPSHOT</version>
-        <relativePath>../cloud-boot-parent</relativePath>
+        <artifactId>cloud-boot-project</artifactId>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>pom</packaging>
@@ -15,7 +14,7 @@
     <properties>
         <!--https://github.com/huaweicloud/spring-cloud-huawei-->
         <!--<spring-cloud-huawei.version>1.7.0-2020.0.x</spring-cloud-huawei.version>-->
-        <spring-cloud-huawei.version>1.7.0-Hoxton</spring-cloud-huawei.version>
+        <spring-cloud-huawei.version>1.10.0-2021.0.x</spring-cloud-huawei.version>
     </properties>
     <dependencyManagement>
         <dependencies>

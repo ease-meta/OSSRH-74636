@@ -19,35 +19,10 @@
         <module>cloud-boot-parent</module>
         <module>cloud-boot-dependencies</module>
         <module>cloud-boot-springcloud</module>
-        <module>cloud-boot-dependencies-alibaba</module>
         <module>cloud-boot-dependencies-huawei</module>
         <module>cloud-boot-dependencies-sofa</module>
-        <module>cloud-boot-common</module>
-        <module>cloud-boot-aspect</module>
-        <module>cloud-boot-sdk</module>
-        <module>cloud-boot-webmvc</module>
-        <module>cloud-boot-webflux</module>
-        <module>cloud-boot-swagger</module>
-        <module>cloud-boot-core</module>
-        <module>cloud-boot-mybatis</module>
-        <module>cloud-boot-jpa</module>
-        <module>cloud-boot-generator</module>
-        <module>cloud-boot-logging</module>
-        <module>cloud-boot-cache</module>
-        <module>cloud-boot-flow</module>
-        <module>cloud-boot-flowable</module>
-        <module>cloud-boot-transaction</module>
-        <module>cloud-boot-asynctool</module>
-        <module>cloud-boot-adapter</module>
-        <module>cloud-boot-domain</module>
-        <module>cloud-boot-sequence</module>
-        <module>cloud-boot-scheduler</module>
-        <module>cloud-boot-gateway</module>
         <module>cloud-boot-sofa</module>
-        <module>cloud-boot-kettle</module>
-        <module>cloud-boot-dubbo</module>
-        <module>cloud-boot-resilience4j</module>
-
+        <module>cloud-boot-bpm</module>
     </modules>
 
     <properties>

@@ -3,11 +3,11 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>io.github.meta-ease</groupId>
-        <artifactId>cloud-boot-build</artifactId>
+        <artifactId>cloud-boot-project</artifactId>
         <version>${revision}</version>
-        <relativePath>../..</relativePath>
     </parent>
 
     <artifactId>cloud-boot-dependencies</artifactId>
@@ -16,10 +16,8 @@
         <main.basedir>${basedir}/../../</main.basedir>
         <main.user.dir>${basedir}/../../</main.user.dir>
 
-        <sofa.version.maven.plugin>1.0.1</sofa.version.maven.plugin>
-
-        <spring-boot.version>2.6.4</spring-boot.version>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-boot.version>2.6.8</spring-boot.version>
+        <spring-cloud.version>2021.0.3</spring-cloud.version>
         <!--https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E-->
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <spring-boot-admin.version>2.6.2</spring-boot-admin.version>
@@ -78,7 +76,6 @@
         <org.mockito.version>[3.2.4,)</org.mockito.version>
         <testng.version>[7.1.0,)</testng.version>
         <easymock.version>[4.1,)</easymock.version>
-        <junit-jupiter.version>[5.6.0,)</junit-jupiter.version>
         <!--公共及工具类-->
         <arthas.version>[3.5.3,)</arthas.version>
         <mapstruct.version>[1.4.1.Final,)</mapstruct.version>
@@ -716,28 +713,6 @@
                 <artifactId>easymock</artifactId>
                 <version>${easymock.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-api</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>io.github.meta-ease</groupId>
-                <artifactId>cloud-boot-dependencies-alibaba</artifactId>
-                <version>2021.0.0-SNAPSHOT</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
 
             <dependency>
