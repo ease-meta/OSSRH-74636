@@ -12,15 +12,14 @@
     </parent>
 
     <groupId>io.github.meta-ease</groupId>
-    <artifactId>cloud-boot-build</artifactId>
+    <artifactId>meta-boot-build</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>Cloud Boot Build</name>
-    <description>Cloud Boot Build</description>
+    <name>meta Boot Build</name>
+    <description>meta Boot Build</description>
 
     <modules>
-        <module>cloud-boot-project</module>
-        <module>cloud-boot-project/cloud-boot-common</module>
+        <module>meta-boot-project</module>
     </modules>
 
     <properties>

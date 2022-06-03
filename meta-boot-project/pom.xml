@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>meta-boot-build</artifactId>
+        <groupId>io.github.meta-ease</groupId>
+        <version>${revision}</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>meta-boot-project</artifactId>
+    <packaging>pom</packaging>
+    <name>meta Boot Project</name>
+    <description>meta Boot Project</description>
+
+    <modules>
+        <module>meta-boot-parent</module>
+        <module>meta-boot-dependencies</module>
+        <module>meta-boot-springcloud</module>
+        <module>meta-boot-dependencies-huawei</module>
+        <module>meta-boot-dependencies-sofa</module>
+        <module>meta-boot-sofa</module>
+        <module>meta-bpm</module>
+        <module>meta-common</module>
+    </modules>
+
+    <properties>
+        <main.basedir>${basedir}/..</main.basedir>
+        <main.user.dir>${basedir}/..</main.user.dir>
+        <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
+    </properties>
+</project>
