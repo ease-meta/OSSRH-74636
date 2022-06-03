@@ -16,10 +16,11 @@
     <modules>
         <module>meta-boot-parent</module>
         <module>meta-boot-dependencies</module>
-        <module>meta-boot-dependencies-huawei</module>
-        <module>meta-boot-dependencies-sofa</module>
+        <!-- <module>meta-boot-dependencies-huawei</module>
+         <module>meta-boot-dependencies-sofa</module>-->
         <module>meta-bpm</module>
         <module>meta-framework</module>
+        <module>meta-system</module>
     </modules>
 
     <properties>

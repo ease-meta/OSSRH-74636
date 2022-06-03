@@ -16,13 +16,13 @@
  */
 package cn.iocoder.yudao.module.bpm.service.message;
 
-import cn.iocoder.yudao.framework.web.config.WebProperties;
 import cn.iocoder.yudao.module.bpm.convert.message.BpmMessageConvert;
 import cn.iocoder.yudao.module.bpm.enums.message.BpmMessageEnum;
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcessInstanceApproveReqDTO;
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcessInstanceRejectReqDTO;
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenTaskCreatedReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.SmsSendApi;
+import io.github.meta.ease.web.config.WebProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;

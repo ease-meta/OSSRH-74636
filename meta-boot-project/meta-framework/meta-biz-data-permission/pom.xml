@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>io.github.meta-ease</groupId>
+        <artifactId>meta-framework</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>meta-biz-data-permission</artifactId>
+
+    <description>数据权限</description>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+
+        <!-- Web 相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-security</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional> <!-- 可选，如果使用 DeptDataPermissionRule 必须提供 -->
+        </dependency>
+
+        <!-- DB 相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 业务组件 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-system-api</artifactId> <!-- 需要使用它，进行数据权限的获取 -->
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Test 测试相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-test</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

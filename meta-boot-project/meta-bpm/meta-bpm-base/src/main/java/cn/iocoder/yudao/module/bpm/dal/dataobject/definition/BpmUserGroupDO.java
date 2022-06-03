@@ -16,13 +16,12 @@
  */
 package cn.iocoder.yudao.module.bpm.dal.dataobject.definition;
 
-import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
-import cn.iocoder.yudao.framework.mybatis.core.type.JsonLongSetTypeHandler;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
+import io.github.meta.ease.mybatis.mybatis.core.type.JsonLongSetTypeHandler;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -64,7 +63,7 @@ public class BpmUserGroupDO extends BaseDO {
     /**
      * 状态
      * <p>
-     * 枚举 {@link CommonStatusEnum}
+     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
     /**

@@ -23,6 +23,12 @@
 
         <dependency>
             <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
             <artifactId>meta-boot-webmvc</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -37,6 +43,10 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
         </dependency>
     </dependencies>
 </project>

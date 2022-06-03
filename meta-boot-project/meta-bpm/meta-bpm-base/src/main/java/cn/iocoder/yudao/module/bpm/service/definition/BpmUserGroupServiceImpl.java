@@ -17,16 +17,15 @@
 package cn.iocoder.yudao.module.bpm.service.definition;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
-import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
-import cn.iocoder.yudao.framework.common.pojo.PageResult;
-import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.convert.definition.BpmUserGroupConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmUserGroupMapper;
+import io.github.meta.ease.common.enums.CommonStatusEnum;
+import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -36,8 +35,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
-import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
+import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.USER_GROUP_IS_DISABLE;
+import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.USER_GROUP_NOT_EXISTS;
+import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+
 
 /**
  * 用户组 Service 实现类
@@ -79,7 +80,7 @@ public class BpmUserGroupServiceImpl implements BpmUserGroupService {
 
     private void validateUserGroupExists(Long id) {
         if (userGroupMapper.selectById(id) == null) {
-            throw ServiceExceptionUtil.exception(USER_GROUP_NOT_EXISTS);
+            throw exception(USER_GROUP_NOT_EXISTS);
         }
     }
 
@@ -115,7 +116,7 @@ public class BpmUserGroupServiceImpl implements BpmUserGroupService {
         ids.forEach(id -> {
             BpmUserGroupDO userGroup = userGroupMap.get(id);
             if (userGroup == null) {
-                throw ServiceExceptionUtil.exception(USER_GROUP_NOT_EXISTS);
+                throw exception(USER_GROUP_NOT_EXISTS);
             }
             if (!CommonStatusEnum.ENABLE.getStatus().equals(userGroup.getStatus())) {
                 throw exception(USER_GROUP_IS_DISABLE, userGroup.getName());
