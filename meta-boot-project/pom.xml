@@ -68,28 +68,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 测试包 -->
-        <dependency>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <groupId>org.springframework.boot</groupId>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- 测试包 -->
-        <dependency>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <groupId>org.springframework.boot</groupId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>

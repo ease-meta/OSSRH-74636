@@ -31,7 +31,14 @@
             <groupId>io.github.meta-ease</groupId>
             <artifactId>meta-infra-biz</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-webflux</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
         <dependency>
             <groupId>io.github.meta-ease</groupId>
             <artifactId>meta-boot-webmvc</artifactId>

@@ -17,6 +17,10 @@
         <main.user.dir>${basedir}/../../..</main.user.dir>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
         <!--日志-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
