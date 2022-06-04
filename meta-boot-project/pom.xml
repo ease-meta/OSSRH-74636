@@ -67,13 +67,6 @@
             <groupId>org.projectlombok</groupId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-            <scope>test</scope>
-            <optional>true</optional>
-        </dependency>
         <!--JUnit Jupiter Engine to depend on the JUnit5 engine and JUnit 5 API -->
         <dependency>
             <artifactId>junit-jupiter-engine</artifactId>

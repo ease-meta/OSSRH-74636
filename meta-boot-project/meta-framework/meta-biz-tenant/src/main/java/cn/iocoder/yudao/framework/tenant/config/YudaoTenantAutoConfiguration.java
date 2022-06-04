@@ -25,7 +25,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(prefix = "yudao.tenant", value = "enable", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "yudao.tenant", value = "enable", matchIfMissing = false)
 // 允许使用 yudao.tenant.enable=false 禁用多租户
 @EnableConfigurationProperties(TenantProperties.class)
 public class YudaoTenantAutoConfiguration {
