@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.server;
 
+import cn.iocoder.yudao.module.bpm.BpmPackageInfo;
 import cn.iocoder.yudao.module.infra.InfraPackageInfo;
 import cn.iocoder.yudao.module.system.SystemPackageInfo;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * @author 芋道源码
  */
-@SpringBootApplication(scanBasePackageClasses = {InfraPackageInfo.class, YudaoServerApplication.class, SystemPackageInfo.class})
+@SpringBootApplication(scanBasePackageClasses =
+        {BpmPackageInfo.class, InfraPackageInfo.class, YudaoServerApplication.class, SystemPackageInfo.class})
 public class YudaoServerApplication {
 
     public static void main(String[] args) {

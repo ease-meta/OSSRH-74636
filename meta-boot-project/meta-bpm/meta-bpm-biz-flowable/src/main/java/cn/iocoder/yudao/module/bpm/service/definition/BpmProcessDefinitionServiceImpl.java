@@ -68,7 +68,7 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
     private BpmProcessDefinitionExtMapper processDefinitionMapper;
 
     @Resource
-    private BpmFormService formService;
+    private BpmFormService bpmFormService;
 
     @Override
     public ProcessDefinition getProcessDefinition(String id) {
@@ -283,7 +283,7 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
 
         // 获得 Form Map
         Set<Long> formIds = convertSet(processDefinitionDOs, BpmProcessDefinitionExtDO::getFormId);
-        Map<Long, BpmFormDO> formMap = formService.getFormMap(formIds);
+        Map<Long, BpmFormDO> formMap = bpmFormService.getFormMap(formIds);
 
         // 拼接结果
         long definitionCount = definitionQuery.count();
