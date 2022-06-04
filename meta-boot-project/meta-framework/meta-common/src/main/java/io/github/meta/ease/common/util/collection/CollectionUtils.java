@@ -50,7 +50,8 @@ public class CollectionUtils {
         return distinct(from, keyMapper, (t1, t2) -> t1);
     }
 
-    public static <T, R> List<T> distinct(Collection<T> from, Function<T, R> keyMapper, BinaryOperator<T> cover) {
+    public static <T, R> List<T> distinct(Collection<T> from, Function<T, R> keyMapper,
+                                          BinaryOperator<T> cover) {
         if (CollUtil.isEmpty(from)) {
             return new ArrayList<>();
         }
@@ -92,7 +93,8 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, Function.identity());
     }
 
-    public static <T, K> Map<K, T> convertMap(Collection<T> from, Function<T, K> keyFunc, Supplier<? extends Map<K, T>> supplier) {
+    public static <T, K> Map<K, T> convertMap(Collection<T> from, Function<T, K> keyFunc,
+                                              Supplier<? extends Map<K, T>> supplier) {
         if (CollUtil.isEmpty(from)) {
             return supplier.get();
         }
@@ -120,7 +122,10 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, valueFunc, (v1, v2) -> v1, supplier);
     }
 
-    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, BinaryOperator<V> mergeFunction, Supplier<? extends Map<K, V>> supplier) {
+    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc,
+                                                 Function<T, V> valueFunc,
+                                                 BinaryOperator<V> mergeFunction,
+                                                 Supplier<? extends Map<K, V>> supplier) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
         }
@@ -134,20 +139,25 @@ public class CollectionUtils {
         return from.stream().collect(Collectors.groupingBy(keyFunc, Collectors.mapping(t -> t, Collectors.toList())));
     }
 
-    public static <T, K, V> Map<K, List<V>> convertMultiMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc) {
+    public static <T, K, V> Map<K, List<V>> convertMultiMap(Collection<T> from,
+                                                            Function<T, K> keyFunc,
+                                                            Function<T, V> valueFunc) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
         }
-        return from.stream()
-                .collect(Collectors.groupingBy(keyFunc, Collectors.mapping(valueFunc, Collectors.toList())));
+        return from.stream().collect(
+                Collectors.groupingBy(keyFunc, Collectors.mapping(valueFunc, Collectors.toList())));
     }
 
     // 暂时没想好名字，先以 2 结尾噶
-    public static <T, K, V> Map<K, Set<V>> convertMultiMap2(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc) {
+    public static <T, K, V> Map<K, Set<V>> convertMultiMap2(Collection<T> from,
+                                                            Function<T, K> keyFunc,
+                                                            Function<T, V> valueFunc) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
         }
-        return from.stream().collect(Collectors.groupingBy(keyFunc, Collectors.mapping(valueFunc, Collectors.toSet())));
+        return from.stream().collect(
+                Collectors.groupingBy(keyFunc, Collectors.mapping(valueFunc, Collectors.toSet())));
     }
 
     public static <T, K> Map<K, T> convertImmutableMap(Collection<T> from, Function<T, K> keyFunc) {
@@ -174,7 +184,8 @@ public class CollectionUtils {
         return from.stream().filter(predicate).findFirst().orElse(null);
     }
 
-    public static <T, V extends Comparable<? super V>> V getMaxValue(List<T> from, Function<T, V> valueFunc) {
+    public static <T, V extends Comparable<? super V>> V getMaxValue(List<T> from,
+                                                                     Function<T, V> valueFunc) {
         if (CollUtil.isEmpty(from)) {
             return null;
         }

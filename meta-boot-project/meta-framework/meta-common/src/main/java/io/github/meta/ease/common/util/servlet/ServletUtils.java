@@ -28,7 +28,8 @@ public class ServletUtils {
      * @param response 响应
      * @param object   对象，会序列化成 JSON 字符串
      */
-    @SuppressWarnings("deprecation") // 必须使用 APPLICATION_JSON_UTF8_VALUE，否则会乱码
+    @SuppressWarnings("deprecation")
+    // 必须使用 APPLICATION_JSON_UTF8_VALUE，否则会乱码
     public static void writeJSON(HttpServletResponse response, Object object) {
         String content = JsonUtils.toJsonString(object);
         ServletUtil.write(response, content, MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -42,9 +43,11 @@ public class ServletUtils {
      * @param content  附件内容
      * @throws java.io.IOException
      */
-    public static void writeAttachment(HttpServletResponse response, String filename, byte[] content) throws IOException {
+    public static void writeAttachment(HttpServletResponse response, String filename, byte[] content)
+            throws IOException {
         // 设置 header 和 contentType
-        response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
+        response.setHeader("Content-Disposition",
+                "attachment;filename=" + URLEncoder.encode(filename, "UTF-8"));
         response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
         // 输出附件
         IoUtil.write(response.getOutputStream(), false, content);
@@ -89,7 +92,8 @@ public class ServletUtils {
     }
 
     public static boolean isJsonRequest(ServletRequest request) {
-        return StrUtil.startWithIgnoreCase(request.getContentType(), MediaType.APPLICATION_JSON_VALUE);
+        return StrUtil.startWithIgnoreCase(request.getContentType(),
+                MediaType.APPLICATION_JSON_VALUE);
     }
 
 }

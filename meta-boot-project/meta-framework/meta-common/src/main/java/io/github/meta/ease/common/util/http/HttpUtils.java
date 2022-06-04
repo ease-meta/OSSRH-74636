@@ -25,8 +25,8 @@ public class HttpUtils {
     public static String replaceUrlQuery(String url, String key, String value) {
         UrlBuilder builder = UrlBuilder.of(url, Charset.defaultCharset());
         // 先移除
-        TableMap<CharSequence, CharSequence> query = (TableMap<CharSequence, CharSequence>)
-                ReflectUtil.getFieldValue(builder.getQuery(), "query");
+        TableMap<CharSequence, CharSequence> query = (TableMap<CharSequence, CharSequence>) ReflectUtil
+                .getFieldValue(builder.getQuery(), "query");
         query.remove(key);
         // 后添加
         builder.addQuery(key, value);
@@ -48,7 +48,8 @@ public class HttpUtils {
      * @param fragment URL 的 fragment，即拼接到 # 中
      * @return 拼接后的 URL
      */
-    public static String append(String base, Map<String, ?> query, Map<String, String> keys, boolean fragment) {
+    public static String append(String base, Map<String, ?> query, Map<String, String> keys,
+                                boolean fragment) {
         UriComponentsBuilder template = UriComponentsBuilder.newInstance();
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(base);
         URI redirectUri;
@@ -60,8 +61,9 @@ public class HttpUtils {
             redirectUri = builder.build().toUri();
             builder = UriComponentsBuilder.fromUri(redirectUri);
         }
-        template.scheme(redirectUri.getScheme()).port(redirectUri.getPort()).host(redirectUri.getHost())
-                .userInfo(redirectUri.getUserInfo()).path(redirectUri.getPath());
+        template.scheme(redirectUri.getScheme()).port(redirectUri.getPort())
+                .host(redirectUri.getHost()).userInfo(redirectUri.getUserInfo())
+                .path(redirectUri.getPath());
 
         if (fragment) {
             StringBuilder values = new StringBuilder();
@@ -121,6 +123,5 @@ public class HttpUtils {
         }
         return null;
     }
-
 
 }

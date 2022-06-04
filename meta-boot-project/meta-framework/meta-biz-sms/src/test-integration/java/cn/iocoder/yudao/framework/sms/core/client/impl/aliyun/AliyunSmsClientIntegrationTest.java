@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl.aliyun;
 
-import cn.iocoder.yudao.framework.common.core.KeyValue;
+
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;

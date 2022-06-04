@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.system.enums;
 
-import cn.iocoder.yudao.framework.common.exception.ErrorCode;
+
+import io.github.meta.ease.common.exception.ErrorCode;
 
 /**
  * System 错误码枚举类

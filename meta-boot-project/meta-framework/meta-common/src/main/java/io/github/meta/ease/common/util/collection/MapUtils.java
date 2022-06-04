@@ -62,5 +62,4 @@ public class MapUtils {
         keyValues.forEach(keyValue -> map.put(keyValue.getKey(), keyValue.getValue()));
         return map;
     }
-
 }

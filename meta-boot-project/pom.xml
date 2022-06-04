@@ -21,6 +21,8 @@
         <module>meta-bpm</module>
         <module>meta-framework</module>
         <module>meta-system</module>
+        <module>meta-infra</module>
+        <module>meta-server</module>
     </modules>
 
     <properties>

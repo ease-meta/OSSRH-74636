@@ -72,12 +72,14 @@ public class CommonResult<T> implements Serializable {
         return Objects.equals(code, GlobalErrorCodeConstants.SUCCESS.getCode());
     }
 
-    @JsonIgnore // 避免 jackson 序列化
+    @JsonIgnore
+    // 避免 jackson 序列化
     public boolean isSuccess() {
         return isSuccess(code);
     }
 
-    @JsonIgnore // 避免 jackson 序列化
+    @JsonIgnore
+    // 避免 jackson 序列化
     public boolean isError() {
         return !isSuccess();
     }

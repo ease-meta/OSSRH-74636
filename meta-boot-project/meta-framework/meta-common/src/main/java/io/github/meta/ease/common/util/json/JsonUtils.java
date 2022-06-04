@@ -51,7 +51,6 @@ public class JsonUtils {
         return objectMapper.writeValueAsBytes(object);
     }
 
-
     public static <T> T parseObject(String text, Class<T> clazz) {
         if (StrUtil.isEmpty(text)) {
             return null;
@@ -106,7 +105,8 @@ public class JsonUtils {
             return new ArrayList<>();
         }
         try {
-            return objectMapper.readValue(text, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+            return objectMapper.readValue(text, objectMapper.getTypeFactory()
+                    .constructCollectionType(List.class, clazz));
         } catch (IOException e) {
             log.error("json parse err,json:{}", text, e);
             throw new RuntimeException(e);

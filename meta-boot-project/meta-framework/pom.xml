@@ -30,6 +30,16 @@
         <module>meta-biz-pay</module>
         <module>meta-biz-sms</module>
         <module>meta-biz-social</module>
+        <module>meta-biz-tenant</module>
+        <module>meta-boot-job</module>
+        <module>meta-boot-mq</module>
+        <module>meta-biz-weixin</module>
+        <module>meta-boot-config</module>
+        <module>meta-boot-excel</module>
+        <module>meta-boot-extension</module>
+        <module>meta-boot-file</module>
+        <module>meta-boot-monitor</module>
+        <module>meta-boot-protection</module>
     </modules>
 
 </project>

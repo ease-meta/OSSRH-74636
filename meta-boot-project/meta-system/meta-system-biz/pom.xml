@@ -10,10 +10,101 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>meta-system-biz</artifactId>
+    <description>
+        system 模块下，我们放通用业务，支撑上层的核心业务。
+        例如说：用户、部门、权限、数据字典等等
+    </description>
+    <dependencies>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-system-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-infra-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
+        <!-- 业务组件 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-operatelog</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-sms</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-dict</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-data-permission</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-social</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-tenant</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
+        <!-- Web 相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- DB 相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-redis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Job 定时任务相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-job</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 消息队列相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-mq</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Test 测试相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-test</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 工具类相关 -->
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-excel</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

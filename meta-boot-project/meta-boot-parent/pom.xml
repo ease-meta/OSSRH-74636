@@ -79,7 +79,7 @@
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>remove</goal>
-                            <goal>format</goal>
+                           <!-- <goal>format</goal>-->
                         </goals>
                     </execution>
                 </executions>
@@ -139,34 +139,34 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>${maven_checkstyle_version}</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.puppycrawl.tools</groupId>
-                        <artifactId>checkstyle</artifactId>
-                        <version>8.42</version>
-                    </dependency>
-                </dependencies>
-                <executions>
-                    <execution>
-                        <id>checkstyle</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <configuration>
-                            <failOnViolation>false</failOnViolation>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <configLocation>${main.user.dir}/tools/check-style.xml</configLocation>
-                </configuration>
-            </plugin>
-
+            <!-- <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-checkstyle-plugin</artifactId>
+                 <version>${maven_checkstyle_version}</version>
+                 <dependencies>
+                     <dependency>
+                         <groupId>com.puppycrawl.tools</groupId>
+                         <artifactId>checkstyle</artifactId>
+                         <version>8.42</version>
+                     </dependency>
+                 </dependencies>
+                 <executions>
+                     <execution>
+                         <id>checkstyle</id>
+                         <phase>validate</phase>
+                         <goals>
+                             <goal>check</goal>
+                         </goals>
+                         <configuration>
+                             <failOnViolation>false</failOnViolation>
+                         </configuration>
+                     </execution>
+                 </executions>
+                 <configuration>
+                     <configLocation>${main.user.dir}/tools/check-style.xml</configLocation>
+                 </configuration>
+             </plugin>
+ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

@@ -1,7 +1,7 @@
 package io.github.meta.ease.common.validation;
 
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
+import io.github.meta.ease.common.util.validation.ValidationUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

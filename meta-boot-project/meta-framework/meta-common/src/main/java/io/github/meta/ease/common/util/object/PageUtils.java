@@ -1,6 +1,5 @@
 package io.github.meta.ease.common.util.object;
 
-
 import io.github.meta.ease.common.pojo.PageParam;
 
 /**

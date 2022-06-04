@@ -27,7 +27,13 @@ public interface BpmMessageConvert {
 
     BpmMessageConvert INSTANCE = Mappers.getMapper(BpmMessageConvert.class);
 
-    SmsSendSingleToUserReqDTO convert(Long userId, String templateCode,
-                                      Map<String, Object> templateParams);
+    default SmsSendSingleToUserReqDTO convert(Long userId, String templateCode,
+                                              Map<String, Object> templateParams) {
+        SmsSendSingleToUserReqDTO smsSendSingleToUserReqDTO = new SmsSendSingleToUserReqDTO();
+        smsSendSingleToUserReqDTO.setUserId(userId);
+        smsSendSingleToUserReqDTO.setTemplateCode(templateCode);
+        smsSendSingleToUserReqDTO.setTemplateParams(templateParams);
+        return smsSendSingleToUserReqDTO;
+    }
 
 }

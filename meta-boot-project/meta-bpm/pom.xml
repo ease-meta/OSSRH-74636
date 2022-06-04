@@ -16,6 +16,8 @@
     <modules>
         <module>meta-bpm-api</module>
         <module>meta-bpm-base</module>
+        <module>meta-bpm-biz-activiti</module>
+        <module>meta-bpm-biz-flowable</module>
     </modules>
 
 

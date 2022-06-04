@@ -38,7 +38,8 @@ public class SpringExpressionUtils {
      * @return 执行界面
      */
     public static Object parseExpression(ProceedingJoinPoint joinPoint, String expressionString) {
-        Map<String, Object> result = parseExpressions(joinPoint, Collections.singletonList(expressionString));
+        Map<String, Object> result = parseExpressions(joinPoint,
+                Collections.singletonList(expressionString));
         return result.get(expressionString);
     }
 

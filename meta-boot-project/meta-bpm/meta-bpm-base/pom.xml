@@ -20,10 +20,24 @@
             <artifactId>meta-bpm-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-system-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>io.github.meta-ease</groupId>
             <artifactId>meta-boot-mybatis</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-data-permission</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-biz-operatelog</artifactId>
             <version>${project.version}</version>
         </dependency>
 

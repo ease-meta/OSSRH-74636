@@ -24,6 +24,15 @@
             <groupId>org.flowable</groupId>
             <artifactId>flowable-spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
