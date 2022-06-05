@@ -24,5 +24,4 @@ public interface SmsCodeMapper extends BaseMapperX<SmsCodeDO> {
                 .orderByDesc("id")
                 .limit1());
     }
-
 }

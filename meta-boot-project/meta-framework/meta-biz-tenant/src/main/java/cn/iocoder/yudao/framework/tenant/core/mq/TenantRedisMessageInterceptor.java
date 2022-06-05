@@ -38,5 +38,4 @@ public class TenantRedisMessageInterceptor implements RedisMessageInterceptor {
         // 注意，Consumer 是一个逻辑的入口，所以不考虑原本上下文就存在租户编号的情况
         TenantContextHolder.clear();
     }
-
 }

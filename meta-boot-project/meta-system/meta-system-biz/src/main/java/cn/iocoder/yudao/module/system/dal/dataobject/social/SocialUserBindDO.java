@@ -31,6 +31,7 @@ public class SocialUserBindDO extends BaseDO {
      * 关联 UserDO 的编号
      */
     private Long userId;
+
     /**
      * 用户类型
      * <p>
@@ -44,11 +45,11 @@ public class SocialUserBindDO extends BaseDO {
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.social.SocialUserDO#getId()}
      */
     private Long socialUserId;
+
     /**
      * 社交平台的类型
      * <p>
      * 冗余 {@link cn.iocoder.yudao.module.system.dal.dataobject.social.SocialUserDO#getType()}
      */
     private Integer socialType;
-
 }

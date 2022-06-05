@@ -41,5 +41,4 @@ public interface TestDemoMapper extends BaseMapperX<TestDemoDO> {
     }
 
     List<TestDemoDO> selectList2();
-
 }

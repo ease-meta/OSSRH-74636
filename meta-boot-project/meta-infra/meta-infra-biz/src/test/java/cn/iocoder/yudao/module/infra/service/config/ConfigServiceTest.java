@@ -46,6 +46,7 @@ public class ConfigServiceTest extends BaseDbUnitTest {
 
     @Resource
     private ConfigMapper configMapper;
+
     @MockBean
     private ConfigProducer configProducer;
 
@@ -254,5 +255,4 @@ public class ConfigServiceTest extends BaseDbUnitTest {
         };
         return RandomUtils.randomPojo(ConfigDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

@@ -43,6 +43,7 @@ public class OperateLogController {
 
     @Resource
     private OperateLogService operateLogService;
+
     @Resource
     private AdminUserService userService;
 
@@ -81,5 +82,4 @@ public class OperateLogController {
         // 输出
         ExcelUtils.write(response, "操作日志.xls", "数据列表", OperateLogExcelVO.class, excelDataList);
     }
-
 }

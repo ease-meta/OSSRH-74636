@@ -36,5 +36,4 @@ public class BpmTaskAssignRuleBaseVO {
     @ApiModelProperty(value = "规则值数组", required = true, example = "1,2,3")
     @NotNull(message = "规则值数组不能为空")
     private Set<Long> options;
-
 }

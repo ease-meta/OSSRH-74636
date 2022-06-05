@@ -33,9 +33,9 @@ public class MemberServiceImpl implements MemberService {
 
     private Object getMemberUserApi() {
         if (memberUserApi == null) {
-            memberUserApi = SpringUtil.getBean(ClassUtil.loadClass(String.format("%s.module.member.api.user.MemberUserApi", basePackage)));
+            memberUserApi = SpringUtil.getBean(
+                    ClassUtil.loadClass(String.format("%s.module.member.api.user.MemberUserApi", basePackage)));
         }
         return memberUserApi;
     }
-
 }

@@ -32,6 +32,11 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-image-generator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.github.meta-ease</groupId>
+            <artifactId>meta-boot-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
     </dependencies>
 

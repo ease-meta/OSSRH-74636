@@ -34,7 +34,8 @@ public interface BpmTaskConvert {
 
     BpmTaskConvert INSTANCE = Mappers.getMapper(BpmTaskConvert.class);
 
-    default List<BpmTaskTodoPageItemRespVO> convertList1(List<Task> tasks, Map<String, ProcessInstance> processInstanceMap,
+    default List<BpmTaskTodoPageItemRespVO> convertList1(List<Task> tasks,
+                                                         Map<String, ProcessInstance> processInstanceMap,
                                                          Map<Long, AdminUserRespDTO> userMap) {
         return CollectionUtils.convertList(tasks, task -> {
             BpmTaskTodoPageItemRespVO respVO = convert1(task);
@@ -56,7 +57,8 @@ public interface BpmTaskConvert {
                 SuspensionState.ACTIVE.getStateCode();
     }
 
-    default List<BpmTaskDonePageItemRespVO> convertList2(List<HistoricTaskInstance> tasks, Map<String, BpmTaskExtDO> bpmTaskExtDOMap,
+    default List<BpmTaskDonePageItemRespVO> convertList2(List<HistoricTaskInstance> tasks,
+                                                         Map<String, BpmTaskExtDO> bpmTaskExtDOMap,
                                                          Map<String, HistoricProcessInstance> historicProcessInstanceMap,
                                                          Map<Long, AdminUserRespDTO> userMap) {
         return CollectionUtils.convertList(tasks, task -> {
@@ -121,7 +123,8 @@ public interface BpmTaskConvert {
             @Mapping(source = "processInstance.processDefinitionId", target = "processDefinitionId"),
             @Mapping(source = "startUser.nickname", target = "startUserNickname")
     })
-    BpmTaskTodoPageItemRespVO.ProcessInstance convert(HistoricProcessInstance processInstance, AdminUserRespDTO startUser);
+    BpmTaskTodoPageItemRespVO.ProcessInstance convert(HistoricProcessInstance processInstance,
+                                                      AdminUserRespDTO startUser);
 
     default BpmTaskExtDO convert2TaskExt(Task task) {
         BpmTaskExtDO taskExtDO = new BpmTaskExtDO()
@@ -134,7 +137,8 @@ public interface BpmTaskConvert {
         return taskExtDO;
     }
 
-    default BpmMessageSendWhenTaskCreatedReqDTO convert(ProcessInstance processInstance, AdminUserRespDTO startUser, Task task) {
+    default BpmMessageSendWhenTaskCreatedReqDTO convert(ProcessInstance processInstance, AdminUserRespDTO startUser,
+                                                        Task task) {
         BpmMessageSendWhenTaskCreatedReqDTO reqDTO = new BpmMessageSendWhenTaskCreatedReqDTO();
         reqDTO.setProcessInstanceId(processInstance.getProcessInstanceId())
                 .setProcessInstanceName(processInstance.getName())

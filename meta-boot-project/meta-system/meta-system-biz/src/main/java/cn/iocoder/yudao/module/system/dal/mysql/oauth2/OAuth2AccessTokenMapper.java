@@ -29,5 +29,4 @@ public interface OAuth2AccessTokenMapper extends BaseMapperX<OAuth2AccessTokenDO
                 .gt(OAuth2AccessTokenDO::getExpiresTime, new Date())
                 .orderByDesc(OAuth2AccessTokenDO::getId));
     }
-
 }

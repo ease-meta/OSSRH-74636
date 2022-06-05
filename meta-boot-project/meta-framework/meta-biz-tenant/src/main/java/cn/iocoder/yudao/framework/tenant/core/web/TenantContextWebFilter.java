@@ -35,5 +35,4 @@ public class TenantContextWebFilter extends OncePerRequestFilter {
             TenantContextHolder.clear();
         }
     }
-
 }

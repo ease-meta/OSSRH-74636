@@ -51,5 +51,4 @@ public class AdminUserApiImpl implements AdminUserApi {
     public void validUsers(Set<Long> ids) {
         userService.validUsers(ids);
     }
-
 }

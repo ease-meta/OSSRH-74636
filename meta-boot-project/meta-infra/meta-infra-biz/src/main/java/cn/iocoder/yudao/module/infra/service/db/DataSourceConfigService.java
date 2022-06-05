@@ -50,5 +50,4 @@ public interface DataSourceConfigService {
      * @return 数据源配置列表
      */
     List<DataSourceConfigDO> getDataSourceConfigList();
-
 }

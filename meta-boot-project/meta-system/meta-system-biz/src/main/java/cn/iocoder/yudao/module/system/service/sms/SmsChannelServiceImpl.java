@@ -164,5 +164,4 @@ public class SmsChannelServiceImpl implements SmsChannelService {
     public PageResult<SmsChannelDO> getSmsChannelPage(SmsChannelPageReqVO pageReqVO) {
         return smsChannelMapper.selectPage(pageReqVO);
     }
-
 }

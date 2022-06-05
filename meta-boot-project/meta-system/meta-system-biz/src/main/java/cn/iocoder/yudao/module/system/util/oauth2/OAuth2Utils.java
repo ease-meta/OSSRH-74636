@@ -101,5 +101,4 @@ public class OAuth2Utils {
     public static List<String> buildScopes(String scope) {
         return StrUtil.split(scope, ' ');
     }
-
 }

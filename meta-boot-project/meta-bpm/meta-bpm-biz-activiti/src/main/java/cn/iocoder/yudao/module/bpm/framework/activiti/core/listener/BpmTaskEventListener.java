@@ -58,5 +58,4 @@ public class BpmTaskEventListener<T extends RuntimeEvent<?, ?>>
         // 其它事件，进行更新拓展表
         taskService.updateTaskExt(event.getEntity());
     }
-
 }

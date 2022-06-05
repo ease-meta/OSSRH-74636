@@ -27,5 +27,4 @@ public interface SmsTemplateConvert {
     PageResult<SmsTemplateRespVO> convertPage(PageResult<SmsTemplateDO> page);
 
     List<SmsTemplateExcelVO> convertList02(List<SmsTemplateDO> list);
-
 }

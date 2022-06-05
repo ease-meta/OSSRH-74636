@@ -35,5 +35,4 @@ public enum ErrorCodeTypeEnum implements IntArrayValuable {
     public int[] array() {
         return ARRAYS;
     }
-
 }

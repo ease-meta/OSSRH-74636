@@ -37,5 +37,4 @@ public class TenantProperties {
      * 即默认所有表都开启多租户的功能，所以记得添加对应的 tenant_id 字段哟
      */
     private Set<String> ignoreTables;
-
 }

@@ -34,5 +34,4 @@ public interface SocialUserBindMapper extends BaseMapperX<SocialUserBindDO> {
                 .eq(SocialUserBindDO::getUserId, userId)
                 .eq(SocialUserBindDO::getUserType, userType));
     }
-
 }

@@ -48,5 +48,4 @@ public interface ErrorCodeMapper extends BaseMapperX<ErrorCodeDO> {
         return selectList(new QueryWrapperX<ErrorCodeDO>().eq("application_name", applicationName)
                 .gtIfPresent("update_time", minUpdateTime));
     }
-
 }

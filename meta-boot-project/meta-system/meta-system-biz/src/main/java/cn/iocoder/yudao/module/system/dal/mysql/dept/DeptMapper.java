@@ -32,5 +32,4 @@ public interface DeptMapper extends BaseMapperX<DeptDO> {
 
     @Select("SELECT COUNT(*) FROM system_dept WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

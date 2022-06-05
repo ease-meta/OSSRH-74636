@@ -33,5 +33,4 @@ public class EmptyUserGroupManager implements UserGroupManager {
     public List<String> getUsers() {
         return Collections.emptyList();
     }
-
 }

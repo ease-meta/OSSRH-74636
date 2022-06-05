@@ -48,5 +48,4 @@ public interface DictDataMapper extends BaseMapperX<DictDataDO> {
 
     @Select("SELECT COUNT(*) FROM system_dict_data WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

@@ -26,5 +26,4 @@ public interface SensitiveWordApi {
      * @return 是否包含
      */
     boolean isTextValid(String text, List<String> tags);
-
 }

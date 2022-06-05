@@ -32,5 +32,4 @@ public interface TenantPackageConvert {
     PageResult<TenantPackageRespVO> convertPage(PageResult<TenantPackageDO> page);
 
     List<TenantPackageSimpleRespVO> convertList02(List<TenantPackageDO> list);
-
 }

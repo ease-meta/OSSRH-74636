@@ -63,6 +63,4 @@ public class AlipayWapPayClient extends AbstractAlipayClient {
             return PayCommonResult.build(response.getCode(), response.getMsg(), response, codeMapping);
         }
     }
-
-
 }

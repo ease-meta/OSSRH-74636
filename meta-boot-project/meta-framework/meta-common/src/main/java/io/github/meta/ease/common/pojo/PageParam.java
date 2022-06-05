@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class PageParam implements Serializable {
 
     private static final Integer PAGE_NO = 1;
+
     private static final Integer PAGE_SIZE = 10;
 
     @ApiModelProperty(value = "页码，从 1 开始", required = true, example = "1")
@@ -26,5 +27,4 @@ public class PageParam implements Serializable {
     @Min(value = 1, message = "页码最小值为 1")
     @Max(value = 100, message = "页码最大值为 100")
     private Integer pageSize = PAGE_SIZE;
-
 }

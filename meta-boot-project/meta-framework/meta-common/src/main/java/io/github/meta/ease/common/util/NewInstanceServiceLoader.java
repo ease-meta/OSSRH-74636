@@ -65,5 +65,4 @@ public final class NewInstanceServiceLoader {
         }
         return result;
     }
-
 }

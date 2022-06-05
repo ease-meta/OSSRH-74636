@@ -26,5 +26,4 @@ public interface JobLogConvert {
     PageResult<JobLogRespVO> convertPage(PageResult<JobLogDO> page);
 
     List<JobLogExcelVO> convertList02(List<JobLogDO> list);
-
 }

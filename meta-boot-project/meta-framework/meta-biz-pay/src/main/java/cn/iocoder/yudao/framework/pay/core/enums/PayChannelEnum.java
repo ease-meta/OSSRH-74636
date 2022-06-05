@@ -33,6 +33,7 @@ public enum PayChannelEnum {
      * 参考 https://www.pingxx.com/api/支付渠道属性值.html
      */
     private final String code;
+
     /**
      * 名字
      */
@@ -56,5 +57,4 @@ public enum PayChannelEnum {
     public static PayChannelEnum getByCode(String code) {
         return ArrayUtil.firstMatch(o -> o.getCode().equals(code), values());
     }
-
 }

@@ -2,8 +2,6 @@ package cn.iocoder.yudao.module.system.service.permission;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
-import cn.iocoder.yudao.framework.common.util.spring.SpringAopUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.menu.MenuCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.menu.MenuListReqVO;
@@ -15,6 +13,8 @@ import cn.iocoder.yudao.module.system.mq.producer.permission.MenuProducer;
 import cn.iocoder.yudao.module.system.service.tenant.TenantService;
 import com.google.common.collect.Multimap;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
+import io.github.meta.ease.common.util.object.ObjectUtils;
+import io.github.meta.ease.common.util.spring.SpringAopUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
@@ -40,6 +39,7 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_NOT_E
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_ERROR;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_NOT_DIR_OR_MENU;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_NOT_EXISTS;
+import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -59,8 +59,10 @@ public class MenuServiceTest extends BaseDbUnitTest {
 
     @MockBean
     private PermissionService permissionService;
+
     @MockBean
     private MenuProducer menuProducer;
+
     @MockBean
     private TenantService tenantService;
 
@@ -368,7 +370,8 @@ public class MenuServiceTest extends BaseDbUnitTest {
         Long otherSonMenuId = randomLongId();
         String otherSonMenuName = sonMenu.getName(); //相同名称
 
-        assertServiceException(() -> menuService.checkResource(parentId, otherSonMenuName, otherSonMenuId), MENU_NAME_DUPLICATE);
+        assertServiceException(() -> menuService.checkResource(parentId, otherSonMenuName, otherSonMenuId),
+                MENU_NAME_DUPLICATE);
     }
 
     /**
@@ -404,5 +407,4 @@ public class MenuServiceTest extends BaseDbUnitTest {
             o.setName(menuName);
         });
     }
-
 }

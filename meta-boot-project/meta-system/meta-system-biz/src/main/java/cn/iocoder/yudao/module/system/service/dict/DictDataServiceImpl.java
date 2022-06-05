@@ -73,6 +73,7 @@ public class DictDataServiceImpl implements DictDataService {
      * key2：字典标签 label
      */
     private ImmutableTable<String, String, DictDataDO> labelDictDataCache;
+
     /**
      * 字典数据缓存，第二个 key 使用 value
      * <p>
@@ -80,6 +81,7 @@ public class DictDataServiceImpl implements DictDataService {
      * key2：字典值 value
      */
     private ImmutableTable<String, String, DictDataDO> valueDictDataCache;
+
     /**
      * 缓存字典数据的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -280,5 +282,4 @@ public class DictDataServiceImpl implements DictDataService {
             }
         });
     }
-
 }

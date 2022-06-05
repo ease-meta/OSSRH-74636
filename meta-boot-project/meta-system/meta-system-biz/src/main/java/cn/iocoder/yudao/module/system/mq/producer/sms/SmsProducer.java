@@ -55,5 +55,4 @@ public class SmsProducer {
         message.setChannelId(channelId).setApiTemplateId(apiTemplateId).setTemplateParams(templateParams);
         redisMQTemplate.send(message);
     }
-
 }

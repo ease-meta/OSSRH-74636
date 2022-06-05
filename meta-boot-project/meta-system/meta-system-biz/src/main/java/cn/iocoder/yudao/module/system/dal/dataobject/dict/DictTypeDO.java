@@ -31,23 +31,26 @@ public class DictTypeDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 字典名称
      */
     private String name;
+
     /**
      * 字典类型
      */
     private String type;
+
     /**
      * 状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 备注
      */
     private String remark;
-
 }

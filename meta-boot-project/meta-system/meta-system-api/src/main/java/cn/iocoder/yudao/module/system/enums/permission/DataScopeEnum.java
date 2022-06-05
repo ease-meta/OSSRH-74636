@@ -26,5 +26,4 @@ public enum DataScopeEnum {
      * 范围
      */
     private final Integer scope;
-
 }

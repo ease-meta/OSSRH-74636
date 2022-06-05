@@ -44,5 +44,4 @@ public class SpringAopUtils {
                 .getFieldValue(aopProxy, "advised");
         return advisedSupport.getTargetSource().getTarget();
     }
-
 }

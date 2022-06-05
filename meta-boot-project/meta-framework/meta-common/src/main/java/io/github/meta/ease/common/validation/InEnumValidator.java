@@ -40,5 +40,4 @@ public class InEnumValidator implements ConstraintValidator<InEnum, Integer> {
                         .replaceAll("\\{value}", values.toString())).addConstraintViolation(); // 重新添加错误提示语句
         return false;
     }
-
 }

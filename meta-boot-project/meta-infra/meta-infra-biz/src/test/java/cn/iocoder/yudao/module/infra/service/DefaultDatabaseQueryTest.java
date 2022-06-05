@@ -33,5 +33,4 @@ public class DefaultDatabaseQueryTest {
         System.out.println(tableInfos.size());
         System.out.println(System.currentTimeMillis() - time);
     }
-
 }

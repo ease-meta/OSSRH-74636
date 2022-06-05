@@ -38,5 +38,4 @@ public interface OperateLogConvert {
     }
 
     OperateLogExcelVO convert02(OperateLogDO bean);
-
 }

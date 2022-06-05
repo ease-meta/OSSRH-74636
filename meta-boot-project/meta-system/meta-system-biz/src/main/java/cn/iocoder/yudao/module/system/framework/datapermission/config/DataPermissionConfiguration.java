@@ -24,5 +24,4 @@ public class DataPermissionConfiguration {
             rule.addUserColumn(AdminUserDO.class, "id");
         };
     }
-
 }

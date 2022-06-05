@@ -21,5 +21,4 @@ public class DataSourceConfigUpdateReqVO extends DataSourceConfigBaseVO {
     @ApiModelProperty(value = "密码", required = true, example = "123456")
     @NotNull(message = "密码不能为空")
     private String password;
-
 }

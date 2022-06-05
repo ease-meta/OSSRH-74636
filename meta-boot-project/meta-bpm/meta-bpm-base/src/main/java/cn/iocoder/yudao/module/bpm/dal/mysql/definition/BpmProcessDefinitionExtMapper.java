@@ -33,5 +33,4 @@ public interface BpmProcessDefinitionExtMapper extends BaseMapperX<BpmProcessDef
     default BpmProcessDefinitionExtDO selectByProcessDefinitionId(String processDefinitionId) {
         return selectOne(BpmProcessDefinitionExtDO::getProcessDefinitionId, processDefinitionId);
     }
-
 }

@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.service.sensitiveword;
 
 
-import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExportReqVO;
@@ -12,6 +11,7 @@ import cn.iocoder.yudao.module.system.dal.mysql.sensitiveword.SensitiveWordMappe
 import cn.iocoder.yudao.module.system.mq.producer.sensitiveword.SensitiveWordProducer;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.SetUtils;
 import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -21,13 +21,13 @@ import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SENSITIVE_WORD_NOT_EXISTS;
+import static io.github.meta.ease.common.util.date.DateUtils.max;
+import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -246,5 +246,4 @@ public class SensitiveWordServiceImplTest extends BaseDbUnitTest {
         // 调用，断言
         assertFalse(sensitiveWordService.isTextValid(text, singletonList("论坛")));
     }
-
 }

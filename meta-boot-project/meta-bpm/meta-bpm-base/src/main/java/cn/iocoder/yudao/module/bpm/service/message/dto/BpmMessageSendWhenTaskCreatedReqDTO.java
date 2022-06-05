@@ -32,13 +32,16 @@ public class BpmMessageSendWhenTaskCreatedReqDTO {
      */
     @NotEmpty(message = "流程实例的编号不能为空")
     private String processInstanceId;
+
     /**
      * 流程实例的名字
      */
     @NotEmpty(message = "流程实例的名字不能为空")
     private String processInstanceName;
+
     @NotNull(message = "发起人的用户编号")
     private Long startUserId;
+
     @NotEmpty(message = "发起人的昵称")
     private String startUserNickname;
 
@@ -47,6 +50,7 @@ public class BpmMessageSendWhenTaskCreatedReqDTO {
      */
     @NotEmpty(message = "流程任务的编号不能为空")
     private String taskId;
+
     /**
      * 流程任务的名字
      */
@@ -58,5 +62,4 @@ public class BpmMessageSendWhenTaskCreatedReqDTO {
      */
     @NotNull(message = "审批人的用户编号不能为空")
     private Long assigneeUserId;
-
 }

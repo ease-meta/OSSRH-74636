@@ -10,6 +10,7 @@ import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
+import io.github.meta.ease.common.core.KeyValue;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.assertj.core.util.Lists;
@@ -48,10 +49,13 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
 
     @Mock
     private SmsTemplateService smsTemplateService;
+
     @Mock
     private SmsLogService smsLogService;
+
     @Mock
     private SmsProducer smsProducer;
+
     @Mock
     private SmsClientFactory smsClientFactory;
 
@@ -197,8 +201,8 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
         // 调用
         smsService.receiveSmsStatus(channelCode, text);
         // 断言
-        receiveResults.forEach(result -> smsLogService.updateSmsReceiveResult(eq(result.getLogId()), eq(result.getSuccess()),
-                eq(result.getReceiveTime()), eq(result.getErrorCode()), eq(result.getErrorCode())));
+        receiveResults.forEach(
+                result -> smsLogService.updateSmsReceiveResult(eq(result.getLogId()), eq(result.getSuccess()),
+                        eq(result.getReceiveTime()), eq(result.getErrorCode()), eq(result.getErrorCode())));
     }
-
 }

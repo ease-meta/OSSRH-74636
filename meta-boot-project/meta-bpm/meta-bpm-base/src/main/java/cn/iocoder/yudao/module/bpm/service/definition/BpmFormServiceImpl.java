@@ -156,5 +156,4 @@ public class BpmFormServiceImpl implements BpmFormService {
                     fieldDTO.getLabel(), fieldDTO.getVModel());
         }
     }
-
 }

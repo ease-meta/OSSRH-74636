@@ -17,5 +17,4 @@ public class TenantRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.tenant.refresh";
     }
-
 }

@@ -25,6 +25,7 @@ public class OAuth2UserInfoRespVO {
 
     @ApiModelProperty(value = "用户邮箱", example = "yudao@iocoder.cn")
     private String email;
+
     @ApiModelProperty(value = "手机号码", example = "15601691300")
     private String mobile;
 
@@ -53,7 +54,6 @@ public class OAuth2UserInfoRespVO {
 
         @ApiModelProperty(value = "部门名称", required = true, example = "研发部")
         private String name;
-
     }
 
     @ApiModel("岗位")
@@ -65,7 +65,5 @@ public class OAuth2UserInfoRespVO {
 
         @ApiModelProperty(value = "岗位名称", required = true, example = "开发")
         private String name;
-
     }
-
 }

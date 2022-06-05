@@ -33,5 +33,4 @@ public interface BpmActivityService {
      * @return 图的字节数组
      */
     byte[] generateHighlightDiagram(String processInstanceId);
-
 }

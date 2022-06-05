@@ -50,16 +50,22 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private AdminUserService userService;
+
     @MockBean
     private CaptchaService captchaService;
+
     @MockBean
     private LoginLogService loginLogService;
+
     @MockBean
     private SocialUserService socialService;
+
     @MockBean
     private SmsCodeApi smsCodeApi;
+
     @MockBean
     private OAuth2TokenService oauth2TokenService;
+
     @MockBean
     private MemberService memberService;
 
@@ -251,5 +257,4 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         // 校验调用参数
         verify(loginLogService, never()).createLoginLog(any());
     }
-
 }

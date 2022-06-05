@@ -49,5 +49,4 @@ public class JobLogExcelVO {
 
     @ExcelProperty("创建时间")
     private Date createTime;
-
 }

@@ -42,12 +42,14 @@ public interface BpmModelConvert {
             BpmModelMetaInfoRespDTO metaInfo = JsonUtils.parseObject(model.getMetaInfo(), BpmModelMetaInfoRespDTO.class);
             BpmFormDO form = metaInfo != null ? formMap.get(metaInfo.getFormId()) : null;
             Deployment deployment = model.getDeploymentId() != null ? deploymentMap.get(model.getDeploymentId()) : null;
-            ProcessDefinition processDefinition = model.getDeploymentId() != null ? processDefinitionMap.get(model.getDeploymentId()) : null;
+            ProcessDefinition processDefinition =
+                    model.getDeploymentId() != null ? processDefinitionMap.get(model.getDeploymentId()) : null;
             return convert(model, form, deployment, processDefinition);
         });
     }
 
-    default BpmModelPageItemRespVO convert(Model model, BpmFormDO form, Deployment deployment, ProcessDefinition processDefinition) {
+    default BpmModelPageItemRespVO convert(Model model, BpmFormDO form, Deployment deployment,
+                                           ProcessDefinition processDefinition) {
         BpmModelPageItemRespVO modelRespVO = new BpmModelPageItemRespVO();
         modelRespVO.setId(model.getId());
         modelRespVO.setCreateTime(model.getCreateTime());
@@ -143,5 +145,4 @@ public interface BpmModelConvert {
     BpmModelPageItemRespVO.ProcessDefinition convert(ProcessDefinition bean);
 
     BpmModelCreateReqVO convert(BpmModeImportReqVO bean);
-
 }

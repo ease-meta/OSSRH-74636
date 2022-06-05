@@ -117,5 +117,4 @@ public class ServiceExceptionUtil {
         sbuf.append(messagePattern.substring(i));
         return sbuf.toString();
     }
-
 }

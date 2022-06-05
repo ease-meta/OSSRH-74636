@@ -174,5 +174,4 @@ public class JobServiceImpl implements JobService {
             job.setMonitorTimeout(0);
         }
     }
-
 }

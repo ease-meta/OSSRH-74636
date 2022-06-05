@@ -31,5 +31,4 @@ public class BpmFormPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "表单名称", example = "芋道")
     private String name;
-
 }

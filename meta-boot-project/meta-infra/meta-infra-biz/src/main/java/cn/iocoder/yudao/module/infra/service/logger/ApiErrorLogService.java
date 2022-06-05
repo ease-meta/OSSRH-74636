@@ -39,5 +39,4 @@ public interface ApiErrorLogService extends ApiErrorLogFrameworkService {
      * @param processUserId 处理人
      */
     void updateApiErrorLogProcess(Long id, Integer processStatus, Long processUserId);
-
 }

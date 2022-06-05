@@ -26,8 +26,10 @@ public class OAuth2GrantServiceImpl implements OAuth2GrantService {
 
     @Resource
     private OAuth2TokenService oauth2TokenService;
+
     @Resource
     private OAuth2CodeService oauth2CodeService;
+
     @Resource
     private AdminAuthService adminAuthService;
 
@@ -100,5 +102,4 @@ public class OAuth2GrantServiceImpl implements OAuth2GrantService {
         // 再删除
         return oauth2TokenService.removeAccessToken(accessToken) != null;
     }
-
 }

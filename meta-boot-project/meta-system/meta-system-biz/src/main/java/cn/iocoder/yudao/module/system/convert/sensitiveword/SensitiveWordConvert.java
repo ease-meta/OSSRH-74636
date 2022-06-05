@@ -32,5 +32,4 @@ public interface SensitiveWordConvert {
     PageResult<SensitiveWordRespVO> convertPage(PageResult<SensitiveWordDO> page);
 
     List<SensitiveWordExcelVO> convertList02(List<SensitiveWordDO> list);
-
 }

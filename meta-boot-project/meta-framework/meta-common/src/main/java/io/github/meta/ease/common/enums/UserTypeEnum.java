@@ -23,6 +23,7 @@ public enum UserTypeEnum implements IntArrayValuable {
      * 类型
      */
     private final Integer value;
+
     /**
      * 类型名
      */

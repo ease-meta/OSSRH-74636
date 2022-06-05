@@ -70,18 +70,23 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
 
     @Resource
     private RuntimeService runtimeService;
+
     @Resource
     private HistoryService historyService;
 
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmTaskService taskService;
+
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private BpmMessageService messageService;
 
@@ -103,7 +108,8 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
     @Override
     public String createProcessInstance(Long userId, BpmProcessInstanceCreateReqDTO createReqDTO) {
         // 获得流程定义
-        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(createReqDTO.getProcessDefinitionKey());
+        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(
+                createReqDTO.getProcessDefinitionKey());
         // 发起流程
         return createProcessInstance0(userId, definition, createReqDTO.getVariables(), createReqDTO.getBusinessKey());
     }
@@ -124,8 +130,9 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         runtimeService.setProcessInstanceName(instance.getId(), definition.getName());
 
         // 补全流程实例的拓展表
-        processInstanceExtMapper.updateByProcessInstanceId(new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
-                .setFormVariables(variables));
+        processInstanceExtMapper.updateByProcessInstanceId(
+                new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
+                        .setFormVariables(variables));
 
         // 添加初始的评论 TODO 芋艿：在思考下
 //        Task task = taskService.createTaskQuery().processInstanceId(instance.getId()).singleResult();
@@ -311,11 +318,11 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         processInstanceExtMapper.updateByProcessInstanceId(instanceExtDO);
 
         // 发送流程被不通过的消息
-        messageService.sendMessageWhenProcessInstanceReject(BpmProcessInstanceConvert.INSTANCE.convert(processInstance, reason));
+        messageService.sendMessageWhenProcessInstanceReject(
+                BpmProcessInstanceConvert.INSTANCE.convert(processInstance, reason));
 
         // 发送流程实例的状态事件
         processInstanceResultEventPublisher.sendProcessInstanceResultEvent(
                 BpmProcessInstanceConvert.INSTANCE.convert(this, processInstance, instanceExtDO.getResult()));
     }
-
 }

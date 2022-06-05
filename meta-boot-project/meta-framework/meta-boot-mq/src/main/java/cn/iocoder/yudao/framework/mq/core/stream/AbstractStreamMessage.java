@@ -17,5 +17,4 @@ public abstract class AbstractStreamMessage extends AbstractRedisMessage {
      */
     @JsonIgnore // 避免序列化
     public abstract String getStreamKey();
-
 }

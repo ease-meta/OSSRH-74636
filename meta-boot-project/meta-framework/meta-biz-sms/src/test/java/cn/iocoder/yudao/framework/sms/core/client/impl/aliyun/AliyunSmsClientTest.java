@@ -226,5 +226,4 @@ public class AliyunSmsClientTest extends BaseMockitoUnitTest {
         assertEquals(SmsTemplateAuditStatusEnum.SUCCESS.getStatus(), result.getData().getAuditStatus());
         assertEquals(response.getReason(), result.getData().getAuditReason());
     }
-
 }

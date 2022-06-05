@@ -22,7 +22,8 @@ public class EncryptTypeHandler extends BaseTypeHandler<String> {
     private static StringEncryptor encryptor;
 
     @Override
-    public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException {
+    public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType)
+            throws SQLException {
         ps.setString(i, getEncryptor().encrypt(parameter));
     }
 
@@ -66,5 +67,4 @@ public class EncryptTypeHandler extends BaseTypeHandler<String> {
         Assert.notNull(encryptor, "StringEncryptor 不能为空");
         return encryptor;
     }
-
 }

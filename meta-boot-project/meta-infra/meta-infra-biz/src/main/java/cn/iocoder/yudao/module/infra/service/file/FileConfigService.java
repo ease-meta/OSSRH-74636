@@ -98,5 +98,4 @@ public interface FileConfigService {
      * @return 文件客户端
      */
     FileClient getMasterFileClient();
-
 }

@@ -22,5 +22,4 @@ public class AuthExtendToken extends AuthToken {
      * 微信小程序 - 会话密钥
      */
     private String miniSessionKey;
-
 }

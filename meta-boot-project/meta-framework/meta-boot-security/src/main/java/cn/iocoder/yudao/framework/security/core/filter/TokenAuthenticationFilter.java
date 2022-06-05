@@ -109,5 +109,4 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         return new LoginUser().setId(userId).setUserType(userType)
                 .setTenantId(WebFrameworkUtils.getTenantId(request));
     }
-
 }

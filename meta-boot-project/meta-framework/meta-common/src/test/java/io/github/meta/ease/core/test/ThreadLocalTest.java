@@ -30,5 +30,4 @@ public class ThreadLocalTest {
         System.out.println(String.format("当前线程名称: %s, fc方法内获取线程内数据为: %s", Thread.currentThread()
                 .getName(), tl.get()));
     }
-
 }

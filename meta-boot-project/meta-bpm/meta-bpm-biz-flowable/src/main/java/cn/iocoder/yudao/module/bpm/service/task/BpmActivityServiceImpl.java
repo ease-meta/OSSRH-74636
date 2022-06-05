@@ -30,6 +30,4 @@ public class BpmActivityServiceImpl implements BpmActivityService {
                 .processInstanceId(processInstanceId).list();
         return BpmActivityConvert.INSTANCE.convertList(activityList);
     }
-
-
 }

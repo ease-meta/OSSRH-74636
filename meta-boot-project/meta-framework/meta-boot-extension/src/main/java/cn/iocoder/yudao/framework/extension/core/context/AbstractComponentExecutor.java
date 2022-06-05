@@ -27,7 +27,8 @@ public abstract class AbstractComponentExecutor {
      * @param <T>
      * @return
      */
-    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, String businessId, String useCase, String scenario, Function<T, R> function) {
+    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, String businessId, String useCase,
+                                                   String scenario, Function<T, R> function) {
         return execute(targetClazz, BusinessScenario.valueOf(businessId, useCase, scenario), function);
     }
 
@@ -43,7 +44,8 @@ public abstract class AbstractComponentExecutor {
      * @param <T>
      * @return
      */
-    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, String useCase, String scenario, Function<T, R> function) {
+    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, String useCase, String scenario,
+                                                   Function<T, R> function) {
         return execute(targetClazz, BusinessScenario.valueOf(useCase, scenario), function);
     }
 
@@ -71,7 +73,8 @@ public abstract class AbstractComponentExecutor {
      * @param <T>              Parameter Type
      * @return
      */
-    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, BusinessScenario businessScenario, Function<T, R> function) {
+    public <R, T extends ExtensionPoint> R execute(Class<T> targetClazz, BusinessScenario businessScenario,
+                                                   Function<T, R> function) {
         T component = locateComponent(targetClazz, businessScenario);
         return function.apply(component);
     }
@@ -86,7 +89,8 @@ public abstract class AbstractComponentExecutor {
      * @param consumer
      * @param <T>
      */
-    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, String businessId, String useCase, String scenario, Consumer<T> consumer) {
+    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, String businessId, String useCase,
+                                                  String scenario, Consumer<T> consumer) {
         accept(targetClazz, BusinessScenario.valueOf(businessId, useCase, scenario), consumer);
     }
 
@@ -99,7 +103,8 @@ public abstract class AbstractComponentExecutor {
      * @param consumer
      * @param <T>
      */
-    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, String useCase, String scenario, Consumer<T> consumer) {
+    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, String useCase, String scenario,
+                                                  Consumer<T> consumer) {
         accept(targetClazz, BusinessScenario.valueOf(useCase, scenario), consumer);
     }
 
@@ -123,7 +128,8 @@ public abstract class AbstractComponentExecutor {
      * @param consumer
      * @param <T>              Parameter Type
      */
-    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, BusinessScenario businessScenario, Consumer<T> consumer) {
+    public <T extends ExtensionPoint> void accept(Class<T> targetClazz, BusinessScenario businessScenario,
+                                                  Consumer<T> consumer) {
         T component = locateComponent(targetClazz, businessScenario);
         consumer.accept(component);
     }
@@ -136,5 +142,6 @@ public abstract class AbstractComponentExecutor {
      * @param <C>
      * @return
      */
-    protected abstract <C extends ExtensionPoint> C locateComponent(Class<C> targetClazz, BusinessScenario businessScenario);
+    protected abstract <C extends ExtensionPoint> C locateComponent(Class<C> targetClazz,
+                                                                    BusinessScenario businessScenario);
 }

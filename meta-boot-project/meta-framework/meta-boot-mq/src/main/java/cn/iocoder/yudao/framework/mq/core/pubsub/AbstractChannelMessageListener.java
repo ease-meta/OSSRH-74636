@@ -25,10 +25,12 @@ public abstract class AbstractChannelMessageListener<T extends AbstractChannelMe
      * 消息类型
      */
     private final Class<T> messageType;
+
     /**
      * Redis Channel
      */
     private final String channel;
+
     /**
      * RedisMQTemplate
      */
@@ -98,5 +100,4 @@ public abstract class AbstractChannelMessageListener<T extends AbstractChannelMe
             interceptors.get(i).consumeMessageAfter(message);
         }
     }
-
 }

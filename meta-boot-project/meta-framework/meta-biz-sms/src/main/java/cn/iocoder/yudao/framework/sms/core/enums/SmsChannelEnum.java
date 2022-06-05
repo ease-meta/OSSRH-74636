@@ -25,6 +25,7 @@ public enum SmsChannelEnum {
      * 编码
      */
     private final String code;
+
     /**
      * 名字
      */
@@ -33,5 +34,4 @@ public enum SmsChannelEnum {
     public static SmsChannelEnum getByCode(String code) {
         return ArrayUtil.firstMatch(o -> o.getCode().equals(code), values());
     }
-
 }

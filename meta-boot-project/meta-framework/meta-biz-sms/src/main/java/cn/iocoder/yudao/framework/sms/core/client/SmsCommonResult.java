@@ -29,6 +29,7 @@ public class SmsCommonResult<T> extends CommonResult<T> {
      * 由于第三方的错误码可能是字符串，所以使用 String 类型
      */
     private String apiCode;
+
     /**
      * API 返回提示
      */
@@ -45,7 +46,8 @@ public class SmsCommonResult<T> extends CommonResult<T> {
     public static <T> SmsCommonResult<T> build(String apiCode, String apiMsg, String apiRequestId,
                                                T data, SmsCodeMapping codeMapping) {
         Assert.notNull(codeMapping, "参数 codeMapping 不能为空");
-        SmsCommonResult<T> result = new SmsCommonResult<T>().setApiCode(apiCode).setApiMsg(apiMsg).setApiRequestId(apiRequestId);
+        SmsCommonResult<T> result = new SmsCommonResult<T>().setApiCode(apiCode).setApiMsg(apiMsg)
+                .setApiRequestId(apiRequestId);
         result.setData(data);
         // 翻译错误码
         if (codeMapping != null) {
@@ -64,5 +66,4 @@ public class SmsCommonResult<T> extends CommonResult<T> {
         result.setMsg(ExceptionUtil.getRootCauseMessage(ex));
         return result;
     }
-
 }

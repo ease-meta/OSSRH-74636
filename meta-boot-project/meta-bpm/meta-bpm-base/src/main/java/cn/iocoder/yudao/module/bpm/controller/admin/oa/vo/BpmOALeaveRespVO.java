@@ -48,5 +48,4 @@ public class BpmOALeaveRespVO extends BpmOALeaveBaseVO {
 
     @ApiModelProperty(value = "流程id")
     private String processInstanceId;
-
 }

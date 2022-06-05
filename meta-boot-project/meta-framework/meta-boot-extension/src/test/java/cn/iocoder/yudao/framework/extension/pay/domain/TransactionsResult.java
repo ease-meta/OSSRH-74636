@@ -35,6 +35,4 @@ public class TransactionsResult implements Serializable {
      * 支付渠道：微信 or 支付宝
      */
     private String channel;
-
-
 }

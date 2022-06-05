@@ -80,6 +80,7 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Map<String, SmsTemplateDO> smsTemplateCache;
+
     /**
      * 缓存短信模板的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -269,5 +270,4 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
         // 校验短信模板是否正确
         templateResult.checkError();
     }
-
 }

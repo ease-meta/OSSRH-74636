@@ -111,5 +111,4 @@ public interface SmsTemplateService {
      * @return 数量
      */
     Long countByChannelId(Long channelId);
-
 }

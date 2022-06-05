@@ -36,5 +36,4 @@ public interface SmsLogMapper extends BaseMapperX<SmsLogDO> {
                 .betweenIfPresent("receive_time", reqVO.getBeginReceiveTime(), reqVO.getEndReceiveTime())
                 .orderByDesc("id"));
     }
-
 }

@@ -33,6 +33,7 @@ public class ErrorCodeLoaderImpl implements ErrorCodeLoader {
      * 应用分组
      */
     private final String applicationName;
+
     /**
      * 错误码 Service
      */
@@ -69,5 +70,4 @@ public class ErrorCodeLoaderImpl implements ErrorCodeLoader {
             maxUpdateTime = DateUtils.max(maxUpdateTime, errorCodeRespDTO.getUpdateTime());
         });
     }
-
 }

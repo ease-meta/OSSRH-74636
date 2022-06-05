@@ -22,5 +22,4 @@ public class DeptProducer {
         DeptRefreshMessage message = new DeptRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

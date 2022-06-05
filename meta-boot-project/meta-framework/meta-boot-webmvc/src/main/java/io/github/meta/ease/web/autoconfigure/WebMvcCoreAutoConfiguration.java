@@ -53,7 +53,8 @@ import java.time.LocalDateTime;
  * @since 22.0.1
  */
 @Configuration(proxyBeanMethods = false)
-@ImportAutoConfiguration({WebMvcCoreAutoConfiguration.ApiLogAutoConfiguration.class, WebMvcCoreAutoConfiguration.JacksonAutoConfiguration.class, WebMvcCoreAutoConfiguration.WebAutoConfiguration.class})
+@ImportAutoConfiguration({WebMvcCoreAutoConfiguration.ApiLogAutoConfiguration.class,
+        WebMvcCoreAutoConfiguration.JacksonAutoConfiguration.class, WebMvcCoreAutoConfiguration.WebAutoConfiguration.class})
 @Slf4j
 public class WebMvcCoreAutoConfiguration {
 
@@ -87,7 +88,6 @@ public class WebMvcCoreAutoConfiguration {
             bean.setOrder(order);
             return bean;
         }
-
     }
 
 
@@ -122,7 +122,6 @@ public class WebMvcCoreAutoConfiguration {
                 }
             };
         }
-
     }
 
     @Configuration
@@ -131,6 +130,7 @@ public class WebMvcCoreAutoConfiguration {
 
         @Resource
         private WebProperties webProperties;
+
         /**
          * 应用名
          */
@@ -221,7 +221,5 @@ public class WebMvcCoreAutoConfiguration {
             bean.setOrder(order);
             return bean;
         }
-
     }
-
 }

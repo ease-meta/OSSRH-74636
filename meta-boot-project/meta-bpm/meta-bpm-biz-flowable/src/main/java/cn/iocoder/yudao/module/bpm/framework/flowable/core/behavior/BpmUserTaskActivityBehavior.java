@@ -58,12 +58,16 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
 
     @Setter
     private BpmTaskAssignRuleService bpmTaskRuleService;
+
     @Setter
     private BpmUserGroupService userGroupService;
+
     @Setter
     private DeptApi deptApi;
+
     @Setter
     private AdminUserApi adminUserApi;
+
     @Setter
     private PermissionApi permissionApi;
 
@@ -81,7 +85,9 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
     }
 
     @DataPermission(enable = false) // 不需要处理数据权限， 不然会有问题，查询不到数据
-    protected void handleAssignments(TaskService taskService, String assignee, String owner, List<String> candidateUsers, List<String> candidateGroups, TaskEntity task, ExpressionManager expressionManager, DelegateExecution execution, ProcessEngineConfigurationImpl processEngineConfiguration) {
+    protected void handleAssignments(TaskService taskService, String assignee, String owner, List<String> candidateUsers,
+                                     List<String> candidateGroups, TaskEntity task, ExpressionManager expressionManager, DelegateExecution execution,
+                                     ProcessEngineConfigurationImpl processEngineConfiguration) {
         // 第一步，获得任务的规则
         BpmTaskAssignRuleDO rule = getTaskRule(task);
         // 第二步，获得任务的候选用户们
@@ -92,7 +98,8 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
     }
 
     private BpmTaskAssignRuleDO getTaskRule(TaskEntity task) {
-        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(task.getProcessDefinitionId(),
+        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(
+                task.getProcessDefinitionId(),
                 task.getTaskDefinitionKey());
         if (CollUtil.isEmpty(taskRules)) {
             throw new FlowableException(StrUtil.format("流程任务({}/{}/{}) 找不到符合的任务规则",

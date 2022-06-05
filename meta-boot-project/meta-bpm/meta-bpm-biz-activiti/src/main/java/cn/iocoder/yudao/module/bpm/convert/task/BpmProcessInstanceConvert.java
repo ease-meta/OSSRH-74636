@@ -72,7 +72,8 @@ public interface BpmProcessInstanceConvert {
     })
     BpmProcessInstanceExtDO convert(org.activiti.api.process.model.ProcessInstance bean);
 
-    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance, BpmProcessInstanceExtDO processInstanceExt,
+    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance,
+                                              BpmProcessInstanceExtDO processInstanceExt,
                                               ProcessDefinition processDefinition, BpmProcessDefinitionExtDO processDefinitionExt,
                                               String bpmnXml, AdminUserRespDTO startUser, DeptRespDTO dept) {
         BpmProcessInstanceRespVO respVO = convert2(processInstance);
@@ -136,6 +137,6 @@ public interface BpmProcessInstanceConvert {
             @Mapping(source = "name", target = "processInstanceName"),
             @Mapping(source = "initiator", target = "startUserId")
     })
-    BpmMessageSendWhenProcessInstanceApproveReqDTO convert2(org.activiti.api.process.model.ProcessInstance processInstance);
-
+    BpmMessageSendWhenProcessInstanceApproveReqDTO convert2(
+            org.activiti.api.process.model.ProcessInstance processInstance);
 }

@@ -18,5 +18,4 @@ public class CodegenCreateListReqVO {
     @ApiModelProperty(value = "表名数组", required = true, example = "[1, 2, 3]")
     @NotNull(message = "表名数组不能为空")
     private List<String> tableNames;
-
 }

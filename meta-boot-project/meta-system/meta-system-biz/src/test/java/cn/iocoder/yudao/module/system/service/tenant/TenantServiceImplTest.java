@@ -36,11 +36,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.addTime;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
@@ -52,6 +47,11 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_CAN
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_DISABLE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_EXPIRE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_NOT_EXISTS;
+import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
+import static io.github.meta.ease.common.util.date.DateUtils.addTime;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
+import static io.github.meta.ease.common.util.date.DateUtils.max;
+import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singleton;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -83,16 +83,22 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private TenantProperties tenantProperties;
+
     @MockBean
     private TenantPackageService tenantPackageService;
+
     @MockBean
     private AdminUserService userService;
+
     @MockBean
     private RoleService roleService;
+
     @MockBean
     private MenuService menuService;
+
     @MockBean
     private PermissionService permissionService;
+
     @MockBean
     private TenantProducer tenantProducer;
 

@@ -18,5 +18,4 @@ public interface ApiAccessLogFrameworkService {
      * @param createDTO 创建信息
      */
     void createApiAccessLogAsync(@Valid ApiAccessLogCreateReqDTO createDTO);
-
 }

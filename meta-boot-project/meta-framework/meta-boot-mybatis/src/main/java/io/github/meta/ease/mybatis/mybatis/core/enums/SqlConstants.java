@@ -17,5 +17,4 @@ public class SqlConstants {
     public static void init(DbType dbType) {
         DB_TYPE = dbType;
     }
-
 }

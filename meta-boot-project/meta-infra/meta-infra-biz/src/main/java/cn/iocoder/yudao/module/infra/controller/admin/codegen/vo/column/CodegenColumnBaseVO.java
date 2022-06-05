@@ -81,5 +81,4 @@ public class CodegenColumnBaseVO {
     @ApiModelProperty(value = "显示类型", required = true, example = "input")
     @NotNull(message = "显示类型不能为空")
     private String htmlType;
-
 }

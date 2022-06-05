@@ -25,5 +25,4 @@ public class SmsTemplateRefreshConsumer extends AbstractChannelMessageListener<S
         log.info("[onMessage][收到 SmsTemplate 刷新消息]");
         smsTemplateService.initLocalCache();
     }
-
 }

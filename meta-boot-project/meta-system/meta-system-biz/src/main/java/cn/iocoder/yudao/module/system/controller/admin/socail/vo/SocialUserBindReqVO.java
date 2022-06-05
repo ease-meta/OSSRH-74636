@@ -31,5 +31,4 @@ public class SocialUserBindReqVO {
     @ApiModelProperty(value = "state", required = true, example = "9b2ffbc1-7425-4155-9894-9d5c08541d62")
     @NotEmpty(message = "state 不能为空")
     private String state;
-
 }

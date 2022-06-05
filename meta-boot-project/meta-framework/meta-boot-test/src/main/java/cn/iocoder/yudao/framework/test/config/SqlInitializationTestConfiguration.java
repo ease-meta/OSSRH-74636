@@ -48,5 +48,4 @@ public class SqlInitializationTestConfiguration {
         settings.setMode(properties.getMode());
         return settings;
     }
-
 }

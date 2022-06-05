@@ -20,5 +20,4 @@ public @interface Mobile {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

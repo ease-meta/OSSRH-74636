@@ -25,5 +25,4 @@ public class CodegenTableRespVO extends CodegenTableBaseVO {
 
     @ApiModelProperty(value = "更新时间", required = true)
     private Date updateTime;
-
 }

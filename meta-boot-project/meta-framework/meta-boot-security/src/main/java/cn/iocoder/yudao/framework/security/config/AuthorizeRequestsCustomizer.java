@@ -32,5 +32,4 @@ public abstract class AuthorizeRequestsCustomizer
     public int getOrder() {
         return 0;
     }
-
 }

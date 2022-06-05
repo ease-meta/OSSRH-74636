@@ -25,12 +25,12 @@ import java.util.List;
 
 import static cn.hutool.core.util.RandomUtil.randomLong;
 import static cn.hutool.core.util.RandomUtil.randomString;
-import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_AUTH_FAILURE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_NOT_FOUND;
+import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
@@ -47,6 +47,7 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
 
     @Resource
     private SocialUserMapper socialUserMapper;
+
     @Resource
     private SocialUserBindMapper socialUserBindMapper;
 
@@ -193,8 +194,9 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
                 .setCode(reqDTO.getCode()).setState(reqDTO.getState());
         socialUserMapper.insert(socialUser);
         // mock 数据：用户可能之前已经绑定过该社交类型
-        socialUserBindMapper.insert(randomPojo(SocialUserBindDO.class).setUserId(1L).setUserType(UserTypeEnum.ADMIN.getValue())
-                .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(-1L));
+        socialUserBindMapper.insert(
+                randomPojo(SocialUserBindDO.class).setUserId(1L).setUserType(UserTypeEnum.ADMIN.getValue())
+                        .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(-1L));
         // mock 数据：社交用户可能之前绑定过别的用户
         socialUserBindMapper.insert(randomPojo(SocialUserBindDO.class).setUserType(UserTypeEnum.ADMIN.getValue())
                 .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(socialUser.getId()));
@@ -257,5 +259,4 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
         // 断言
         assertEquals(userId, result);
     }
-
 }

@@ -30,5 +30,4 @@ public interface MenuMapper extends BaseMapperX<MenuDO> {
 
     @Select("SELECT COUNT(*) FROM system_menu WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

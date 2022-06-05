@@ -42,5 +42,4 @@ public @interface BizTrace {
      * @return 业务类型
      */
     String type();
-
 }

@@ -33,5 +33,4 @@ public class JobBaseVO {
 
     @ApiModelProperty(value = "监控超时时间", example = "1000")
     private Integer monitorTimeout;
-
 }

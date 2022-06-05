@@ -107,9 +107,11 @@ public class TencentSmsClientTest extends BaseMockitoUnitTest {
             assertEquals(mobile, request.getPhoneNumberSet()[0]);
             assertEquals(properties.getSignature(), request.getSignName());
             assertEquals(apiTemplateId, request.getTemplateId());
-            assertEquals(toJsonString(ArrayUtils.toArray(new ArrayList<>(MapUtils.convertMap(templateParams).values()), String::valueOf)),
+            assertEquals(toJsonString(
+                            ArrayUtils.toArray(new ArrayList<>(MapUtils.convertMap(templateParams).values()), String::valueOf)),
                     toJsonString(request.getTemplateParamSet()));
-            assertEquals(sendLogId, ReflectUtil.getFieldValue(JsonUtils.parseObject(request.getSessionContext(), TencentSmsClient.SessionContext.class), "logId"));
+            assertEquals(sendLogId, ReflectUtil.getFieldValue(
+                    JsonUtils.parseObject(request.getSessionContext(), TencentSmsClient.SessionContext.class), "logId"));
             return true;
         }))).thenReturn(response);
 
@@ -223,5 +225,4 @@ public class TencentSmsClientTest extends BaseMockitoUnitTest {
         SmsTemplateRespDTO result = smsClient.convertTemplateStatusDTO(templateStatus);
         assertEquals(expected.getStatus(), result.getAuditStatus());
     }
-
 }

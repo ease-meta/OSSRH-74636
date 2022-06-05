@@ -71,6 +71,7 @@ public class RoleServiceImpl implements RoleService {
      */
     @Getter
     private volatile Map<Long, RoleDO> roleCache;
+
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -214,7 +215,6 @@ public class RoleServiceImpl implements RoleService {
             public void afterCommit() {
                 roleProducer.sendRoleRefreshMessage();
             }
-
         });
     }
 

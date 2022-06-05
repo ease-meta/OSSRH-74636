@@ -51,5 +51,4 @@ public class BpmOALeavePageReqVO extends PageParam {
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     @ApiModelProperty(value = "结束申请时间")
     private Date endCreateTime;
-
 }

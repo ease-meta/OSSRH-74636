@@ -18,5 +18,4 @@ public class PermissionAssignRoleMenuReqVO {
 
     @ApiModelProperty(value = "菜单编号列表", example = "1,3,5")
     private Set<Long> menuIds = Collections.emptySet(); // 兜底
-
 }

@@ -107,5 +107,4 @@ public class TestDemoController {
         List<TestDemoExcelVO> datas = TestDemoConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "字典类型.xls", "数据", TestDemoExcelVO.class, datas);
     }
-
 }

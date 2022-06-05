@@ -31,5 +31,4 @@ public interface DictDataFrameworkService {
      * @return 字典数据列表
      */
     List<DictDataRespDTO> listDictDatasFromCache(String type);
-
 }

@@ -74,5 +74,4 @@ public interface SmsSendService {
      * @throws Throwable 处理失败时，抛出异常
      */
     void receiveSmsStatus(String channelCode, String text) throws Throwable;
-
 }

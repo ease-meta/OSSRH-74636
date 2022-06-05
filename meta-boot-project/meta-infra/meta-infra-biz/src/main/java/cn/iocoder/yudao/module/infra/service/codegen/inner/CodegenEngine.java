@@ -100,6 +100,7 @@ public class CodegenEngine {
      * 模板引擎，由 hutool 实现
      */
     private final TemplateEngine templateEngine;
+
     /**
      * 全局通用变量映射
      */
@@ -232,5 +233,4 @@ public class CodegenEngine {
         return "yudao-ui-${sceneEnum.basePackage}/" + // 顶级目录
                 "src/" + path;
     }
-
 }

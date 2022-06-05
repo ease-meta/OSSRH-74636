@@ -53,19 +53,26 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
     @Resource
     @Lazy // 解决循环依赖
     private BpmModelService modelService;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private BpmUserGroupService userGroupService;
+
     @Resource
     private RoleApi roleApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     private PostApi postApi;
+
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DictDataApi dictDataApi;
 
@@ -214,5 +221,4 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
             throw new IllegalArgumentException(StrUtil.format("未知的规则类型({})", type));
         }
     }
-
 }

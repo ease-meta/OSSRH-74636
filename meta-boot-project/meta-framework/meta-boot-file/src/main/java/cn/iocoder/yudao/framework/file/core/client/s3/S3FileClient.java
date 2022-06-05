@@ -112,5 +112,4 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
                 .build());
         return IoUtil.readBytes(response);
     }
-
 }

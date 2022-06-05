@@ -25,5 +25,4 @@ public class SensitiveWordRefreshConsumer extends AbstractChannelMessageListener
         log.info("[onMessage][收到 SensitiveWord 刷新消息]");
         sensitiveWordService.initLocalCache();
     }
-
 }

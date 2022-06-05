@@ -23,5 +23,4 @@ public class MenuSimpleRespVO {
 
     @ApiModelProperty(value = "类型", required = true, example = "1", notes = "参见 MenuTypeEnum 枚举类")
     private Integer type;
-
 }

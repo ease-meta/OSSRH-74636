@@ -35,5 +35,4 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
         // 返回 403
         ServletUtils.writeJSON(response, CommonResult.error(FORBIDDEN));
     }
-
 }

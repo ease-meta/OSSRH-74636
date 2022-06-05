@@ -85,5 +85,4 @@ public class BpmTaskController {
             @RequestParam("processInstanceId") String processInstanceId) {
         return success(taskService.getTaskListByProcessInstanceId(processInstanceId));
     }
-
 }

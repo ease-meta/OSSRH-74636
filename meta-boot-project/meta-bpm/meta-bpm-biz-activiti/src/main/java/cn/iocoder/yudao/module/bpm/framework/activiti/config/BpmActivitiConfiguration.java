@@ -76,5 +76,4 @@ public class BpmActivitiConfiguration {
         bpmActivityBehaviorFactory.setScripts(scripts);
         return bpmActivityBehaviorFactory;
     }
-
 }

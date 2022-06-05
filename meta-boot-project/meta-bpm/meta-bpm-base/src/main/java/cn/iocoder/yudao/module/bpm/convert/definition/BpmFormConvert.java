@@ -46,5 +46,4 @@ public interface BpmFormConvert {
     List<BpmFormSimpleRespVO> convertList2(List<BpmFormDO> list);
 
     PageResult<BpmFormRespVO> convertPage(PageResult<BpmFormDO> page);
-
 }

@@ -31,6 +31,7 @@ public class SocialUserDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 社交平台的类型
      * <p>
@@ -42,10 +43,12 @@ public class SocialUserDO extends BaseDO {
      * 社交 openid
      */
     private String openid;
+
     /**
      * 社交 token
      */
     private String token;
+
     /**
      * 原始 Token 数据，一般是 JSON 格式
      */
@@ -55,10 +58,12 @@ public class SocialUserDO extends BaseDO {
      * 用户昵称
      */
     private String nickname;
+
     /**
      * 用户头像
      */
     private String avatar;
+
     /**
      * 原始用户数据，一般是 JSON 格式
      */
@@ -68,11 +73,11 @@ public class SocialUserDO extends BaseDO {
      * 最后一次的认证 code
      */
     private String code;
+
     /**
      * 最后一次的认证 state
      */
     private String state;
-
 }
 
 

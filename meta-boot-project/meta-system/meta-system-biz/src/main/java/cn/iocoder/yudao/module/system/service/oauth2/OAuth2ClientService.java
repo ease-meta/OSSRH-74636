@@ -84,5 +84,4 @@ public interface OAuth2ClientService {
      */
     OAuth2ClientDO validOAuthClientFromCache(String clientId, String clientSecret,
                                              String authorizedGrantType, Collection<String> scopes, String redirectUri);
-
 }

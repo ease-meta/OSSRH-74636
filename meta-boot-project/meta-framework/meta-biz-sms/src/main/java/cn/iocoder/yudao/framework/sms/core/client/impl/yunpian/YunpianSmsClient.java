@@ -117,7 +117,8 @@ public class YunpianSmsClient extends AbstractSmsClient {
         }, response -> {
             Template template = response.get(0);
             return new SmsTemplateRespDTO().setId(String.valueOf(template.getTpl_id())).setContent(template.getTpl_content())
-                    .setAuditStatus(convertSmsTemplateAuditStatus(template.getCheck_status())).setAuditReason(template.getReason());
+                    .setAuditStatus(convertSmsTemplateAuditStatus(template.getCheck_status()))
+                    .setAuditReason(template.getReason());
         });
     }
 
@@ -136,7 +137,8 @@ public class YunpianSmsClient extends AbstractSmsClient {
     }
 
     @VisibleForTesting
-    <T, R> SmsCommonResult<R> invoke(Supplier<Result<T>> requestConsumer, Function<T, R> responseConsumer) throws Throwable {
+    <T, R> SmsCommonResult<R> invoke(Supplier<Result<T>> requestConsumer, Function<T, R> responseConsumer)
+            throws Throwable {
         // 执行请求
         Result<T> result = requestConsumer.get();
         if (result.getThrowable() != null) {
@@ -175,10 +177,12 @@ public class YunpianSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("report_status")
         private String reportStatus;
+
         /**
          * 接收手机号
          */
         private String mobile;
+
         /**
          * 运营商返回的代码，如："DB:0103"
          * <p>
@@ -186,6 +190,7 @@ public class YunpianSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("error_msg")
         private String errorMsg;
+
         /**
          * 运营商反馈代码的中文解释
          * <p>
@@ -193,23 +198,24 @@ public class YunpianSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("error_detail")
         private String errorDetail;
+
         /**
          * 短信编号
          */
         private Long sid;
+
         /**
          * 用户自定义 id
          * <p>
          * 这里我们传递的是 SysSmsLogDO 的日志编号
          */
         private Long uid;
+
         /**
          * 用户接收时间
          */
         @JsonProperty("user_receive_time")
         @JsonFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND, timezone = TIME_ZONE_DEFAULT)
         private Date userReceiveTime;
-
     }
-
 }

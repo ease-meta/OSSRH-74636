@@ -18,15 +18,18 @@ public class OAuth2OpenCheckTokenRespVO {
     @ApiModelProperty(value = "用户编号", required = true, example = "666")
     @JsonProperty("user_id")
     private Long userId;
+
     @ApiModelProperty(value = "用户类型", required = true, example = "2", notes = "参见 UserTypeEnum 枚举")
     @JsonProperty("user_type")
     private Integer userType;
+
     @ApiModelProperty(value = "租户编号", required = true, example = "1024")
     @JsonProperty("tenant_id")
     private Long tenantId;
 
     @ApiModelProperty(value = "客户端编号", required = true, example = "car")
     private String clientId;
+
     @ApiModelProperty(value = "授权范围", required = true, example = "user_info")
     private List<String> scopes;
 
@@ -36,5 +39,4 @@ public class OAuth2OpenCheckTokenRespVO {
 
     @ApiModelProperty(value = "过期时间", required = true, example = "1593092157", notes = "时间戳 / 1000，即单位：秒")
     private Long exp;
-
 }

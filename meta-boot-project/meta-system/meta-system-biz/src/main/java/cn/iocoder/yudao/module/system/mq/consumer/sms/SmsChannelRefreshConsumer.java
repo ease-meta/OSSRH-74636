@@ -25,5 +25,4 @@ public class SmsChannelRefreshConsumer extends AbstractChannelMessageListener<Sm
         log.info("[onMessage][收到 SmsChannel 刷新消息]");
         smsChannelService.initSmsClients();
     }
-
 }

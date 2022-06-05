@@ -15,5 +15,4 @@ public class RoleUpdateReqVO extends RoleBaseVO {
     @ApiModelProperty(value = "角色编号", required = true, example = "1024")
     @NotNull(message = "角色编号不能为空")
     private Long id;
-
 }

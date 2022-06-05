@@ -103,5 +103,4 @@ public class DataSourceConfigServiceImpl implements DataSourceConfigService {
                 .setUsername(dataSourceProperty.getUsername())
                 .setPassword(dataSourceProperty.getPassword());
     }
-
 }

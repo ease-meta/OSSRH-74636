@@ -90,5 +90,4 @@ public interface BaseMapperX<T> extends BaseMapper<T> {
     default void updateBatch(T update) {
         update(update, new QueryWrapper<>());
     }
-
 }

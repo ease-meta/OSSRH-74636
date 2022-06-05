@@ -38,5 +38,4 @@ public enum BpmMessageEnum {
      * 关联 SmsTemplateDO 的 code 属性
      */
     private final String smsTemplateCode;
-
 }

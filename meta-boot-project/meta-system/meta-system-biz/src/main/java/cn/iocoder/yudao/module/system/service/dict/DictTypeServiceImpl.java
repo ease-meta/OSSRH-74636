@@ -144,5 +144,4 @@ public class DictTypeServiceImpl implements DictTypeService {
         }
         return dictType;
     }
-
 }

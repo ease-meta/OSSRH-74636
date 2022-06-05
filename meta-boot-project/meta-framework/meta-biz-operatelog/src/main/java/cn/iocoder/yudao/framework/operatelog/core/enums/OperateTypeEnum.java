@@ -50,5 +50,4 @@ public enum OperateTypeEnum {
      * 类型
      */
     private final Integer type;
-
 }

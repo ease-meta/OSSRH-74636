@@ -38,26 +38,28 @@ public class RandomUtils {
         PODAM_FACTORY.getStrategy().addOrReplaceTypeManufacturer(String.class,
                 (dataProviderStrategy, attributeMetadata, map) -> randomString());
         // Integer
-        PODAM_FACTORY.getStrategy().addOrReplaceTypeManufacturer(Integer.class, (dataProviderStrategy, attributeMetadata, map) -> {
-            // 如果是 status 的字段，返回 0 或 1
-            if (attributeMetadata.getAttributeName().equals("status")) {
-                return RandomUtil.randomEle(CommonStatusEnum.values()).getStatus();
-            }
-            // 如果是 type、status 结尾的字段，返回 tinyint 范围
-            if (StrUtil.endWithAnyIgnoreCase(attributeMetadata.getAttributeName(),
-                    "type", "status", "category", "scope")) {
-                return RandomUtil.randomInt(0, TINYINT_MAX + 1);
-            }
-            return RandomUtil.randomInt();
-        });
+        PODAM_FACTORY.getStrategy()
+                .addOrReplaceTypeManufacturer(Integer.class, (dataProviderStrategy, attributeMetadata, map) -> {
+                    // 如果是 status 的字段，返回 0 或 1
+                    if (attributeMetadata.getAttributeName().equals("status")) {
+                        return RandomUtil.randomEle(CommonStatusEnum.values()).getStatus();
+                    }
+                    // 如果是 type、status 结尾的字段，返回 tinyint 范围
+                    if (StrUtil.endWithAnyIgnoreCase(attributeMetadata.getAttributeName(),
+                            "type", "status", "category", "scope")) {
+                        return RandomUtil.randomInt(0, TINYINT_MAX + 1);
+                    }
+                    return RandomUtil.randomInt();
+                });
         // Boolean
-        PODAM_FACTORY.getStrategy().addOrReplaceTypeManufacturer(Boolean.class, (dataProviderStrategy, attributeMetadata, map) -> {
-            // 如果是 deleted 的字段，返回非删除
-            if (attributeMetadata.getAttributeName().equals("deleted")) {
-                return false;
-            }
-            return RandomUtil.randomBoolean();
-        });
+        PODAM_FACTORY.getStrategy()
+                .addOrReplaceTypeManufacturer(Boolean.class, (dataProviderStrategy, attributeMetadata, map) -> {
+                    // 如果是 deleted 的字段，返回非删除
+                    if (attributeMetadata.getAttributeName().equals("deleted")) {
+                        return false;
+                    }
+                    return RandomUtil.randomBoolean();
+                });
     }
 
     public static String randomString() {
@@ -115,5 +117,4 @@ public class RandomUtils {
         return Stream.iterate(0, i -> i).limit(size).map(o -> randomPojo(clazz, consumers))
                 .collect(Collectors.toList());
     }
-
 }

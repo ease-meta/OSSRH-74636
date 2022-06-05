@@ -35,5 +35,4 @@ public interface SmsCodeApi {
      * @param reqDTO 校验请求
      */
     void checkSmsCode(@Valid SmsCodeCheckReqDTO reqDTO);
-
 }

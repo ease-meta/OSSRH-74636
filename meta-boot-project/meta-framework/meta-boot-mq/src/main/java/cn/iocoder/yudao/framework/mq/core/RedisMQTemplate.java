@@ -24,6 +24,7 @@ public class RedisMQTemplate {
 
     @Getter
     private final RedisTemplate<String, ?> redisTemplate;
+
     /**
      * 拦截器数组
      */
@@ -83,5 +84,4 @@ public class RedisMQTemplate {
             interceptors.get(i).sendMessageAfter(message);
         }
     }
-
 }

@@ -34,5 +34,4 @@ public class ErrorCodeConfiguration {
                                            ErrorCodeFrameworkService errorCodeFrameworkService) {
         return new ErrorCodeLoaderImpl(applicationName, errorCodeFrameworkService);
     }
-
 }

@@ -105,7 +105,8 @@ public class AliyunSmsClient extends AbstractSmsClient {
         return invoke(request, response -> {
             SmsTemplateRespDTO data = new SmsTemplateRespDTO();
             data.setId(response.getTemplateCode()).setContent(response.getTemplateContent());
-            data.setAuditStatus(convertSmsTemplateAuditStatus(response.getTemplateStatus())).setAuditReason(response.getReason());
+            data.setAuditStatus(convertSmsTemplateAuditStatus(response.getTemplateStatus()))
+                    .setAuditReason(response.getReason());
             return data;
         });
     }
@@ -166,37 +167,44 @@ public class AliyunSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("phone_number")
         private String phoneNumber;
+
         /**
          * 发送时间
          */
         @JsonProperty("send_time")
         @JsonFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND, timezone = TIME_ZONE_DEFAULT)
         private Date sendTime;
+
         /**
          * 状态报告时间
          */
         @JsonProperty("report_time")
         @JsonFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND, timezone = TIME_ZONE_DEFAULT)
         private Date reportTime;
+
         /**
          * 是否接收成功
          */
         private Boolean success;
+
         /**
          * 状态报告说明
          */
         @JsonProperty("err_msg")
         private String errMsg;
+
         /**
          * 状态报告编码
          */
         @JsonProperty("err_code")
         private String errCode;
+
         /**
          * 发送序列号
          */
         @JsonProperty("biz_id")
         private String bizId;
+
         /**
          * 用户序列号
          * <p>
@@ -204,6 +212,7 @@ public class AliyunSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("out_id")
         private String outId;
+
         /**
          * 短信长度，例如说 1、2、3
          * <p>
@@ -211,7 +220,5 @@ public class AliyunSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("sms_size")
         private Integer smsSize;
-
     }
-
 }

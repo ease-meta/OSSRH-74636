@@ -35,5 +35,4 @@ public class BpmUserGroupRespVO extends BpmUserGroupBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
-
 }

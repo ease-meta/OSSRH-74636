@@ -75,7 +75,8 @@ public class ExtensionDefinition implements Serializable {
             return false;
         }
         ExtensionDefinition that = (ExtensionDefinition) o;
-        return Objects.equals(uniqueIdentify, that.uniqueIdentify) && Objects.equals(extensionPointName, that.extensionPointName);
+        return Objects.equals(uniqueIdentify, that.uniqueIdentify) && Objects.equals(extensionPointName,
+                that.extensionPointName);
     }
 
     @Override

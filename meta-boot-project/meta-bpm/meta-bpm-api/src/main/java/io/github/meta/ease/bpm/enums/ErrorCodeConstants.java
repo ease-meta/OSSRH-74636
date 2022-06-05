@@ -107,5 +107,4 @@ public interface ErrorCodeConstants {
 
     ErrorCode USER_GROUP_IS_DISABLE = new ErrorCode(1009011001,
             "名字为【{}】的用户组已被禁用");
-
 }

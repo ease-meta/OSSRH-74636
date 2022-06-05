@@ -94,5 +94,4 @@ public class DeptController {
     public CommonResult<DeptRespVO> getDept(@RequestParam("id") Long id) {
         return success(DeptConvert.INSTANCE.convert(deptService.getDept(id)));
     }
-
 }

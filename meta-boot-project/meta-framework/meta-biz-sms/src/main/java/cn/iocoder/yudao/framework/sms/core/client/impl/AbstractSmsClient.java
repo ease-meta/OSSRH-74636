@@ -25,6 +25,7 @@ public abstract class AbstractSmsClient implements SmsClient {
      * 短信渠道配置
      */
     protected volatile SmsChannelProperties properties;
+
     /**
      * 错误码枚举类
      */
@@ -123,5 +124,4 @@ public abstract class AbstractSmsClient implements SmsClient {
     }
 
     protected abstract SmsCommonResult<SmsTemplateRespDTO> doGetSmsTemplate(String apiTemplateId) throws Throwable;
-
 }

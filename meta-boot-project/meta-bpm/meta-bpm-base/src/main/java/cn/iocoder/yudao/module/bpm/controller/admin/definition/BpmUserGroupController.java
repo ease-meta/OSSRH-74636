@@ -105,5 +105,4 @@ public class BpmUserGroupController {
         // 排序后，返回给前端
         return success(BpmUserGroupConvert.INSTANCE.convertList2(list));
     }
-
 }

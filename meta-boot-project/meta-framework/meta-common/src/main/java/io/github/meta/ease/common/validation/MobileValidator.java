@@ -21,5 +21,4 @@ public class MobileValidator implements ConstraintValidator<Mobile, String> {
         // 校验手机
         return ValidationUtils.isMobile(value);
     }
-
 }

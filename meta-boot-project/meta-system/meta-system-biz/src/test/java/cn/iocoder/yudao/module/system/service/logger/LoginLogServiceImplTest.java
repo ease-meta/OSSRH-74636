@@ -39,7 +39,8 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
         // 构造测试数据
         // 登录成功的
         LoginLogDO loginLogDO = RandomUtils.randomPojo(LoginLogDO.class, logDO -> {
-            logDO.setLogType(RandomUtil.randomEle(cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum.values()).getType());
+            logDO.setLogType(
+                    RandomUtil.randomEle(cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum.values()).getType());
             logDO.setTraceId(TracerUtils.getTraceId());
             logDO.setUserType(RandomUtil.randomEle(UserTypeEnum.values()).getValue());
 
@@ -52,14 +53,14 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
 
         // 下面几个都是不匹配的数据
         // 登录失败的
-        loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setResult(cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum.CAPTCHA_CODE_ERROR.getResult())));
+        loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setResult(
+                cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum.CAPTCHA_CODE_ERROR.getResult())));
         // 不同ip段的
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setUserIp("192.168.128.18")));
         // 不同username
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setUsername("yunai")));
         // 构造一个早期时间 2021-02-06 00:00:00
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setCreateTime(buildTime(2021, 2, 6))));
-
 
         // 构造调用参数
         LoginLogPageReqVO reqVO = new LoginLogPageReqVO();
@@ -84,7 +85,8 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
 
         // 登录成功的
         LoginLogDO loginLogDO = RandomUtils.randomPojo(LoginLogDO.class, logDO -> {
-            logDO.setLogType(RandomUtil.randomEle(cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum.values()).getType());
+            logDO.setLogType(
+                    RandomUtil.randomEle(cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum.values()).getType());
             logDO.setTraceId(TracerUtils.getTraceId());
             logDO.setUserType(RandomUtil.randomEle(UserTypeEnum.values()).getValue());
 
@@ -97,14 +99,14 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
 
         // 下面几个都是不匹配的数据
         // 登录失败的
-        loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setResult(cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum.CAPTCHA_CODE_ERROR.getResult())));
+        loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setResult(
+                cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum.CAPTCHA_CODE_ERROR.getResult())));
         // 不同ip段的
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setUserIp("192.168.128.18")));
         // 不同username
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setUsername("yunai")));
         // 构造一个早期时间 2021-02-06 00:00:00
         loginLogMapper.insert(ObjectUtils.cloneIgnoreId(loginLogDO, logDO -> logDO.setCreateTime(buildTime(2021, 2, 6))));
-
 
         // 构造调用参数
         LoginLogExportReqVO reqVO = new LoginLogExportReqVO();
@@ -113,7 +115,6 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
         reqVO.setStatus(true);
         reqVO.setBeginTime(buildTime(2021, 3, 5));
         reqVO.setEndTime(buildTime(2021, 3, 7));
-
 
         // 调用service方法
         List<LoginLogDO> loginLogList = loginLogService.getLoginLogList(reqVO);
@@ -139,5 +140,4 @@ public class LoginLogServiceImplTest extends BaseDbUnitTest {
         LoginLogDO sysLoginLogDO = loginLogMapper.selectOne(null);
         assertPojoEquals(reqDTO, sysLoginLogDO);
     }
-
 }

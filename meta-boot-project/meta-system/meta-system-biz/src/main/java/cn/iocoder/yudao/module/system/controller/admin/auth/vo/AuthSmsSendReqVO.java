@@ -30,5 +30,4 @@ public class AuthSmsSendReqVO {
     @NotNull(message = "发送场景不能为空")
     @InEnum(SmsSceneEnum.class)
     private Integer scene;
-
 }

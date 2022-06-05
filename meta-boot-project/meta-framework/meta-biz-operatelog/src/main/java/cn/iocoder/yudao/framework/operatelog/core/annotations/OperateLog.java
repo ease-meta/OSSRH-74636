@@ -55,5 +55,4 @@ public @interface OperateLog {
      * 是否记录方法结果的数据
      */
     boolean logResultData() default true;
-
 }

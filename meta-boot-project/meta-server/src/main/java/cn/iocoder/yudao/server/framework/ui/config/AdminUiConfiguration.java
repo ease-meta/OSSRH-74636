@@ -27,9 +27,7 @@ public class AdminUiConfiguration implements WebMvcConfigurer {
                     public Resource createRelative(String relativePath) {
                         return this;
                     }
-
                 })
         ;
     }
-
 }

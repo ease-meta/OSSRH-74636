@@ -82,5 +82,4 @@ public interface CodegenConvert {
             return respVO;
         }).collect(Collectors.toList());
     }
-
 }

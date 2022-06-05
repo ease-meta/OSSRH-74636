@@ -38,5 +38,4 @@ public class ApiAccessLogExportReqVO {
 
     @ApiModelProperty(value = "结果码", example = "0")
     private Integer resultCode;
-
 }

@@ -25,5 +25,4 @@ public class DictDataRefreshConsumer extends AbstractChannelMessageListener<Dict
         log.info("[onMessage][收到 DictData 刷新消息]");
         dictDataService.initLocalCache();
     }
-
 }

@@ -24,6 +24,7 @@ public class WXCodeMapping extends AbstractPayCodeMapping {
      * 由于 weixin-java-pay 封装的 Result 未返回 code，所以自己定义下
      */
     public static final String CODE_SUCCESS = "SUCCESS";
+
     /**
      * 错误提示 - 成功
      */
@@ -55,5 +56,4 @@ public class WXCodeMapping extends AbstractPayCodeMapping {
         }
         return null;
     }
-
 }

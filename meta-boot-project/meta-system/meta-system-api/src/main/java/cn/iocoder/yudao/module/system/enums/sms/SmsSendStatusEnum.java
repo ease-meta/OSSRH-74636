@@ -20,5 +20,4 @@ public enum SmsSendStatusEnum {
     ;
 
     private final int status;
-
 }

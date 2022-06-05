@@ -28,5 +28,4 @@ public interface ConfigFrameworkDAO {
      * @return 配置列表
      */
     List<ConfigRespDTO> selectList();
-
 }

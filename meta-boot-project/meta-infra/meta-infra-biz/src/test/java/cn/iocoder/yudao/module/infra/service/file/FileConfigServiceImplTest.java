@@ -62,8 +62,10 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private FileConfigProducer fileConfigProducer;
+
     @MockBean
     private Validator validator;
+
     @MockBean
     private FileClientFactory fileClientFactory;
 
@@ -260,5 +262,4 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
     public static class EmptyFileClientConfig implements FileClientConfig, Serializable {
 
     }
-
 }

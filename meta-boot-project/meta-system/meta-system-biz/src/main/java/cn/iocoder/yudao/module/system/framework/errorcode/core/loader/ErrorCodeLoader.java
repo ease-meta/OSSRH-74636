@@ -20,5 +20,4 @@ public interface ErrorCodeLoader {
     default void putErrorCode(Integer code, String msg) {
         ServiceExceptionUtil.put(code, msg);
     }
-
 }

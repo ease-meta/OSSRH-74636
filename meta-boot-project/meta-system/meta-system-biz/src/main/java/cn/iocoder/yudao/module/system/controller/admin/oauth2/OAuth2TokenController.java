@@ -31,6 +31,7 @@ public class OAuth2TokenController {
 
     @Resource
     private OAuth2TokenService oauth2TokenService;
+
     @Resource
     private AdminAuthService authService;
 
@@ -50,5 +51,4 @@ public class OAuth2TokenController {
         authService.logout(accessToken, LoginLogTypeEnum.LOGOUT_DELETE.getType());
         return success(true);
     }
-
 }

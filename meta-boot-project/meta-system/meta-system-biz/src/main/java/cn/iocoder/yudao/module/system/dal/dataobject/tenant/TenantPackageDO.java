@@ -34,24 +34,27 @@ public class TenantPackageDO extends BaseDO {
      * 套餐编号，自增
      */
     private Long id;
+
     /**
      * 套餐名，唯一
      */
     private String name;
+
     /**
      * 租户状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 备注
      */
     private String remark;
+
     /**
      * 关联的菜单编号
      */
     @TableField(typeHandler = JsonLongSetTypeHandler.class)
     private Set<Long> menuIds;
-
 }

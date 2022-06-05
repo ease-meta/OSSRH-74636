@@ -30,5 +30,4 @@ public class YudaoSocialAutoConfiguration {
         // 创建 YudaoAuthRequestFactory
         return new YudaoAuthRequestFactory(properties, authStateCache);
     }
-
 }

@@ -41,5 +41,4 @@ public interface BpmOALeaveMapper extends BaseMapperX<BpmOALeaveDO> {
                 .betweenIfPresent(BpmOALeaveDO::getCreateTime, reqVO.getBeginCreateTime(), reqVO.getEndCreateTime())
                 .orderByDesc(BpmOALeaveDO::getId));
     }
-
 }

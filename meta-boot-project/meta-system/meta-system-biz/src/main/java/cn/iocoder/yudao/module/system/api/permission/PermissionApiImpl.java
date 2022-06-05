@@ -38,5 +38,4 @@ public class PermissionApiImpl implements PermissionApi {
     public DeptDataPermissionRespDTO getDeptDataPermission(Long userId) {
         return permissionService.getDeptDataPermission(userId);
     }
-
 }

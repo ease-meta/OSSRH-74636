@@ -28,10 +28,12 @@ public enum SmsSceneEnum implements IntArrayValuable {
      * 验证场景的编号
      */
     private final Integer scene;
+
     /**
      * 模版编码
      */
     private final String templateCode;
+
     /**
      * 描述
      */
@@ -46,5 +48,4 @@ public enum SmsSceneEnum implements IntArrayValuable {
         return ArrayUtil.firstMatch(sceneEnum -> sceneEnum.getScene().equals(scene),
                 values());
     }
-
 }

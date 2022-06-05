@@ -31,25 +31,29 @@ public class TestDemoDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 名字
      */
     private String name;
+
     /**
      * 状态
      */
     private Integer status;
+
     /**
      * 类型
      */
     private Integer type;
+
     /**
      * 分类
      */
     private Integer category;
+
     /**
      * 备注
      */
     private String remark;
-
 }

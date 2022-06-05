@@ -31,24 +31,28 @@ public class PayOrderUnifiedReqDTO {
      */
     @NotEmpty(message = "商户订单编号不能为空")
     private String merchantOrderId;
+
     /**
      * 商品标题
      */
     @NotEmpty(message = "商品标题不能为空")
     @Length(max = 32, message = "商品标题不能超过 32")
     private String subject;
+
     /**
      * 商品描述信息
      */
     @NotEmpty(message = "商品描述信息不能为空")
     @Length(max = 128, message = "商品描述信息长度不能超过128")
     private String body;
+
     /**
      * 支付结果的 notify 回调地址
      */
     @NotEmpty(message = "支付结果的回调地址不能为空")
     @URL(message = "支付结果的 notify 回调地址必须是 URL 格式")
     private String notifyUrl;
+
     /**
      * 支付结果的 return 回调地址
      */
@@ -71,11 +75,11 @@ public class PayOrderUnifiedReqDTO {
     private Date expireTime;
 
     // ========== 拓展参数 ==========
+
     /**
      * 支付渠道的额外参数
      * <p>
      * 例如说，微信公众号需要传递 openid 参数
      */
     private Map<String, String> channelExtras;
-
 }

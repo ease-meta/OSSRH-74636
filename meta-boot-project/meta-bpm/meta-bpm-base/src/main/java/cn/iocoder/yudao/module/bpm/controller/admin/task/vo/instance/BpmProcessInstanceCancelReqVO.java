@@ -33,5 +33,4 @@ public class BpmProcessInstanceCancelReqVO {
     @ApiModelProperty(value = "取消原因", required = true, example = "不请假了！")
     @NotEmpty(message = "取消原因不能为空")
     private String reason;
-
 }

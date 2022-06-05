@@ -25,6 +25,7 @@ import java.util.Map;
 public class SpringExpressionUtils {
 
     private static final ExpressionParser EXPRESSION_PARSER = new SpelExpressionParser();
+
     private static final ParameterNameDiscoverer PARAMETER_NAME_DISCOVERER = new DefaultParameterNameDiscoverer();
 
     private SpringExpressionUtils() {

@@ -93,5 +93,4 @@ public class AssertUtils {
         String message = ServiceExceptionUtil.doFormat(errorCode.getCode(), errorCode.getMsg(), messageParams);
         Assertions.assertEquals(message, serviceException.getMessage(), "错误提示不匹配");
     }
-
 }

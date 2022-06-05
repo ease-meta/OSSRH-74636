@@ -57,6 +57,4 @@ public class PayRefundNotifyDTO {
      * 退款成功时间
      */
     private Date refundSuccessTime;
-
-
 }

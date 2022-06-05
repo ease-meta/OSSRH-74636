@@ -14,5 +14,4 @@ package io.github.meta.ease.common.exception.enums;
 public class ServiceErrorCodeRange {
 
     // 模块 system 错误码区间 [1-000-001-000 ~ 1-000-002-000]
-
 }

@@ -37,15 +37,19 @@ public class BpmUserTaskActivityBehaviorTest extends BaseMockitoUnitTest {
 
     @InjectMocks
     private BpmUserTaskActivityBehavior behavior;
+
     @Mock
     private BpmTaskAssignRuleService bpmTaskRuleService;
+
     @Mock
     private BpmUserGroupService userGroupService;
 
     @Mock
     private DeptApi deptApi;
+
     @Mock
     private AdminUserApi adminUserApi;
+
     @Mock
     private PermissionApi permissionApi;
 
@@ -210,5 +214,4 @@ public class BpmUserTaskActivityBehaviorTest extends BaseMockitoUnitTest {
                 id -> new AdminUserRespDTO().setId(id).setStatus(CommonStatusEnum.ENABLE.getStatus()));
         when(adminUserApi.getUserMap(eq(assigneeUserIds))).thenReturn(userMap);
     }
-
 }

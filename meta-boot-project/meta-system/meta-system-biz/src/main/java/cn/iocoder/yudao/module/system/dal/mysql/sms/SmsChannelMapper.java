@@ -23,5 +23,4 @@ public interface SmsChannelMapper extends BaseMapperX<SmsChannelDO> {
 
     @Select("SELECT COUNT(*) FROM system_sms_channel WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

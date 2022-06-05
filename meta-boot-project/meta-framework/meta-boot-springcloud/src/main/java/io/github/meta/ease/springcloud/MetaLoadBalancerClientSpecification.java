@@ -96,5 +96,4 @@ public class MetaLoadBalancerClientSpecification {
             return serviceInstanceListSupplierBuilder.build(context);
         }
     }
-
 }

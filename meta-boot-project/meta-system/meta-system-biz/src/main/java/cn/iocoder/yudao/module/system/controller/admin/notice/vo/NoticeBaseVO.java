@@ -28,5 +28,4 @@ public class NoticeBaseVO {
 
     @ApiModelProperty(value = "状态", required = true, example = "1", notes = "参见 CommonStatusEnum 枚举类")
     private Integer status;
-
 }

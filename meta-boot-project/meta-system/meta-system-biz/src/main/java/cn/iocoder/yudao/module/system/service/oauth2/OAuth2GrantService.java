@@ -109,5 +109,4 @@ public interface OAuth2GrantService {
      * @return 是否移除到
      */
     boolean revokeToken(String clientId, String accessToken);
-
 }

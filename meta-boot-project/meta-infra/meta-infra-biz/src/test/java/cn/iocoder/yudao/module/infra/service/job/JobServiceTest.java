@@ -44,8 +44,10 @@ public class JobServiceTest extends BaseDbUnitTest {
 
     @Resource
     private JobServiceImpl jobService;
+
     @Resource
     private JobMapper jobMapper;
+
     @MockBean
     private SchedulerManager schedulerManager;
 
@@ -80,7 +82,8 @@ public class JobServiceTest extends BaseDbUnitTest {
         assertPojoEquals(reqVO, job);
         assertEquals(JobStatusEnum.NORMAL.getStatus(), job.getStatus());
         // 校验调用
-        verify(schedulerManager, times(1)).addJob(eq(job.getId()), eq(job.getHandlerName()), eq(job.getHandlerParam()), eq(job.getCronExpression()),
+        verify(schedulerManager, times(1)).addJob(eq(job.getId()), eq(job.getHandlerName()), eq(job.getHandlerParam()),
+                eq(job.getCronExpression()),
                 eq(reqVO.getRetryCount()), eq(reqVO.getRetryInterval()));
     }
 
@@ -130,14 +133,16 @@ public class JobServiceTest extends BaseDbUnitTest {
         JobDO updateJob = jobMapper.selectById(updateReqVO.getId());
         assertPojoEquals(updateReqVO, updateJob);
         // 校验调用
-        verify(schedulerManager, times(1)).updateJob(eq(job.getHandlerName()), eq(updateReqVO.getHandlerParam()), eq(updateReqVO.getCronExpression()),
+        verify(schedulerManager, times(1)).updateJob(eq(job.getHandlerName()), eq(updateReqVO.getHandlerParam()),
+                eq(updateReqVO.getCronExpression()),
                 eq(updateReqVO.getRetryCount()), eq(updateReqVO.getRetryInterval()));
     }
 
     @Test
     public void testUpdateJobStatus_changeStatusInvalid() {
         // 调用，并断言异常
-        assertServiceException(() -> jobService.updateJobStatus(1L, JobStatusEnum.INIT.getStatus()), JOB_CHANGE_STATUS_INVALID);
+        assertServiceException(() -> jobService.updateJobStatus(1L, JobStatusEnum.INIT.getStatus()),
+                JOB_CHANGE_STATUS_INVALID);
     }
 
     @Test
@@ -297,5 +302,4 @@ public class JobServiceTest extends BaseDbUnitTest {
             job.setMonitorTimeout(0);
         }
     }
-
 }

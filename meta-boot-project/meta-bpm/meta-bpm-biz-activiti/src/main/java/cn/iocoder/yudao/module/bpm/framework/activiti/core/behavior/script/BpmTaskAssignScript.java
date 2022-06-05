@@ -30,5 +30,4 @@ public interface BpmTaskAssignScript {
      * @return 枚举值
      */
     BpmTaskRuleScriptEnum getEnum();
-
 }

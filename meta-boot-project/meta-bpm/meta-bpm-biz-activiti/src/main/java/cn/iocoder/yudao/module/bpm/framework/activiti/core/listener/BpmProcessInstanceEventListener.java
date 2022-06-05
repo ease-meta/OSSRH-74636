@@ -53,5 +53,4 @@ public class BpmProcessInstanceEventListener<T extends RuntimeEvent<?, ?>>
         // 其它事件，进行更新拓展表
         processInstanceService.updateProcessInstanceExt(event.getEntity());
     }
-
 }

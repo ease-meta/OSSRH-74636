@@ -98,5 +98,4 @@ public class YudaoSecurityAutoConfiguration {
         methodInvokingFactoryBean.setArguments(TransmittableThreadLocalSecurityContextHolderStrategy.class.getName());
         return methodInvokingFactoryBean;
     }
-
 }

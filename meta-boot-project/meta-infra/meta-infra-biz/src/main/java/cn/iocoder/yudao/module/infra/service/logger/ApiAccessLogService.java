@@ -30,5 +30,4 @@ public interface ApiAccessLogService extends ApiAccessLogFrameworkService {
      * @return API 访问日志分页
      */
     List<ApiAccessLogDO> getApiAccessLogList(ApiAccessLogExportReqVO exportReqVO);
-
 }

@@ -63,5 +63,4 @@ public interface ErrorCodeService extends ErrorCodeFrameworkService {
      * @return 错误码列表
      */
     List<ErrorCodeDO> getErrorCodeList(ErrorCodeExportReqVO exportReqVO);
-
 }

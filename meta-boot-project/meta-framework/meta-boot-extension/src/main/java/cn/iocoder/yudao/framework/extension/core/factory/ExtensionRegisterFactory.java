@@ -71,7 +71,8 @@ public class ExtensionRegisterFactory implements ExtensionFactory {
         }
 
         Extension extension = AnnotationUtils.findAnnotation(extensionClazz, Extension.class);
-        final BusinessScenario businessScenario = BusinessScenario.valueOf(extension.businessId(), extension.useCase(), extension.scenario());
+        final BusinessScenario businessScenario = BusinessScenario.valueOf(extension.businessId(), extension.useCase(),
+                extension.scenario());
         final ExtensionDefinition definition = ExtensionDefinition.valueOf(businessScenario, point);
         final ExtensionDefinition exist = registerExtensionBeans.get(businessScenario.getUniqueIdentity());
         if (exist != null && !exist.equals(definition)) {

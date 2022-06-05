@@ -44,5 +44,4 @@ public class BpmUserGroupBaseVO {
     @ApiModelProperty(value = "状态", required = true, example = "1")
     @NotNull(message = "状态不能为空")
     private Integer status;
-
 }

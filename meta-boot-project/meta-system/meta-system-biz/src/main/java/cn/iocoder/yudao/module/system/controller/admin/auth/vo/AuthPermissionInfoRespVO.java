@@ -40,7 +40,5 @@ public class AuthPermissionInfoRespVO {
 
         @ApiModelProperty(value = "用户头像", required = true, example = "http://www.iocoder.cn/xx.jpg")
         private String avatar;
-
     }
-
 }

@@ -112,5 +112,4 @@ public class SensitiveWordController {
                                                    @RequestParam(value = "tags", required = false) List<String> tags) {
         return success(sensitiveWordService.validateText(text, tags));
     }
-
 }

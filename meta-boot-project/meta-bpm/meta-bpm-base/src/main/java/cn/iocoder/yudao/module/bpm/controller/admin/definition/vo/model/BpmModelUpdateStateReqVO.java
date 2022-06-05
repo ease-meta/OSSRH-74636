@@ -33,5 +33,4 @@ public class BpmModelUpdateStateReqVO {
     @ApiModelProperty(value = "状态", required = true, example = "1", notes = "见 SuspensionState 枚举")
     @NotNull(message = "状态不能为空")
     private Integer state;
-
 }

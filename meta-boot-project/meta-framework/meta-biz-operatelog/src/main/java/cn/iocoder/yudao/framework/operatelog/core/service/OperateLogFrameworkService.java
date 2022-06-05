@@ -13,5 +13,4 @@ public interface OperateLogFrameworkService {
      * @return true: 记录成功,false: 记录失败
      */
     Future<Boolean> createOperateLogAsync(OperateLogCreateReqDTO reqVO);
-
 }

@@ -103,6 +103,4 @@ public class TenantController {
         List<TenantExcelVO> datas = TenantConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "租户.xls", "数据", TenantExcelVO.class, datas);
     }
-
-
 }

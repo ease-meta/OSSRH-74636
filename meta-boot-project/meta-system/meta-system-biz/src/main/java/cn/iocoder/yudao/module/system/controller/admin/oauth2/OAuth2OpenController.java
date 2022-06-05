@@ -68,10 +68,13 @@ public class OAuth2OpenController {
 
     @Resource
     private OAuth2GrantService oauth2GrantService;
+
     @Resource
     private OAuth2ClientService oauth2ClientService;
+
     @Resource
     private OAuth2ApproveService oauth2ApproveService;
+
     @Resource
     private OAuth2TokenService oauth2TokenService;
 
@@ -127,7 +130,8 @@ public class OAuth2OpenController {
         OAuth2AccessTokenDO accessTokenDO;
         switch (grantTypeEnum) {
             case AUTHORIZATION_CODE:
-                accessTokenDO = oauth2GrantService.grantAuthorizationCodeForAccessToken(client.getClientId(), code, redirectUri, state);
+                accessTokenDO = oauth2GrantService.grantAuthorizationCodeForAccessToken(client.getClientId(), code, redirectUri,
+                        state);
                 break;
             case PASSWORD:
                 accessTokenDO = oauth2GrantService.grantPassword(username, password, client.getClientId(), scopes);
@@ -212,7 +216,8 @@ public class OAuth2OpenController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "response_type", required = true, value = "响应类型", example = "code", dataTypeClass = String.class),
             @ApiImplicitParam(name = "client_id", required = true, value = "客户端编号", example = "tudou", dataTypeClass = String.class),
-            @ApiImplicitParam(name = "scope", value = "授权范围", example = "userinfo.read", dataTypeClass = String.class), // 使用 Map<String, Boolean> 格式，Spring MVC 暂时不支持这么接收参数
+            @ApiImplicitParam(name = "scope", value = "授权范围", example = "userinfo.read", dataTypeClass = String.class),
+            // 使用 Map<String, Boolean> 格式，Spring MVC 暂时不支持这么接收参数
             @ApiImplicitParam(name = "redirect_uri", required = true, value = "重定向 URI", example = "https://www.iocoder.cn", dataTypeClass = String.class),
             @ApiImplicitParam(name = "auto_approve", required = true, value = "用户是否接受", example = "true", dataTypeClass = Boolean.class),
             @ApiImplicitParam(name = "state", example = "1", dataTypeClass = String.class)
@@ -271,18 +276,21 @@ public class OAuth2OpenController {
     private String getImplicitGrantRedirect(Long userId, OAuth2ClientDO client,
                                             List<String> scopes, String redirectUri, String state) {
         // 1. 创建 access token 访问令牌
-        OAuth2AccessTokenDO accessTokenDO = oauth2GrantService.grantImplicit(userId, getUserType(), client.getClientId(), scopes);
+        OAuth2AccessTokenDO accessTokenDO = oauth2GrantService.grantImplicit(userId, getUserType(), client.getClientId(),
+                scopes);
         Assert.notNull(accessTokenDO, "访问令牌不能为空"); // 防御性检查
         // 2. 拼接重定向的 URL
         // noinspection unchecked
-        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state, accessTokenDO.getExpiresTime(),
+        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state,
+                accessTokenDO.getExpiresTime(),
                 scopes, JsonUtils.parseObject(client.getAdditionalInformation(), Map.class));
     }
 
     private String getAuthorizationCodeRedirect(Long userId, OAuth2ClientDO client,
                                                 List<String> scopes, String redirectUri, String state) {
         // 1. 创建 code 授权码
-        String authorizationCode = oauth2GrantService.grantAuthorizationCodeForCode(userId, getUserType(), client.getClientId(), scopes,
+        String authorizationCode = oauth2GrantService.grantAuthorizationCodeForCode(userId, getUserType(),
+                client.getClientId(), scopes,
                 redirectUri, state);
         // 2. 拼接重定向的 URL
         return OAuth2Utils.buildAuthorizationCodeRedirectUri(redirectUri, authorizationCode, state);
@@ -299,5 +307,4 @@ public class OAuth2OpenController {
         }
         return clientIdAndSecret;
     }
-
 }

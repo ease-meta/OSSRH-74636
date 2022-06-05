@@ -54,5 +54,4 @@ public interface TenantMapper extends BaseMapperX<TenantDO> {
 
     @Select("SELECT COUNT(*) FROM system_tenant WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

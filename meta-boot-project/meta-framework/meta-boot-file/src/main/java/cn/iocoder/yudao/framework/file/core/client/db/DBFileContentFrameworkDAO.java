@@ -32,5 +32,4 @@ public interface DBFileContentFrameworkDAO {
      * @return 内容
      */
     byte[] selectContent(Long configId, String path);
-
 }

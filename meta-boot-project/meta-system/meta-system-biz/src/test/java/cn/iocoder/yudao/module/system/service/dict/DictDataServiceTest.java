@@ -50,8 +50,10 @@ public class DictDataServiceTest extends BaseDbUnitTest {
 
     @Resource
     private DictDataMapper dictDataMapper;
+
     @MockBean
     private DictTypeService dictTypeService;
+
     @MockBean
     private DictDataProducer dictDataProducer;
 
@@ -100,7 +102,8 @@ public class DictDataServiceTest extends BaseDbUnitTest {
         // 测试 dictType 不匹配
         dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setDictType("nai")));
         // 测试 status 不匹配
-        dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictDataMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 准备参数
         DictDataPageReqVO reqVO = new DictDataPageReqVO();
         reqVO.setLabel("芋");
@@ -129,7 +132,8 @@ public class DictDataServiceTest extends BaseDbUnitTest {
         // 测试 dictType 不匹配
         dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setDictType("nai")));
         // 测试 status 不匹配
-        dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictDataMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 准备参数
         DictDataExportReqVO reqVO = new DictDataExportReqVO();
         reqVO.setLabel("芋");
@@ -302,5 +306,4 @@ public class DictDataServiceTest extends BaseDbUnitTest {
             o.setStatus(CommonStatusEnum.ENABLE.getStatus()); // 保证 status 是开启
         });
     }
-
 }

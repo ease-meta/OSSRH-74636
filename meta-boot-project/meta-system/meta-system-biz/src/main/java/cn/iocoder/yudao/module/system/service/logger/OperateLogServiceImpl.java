@@ -82,5 +82,4 @@ public class OperateLogServiceImpl implements OperateLogService {
         // 查询列表
         return operateLogMapper.selectList(reqVO, userIds);
     }
-
 }

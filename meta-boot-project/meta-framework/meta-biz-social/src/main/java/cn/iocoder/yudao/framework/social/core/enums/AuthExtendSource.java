@@ -34,5 +34,4 @@ public enum AuthExtendSource implements AuthSource {
             throw new UnsupportedOperationException("不支持获取用户信息url, 请使用小程序内置函数wx.getUserProfile()获取用户信息");
         }
     }
-
 }

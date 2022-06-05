@@ -42,5 +42,4 @@ public interface BpmOALeaveConvert {
     List<BpmOALeaveRespVO> convertList(List<BpmOALeaveDO> list);
 
     PageResult<BpmOALeaveRespVO> convertPage(PageResult<BpmOALeaveDO> page);
-
 }

@@ -38,5 +38,4 @@ public interface RoleMenuMapper extends BaseMapperX<RoleMenuDO> {
 
     @Select("SELECT COUNT(*) FROM system_role_menu WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

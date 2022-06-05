@@ -242,7 +242,8 @@ public class GlobalExceptionHandler {
             // 执行插入 errorLog
             apiErrorLogFrameworkService.createApiErrorLogAsync(errorLog);
         } catch (Throwable th) {
-            log.error("[createExceptionLog][url({}) log({}) 发生异常]", req.getRequestURI(), JsonUtils.toJsonString(errorLog), th);
+            log.error("[createExceptionLog][url({}) log({}) 发生异常]", req.getRequestURI(), JsonUtils.toJsonString(errorLog),
+                    th);
         }
     }
 
@@ -275,5 +276,4 @@ public class GlobalExceptionHandler {
         errorLog.setUserIp(ServletUtil.getClientIP(request));
         errorLog.setExceptionTime(new Date());
     }
-
 }

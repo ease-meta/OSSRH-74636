@@ -59,5 +59,4 @@ public class ApolloApplicationContextInitializer implements EnvironmentPostProce
     public void setOrder(int order) {
         this.order = order;
     }
-
 }

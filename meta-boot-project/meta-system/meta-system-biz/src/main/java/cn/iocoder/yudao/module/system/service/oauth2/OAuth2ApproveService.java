@@ -48,5 +48,4 @@ public interface OAuth2ApproveService {
      * @return 是否授权通过
      */
     List<OAuth2ApproveDO> getApproveList(Long userId, Integer userType, String clientId);
-
 }

@@ -66,5 +66,4 @@ public class BpmProcessInstanceController {
     public CommonResult<BpmProcessInstanceRespVO> getProcessInstance(@RequestParam("id") String id) {
         return success(processInstanceService.getProcessInstanceVO(id));
     }
-
 }

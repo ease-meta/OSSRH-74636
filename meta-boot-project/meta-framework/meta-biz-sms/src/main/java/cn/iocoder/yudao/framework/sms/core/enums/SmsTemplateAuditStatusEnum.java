@@ -17,5 +17,4 @@ public enum SmsTemplateAuditStatusEnum {
     FAIL(3);
 
     private final Integer status;
-
 }

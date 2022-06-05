@@ -33,7 +33,8 @@ public class FileClientFactoryImpl implements FileClientFactory {
 
     @Override
     @SuppressWarnings("unchecked")
-    public <Config extends FileClientConfig> void createOrUpdateFileClient(Long configId, Integer storage, Config config) {
+    public <Config extends FileClientConfig> void createOrUpdateFileClient(Long configId, Integer storage,
+                                                                           Config config) {
         AbstractFileClient<Config> client = (AbstractFileClient<Config>) clients.get(configId);
         if (client == null) {
             client = this.createFileClient(configId, storage, config);
@@ -52,5 +53,4 @@ public class FileClientFactoryImpl implements FileClientFactory {
         // 创建客户端
         return (AbstractFileClient<Config>) ReflectUtil.newInstance(storageEnum.getClientClass(), configId, config);
     }
-
 }

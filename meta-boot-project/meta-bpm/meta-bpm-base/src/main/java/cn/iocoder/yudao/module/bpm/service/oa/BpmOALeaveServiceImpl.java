@@ -104,5 +104,4 @@ public class BpmOALeaveServiceImpl implements BpmOALeaveService {
     public PageResult<BpmOALeaveDO> getLeavePage(Long userId, BpmOALeavePageReqVO pageReqVO) {
         return leaveMapper.selectPage(userId, pageReqVO);
     }
-
 }

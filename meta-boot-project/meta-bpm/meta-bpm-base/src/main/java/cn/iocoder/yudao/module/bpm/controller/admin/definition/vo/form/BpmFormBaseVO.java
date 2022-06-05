@@ -38,5 +38,4 @@ public class BpmFormBaseVO {
 
     @ApiModelProperty(value = "备注", example = "我是备注")
     private String remark;
-
 }

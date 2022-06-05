@@ -15,5 +15,4 @@ public class SensitiveWordRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.sensitive-word.refresh";
     }
-
 }

@@ -64,5 +64,4 @@ public interface BpmOALeaveService {
      * @return 请假申请分页
      */
     PageResult<BpmOALeaveDO> getLeavePage(Long userId, BpmOALeavePageReqVO pageReqVO);
-
 }

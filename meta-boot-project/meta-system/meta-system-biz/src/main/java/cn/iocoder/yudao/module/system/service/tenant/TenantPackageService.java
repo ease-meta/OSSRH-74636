@@ -69,5 +69,4 @@ public interface TenantPackageService {
      * @return 租户套餐
      */
     List<TenantPackageDO> getTenantPackageListByStatus(Integer status);
-
 }

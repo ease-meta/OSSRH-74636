@@ -185,5 +185,4 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
         assertEquals(1, list.size());
         assertPojoEquals(dbTestDemo, list.get(0));
     }
-
 }

@@ -30,29 +30,33 @@ public class FileDO extends BaseDO {
      * 编号，数据库自增
      */
     private Long id;
+
     /**
      * 配置编号
      * <p>
      * 关联 {@link FileConfigDO#getId()}
      */
     private Long configId;
+
     /**
      * 路径，即文件名
      */
     private String path;
+
     /**
      * 访问地址
      */
     private String url;
+
     /**
      * 文件类型
      * <p>
      * 通过 {@link cn.hutool.core.io.FileTypeUtil#getType(java.io.InputStream)} 获取
      */
     private String type;
+
     /**
      * 文件大小
      */
     private Integer size;
-
 }

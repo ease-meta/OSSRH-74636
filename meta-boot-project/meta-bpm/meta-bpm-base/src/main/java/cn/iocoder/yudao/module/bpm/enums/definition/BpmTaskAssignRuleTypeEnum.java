@@ -31,7 +31,8 @@ public enum BpmTaskAssignRuleTypeEnum {
     ROLE(10, "角色"),
 
     DEPT_MEMBER(20, "部门的成员"), // 包括负责人
-    DEPT_LEADER(21, "部门的负责人"), POST(22, "岗位"),
+    DEPT_LEADER(21, "部门的负责人"),
+    POST(22, "岗位"),
 
     USER(30, "用户"),
 
@@ -44,9 +45,9 @@ public enum BpmTaskAssignRuleTypeEnum {
      * 类型
      */
     private final Integer type;
+
     /**
      * 描述
      */
     private final String desc;
-
 }

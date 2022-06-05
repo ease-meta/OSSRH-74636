@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.service.notice;
 
 
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticePageReqVO;
@@ -11,6 +10,7 @@ import cn.iocoder.yudao.module.system.dal.mysql.notice.NoticeMapper;
 import cn.iocoder.yudao.module.system.enums.notice.NoticeTypeEnum;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
@@ -51,7 +51,6 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         // 测试 status 不匹配
         sysNoticeMapper.insert(ObjectUtils.cloneIgnoreId(dbNotice, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
 
-
         // 查询
         NoticePageReqVO reqVO = new NoticePageReqVO();
         reqVO.setTitle("尼古拉斯赵四来啦！");
@@ -62,7 +61,6 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         assertEquals(1, pageResult.getTotal());
         assertEquals(1, pageResult.getList().size());
         assertPojoEquals(dbNotice, pageResult.getList().get(0));
-
     }
 
     @Test
@@ -160,6 +158,4 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
         return reqVO;
     }
-
-
 }

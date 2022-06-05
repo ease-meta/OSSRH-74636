@@ -41,5 +41,4 @@ public class YudaoDataPermissionAutoConfiguration {
     public DataPermissionAnnotationAdvisor dataPermissionAnnotationAdvisor() {
         return new DataPermissionAnnotationAdvisor();
     }
-
 }

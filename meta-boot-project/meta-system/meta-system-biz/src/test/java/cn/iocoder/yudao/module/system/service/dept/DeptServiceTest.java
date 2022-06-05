@@ -1,8 +1,6 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
 
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqVO;
@@ -13,6 +11,8 @@ import cn.iocoder.yudao.module.system.enums.dept.DeptIdEnum;
 import cn.iocoder.yudao.module.system.mq.producer.dept.DeptProducer;
 import com.google.common.collect.Multimap;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import static cn.hutool.core.bean.BeanUtil.getFieldValue;
+import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
@@ -52,8 +53,10 @@ public class DeptServiceTest extends BaseDbUnitTest {
 
     @Resource
     private DeptServiceImpl deptService;
+
     @Resource
     private DeptMapper deptMapper;
+
     @MockBean
     private DeptProducer deptProducer;
 
@@ -278,5 +281,4 @@ public class DeptServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(DeptDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

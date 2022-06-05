@@ -17,5 +17,4 @@ public abstract class AbstractChannelMessage extends AbstractRedisMessage {
      */
     @JsonIgnore // 避免序列化。原因是，Redis 发布 Channel 消息的时候，已经会指定。
     public abstract String getChannel();
-
 }

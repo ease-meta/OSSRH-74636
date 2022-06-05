@@ -46,8 +46,10 @@ public class OAuth2UserController {
 
     @Resource
     private AdminUserService userService;
+
     @Resource
     private DeptService deptService;
+
     @Resource
     private PostService postService;
 
@@ -80,5 +82,4 @@ public class OAuth2UserController {
         userService.updateUserProfile(getLoginUserId(), OAuth2UserConvert.INSTANCE.convert(reqVO));
         return success(true);
     }
-
 }

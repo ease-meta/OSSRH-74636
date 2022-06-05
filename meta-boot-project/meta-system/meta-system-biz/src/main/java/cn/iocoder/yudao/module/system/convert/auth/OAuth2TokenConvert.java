@@ -18,5 +18,4 @@ public interface OAuth2TokenConvert {
     PageResult<OAuth2AccessTokenRespVO> convert(PageResult<OAuth2AccessTokenDO> page);
 
     OAuth2AccessTokenRespDTO convert2(OAuth2AccessTokenDO bean);
-
 }

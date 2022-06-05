@@ -49,14 +49,19 @@ public class UserProfileController {
 
     @Resource
     private AdminUserService userService;
+
     @Resource
     private DeptService deptService;
+
     @Resource
     private PostService postService;
+
     @Resource
     private PermissionService permissionService;
+
     @Resource
     private RoleService roleService;
+
     @Resource
     private SocialUserService socialService;
 
@@ -109,5 +114,4 @@ public class UserProfileController {
         String avatar = userService.updateUserAvatar(getLoginUserId(), file.getInputStream());
         return success(avatar);
     }
-
 }

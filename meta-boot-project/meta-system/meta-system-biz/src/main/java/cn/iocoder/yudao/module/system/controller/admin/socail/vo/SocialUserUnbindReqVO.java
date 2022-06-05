@@ -27,5 +27,4 @@ public class SocialUserUnbindReqVO {
     @ApiModelProperty(value = "社交用户的 openid", required = true, example = "IPRmJ0wvBptiPIlGEZiPewGwiEiE")
     @NotEmpty(message = "社交用户的 openid 不能为空")
     private String openid;
-
 }

@@ -27,5 +27,4 @@ public interface FileApi {
      * @return 文件路径
      */
     String createFile(String path, byte[] content) throws Exception;
-
 }

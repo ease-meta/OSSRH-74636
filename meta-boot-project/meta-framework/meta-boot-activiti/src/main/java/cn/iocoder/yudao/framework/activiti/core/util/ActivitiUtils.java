@@ -101,5 +101,4 @@ public class ActivitiUtils {
         // 由于 BpmnModel 未提供 equals 方法，所以只能转成字节数组，进行比较
         return Arrays.equals(getBpmnBytes(oldModel), getBpmnBytes(newModel));
     }
-
 }

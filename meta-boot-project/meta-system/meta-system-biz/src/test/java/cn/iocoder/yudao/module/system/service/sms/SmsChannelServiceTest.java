@@ -1,8 +1,6 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.channel.SmsChannelCreateReqVO;
@@ -13,6 +11,8 @@ import cn.iocoder.yudao.module.system.dal.mysql.sms.SmsChannelMapper;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -21,8 +21,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.function.Consumer;
 
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
+import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.isPojoEquals;
@@ -32,6 +31,8 @@ import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_HAS_CHILDREN;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_NOT_EXISTS;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
+import static io.github.meta.ease.common.util.date.DateUtils.max;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -52,8 +53,10 @@ public class SmsChannelServiceTest extends BaseDbUnitTest {
 
     @MockBean
     private SmsClientFactory smsClientFactory;
+
     @MockBean
     private SmsTemplateService smsTemplateService;
+
     @MockBean
     private SmsProducer smsProducer;
 
@@ -174,7 +177,8 @@ public class SmsChannelServiceTest extends BaseDbUnitTest {
         // 测试 signature 不匹配
         smsChannelMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsChannel, o -> o.setSignature("源码")));
         // 测试 status 不匹配
-        smsChannelMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsChannel, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        smsChannelMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsChannel, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 测试 createTime 不匹配
         smsChannelMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsChannel, o -> o.setCreateTime(buildTime(2020, 11, 11))));
         // 准备参数
@@ -201,5 +205,4 @@ public class SmsChannelServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(SmsChannelDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

@@ -21,6 +21,7 @@ public class OperateLogCreateReqDTO {
     @ApiModelProperty(value = "用户编号", required = true, example = "1024")
     @NotNull(message = "用户编号不能为空")
     private Long userId;
+
     @ApiModelProperty(value = "用户类型", required = true, example = "1")
     @NotNull(message = "用户类型不能为空")
     private Integer userType;
@@ -83,5 +84,4 @@ public class OperateLogCreateReqDTO {
 
     @ApiModelProperty(value = "结果数据")
     private String resultData;
-
 }

@@ -1,10 +1,6 @@
 package cn.iocoder.yudao.module.system.service.user;
 
 import cn.hutool.core.util.RandomUtil;
-import cn.iocoder.yudao.framework.common.exception.ServiceException;
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.infra.api.file.FileApi;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
@@ -28,7 +24,11 @@ import cn.iocoder.yudao.module.system.service.dept.PostService;
 import cn.iocoder.yudao.module.system.service.permission.PermissionService;
 import cn.iocoder.yudao.module.system.service.tenant.TenantService;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
+import io.github.meta.ease.common.exception.ServiceException;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.collection.CollectionUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.stubbing.Answer;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -43,8 +43,6 @@ import java.util.function.Consumer;
 
 import static cn.hutool.core.util.RandomUtil.randomBytes;
 import static cn.hutool.core.util.RandomUtil.randomEle;
-import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
@@ -58,6 +56,8 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_MOBIL
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_NOT_EXISTS;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_PASSWORD_FAILED;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_USERNAME_EXISTS;
+import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static java.util.Collections.singleton;
 import static org.assertj.core.util.Lists.newArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,6 +68,7 @@ import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -80,19 +81,25 @@ public class AdminUserServiceImplTest extends BaseDbUnitTest {
 
     @Resource
     private AdminUserMapper userMapper;
+
     @Resource
     private UserPostMapper userPostMapper;
 
     @MockBean
     private DeptService deptService;
+
     @MockBean
     private PostService postService;
+
     @MockBean
     private PermissionService permissionService;
+
     @MockBean
     private PasswordEncoder passwordEncoder;
+
     @MockBean
     private TenantService tenantService;
+
     @MockBean
     private FileApi fileApi;
 
@@ -623,5 +630,4 @@ public class AdminUserServiceImplTest extends BaseDbUnitTest {
         };
         return randomPojo(AdminUserDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

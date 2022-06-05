@@ -27,5 +27,4 @@ public interface CodegenTableMapper extends BaseMapperX<CodegenTableDO> {
     default List<CodegenTableDO> selectListByDataSourceConfigId(Long dataSourceConfigId) {
         return selectList(CodegenTableDO::getDataSourceConfigId, dataSourceConfigId);
     }
-
 }

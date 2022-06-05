@@ -39,5 +39,4 @@ public interface FileClient {
      * @return 文件的内容
      */
     byte[] getContent(String path) throws Exception;
-
 }

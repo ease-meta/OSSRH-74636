@@ -22,5 +22,4 @@ public class ErrorCodeProperties {
      */
     @NotNull(message = "错误码枚举类不能为空")
     private List<String> constantsClassList;
-
 }

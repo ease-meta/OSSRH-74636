@@ -25,5 +25,4 @@ public class DeptRefreshConsumer extends AbstractChannelMessageListener<DeptRefr
         log.info("[onMessage][收到 Dept 刷新消息]");
         deptService.initLocalCache();
     }
-
 }

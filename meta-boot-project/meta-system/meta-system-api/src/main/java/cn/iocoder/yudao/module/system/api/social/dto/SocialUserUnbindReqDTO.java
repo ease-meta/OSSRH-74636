@@ -21,6 +21,7 @@ public class SocialUserUnbindReqDTO {
      */
     @NotNull(message = "用户编号不能为空")
     private Long userId;
+
     /**
      * 用户类型
      */
@@ -40,5 +41,4 @@ public class SocialUserUnbindReqDTO {
      */
     @NotEmpty(message = "社交平台的 unionId 不能为空")
     private String unionId;
-
 }

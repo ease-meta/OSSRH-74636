@@ -63,6 +63,7 @@ public class DeptServiceImpl implements DeptService {
      */
     @SuppressWarnings("FieldCanBeLocal")
     private volatile Map<Long, DeptDO> deptCache;
+
     /**
      * 父部门缓存
      * key：部门编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO#getParentId()}
@@ -71,6 +72,7 @@ public class DeptServiceImpl implements DeptService {
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Multimap<Long, DeptDO> parentDeptCache;
+
     /**
      * 缓存部门的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -313,5 +315,4 @@ public class DeptServiceImpl implements DeptService {
     public List<DeptDO> getSimpleDepts(Collection<Long> ids) {
         return deptMapper.selectBatchIds(ids);
     }
-
 }

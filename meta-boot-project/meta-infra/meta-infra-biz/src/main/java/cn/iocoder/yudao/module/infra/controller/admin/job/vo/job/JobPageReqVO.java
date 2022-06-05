@@ -21,5 +21,4 @@ public class JobPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "处理器的名字", example = "sysUserSessionTimeoutJob", notes = "模糊匹配")
     private String handlerName;
-
 }

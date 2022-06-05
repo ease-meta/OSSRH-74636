@@ -60,5 +60,4 @@ public class MybatisAutoConfiguration {
         // 找不到合适的 IKeyGenerator 实现类
         throw new IllegalArgumentException(StrUtil.format("DbType{} 找不到合适的 IKeyGenerator 实现类", dbType));
     }
-
 }

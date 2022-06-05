@@ -25,5 +25,4 @@ public class RoleRefreshConsumer extends AbstractChannelMessageListener<RoleRefr
         log.info("[onMessage][收到 Role 刷新消息]");
         roleService.initLocalCache();
     }
-
 }

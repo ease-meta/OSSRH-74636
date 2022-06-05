@@ -41,6 +41,7 @@ public enum FileStorageEnum {
      * 配置类
      */
     private final Class<? extends FileClientConfig> configClass;
+
     /**
      * 客户端类
      */
@@ -49,5 +50,4 @@ public enum FileStorageEnum {
     public static FileStorageEnum getByStorage(Integer storage) {
         return ArrayUtil.firstMatch(o -> o.getStorage().equals(storage), values());
     }
-
 }

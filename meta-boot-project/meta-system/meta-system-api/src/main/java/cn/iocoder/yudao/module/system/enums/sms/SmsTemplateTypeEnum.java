@@ -21,5 +21,4 @@ public enum SmsTemplateTypeEnum {
      * 类型
      */
     private final int type;
-
 }

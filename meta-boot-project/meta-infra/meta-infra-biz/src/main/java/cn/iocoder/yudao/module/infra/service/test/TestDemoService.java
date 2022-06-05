@@ -71,5 +71,4 @@ public interface TestDemoService {
      * @return 字典类型列表
      */
     List<TestDemoDO> getTestDemoList(TestDemoExportReqVO exportReqVO);
-
 }

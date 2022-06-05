@@ -42,5 +42,4 @@ public class ApiAccessLogServiceImpl implements ApiAccessLogService {
         ApiAccessLogDO apiAccessLog = ApiAccessLogConvert.INSTANCE.convert(createDTO);
         apiAccessLogMapper.insert(apiAccessLog);
     }
-
 }

@@ -24,5 +24,4 @@ public interface PayFrameworkErrorCodeConstants {
     ErrorCode PAY_PARAM_MISSING = new ErrorCode(2002000901, "请求参数缺失"); // 例如说，支付少传了金额
 
     ErrorCode EXCEPTION = new ErrorCode(2002000999, "调用异常");
-
 }

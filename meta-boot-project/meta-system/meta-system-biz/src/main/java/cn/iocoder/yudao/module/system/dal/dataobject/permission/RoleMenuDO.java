@@ -23,13 +23,14 @@ public class RoleMenuDO extends TenantBaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 角色ID
      */
     private Long roleId;
+
     /**
      * 菜单ID
      */
     private Long menuId;
-
 }

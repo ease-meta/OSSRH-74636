@@ -83,5 +83,4 @@ public class PayClientFactoryImpl implements PayClientFactory {
         log.error("[createPayClient][配置({}) 找不到合适的客户端实现]", config);
         throw new IllegalArgumentException(String.format("配置(%s) 找不到合适的客户端实现", config));
     }
-
 }

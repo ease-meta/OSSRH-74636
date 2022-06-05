@@ -18,5 +18,4 @@ public class OAuth2ClientPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "状态", example = "1", notes = "参见 CommonStatusEnum 枚举")
     private Integer status;
-
 }

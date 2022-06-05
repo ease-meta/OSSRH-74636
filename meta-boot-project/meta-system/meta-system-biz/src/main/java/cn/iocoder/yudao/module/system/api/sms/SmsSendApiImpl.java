@@ -30,5 +30,4 @@ public class SmsSendApiImpl implements SmsSendApi {
         return smsSendService.sendSingleSmsToMember(reqDTO.getMobile(), reqDTO.getUserId(),
                 reqDTO.getTemplateCode(), reqDTO.getTemplateParams());
     }
-
 }

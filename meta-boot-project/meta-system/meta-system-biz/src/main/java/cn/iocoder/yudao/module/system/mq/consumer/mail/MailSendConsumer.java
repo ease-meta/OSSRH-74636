@@ -14,5 +14,4 @@ public class MailSendConsumer extends AbstractStreamMessageListener<MailSendMess
     public void onMessage(MailSendMessage message) {
         log.info("[onMessage][消息内容({})]", message);
     }
-
 }

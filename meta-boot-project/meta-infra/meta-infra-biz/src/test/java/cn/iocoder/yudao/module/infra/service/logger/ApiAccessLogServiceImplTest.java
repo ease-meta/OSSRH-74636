@@ -59,13 +59,15 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        apiAccessLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
+        apiAccessLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
         // duration 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setDuration(100)));
         // resultCode 不同的
@@ -117,13 +119,15 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        apiAccessLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
+        apiAccessLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
         // duration 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setDuration(100)));
         // resultCode 不同的
@@ -161,6 +165,4 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         assertNotNull(infApiAccessLogDO);
         assertPojoEquals(createDTO, infApiAccessLogDO);
     }
-
-
 }

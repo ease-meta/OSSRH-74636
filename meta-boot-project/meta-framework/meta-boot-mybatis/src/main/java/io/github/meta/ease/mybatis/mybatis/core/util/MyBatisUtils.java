@@ -80,5 +80,4 @@ public class MyBatisUtils {
     public static Column buildColumn(String tableName, Alias tableAlias, String column) {
         return new Column(tableAlias != null ? tableAlias.getName() + "." + column : column);
     }
-
 }

@@ -22,6 +22,7 @@ import java.lang.reflect.Method;
 public class ExpressionIdempotentKeyResolver implements IdempotentKeyResolver {
 
     private final ParameterNameDiscoverer parameterNameDiscoverer = new LocalVariableTableParameterNameDiscoverer();
+
     private final ExpressionParser expressionParser = new SpelExpressionParser();
 
     @Override
@@ -59,5 +60,4 @@ public class ExpressionIdempotentKeyResolver implements IdempotentKeyResolver {
             throw new RuntimeException(e);
         }
     }
-
 }

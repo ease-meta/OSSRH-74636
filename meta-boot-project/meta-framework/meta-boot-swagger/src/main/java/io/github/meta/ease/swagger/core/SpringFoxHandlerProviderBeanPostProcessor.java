@@ -39,5 +39,4 @@ public class SpringFoxHandlerProviderBeanPostProcessor implements BeanPostProces
         return (List<RequestMappingInfoHandlerMapping>)
                 ReflectUtil.getFieldValue(bean, "handlerMappings");
     }
-
 }

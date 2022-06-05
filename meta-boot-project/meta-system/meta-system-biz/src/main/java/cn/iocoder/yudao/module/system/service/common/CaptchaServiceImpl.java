@@ -39,7 +39,8 @@ public class CaptchaServiceImpl implements CaptchaService {
             return CaptchaImageRespVO.builder().enable(enable).build();
         }
         // 生成验证码
-        CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(captchaProperties.getWidth(), captchaProperties.getHeight());
+        CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(captchaProperties.getWidth(),
+                captchaProperties.getHeight());
         // 缓存到 Redis 中
         String uuid = IdUtil.fastSimpleUUID();
         captchaRedisDAO.set(uuid, captcha.getCode(), captchaProperties.getTimeout());
@@ -61,5 +62,4 @@ public class CaptchaServiceImpl implements CaptchaService {
     public void deleteCaptchaCode(String uuid) {
         captchaRedisDAO.delete(uuid);
     }
-
 }

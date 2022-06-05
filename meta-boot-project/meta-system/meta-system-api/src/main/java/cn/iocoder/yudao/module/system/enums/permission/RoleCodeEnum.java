@@ -19,6 +19,7 @@ public enum RoleCodeEnum {
      * 角色编码
      */
     private final String code;
+
     /**
      * 名字
      */
@@ -27,5 +28,4 @@ public enum RoleCodeEnum {
     public static boolean isSuperAdmin(String code) {
         return ObjectUtils.equalsAny(code, SUPER_ADMIN.getCode());
     }
-
 }

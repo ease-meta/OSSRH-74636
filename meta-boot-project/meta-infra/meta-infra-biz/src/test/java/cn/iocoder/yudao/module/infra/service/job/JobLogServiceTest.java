@@ -29,6 +29,7 @@ public class JobLogServiceTest extends BaseDbUnitTest {
 
     @Resource
     private JobLogServiceImpl jobLogService;
+
     @Resource
     private JobLogMapper jobLogMapper;
 
@@ -39,7 +40,8 @@ public class JobLogServiceTest extends BaseDbUnitTest {
             o.setExecuteIndex(1);
         });
         // 调用
-        Long jobLogId = jobLogService.createJobLog(reqVO.getJobId(), reqVO.getBeginTime(), reqVO.getHandlerName(), reqVO.getHandlerParam(), reqVO.getExecuteIndex());
+        Long jobLogId = jobLogService.createJobLog(reqVO.getJobId(), reqVO.getBeginTime(), reqVO.getHandlerName(),
+                reqVO.getHandlerParam(), reqVO.getExecuteIndex());
         // 断言
         assertNotNull(jobLogId);
         // 校验记录的属性是否正确
@@ -53,17 +55,20 @@ public class JobLogServiceTest extends BaseDbUnitTest {
         JobLogDO reqVO = randomPojo(JobLogDO.class, o -> {
             o.setExecuteIndex(1);
         });
-        JobLogDO log = JobLogDO.builder().jobId(reqVO.getJobId()).handlerName(reqVO.getHandlerName()).handlerParam(reqVO.getHandlerParam()).executeIndex(reqVO.getExecuteIndex())
+        JobLogDO log = JobLogDO.builder().jobId(reqVO.getJobId()).handlerName(reqVO.getHandlerName())
+                .handlerParam(reqVO.getHandlerParam()).executeIndex(reqVO.getExecuteIndex())
                 .beginTime(reqVO.getBeginTime()).status(JobLogStatusEnum.RUNNING.getStatus()).build();
         jobLogMapper.insert(log);
         // 调用
-        jobLogService.updateJobLogResultAsync(log.getId(), reqVO.getBeginTime(), reqVO.getDuration(), true, reqVO.getResult());
+        jobLogService.updateJobLogResultAsync(log.getId(), reqVO.getBeginTime(), reqVO.getDuration(), true,
+                reqVO.getResult());
         // 校验记录的属性是否正确
         JobLogDO job = jobLogMapper.selectById(log.getId());
         assertEquals(JobLogStatusEnum.SUCCESS.getStatus(), job.getStatus());
 
         // 调用
-        jobLogService.updateJobLogResultAsync(log.getId(), reqVO.getBeginTime(), reqVO.getDuration(), false, reqVO.getResult());
+        jobLogService.updateJobLogResultAsync(log.getId(), reqVO.getBeginTime(), reqVO.getDuration(), false,
+                reqVO.getResult());
         // 校验记录的属性是否正确
         JobLogDO job2 = jobLogMapper.selectById(log.getId());
         assertEquals(JobLogStatusEnum.FAILURE.getStatus(), job2.getStatus());
@@ -161,5 +166,4 @@ public class JobLogServiceTest extends BaseDbUnitTest {
         assertEquals(1, list.size());
         assertPojoEquals(dbJobLog, list.get(0));
     }
-
 }

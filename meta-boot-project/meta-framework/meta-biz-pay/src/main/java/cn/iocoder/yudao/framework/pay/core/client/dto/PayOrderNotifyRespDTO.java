@@ -22,14 +22,17 @@ public class PayOrderNotifyRespDTO {
      * 支付订单号（支付模块的）
      */
     private String orderExtensionNo;
+
     /**
      * 支付渠道编号
      */
     private String channelOrderNo;
+
     /**
      * 支付渠道用户编号
      */
     private String channelUserId;
+
     /**
      * 支付成功时间
      */
@@ -50,5 +53,4 @@ public class PayOrderNotifyRespDTO {
      * TRADE_FINISHED 	交易结束，不可退款。
      */
     private String tradeStatus;
-
 }

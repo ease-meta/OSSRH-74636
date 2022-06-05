@@ -31,5 +31,4 @@ public interface ErrorCodeFrameworkService {
      * @return 错误码数组
      */
     List<ErrorCodeRespDTO> getErrorCodeList(String applicationName, Date minUpdateTime);
-
 }

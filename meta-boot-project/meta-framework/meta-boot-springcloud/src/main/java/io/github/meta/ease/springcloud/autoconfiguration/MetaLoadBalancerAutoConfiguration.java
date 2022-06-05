@@ -53,5 +53,4 @@ public class MetaLoadBalancerAutoConfiguration {
                 .getClasses());
         return loadBalancerClientSpecification;
     }
-
 }

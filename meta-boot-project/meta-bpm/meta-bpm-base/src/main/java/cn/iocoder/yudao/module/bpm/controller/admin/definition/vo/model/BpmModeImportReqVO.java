@@ -34,5 +34,4 @@ public class BpmModeImportReqVO extends BpmModelCreateReqVO {
     @ApiModelProperty(value = "BPMN 文件", required = true)
     @NotNull(message = "BPMN 文件不能为空")
     private MultipartFile bpmnFile;
-
 }

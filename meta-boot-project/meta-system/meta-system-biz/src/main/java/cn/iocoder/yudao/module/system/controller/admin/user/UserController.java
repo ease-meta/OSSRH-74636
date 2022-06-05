@@ -64,6 +64,7 @@ public class UserController {
 
     @Resource
     private AdminUserService userService;
+
     @Resource
     private DeptService deptService;
 
@@ -203,9 +204,9 @@ public class UserController {
     })
     @PreAuthorize("@ss.hasPermission('system:user:import')")
     public CommonResult<UserImportRespVO> importExcel(@RequestParam("file") MultipartFile file,
-                                                      @RequestParam(value = "updateSupport", required = false, defaultValue = "false") Boolean updateSupport) throws Exception {
+                                                      @RequestParam(value = "updateSupport", required = false, defaultValue = "false") Boolean updateSupport)
+            throws Exception {
         List<UserImportExcelVO> list = ExcelUtils.read(file, UserImportExcelVO.class);
         return success(userService.importUsers(list, updateSupport));
     }
-
 }

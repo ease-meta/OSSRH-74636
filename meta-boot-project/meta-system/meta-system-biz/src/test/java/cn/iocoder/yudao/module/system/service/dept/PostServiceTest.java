@@ -1,7 +1,5 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExportReqVO;
@@ -11,6 +9,8 @@ import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dept.PostMapper;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
@@ -35,6 +35,7 @@ public class PostServiceTest extends BaseDbUnitTest {
 
     @Resource
     private PostServiceImpl postService;
+
     @Resource
     private PostMapper postMapper;
 

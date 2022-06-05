@@ -53,6 +53,7 @@ public class CodegenServiceImpl implements CodegenService {
 
     @Resource
     private CodegenTableMapper codegenTableMapper;
+
     @Resource
     private CodegenColumnMapper codegenColumnMapper;
 
@@ -61,6 +62,7 @@ public class CodegenServiceImpl implements CodegenService {
 
     @Resource
     private CodegenBuilder codegenBuilder;
+
     @Resource
     private CodegenEngine codegenEngine;
 
@@ -69,7 +71,8 @@ public class CodegenServiceImpl implements CodegenService {
     public List<Long> createCodegenList(Long userId, CodegenCreateListReqVO reqVO) {
         List<Long> ids = new ArrayList<>(reqVO.getTableNames().size());
         // 遍历添加。虽然效率会低一点，但是没必要做成完全批量，因为不会这么大量
-        reqVO.getTableNames().forEach(tableName -> ids.add(createCodegen(userId, reqVO.getDataSourceConfigId(), tableName)));
+        reqVO.getTableNames()
+                .forEach(tableName -> ids.add(createCodegen(userId, reqVO.getDataSourceConfigId(), tableName)));
         return ids;
     }
 
@@ -165,7 +168,8 @@ public class CodegenServiceImpl implements CodegenService {
         tableFields.removeIf(column -> codegenColumnNames.contains(column.getColumnName()));
         // 计算需要删除的字段
         Set<String> tableFieldNames = CollectionUtils.convertSet(tableFields, TableField::getName);
-        Set<Long> deleteColumnIds = codegenColumns.stream().filter(column -> !tableFieldNames.contains(column.getColumnName()))
+        Set<Long> deleteColumnIds = codegenColumns.stream()
+                .filter(column -> !tableFieldNames.contains(column.getColumnName()))
                 .map(CodegenColumnDO::getId).collect(Collectors.toSet());
         if (CollUtil.isEmpty(tableFields) && CollUtil.isEmpty(deleteColumnIds)) {
             throw exception(CODEGEN_SYNC_NONE_CHANGE);
@@ -239,5 +243,4 @@ public class CodegenServiceImpl implements CodegenService {
         tables.removeIf(table -> existsTables.contains(table.getName()));
         return CodegenConvert.INSTANCE.convertList04(tables);
     }
-
 }

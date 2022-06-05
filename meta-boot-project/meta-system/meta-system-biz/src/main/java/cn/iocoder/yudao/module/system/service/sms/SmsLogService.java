@@ -73,5 +73,4 @@ public interface SmsLogService {
      * @return 短信日志列表
      */
     List<SmsLogDO> getSmsLogList(SmsLogExportReqVO exportReqVO);
-
 }

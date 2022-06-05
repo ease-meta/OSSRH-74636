@@ -29,6 +29,7 @@ public class PayRefundUnifiedReqDTO {
     private String userIp;
 
     // TODO @jason：这个是否为非必传字段呀，只需要传递 payTradeNo 字段即可。尽可能精简
+
     /**
      * https://api.mch.weixin.qq.com/v3/refund/domestic/refunds 中的 transaction_id
      * https://opendocs.alipay.com/apis alipay.trade.refund 中的 trade_no
@@ -70,5 +71,4 @@ public class PayRefundUnifiedReqDTO {
      */
     @URL(message = "支付结果的 notify 回调地址必须是 URL 格式")
     private String notifyUrl;
-
 }

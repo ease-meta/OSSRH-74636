@@ -34,6 +34,7 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
 
     @Resource
     private OAuth2AccessTokenMapper oauth2AccessTokenMapper;
+
     @Resource
     private OAuth2RefreshTokenMapper oauth2RefreshTokenMapper;
 
@@ -145,7 +146,8 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
         return accessTokenDO;
     }
 
-    private OAuth2RefreshTokenDO createOAuth2RefreshToken(Long userId, Integer userType, OAuth2ClientDO clientDO, List<String> scopes) {
+    private OAuth2RefreshTokenDO createOAuth2RefreshToken(Long userId, Integer userType, OAuth2ClientDO clientDO,
+                                                          List<String> scopes) {
         OAuth2RefreshTokenDO refreshToken = new OAuth2RefreshTokenDO().setRefreshToken(generateRefreshToken())
                 .setUserId(userId).setUserType(userType)
                 .setClientId(clientDO.getClientId()).setScopes(scopes)
@@ -161,5 +163,4 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
     private static String generateRefreshToken() {
         return IdUtil.fastSimpleUUID();
     }
-
 }

@@ -28,5 +28,4 @@ public class BaseRedisUnitTest {
     })
     public static class Application {
     }
-
 }

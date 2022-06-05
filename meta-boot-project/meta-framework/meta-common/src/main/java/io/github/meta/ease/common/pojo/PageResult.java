@@ -38,5 +38,4 @@ public final class PageResult<T> implements Serializable {
     public static <T> PageResult<T> empty(Long total) {
         return new PageResult<>(total);
     }
-
 }

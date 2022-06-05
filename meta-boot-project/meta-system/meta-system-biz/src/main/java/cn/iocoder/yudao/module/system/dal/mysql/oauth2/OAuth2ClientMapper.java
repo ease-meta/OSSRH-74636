@@ -31,5 +31,4 @@ public interface OAuth2ClientMapper extends BaseMapperX<OAuth2ClientDO> {
 
     @Select("SELECT COUNT(*) FROM system_oauth2_client WHERE update_time > #{maxUpdateTime}")
     int selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

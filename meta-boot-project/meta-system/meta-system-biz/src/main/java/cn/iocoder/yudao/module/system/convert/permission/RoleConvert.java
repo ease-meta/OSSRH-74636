@@ -28,5 +28,4 @@ public interface RoleConvert {
     List<RoleExcelVO> convertList03(List<RoleDO> list);
 
     RoleDO convert(RoleCreateReqBO bean);
-
 }

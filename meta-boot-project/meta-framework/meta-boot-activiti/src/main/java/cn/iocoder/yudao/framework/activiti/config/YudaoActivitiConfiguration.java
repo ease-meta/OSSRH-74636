@@ -37,5 +37,4 @@ public class YudaoActivitiConfiguration {
             PlatformTransactionManager platformTransactionManager) {
         return processEngineConfiguration -> processEngineConfiguration.setTransactionManager(platformTransactionManager);
     }
-
 }

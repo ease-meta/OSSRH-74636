@@ -14,5 +14,4 @@ public interface FileConvert {
     FileRespVO convert(FileDO bean);
 
     PageResult<FileRespVO> convertPage(PageResult<FileDO> page);
-
 }

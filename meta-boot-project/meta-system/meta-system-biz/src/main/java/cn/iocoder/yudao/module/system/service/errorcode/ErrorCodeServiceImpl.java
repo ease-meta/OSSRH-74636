@@ -169,6 +169,5 @@ public class ErrorCodeServiceImpl implements ErrorCodeService {
                 applicationName, minUpdateTime);
         return ErrorCodeConvert.INSTANCE.convertList03(errorCodeDOs);
     }
-
 }
 

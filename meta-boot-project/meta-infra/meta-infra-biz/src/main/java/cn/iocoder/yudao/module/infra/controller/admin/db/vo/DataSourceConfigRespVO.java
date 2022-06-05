@@ -19,5 +19,4 @@ public class DataSourceConfigRespVO extends DataSourceConfigBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
-
 }

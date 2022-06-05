@@ -33,5 +33,4 @@ public class BpmUserGroupSimpleRespVO {
 
     @ApiModelProperty(value = "用户组名字", required = true, example = "芋道")
     private String name;
-
 }

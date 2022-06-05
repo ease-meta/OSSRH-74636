@@ -28,5 +28,4 @@ public interface OperateLogService extends OperateLogFrameworkService {
      * @return 日志列表
      */
     List<OperateLogDO> getOperateLogs(OperateLogExportReqVO reqVO);
-
 }

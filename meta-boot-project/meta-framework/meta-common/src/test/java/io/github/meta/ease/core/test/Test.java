@@ -14,5 +14,4 @@ class Test {
     public byte byteP;
 
     public String name;
-
 }

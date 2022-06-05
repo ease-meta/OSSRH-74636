@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.infra.service.codegen;
 
 import cn.iocoder.yudao.module.infra.service.codegen.inner.CodegenSQLParser;
 import cn.iocoder.yudao.module.infra.test.BaseDbUnitTest;
+
 import org.junit.jupiter.api.Test;
 
 public class CodegenSQLParserTest extends BaseDbUnitTest {
@@ -25,5 +26,4 @@ public class CodegenSQLParserTest extends BaseDbUnitTest {
         CodegenSQLParser.parse(sql);
         // TODO 芋艿：后续完善断言
     }
-
 }

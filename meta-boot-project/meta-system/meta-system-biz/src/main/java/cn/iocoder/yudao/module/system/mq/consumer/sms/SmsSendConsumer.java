@@ -25,5 +25,4 @@ public class SmsSendConsumer extends AbstractStreamMessageListener<SmsSendMessag
         log.info("[onMessage][消息内容({})]", message);
         smsSendService.doSendSms(message);
     }
-
 }

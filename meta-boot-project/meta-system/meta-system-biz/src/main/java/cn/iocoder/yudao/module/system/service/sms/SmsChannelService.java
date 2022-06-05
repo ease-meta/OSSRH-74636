@@ -75,5 +75,4 @@ public interface SmsChannelService {
      * @return 短信渠道分页
      */
     PageResult<SmsChannelDO> getSmsChannelPage(SmsChannelPageReqVO pageReqVO);
-
 }

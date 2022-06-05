@@ -55,6 +55,7 @@ public enum SocialTypeEnum implements IntArrayValuable {
      * 类型
      */
     private final Integer type;
+
     /**
      * 类型的标识
      */
@@ -68,5 +69,4 @@ public enum SocialTypeEnum implements IntArrayValuable {
     public static SocialTypeEnum valueOfType(Integer type) {
         return ArrayUtil.firstMatch(o -> o.getType().equals(type), values());
     }
-
 }

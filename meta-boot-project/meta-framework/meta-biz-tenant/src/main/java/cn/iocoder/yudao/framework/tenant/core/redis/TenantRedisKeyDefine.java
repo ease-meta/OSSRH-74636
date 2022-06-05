@@ -26,11 +26,13 @@ public class TenantRedisKeyDefine extends RedisKeyDefine {
      */
     private static final String KEY_TEMPLATE_SUFFIX = ":%d";
 
-    public TenantRedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType, Duration timeout) {
+    public TenantRedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType,
+                                Duration timeout) {
         super(memo, buildKeyTemplate(keyTemplate), keyType, valueType, timeout);
     }
 
-    public TenantRedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType, TimeoutTypeEnum timeoutType) {
+    public TenantRedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType,
+                                TimeoutTypeEnum timeoutType) {
         super(memo, buildKeyTemplate(keyTemplate), keyType, valueType, timeoutType);
     }
 
@@ -43,5 +45,4 @@ public class TenantRedisKeyDefine extends RedisKeyDefine {
         args = ArrayUtil.append(args, TenantContextHolder.getRequiredTenantId());
         return super.formatKey(args);
     }
-
 }

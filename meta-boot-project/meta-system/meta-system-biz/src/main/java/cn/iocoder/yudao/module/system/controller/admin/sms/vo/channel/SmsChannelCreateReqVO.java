@@ -17,5 +17,4 @@ public class SmsChannelCreateReqVO extends SmsChannelBaseVO {
     @ApiModelProperty(value = "渠道编码", required = true, example = "YUN_PIAN", notes = "参见 SmsChannelEnum 枚举类")
     @NotNull(message = "渠道编码不能为空")
     private String code;
-
 }

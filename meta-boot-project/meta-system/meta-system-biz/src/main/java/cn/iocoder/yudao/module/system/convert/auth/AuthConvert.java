@@ -35,7 +35,8 @@ public interface AuthConvert {
 
     default AuthPermissionInfoRespVO convert(AdminUserDO user, List<RoleDO> roleList, List<MenuDO> menuList) {
         return AuthPermissionInfoRespVO.builder()
-                .user(AuthPermissionInfoRespVO.UserVO.builder().id(user.getId()).nickname(user.getNickname()).avatar(user.getAvatar()).build())
+                .user(AuthPermissionInfoRespVO.UserVO.builder().id(user.getId()).nickname(user.getNickname())
+                        .avatar(user.getAvatar()).build())
                 .roles(CollectionUtils.convertSet(roleList, RoleDO::getCode))
                 .permissions(CollectionUtils.convertSet(menuList, MenuDO::getPermission))
                 .build();
@@ -57,20 +58,21 @@ public interface AuthConvert {
         Map<Long, AuthMenuRespVO> treeNodeMap = new LinkedHashMap<>();
         menuList.forEach(menu -> treeNodeMap.put(menu.getId(), AuthConvert.INSTANCE.convertTreeNode(menu)));
         // 处理父子关系
-        treeNodeMap.values().stream().filter(node -> !node.getParentId().equals(MenuIdEnum.ROOT.getId())).forEach(childNode -> {
-            // 获得父节点
-            AuthMenuRespVO parentNode = treeNodeMap.get(childNode.getParentId());
-            if (parentNode == null) {
-                LoggerFactory.getLogger(getClass()).error("[buildRouterTree][resource({}) 找不到父资源({})]",
-                        childNode.getId(), childNode.getParentId());
-                return;
-            }
-            // 将自己添加到父节点中
-            if (parentNode.getChildren() == null) {
-                parentNode.setChildren(new ArrayList<>());
-            }
-            parentNode.getChildren().add(childNode);
-        });
+        treeNodeMap.values().stream().filter(node -> !node.getParentId().equals(MenuIdEnum.ROOT.getId()))
+                .forEach(childNode -> {
+                    // 获得父节点
+                    AuthMenuRespVO parentNode = treeNodeMap.get(childNode.getParentId());
+                    if (parentNode == null) {
+                        LoggerFactory.getLogger(getClass()).error("[buildRouterTree][resource({}) 找不到父资源({})]",
+                                childNode.getId(), childNode.getParentId());
+                        return;
+                    }
+                    // 将自己添加到父节点中
+                    if (parentNode.getChildren() == null) {
+                        parentNode.setChildren(new ArrayList<>());
+                    }
+                    parentNode.getChildren().add(childNode);
+                });
         // 获得到所有的根节点
         return CollectionUtils.filterList(treeNodeMap.values(), node -> MenuIdEnum.ROOT.getId().equals(node.getParentId()));
     }
@@ -82,5 +84,4 @@ public interface AuthConvert {
     SmsCodeSendReqDTO convert(AuthSmsSendReqVO reqVO);
 
     SmsCodeUseReqDTO convert(AuthSmsLoginReqVO reqVO, Integer scene, String usedIp);
-
 }

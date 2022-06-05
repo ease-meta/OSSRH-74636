@@ -40,11 +40,13 @@ public class SmsSendServiceImpl implements SmsSendService {
 
     @Resource
     private AdminUserService adminUserService;
+
     @Resource
     private MemberService memberService;
 
     @Resource
     private SmsTemplateService smsTemplateService;
+
     @Resource
     private SmsLogService smsLogService;
 
@@ -55,7 +57,8 @@ public class SmsSendServiceImpl implements SmsSendService {
     private SmsProducer smsProducer;
 
     @Override
-    public Long sendSingleSmsToAdmin(String mobile, Long userId, String templateCode, Map<String, Object> templateParams) {
+    public Long sendSingleSmsToAdmin(String mobile, Long userId, String templateCode,
+                                     Map<String, Object> templateParams) {
         // 如果 mobile 为空，则加载用户编号对应的手机号
         if (StrUtil.isEmpty(mobile)) {
             AdminUserDO user = adminUserService.getUser(userId);
@@ -68,7 +71,8 @@ public class SmsSendServiceImpl implements SmsSendService {
     }
 
     @Override
-    public Long sendSingleSmsToMember(String mobile, Long userId, String templateCode, Map<String, Object> templateParams) {
+    public Long sendSingleSmsToMember(String mobile, Long userId, String templateCode,
+                                      Map<String, Object> templateParams) {
         // 如果 mobile 为空，则加载用户编号对应的手机号
         if (StrUtil.isEmpty(mobile)) {
             mobile = memberService.getMemberUserMobile(userId);
@@ -122,7 +126,8 @@ public class SmsSendServiceImpl implements SmsSendService {
      * @return 处理后的参数
      */
     @VisibleForTesting
-    public List<KeyValue<String, Object>> buildTemplateParams(SmsTemplateDO template, Map<String, Object> templateParams) {
+    public List<KeyValue<String, Object>> buildTemplateParams(SmsTemplateDO template,
+                                                              Map<String, Object> templateParams) {
         return template.getParams().stream().map(key -> {
             Object value = templateParams.get(key);
             if (value == null) {
@@ -167,5 +172,4 @@ public class SmsSendServiceImpl implements SmsSendService {
         receiveResults.forEach(result -> smsLogService.updateSmsReceiveResult(result.getLogId(),
                 result.getSuccess(), result.getReceiveTime(), result.getErrorCode(), result.getErrorCode()));
     }
-
 }

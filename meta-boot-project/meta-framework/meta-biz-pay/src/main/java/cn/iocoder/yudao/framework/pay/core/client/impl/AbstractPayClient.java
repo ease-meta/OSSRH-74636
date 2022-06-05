@@ -25,14 +25,17 @@ public abstract class AbstractPayClient<Config extends PayClientConfig> implemen
      * 渠道编号
      */
     private final Long channelId;
+
     /**
      * 渠道编码
      */
     private final String channelCode;
+
     /**
      * 错误码枚举类
      */
     protected AbstractPayCodeMapping codeMapping;
+
     /**
      * 支付配置
      */
@@ -110,6 +113,6 @@ public abstract class AbstractPayClient<Config extends PayClientConfig> implemen
         return resp;
     }
 
-    protected abstract PayCommonResult<PayRefundUnifiedRespDTO> doUnifiedRefund(PayRefundUnifiedReqDTO reqDTO) throws Throwable;
-
+    protected abstract PayCommonResult<PayRefundUnifiedRespDTO> doUnifiedRefund(PayRefundUnifiedReqDTO reqDTO)
+            throws Throwable;
 }

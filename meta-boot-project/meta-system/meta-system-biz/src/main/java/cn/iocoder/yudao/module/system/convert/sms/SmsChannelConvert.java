@@ -35,5 +35,4 @@ public interface SmsChannelConvert {
     List<SmsChannelProperties> convertList02(List<SmsChannelDO> list);
 
     List<SmsChannelSimpleRespVO> convertList03(List<SmsChannelDO> list);
-
 }

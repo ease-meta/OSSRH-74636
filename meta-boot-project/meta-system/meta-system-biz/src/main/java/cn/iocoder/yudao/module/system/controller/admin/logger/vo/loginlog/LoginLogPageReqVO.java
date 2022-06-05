@@ -34,5 +34,4 @@ public class LoginLogPageReqVO extends PageParam {
     @ApiModelProperty(value = "结束时间", example = "2020-10-24")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     private Date endTime;
-
 }

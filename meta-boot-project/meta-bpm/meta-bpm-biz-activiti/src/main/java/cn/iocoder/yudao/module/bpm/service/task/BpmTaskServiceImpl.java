@@ -65,16 +65,20 @@ public class BpmTaskServiceImpl implements BpmTaskService {
 
     @Resource
     private TaskService taskService;
+
     @Resource
     private HistoryService historyService;
 
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessInstanceService processInstanceService;
+
     @Resource
     private BpmMessageService messageService;
 
@@ -98,7 +102,8 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         }
 
         // 获得 TaskExtDO Map
-        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(convertSet(tasks, HistoricTaskInstance::getId));
+        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(
+                convertSet(tasks, HistoricTaskInstance::getId));
         Map<String, BpmTaskExtDO> bpmTaskExtDOMap = convertMap(bpmTaskExtDOs, BpmTaskExtDO::getTaskId);
         // 获得 ProcessInstance Map
         HistoricProcessInstance processInstance = processInstanceService.getHistoricProcessInstance(processInstanceId);
@@ -184,7 +189,8 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         }
 
         // 获得 TaskExtDO Map
-        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(convertSet(tasks, HistoricTaskInstance::getId));
+        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(
+                convertSet(tasks, HistoricTaskInstance::getId));
         Map<String, BpmTaskExtDO> bpmTaskExtDOMap = convertMap(bpmTaskExtDOs, BpmTaskExtDO::getTaskId);
         // 获得 ProcessInstance Map
         Map<String, HistoricProcessInstance> historicProcessInstanceMap = processInstanceService.getHistoricProcessInstanceMap(
@@ -193,7 +199,8 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         Map<Long, AdminUserRespDTO> userMap = adminUserApi.getUserMap(
                 convertSet(historicProcessInstanceMap.values(), instance -> Long.valueOf(instance.getStartUserId())));
         // 拼接结果
-        return new PageResult<>(BpmTaskConvert.INSTANCE.convertList2(tasks, bpmTaskExtDOMap, historicProcessInstanceMap, userMap),
+        return new PageResult<>(
+                BpmTaskConvert.INSTANCE.convertList2(tasks, bpmTaskExtDOMap, historicProcessInstanceMap, userMap),
                 taskQuery.count());
     }
 
@@ -327,5 +334,4 @@ public class BpmTaskServiceImpl implements BpmTaskService {
     public List<BpmTaskExtDO> getTaskExtListByProcessInstanceId(String processInstanceId) {
         return taskExtMapper.selectListByProcessInstanceId(processInstanceId);
     }
-
 }

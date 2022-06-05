@@ -26,5 +26,4 @@ public interface SmsLogConvert {
     PageResult<SmsLogRespVO> convertPage(PageResult<SmsLogDO> page);
 
     List<SmsLogExcelVO> convertList02(List<SmsLogDO> list);
-
 }

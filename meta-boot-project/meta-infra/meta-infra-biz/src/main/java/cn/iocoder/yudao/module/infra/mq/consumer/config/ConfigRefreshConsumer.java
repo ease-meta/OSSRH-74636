@@ -20,5 +20,4 @@ public class ConfigRefreshConsumer extends AbstractChannelMessageListener<Config
         log.info("[onMessage][收到 Config 刷新消息]");
         DBConfigRepository.noticeSync();
     }
-
 }

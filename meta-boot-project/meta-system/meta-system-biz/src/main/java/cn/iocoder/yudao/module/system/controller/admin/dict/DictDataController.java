@@ -104,5 +104,4 @@ public class DictDataController {
         // 输出
         ExcelUtils.write(response, "字典数据.xls", "数据列表", DictDataExcelVO.class, data);
     }
-
 }

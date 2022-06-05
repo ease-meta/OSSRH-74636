@@ -41,6 +41,7 @@ public class MenuController {
 
     @Resource
     private MenuService menuService;
+
     @Resource
     private TenantService tenantService;
 
@@ -98,5 +99,4 @@ public class MenuController {
         MenuDO menu = menuService.getMenu(id);
         return success(MenuConvert.INSTANCE.convert(menu));
     }
-
 }

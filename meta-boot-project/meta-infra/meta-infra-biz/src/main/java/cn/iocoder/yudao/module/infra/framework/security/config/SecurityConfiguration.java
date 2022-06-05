@@ -21,7 +21,8 @@ public class SecurityConfiguration {
         return new AuthorizeRequestsCustomizer() {
 
             @Override
-            public void customize(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
+            public void customize(
+                    ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
                 // Swagger 接口文档
                 registry.antMatchers("/swagger-ui.html").anonymous()
                         .antMatchers("/swagger-resources/**").anonymous()
@@ -38,8 +39,6 @@ public class SecurityConfiguration {
                 // 文件的获取接口，可匿名访问
                 registry.antMatchers(buildAdminApi("/infra/file/*/get/**"), buildAppApi("/infra/file/get/**")).permitAll();
             }
-
         };
     }
-
 }

@@ -84,5 +84,4 @@ public class SmsLogServiceImpl implements SmsLogService {
     public List<SmsLogDO> getSmsLogList(SmsLogExportReqVO exportReqVO) {
         return smsLogMapper.selectList(exportReqVO);
     }
-
 }

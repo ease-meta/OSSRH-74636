@@ -20,22 +20,26 @@ public class LoginUser {
      * 用户编号
      */
     private Long id;
+
     /**
      * 用户类型
      * <p>
      * 关联 {@link io.github.meta.ease.common.enums.UserTypeEnum}
      */
     private Integer userType;
+
     /**
      * 租户编号
      */
     private Long tenantId;
+
     /**
      * 授权范围
      */
     private List<String> scopes;
 
     // ========== 上下文 ==========
+
     /**
      * 上下文字段，不进行持久化
      * <p>
@@ -54,5 +58,4 @@ public class LoginUser {
     public <T> T getContext(String key, Class<T> type) {
         return MapUtil.get(context, key, type);
     }
-
 }

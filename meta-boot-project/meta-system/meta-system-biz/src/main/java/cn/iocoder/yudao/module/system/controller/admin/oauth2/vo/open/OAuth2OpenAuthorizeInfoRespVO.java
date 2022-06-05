@@ -34,7 +34,5 @@ public class OAuth2OpenAuthorizeInfoRespVO {
 
         @ApiModelProperty(value = "应用图标", required = true, example = "https://www.iocoder.cn/xx.png")
         private String logo;
-
     }
-
 }

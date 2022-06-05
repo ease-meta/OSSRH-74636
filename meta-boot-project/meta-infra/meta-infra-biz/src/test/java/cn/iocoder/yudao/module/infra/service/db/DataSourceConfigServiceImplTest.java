@@ -144,5 +144,4 @@ public class DataSourceConfigServiceImplTest extends BaseDbUnitTest {
                 EncryptTypeHandler.encrypt(dbDataSourceConfig.getPassword()));
         System.out.println(result);
     }
-
 }

@@ -57,5 +57,4 @@ public class BpmProcessInstanceMyPageReqVO extends PageParam {
     @ApiModelProperty(value = "结束的创建时间")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     private Date endCreateTime;
-
 }

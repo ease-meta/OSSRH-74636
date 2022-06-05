@@ -81,5 +81,4 @@ public class BpmOALeaveController {
         PageResult<BpmOALeaveDO> pageResult = leaveService.getLeavePage(getLoginUserId(), pageVO);
         return success(BpmOALeaveConvert.INSTANCE.convertPage(pageResult));
     }
-
 }

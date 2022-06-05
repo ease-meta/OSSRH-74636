@@ -39,7 +39,7 @@ public class BpmTaskAssignRuleRespVO extends BpmTaskAssignRuleBaseVO {
 
     @ApiModelProperty(value = "流程任务定义的编号", required = true, example = "2048")
     private String taskDefinitionKey;
+
     @ApiModelProperty(value = "流程任务定义的名字", required = true, example = "关注芋道")
     private String taskDefinitionName;
-
 }

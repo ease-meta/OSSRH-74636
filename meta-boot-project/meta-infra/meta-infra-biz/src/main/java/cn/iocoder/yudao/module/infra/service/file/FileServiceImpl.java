@@ -88,5 +88,4 @@ public class FileServiceImpl implements FileService {
         Assert.notNull(client, "客户端({}) 不能为空", configId);
         return client.getContent(path);
     }
-
 }

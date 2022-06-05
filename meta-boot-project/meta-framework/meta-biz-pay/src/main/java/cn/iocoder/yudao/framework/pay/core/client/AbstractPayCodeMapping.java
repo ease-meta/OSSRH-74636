@@ -28,5 +28,4 @@ public abstract class AbstractPayCodeMapping {
     }
 
     protected abstract ErrorCode apply0(String apiCode, String apiMsg);
-
 }

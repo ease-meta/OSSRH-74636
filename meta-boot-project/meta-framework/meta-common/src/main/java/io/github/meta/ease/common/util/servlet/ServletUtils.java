@@ -95,5 +95,4 @@ public class ServletUtils {
         return StrUtil.startWithIgnoreCase(request.getContentType(),
                 MediaType.APPLICATION_JSON_VALUE);
     }
-
 }

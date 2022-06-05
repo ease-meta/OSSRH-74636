@@ -47,5 +47,4 @@ public interface BpmTaskAssignRuleMapper extends BaseMapperX<BpmTaskAssignRuleDO
                 .eq(BpmTaskAssignRuleDO::getProcessDefinitionId, BpmTaskAssignRuleDO.PROCESS_DEFINITION_ID_NULL)
                 .eq(BpmTaskAssignRuleDO::getTaskDefinitionKey, taskDefinitionKey));
     }
-
 }

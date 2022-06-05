@@ -35,7 +35,8 @@ public class BpmTackActivitiEventListener implements ActivitiEventListener {
                 return;
             }
             // 设置 name
-            ProcessDefinition processDefinition = processDefinitionService.getProcessDefinition2(task.getProcessDefinitionId());
+            ProcessDefinition processDefinition = processDefinitionService.getProcessDefinition2(
+                    task.getProcessDefinitionId());
             if (processDefinition == null) {
                 return;
             }
@@ -47,5 +48,4 @@ public class BpmTackActivitiEventListener implements ActivitiEventListener {
     public boolean isFailOnException() {
         return true;
     }
-
 }

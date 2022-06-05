@@ -33,5 +33,4 @@ public class BpmTaskAssignRuleUpdateReqVO extends BpmTaskAssignRuleBaseVO {
     @ApiModelProperty(value = "任务分配规则的编号", required = true, example = "1024")
     @NotNull(message = "任务分配规则的编号不能为空")
     private Long id;
-
 }

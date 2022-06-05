@@ -19,5 +19,4 @@ public class TenantRespVO extends TenantBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
-
 }

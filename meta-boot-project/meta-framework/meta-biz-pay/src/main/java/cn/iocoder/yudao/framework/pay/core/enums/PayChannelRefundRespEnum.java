@@ -18,6 +18,6 @@ public enum PayChannelRefundRespEnum {
     CLOSED(4, "退款关闭");
 
     private final Integer status;
-    private final String name;
 
+    private final String name;
 }

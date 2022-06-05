@@ -164,5 +164,4 @@ public interface BpmProcessInstanceService {
      * @param reason 理由。例如说，审批不通过时，需要传递该值
      */
     void updateProcessInstanceExtReject(String id, String reason);
-
 }

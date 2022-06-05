@@ -24,6 +24,7 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
 
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DeptApi deptApi;
 
@@ -58,5 +59,4 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
         }
         return deptApi.getDept(startUser.getDeptId());
     }
-
 }

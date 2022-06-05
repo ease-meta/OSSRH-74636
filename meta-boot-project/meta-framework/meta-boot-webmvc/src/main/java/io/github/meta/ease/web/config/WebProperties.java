@@ -17,6 +17,7 @@ public class WebProperties {
 
     @NotNull(message = "APP API 不能为空")
     private Api appApi;
+
     @NotNull(message = "Admin API 不能为空")
     private Api adminApi;
 
@@ -44,7 +45,6 @@ public class WebProperties {
          */
         @NotEmpty(message = "Controller 所在包不能为空")
         private String controller;
-
     }
 
     @Data
@@ -55,7 +55,5 @@ public class WebProperties {
          * 访问地址
          */
         private String url;
-
     }
-
 }

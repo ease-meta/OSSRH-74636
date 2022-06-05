@@ -103,5 +103,4 @@ public class BpmFormController {
         PageResult<BpmFormDO> pageResult = bpmFormService.getFormPage(pageVO);
         return success(BpmFormConvert.INSTANCE.convertPage(pageResult));
     }
-
 }

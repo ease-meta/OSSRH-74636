@@ -57,6 +57,7 @@ public class DeptDataPermissionRule implements DataPermissionRule {
     protected static final String CONTEXT_KEY = DeptDataPermissionRule.class.getSimpleName();
 
     private static final String DEPT_COLUMN_NAME = "dept_id";
+
     private static final String USER_COLUMN_NAME = "user_id";
 
     static final Expression EXPRESSION_NULL = new NullValue();
@@ -71,6 +72,7 @@ public class DeptDataPermissionRule implements DataPermissionRule {
      * value：字段名
      */
     private final Map<String, String> deptColumns = new HashMap<>();
+
     /**
      * 基于用户的表字段配置
      * 一般情况下，每个表的部门编号字段是 dept_id，通过该配置自定义。
@@ -79,6 +81,7 @@ public class DeptDataPermissionRule implements DataPermissionRule {
      * value：字段名
      */
     private final Map<String, String> userColumns = new HashMap<>();
+
     /**
      * 所有表名，是 {@link #deptColumns} 和 {@link #userColumns} 的合集
      */
@@ -128,7 +131,8 @@ public class DeptDataPermissionRule implements DataPermissionRule {
 
         // 情况三，拼接 Dept 和 User 的条件，最后组合
         Expression deptExpression = buildDeptExpression(tableName, tableAlias, deptDataPermission.getDeptIds());
-        Expression userExpression = buildUserExpression(tableName, tableAlias, deptDataPermission.getSelf(), loginUser.getId());
+        Expression userExpression = buildUserExpression(tableName, tableAlias, deptDataPermission.getSelf(),
+                loginUser.getId());
         if (deptExpression == null && userExpression == null) {
             // TODO 芋艿：获得不到条件的时候，暂时不抛出异常，而是不返回数据
             log.warn("[getExpression][LoginUser({}) Table({}/{}) DeptDataPermission({}) 构建的条件为空]",
@@ -204,5 +208,4 @@ public class DeptDataPermissionRule implements DataPermissionRule {
         userColumns.put(tableName, columnName);
         TABLE_NAMES.add(tableName);
     }
-
 }

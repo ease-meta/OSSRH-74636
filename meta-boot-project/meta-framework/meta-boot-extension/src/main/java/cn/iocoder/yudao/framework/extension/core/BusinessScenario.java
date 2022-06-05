@@ -101,7 +101,8 @@ public class BusinessScenario implements Serializable {
      * @param scenario
      * @return
      */
-    public static BusinessScenario valueOf(@NotNull String businessId, @NotNull String useCase, @NotNull String scenario) {
+    public static BusinessScenario valueOf(@NotNull String businessId, @NotNull String useCase,
+                                           @NotNull String scenario) {
         return new BusinessScenario(businessId, useCase, scenario);
     }
 

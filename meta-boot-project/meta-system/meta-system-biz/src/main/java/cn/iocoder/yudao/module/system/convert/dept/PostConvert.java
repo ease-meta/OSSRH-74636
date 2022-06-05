@@ -28,5 +28,4 @@ public interface PostConvert {
     PostDO convert(PostUpdateReqVO reqVO);
 
     List<PostExcelVO> convertList03(List<PostDO> list);
-
 }

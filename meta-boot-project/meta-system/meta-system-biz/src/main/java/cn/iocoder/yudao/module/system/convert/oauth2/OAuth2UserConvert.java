@@ -23,5 +23,4 @@ public interface OAuth2UserConvert {
     List<OAuth2UserInfoRespVO.Post> convertList(List<PostDO> list);
 
     UserProfileUpdateReqVO convert(OAuth2UserUpdateReqVO bean);
-
 }

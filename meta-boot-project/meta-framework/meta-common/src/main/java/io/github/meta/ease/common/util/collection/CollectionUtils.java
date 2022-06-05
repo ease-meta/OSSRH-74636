@@ -108,14 +108,16 @@ public class CollectionUtils {
         return convertMap(from, keyFunc, valueFunc, (v1, v2) -> v1);
     }
 
-    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, BinaryOperator<V> mergeFunction) {
+    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc,
+                                                 BinaryOperator<V> mergeFunction) {
         if (CollUtil.isEmpty(from)) {
             return new HashMap<>();
         }
         return convertMap(from, keyFunc, valueFunc, mergeFunction, HashMap::new);
     }
 
-    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc, Supplier<? extends Map<K, V>> supplier) {
+    public static <T, K, V> Map<K, V> convertMap(Collection<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc,
+                                                 Supplier<? extends Map<K, V>> supplier) {
         if (CollUtil.isEmpty(from)) {
             return supplier.get();
         }
@@ -204,5 +206,4 @@ public class CollectionUtils {
     public static <T> Collection<T> singleton(T deptId) {
         return deptId == null ? Collections.emptyList() : Collections.singleton(deptId);
     }
-
 }

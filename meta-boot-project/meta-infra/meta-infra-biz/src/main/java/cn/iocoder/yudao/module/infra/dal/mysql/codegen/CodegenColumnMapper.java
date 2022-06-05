@@ -20,5 +20,4 @@ public interface CodegenColumnMapper extends BaseMapperX<CodegenColumnDO> {
         delete(new LambdaQueryWrapperX<CodegenColumnDO>()
                 .eq(CodegenColumnDO::getTableId, tableId));
     }
-
 }

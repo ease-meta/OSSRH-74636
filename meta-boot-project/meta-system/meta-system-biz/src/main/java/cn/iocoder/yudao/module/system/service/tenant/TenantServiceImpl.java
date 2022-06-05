@@ -83,6 +83,7 @@ public class TenantServiceImpl implements TenantService {
      */
     @Getter
     private volatile Map<Long, TenantDO> tenantCache;
+
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -98,13 +99,17 @@ public class TenantServiceImpl implements TenantService {
 
     @Resource
     private TenantPackageService tenantPackageService;
+
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private AdminUserService userService;
+
     @Resource
     private RoleService roleService;
+
     @Resource
     private MenuService menuService;
+
     @Resource
     private PermissionService permissionService;
 
@@ -357,5 +362,4 @@ public class TenantServiceImpl implements TenantService {
     private boolean isTenantDisable() {
         return tenantProperties == null || Boolean.FALSE.equals(tenantProperties.getEnable());
     }
-
 }

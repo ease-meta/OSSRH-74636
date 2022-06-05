@@ -22,5 +22,4 @@ public class OAuth2ClientProducer {
         OAuth2ClientRefreshMessage message = new OAuth2ClientRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

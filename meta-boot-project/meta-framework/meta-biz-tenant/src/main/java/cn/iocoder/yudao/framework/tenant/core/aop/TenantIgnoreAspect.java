@@ -28,5 +28,4 @@ public class TenantIgnoreAspect {
             TenantContextHolder.setIgnore(oldIgnore);
         }
     }
-
 }

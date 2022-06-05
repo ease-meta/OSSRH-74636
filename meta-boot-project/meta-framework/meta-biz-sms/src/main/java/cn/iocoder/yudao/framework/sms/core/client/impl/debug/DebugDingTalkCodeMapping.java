@@ -18,5 +18,4 @@ public class DebugDingTalkCodeMapping implements SmsCodeMapping {
     public ErrorCode apply(String apiCode) {
         return Objects.equals(apiCode, "0") ? GlobalErrorCodeConstants.SUCCESS : SmsFrameworkErrorCodeConstants.SMS_UNKNOWN;
     }
-
 }

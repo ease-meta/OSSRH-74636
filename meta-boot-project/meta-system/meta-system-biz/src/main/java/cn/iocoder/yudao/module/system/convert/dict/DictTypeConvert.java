@@ -28,5 +28,4 @@ public interface DictTypeConvert {
     List<DictTypeSimpleRespVO> convertList(List<DictTypeDO> list);
 
     List<DictTypeExcelVO> convertList02(List<DictTypeDO> list);
-
 }

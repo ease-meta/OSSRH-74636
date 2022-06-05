@@ -20,5 +20,4 @@ public interface SocialUserMapper extends BaseMapperX<SocialUserDO> {
                 .eq(SocialUserDO::getType, type)
                 .eq(SocialUserDO::getOpenid, openid));
     }
-
 }

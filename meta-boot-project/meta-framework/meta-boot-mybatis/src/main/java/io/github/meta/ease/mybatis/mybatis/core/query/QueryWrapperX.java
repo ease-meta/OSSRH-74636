@@ -149,5 +149,4 @@ public class QueryWrapperX<T> extends QueryWrapper<T> {
         }
         return this;
     }
-
 }

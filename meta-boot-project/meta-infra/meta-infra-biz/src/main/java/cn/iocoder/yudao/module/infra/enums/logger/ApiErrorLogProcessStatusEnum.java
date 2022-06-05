@@ -20,9 +20,9 @@ public enum ApiErrorLogProcessStatusEnum {
      * 状态
      */
     private final Integer status;
+
     /**
      * 资源类型名
      */
     private final String name;
-
 }

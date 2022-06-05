@@ -24,6 +24,7 @@ public class XssFilter extends OncePerRequestFilter {
      * 属性
      */
     private final XssProperties properties;
+
     /**
      * 路径匹配器
      */
@@ -46,5 +47,4 @@ public class XssFilter extends OncePerRequestFilter {
         String uri = request.getRequestURI();
         return properties.getExcludeUrls().stream().anyMatch(excludeUrl -> pathMatcher.match(excludeUrl, uri));
     }
-
 }

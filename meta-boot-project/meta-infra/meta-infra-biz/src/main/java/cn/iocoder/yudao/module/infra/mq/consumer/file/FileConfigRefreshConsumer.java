@@ -25,5 +25,4 @@ public class FileConfigRefreshConsumer extends AbstractChannelMessageListener<Fi
         log.info("[onMessage][收到 FileConfig 刷新消息]");
         fileConfigService.initFileClients();
     }
-
 }

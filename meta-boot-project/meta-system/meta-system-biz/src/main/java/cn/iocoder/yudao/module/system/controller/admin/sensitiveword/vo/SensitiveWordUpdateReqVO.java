@@ -17,5 +17,4 @@ public class SensitiveWordUpdateReqVO extends SensitiveWordBaseVO {
     @ApiModelProperty(value = "编号", required = true, example = "1")
     @NotNull(message = "编号不能为空")
     private Long id;
-
 }

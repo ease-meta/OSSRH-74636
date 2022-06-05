@@ -18,5 +18,4 @@ public interface FileClientFactory {
      * @param config   文件配置
      */
     <Config extends FileClientConfig> void createOrUpdateFileClient(Long configId, Integer storage, Config config);
-
 }

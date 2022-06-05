@@ -75,7 +75,8 @@ public class JobController {
             @ApiImplicitParam(name = "status", value = "状态", required = true, example = "1", dataTypeClass = Integer.class),
     })
     @PreAuthorize("@ss.hasPermission('infra:job:update')")
-    public CommonResult<Boolean> updateJobStatus(@RequestParam(value = "id") Long id, @RequestParam("status") Integer status)
+    public CommonResult<Boolean> updateJobStatus(@RequestParam(value = "id") Long id,
+                                                 @RequestParam("status") Integer status)
             throws SchedulerException {
         jobService.updateJobStatus(id, status);
         return success(true);
@@ -153,5 +154,4 @@ public class JobController {
         }
         return success(CronUtils.getNextTimes(job.getCronExpression(), count));
     }
-
 }

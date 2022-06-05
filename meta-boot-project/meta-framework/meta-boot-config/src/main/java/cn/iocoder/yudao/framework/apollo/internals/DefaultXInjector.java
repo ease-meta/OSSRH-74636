@@ -77,7 +77,5 @@ public class DefaultXInjector implements Injector {
             bind(YamlParser.class).in(Singleton.class);
             bind(PropertiesFactory.class).to(DefaultPropertiesFactory.class).in(Singleton.class);
         }
-
     }
-
 }

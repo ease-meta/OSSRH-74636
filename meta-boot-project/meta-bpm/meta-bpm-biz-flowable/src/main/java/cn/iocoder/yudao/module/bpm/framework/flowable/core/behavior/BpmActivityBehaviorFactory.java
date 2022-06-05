@@ -29,15 +29,19 @@ public class BpmActivityBehaviorFactory extends DefaultActivityBehaviorFactory {
 
     @Setter
     private BpmTaskAssignRuleService bpmTaskRuleService;
+
     @Setter
     private BpmUserGroupService userGroupService;
 
     @Setter
     private PermissionApi permissionApi;
+
     @Setter
     private DeptApi deptApi;
+
     @Setter
     private AdminUserApi adminUserApi;
+
     @Setter
     private List<BpmTaskAssignScript> scripts;
 

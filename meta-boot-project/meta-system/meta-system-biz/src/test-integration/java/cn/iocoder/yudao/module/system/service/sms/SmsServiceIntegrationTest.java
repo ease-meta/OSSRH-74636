@@ -8,11 +8,13 @@ import cn.iocoder.yudao.module.system.test.BaseDbAndRedisIntegrationTest;
 import cn.iocoder.yudao.module.system.mq.consumer.sms.SmsSendConsumer;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
+
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -24,6 +26,7 @@ public class SmsServiceIntegrationTest extends BaseDbAndRedisIntegrationTest {
 
     @Resource
     private SmsSendServiceImpl smsService;
+
     @Resource
     private SmsChannelServiceImpl smsChannelService;
 
@@ -67,5 +70,4 @@ public class SmsServiceIntegrationTest extends BaseDbAndRedisIntegrationTest {
 //        // 等待 MQ 消费
 //        ThreadUtil.sleep(1, TimeUnit.HOURS);
 //    }
-
 }

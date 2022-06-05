@@ -30,34 +30,39 @@ public class OAuth2RefreshTokenDO extends BaseDO {
      * 编号，数据库字典
      */
     private Long id;
+
     /**
      * 刷新令牌
      */
     private String refreshToken;
+
     /**
      * 用户编号
      */
     private Long userId;
+
     /**
      * 用户类型
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.UserTypeEnum}
      */
     private Integer userType;
+
     /**
      * 客户端编号
      * <p>
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO#getId()}
      */
     private String clientId;
+
     /**
      * 授权范围
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> scopes;
+
     /**
      * 过期时间
      */
     private Date expiresTime;
-
 }

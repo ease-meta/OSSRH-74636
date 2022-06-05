@@ -50,5 +50,4 @@ public class JobLogBaseVO {
 
     @ApiModelProperty(value = "结果数据", example = "执行成功")
     private String result;
-
 }

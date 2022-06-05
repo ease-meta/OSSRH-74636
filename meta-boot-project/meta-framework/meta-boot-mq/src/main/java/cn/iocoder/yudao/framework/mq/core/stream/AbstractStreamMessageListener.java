@@ -28,6 +28,7 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
      * 消息类型
      */
     private final Class<T> messageType;
+
     /**
      * Redis Channel
      */
@@ -40,6 +41,7 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
     @Value("${spring.application.name}")
     @Getter
     private String group;
+
     /**
      * RedisMQTemplate
      */
@@ -108,5 +110,4 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
             interceptors.get(i).consumeMessageAfter(message);
         }
     }
-
 }

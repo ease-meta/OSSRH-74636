@@ -53,32 +53,39 @@ public class BpmOALeaveDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 申请人的用户编号
      * <p>
      * 关联 AdminUserDO 的 id 属性
      */
     private Long userId;
+
     /**
      * 请假类型
      */
     private Integer type;
+
     /**
      * 原因
      */
     private String reason;
+
     /**
      * 开始时间
      */
     private Date startTime;
+
     /**
      * 结束时间
      */
     private Date endTime;
+
     /**
      * 请假天数
      */
     private Long day;
+
     /**
      * 请假的结果
      * <p>
@@ -93,5 +100,4 @@ public class BpmOALeaveDO extends BaseDO {
      * 关联 ProcessInstance 的 id 属性
      */
     private String processInstanceId;
-
 }

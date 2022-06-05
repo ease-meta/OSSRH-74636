@@ -32,5 +32,4 @@ public class RedisKeyRespVO {
 
     @ApiModelProperty(value = "备注", required = true, example = "啦啦啦啦~")
     private String memo;
-
 }

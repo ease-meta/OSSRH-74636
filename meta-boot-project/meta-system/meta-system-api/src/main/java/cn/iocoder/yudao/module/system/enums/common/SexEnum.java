@@ -27,5 +27,4 @@ public enum SexEnum {
      * 性别
      */
     private final Integer sex;
-
 }

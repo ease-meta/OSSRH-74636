@@ -49,5 +49,4 @@ public interface BpmUserGroupConvert {
 
     @Named("convertList2")
     List<BpmUserGroupRespVO> convertList2(List<BpmUserGroupDO> list);
-
 }

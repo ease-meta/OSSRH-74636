@@ -15,6 +15,7 @@ public abstract class AbstractFileClient<Config extends FileClientConfig> implem
      * 配置编号
      */
     private final Long id;
+
     /**
      * 文件配置
      */
@@ -65,5 +66,4 @@ public abstract class AbstractFileClient<Config extends FileClientConfig> implem
     protected String formatFileUrl(String domain, String path) {
         return StrUtil.format("{}/admin-api/infra/file/{}/get/{}", domain, getId(), path);
     }
-
 }

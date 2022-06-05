@@ -90,7 +90,8 @@ public class YudaoMQAutoConfiguration {
         // 创建 container 对象
         StreamMessageListenerContainer<String, ObjectRecord<String, String>> container =
 //                StreamMessageListenerContainer.create(redisTemplate.getRequiredConnectionFactory(), containerOptions);
-                DefaultStreamMessageListenerContainerX.create(redisMQTemplate.getRedisTemplate().getRequiredConnectionFactory(), containerOptions);
+                DefaultStreamMessageListenerContainerX.create(redisMQTemplate.getRedisTemplate().getRequiredConnectionFactory(),
+                        containerOptions);
 
         // 第二步，注册监听器，消费对应的 Stream 主题
         String consumerName = buildConsumerName();
@@ -140,5 +141,4 @@ public class YudaoMQAutoConfiguration {
                     "请参考 {} 文档进行安装。", version, DocumentEnum.REDIS_INSTALL.getUrl()));
         }
     }
-
 }

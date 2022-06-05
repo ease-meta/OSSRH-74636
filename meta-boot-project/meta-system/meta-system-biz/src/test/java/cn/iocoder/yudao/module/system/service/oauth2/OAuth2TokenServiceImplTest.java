@@ -11,6 +11,7 @@ import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2AccessTokenMapper;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2RefreshTokenMapper;
 import cn.iocoder.yudao.module.system.dal.redis.oauth2.OAuth2AccessTokenRedisDAO;
 import io.github.meta.ease.common.enums.UserTypeEnum;
+import io.github.meta.ease.common.exception.ErrorCode;
 import io.github.meta.ease.common.pojo.PageResult;
 import io.github.meta.ease.common.util.date.DateUtils;
 import org.assertj.core.util.Lists;
@@ -28,6 +29,8 @@ import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServic
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static io.github.meta.ease.common.util.date.DateUtils.addTime;
+import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -47,6 +50,7 @@ public class OAuth2TokenServiceImplTest extends BaseDbAndRedisUnitTest {
 
     @Resource
     private OAuth2AccessTokenMapper oauth2AccessTokenMapper;
+
     @Resource
     private OAuth2RefreshTokenMapper oauth2RefreshTokenMapper;
 
@@ -164,7 +168,8 @@ public class OAuth2TokenServiceImplTest extends BaseDbAndRedisUnitTest {
         assertNull(oauth2AccessTokenMapper.selectByAccessToken(accessTokenDO.getAccessToken()));
         assertNull(oauth2AccessTokenRedisDAO.get(accessTokenDO.getAccessToken()));
         // 断言，新的访问令牌
-        OAuth2AccessTokenDO dbAccessTokenDO = oauth2AccessTokenMapper.selectByAccessToken(newAccessTokenDO.getAccessToken());
+        OAuth2AccessTokenDO dbAccessTokenDO = oauth2AccessTokenMapper.selectByAccessToken(
+                newAccessTokenDO.getAccessToken());
         assertPojoEquals(newAccessTokenDO, dbAccessTokenDO, "createTime", "updateTime", "deleted");
         assertPojoEquals(newAccessTokenDO, refreshTokenDO, "id", "expiresTime", "createTime", "updateTime", "deleted",
                 "creator", "updater");
@@ -263,7 +268,7 @@ public class OAuth2TokenServiceImplTest extends BaseDbAndRedisUnitTest {
             o.setUserId(10L);
             o.setUserType(1);
             o.setClientId("test_client");
-            o.setExpiresTime(DateUtils.addTime(Duration.ofDays(1)));
+            o.setExpiresTime(addTime(Duration.ofDays(1)));
         });
         oauth2AccessTokenMapper.insert(dbAccessToken);
         // 测试 userId 不匹配
@@ -287,5 +292,4 @@ public class OAuth2TokenServiceImplTest extends BaseDbAndRedisUnitTest {
         assertEquals(1, pageResult.getList().size());
         assertPojoEquals(dbAccessToken, pageResult.getList().get(0));
     }
-
 }

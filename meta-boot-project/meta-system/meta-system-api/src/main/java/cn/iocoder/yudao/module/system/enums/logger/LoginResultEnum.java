@@ -23,5 +23,4 @@ public enum LoginResultEnum {
      * 结果
      */
     private final Integer result;
-
 }

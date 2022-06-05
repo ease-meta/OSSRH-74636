@@ -73,5 +73,4 @@ public class FtpFileClient extends AbstractFileClient<FtpFileClientConfig> {
     private String getFilePath(String path) {
         return config.getBasePath() + path;
     }
-
 }

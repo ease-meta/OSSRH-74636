@@ -36,5 +36,4 @@ public class ConfigBaseVO {
 
     @ApiModelProperty(value = "备注", example = "备注一下很帅气！")
     private String remark;
-
 }

@@ -29,5 +29,4 @@ public class DemoFilter extends OncePerRequestFilter {
         // 直接返回 DEMO_DENY 的结果。即，请求不继续
         ServletUtils.writeJSON(response, CommonResult.error(DEMO_DENY));
     }
-
 }

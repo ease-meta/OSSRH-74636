@@ -90,11 +90,14 @@ public class AuthWeChatMiniProgramRequest extends AuthDefaultRequest {
     @Data
     private static class CodeSessionResponse {
         private int errcode;
+
         private String errmsg;
+
         @JsonProperty("session_key")
         private String sessionKey;
+
         private String openid;
+
         private String unionid;
     }
-
 }

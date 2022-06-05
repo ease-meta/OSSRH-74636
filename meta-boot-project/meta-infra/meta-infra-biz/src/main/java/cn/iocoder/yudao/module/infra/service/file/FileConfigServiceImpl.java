@@ -64,6 +64,7 @@ public class FileConfigServiceImpl implements FileConfigService {
 
     @Resource
     private FileClientFactory fileClientFactory;
+
     /**
      * Master FileClient 对象，有且仅有一个，即 {@link cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO#getMaster()} 对应的
      */
@@ -173,7 +174,6 @@ public class FileConfigServiceImpl implements FileConfigService {
             public void afterCommit() {
                 fileConfigProducer.sendFileConfigRefreshMessage();
             }
-
         });
     }
 
@@ -237,5 +237,4 @@ public class FileConfigServiceImpl implements FileConfigService {
     public FileClient getFileClient(Long id) {
         return fileClientFactory.getFileClient(id);
     }
-
 }

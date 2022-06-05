@@ -27,5 +27,4 @@ public interface ApiErrorLogConvert {
     List<ApiErrorLogExcelVO> convertList02(List<ApiErrorLogDO> list);
 
     ApiErrorLogDO convert(ApiErrorLogCreateReqDTO bean);
-
 }

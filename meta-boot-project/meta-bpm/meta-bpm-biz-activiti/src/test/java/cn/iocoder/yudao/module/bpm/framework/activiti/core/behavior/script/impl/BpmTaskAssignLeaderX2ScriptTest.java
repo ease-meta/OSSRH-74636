@@ -27,6 +27,7 @@ class BpmTaskAssignLeaderX2ScriptTest extends BaseMockitoUnitTest {
 
     @Mock
     private AdminUserApi adminUserApi;
+
     @Mock
     private DeptApi deptApi;
 
@@ -89,5 +90,4 @@ class BpmTaskAssignLeaderX2ScriptTest extends BaseMockitoUnitTest {
         task.getProcessInstance().setStartUserId(String.valueOf(startUserId));
         return task;
     }
-
 }

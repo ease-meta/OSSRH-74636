@@ -157,5 +157,4 @@ public interface BpmProcessDefinitionService {
      * @return 流程定义的数组
      */
     List<ProcessDefinition> getProcessDefinitionListByDeploymentIds(Set<String> deploymentIds);
-
 }

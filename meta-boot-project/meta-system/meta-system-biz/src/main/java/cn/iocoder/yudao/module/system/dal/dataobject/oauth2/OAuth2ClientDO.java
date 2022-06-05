@@ -30,45 +30,55 @@ public class OAuth2ClientDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 客户端编号
      */
     private String clientId;
+
     /**
      * 客户端密钥
      */
     private String secret;
+
     /**
      * 应用名
      */
     private String name;
+
     /**
      * 应用图标
      */
     private String logo;
+
     /**
      * 应用描述
      */
     private String description;
+
     /**
      * 状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 访问令牌的有效期
      */
     private Integer accessTokenValiditySeconds;
+
     /**
      * 刷新令牌的有效期
      */
     private Integer refreshTokenValiditySeconds;
+
     /**
      * 可重定向的 URI 地址
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> redirectUris;
+
     /**
      * 授权类型（模式）
      * <p>
@@ -76,11 +86,13 @@ public class OAuth2ClientDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> authorizedGrantTypes;
+
     /**
      * 授权范围
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> scopes;
+
     /**
      * 自动授权的 Scope
      * <p>
@@ -88,19 +100,21 @@ public class OAuth2ClientDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> autoApproveScopes;
+
     /**
      * 权限
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> authorities;
+
     /**
      * 资源
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> resourceIds;
+
     /**
      * 附加信息，JSON 格式
      */
     private String additionalInformation;
-
 }

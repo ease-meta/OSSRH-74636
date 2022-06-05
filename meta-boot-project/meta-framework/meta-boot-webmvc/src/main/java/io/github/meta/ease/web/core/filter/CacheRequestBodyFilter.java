@@ -25,5 +25,4 @@ public class CacheRequestBodyFilter extends OncePerRequestFilter {
         // 只处理 json 请求内容
         return !ServletUtils.isJsonRequest(request);
     }
-
 }

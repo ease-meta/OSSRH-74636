@@ -89,5 +89,4 @@ public interface CodegenService {
      * @return 表定义列表
      */
     List<DatabaseTableRespVO> getDatabaseTableList(Long dataSourceConfigId, String name, String comment);
-
 }

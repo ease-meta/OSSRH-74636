@@ -33,5 +33,6 @@ public enum BpmModelFormTypeEnum {
     ;
 
     private final Integer type;
+
     private final String desc;
 }

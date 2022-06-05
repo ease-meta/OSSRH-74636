@@ -25,7 +25,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
 
 /**
  * 支付宝抽象类， 实现支付宝统一的接口。如退款
@@ -94,7 +93,8 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
     public boolean verifyNotifyData(PayNotifyDataDTO notifyData) {
         boolean verifyResult = false;
         try {
-            verifyResult = AlipaySignature.rsaCheckV1(notifyData.getParams(), config.getAlipayPublicKey(), StandardCharsets.UTF_8.name(), "RSA2");
+            verifyResult = AlipaySignature.rsaCheckV1(notifyData.getParams(), config.getAlipayPublicKey(),
+                    StandardCharsets.UTF_8.name(), "RSA2");
         } catch (AlipayApiException e) {
             log.error("[AlipayClient verifyNotifyData][(notify param is :{}) 验证失败]", toJsonString(notifyData.getParams()), e);
         }
@@ -157,5 +157,4 @@ public abstract class AbstractAlipayClient extends AbstractPayClient<AlipayPayCl
         }
         return stringStringMap;
     }
-
 }

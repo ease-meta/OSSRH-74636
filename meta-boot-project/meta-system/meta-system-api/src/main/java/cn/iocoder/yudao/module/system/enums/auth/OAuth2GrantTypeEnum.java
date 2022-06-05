@@ -25,5 +25,4 @@ public enum OAuth2GrantTypeEnum {
     public static OAuth2GrantTypeEnum getByGranType(String grantType) {
         return ArrayUtil.firstMatch(o -> o.getGrantType().equals(grantType), values());
     }
-
 }

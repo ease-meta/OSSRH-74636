@@ -132,7 +132,8 @@ public class SimpleTrie {
      * @return 是否有敏感词
      */
     @SuppressWarnings("unchecked")
-    private static boolean recursionWithResult(String text, int index, Map<Character, Object> child, StringBuilder result) {
+    private static boolean recursionWithResult(String text, int index, Map<Character, Object> child,
+                                               StringBuilder result) {
         if (index == text.length()) {
             return true;
         }
@@ -147,5 +148,4 @@ public class SimpleTrie {
         }
         return recursionWithResult(text, ++index, child, result.append(c));
     }
-
 }

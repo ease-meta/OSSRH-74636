@@ -120,5 +120,4 @@ public interface BpmTaskService {
      * @param task 任务实体
      */
     void updateTaskExtAssign(Task task);
-
 }

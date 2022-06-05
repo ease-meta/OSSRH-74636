@@ -46,6 +46,7 @@ public class SocialUserServiceImpl implements SocialUserService {
 
     @Resource
     private SocialUserBindMapper socialUserBindMapper;
+
     @Resource
     private SocialUserMapper socialUserMapper;
 
@@ -77,8 +78,10 @@ public class SocialUserServiceImpl implements SocialUserService {
             socialUser = new SocialUserDO();
         }
         socialUser.setType(type).setCode(code).setState(state) // 需要保存 code + state 字段，保证后续可查询
-                .setOpenid(authUser.getUuid()).setToken(authUser.getToken().getAccessToken()).setRawTokenInfo((toJsonString(authUser.getToken())))
-                .setNickname(authUser.getNickname()).setAvatar(authUser.getAvatar()).setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
+                .setOpenid(authUser.getUuid()).setToken(authUser.getToken().getAccessToken())
+                .setRawTokenInfo((toJsonString(authUser.getToken())))
+                .setNickname(authUser.getNickname()).setAvatar(authUser.getAvatar())
+                .setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
         if (socialUser.getId() == null) {
             socialUserMapper.insert(socialUser);
         } else {
@@ -165,5 +168,4 @@ public class SocialUserServiceImpl implements SocialUserService {
         }
         return (AuthUser) authResponse.getData();
     }
-
 }

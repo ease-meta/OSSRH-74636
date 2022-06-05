@@ -19,5 +19,4 @@ public class SensitiveWordRespVO extends SensitiveWordBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
-
 }

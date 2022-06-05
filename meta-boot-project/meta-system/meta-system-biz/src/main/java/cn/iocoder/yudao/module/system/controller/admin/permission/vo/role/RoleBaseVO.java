@@ -30,5 +30,4 @@ public class RoleBaseVO {
 
     @ApiModelProperty(value = "备注", example = "我是一个角色")
     private String remark;
-
 }

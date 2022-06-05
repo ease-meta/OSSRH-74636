@@ -34,5 +34,4 @@ public class SensitiveWordPageReqVO extends PageParam {
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     @ApiModelProperty(value = "结束创建时间")
     private Date endCreateTime;
-
 }

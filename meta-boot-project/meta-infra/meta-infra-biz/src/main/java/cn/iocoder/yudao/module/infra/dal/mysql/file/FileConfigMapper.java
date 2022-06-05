@@ -28,5 +28,4 @@ public interface FileConfigMapper extends BaseMapperX<FileConfigDO> {
 
     @Select("SELECT COUNT(*) FROM infra_file_config WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

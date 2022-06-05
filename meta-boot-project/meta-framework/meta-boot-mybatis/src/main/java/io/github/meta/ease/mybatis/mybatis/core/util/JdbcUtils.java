@@ -38,5 +38,4 @@ public class JdbcUtils {
         String name = com.alibaba.druid.util.JdbcUtils.getDbType(url, null);
         return DbType.getDbType(name);
     }
-
 }

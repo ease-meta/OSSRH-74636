@@ -44,5 +44,4 @@ public class AuthMenuRespVO {
      * 子路由
      */
     private List<AuthMenuRespVO> children;
-
 }

@@ -77,5 +77,4 @@ public interface BpmModelService {
      * @return BPMN Model
      */
     BpmnModel getBpmnModel(String id);
-
 }

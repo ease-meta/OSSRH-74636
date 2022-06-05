@@ -78,6 +78,7 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
      */
     @Getter
     private volatile SimpleTrie defaultSensitiveWordTrie = new SimpleTrie(Collections.emptySet());
+
     /**
      * 标签与敏感词的字段数的映射
      */
@@ -268,5 +269,4 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
         }
         return true;
     }
-
 }

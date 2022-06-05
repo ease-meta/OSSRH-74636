@@ -18,5 +18,4 @@ public interface ApiErrorLogFrameworkService {
      * @param createDTO 创建信息
      */
     void createApiErrorLogAsync(@Valid ApiErrorLogCreateReqDTO createDTO);
-
 }

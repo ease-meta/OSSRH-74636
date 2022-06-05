@@ -23,6 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TenantJobHandlerDecorator implements JobHandler {
 
     private final TenantFrameworkService tenantFrameworkService;
+
     /**
      * 被装饰的 Job
      */
@@ -54,5 +55,4 @@ public class TenantJobHandlerDecorator implements JobHandler {
         });
         return JsonUtils.toJsonString(results);
     }
-
 }

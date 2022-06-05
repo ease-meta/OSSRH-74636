@@ -87,5 +87,4 @@ public class SmsChannelController {
         list.sort(Comparator.comparing(SmsChannelDO::getId));
         return success(SmsChannelConvert.INSTANCE.convertList03(list));
     }
-
 }

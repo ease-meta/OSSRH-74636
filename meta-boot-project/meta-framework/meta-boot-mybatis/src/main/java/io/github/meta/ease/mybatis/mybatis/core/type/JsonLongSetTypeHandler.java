@@ -28,5 +28,4 @@ public class JsonLongSetTypeHandler extends AbstractJsonTypeHandler<Object> {
     protected String toJson(Object obj) {
         return JsonUtils.toJsonString(obj);
     }
-
 }

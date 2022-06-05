@@ -22,11 +22,11 @@ import java.util.Map;
 import static cn.hutool.core.util.RandomUtil.randomBoolean;
 import static cn.hutool.core.util.RandomUtil.randomDay;
 import static cn.hutool.core.util.RandomUtil.randomEle;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.addTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static io.github.meta.ease.common.util.date.DateUtils.addTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -271,5 +271,4 @@ public class OAuth2ApproveServiceImplTest extends BaseDbUnitTest {
         assertEquals(approved, result.get(0).getApproved());
         assertEquals(expireTime, result.get(0).getExpiresTime());
     }
-
 }

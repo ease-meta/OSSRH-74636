@@ -24,7 +24,8 @@ public class ExtensionContextHolder implements ExtensionContext {
     private ExtensionFactory factory;
 
     @Override
-    public <T extends ExtensionPoint> T getPoint(@NotNull String businessId, @NotNull String useCase, @NotNull String scenario, Class<T> clazz) {
+    public <T extends ExtensionPoint> T getPoint(@NotNull String businessId, @NotNull String useCase,
+                                                 @NotNull String scenario, Class<T> clazz) {
         return getPoint(BusinessScenario.valueOf(businessId, useCase, scenario), clazz);
     }
 

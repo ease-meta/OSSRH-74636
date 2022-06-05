@@ -56,5 +56,4 @@ public final class ServiceException extends RuntimeException {
         this.message = message;
         return this;
     }
-
 }

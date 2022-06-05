@@ -34,19 +34,21 @@ public class FileContentDO extends BaseDO {
      */
     @TableId(type = IdType.INPUT)
     private String id;
+
     /**
      * 配置编号
      * <p>
      * 关联 {@link FileConfigDO#getId()}
      */
     private Long configId;
+
     /**
      * 路径，即文件名
      */
     private String path;
+
     /**
      * 文件内容
      */
     private byte[] content;
-
 }

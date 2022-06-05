@@ -55,5 +55,4 @@ public class MenuBaseVO {
 
     @ApiModelProperty(value = "是否缓存", example = "false")
     private Boolean keepAlive;
-
 }

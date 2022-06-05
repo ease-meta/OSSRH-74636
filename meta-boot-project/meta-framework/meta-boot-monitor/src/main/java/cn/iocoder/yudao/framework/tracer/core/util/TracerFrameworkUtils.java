@@ -42,5 +42,4 @@ public class TracerFrameworkUtils {
         errorLogs.put("stack", sw.toString());
         return errorLogs;
     }
-
 }

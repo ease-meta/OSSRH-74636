@@ -33,22 +33,26 @@ public class ApiAccessLogDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 链路追踪编号
      * <p>
      * 一般来说，通过链路追踪编号，可以将访问日志，错误日志，链路追踪日志，logger 打印日志等，结合在一起，从而进行排错。
      */
     private String traceId;
+
     /**
      * 用户编号
      */
     private Long userId;
+
     /**
      * 用户类型
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.UserTypeEnum}
      */
     private Integer userType;
+
     /**
      * 应用名
      * <p>
@@ -62,10 +66,12 @@ public class ApiAccessLogDO extends BaseDO {
      * 请求方法名
      */
     private String requestMethod;
+
     /**
      * 访问地址
      */
     private String requestUrl;
+
     /**
      * 请求参数
      * <p>
@@ -73,10 +79,12 @@ public class ApiAccessLogDO extends BaseDO {
      * body: Quest Body
      */
     private String requestParams;
+
     /**
      * 用户 IP
      */
     private String userIp;
+
     /**
      * 浏览器 UA
      */
@@ -88,25 +96,28 @@ public class ApiAccessLogDO extends BaseDO {
      * 开始请求时间
      */
     private Date beginTime;
+
     /**
      * 结束请求时间
      */
     private Date endTime;
+
     /**
      * 执行时长，单位：毫秒
      */
     private Integer duration;
+
     /**
      * 结果码
      * <p>
      * 目前使用的 {@link io.github.meta.ease.common.pojo.CommonResult#getCode()} 属性
      */
     private Integer resultCode;
+
     /**
      * 结果提示
      * <p>
      * 目前使用的 {@link io.github.meta.ease.common.pojo.CommonResult#getMsg()} 属性
      */
     private String resultMsg;
-
 }

@@ -106,5 +106,4 @@ public class SecurityFrameworkUtils {
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         return authenticationToken;
     }
-
 }

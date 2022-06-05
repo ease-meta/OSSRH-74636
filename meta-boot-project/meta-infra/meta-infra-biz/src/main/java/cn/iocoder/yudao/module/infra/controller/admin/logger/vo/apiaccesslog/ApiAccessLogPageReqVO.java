@@ -43,5 +43,4 @@ public class ApiAccessLogPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "结果码", example = "0")
     private Integer resultCode;
-
 }

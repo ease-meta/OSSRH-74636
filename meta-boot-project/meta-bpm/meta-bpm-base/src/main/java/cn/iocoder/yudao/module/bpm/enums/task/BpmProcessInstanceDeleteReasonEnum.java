@@ -49,5 +49,4 @@ public enum BpmProcessInstanceDeleteReasonEnum {
     public static boolean isRejectReason(String reason) {
         return StrUtil.startWith(reason, "不通过任务，原因：");
     }
-
 }

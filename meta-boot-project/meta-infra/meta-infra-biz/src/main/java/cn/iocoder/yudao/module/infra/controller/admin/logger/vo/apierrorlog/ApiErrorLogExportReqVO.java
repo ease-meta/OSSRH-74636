@@ -35,5 +35,4 @@ public class ApiErrorLogExportReqVO {
 
     @ApiModelProperty(value = "处理状态", example = "0")
     private Integer processStatus;
-
 }

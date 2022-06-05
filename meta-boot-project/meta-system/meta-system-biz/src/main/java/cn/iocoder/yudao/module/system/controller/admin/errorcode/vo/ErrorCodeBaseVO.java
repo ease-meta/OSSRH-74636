@@ -26,5 +26,4 @@ public class ErrorCodeBaseVO {
 
     @ApiModelProperty(value = "备注", example = "哈哈哈")
     private String memo;
-
 }

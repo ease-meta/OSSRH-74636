@@ -1,8 +1,6 @@
 package cn.iocoder.yudao.module.system.service.dict;
 
 
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.type.DictTypeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.type.DictTypeExportReqVO;
@@ -12,6 +10,8 @@ import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictTypeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dict.DictTypeMapper;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
+import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
@@ -30,6 +30,7 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NAME_DUPLICATE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_EXISTS;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_TYPE_DUPLICATE;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -44,6 +45,7 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
 
     @Resource
     private DictTypeMapper dictTypeMapper;
+
     @MockBean
     private DictDataService dictDataService;
 
@@ -62,7 +64,8 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
         // 测试 type 不匹配
         dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setType("土豆")));
         // 测试 status 不匹配
-        dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictTypeMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 测试 createTime 不匹配
         dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setCreateTime(buildTime(2021, 1, 1))));
         // 准备参数
@@ -96,7 +99,8 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
         // 测试 type 不匹配
         dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setType("土豆")));
         // 测试 status 不匹配
-        dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictTypeMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 测试 createTime 不匹配
         dictTypeMapper.insert(ObjectUtils.cloneIgnoreId(dbDictType, o -> o.setCreateTime(buildTime(2021, 1, 1))));
         // 准备参数
@@ -276,5 +280,4 @@ public class DictTypeServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(DictTypeDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

@@ -50,5 +50,4 @@ public interface SmsClient {
      * @return 短信模板
      */
     SmsCommonResult<SmsTemplateRespDTO> getSmsTemplate(String apiTemplateId);
-
 }

@@ -38,5 +38,4 @@ public class LoginLogServiceImpl implements LoginLogService {
         LoginLogDO loginLog = LoginLogConvert.INSTANCE.convert(reqDTO);
         loginLogMapper.insert(loginLog);
     }
-
 }

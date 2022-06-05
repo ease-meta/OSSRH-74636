@@ -18,8 +18,6 @@ import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.Map;
 
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
@@ -32,6 +30,8 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLI
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_NOT_EXISTS;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_REDIRECT_URI_NOT_MATCH;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_SCOPE_OVER;
+import static io.github.meta.ease.common.util.date.DateUtils.max;
+import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -221,5 +221,4 @@ public class OAuth2ClientServiceImplTest extends BaseDbUnitTest {
                 client.getAuthorizedGrantTypes().get(0), client.getScopes(), client.getRedirectUris().get(0));
         assertPojoEquals(client, result);
     }
-
 }

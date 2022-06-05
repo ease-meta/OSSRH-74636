@@ -35,5 +35,4 @@ public class JobLogPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "任务状态", notes = "参见 JobLogStatusEnum 枚举")
     private Integer status;
-
 }

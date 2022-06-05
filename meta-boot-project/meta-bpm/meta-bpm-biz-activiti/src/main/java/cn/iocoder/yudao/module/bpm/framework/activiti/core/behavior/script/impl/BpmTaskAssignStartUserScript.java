@@ -26,5 +26,4 @@ public class BpmTaskAssignStartUserScript implements BpmTaskAssignScript {
     public BpmTaskRuleScriptEnum getEnum() {
         return BpmTaskRuleScriptEnum.START_USER;
     }
-
 }

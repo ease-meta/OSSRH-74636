@@ -24,5 +24,4 @@ public class TenantProducer {
         TenantRefreshMessage message = new TenantRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

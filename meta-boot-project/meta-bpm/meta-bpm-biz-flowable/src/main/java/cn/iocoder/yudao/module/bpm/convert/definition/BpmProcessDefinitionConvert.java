@@ -32,10 +32,12 @@ public interface BpmProcessDefinitionConvert {
 
     BpmProcessDefinitionExtDO convert2(BpmProcessDefinitionCreateReqDTO bean);
 
-    default List<BpmProcessDefinitionPageItemRespVO> convertList(List<ProcessDefinition> list, Map<String, Deployment> deploymentMap,
+    default List<BpmProcessDefinitionPageItemRespVO> convertList(List<ProcessDefinition> list,
+                                                                 Map<String, Deployment> deploymentMap,
                                                                  Map<String, BpmProcessDefinitionExtDO> processDefinitionDOMap, Map<Long, BpmFormDO> formMap) {
         return CollectionUtils.convertList(list, definition -> {
-            Deployment deployment = definition.getDeploymentId() != null ? deploymentMap.get(definition.getDeploymentId()) : null;
+            Deployment deployment =
+                    definition.getDeploymentId() != null ? deploymentMap.get(definition.getDeploymentId()) : null;
             BpmProcessDefinitionExtDO definitionDO = processDefinitionDOMap.get(definition.getId());
             BpmFormDO form = definitionDO != null ? formMap.get(definitionDO.getFormId()) : null;
             return convert(definition, deployment, definitionDO, form);
@@ -65,7 +67,8 @@ public interface BpmProcessDefinitionConvert {
     default BpmProcessDefinitionPageItemRespVO convert(ProcessDefinition bean, Deployment deployment,
                                                        BpmProcessDefinitionExtDO processDefinitionExtDO, BpmFormDO form) {
         BpmProcessDefinitionPageItemRespVO respVO = convert(bean);
-        respVO.setSuspensionState(bean.isSuspended() ? SuspensionState.SUSPENDED.getStateCode() : SuspensionState.ACTIVE.getStateCode());
+        respVO.setSuspensionState(
+                bean.isSuspended() ? SuspensionState.SUSPENDED.getStateCode() : SuspensionState.ACTIVE.getStateCode());
         if (deployment != null) {
             respVO.setDeploymentTime(deployment.getDeploymentTime());
         }

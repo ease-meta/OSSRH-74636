@@ -15,5 +15,4 @@ public class DictDataRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.dict-data.refresh";
     }
-
 }

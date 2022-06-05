@@ -36,5 +36,4 @@ public class BpmProcessInstanceResultEventPublisher {
     public void sendProcessInstanceResultEvent(@Valid BpmProcessInstanceResultEvent event) {
         publisher.publishEvent(event);
     }
-
 }

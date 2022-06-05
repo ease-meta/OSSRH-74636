@@ -35,5 +35,4 @@ public interface BpmMessageConvert {
         smsSendSingleToUserReqDTO.setTemplateParams(templateParams);
         return smsSendSingleToUserReqDTO;
     }
-
 }

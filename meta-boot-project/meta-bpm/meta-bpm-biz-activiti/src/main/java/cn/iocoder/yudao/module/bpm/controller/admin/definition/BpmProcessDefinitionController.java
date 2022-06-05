@@ -55,5 +55,4 @@ public class BpmProcessDefinitionController {
         String bpmnXML = bpmDefinitionService.getProcessDefinitionBpmnXML(id);
         return success(bpmnXML);
     }
-
 }

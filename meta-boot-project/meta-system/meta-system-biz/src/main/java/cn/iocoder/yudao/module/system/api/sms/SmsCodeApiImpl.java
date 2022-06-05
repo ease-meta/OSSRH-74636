@@ -35,5 +35,4 @@ public class SmsCodeApiImpl implements SmsCodeApi {
     public void checkSmsCode(SmsCodeCheckReqDTO reqDTO) {
         smsCodeService.checkSmsCode(reqDTO);
     }
-
 }

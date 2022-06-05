@@ -71,14 +71,15 @@ public class BpmProcessInstanceRespVO {
 
         @ApiModelProperty(value = "用户编号", required = true, example = "1")
         private Long id;
+
         @ApiModelProperty(value = "用户昵称", required = true, example = "芋艿")
         private String nickname;
 
         @ApiModelProperty(value = "部门编号", required = true, example = "1")
         private Long deptId;
+
         @ApiModelProperty(value = "部门名称", required = true, example = "研发部")
         private String deptName;
-
     }
 
     @ApiModel("流程定义信息")
@@ -90,20 +91,23 @@ public class BpmProcessInstanceRespVO {
 
         @ApiModelProperty(value = "表单类型", notes = "参见 bpm_model_form_type 数据字典", example = "1")
         private Integer formType;
+
         @ApiModelProperty(value = "表单编号", example = "1024", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private Long formId;
+
         @ApiModelProperty(value = "表单的配置", required = true, notes = "JSON 字符串。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formConf;
+
         @ApiModelProperty(value = "表单项的数组", required = true, notes = "JSON 字符串的数组。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private List<String> formFields;
+
         @ApiModelProperty(value = "自定义表单的提交路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/create", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formCustomCreatePath;
+
         @ApiModelProperty(value = "自定义表单的查看路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/view", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formCustomViewPath;
 
         @ApiModelProperty(value = "BPMN XML", required = true)
         private String bpmnXml;
-
     }
-
 }

@@ -22,5 +22,4 @@ public class SensitiveWordProducer {
         SensitiveWordRefreshMessage message = new SensitiveWordRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

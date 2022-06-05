@@ -35,7 +35,8 @@ public class ApiAccessLogFilter extends ApiRequestFilter {
 
     private final ApiAccessLogFrameworkService apiAccessLogFrameworkService;
 
-    public ApiAccessLogFilter(WebProperties webProperties, String applicationName, ApiAccessLogFrameworkService apiAccessLogFrameworkService) {
+    public ApiAccessLogFilter(WebProperties webProperties, String applicationName,
+                              ApiAccessLogFrameworkService apiAccessLogFrameworkService) {
         super(webProperties);
         this.applicationName = applicationName;
         this.apiAccessLogFrameworkService = apiAccessLogFrameworkService;
@@ -94,7 +95,8 @@ public class ApiAccessLogFilter extends ApiRequestFilter {
         accessLog.setTraceId(TracerUtils.getTraceId());
         accessLog.setApplicationName(applicationName);
         accessLog.setRequestUrl(request.getRequestURI());
-        Map<String, Object> requestParams = MapUtil.<String, Object>builder().put("query", queryString).put("body", requestBody).build();
+        Map<String, Object> requestParams = MapUtil.<String, Object>builder().put("query", queryString)
+                .put("body", requestBody).build();
         accessLog.setRequestParams(toJsonString(requestParams));
         accessLog.setRequestMethod(request.getMethod());
         accessLog.setUserAgent(ServletUtils.getUserAgent(request));
@@ -104,5 +106,4 @@ public class ApiAccessLogFilter extends ApiRequestFilter {
         accessLog.setEndTime(new Date());
         accessLog.setDuration((int) diff(accessLog.getEndTime(), accessLog.getBeginTime()));
     }
-
 }

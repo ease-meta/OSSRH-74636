@@ -6,6 +6,7 @@ import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.impl.debug.DebugDingTalkSmsClient;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsChannelEnum;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +43,4 @@ public class DebugDingTalkSmsClientIntegrationTest {
         SmsCommonResult<SmsSendRespDTO> result = smsClient.sendSms(1L, "15601691399", "4383920", templateParams);
         System.out.println(result);
     }
-
 }

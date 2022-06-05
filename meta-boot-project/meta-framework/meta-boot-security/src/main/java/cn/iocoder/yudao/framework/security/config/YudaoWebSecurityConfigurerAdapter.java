@@ -35,11 +35,13 @@ public class YudaoWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
      */
     @Resource
     private AuthenticationEntryPoint authenticationEntryPoint;
+
     /**
      * 权限不够处理器 Bean
      */
     @Resource
     private AccessDeniedHandler accessDeniedHandler;
+
     /**
      * Token 认证过滤器 Bean
      */
@@ -122,5 +124,4 @@ public class YudaoWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
     private String buildAppApi(String url) {
         return webProperties.getAppApi().getPrefix() + url;
     }
-
 }

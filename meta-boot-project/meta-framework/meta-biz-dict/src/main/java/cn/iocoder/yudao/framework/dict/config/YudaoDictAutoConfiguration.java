@@ -14,5 +14,4 @@ public class YudaoDictAutoConfiguration {
         DictFrameworkUtils.init(service);
         return new DictFrameworkUtils();
     }
-
 }

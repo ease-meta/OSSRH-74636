@@ -77,5 +77,4 @@ public class OAuth2ClientController {
         PageResult<OAuth2ClientDO> pageResult = oAuth2ClientService.getOAuth2ClientPage(pageVO);
         return success(OAuth2ClientConvert.INSTANCE.convertPage(pageResult));
     }
-
 }

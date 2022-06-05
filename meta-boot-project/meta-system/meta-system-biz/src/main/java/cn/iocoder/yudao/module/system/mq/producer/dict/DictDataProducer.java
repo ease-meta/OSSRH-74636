@@ -22,5 +22,4 @@ public class DictDataProducer {
         DictDataRefreshMessage message = new DictDataRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

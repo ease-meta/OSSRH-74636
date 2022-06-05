@@ -32,5 +32,4 @@ public interface JobConvert {
     PageResult<JobRespVO> convertPage(PageResult<JobDO> page);
 
     List<JobExcelVO> convertList02(List<JobDO> list);
-
 }

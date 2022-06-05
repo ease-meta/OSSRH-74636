@@ -41,5 +41,4 @@ public interface UserRoleMapper extends BaseMapperX<UserRoleDO> {
 
     @Select("SELECT COUNT(*) FROM system_user_role WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
-
 }

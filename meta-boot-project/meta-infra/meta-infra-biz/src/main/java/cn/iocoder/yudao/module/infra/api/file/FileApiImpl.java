@@ -22,5 +22,4 @@ public class FileApiImpl implements FileApi {
     public String createFile(String path, byte[] content) throws Exception {
         return fileService.createFile(path, content);
     }
-
 }

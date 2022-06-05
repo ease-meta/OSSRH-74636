@@ -61,8 +61,10 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
 
     @Setter
     private DeptApi deptApi;
+
     @Setter
     private AdminUserApi adminUserApi;
+
     @Setter
     private PermissionApi permissionApi;
 
@@ -93,7 +95,8 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
     }
 
     private BpmTaskAssignRuleDO getTaskRule(TaskEntity task) {
-        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(task.getProcessDefinitionId(),
+        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(
+                task.getProcessDefinitionId(),
                 task.getTaskDefinitionKey());
         if (CollUtil.isEmpty(taskRules)) {
             throw new ActivitiException(StrUtil.format("流程任务({}/{}/{}) 找不到符合的任务规则",
@@ -199,5 +202,4 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
             return user == null || !CommonStatusEnum.ENABLE.getStatus().equals(user.getStatus());
         });
     }
-
 }

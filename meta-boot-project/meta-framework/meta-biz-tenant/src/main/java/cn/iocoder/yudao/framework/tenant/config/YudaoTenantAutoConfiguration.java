@@ -100,8 +100,6 @@ public class YudaoTenantAutoConfiguration {
                 // 使用 TenantJobHandlerDecorator 装饰
                 return new TenantJobHandlerDecorator(tenantFrameworkService, (JobHandler) bean);
             }
-
         };
     }
-
 }

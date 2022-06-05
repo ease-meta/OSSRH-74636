@@ -34,5 +34,4 @@ public class SmsChannelBaseVO {
     @ApiModelProperty(value = "短信发送回调 URL", example = "http://www.iocoder.cn")
     @URL(message = "回调 URL 格式不正确")
     private String callbackUrl;
-
 }

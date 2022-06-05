@@ -22,5 +22,4 @@ public interface RedisMessageInterceptor {
 
     default void consumeMessageAfter(AbstractRedisMessage message) {
     }
-
 }

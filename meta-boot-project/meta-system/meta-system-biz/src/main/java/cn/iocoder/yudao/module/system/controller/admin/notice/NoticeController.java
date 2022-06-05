@@ -75,5 +75,4 @@ public class NoticeController {
     public CommonResult<NoticeRespVO> getNotice(@RequestParam("id") Long id) {
         return success(NoticeConvert.INSTANCE.convert(noticeService.getNotice(id)));
     }
-
 }

@@ -53,18 +53,21 @@ public class BpmProcessDefinitionExtDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 流程定义的编号
      * <p>
      * 关联 ProcessDefinition 的 id 属性
      */
     private String processDefinitionId;
+
     /**
      * 流程模型的编号
      * <p>
      * 关联 Model 的 id 属性
      */
     private String modelId;
+
     /**
      * 描述
      */
@@ -76,6 +79,7 @@ public class BpmProcessDefinitionExtDO extends BaseDO {
      * 关联 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum}
      */
     private Integer formType;
+
     /**
      * 动态表单编号
      * 在表单类型为 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum#NORMAL} 时
@@ -83,6 +87,7 @@ public class BpmProcessDefinitionExtDO extends BaseDO {
      * 关联 {@link cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO#getId()}
      */
     private Long formId;
+
     /**
      * 表单的配置
      * 在表单类型为 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum#NORMAL} 时
@@ -90,6 +95,7 @@ public class BpmProcessDefinitionExtDO extends BaseDO {
      * 冗余 {@link cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO#getConf()}
      */
     private String formConf;
+
     /**
      * 表单项的数组
      * 在表单类型为 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum#NORMAL} 时
@@ -98,15 +104,16 @@ public class BpmProcessDefinitionExtDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> formFields;
+
     /**
      * 自定义表单的提交路径，使用 Vue 的路由地址
      * 在表单类型为 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum#CUSTOM} 时
      */
     private String formCustomCreatePath;
+
     /**
      * 自定义表单的查看路径，使用 Vue 的路由地址
      * 在表单类型为 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum#CUSTOM} 时
      */
     private String formCustomViewPath;
-
 }

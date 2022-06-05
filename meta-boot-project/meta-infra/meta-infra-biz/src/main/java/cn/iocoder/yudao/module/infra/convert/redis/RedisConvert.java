@@ -30,5 +30,4 @@ public interface RedisConvert {
     }
 
     List<RedisKeyRespVO> convertList(List<RedisKeyDefine> list);
-
 }

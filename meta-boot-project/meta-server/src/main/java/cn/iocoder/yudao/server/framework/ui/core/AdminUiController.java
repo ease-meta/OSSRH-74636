@@ -7,5 +7,4 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 public class AdminUiController implements ErrorController {
 
 //    public String
-
 }

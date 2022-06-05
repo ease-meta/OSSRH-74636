@@ -24,6 +24,7 @@ public class AlipayPayClientConfig implements PayClientConfig {
      * 网关地址 - 线上
      */
     public static final String SERVER_URL_PROD = "https://openapi.alipay.com/gateway.do";
+
     /**
      * 网关地址 - 沙箱
      */
@@ -33,6 +34,7 @@ public class AlipayPayClientConfig implements PayClientConfig {
      * 公钥类型 - 公钥模式
      */
     public static final Integer MODE_PUBLIC_KEY = 1;
+
     /**
      * 公钥类型 - 证书模式
      */
@@ -74,6 +76,7 @@ public class AlipayPayClientConfig implements PayClientConfig {
     private Integer mode;
 
     // ========== 公钥模式 ==========
+
     /**
      * 商户私钥
      */
@@ -87,16 +90,19 @@ public class AlipayPayClientConfig implements PayClientConfig {
     private String alipayPublicKey;
 
     // ========== 证书模式 ==========
+
     /**
      * 指定商户公钥应用证书内容字符串
      */
     @NotBlank(message = "指定商户公钥应用证书内容不能为空", groups = {ModeCertificate.class})
     private String appCertContent;
+
     /**
      * 指定支付宝公钥证书内容字符串
      */
     @NotBlank(message = "指定支付宝公钥证书内容不能为空", groups = {ModeCertificate.class})
     private String alipayPublicCertContent;
+
     /**
      * 指定根证书内容字符串
      */

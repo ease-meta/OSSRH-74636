@@ -42,5 +42,4 @@ public class ConfigExcelVO {
 
     @ExcelProperty("创建时间")
     private Date createTime;
-
 }

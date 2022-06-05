@@ -145,5 +145,4 @@ public class CodegenController {
         // 输出
         ServletUtils.writeAttachment(response, "codegen.zip", outputStream.toByteArray());
     }
-
 }

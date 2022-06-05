@@ -111,5 +111,4 @@ public interface BpmFormService {
      * @return 流程表单
      */
     BpmFormDO checkFormConfig(String configStr);
-
 }

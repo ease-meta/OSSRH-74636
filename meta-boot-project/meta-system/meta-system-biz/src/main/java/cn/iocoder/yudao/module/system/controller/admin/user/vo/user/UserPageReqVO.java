@@ -39,5 +39,4 @@ public class UserPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "部门编号", example = "1024", notes = "同时筛选子部门")
     private Long deptId;
-
 }

@@ -23,6 +23,7 @@ import java.lang.reflect.Method;
 public class YudaoAuthRequestFactory extends AuthRequestFactory {
 
     protected JustAuthProperties properties;
+
     protected AuthStateCache authStateCache;
 
     /**
@@ -81,5 +82,4 @@ public class YudaoAuthRequestFactory extends AuthRequestFactory {
                 return null;
         }
     }
-
 }

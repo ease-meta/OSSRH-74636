@@ -45,5 +45,4 @@ public class ValidationUtils {
             throw new ConstraintViolationException(constraintViolations);
         }
     }
-
 }

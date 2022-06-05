@@ -45,5 +45,4 @@ public class BaseDbAndRedisUnitTest {
     })
     public static class Application {
     }
-
 }

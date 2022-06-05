@@ -83,5 +83,4 @@ public interface BpmTaskAssignRuleService {
      * @param id 流程模型编号
      */
     void checkTaskAssignRuleAllConfig(String id);
-
 }

@@ -13,5 +13,4 @@ public class CodegenPreviewRespVO {
 
     @ApiModelProperty(value = "代码", required = true, example = "Hello World")
     private String code;
-
 }

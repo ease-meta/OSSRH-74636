@@ -38,7 +38,5 @@ public class RedisMonitorRespVO {
 
         @ApiModelProperty(value = "消耗 CPU 秒数", required = true, example = "666")
         private Long usec;
-
     }
-
 }

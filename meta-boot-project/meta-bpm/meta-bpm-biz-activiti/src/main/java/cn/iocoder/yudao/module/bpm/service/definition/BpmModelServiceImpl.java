@@ -62,10 +62,13 @@ public class BpmModelServiceImpl implements BpmModelService {
 
     @Resource
     private RepositoryService repositoryService;
+
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private BpmFormService bpmFormService;
+
     @Resource
     private BpmTaskAssignRuleService taskAssignRuleService;
 
@@ -97,12 +100,15 @@ public class BpmModelServiceImpl implements BpmModelService {
         models.forEach(model -> CollectionUtils.addIfNotNull(deploymentIds, model.getDeploymentId()));
         Map<String, Deployment> deploymentMap = processDefinitionService.getDeploymentMap(deploymentIds);
         // 获得 ProcessDefinition Map
-        List<ProcessDefinition> processDefinitions = processDefinitionService.getProcessDefinitionListByDeploymentIds(deploymentIds);
-        Map<String, ProcessDefinition> processDefinitionMap = convertMap(processDefinitions, ProcessDefinition::getDeploymentId);
+        List<ProcessDefinition> processDefinitions = processDefinitionService.getProcessDefinitionListByDeploymentIds(
+                deploymentIds);
+        Map<String, ProcessDefinition> processDefinitionMap = convertMap(processDefinitions,
+                ProcessDefinition::getDeploymentId);
 
         // 拼接结果
         long modelCount = modelQuery.count();
-        return new PageResult<>(BpmModelConvert.INSTANCE.convertList(models, formMap, deploymentMap, processDefinitionMap), modelCount);
+        return new PageResult<>(BpmModelConvert.INSTANCE.convertList(models, formMap, deploymentMap, processDefinitionMap),
+                modelCount);
     }
 
     @Override
@@ -182,10 +188,13 @@ public class BpmModelServiceImpl implements BpmModelService {
         taskAssignRuleService.checkTaskAssignRuleAllConfig(id);
 
         // 校验模型是否发生修改。如果未修改，则不允许创建
-        BpmProcessDefinitionCreateReqDTO definitionCreateReqDTO = BpmModelConvert.INSTANCE.convert2(model, form).setBpmnBytes(bpmnBytes);
+        BpmProcessDefinitionCreateReqDTO definitionCreateReqDTO = BpmModelConvert.INSTANCE.convert2(model, form)
+                .setBpmnBytes(bpmnBytes);
         if (processDefinitionService.isProcessDefinitionEquals(definitionCreateReqDTO)) { // 流程定义的信息相等
-            ProcessDefinition oldProcessInstance = processDefinitionService.getProcessDefinitionByDeploymentId(model.getDeploymentId());
-            if (oldProcessInstance != null && taskAssignRuleService.isTaskAssignRulesEquals(model.getId(), oldProcessInstance.getId())) {
+            ProcessDefinition oldProcessInstance = processDefinitionService.getProcessDefinitionByDeploymentId(
+                    model.getDeploymentId());
+            if (oldProcessInstance != null && taskAssignRuleService.isTaskAssignRulesEquals(model.getId(),
+                    oldProcessInstance.getId())) {
                 throw exception(MODEL_DEPLOY_FAIL_TASK_INFO_EQUALS);
             }
         }
@@ -229,7 +238,8 @@ public class BpmModelServiceImpl implements BpmModelService {
         if (oldDefinition.isSuspended()) {
             return;
         }
-        processDefinitionService.updateProcessDefinitionState(oldDefinition.getId(), SuspensionState.SUSPENDED.getStateCode());
+        processDefinitionService.updateProcessDefinitionState(oldDefinition.getId(),
+                SuspensionState.SUSPENDED.getStateCode());
     }
 
     @Override
@@ -289,5 +299,4 @@ public class BpmModelServiceImpl implements BpmModelService {
         }
         return null;
     }
-
 }

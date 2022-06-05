@@ -46,5 +46,4 @@ public class ArrayUtils {
         }
         return ArrayUtil.toArray(from, (Class<T>) CollectionUtil.getElementType(from.iterator()));
     }
-
 }

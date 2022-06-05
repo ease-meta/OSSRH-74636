@@ -8,5 +8,4 @@ package cn.iocoder.yudao.module.system.enums.auth;
 public interface OAuth2ClientConstants {
 
     String CLIENT_ID_DEFAULT = "default";
-
 }

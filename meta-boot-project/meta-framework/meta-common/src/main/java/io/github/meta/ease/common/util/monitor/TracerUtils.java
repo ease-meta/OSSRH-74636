@@ -26,5 +26,4 @@ public class TracerUtils {
     public static String getTraceId() {
         return TraceContext.traceId();
     }
-
 }

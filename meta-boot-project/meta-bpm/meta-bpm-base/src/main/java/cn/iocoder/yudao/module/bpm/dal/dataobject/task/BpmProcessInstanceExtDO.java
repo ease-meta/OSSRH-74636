@@ -48,30 +48,35 @@ public class BpmProcessInstanceExtDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 发起流程的用户编号
      * <p>
      * 冗余 HistoricProcessInstance 的 startUserId 属性
      */
     private Long startUserId;
+
     /**
      * 流程实例的名字
      * <p>
      * 冗余 ProcessInstance 的 name 属性，用于筛选
      */
     private String name;
+
     /**
      * 流程实例的编号
      * <p>
      * 关联 ProcessInstance 的 id 属性
      */
     private String processInstanceId;
+
     /**
      * 流程定义的编号
      * <p>
      * 关联 ProcessDefinition 的 id 属性
      */
     private String processDefinitionId;
+
     /**
      * 流程分类
      * <p>
@@ -79,18 +84,21 @@ public class BpmProcessInstanceExtDO extends BaseDO {
      * 数据字典 bpm_model_category
      */
     private String category;
+
     /**
      * 流程实例的状态
      * <p>
      * 枚举 {@link cn.iocoder.yudao.module.bpm.enums.task.BpmProcessInstanceStatusEnum}
      */
     private Integer status;
+
     /**
      * 流程实例的结果
      * <p>
      * 枚举 {@link cn.iocoder.yudao.module.bpm.enums.task.BpmProcessInstanceResultEnum}
      */
     private Integer result;
+
     /**
      * 结束时间
      * <p>
@@ -103,5 +111,4 @@ public class BpmProcessInstanceExtDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private Map<String, Object> formVariables;
-
 }

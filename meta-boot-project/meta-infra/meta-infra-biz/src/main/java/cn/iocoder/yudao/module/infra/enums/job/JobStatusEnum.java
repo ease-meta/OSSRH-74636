@@ -34,9 +34,9 @@ public enum JobStatusEnum {
      * 状态
      */
     private final Integer status;
+
     /**
      * 对应的 Quartz 触发器的状态集合
      */
     private final Set<String> quartzStates;
-
 }

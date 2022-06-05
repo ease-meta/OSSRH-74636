@@ -24,7 +24,8 @@ public class DataPermissionAnnotationInterceptor implements MethodInterceptor {
     /**
      * DataPermission 空对象，用于方法无 {@link cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission} 注解时，使用 DATA_PERMISSION_NULL 进行占位
      */
-    static final DataPermission DATA_PERMISSION_NULL = DataPermissionAnnotationInterceptor.class.getAnnotation(DataPermission.class);
+    static final DataPermission DATA_PERMISSION_NULL = DataPermissionAnnotationInterceptor.class.getAnnotation(
+            DataPermission.class);
 
     @Getter
     private final Map<MethodClassKey, DataPermission> dataPermissionCache = new ConcurrentHashMap<>();
@@ -68,5 +69,4 @@ public class DataPermissionAnnotationInterceptor implements MethodInterceptor {
         dataPermissionCache.put(methodClassKey, dataPermission != null ? dataPermission : DATA_PERMISSION_NULL);
         return dataPermission;
     }
-
 }

@@ -37,5 +37,4 @@ public class BpmTaskAssignRuleCreateReqVO extends BpmTaskAssignRuleBaseVO {
     @ApiModelProperty(value = "流程任务定义的编号", required = true, example = "2048")
     @NotEmpty(message = "流程任务定义的编号不能为空")
     private String taskDefinitionKey;
-
 }

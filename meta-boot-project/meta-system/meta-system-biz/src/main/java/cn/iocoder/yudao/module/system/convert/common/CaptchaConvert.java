@@ -13,5 +13,4 @@ public interface CaptchaConvert {
     default CaptchaImageRespVO convert(String uuid, AbstractCaptcha captcha) {
         return CaptchaImageRespVO.builder().uuid(uuid).img(captcha.getImageBase64()).build();
     }
-
 }

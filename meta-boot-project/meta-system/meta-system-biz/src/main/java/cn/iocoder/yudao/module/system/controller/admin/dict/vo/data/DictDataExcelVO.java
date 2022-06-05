@@ -30,5 +30,4 @@ public class DictDataExcelVO {
     @ExcelProperty(value = "状态", converter = DictConvert.class)
     @DictFormat(DictTypeConstants.COMMON_STATUS)
     private Integer status;
-
 }

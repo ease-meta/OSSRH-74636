@@ -21,6 +21,7 @@ public class WechatPayService implements PayExtensionPoint {
     @Override
     public TransactionsResult unifiedOrder(TransactionsCommand command) {
         log.info("微信 JSAPI 支付：{}", JSONUtil.toJsonStr(command));
-        return new TransactionsResult("wx26112221580621e9b071c00d9e093b0000", command.getOrderNo(), IdUtil.objectId(), "wechat");
+        return new TransactionsResult("wx26112221580621e9b071c00d9e093b0000", command.getOrderNo(), IdUtil.objectId(),
+                "wechat");
     }
 }

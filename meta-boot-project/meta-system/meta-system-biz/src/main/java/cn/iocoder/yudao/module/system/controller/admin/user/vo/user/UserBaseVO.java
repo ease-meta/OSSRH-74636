@@ -51,5 +51,4 @@ public class UserBaseVO {
 
     @ApiModelProperty(value = "用户头像", example = "https://www.iocoder.cn/xxx.png")
     private String avatar;
-
 }

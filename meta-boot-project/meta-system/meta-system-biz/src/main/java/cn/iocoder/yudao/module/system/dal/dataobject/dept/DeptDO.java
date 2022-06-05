@@ -24,39 +24,45 @@ public class DeptDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 部门名称
      */
     private String name;
+
     /**
      * 父部门ID
      * <p>
      * 关联 {@link #id}
      */
     private Long parentId;
+
     /**
      * 显示顺序
      */
     private Integer sort;
+
     /**
      * 负责人
      * <p>
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO#getId()}
      */
     private Long leaderUserId;
+
     /**
      * 联系电话
      */
     private String phone;
+
     /**
      * 邮箱
      */
     private String email;
+
     /**
      * 部门状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
-
 }

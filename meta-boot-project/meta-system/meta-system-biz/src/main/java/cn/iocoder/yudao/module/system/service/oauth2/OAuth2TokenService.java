@@ -76,5 +76,4 @@ public interface OAuth2TokenService {
      * @return 访问令牌分页
      */
     PageResult<OAuth2AccessTokenDO> getAccessTokenPage(OAuth2AccessTokenPageReqVO reqVO);
-
 }

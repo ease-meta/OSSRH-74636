@@ -38,5 +38,4 @@ public class BpmFormCreateReqVO extends BpmFormBaseVO {
     @ApiModelProperty(value = "表单项的数组", required = true, notes = "JSON 字符串的数组")
     @NotNull(message = "表单项的数组不能为空")
     private List<String> fields;
-
 }

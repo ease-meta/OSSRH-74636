@@ -92,5 +92,4 @@ public class ApiErrorLogBaseVO {
     @ApiModelProperty(value = "处理状态", required = true, example = "0")
     @NotNull(message = "处理状态不能为空")
     private Integer processStatus;
-
 }

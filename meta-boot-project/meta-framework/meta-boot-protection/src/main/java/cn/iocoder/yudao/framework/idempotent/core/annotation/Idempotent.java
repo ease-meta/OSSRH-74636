@@ -44,5 +44,4 @@ public @interface Idempotent {
      * 使用的 Key 参数
      */
     String keyArg() default "";
-
 }

@@ -89,5 +89,4 @@ public class FileController {
         PageResult<FileDO> pageResult = fileService.getFilePage(pageVO);
         return success(FileConvert.INSTANCE.convertPage(pageResult));
     }
-
 }

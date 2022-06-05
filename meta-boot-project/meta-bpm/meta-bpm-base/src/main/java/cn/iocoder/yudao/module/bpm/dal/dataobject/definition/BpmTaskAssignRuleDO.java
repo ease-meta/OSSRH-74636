@@ -69,12 +69,14 @@ public class BpmTaskAssignRuleDO extends BaseDO {
      * 关联 Model 的 id 属性
      */
     private String modelId;
+
     /**
      * 流程定义编号
      * <p>
      * 关联 ProcessDefinition 的 id 属性
      */
     private String processDefinitionId;
+
     /**
      * 流程任务的定义 Key
      * <p>
@@ -88,6 +90,7 @@ public class BpmTaskAssignRuleDO extends BaseDO {
      * 枚举 {@link cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskAssignRuleTypeEnum}
      */
     private Integer type;
+
     /**
      * 规则值数组，一般关联指定表的编号
      * 根据 type 不同，对应的值是不同的：
@@ -101,5 +104,4 @@ public class BpmTaskAssignRuleDO extends BaseDO {
      */
     @TableField(typeHandler = JsonLongSetTypeHandler.class)
     private Set<Long> options;
-
 }

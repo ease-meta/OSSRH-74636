@@ -128,5 +128,4 @@ public class ConfigServiceImpl implements ConfigService {
             throw ServiceExceptionUtil.exception(ErrorCodeConstants.CONFIG_KEY_DUPLICATE);
         }
     }
-
 }

@@ -33,5 +33,4 @@ public class PostBaseVO {
 
     @ApiModelProperty(value = "备注", example = "快乐的备注")
     private String remark;
-
 }

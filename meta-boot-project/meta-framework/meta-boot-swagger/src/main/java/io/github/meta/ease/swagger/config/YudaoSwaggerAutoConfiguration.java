@@ -126,5 +126,4 @@ public class YudaoSwaggerAutoConfiguration {
                 .in(ParameterType.HEADER).example(new ExampleBuilder().value(1L).build());
         return Collections.singletonList(tenantParameter.build());
     }
-
 }

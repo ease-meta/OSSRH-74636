@@ -51,5 +51,4 @@ public class YudaoTracerAutoConfiguration {
         registrationBean.setOrder(WebFilterOrderEnum.TRACE_FILTER);
         return registrationBean;
     }
-
 }

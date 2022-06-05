@@ -36,5 +36,4 @@ public class DataSourceAutoConfiguration {
         registrationBean.addUrlPatterns(commonJsPattern);
         return registrationBean;
     }
-
 }

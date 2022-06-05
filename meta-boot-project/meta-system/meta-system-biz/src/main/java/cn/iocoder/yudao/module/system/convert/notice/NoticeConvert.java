@@ -20,5 +20,4 @@ public interface NoticeConvert {
     NoticeDO convert(NoticeUpdateReqVO bean);
 
     NoticeDO convert(NoticeCreateReqVO bean);
-
 }

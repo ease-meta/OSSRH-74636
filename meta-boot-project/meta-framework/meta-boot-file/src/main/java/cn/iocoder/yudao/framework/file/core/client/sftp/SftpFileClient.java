@@ -57,5 +57,4 @@ public class SftpFileClient extends AbstractFileClient<SftpFileClientConfig> {
     private String getFilePath(String path) {
         return config.getBasePath() + path;
     }
-
 }

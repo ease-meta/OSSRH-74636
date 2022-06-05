@@ -430,6 +430,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
          * 该 {@link org.apache.ibatis.mapping.MappedStatement} 对应的规则
          */
         private static final ThreadLocal<List<DataPermissionRule>> RULES = new TransmittableThreadLocal<>();
+
         /**
          * SQL 是否进行重写
          */
@@ -456,7 +457,6 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         public static List<DataPermissionRule> getRules() {
             return RULES.get();
         }
-
     }
 
     /**
@@ -523,7 +523,5 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         public void clear() {
             noRewritableMappedStatements.clear();
         }
-
     }
-
 }

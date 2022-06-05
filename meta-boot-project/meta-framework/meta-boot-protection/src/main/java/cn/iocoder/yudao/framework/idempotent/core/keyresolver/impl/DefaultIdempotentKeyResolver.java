@@ -21,5 +21,4 @@ public class DefaultIdempotentKeyResolver implements IdempotentKeyResolver {
         String argsStr = StrUtil.join(",", joinPoint.getArgs());
         return SecureUtil.md5(methodName + argsStr);
     }
-
 }

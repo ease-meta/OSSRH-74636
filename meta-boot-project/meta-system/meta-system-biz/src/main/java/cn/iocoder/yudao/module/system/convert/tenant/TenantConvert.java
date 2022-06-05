@@ -41,5 +41,4 @@ public interface TenantConvert {
         reqVO.setNickname(bean.getContactName()).setMobile(bean.getContactMobile());
         return reqVO;
     }
-
 }

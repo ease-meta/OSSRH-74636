@@ -113,5 +113,4 @@ public class ConfigController {
         // 输出
         ExcelUtils.write(response, "参数配置.xls", "数据", ConfigExcelVO.class, datas);
     }
-
 }

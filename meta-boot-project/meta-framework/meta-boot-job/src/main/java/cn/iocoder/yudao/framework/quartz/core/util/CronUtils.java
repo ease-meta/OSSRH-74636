@@ -50,5 +50,4 @@ public class CronUtils {
         }
         return nextTimes;
     }
-
 }

@@ -37,5 +37,4 @@ public interface DictTypeMapper extends BaseMapperX<DictTypeDO> {
     default DictTypeDO selectByName(String name) {
         return selectOne(DictTypeDO::getName, name);
     }
-
 }

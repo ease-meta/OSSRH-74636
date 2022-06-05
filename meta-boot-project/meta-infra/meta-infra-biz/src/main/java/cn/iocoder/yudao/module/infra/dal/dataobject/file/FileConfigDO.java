@@ -33,20 +33,24 @@ public class FileConfigDO extends BaseDO {
      * 配置编号，数据库自增
      */
     private Long id;
+
     /**
      * 配置名
      */
     private String name;
+
     /**
      * 存储器
      * <p>
      * 枚举 {@link FileStorageEnum}
      */
     private Integer storage;
+
     /**
      * 备注
      */
     private String remark;
+
     /**
      * 是否为主配置
      * <p>
@@ -59,5 +63,4 @@ public class FileConfigDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private FileClientConfig config;
-
 }

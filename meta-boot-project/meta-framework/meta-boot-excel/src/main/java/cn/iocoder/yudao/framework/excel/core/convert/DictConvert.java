@@ -68,5 +68,4 @@ public class DictConvert implements Converter<Object> {
     private static String getType(ExcelContentProperty contentProperty) {
         return contentProperty.getField().getAnnotation(DictFormat.class).value();
     }
-
 }

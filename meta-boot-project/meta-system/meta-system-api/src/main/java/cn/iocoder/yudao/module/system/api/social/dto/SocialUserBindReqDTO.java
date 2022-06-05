@@ -21,6 +21,7 @@ public class SocialUserBindReqDTO {
      */
     @NotNull(message = "用户编号不能为空")
     private Long userId;
+
     /**
      * 用户类型
      */
@@ -34,15 +35,16 @@ public class SocialUserBindReqDTO {
     @InEnum(SocialTypeEnum.class)
     @NotNull(message = "社交平台的类型不能为空")
     private Integer type;
+
     /**
      * 授权码
      */
     @NotEmpty(message = "授权码不能为空")
     private String code;
+
     /**
      * state
      */
     @NotEmpty(message = "state 不能为空")
     private String state;
-
 }

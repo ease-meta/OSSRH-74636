@@ -27,5 +27,4 @@ public class SensitiveWordBaseVO {
 
     @ApiModelProperty(value = "描述", example = "污言秽语")
     private String description;
-
 }

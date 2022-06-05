@@ -55,5 +55,4 @@ public class LoginLogController {
         // 输出
         ExcelUtils.write(response, "登录日志.xls", "数据列表", LoginLogExcelVO.class, data);
     }
-
 }

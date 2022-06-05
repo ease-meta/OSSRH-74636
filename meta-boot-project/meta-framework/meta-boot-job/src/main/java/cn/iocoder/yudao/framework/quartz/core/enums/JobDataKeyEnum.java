@@ -10,5 +10,4 @@ public enum JobDataKeyEnum {
     JOB_HANDLER_PARAM,
     JOB_RETRY_COUNT, // 最大重试次数
     JOB_RETRY_INTERVAL, // 每次重试间隔
-
 }

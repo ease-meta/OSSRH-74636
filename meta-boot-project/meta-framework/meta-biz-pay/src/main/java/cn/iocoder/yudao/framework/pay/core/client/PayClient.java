@@ -78,5 +78,4 @@ public interface PayClient {
     default boolean isRefundNotify(PayNotifyDataDTO notifyData) {
         return false;
     }
-
 }

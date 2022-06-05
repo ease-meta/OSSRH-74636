@@ -88,5 +88,4 @@ public class TenantPackageController {
         List<TenantPackageDO> list = tenantPackageService.getTenantPackageListByStatus(CommonStatusEnum.ENABLE.getStatus());
         return success(TenantPackageConvert.INSTANCE.convertList02(list));
     }
-
 }

@@ -209,5 +209,4 @@ public class YunpianSmsClientTest extends BaseMockitoUnitTest {
         assertNull(result.getApiRequestId());
         assertEquals(String.valueOf(responseResult.getData().getSid()), result.getData().getSerialNo());
     }
-
 }

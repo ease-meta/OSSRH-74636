@@ -26,27 +26,31 @@ public class ErrorCodeDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 错误码类型
      * <p>
      * 枚举 {@link ErrorCodeTypeEnum}
      */
     private Integer type;
+
     /**
      * 应用名
      */
     private String applicationName;
+
     /**
      * 错误码编码
      */
     private Integer code;
+
     /**
      * 错误码错误提示
      */
     private String message;
+
     /**
      * 错误码备注
      */
     private String memo;
-
 }

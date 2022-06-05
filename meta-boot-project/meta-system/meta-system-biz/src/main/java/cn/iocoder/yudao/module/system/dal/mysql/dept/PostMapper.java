@@ -42,5 +42,4 @@ public interface PostMapper extends BaseMapperX<PostDO> {
     default PostDO selectByCode(String code) {
         return selectOne(new QueryWrapper<PostDO>().eq("code", code));
     }
-
 }

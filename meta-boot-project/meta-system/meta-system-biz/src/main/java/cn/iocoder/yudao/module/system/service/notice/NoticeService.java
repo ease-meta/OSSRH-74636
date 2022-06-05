@@ -48,5 +48,4 @@ public interface NoticeService {
      * @return 岗位公告公告信息
      */
     NoticeDO getNotice(Long id);
-
 }

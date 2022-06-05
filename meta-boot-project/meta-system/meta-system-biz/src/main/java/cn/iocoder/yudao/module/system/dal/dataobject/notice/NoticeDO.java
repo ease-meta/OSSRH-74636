@@ -22,25 +22,28 @@ public class NoticeDO extends BaseDO {
      * 公告ID
      */
     private Long id;
+
     /**
      * 公告标题
      */
     private String title;
+
     /**
      * 公告类型
      * <p>
      * 枚举 {@link NoticeTypeEnum}
      */
     private Integer type;
+
     /**
      * 公告内容
      */
     private String content;
+
     /**
      * 公告状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
-
 }

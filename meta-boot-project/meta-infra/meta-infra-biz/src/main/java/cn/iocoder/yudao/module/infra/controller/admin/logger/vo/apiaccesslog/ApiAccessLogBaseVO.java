@@ -71,5 +71,4 @@ public class ApiAccessLogBaseVO {
 
     @ApiModelProperty(value = "结果提示", example = "芋道源码，牛逼！")
     private String resultMsg;
-
 }

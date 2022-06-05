@@ -24,5 +24,4 @@ public class MenuRespVO extends MenuBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true, example = "时间戳格式")
     private Date createTime;
-
 }

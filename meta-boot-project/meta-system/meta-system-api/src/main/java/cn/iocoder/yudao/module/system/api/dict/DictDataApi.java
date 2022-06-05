@@ -18,5 +18,4 @@ public interface DictDataApi {
      * @param values   字典数据值的数组
      */
     void validDictDatas(String dictType, Collection<String> values);
-
 }

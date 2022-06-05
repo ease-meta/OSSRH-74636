@@ -37,5 +37,4 @@ public interface BpmFormMapper extends BaseMapperX<BpmFormDO> {
                 .likeIfPresent(BpmFormDO::getName, reqVO.getName())
                 .orderByDesc(BpmFormDO::getId));
     }
-
 }

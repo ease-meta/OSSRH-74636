@@ -51,5 +51,4 @@ public interface BpmMessageService {
      * @param reqDTO 发送信息
      */
     void sendMessageWhenTaskAssigned(@Valid BpmMessageSendWhenTaskCreatedReqDTO reqDTO);
-
 }

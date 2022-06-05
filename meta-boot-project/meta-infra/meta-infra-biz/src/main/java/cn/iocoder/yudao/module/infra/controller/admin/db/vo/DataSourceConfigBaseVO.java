@@ -23,5 +23,4 @@ public class DataSourceConfigBaseVO {
     @ApiModelProperty(value = "用户名", required = true, example = "root")
     @NotNull(message = "用户名不能为空")
     private String username;
-
 }

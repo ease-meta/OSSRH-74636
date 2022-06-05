@@ -61,5 +61,4 @@ public class BpmTaskAssignRuleController {
         taskAssignRuleService.updateTaskAssignRule(reqVO);
         return success(true);
     }
-
 }

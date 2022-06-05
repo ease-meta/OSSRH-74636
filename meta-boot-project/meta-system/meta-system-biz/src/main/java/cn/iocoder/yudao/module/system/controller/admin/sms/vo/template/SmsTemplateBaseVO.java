@@ -42,5 +42,4 @@ public class SmsTemplateBaseVO {
     @ApiModelProperty(value = "短信渠道编号", required = true, example = "10")
     @NotNull(message = "短信渠道编号不能为空")
     private Long channelId;
-
 }

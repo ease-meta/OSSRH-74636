@@ -144,7 +144,8 @@ public class TencentSmsClient extends AbstractSmsClient {
         return CollectionUtils.convertList(callback, status -> {
             SmsReceiveRespDTO data = new SmsReceiveRespDTO();
             data.setErrorCode(status.getErrCode()).setErrorMsg(status.getDescription());
-            data.setReceiveTime(status.getReceiveTime()).setSuccess(SmsReceiveStatus.SUCCESS_CODE.equalsIgnoreCase(status.getStatus()));
+            data.setReceiveTime(status.getReceiveTime())
+                    .setSuccess(SmsReceiveStatus.SUCCESS_CODE.equalsIgnoreCase(status.getStatus()));
             data.setMobile(status.getMobile()).setSerialNo(status.getSerialNo());
             SessionContext context;
             Long logId;
@@ -214,7 +215,8 @@ public class TencentSmsClient extends AbstractSmsClient {
      * @return 查询短信模版状态响应
      * @throws com.tencentcloudapi.common.exception.TencentCloudSDKException SDK 用来封装查询短信模版状态失败
      */
-    private DescribeSmsTemplateListResponse doGetSmsTemplate0(DescribeSmsTemplateListRequest request) throws TencentCloudSDKException {
+    private DescribeSmsTemplateListResponse doGetSmsTemplate0(DescribeSmsTemplateListRequest request)
+            throws TencentCloudSDKException {
         return client.DescribeSmsTemplateList(request);
     }
 
@@ -289,7 +291,6 @@ public class TencentSmsClient extends AbstractSmsClient {
          */
         @JsonProperty("ext")
         private SessionContext sessionContext;
-
     }
 
     @VisibleForTesting
@@ -305,5 +306,4 @@ public class TencentSmsClient extends AbstractSmsClient {
     private interface SdkFunction<T, R> {
         R apply(T t) throws TencentCloudSDKException;
     }
-
 }

@@ -25,5 +25,4 @@ public class OAuth2ClientRefreshConsumer extends AbstractChannelMessageListener<
         log.info("[onMessage][收到 OAuth2Client 刷新消息]");
         oauth2ClientService.initLocalCache();
     }
-
 }

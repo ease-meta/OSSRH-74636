@@ -11,5 +11,4 @@ public class YudaoOperateLogAutoConfiguration {
     public OperateLogAspect operateLogAspect() {
         return new OperateLogAspect();
     }
-
 }

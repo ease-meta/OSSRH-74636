@@ -25,6 +25,7 @@ public class WXPayClientConfig implements PayClientConfig {
      * https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=4_1
      */
     public static final String API_VERSION_V2 = "v2";
+
     /**
      * API 版本 - V3
      * https://pay.weixin.qq.com/wiki/doc/apiv3/wechatpay/wechatpay-1.shtml
@@ -36,11 +37,13 @@ public class WXPayClientConfig implements PayClientConfig {
      */
     @NotBlank(message = "APPID 不能为空", groups = {V2.class, V3.class})
     private String appId;
+
     /**
      * 商户号
      */
     @NotBlank(message = "商户号 不能为空", groups = {V2.class, V3.class})
     private String mchId;
+
     /**
      * API 版本
      */
@@ -63,6 +66,7 @@ public class WXPayClientConfig implements PayClientConfig {
     /// private String keyContent;
 
     // ========== V3 版本的参数 ==========
+
     /**
      * apiclient_key.pem 证书文件的绝对路径或者以 classpath: 开头的类路径.
      * 对应的字符串
@@ -70,6 +74,7 @@ public class WXPayClientConfig implements PayClientConfig {
      */
     @NotBlank(message = "apiclient_key 不能为空", groups = V3.class)
     private String privateKeyContent;
+
     /**
      * apiclient_cert.pem 证书文件的绝对路径或者以 classpath: 开头的类路径.
      * 对应的字符串
@@ -78,6 +83,7 @@ public class WXPayClientConfig implements PayClientConfig {
      */
     @NotBlank(message = "apiclient_cert 不能为空", groups = V3.class)
     private String privateCertContent;
+
     /**
      * apiV3 密钥值
      */
@@ -107,5 +113,4 @@ public class WXPayClientConfig implements PayClientConfig {
         /// String path = "/Users/yunai/Downloads/wx_pay/apiclient_cert.pem";
         System.out.println(IoUtil.readUtf8(new FileInputStream(path)));
     }
-
 }

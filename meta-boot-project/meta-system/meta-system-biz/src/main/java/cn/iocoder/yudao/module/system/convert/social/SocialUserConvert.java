@@ -15,5 +15,4 @@ public interface SocialUserConvert {
     SocialUserBindReqDTO convert(Long userId, Integer userType, SocialUserBindReqVO reqVO);
 
     SocialUserUnbindReqDTO convert(Long userId, Integer userType, SocialUserUnbindReqVO reqVO);
-
 }

@@ -16,5 +16,4 @@ public interface NoticeMapper extends BaseMapperX<NoticeDO> {
                 .eqIfPresent(NoticeDO::getStatus, reqVO.getStatus())
                 .orderByDesc(NoticeDO::getId));
     }
-
 }

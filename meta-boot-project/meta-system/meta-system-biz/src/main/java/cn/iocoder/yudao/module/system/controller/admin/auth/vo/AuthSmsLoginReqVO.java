@@ -34,5 +34,4 @@ public class AuthSmsLoginReqVO {
      */
     public interface CodeEnableGroup {
     }
-
 }

@@ -65,6 +65,7 @@ public class MenuServiceImpl implements MenuService {
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Map<Long, MenuDO> menuCache;
+
     /**
      * 权限与菜单缓存
      * key：权限 {@link cn.iocoder.yudao.module.system.dal.dataobject.permission.MenuDO#getPermission()}
@@ -73,6 +74,7 @@ public class MenuServiceImpl implements MenuService {
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Multimap<String, MenuDO> permissionMenuCache;
+
     /**
      * 缓存菜单的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -80,8 +82,10 @@ public class MenuServiceImpl implements MenuService {
 
     @Resource
     private MenuMapper menuMapper;
+
     @Resource
     private PermissionService permissionService;
+
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private TenantService tenantService;
@@ -203,7 +207,6 @@ public class MenuServiceImpl implements MenuService {
             public void afterCommit() {
                 menuProducer.sendMenuRefreshMessage();
             }
-
         });
     }
 
@@ -330,5 +333,4 @@ public class MenuServiceImpl implements MenuService {
             menu.setPath("");
         }
     }
-
 }

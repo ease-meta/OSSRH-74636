@@ -35,5 +35,4 @@ public interface CaptchaService {
      * @param uuid 验证码编号
      */
     void deleteCaptchaCode(String uuid);
-
 }

@@ -47,5 +47,4 @@ public abstract class BpmProcessInstanceResultEventListener
      * @param event 事件
      */
     protected abstract void onEvent(BpmProcessInstanceResultEvent event);
-
 }

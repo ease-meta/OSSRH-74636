@@ -27,5 +27,4 @@ public class CaptchaController {
     public CommonResult<CaptchaImageRespVO> getCaptchaImage() {
         return success(captchaService.getCaptchaImage());
     }
-
 }

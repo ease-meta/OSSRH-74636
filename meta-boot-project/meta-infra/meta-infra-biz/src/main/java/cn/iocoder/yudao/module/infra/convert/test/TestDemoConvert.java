@@ -32,5 +32,4 @@ public interface TestDemoConvert {
     PageResult<TestDemoRespVO> convertPage(PageResult<TestDemoDO> page);
 
     List<TestDemoExcelVO> convertList02(List<TestDemoDO> list);
-
 }

@@ -70,6 +70,4 @@ public interface ConfigService {
      * @return 列表
      */
     List<ConfigDO> getConfigList(@Valid ConfigExportReqVO reqVO);
-
-
 }

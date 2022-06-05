@@ -43,5 +43,4 @@ public interface ApiAccessLogMapper extends BaseMapperX<ApiAccessLogDO> {
                 .orderByDesc("id")
         );
     }
-
 }

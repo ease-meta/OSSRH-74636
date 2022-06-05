@@ -66,6 +66,7 @@ public class OperateLogAspect {
      * @see cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO#getContent()
      */
     private static final ThreadLocal<String> CONTENT = new ThreadLocal<>();
+
     /**
      * 用于记录拓展字段的上下文
      *
@@ -89,7 +90,8 @@ public class OperateLogAspect {
         return around0(joinPoint, operateLog, null);
     }
 
-    private Object around0(ProceedingJoinPoint joinPoint, OperateLog operateLog, ApiOperation apiOperation) throws Throwable {
+    private Object around0(ProceedingJoinPoint joinPoint, OperateLog operateLog, ApiOperation apiOperation)
+            throws Throwable {
         // 目前，只有管理员，才记录操作日志！所以非管理员，直接调用，不进行记录
         Integer userType = WebFrameworkUtils.getLoginUserType();
         if (!Objects.equals(userType, UserTypeEnum.ADMIN.getValue())) {
@@ -367,5 +369,4 @@ public class OperateLogAspect {
                 || object instanceof HttpServletResponse
                 || object instanceof BindingResult;
     }
-
 }

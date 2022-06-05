@@ -24,10 +24,12 @@ public class CommonResult<T> implements Serializable {
      * @see ErrorCode#getCode()
      */
     private Integer code;
+
     /**
      * 返回数据
      */
     private T data;
+
     /**
      * 错误提示，用户可阅读
      *
@@ -100,5 +102,4 @@ public class CommonResult<T> implements Serializable {
     public static <T> CommonResult<T> error(ServiceException serviceException) {
         return error(serviceException.getCode(), serviceException.getMessage());
     }
-
 }

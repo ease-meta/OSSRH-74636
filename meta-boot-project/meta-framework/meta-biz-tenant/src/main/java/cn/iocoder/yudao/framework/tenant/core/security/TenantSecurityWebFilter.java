@@ -40,6 +40,7 @@ public class TenantSecurityWebFilter extends ApiRequestFilter {
     private final AntPathMatcher pathMatcher;
 
     private final GlobalExceptionHandler globalExceptionHandler;
+
     private final TenantFrameworkService tenantFrameworkService;
 
     public TenantSecurityWebFilter(TenantProperties tenantProperties,
@@ -115,5 +116,4 @@ public class TenantSecurityWebFilter extends ApiRequestFilter {
         }
         return false;
     }
-
 }

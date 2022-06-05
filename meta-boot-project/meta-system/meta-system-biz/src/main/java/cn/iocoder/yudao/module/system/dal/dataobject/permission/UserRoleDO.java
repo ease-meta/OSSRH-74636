@@ -24,13 +24,14 @@ public class UserRoleDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 用户 ID
      */
     private Long userId;
+
     /**
      * 角色 ID
      */
     private Long roleId;
-
 }

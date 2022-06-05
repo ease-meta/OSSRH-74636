@@ -24,5 +24,4 @@ public class RoleProducer {
         RoleRefreshMessage message = new RoleRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

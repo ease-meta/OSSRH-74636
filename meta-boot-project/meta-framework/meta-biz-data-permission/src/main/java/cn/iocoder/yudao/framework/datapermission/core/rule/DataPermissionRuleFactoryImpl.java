@@ -58,5 +58,4 @@ public class DataPermissionRuleFactoryImpl implements DataPermissionRuleFactory 
         // 6. 已配置，全部规则
         return rules;
     }
-
 }

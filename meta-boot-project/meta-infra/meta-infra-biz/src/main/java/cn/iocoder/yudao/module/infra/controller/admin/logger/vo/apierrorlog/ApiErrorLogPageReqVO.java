@@ -40,5 +40,4 @@ public class ApiErrorLogPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "处理状态", example = "0")
     private Integer processStatus;
-
 }

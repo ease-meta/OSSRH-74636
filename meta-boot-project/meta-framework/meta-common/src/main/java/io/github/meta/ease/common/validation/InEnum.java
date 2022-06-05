@@ -27,5 +27,4 @@ public @interface InEnum {
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

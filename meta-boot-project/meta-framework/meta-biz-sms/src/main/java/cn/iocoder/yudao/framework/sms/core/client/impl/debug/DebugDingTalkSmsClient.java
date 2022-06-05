@@ -92,5 +92,4 @@ public class DebugDingTalkSmsClient extends AbstractSmsClient {
                 .setAuditStatus(SmsTemplateAuditStatusEnum.SUCCESS.getStatus()).setAuditReason("");
         return SmsCommonResult.build("0", "success", null, data, codeMapping);
     }
-
 }

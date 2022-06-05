@@ -54,5 +54,4 @@ public interface AdminUserApi {
      * @param ids 用户编号数组
      */
     void validUsers(Set<Long> ids);
-
 }

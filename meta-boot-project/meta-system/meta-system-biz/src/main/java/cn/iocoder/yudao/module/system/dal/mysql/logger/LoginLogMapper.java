@@ -41,5 +41,4 @@ public interface LoginLogMapper extends BaseMapperX<LoginLogDO> {
         query.orderByDesc("id"); // 降序
         return selectList(query);
     }
-
 }

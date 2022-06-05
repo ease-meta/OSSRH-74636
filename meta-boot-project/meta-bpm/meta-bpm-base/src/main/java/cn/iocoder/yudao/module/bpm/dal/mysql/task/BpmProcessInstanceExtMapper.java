@@ -46,5 +46,4 @@ public interface BpmProcessInstanceExtMapper extends BaseMapperX<BpmProcessInsta
         update(updateObj, new LambdaQueryWrapperX<BpmProcessInstanceExtDO>()
                 .eq(BpmProcessInstanceExtDO::getProcessInstanceId, updateObj.getProcessInstanceId()));
     }
-
 }

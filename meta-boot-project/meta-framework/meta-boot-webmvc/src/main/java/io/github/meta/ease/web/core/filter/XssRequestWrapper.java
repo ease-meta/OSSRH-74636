@@ -80,7 +80,6 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
             @Override
             public void setReadListener(ReadListener readListener) {
             }
-
         };
     }
 
@@ -128,5 +127,4 @@ public class XssRequestWrapper extends HttpServletRequestWrapper {
         String value = super.getHeader(name);
         return filterXss(value);
     }
-
 }

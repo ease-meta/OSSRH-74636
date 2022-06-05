@@ -47,5 +47,4 @@ public interface SocialUserApi {
      * @return 绑定用户编号
      */
     Long getBindUserId(Integer userType, Integer type, String code, String state);
-
 }

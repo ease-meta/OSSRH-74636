@@ -113,5 +113,4 @@ public class S3FileClientTest {
             client.delete(path);
         }
     }
-
 }

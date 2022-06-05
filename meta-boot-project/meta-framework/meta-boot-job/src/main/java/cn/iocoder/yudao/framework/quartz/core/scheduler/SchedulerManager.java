@@ -135,5 +135,4 @@ public class SchedulerManager {
                 .usingJobData(JobDataKeyEnum.JOB_RETRY_INTERVAL.name(), retryInterval)
                 .build();
     }
-
 }

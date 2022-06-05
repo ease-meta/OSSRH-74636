@@ -60,8 +60,6 @@ public class CacheRequestBodyWrapper extends HttpServletRequestWrapper {
             public int available() {
                 return body.length;
             }
-
         };
     }
-
 }

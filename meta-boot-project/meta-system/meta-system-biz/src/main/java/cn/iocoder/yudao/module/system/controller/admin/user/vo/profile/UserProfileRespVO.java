@@ -48,6 +48,7 @@ public class UserProfileRespVO extends UserBaseVO {
      * 所属岗位数组
      */
     private List<Post> posts;
+
     /**
      * 社交用户数组
      */
@@ -62,7 +63,6 @@ public class UserProfileRespVO extends UserBaseVO {
 
         @ApiModelProperty(value = "角色名称", required = true, example = "普通角色")
         private String name;
-
     }
 
     @ApiModel("部门")
@@ -74,7 +74,6 @@ public class UserProfileRespVO extends UserBaseVO {
 
         @ApiModelProperty(value = "部门名称", required = true, example = "研发部")
         private String name;
-
     }
 
     @ApiModel("岗位")
@@ -86,7 +85,6 @@ public class UserProfileRespVO extends UserBaseVO {
 
         @ApiModelProperty(value = "岗位名称", required = true, example = "开发")
         private String name;
-
     }
 
     @ApiModel("社交用户")
@@ -98,7 +96,5 @@ public class UserProfileRespVO extends UserBaseVO {
 
         @ApiModelProperty(value = "社交用户的 openid", required = true, example = "IPRmJ0wvBptiPIlGEZiPewGwiEiE")
         private String openid;
-
     }
-
 }

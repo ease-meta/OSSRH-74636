@@ -64,7 +64,5 @@ public class BpmTaskTodoPageItemRespVO {
 
         @ApiModelProperty(value = "流程定义的编号", required = true, example = "2048")
         private String processDefinitionId;
-
     }
-
 }

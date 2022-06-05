@@ -48,5 +48,4 @@ public class LocalFileClient extends AbstractFileClient<LocalFileClientConfig> {
     private String getFilePath(String path) {
         return config.getBasePath() + path;
     }
-
 }

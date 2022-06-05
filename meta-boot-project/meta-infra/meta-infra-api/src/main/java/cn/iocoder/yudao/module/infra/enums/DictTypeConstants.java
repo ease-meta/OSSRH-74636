@@ -16,5 +16,4 @@ public interface DictTypeConstants {
 
     String CONFIG_TYPE = "infra_config_type"; // 参数配置类型
     String BOOLEAN_STRING = "infra_boolean_string"; // Boolean 是否类型
-
 }

@@ -64,6 +64,7 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
     @Getter // 解决单测
     @Setter // 解决单测
     private volatile Map<String, OAuth2ClientDO> clientCache;
+
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -203,7 +204,8 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
             throw exception(OAUTH2_CLIENT_CLIENT_SECRET_ERROR);
         }
         // 校验授权方式
-        if (StrUtil.isNotEmpty(authorizedGrantType) && !CollUtil.contains(client.getAuthorizedGrantTypes(), authorizedGrantType)) {
+        if (StrUtil.isNotEmpty(authorizedGrantType) && !CollUtil.contains(client.getAuthorizedGrantTypes(),
+                authorizedGrantType)) {
             throw exception(OAUTH2_CLIENT_AUTHORIZED_GRANT_TYPE_NOT_EXISTS);
         }
         // 校验授权范围
@@ -216,5 +218,4 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
         }
         return client;
     }
-
 }

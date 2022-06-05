@@ -78,5 +78,4 @@ public class OAuth2ClientBaseVO {
     public boolean isAdditionalInformationJson() {
         return StrUtil.isEmpty(additionalInformation) || JsonUtils.isJson(additionalInformation);
     }
-
 }

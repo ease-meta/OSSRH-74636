@@ -17,5 +17,4 @@ public interface RoleApi {
      * @param ids 角色编号数组
      */
     void validRoles(Collection<Long> ids);
-
 }

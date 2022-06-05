@@ -22,11 +22,13 @@ public abstract class BaseDO implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
+
     /**
      * 最后更新时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
+
     /**
      * 创建者，目前使用 SysUser 的 id 编号
      * <p>
@@ -34,6 +36,7 @@ public abstract class BaseDO implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT, jdbcType = JdbcType.VARCHAR)
     private String creator;
+
     /**
      * 更新者，目前使用 SysUser 的 id 编号
      * <p>
@@ -41,10 +44,10 @@ public abstract class BaseDO implements Serializable {
      */
     @TableField(fill = FieldFill.INSERT_UPDATE, jdbcType = JdbcType.VARCHAR)
     private String updater;
+
     /**
      * 是否删除
      */
     @TableLogic
     private Boolean deleted;
-
 }

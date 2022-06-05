@@ -26,6 +26,7 @@ public class DataSourceConfigDO extends BaseDO {
      * 主键编号
      */
     private Long id;
+
     /**
      * 连接名
      */
@@ -35,14 +36,15 @@ public class DataSourceConfigDO extends BaseDO {
      * 数据源连接
      */
     private String url;
+
     /**
      * 用户名
      */
     private String username;
+
     /**
      * 密码
      */
     @TableField(typeHandler = EncryptTypeHandler.class)
     private String password;
-
 }

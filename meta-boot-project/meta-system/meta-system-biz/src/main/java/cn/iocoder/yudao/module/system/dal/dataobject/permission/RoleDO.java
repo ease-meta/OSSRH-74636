@@ -30,32 +30,38 @@ public class RoleDO extends TenantBaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 角色名称
      */
     private String name;
+
     /**
      * 角色标识
      * <p>
      * 枚举
      */
     private String code;
+
     /**
      * 角色排序
      */
     private Integer sort;
+
     /**
      * 角色状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 角色类型
      * <p>
      * 枚举 {@link RoleTypeEnum}
      */
     private Integer type;
+
     /**
      * 备注
      */
@@ -67,6 +73,7 @@ public class RoleDO extends TenantBaseDO {
      * 枚举 {@link DataScopeEnum}
      */
     private Integer dataScope;
+
     /**
      * 数据范围(指定部门数组)
      * <p>
@@ -74,5 +81,4 @@ public class RoleDO extends TenantBaseDO {
      */
     @TableField(typeHandler = JsonLongSetTypeHandler.class)
     private Set<Long> dataScopeDeptIds;
-
 }

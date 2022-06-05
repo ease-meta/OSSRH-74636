@@ -37,6 +37,7 @@ public class BpmOALeaveBaseVO {
     @NotNull(message = "开始时间不能为空")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     private Date startTime;
+
     @ApiModelProperty(value = "请假的结束时间", required = true)
     @NotNull(message = "结束时间不能为空")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
@@ -47,5 +48,4 @@ public class BpmOALeaveBaseVO {
 
     @ApiModelProperty(value = "原因", required = true, example = "阅读芋道源码")
     private String reason;
-
 }

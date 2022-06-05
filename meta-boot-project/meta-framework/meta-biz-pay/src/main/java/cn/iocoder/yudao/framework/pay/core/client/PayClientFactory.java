@@ -24,5 +24,4 @@ public interface PayClientFactory {
      */
     <Config extends PayClientConfig> void createOrUpdatePayClient(Long channelId, String channelCode,
                                                                   Config config);
-
 }

@@ -105,5 +105,4 @@ public interface MenuService {
      * @return 菜单
      */
     MenuDO getMenu(Long id);
-
 }

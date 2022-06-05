@@ -61,5 +61,4 @@ public class ApiErrorLogServiceImpl implements ApiErrorLogService {
         apiErrorLog.setProcessStatus(ApiErrorLogProcessStatusEnum.INIT.getStatus());
         apiErrorLogMapper.insert(apiErrorLog);
     }
-
 }

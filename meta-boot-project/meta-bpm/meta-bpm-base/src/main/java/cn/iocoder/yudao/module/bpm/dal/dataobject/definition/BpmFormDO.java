@@ -53,18 +53,22 @@ public class BpmFormDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 表单名
      */
     private String name;
+
     /**
      * 状态
      */
     private Integer status;
+
     /**
      * 表单的配置
      */
     private String conf;
+
     /**
      * 表单项的数组
      * <p>
@@ -73,9 +77,9 @@ public class BpmFormDO extends BaseDO {
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> fields;
+
     /**
      * 备注
      */
     private String remark;
-
 }

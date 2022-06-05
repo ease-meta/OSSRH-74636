@@ -7,15 +7,17 @@ import cn.iocoder.yudao.module.system.mq.consumer.sms.SmsSendConsumer;
 import cn.iocoder.yudao.module.system.mq.message.mail.MailSendMessage;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
 import cn.iocoder.yudao.module.system.test.BaseRedisIntegrationTest;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.annotation.Resource;
+
 import java.util.concurrent.TimeUnit;
 
-public class RedisStreamTest  {
+public class RedisStreamTest {
 
     @Import({SmsSendConsumer.class, MailSendConsumer.class})
     @Disabled
@@ -25,7 +27,6 @@ public class RedisStreamTest  {
         public void testConsumer() {
             ThreadUtil.sleep(1, TimeUnit.DAYS);
         }
-
     }
 
     @Disabled
@@ -56,7 +57,5 @@ public class RedisStreamTest  {
             // 发送消息
             redisMQTemplate.send(message);
         }
-
     }
-
 }

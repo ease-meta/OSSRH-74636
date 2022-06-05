@@ -75,12 +75,16 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     @Resource
     private DeptService deptService;
+
     @Resource
     private PostService postService;
+
     @Resource
     private PermissionService permissionService;
+
     @Resource
     private PasswordEncoder passwordEncoder;
+
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private TenantService tenantService;
@@ -474,5 +478,4 @@ public class AdminUserServiceImpl implements AdminUserService {
     private String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }
-
 }

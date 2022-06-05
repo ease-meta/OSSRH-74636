@@ -51,5 +51,4 @@ public class BpmActivityController {
         byte[] bytes = activityService.generateHighlightDiagram(processInstanceId);
         ServletUtils.writeAttachment(response, StrUtil.format("流程图-{}.svg", processInstanceId), bytes);
     }
-
 }

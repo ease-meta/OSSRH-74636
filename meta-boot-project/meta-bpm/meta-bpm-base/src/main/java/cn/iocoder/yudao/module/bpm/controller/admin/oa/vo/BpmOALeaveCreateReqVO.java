@@ -33,5 +33,4 @@ public class BpmOALeaveCreateReqVO extends BpmOALeaveBaseVO {
     public boolean isEndTimeValid() {
         return !getEndTime().before(getStartTime());
     }
-
 }

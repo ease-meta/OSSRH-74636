@@ -30,6 +30,7 @@ public class CodegenTableDO extends BaseDO {
      * 关联 {@link cn.iocoder.yudao.module.infra.dal.dataobject.db.DataSourceConfigDO#getId()}
      */
     private Long dataSourceConfigId;
+
     /**
      * 生成场景
      * <p>
@@ -43,10 +44,12 @@ public class CodegenTableDO extends BaseDO {
      * 表名称
      */
     private String tableName;
+
     /**
      * 表描述
      */
     private String tableComment;
+
     /**
      * 备注
      */
@@ -60,22 +63,26 @@ public class CodegenTableDO extends BaseDO {
      * 例如说，system、infra、tool 等等
      */
     private String moduleName;
+
     /**
      * 业务名，即二级目录
      * <p>
      * 例如说，user、permission、dict 等等
      */
     private String businessName;
+
     /**
      * 类名称（首字母大写）
      * <p>
      * 例如说，SysUser、SysMenu、SysDictData 等等
      */
     private String className;
+
     /**
      * 类描述
      */
     private String classComment;
+
     /**
      * 作者
      */
@@ -98,5 +105,4 @@ public class CodegenTableDO extends BaseDO {
      * 关联 MenuDO 的 id 属性
      */
     private Long parentMenuId;
-
 }

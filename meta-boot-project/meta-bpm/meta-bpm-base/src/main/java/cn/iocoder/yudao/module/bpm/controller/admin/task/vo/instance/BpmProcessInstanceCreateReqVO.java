@@ -33,5 +33,4 @@ public class BpmProcessInstanceCreateReqVO {
 
     @ApiModelProperty(value = "变量实例")
     private Map<String, Object> variables;
-
 }

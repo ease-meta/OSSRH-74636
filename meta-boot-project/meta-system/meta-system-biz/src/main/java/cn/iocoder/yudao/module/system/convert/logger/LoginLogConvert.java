@@ -20,5 +20,4 @@ public interface LoginLogConvert {
     List<LoginLogExcelVO> convertList(List<LoginLogDO> list);
 
     LoginLogDO convert(LoginLogCreateReqDTO bean);
-
 }

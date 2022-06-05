@@ -33,20 +33,22 @@ public class SftpFileClientConfig implements FileClientConfig {
      */
     @NotEmpty(message = "host 不能为空")
     private String host;
+
     /**
      * 主机端口
      */
     @NotNull(message = "port 不能为空")
     private Integer port;
+
     /**
      * 用户名
      */
     @NotEmpty(message = "用户名不能为空")
     private String username;
+
     /**
      * 密码
      */
     @NotEmpty(message = "密码不能为空")
     private String password;
-
 }

@@ -70,5 +70,4 @@ public class NoticeServiceImpl implements NoticeService {
             throw ServiceExceptionUtil.exception(NOTICE_NOT_FOUND);
         }
     }
-
 }

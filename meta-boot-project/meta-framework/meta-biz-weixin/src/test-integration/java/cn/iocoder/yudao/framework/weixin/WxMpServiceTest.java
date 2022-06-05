@@ -2,6 +2,7 @@ package cn.iocoder.yudao.framework.weixin;
 
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpService;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,5 +31,4 @@ public class WxMpServiceTest {
     public static class Application {
 
     }
-
 }

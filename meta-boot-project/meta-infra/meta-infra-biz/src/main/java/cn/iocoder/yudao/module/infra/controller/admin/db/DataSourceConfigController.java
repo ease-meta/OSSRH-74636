@@ -76,5 +76,4 @@ public class DataSourceConfigController {
         List<DataSourceConfigDO> list = dataSourceConfigService.getDataSourceConfigList();
         return success(DataSourceConfigConvert.INSTANCE.convertList(list));
     }
-
 }

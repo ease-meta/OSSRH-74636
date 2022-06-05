@@ -48,5 +48,4 @@ public interface SmsFrameworkErrorCodeConstants {
     ErrorCode SMS_APP_ID_INVALID = new ErrorCode(2001000903, "SdkAppId不合法");
 
     ErrorCode EXCEPTION = new ErrorCode(2001000999, "调用异常");
-
 }

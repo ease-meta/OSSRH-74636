@@ -22,5 +22,4 @@ public class FileConfigProducer {
         FileConfigRefreshMessage message = new FileConfigRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

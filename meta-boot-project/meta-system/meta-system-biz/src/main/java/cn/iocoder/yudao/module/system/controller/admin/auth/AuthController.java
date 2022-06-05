@@ -58,12 +58,16 @@ public class AuthController {
 
     @Resource
     private AdminAuthService authService;
+
     @Resource
     private AdminUserService userService;
+
     @Resource
     private RoleService roleService;
+
     @Resource
     private PermissionService permissionService;
+
     @Resource
     private SocialUserService socialUserService;
 
@@ -105,7 +109,8 @@ public class AuthController {
             return null;
         }
         // 获得角色列表
-        Set<Long> roleIds = permissionService.getUserRoleIdsFromCache(getLoginUserId(), singleton(CommonStatusEnum.ENABLE.getStatus()));
+        Set<Long> roleIds = permissionService.getUserRoleIdsFromCache(getLoginUserId(),
+                singleton(CommonStatusEnum.ENABLE.getStatus()));
         List<RoleDO> roleList = roleService.getRolesFromCache(roleIds);
         // 获得菜单列表
         List<MenuDO> menuList = permissionService.getRoleMenuListFromCache(roleIds,
@@ -119,7 +124,8 @@ public class AuthController {
     @ApiOperation("获得登录用户的菜单列表")
     public CommonResult<List<AuthMenuRespVO>> getMenus() {
         // 获得角色列表
-        Set<Long> roleIds = permissionService.getUserRoleIdsFromCache(getLoginUserId(), singleton(CommonStatusEnum.ENABLE.getStatus()));
+        Set<Long> roleIds = permissionService.getUserRoleIdsFromCache(getLoginUserId(),
+                singleton(CommonStatusEnum.ENABLE.getStatus()));
         // 获得用户拥有的菜单列表
         List<MenuDO> menuList = permissionService.getRoleMenuListFromCache(roleIds,
                 SetUtils.asSet(MenuTypeEnum.DIR.getType(), MenuTypeEnum.MENU.getType()), // 只要目录和菜单类型
@@ -171,5 +177,4 @@ public class AuthController {
     public CommonResult<AuthLoginRespVO> socialBindLogin(@RequestBody @Valid AuthSocialBindLoginReqVO reqVO) {
         return success(authService.socialBindLogin(reqVO));
     }
-
 }

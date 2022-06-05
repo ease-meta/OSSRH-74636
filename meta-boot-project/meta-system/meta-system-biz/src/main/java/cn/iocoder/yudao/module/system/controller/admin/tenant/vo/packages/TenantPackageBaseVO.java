@@ -27,5 +27,4 @@ public class TenantPackageBaseVO {
     @ApiModelProperty(value = "关联的菜单编号", required = true)
     @NotNull(message = "关联的菜单编号不能为空")
     private Set<Long> menuIds;
-
 }

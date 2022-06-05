@@ -36,14 +36,17 @@ public class SensitiveWordDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 敏感词
      */
     private String name;
+
     /**
      * 描述
      */
     private String description;
+
     /**
      * 标签数组
      * <p>
@@ -53,11 +56,11 @@ public class SensitiveWordDO extends BaseDO {
      */
     @TableField(typeHandler = StringListTypeHandler.class)
     private List<String> tags;
+
     /**
      * 状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
-
 }

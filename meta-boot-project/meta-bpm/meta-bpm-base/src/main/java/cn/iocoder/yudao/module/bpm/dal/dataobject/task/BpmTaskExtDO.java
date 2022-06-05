@@ -45,18 +45,21 @@ public class BpmTaskExtDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 任务的审批人
      * <p>
      * 冗余 Task 的 assignee 属性
      */
     private Long assigneeUserId;
+
     /**
      * 任务的名字
      * <p>
      * 冗余 Task 的 name 属性，为了筛选
      */
     private String name;
+
     /**
      * 任务的编号
      * <p>
@@ -69,16 +72,19 @@ public class BpmTaskExtDO extends BaseDO {
     //     * 关联 {@link Task#getTaskDefinitionKey()}
     //     */
     //    private String definitionKey;
+
     /**
      * 任务的结果
      * <p>
      * 枚举 {@link cn.iocoder.yudao.module.bpm.enums.task.BpmProcessInstanceResultEnum}
      */
     private Integer result;
+
     /**
      * 审批建议
      */
     private String reason;
+
     /**
      * 任务的结束时间
      * <p>
@@ -92,11 +98,11 @@ public class BpmTaskExtDO extends BaseDO {
      * 关联 ProcessInstance 的 id 属性
      */
     private String processInstanceId;
+
     /**
      * 流程定义的编号
      * <p>
      * 关联 ProcessDefinition 的 id 属性
      */
     private String processDefinitionId;
-
 }

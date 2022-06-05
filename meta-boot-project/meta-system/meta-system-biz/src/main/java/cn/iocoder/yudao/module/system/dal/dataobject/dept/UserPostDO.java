@@ -23,17 +23,18 @@ public class UserPostDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 用户 ID
      * <p>
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO#getId()}
      */
     private Long userId;
+
     /**
      * 角色 ID
      * <p>
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO#getId()}
      */
     private Long postId;
-
 }

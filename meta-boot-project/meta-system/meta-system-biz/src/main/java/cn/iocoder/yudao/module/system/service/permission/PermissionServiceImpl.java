@@ -80,6 +80,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Getter
     @Setter // 单元测试需要
     private volatile Multimap<Long, Long> roleMenuCache;
+
     /**
      * 菜单编号与角色编号的缓存映射
      * key：菜单编号
@@ -90,6 +91,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Getter
     @Setter // 单元测试需要
     private volatile Multimap<Long, Long> menuRoleCache;
+
     /**
      * 缓存 RoleMenu 的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -106,6 +108,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Getter
     @Setter // 单元测试需要
     private volatile Map<Long, Set<Long>> userRoleCache;
+
     /**
      * 缓存 UserRole 的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -114,19 +117,25 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Resource
     private RoleMenuMapper roleMenuMapper;
+
     @Resource
     private RoleMenuBatchInsertMapper roleMenuBatchInsertMapper;
+
     @Resource
     private UserRoleMapper userRoleMapper;
+
     @Resource
     private UserRoleBatchInsertMapper userRoleBatchInsertMapper;
 
     @Resource
     private RoleService roleService;
+
     @Resource
     private MenuService menuService;
+
     @Resource
     private DeptService deptService;
+
     @Resource
     private AdminUserService userService;
 
@@ -310,7 +319,6 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendRoleMenuRefreshMessage();
             }
-
         });
     }
 
@@ -354,7 +362,6 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendUserRoleRefreshMessage();
             }
-
         });
     }
 
@@ -378,7 +385,6 @@ public class PermissionServiceImpl implements PermissionService {
                 permissionProducer.sendRoleMenuRefreshMessage();
                 permissionProducer.sendUserRoleRefreshMessage();
             }
-
         });
     }
 
@@ -393,7 +399,6 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendRoleMenuRefreshMessage();
             }
-
         });
     }
 
@@ -407,7 +412,6 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendUserRoleRefreshMessage();
             }
-
         });
     }
 
@@ -520,5 +524,4 @@ public class PermissionServiceImpl implements PermissionService {
         }
         return result;
     }
-
 }

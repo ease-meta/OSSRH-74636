@@ -61,15 +61,18 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        infApiErrorLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
+        infApiErrorLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
         // progressStatus 不同的
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO,
+                logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
 
         // 构造调用参数
         ApiErrorLogPageReqVO reqVO = new ApiErrorLogPageReqVO();
@@ -114,15 +117,18 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        infApiErrorLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
+        infApiErrorLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
         // progressStatus 不同的
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO,
+                logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
 
         // 构造调用参数
         ApiErrorLogExportReqVO reqVO = new ApiErrorLogExportReqVO();
@@ -171,9 +177,13 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         ApiErrorLogDO secondSelect = infApiErrorLogMapper.selectOne("id", secondId);
 
         // id 为 0 查询不到，应该抛出异常 API_ERROR_LOG_NOT_FOUND
-        assertServiceException(() -> apiErrorLogService.updateApiErrorLogProcess(0L, ApiErrorLogProcessStatusEnum.DONE.getStatus(), processUserId), API_ERROR_LOG_NOT_FOUND);
+        assertServiceException(
+                () -> apiErrorLogService.updateApiErrorLogProcess(0L, ApiErrorLogProcessStatusEnum.DONE.getStatus(),
+                        processUserId), API_ERROR_LOG_NOT_FOUND);
         // id 为 first 的 progressStatus 为 DONE ，应该抛出 API_ERROR_LOG_PROCESSED
-        assertServiceException(() -> apiErrorLogService.updateApiErrorLogProcess(firstId, ApiErrorLogProcessStatusEnum.DONE.getStatus(), processUserId), API_ERROR_LOG_PROCESSED);
+        assertServiceException(
+                () -> apiErrorLogService.updateApiErrorLogProcess(firstId, ApiErrorLogProcessStatusEnum.DONE.getStatus(),
+                        processUserId), API_ERROR_LOG_PROCESSED);
         // 验证 progressStatus 是否修改成功
         Assertions.assertEquals(ApiErrorLogProcessStatusEnum.DONE.getStatus(), secondSelect.getProcessStatus());
         // 验证 progressUserId 是否修改成功
@@ -193,5 +203,4 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         assertNotNull(infApiErrorLogDO);
         assertPojoEquals(createDTO, infApiErrorLogDO);
     }
-
 }

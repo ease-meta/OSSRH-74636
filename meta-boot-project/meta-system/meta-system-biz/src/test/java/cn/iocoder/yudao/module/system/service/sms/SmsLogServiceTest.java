@@ -26,13 +26,13 @@ import java.util.function.Consumer;
 
 import static cn.hutool.core.util.RandomUtil.randomBoolean;
 import static cn.hutool.core.util.RandomUtil.randomEle;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomDate;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomInteger;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -65,11 +65,13 @@ public class SmsLogServiceTest extends BaseDbUnitTest {
         // 测试 mobile 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setMobile("18818260999")));
         // 测试 sendStatus 不匹配
-        smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendStatus(SmsSendStatusEnum.IGNORE.getStatus())));
+        smsLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendStatus(SmsSendStatusEnum.IGNORE.getStatus())));
         // 测试 sendTime 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendTime(buildTime(2020, 12, 12))));
         // 测试 receiveStatus 不匹配
-        smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveStatus(SmsReceiveStatusEnum.SUCCESS.getStatus())));
+        smsLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveStatus(SmsReceiveStatusEnum.SUCCESS.getStatus())));
         // 测试 receiveTime 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveTime(buildTime(2021, 12, 12))));
         // 准备参数
@@ -112,11 +114,13 @@ public class SmsLogServiceTest extends BaseDbUnitTest {
         // 测试 mobile 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setMobile("18818260999")));
         // 测试 sendStatus 不匹配
-        smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendStatus(SmsSendStatusEnum.IGNORE.getStatus())));
+        smsLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendStatus(SmsSendStatusEnum.IGNORE.getStatus())));
         // 测试 sendTime 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setSendTime(buildTime(2020, 12, 12))));
         // 测试 receiveStatus 不匹配
-        smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveStatus(SmsReceiveStatusEnum.SUCCESS.getStatus())));
+        smsLogMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveStatus(SmsReceiveStatusEnum.SUCCESS.getStatus())));
         // 测试 receiveTime 不匹配
         smsLogMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsLog, o -> o.setReceiveTime(buildTime(2021, 12, 12))));
         // 准备参数

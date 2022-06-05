@@ -20,5 +20,4 @@ public class DBFileClientConfig implements FileClientConfig {
     @NotEmpty(message = "domain 不能为空")
     @URL(message = "domain 必须是 URL 格式")
     private String domain;
-
 }

@@ -29,5 +29,4 @@ public class BpmFormSimpleRespVO {
 
     @ApiModelProperty(value = "表单名称", required = true, example = "芋道")
     private String name;
-
 }

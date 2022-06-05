@@ -16,5 +16,4 @@ public interface OAuth2RefreshTokenMapper extends BaseMapperX<OAuth2RefreshToken
     default OAuth2RefreshTokenDO selectByRefreshToken(String refreshToken) {
         return selectOne(OAuth2RefreshTokenDO::getRefreshToken, refreshToken);
     }
-
 }

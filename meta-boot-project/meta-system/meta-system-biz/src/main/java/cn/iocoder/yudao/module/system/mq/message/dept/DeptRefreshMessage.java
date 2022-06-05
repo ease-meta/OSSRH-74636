@@ -17,5 +17,4 @@ public class DeptRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.dept.refresh";
     }
-
 }

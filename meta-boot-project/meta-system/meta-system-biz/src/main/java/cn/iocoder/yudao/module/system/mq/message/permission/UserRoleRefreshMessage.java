@@ -17,5 +17,4 @@ public class UserRoleRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.user-role.refresh";
     }
-
 }

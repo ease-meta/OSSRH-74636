@@ -36,5 +36,4 @@ public class BpmModelCreateReqVO {
 
     @ApiModelProperty(value = "流程描述", example = "我是描述")
     private String description;
-
 }

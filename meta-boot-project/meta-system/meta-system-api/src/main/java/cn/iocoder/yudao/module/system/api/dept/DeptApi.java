@@ -46,5 +46,4 @@ public interface DeptApi {
      * @return 部门 Map
      */
     Map<Long, DeptRespDTO> getDeptMap(Set<Long> ids);
-
 }

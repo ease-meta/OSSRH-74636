@@ -29,5 +29,4 @@ public class ErrorCode {
         this.code = code;
         this.msg = message;
     }
-
 }

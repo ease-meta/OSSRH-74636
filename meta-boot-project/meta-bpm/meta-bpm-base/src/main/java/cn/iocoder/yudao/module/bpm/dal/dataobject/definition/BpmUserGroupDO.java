@@ -52,24 +52,27 @@ public class BpmUserGroupDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 组名
      */
     private String name;
+
     /**
      * 描述
      */
     private String description;
+
     /**
      * 状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 成员用户编号数组
      */
     @TableField(typeHandler = JsonLongSetTypeHandler.class)
     private Set<Long> memberUserIds;
-
 }

@@ -23,5 +23,4 @@ public class LoginLogApiImpl implements LoginLogApi {
     public void createLoginLog(LoginLogCreateReqDTO reqDTO) {
         loginLogService.createLoginLog(reqDTO);
     }
-
 }

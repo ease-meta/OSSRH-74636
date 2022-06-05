@@ -43,7 +43,8 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
 
     @Override
     @Transactional
-    public boolean checkForPreApproval(Long userId, Integer userType, String clientId, Collection<String> requestedScopes) {
+    public boolean checkForPreApproval(Long userId, Integer userType, String clientId,
+                                       Collection<String> requestedScopes) {
         // 第一步，基于 Client 的自动授权计算，如果 scopes 都在自动授权中，则返回 true 通过
         OAuth2ClientDO clientDO = oauth2ClientService.validOAuthClientFromCache(clientId);
         Assert.notNull(clientDO, "客户端不能为空"); // 防御性编程
@@ -65,7 +66,8 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
 
     @Override
     @Transactional
-    public boolean updateAfterApproval(Long userId, Integer userType, String clientId, Map<String, Boolean> requestedScopes) {
+    public boolean updateAfterApproval(Long userId, Integer userType, String clientId,
+                                       Map<String, Boolean> requestedScopes) {
         // 如果 requestedScopes 为空，说明没有要求，则返回 true 通过
         if (CollUtil.isEmpty(requestedScopes)) {
             return true;
@@ -103,5 +105,4 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
         // 失败，则说明不存在，进行更新
         oauth2ApproveMapper.insert(approveDO);
     }
-
 }

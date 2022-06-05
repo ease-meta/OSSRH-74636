@@ -104,5 +104,4 @@ public class IdTypeEnvironmentPostProcessor implements EnvironmentPostProcessor 
         }
         return JdbcUtils.getDbType(url);
     }
-
 }

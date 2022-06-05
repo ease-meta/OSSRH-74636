@@ -54,5 +54,4 @@ public interface OAuth2OpenConvert {
         return new OAuth2OpenAuthorizeInfoRespVO(
                 new OAuth2OpenAuthorizeInfoRespVO.Client(client.getName(), client.getLogo()), scopes);
     }
-
 }

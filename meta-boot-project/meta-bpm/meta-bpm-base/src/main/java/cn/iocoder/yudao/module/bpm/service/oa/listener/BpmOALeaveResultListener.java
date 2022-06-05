@@ -44,5 +44,4 @@ public class BpmOALeaveResultListener extends BpmProcessInstanceResultEventListe
     protected void onEvent(BpmProcessInstanceResultEvent event) {
         leaveService.updateLeaveResult(Long.parseLong(event.getBusinessKey()), event.getResult());
     }
-
 }

@@ -25,6 +25,7 @@ public class CodegenColumnDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 表编号
      * <p>
@@ -38,26 +39,32 @@ public class CodegenColumnDO extends BaseDO {
      * 字段名
      */
     private String columnName;
+
     /**
      * 字段类型
      */
     private String dataType;
+
     /**
      * 字段描述
      */
     private String columnComment;
+
     /**
      * 是否允许为空
      */
     private Boolean nullable;
+
     /**
      * 是否主键
      */
     private Boolean primaryKey;
+
     /**
      * 是否自增
      */
     private Boolean autoIncrement;
+
     /**
      * 排序
      */
@@ -71,16 +78,19 @@ public class CodegenColumnDO extends BaseDO {
      * 例如说 String、Boolean 等等
      */
     private String javaType;
+
     /**
      * Java 属性名
      */
     private String javaField;
+
     /**
      * 字典类型
      * <p>
      * 关联 DictTypeDO 的 type 属性
      */
     private String dictType;
+
     /**
      * 数据示例，主要用于生成 Swagger 注解的 example 字段
      */
@@ -92,20 +102,24 @@ public class CodegenColumnDO extends BaseDO {
      * 是否为 Create 创建操作的字段
      */
     private Boolean createOperation;
+
     /**
      * 是否为 Update 更新操作的字段
      */
     private Boolean updateOperation;
+
     /**
      * 是否为 List 查询操作的字段
      */
     private Boolean listOperation;
+
     /**
      * List 查询操作的条件类型
      * <p>
      * 枚举 {@link cn.iocoder.yudao.module.infra.enums.codegen.CodegenColumnListConditionEnum}
      */
     private String listOperationCondition;
+
     /**
      * 是否为 List 查询操作的返回字段
      */
@@ -119,5 +133,4 @@ public class CodegenColumnDO extends BaseDO {
      * 枚举 {@link cn.iocoder.yudao.module.infra.enums.codegen.CodegenColumnHtmlTypeEnum}
      */
     private String htmlType;
-
 }

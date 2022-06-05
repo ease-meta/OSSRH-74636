@@ -25,10 +25,12 @@ public class MenuDO extends BaseDO {
      */
     @TableId
     private Long id;
+
     /**
      * 菜单名称
      */
     private String name;
+
     /**
      * 权限标识
      * <p>
@@ -40,38 +42,46 @@ public class MenuDO extends BaseDO {
      * - 对于前端，配合前端标签，配置按钮是否展示，避免用户没有该权限时，结果可以看到该操作。
      */
     private String permission;
+
     /**
      * 菜单类型
      * <p>
      * 枚举 {@link MenuTypeEnum}
      */
     private Integer type;
+
     /**
      * 显示顺序
      */
     private Integer sort;
+
     /**
      * 父菜单ID
      */
     private Long parentId;
+
     /**
      * 路由地址
      */
     private String path;
+
     /**
      * 菜单图标
      */
     private String icon;
+
     /**
      * 组件路径
      */
     private String component;
+
     /**
      * 状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 是否可见
      * <p>
@@ -79,6 +89,7 @@ public class MenuDO extends BaseDO {
      * 当设置为 true 时，该菜单不会展示在侧边栏，但是路由还是存在。例如说，一些独立的编辑页面 /edit/1024 等等
      */
     private Boolean visible;
+
     /**
      * 是否缓存
      * <p>
@@ -86,5 +97,4 @@ public class MenuDO extends BaseDO {
      * 是否使用 Vue 路由的 keep-alive 特性
      */
     private Boolean keepAlive;
-
 }

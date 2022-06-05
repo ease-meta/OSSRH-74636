@@ -77,5 +77,4 @@ public class JobLogController {
         List<JobLogExcelVO> datas = JobLogConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "任务日志.xls", "数据", JobLogExcelVO.class, datas);
     }
-
 }

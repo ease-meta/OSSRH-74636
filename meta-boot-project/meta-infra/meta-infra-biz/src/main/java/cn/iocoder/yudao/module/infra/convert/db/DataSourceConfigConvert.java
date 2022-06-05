@@ -26,5 +26,4 @@ public interface DataSourceConfigConvert {
     DataSourceConfigRespVO convert(DataSourceConfigDO bean);
 
     List<DataSourceConfigRespVO> convertList(List<DataSourceConfigDO> list);
-
 }

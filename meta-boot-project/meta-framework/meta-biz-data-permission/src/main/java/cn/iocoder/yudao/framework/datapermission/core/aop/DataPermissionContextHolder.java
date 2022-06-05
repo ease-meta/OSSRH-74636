@@ -68,5 +68,4 @@ public class DataPermissionContextHolder {
     public static void clear() {
         DATA_PERMISSIONS.remove();
     }
-
 }

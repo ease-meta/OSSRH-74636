@@ -36,5 +36,4 @@ public class LoginLogExcelVO {
 
     @ExcelProperty("登录时间")
     private Date createTime;
-
 }

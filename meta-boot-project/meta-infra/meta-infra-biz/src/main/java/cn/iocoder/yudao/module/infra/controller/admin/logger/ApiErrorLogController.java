@@ -74,5 +74,4 @@ public class ApiErrorLogController {
         List<ApiErrorLogExcelVO> datas = ApiErrorLogConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "API 错误日志.xls", "数据", ApiErrorLogExcelVO.class, datas);
     }
-
 }

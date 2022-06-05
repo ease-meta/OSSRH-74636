@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.framework.activiti.core.web;
 
 import cn.iocoder.yudao.framework.activiti.core.util.ActivitiUtils;
+import cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -32,5 +33,4 @@ public class ActivitiWebFilter extends OncePerRequestFilter {
             ActivitiUtils.clearAuthenticatedUserId();
         }
     }
-
 }

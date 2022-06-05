@@ -37,5 +37,4 @@ public class ConfigDAOImpl implements ConfigFrameworkDAO {
                         .setUpdateTime(rs.getDate("update_time"))
                         .setDeleted(rs.getBoolean("deleted")));
     }
-
 }

@@ -113,5 +113,4 @@ public class TenantPackageServiceImpl implements TenantPackageService {
     public List<TenantPackageDO> getTenantPackageListByStatus(Integer status) {
         return tenantPackageMapper.selectListByStatus(status);
     }
-
 }

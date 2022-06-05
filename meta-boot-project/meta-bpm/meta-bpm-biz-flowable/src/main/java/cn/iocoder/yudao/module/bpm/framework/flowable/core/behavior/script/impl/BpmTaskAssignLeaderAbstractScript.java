@@ -28,8 +28,10 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
 
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessInstanceService bpmProcessInstanceService;
@@ -66,5 +68,4 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
         }
         return deptApi.getDept(startUser.getDeptId());
     }
-
 }

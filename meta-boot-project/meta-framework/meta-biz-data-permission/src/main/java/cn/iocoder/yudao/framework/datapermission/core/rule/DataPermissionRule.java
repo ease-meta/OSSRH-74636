@@ -31,5 +31,4 @@ public interface DataPermissionRule {
      * @return 过滤条件 Expression 表达式
      */
     Expression getExpression(String tableName, Alias tableAlias);
-
 }

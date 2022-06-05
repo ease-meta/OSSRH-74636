@@ -18,5 +18,4 @@ public class UserUpdateStatusReqVO {
     @NotNull(message = "状态不能为空")
 //    @InEnum(value = CommonStatusEnum.class, message = "修改状态必须是 {value}")
     private Integer status;
-
 }

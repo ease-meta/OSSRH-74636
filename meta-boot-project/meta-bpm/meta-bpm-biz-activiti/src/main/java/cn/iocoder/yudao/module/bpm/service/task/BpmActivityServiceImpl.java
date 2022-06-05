@@ -38,13 +38,16 @@ public class BpmActivityServiceImpl implements BpmActivityService {
 
     @Resource
     private ProcessDiagramGenerator processDiagramGenerator;
+
     @Resource
     private HistoryService historyService;
 
     @Resource
     private BpmProcessInstanceService processInstanceService;
+
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private BpmTaskService taskService;
 
@@ -77,9 +80,9 @@ public class BpmActivityServiceImpl implements BpmActivityService {
         }
 
         // 生成高亮流程图
-        InputStream inputStream = processDiagramGenerator.generateDiagram(bpmnModel, highLightedActivities, Collections.emptyList(),
+        InputStream inputStream = processDiagramGenerator.generateDiagram(bpmnModel, highLightedActivities,
+                Collections.emptyList(),
                 FONT_NAME, FONT_NAME, FONT_NAME);
         return IoUtil.readBytes(inputStream);
     }
-
 }

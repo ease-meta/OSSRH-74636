@@ -26,7 +26,8 @@ public class JsonConvert implements Converter<Object> {
     }
 
 
-    public Object convertToJavaData(CellData cellData, ExcelContentProperty contentProperty, GlobalConfiguration globalConfiguration) {
+    public Object convertToJavaData(CellData cellData, ExcelContentProperty contentProperty,
+                                    GlobalConfiguration globalConfiguration) {
         throw new UnsupportedOperationException("暂不支持，也不需要");
     }
 
@@ -36,5 +37,4 @@ public class JsonConvert implements Converter<Object> {
         // 生成 Excel 小表格
         return new WriteCellData<>(JsonUtils.toJsonString(value));
     }
-
 }

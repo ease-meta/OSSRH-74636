@@ -97,5 +97,4 @@ public class ErrorCodeController {
         List<ErrorCodeExcelVO> datas = ErrorCodeConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "错误码.xls", "数据", ErrorCodeExcelVO.class, datas);
     }
-
 }

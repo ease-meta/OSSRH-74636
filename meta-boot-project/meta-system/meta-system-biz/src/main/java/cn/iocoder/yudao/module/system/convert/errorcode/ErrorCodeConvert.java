@@ -38,5 +38,4 @@ public interface ErrorCodeConvert {
     ErrorCodeDO convert(ErrorCodeAutoGenerateReqDTO bean);
 
     List<ErrorCodeRespDTO> convertList03(List<ErrorCodeDO> list);
-
 }

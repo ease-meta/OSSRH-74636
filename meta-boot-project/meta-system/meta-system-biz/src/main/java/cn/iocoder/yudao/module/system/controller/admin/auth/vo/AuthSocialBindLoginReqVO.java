@@ -44,5 +44,4 @@ public class AuthSocialBindLoginReqVO {
     @NotEmpty(message = "密码不能为空")
     @Length(min = 4, max = 16, message = "密码长度为 4-16 位")
     private String password;
-
 }

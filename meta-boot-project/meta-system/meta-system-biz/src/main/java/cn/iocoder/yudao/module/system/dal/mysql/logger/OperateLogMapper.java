@@ -44,5 +44,4 @@ public interface OperateLogMapper extends BaseMapperX<OperateLogDO> {
         query.orderByDesc(OperateLogDO::getId); // 降序
         return selectList(query);
     }
-
 }

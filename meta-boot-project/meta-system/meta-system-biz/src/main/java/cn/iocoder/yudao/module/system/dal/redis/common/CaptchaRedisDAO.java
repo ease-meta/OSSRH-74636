@@ -37,5 +37,4 @@ public class CaptchaRedisDAO {
     private static String formatKey(String uuid) {
         return String.format(CAPTCHA_CODE.getKeyTemplate(), uuid);
     }
-
 }

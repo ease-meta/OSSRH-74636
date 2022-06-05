@@ -17,5 +17,4 @@ public class RoleSimpleRespVO {
 
     @ApiModelProperty(value = "角色名称", required = true, example = "芋道")
     private String name;
-
 }

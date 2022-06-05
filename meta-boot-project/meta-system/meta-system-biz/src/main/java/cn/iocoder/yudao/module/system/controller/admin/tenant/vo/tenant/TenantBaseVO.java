@@ -44,5 +44,4 @@ public class TenantBaseVO {
     @ApiModelProperty(value = "账号数量", required = true, example = "1024")
     @NotNull(message = "账号数量不能为空")
     private Integer accountCount;
-
 }

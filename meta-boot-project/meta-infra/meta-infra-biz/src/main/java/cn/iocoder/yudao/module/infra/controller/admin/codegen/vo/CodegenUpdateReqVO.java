@@ -43,7 +43,6 @@ public class CodegenUpdateReqVO {
             return ObjectUtil.notEqual(getScene(), CodegenSceneEnum.ADMIN.getScene())
                     || getParentMenuId() != null;
         }
-
     }
 
     @ApiModel("更新表定义")
@@ -54,7 +53,5 @@ public class CodegenUpdateReqVO {
 
         @ApiModelProperty(value = "编号", required = true, example = "1")
         private Long id;
-
     }
-
 }

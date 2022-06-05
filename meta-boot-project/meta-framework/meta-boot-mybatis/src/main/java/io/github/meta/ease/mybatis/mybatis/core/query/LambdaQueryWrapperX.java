@@ -124,5 +124,4 @@ public class LambdaQueryWrapperX<T> extends LambdaQueryWrapper<T> {
         super.in(column, coll);
         return this;
     }
-
 }

@@ -34,5 +34,4 @@ public class DruidAdRemoveFilter extends OncePerRequestFilter {
         text = text.replaceAll("powered.*?shrek.wang</a>", "");
         response.getWriter().write(text);
     }
-
 }

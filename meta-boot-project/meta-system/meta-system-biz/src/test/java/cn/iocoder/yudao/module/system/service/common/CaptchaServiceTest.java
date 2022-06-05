@@ -22,6 +22,7 @@ public class CaptchaServiceTest extends BaseRedisUnitTest {
 
     @Resource
     private CaptchaRedisDAO captchaRedisDAO;
+
     @Resource
     private CaptchaProperties captchaProperties;
 
@@ -63,5 +64,4 @@ public class CaptchaServiceTest extends BaseRedisUnitTest {
         // 断言
         assertNull(captchaRedisDAO.get(uuid));
     }
-
 }

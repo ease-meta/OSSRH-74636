@@ -54,5 +54,4 @@ public class SmsCallbackController {
         smsSendService.receiveSmsStatus(SmsChannelEnum.TENCENT.getCode(), text);
         return success(true);
     }
-
 }

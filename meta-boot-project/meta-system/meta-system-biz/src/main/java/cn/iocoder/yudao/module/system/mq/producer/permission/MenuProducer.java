@@ -22,5 +22,4 @@ public class MenuProducer {
         MenuRefreshMessage message = new MenuRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

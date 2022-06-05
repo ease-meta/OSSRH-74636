@@ -21,5 +21,4 @@ public abstract class ApiRequestFilter extends OncePerRequestFilter {
         return !StrUtil.startWithAny(request.getRequestURI(), webProperties.getAdminApi().getPrefix(),
                 webProperties.getAppApi().getPrefix());
     }
-
 }

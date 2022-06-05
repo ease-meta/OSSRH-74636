@@ -56,5 +56,4 @@ public class SmsLogController {
         List<SmsLogExcelVO> datas = SmsLogConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "短信日志.xls", "数据", SmsLogExcelVO.class, datas);
     }
-
 }

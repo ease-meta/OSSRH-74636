@@ -29,5 +29,4 @@ public interface OAuth2ClientConvert {
     List<OAuth2ClientRespVO> convertList(List<OAuth2ClientDO> list);
 
     PageResult<OAuth2ClientRespVO> convertPage(PageResult<OAuth2ClientDO> page);
-
 }

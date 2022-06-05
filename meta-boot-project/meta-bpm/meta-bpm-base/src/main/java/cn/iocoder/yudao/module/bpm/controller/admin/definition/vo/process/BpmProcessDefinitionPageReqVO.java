@@ -31,5 +31,4 @@ public class BpmProcessDefinitionPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "标识", example = "process1641042089407", notes = "精准匹配")
     private String key;
-
 }

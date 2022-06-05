@@ -30,5 +30,4 @@ public class TestDemoBaseVO {
 
     @ApiModelProperty(value = "备注")
     private String remark;
-
 }

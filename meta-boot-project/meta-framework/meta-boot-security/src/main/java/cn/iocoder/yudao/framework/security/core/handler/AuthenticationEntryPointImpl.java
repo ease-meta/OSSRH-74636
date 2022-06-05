@@ -29,5 +29,4 @@ public class AuthenticationEntryPointImpl implements AuthenticationEntryPoint {
         // 返回 401
         ServletUtils.writeJSON(response, CommonResult.error(UNAUTHORIZED));
     }
-
 }

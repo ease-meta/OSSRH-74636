@@ -37,5 +37,4 @@ public class BpmModelPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "流程分类", notes = "参见 bpm_model_category 数据字典", example = "1")
     private String category;
-
 }

@@ -27,6 +27,7 @@ public class PayCommonResult<T> extends CommonResult<T> {
      * 由于第三方的错误码可能是字符串，所以使用 String 类型
      */
     private String apiCode;
+
     /**
      * API 返回提示
      */
@@ -35,7 +36,8 @@ public class PayCommonResult<T> extends CommonResult<T> {
     private PayCommonResult() {
     }
 
-    public static <T> PayCommonResult<T> build(String apiCode, String apiMsg, T data, AbstractPayCodeMapping codeMapping) {
+    public static <T> PayCommonResult<T> build(String apiCode, String apiMsg, T data,
+                                               AbstractPayCodeMapping codeMapping) {
         Assert.notNull(codeMapping, "参数 codeMapping 不能为空");
         PayCommonResult<T> result = new PayCommonResult<T>().setApiCode(apiCode).setApiMsg(apiMsg);
         result.setData(data);
@@ -53,5 +55,4 @@ public class PayCommonResult<T> extends CommonResult<T> {
         result.setMsg(ExceptionUtil.getRootCauseMessage(ex));
         return result;
     }
-
 }

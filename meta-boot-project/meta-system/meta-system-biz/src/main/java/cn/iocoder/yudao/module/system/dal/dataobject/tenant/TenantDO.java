@@ -37,36 +37,43 @@ public class TenantDO extends BaseDO {
      * 租户编号，自增
      */
     private Long id;
+
     /**
      * 租户名，唯一
      */
     private String name;
+
     /**
      * 联系人的用户编号
      * <p>
      * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO#getId()}
      */
     private Long contactUserId;
+
     /**
      * 联系人
      */
     private String contactName;
+
     /**
      * 联系手机
      */
     private String contactMobile;
+
     /**
      * 租户状态
      * <p>
      * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
      */
     private Integer status;
+
     /**
      * 绑定域名
      * <p>
      * TODO 芋艿：目前是预留字段，未来会支持根据域名，自动查询到对应的租户。等等
      */
     private String domain;
+
     /**
      * 租户套餐编号
      * <p>
@@ -74,13 +81,14 @@ public class TenantDO extends BaseDO {
      * 特殊逻辑：系统内置租户，不使用套餐，暂时使用 {@link #PACKAGE_ID_SYSTEM} 标识
      */
     private Long packageId;
+
     /**
      * 过期时间
      */
     private Date expireTime;
+
     /**
      * 账号数量
      */
     private Integer accountCount;
-
 }

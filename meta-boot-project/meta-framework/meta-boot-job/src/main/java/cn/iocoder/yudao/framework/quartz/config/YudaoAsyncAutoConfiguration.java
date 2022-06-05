@@ -29,8 +29,6 @@ public class YudaoAsyncAutoConfiguration {
                 executor.setTaskDecorator(TtlRunnable::get);
                 return executor;
             }
-
         };
     }
-
 }

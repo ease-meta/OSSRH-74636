@@ -72,21 +72,29 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
 
     @Resource
     private RuntimeService runtimeService;
+
     @Resource
     private BpmProcessInstanceExtMapper processInstanceExtMapper;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmTaskService taskService;
+
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private HistoryService historyService;
+
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     private BpmProcessInstanceResultEventPublisher processInstanceResultEventPublisher;
+
     @Resource
     private BpmMessageService messageService;
 
@@ -128,7 +136,8 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
     @Override
     public String createProcessInstance(Long userId, @Valid BpmProcessInstanceCreateReqDTO createReqDTO) {
         // 获得流程定义
-        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(createReqDTO.getProcessDefinitionKey());
+        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(
+                createReqDTO.getProcessDefinitionKey());
         // 发起流程
         return createProcessInstance0(userId, definition, createReqDTO.getVariables(), createReqDTO.getBusinessKey());
     }
@@ -253,7 +262,8 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         processInstanceExtMapper.updateByProcessInstanceId(instanceExtDO);
 
         // 发送流程被通过的消息
-        messageService.sendMessageWhenProcessInstanceApprove(BpmProcessInstanceConvert.INSTANCE.convert2ApprovedReq(instance));
+        messageService.sendMessageWhenProcessInstanceApprove(
+                BpmProcessInstanceConvert.INSTANCE.convert2ApprovedReq(instance));
 
         // 发送流程实例的状态事件
         processInstanceResultEventPublisher.sendProcessInstanceResultEvent(
@@ -276,7 +286,8 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         processInstanceExtMapper.updateByProcessInstanceId(instanceExtDO);
 
         // 发送流程被不通过的消息
-        messageService.sendMessageWhenProcessInstanceReject(BpmProcessInstanceConvert.INSTANCE.convert2RejectReq(processInstance, reason));
+        messageService.sendMessageWhenProcessInstanceReject(
+                BpmProcessInstanceConvert.INSTANCE.convert2RejectReq(processInstance, reason));
 
         // 发送流程实例的状态事件
         processInstanceResultEventPublisher.sendProcessInstanceResultEvent(
@@ -303,8 +314,9 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         runtimeService.setProcessInstanceName(instance.getId(), definition.getName());
 
         // 补全流程实例的拓展表
-        processInstanceExtMapper.updateByProcessInstanceId(new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
-                .setFormVariables(variables));
+        processInstanceExtMapper.updateByProcessInstanceId(
+                new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
+                        .setFormVariables(variables));
 
         return instance.getId();
     }

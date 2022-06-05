@@ -22,21 +22,23 @@ public class SmsCodeUseReqDTO {
     @Mobile
     @NotEmpty(message = "手机号不能为空")
     private String mobile;
+
     /**
      * 发送场景
      */
     @NotNull(message = "发送场景不能为空")
     @InEnum(SmsSceneEnum.class)
     private Integer scene;
+
     /**
      * 验证码
      */
     @NotEmpty(message = "验证码")
     private String code;
+
     /**
      * 使用 IP
      */
     @NotEmpty(message = "使用 IP 不能为空")
     private String usedIp;
-
 }

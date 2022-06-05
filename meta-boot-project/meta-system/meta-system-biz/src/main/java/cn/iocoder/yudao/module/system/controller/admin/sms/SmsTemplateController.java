@@ -44,6 +44,7 @@ public class SmsTemplateController {
 
     @Resource
     private SmsTemplateService smsTemplateService;
+
     @Resource
     private SmsSendService smsSendService;
 
@@ -107,5 +108,4 @@ public class SmsTemplateController {
         return success(smsSendService.sendSingleSmsToAdmin(sendReqVO.getMobile(), null,
                 sendReqVO.getTemplateCode(), sendReqVO.getTemplateParams()));
     }
-
 }

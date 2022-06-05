@@ -50,5 +50,4 @@ public class AliyunSmsCodeMapping implements SmsCodeMapping {
         }
         return SmsFrameworkErrorCodeConstants.SMS_UNKNOWN;
     }
-
 }

@@ -31,5 +31,4 @@ public class PermissionProducer {
         UserRoleRefreshMessage message = new UserRoleRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

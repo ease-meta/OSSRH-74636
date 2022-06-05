@@ -161,6 +161,4 @@ public interface BpmTaskService {
      * @return Task 拓展列表
      */
     List<BpmTaskExtDO> getTaskExtListByProcessInstanceId(String processInstanceId);
-
-
 }

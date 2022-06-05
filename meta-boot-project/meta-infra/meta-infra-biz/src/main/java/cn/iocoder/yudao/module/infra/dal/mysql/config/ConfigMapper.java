@@ -32,5 +32,4 @@ public interface ConfigMapper extends BaseMapperX<ConfigDO> {
                 .eqIfPresent(ConfigDO::getType, reqVO.getType())
                 .betweenIfPresent(ConfigDO::getCreateTime, reqVO.getBeginTime(), reqVO.getEndTime()));
     }
-
 }

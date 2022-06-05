@@ -24,5 +24,4 @@ public class AlipayPayCodeMapping extends AbstractPayCodeMapping {
         }
         return null;
     }
-
 }

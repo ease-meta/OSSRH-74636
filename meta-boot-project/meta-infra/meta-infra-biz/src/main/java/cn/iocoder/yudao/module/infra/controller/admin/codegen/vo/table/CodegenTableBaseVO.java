@@ -53,5 +53,4 @@ public class CodegenTableBaseVO {
 
     @ApiModelProperty(value = "父菜单编号", example = "1024")
     private Long parentMenuId;
-
 }

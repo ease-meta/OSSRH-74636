@@ -28,5 +28,4 @@ public class LoginLogRespVO extends LoginLogBaseVO {
 
     @ApiModelProperty(value = "登录时间", required = true)
     private Date createTime;
-
 }

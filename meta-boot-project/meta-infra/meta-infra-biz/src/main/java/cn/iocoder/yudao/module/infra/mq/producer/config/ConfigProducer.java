@@ -22,5 +22,4 @@ public class ConfigProducer {
         ConfigRefreshMessage message = new ConfigRefreshMessage();
         redisMQTemplate.send(message);
     }
-
 }

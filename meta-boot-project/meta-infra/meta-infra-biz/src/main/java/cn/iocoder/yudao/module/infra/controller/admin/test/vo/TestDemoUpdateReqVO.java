@@ -17,5 +17,4 @@ public class TestDemoUpdateReqVO extends TestDemoBaseVO {
     @ApiModelProperty(value = "编号", required = true)
     @NotNull(message = "编号不能为空")
     private Long id;
-
 }

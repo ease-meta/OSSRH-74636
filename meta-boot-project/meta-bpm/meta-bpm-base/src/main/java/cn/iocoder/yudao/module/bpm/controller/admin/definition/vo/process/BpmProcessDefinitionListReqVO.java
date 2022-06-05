@@ -31,5 +31,4 @@ public class BpmProcessDefinitionListReqVO extends PageParam {
 
     @ApiModelProperty(value = "中断状态", example = "1", notes = "参见 SuspensionState 枚举")
     private Integer suspensionState;
-
 }

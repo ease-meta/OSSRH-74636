@@ -53,5 +53,4 @@ public class SecurityFrameworkServiceImpl implements SecurityFrameworkService {
         }
         return CollUtil.containsAny(user.getScopes(), Arrays.asList(scope));
     }
-
 }

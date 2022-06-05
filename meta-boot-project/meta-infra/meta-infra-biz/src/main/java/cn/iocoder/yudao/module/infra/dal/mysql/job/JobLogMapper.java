@@ -39,5 +39,4 @@ public interface JobLogMapper extends BaseMapperX<JobLogDO> {
                 .orderByDesc("id") // ID 倒序
         );
     }
-
 }

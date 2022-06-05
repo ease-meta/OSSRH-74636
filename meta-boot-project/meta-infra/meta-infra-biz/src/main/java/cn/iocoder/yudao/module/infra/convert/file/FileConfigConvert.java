@@ -32,5 +32,4 @@ public interface FileConfigConvert {
     List<FileConfigRespVO> convertList(List<FileConfigDO> list);
 
     PageResult<FileConfigRespVO> convertPage(PageResult<FileConfigDO> page);
-
 }

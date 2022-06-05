@@ -96,5 +96,4 @@ public interface BpmUserGroupService {
      * @param ids 用户组编号数组
      */
     void validUserGroups(Set<Long> ids);
-
 }

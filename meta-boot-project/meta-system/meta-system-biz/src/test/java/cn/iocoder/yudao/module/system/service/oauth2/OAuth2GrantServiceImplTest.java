@@ -14,6 +14,7 @@ import org.mockito.Mock;
 
 import java.util.List;
 
+import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
@@ -36,8 +37,10 @@ public class OAuth2GrantServiceImplTest extends BaseMockitoUnitTest {
 
     @Mock
     private OAuth2TokenService oauth2TokenService;
+
     @Mock
     private OAuth2CodeService oauth2CodeService;
+
     @Mock
     private AdminAuthService adminAuthService;
 
@@ -165,5 +168,4 @@ public class OAuth2GrantServiceImplTest extends BaseMockitoUnitTest {
         // 调用，并断言
         assertTrue(oauth2GrantService.revokeToken(clientId, accessToken));
     }
-
 }

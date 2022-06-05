@@ -41,5 +41,4 @@ public interface ApiErrorLogMapper extends BaseMapperX<ApiErrorLogDO> {
                 .orderByDesc("id")
         );
     }
-
 }

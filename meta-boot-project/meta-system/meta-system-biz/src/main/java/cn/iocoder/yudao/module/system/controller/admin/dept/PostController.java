@@ -109,5 +109,4 @@ public class PostController {
         // 输出
         ExcelUtils.write(response, "岗位数据.xls", "岗位列表", PostExcelVO.class, data);
     }
-
 }

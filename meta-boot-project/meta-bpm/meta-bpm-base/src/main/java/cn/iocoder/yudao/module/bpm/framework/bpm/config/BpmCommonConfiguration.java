@@ -28,8 +28,8 @@ import org.springframework.context.annotation.Configuration;
 public class BpmCommonConfiguration {
 
     @Bean
-    public BpmProcessInstanceResultEventPublisher processInstanceResultEventPublisher(ApplicationEventPublisher publisher) {
+    public BpmProcessInstanceResultEventPublisher processInstanceResultEventPublisher(
+            ApplicationEventPublisher publisher) {
         return new BpmProcessInstanceResultEventPublisher(publisher);
     }
-
 }

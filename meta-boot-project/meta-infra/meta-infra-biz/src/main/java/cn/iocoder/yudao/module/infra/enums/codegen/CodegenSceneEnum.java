@@ -21,14 +21,17 @@ public enum CodegenSceneEnum {
      * 场景
      */
     private final Integer scene;
+
     /**
      * 场景名
      */
     private final String name;
+
     /**
      * 基础包名
      */
     private final String basePackage;
+
     /**
      * Controller 和 VO 类的前缀
      */
@@ -37,5 +40,4 @@ public enum CodegenSceneEnum {
     public static CodegenSceneEnum valueOf(Integer scene) {
         return firstMatch(sceneEnum -> sceneEnum.getScene().equals(scene), values());
     }
-
 }

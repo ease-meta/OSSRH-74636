@@ -19,5 +19,4 @@ public class OAuth2ClientRespVO extends OAuth2ClientBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
-
 }

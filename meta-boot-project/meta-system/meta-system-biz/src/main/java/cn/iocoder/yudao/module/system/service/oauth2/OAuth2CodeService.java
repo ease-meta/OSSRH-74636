@@ -35,5 +35,4 @@ public interface OAuth2CodeService {
      * @param code 授权码
      */
     OAuth2CodeDO consumeAuthorizationCode(String code);
-
 }

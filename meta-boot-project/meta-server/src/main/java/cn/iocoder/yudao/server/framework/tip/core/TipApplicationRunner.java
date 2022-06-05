@@ -32,5 +32,4 @@ public class TipApplicationRunner implements ApplicationRunner {
                     "https://t.zsxq.com/02B6ujIee");
         });
     }
-
 }

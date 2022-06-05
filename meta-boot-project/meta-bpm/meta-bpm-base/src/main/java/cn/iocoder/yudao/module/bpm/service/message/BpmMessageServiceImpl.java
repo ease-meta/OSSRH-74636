@@ -80,5 +80,4 @@ public class BpmMessageServiceImpl implements BpmMessageService {
     private String getProcessInstanceDetailUrl(String taskId) {
         return webProperties.getAdminUi().getUrl() + "/bpm/process-instance/detail?id=" + taskId;
     }
-
 }

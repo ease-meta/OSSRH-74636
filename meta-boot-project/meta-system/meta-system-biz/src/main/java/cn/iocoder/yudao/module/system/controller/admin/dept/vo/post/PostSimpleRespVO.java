@@ -17,5 +17,4 @@ public class PostSimpleRespVO {
 
     @ApiModelProperty(value = "岗位名称", required = true, example = "芋道")
     private String name;
-
 }

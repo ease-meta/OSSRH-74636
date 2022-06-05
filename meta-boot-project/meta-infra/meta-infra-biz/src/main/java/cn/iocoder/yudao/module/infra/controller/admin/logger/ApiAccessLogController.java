@@ -56,5 +56,4 @@ public class ApiAccessLogController {
         List<ApiAccessLogExcelVO> datas = ApiAccessLogConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "API 访问日志.xls", "数据", ApiAccessLogExcelVO.class, datas);
     }
-
 }

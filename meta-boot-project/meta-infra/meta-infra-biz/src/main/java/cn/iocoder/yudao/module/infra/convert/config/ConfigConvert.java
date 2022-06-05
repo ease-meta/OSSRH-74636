@@ -29,5 +29,4 @@ public interface ConfigConvert {
 
     @Mapping(source = "configKey", target = "key")
     List<ConfigExcelVO> convertList(List<ConfigDO> list);
-
 }

@@ -19,5 +19,4 @@ public class PostPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "展示状态", example = "1", notes = "参见 CommonStatusEnum 枚举类")
     private Integer status;
-
 }

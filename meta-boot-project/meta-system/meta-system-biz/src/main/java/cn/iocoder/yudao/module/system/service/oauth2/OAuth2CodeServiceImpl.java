@@ -60,5 +60,4 @@ public class OAuth2CodeServiceImpl implements OAuth2CodeService {
     private static String generateCode() {
         return IdUtil.fastSimpleUUID();
     }
-
 }

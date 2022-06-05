@@ -51,27 +51,36 @@ public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
 
     @Resource
     private BpmTaskAssignRuleMapper taskRuleMapper;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmModelService modelService;
+
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessDefinitionService processDefinitionService;
+
     @Resource
     private BpmUserGroupService userGroupService;
+
     @Resource
     private RoleApi roleApi;
+
     @Resource
     private DeptApi deptApi;
+
     @Resource
     private PostApi postApi;
+
     @Resource
     private AdminUserApi adminUserApi;
+
     @Resource
     private DictDataApi dictDataApi;
 
     @Override
-    public List<BpmTaskAssignRuleDO> getTaskAssignRuleListByProcessDefinitionId(String processDefinitionId, String taskDefinitionKey) {
+    public List<BpmTaskAssignRuleDO> getTaskAssignRuleListByProcessDefinitionId(String processDefinitionId,
+                                                                                String taskDefinitionKey) {
         return taskRuleMapper.selectListByProcessDefinitionId(processDefinitionId, taskDefinitionKey);
     }
 

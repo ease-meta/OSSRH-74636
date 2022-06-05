@@ -25,5 +25,4 @@ public class MenuRefreshConsumer extends AbstractChannelMessageListener<MenuRefr
         log.info("[onMessage][收到 Menu 刷新消息]");
         menuService.initLocalCache();
     }
-
 }

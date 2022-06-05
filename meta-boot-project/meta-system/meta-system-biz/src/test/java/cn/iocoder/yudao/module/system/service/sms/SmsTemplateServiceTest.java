@@ -1,8 +1,5 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
-import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
-import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
-import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClient;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
@@ -19,7 +16,10 @@ import cn.iocoder.yudao.module.system.enums.sms.SmsTemplateTypeEnum;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
 import com.google.common.collect.Lists;
 import io.github.meta.ease.common.enums.CommonStatusEnum;
+import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
 import io.github.meta.ease.common.pojo.PageResult;
+import io.github.meta.ease.common.util.collection.ArrayUtils;
+import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -32,8 +32,6 @@ import java.util.function.Consumer;
 
 import static cn.hutool.core.bean.BeanUtil.getFieldValue;
 import static cn.hutool.core.util.RandomUtil.randomEle;
-import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
-import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
@@ -43,6 +41,8 @@ import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNE
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_NOT_EXISTS;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_TEMPLATE_CODE_DUPLICATE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_TEMPLATE_NOT_EXISTS;
+import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
+import static io.github.meta.ease.common.util.date.DateUtils.max;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -62,10 +62,13 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
 
     @MockBean
     private SmsChannelService smsChannelService;
+
     @MockBean
     private SmsClientFactory smsClientFactory;
+
     @MockBean
     private SmsClient smsClient;
+
     @MockBean
     private SmsProducer smsProducer;
 
@@ -81,7 +84,8 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         // 调用
         smsTemplateService.initLocalCache();
         // 断言 deptCache 缓存
-        Map<String, SmsTemplateDO> smsTemplateCache = (Map<String, SmsTemplateDO>) getFieldValue(smsTemplateService, "smsTemplateCache");
+        Map<String, SmsTemplateDO> smsTemplateCache = (Map<String, SmsTemplateDO>) getFieldValue(smsTemplateService,
+                "smsTemplateCache");
         assertEquals(2, smsTemplateCache.size());
         assertPojoEquals(smsTemplate01, smsTemplateCache.get(smsTemplate01.getCode()));
         assertPojoEquals(smsTemplate02, smsTemplateCache.get(smsTemplate02.getCode()));
@@ -119,8 +123,9 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         when(smsChannelService.getSmsChannel(eq(channelDO.getId()))).thenReturn(channelDO);
         // mock 获得 API 短信模板成功
         when(smsClientFactory.getSmsClient(eq(reqVO.getChannelId()))).thenReturn(smsClient);
-        when(smsClient.getSmsTemplate(eq(reqVO.getApiTemplateId()))).thenReturn(randomPojo(SmsCommonResult.class, SmsTemplateRespDTO.class,
-                o -> o.setCode(GlobalErrorCodeConstants.SUCCESS.getCode())));
+        when(smsClient.getSmsTemplate(eq(reqVO.getApiTemplateId()))).thenReturn(
+                randomPojo(SmsCommonResult.class, SmsTemplateRespDTO.class,
+                        o -> o.setCode(GlobalErrorCodeConstants.SUCCESS.getCode())));
 
         // 调用
         Long smsTemplateId = smsTemplateService.createSmsTemplate(reqVO);
@@ -156,8 +161,9 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         when(smsChannelService.getSmsChannel(eq(channelDO.getId()))).thenReturn(channelDO);
         // mock 获得 API 短信模板成功
         when(smsClientFactory.getSmsClient(eq(reqVO.getChannelId()))).thenReturn(smsClient);
-        when(smsClient.getSmsTemplate(eq(reqVO.getApiTemplateId()))).thenReturn(randomPojo(SmsCommonResult.class, SmsTemplateRespDTO.class,
-                o -> o.setCode(GlobalErrorCodeConstants.SUCCESS.getCode())));
+        when(smsClient.getSmsTemplate(eq(reqVO.getApiTemplateId()))).thenReturn(
+                randomPojo(SmsCommonResult.class, SmsTemplateRespDTO.class,
+                        o -> o.setCode(GlobalErrorCodeConstants.SUCCESS.getCode())));
 
         // 调用
         smsTemplateService.updateSmsTemplate(reqVO);
@@ -218,9 +224,11 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         });
         smsTemplateMapper.insert(dbSmsTemplate);
         // 测试 type 不匹配
-        smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setType(SmsTemplateTypeEnum.VERIFICATION_CODE.getType())));
+        smsTemplateMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setType(SmsTemplateTypeEnum.VERIFICATION_CODE.getType())));
         // 测试 status 不匹配
-        smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        smsTemplateMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 测试 code 不匹配
         smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setCode("yuanma")));
         // 测试 content 不匹配
@@ -264,9 +272,11 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         });
         smsTemplateMapper.insert(dbSmsTemplate);
         // 测试 type 不匹配
-        smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setType(SmsTemplateTypeEnum.VERIFICATION_CODE.getType())));
+        smsTemplateMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setType(SmsTemplateTypeEnum.VERIFICATION_CODE.getType())));
         // 测试 status 不匹配
-        smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        smsTemplateMapper.insert(
+                ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 测试 code 不匹配
         smsTemplateMapper.insert(ObjectUtils.cloneIgnoreId(dbSmsTemplate, o -> o.setCode("yuanma")));
         // 测试 content 不匹配
@@ -379,5 +389,4 @@ public class SmsTemplateServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(SmsTemplateDO.class, ArrayUtils.append(consumer, consumers));
     }
-
 }

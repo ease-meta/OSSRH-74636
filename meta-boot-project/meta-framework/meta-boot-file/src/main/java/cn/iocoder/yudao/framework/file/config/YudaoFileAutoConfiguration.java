@@ -17,5 +17,4 @@ public class YudaoFileAutoConfiguration {
     public FileClientFactory fileClientFactory() {
         return new FileClientFactoryImpl();
     }
-
 }

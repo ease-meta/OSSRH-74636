@@ -72,5 +72,4 @@ public class YunpianSmsCodeMapping implements SmsCodeMapping {
         }
         return SmsFrameworkErrorCodeConstants.SMS_UNKNOWN;
     }
-
 }

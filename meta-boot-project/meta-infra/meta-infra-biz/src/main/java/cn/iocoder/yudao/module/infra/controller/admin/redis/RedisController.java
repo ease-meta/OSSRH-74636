@@ -51,5 +51,4 @@ public class RedisController {
         List<RedisKeyDefine> keyDefines = RedisKeyRegistry.list();
         return success(RedisConvert.INSTANCE.convertList(keyDefines));
     }
-
 }

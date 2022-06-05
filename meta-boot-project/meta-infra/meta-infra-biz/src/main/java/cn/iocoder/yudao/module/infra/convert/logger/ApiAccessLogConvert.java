@@ -29,5 +29,4 @@ public interface ApiAccessLogConvert {
     List<ApiAccessLogExcelVO> convertList02(List<ApiAccessLogDO> list);
 
     ApiAccessLogDO convert(ApiAccessLogCreateReqDTO bean);
-
 }

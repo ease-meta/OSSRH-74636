@@ -25,5 +25,4 @@ public enum CodegenColumnHtmlTypeEnum {
      * 条件
      */
     private final String type;
-
 }

@@ -86,5 +86,4 @@ public class ApiErrorLogExcelVO {
 
     @ExcelProperty("处理用户编号")
     private Integer processUserId;
-
 }

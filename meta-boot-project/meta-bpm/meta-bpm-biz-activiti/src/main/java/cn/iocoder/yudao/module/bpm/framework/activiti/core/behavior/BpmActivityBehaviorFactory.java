@@ -29,13 +29,16 @@ public class BpmActivityBehaviorFactory extends DefaultActivityBehaviorFactory {
 
     @Setter
     private BpmTaskAssignRuleService bpmTaskRuleService;
+
     @Setter
     private BpmUserGroupService userGroupService;
 
     @Setter
     private PermissionApi permissionApi;
+
     @Setter
     private DeptApi deptApi;
+
     @Setter
     private AdminUserApi adminUserApi;
 
@@ -57,5 +60,4 @@ public class BpmActivityBehaviorFactory extends DefaultActivityBehaviorFactory {
     // TODO 芋艿：并行任务 ParallelMultiInstanceBehavior
 
     // TODO 芋艿：并行任务 SequentialMultiInstanceBehavior
-
 }

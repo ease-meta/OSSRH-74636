@@ -22,5 +22,4 @@ public class YudaoLock4jConfiguration {
     public DefaultLockFailureStrategy lockFailureStrategy() {
         return new DefaultLockFailureStrategy();
     }
-
 }

@@ -47,5 +47,4 @@ public interface JobLogService extends JobLogFrameworkService {
      * @return 定时任务分页
      */
     List<JobLogDO> getJobLogList(JobLogExportReqVO exportReqVO);
-
 }

@@ -65,7 +65,5 @@ public class BpmProcessInstancePageItemRespVO {
 
         @ApiModelProperty(value = "任务名称", required = true, example = "芋道")
         private String name;
-
     }
-
 }

@@ -17,5 +17,4 @@ public class RoleMenuRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.role-menu.refresh";
     }
-
 }
