@@ -35,7 +35,7 @@ const config = {
     },
     // 默认的标签样式
     tagStyle: {
-        // #ifndef APP-PLUS-NVUE
+    // #ifndef APP-PLUS-NVUE
         address: 'font-style:italic',
         big: 'display:inline;font-size:1.2em',
         caption: 'display:table-caption;text-align:center',
@@ -78,7 +78,6 @@ function makeMap(str) {
 
     return map
 }
-
 /**
  * @description 解码 html 实体
  * @param {String} str 要解码的字符串
@@ -109,7 +108,6 @@ function decodeEntity(str, amp) {
 
     return str
 }
-
 /**
  * @description html 解析器
  * @param {Object} vm 组件实例
@@ -124,7 +122,6 @@ function parser(vm) {
     this.stack = []
     this.nodes = []
 }
-
 /**
  * @description 执行解析
  * @param {String} content 要解析的文本
@@ -869,7 +866,6 @@ parser.prototype.onText = function (text) {
         siblings.push(node)
     }
 }
-
 /**
  * @description html 词法分析器
  * @param {Object} handler 高层处理器
@@ -878,7 +874,6 @@ parser.prototype.onText = function (text) {
 function lexer(handler) {
     this.handler = handler
 }
-
 /**
  * @description 执行解析
  * @param {String} content 要解析的文本

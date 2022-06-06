@@ -1,13 +1,11 @@
 type AnyObject = Record<string | number | symbol, any>
 type HttpPromise<T> = Promise<HttpResponse<T>>;
 type Tasks = UniApp.RequestTask | UniApp.UploadTask | UniApp.DownloadTask
-
 export interface RequestTask {
     abort: () => void;
     offHeadersReceived: () => void;
     onHeadersReceived: () => void;
 }
-
 export interface HttpRequestConfig<T = Tasks> {
     /** 请求基地址 */
     baseURL?: string;
@@ -58,7 +56,6 @@ export interface HttpRequestConfig<T = Tasks> {
     /**  全局自定义验证器 */
     validateStatus?: (statusCode: number) => boolean | void;
 }
-
 export interface HttpResponse<T = any> {
     config: HttpRequestConfig;
     statusCode: number;
@@ -67,18 +64,15 @@ export interface HttpResponse<T = any> {
     errMsg: string;
     header: AnyObject;
 }
-
 export interface HttpUploadResponse<T = any> {
     config: HttpRequestConfig;
     statusCode: number;
     data: T;
     errMsg: string;
 }
-
 export interface HttpDownloadResponse extends HttpResponse {
     tempFilePath: string;
 }
-
 export interface HttpError {
     config: HttpRequestConfig;
     statusCode?: number;
@@ -87,7 +81,6 @@ export interface HttpError {
     errMsg: string;
     header?: AnyObject;
 }
-
 export interface HttpInterceptorManager<V, E = V> {
     use(
         onFulfilled?: (config: V) => Promise<V> | V,
@@ -135,5 +128,4 @@ export abstract class HttpRequestAbstract {
 
 declare class HttpRequest extends HttpRequestAbstract {
 }
-
 export default HttpRequest;

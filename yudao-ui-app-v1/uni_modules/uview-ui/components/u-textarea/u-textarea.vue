@@ -1,5 +1,5 @@
 <template>
-  <view class="u-textarea" :class="textareaClass" :style="[textareaStyle]">
+    <view class="u-textarea" :class="textareaClass" :style="[textareaStyle]">
         <textarea
             class="u-textarea__field"
             :value="innerValue"
@@ -28,16 +28,16 @@
             @confirm="onConfirm"
             @keyboardheightchange="onKeyboardheightchange"
         ></textarea>
-    <text
-        class="u-textarea__count"
-        :style="{
+      <text
+          class="u-textarea__count"
+          :style="{
                 'background-color': disabled ? 'transparent' : '#fff',
             }"
-        v-if="count"
-    >{{ value.length }}/{{ maxlength }}
-    </text
-    >
-  </view>
+          v-if="count"
+      >{{ value.length }}/{{ maxlength }}
+      </text
+      >
+    </view>
 </template>
 
 <script>

@@ -6,12 +6,10 @@ function padZero(num, targetLength = 2) {
     }
     return str
 }
-
 const SECOND = 1000
 const MINUTE = 60 * SECOND
 const HOUR = 60 * MINUTE
 const DAY = 24 * HOUR
-
 export function parseTimeData(time) {
     const days = Math.floor(time / DAY)
     const hours = Math.floor((time % DAY) / HOUR)
@@ -26,7 +24,6 @@ export function parseTimeData(time) {
         milliseconds
     }
 }
-
 export function parseFormat(format, timeData) {
     let {
         days,
@@ -60,7 +57,6 @@ export function parseFormat(format, timeData) {
     }
     return format.replace('SSS', padZero(milliseconds, 3))
 }
-
 export function isSameSecond(time1, time2) {
     return Math.floor(time1 / 1000) === Math.floor(time2 / 1000)
 }

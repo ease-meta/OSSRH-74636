@@ -12,7 +12,7 @@ import cn.iocoder.yudao.module.system.convert.oauth2.OAuth2OpenConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ApproveDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
-import cn.iocoder.yudao.module.system.enums.auth.OAuth2GrantTypeEnum;
+import cn.iocoder.yudao.module.system.enums.oauth2.OAuth2GrantTypeEnum;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2ApproveService;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2ClientService;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2GrantService;
@@ -130,8 +130,7 @@ public class OAuth2OpenController {
         OAuth2AccessTokenDO accessTokenDO;
         switch (grantTypeEnum) {
             case AUTHORIZATION_CODE:
-                accessTokenDO = oauth2GrantService.grantAuthorizationCodeForAccessToken(client.getClientId(), code, redirectUri,
-                        state);
+                accessTokenDO = oauth2GrantService.grantAuthorizationCodeForAccessToken(client.getClientId(), code, redirectUri, state);
                 break;
             case PASSWORD:
                 accessTokenDO = oauth2GrantService.grantPassword(username, password, client.getClientId(), scopes);
@@ -276,21 +275,18 @@ public class OAuth2OpenController {
     private String getImplicitGrantRedirect(Long userId, OAuth2ClientDO client,
                                             List<String> scopes, String redirectUri, String state) {
         // 1. 创建 access token 访问令牌
-        OAuth2AccessTokenDO accessTokenDO = oauth2GrantService.grantImplicit(userId, getUserType(), client.getClientId(),
-                scopes);
+        OAuth2AccessTokenDO accessTokenDO = oauth2GrantService.grantImplicit(userId, getUserType(), client.getClientId(), scopes);
         Assert.notNull(accessTokenDO, "访问令牌不能为空"); // 防御性检查
         // 2. 拼接重定向的 URL
         // noinspection unchecked
-        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state,
-                accessTokenDO.getExpiresTime(),
+        return OAuth2Utils.buildImplicitRedirectUri(redirectUri, accessTokenDO.getAccessToken(), state, accessTokenDO.getExpiresTime(),
                 scopes, JsonUtils.parseObject(client.getAdditionalInformation(), Map.class));
     }
 
     private String getAuthorizationCodeRedirect(Long userId, OAuth2ClientDO client,
                                                 List<String> scopes, String redirectUri, String state) {
         // 1. 创建 code 授权码
-        String authorizationCode = oauth2GrantService.grantAuthorizationCodeForCode(userId, getUserType(),
-                client.getClientId(), scopes,
+        String authorizationCode = oauth2GrantService.grantAuthorizationCodeForCode(userId, getUserType(), client.getClientId(), scopes,
                 redirectUri, state);
         // 2. 拼接重定向的 URL
         return OAuth2Utils.buildAuthorizationCodeRedirectUri(redirectUri, authorizationCode, state);

@@ -291,7 +291,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/styles/mixin.scss';
-
 .tab-editor {
   position: absolute;
   top: 33px;
@@ -320,7 +319,6 @@ export default {
 
 .right-preview {
   height: 100%;
-
   .result-wrapper {
     height: calc(100vh - 33px);
     width: 100%;
@@ -329,7 +327,6 @@ export default {
     box-sizing: border-box;
   }
 }
-
 @include action-bar;
 ::v-deep .el-drawer__header {
   display: none;

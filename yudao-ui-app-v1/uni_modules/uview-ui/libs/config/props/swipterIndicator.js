@@ -14,6 +14,6 @@ export default {
         current: 0,
         indicatorActiveColor: '',
         indicatorInactiveColor: '',
-        indicatorMode: 'line'
+		indicatorMode: 'line'
     }
 }

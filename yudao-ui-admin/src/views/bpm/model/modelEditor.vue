@@ -136,7 +136,6 @@ export default {
   right: 8px;
   bottom: 8px;
   z-index: 1;
-
   .open-control-dialog {
     width: 48px;
     height: 48px;
@@ -166,7 +165,6 @@ export default {
     line-height: 32px;
   }
 }
-
 .element-overlays {
   box-sizing: border-box;
   padding: 8px;
@@ -178,7 +176,6 @@ export default {
 .my-process-designer {
   height: calc(100vh - 84px);
 }
-
 .process-panel__container {
   position: absolute;
   right: 0;

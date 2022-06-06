@@ -365,6 +365,5 @@ export default {
 ._select {
   user-select: text;
 }
-
 /* #endif */
 </style>

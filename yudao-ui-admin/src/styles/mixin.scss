@@ -13,23 +13,18 @@
       cursor: pointer;
       font-size: 14px;
       user-select: none;
-
       & i {
         font-size: 20px;
       }
-
       &:hover {
         color: #4348d4;
       }
     }
-
     .bar-btn + .bar-btn {
       margin-left: 8px;
     }
-
     .delete-btn {
       color: #f56c6c;
-
       &:hover {
         color: #ea0b30;
       }

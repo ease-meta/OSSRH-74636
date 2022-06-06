@@ -193,7 +193,6 @@ export default {
 ::v-deep.hide .el-upload--picture-card {
   display: none;
 }
-
 // 去掉动画效果
 ::v-deep .el-list-enter-active,
 ::v-deep .el-list-leave-active {

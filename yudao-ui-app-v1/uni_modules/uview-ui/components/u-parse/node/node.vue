@@ -116,7 +116,6 @@ module.exports = {
   return !item.c
   }
 }
-
 </script>
 <script>
 
@@ -519,6 +518,5 @@ export default {
   width: 300px;
   height: 225px;
 }
-
 /* #endif */
 </style>

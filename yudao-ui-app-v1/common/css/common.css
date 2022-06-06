@@ -127,12 +127,10 @@ button:after {
 .b-b, .b-t, .b-l, .b-r {
     position: relative;
 }
-
 /* 点击态 */
 .hover-gray {
     background: #fafafa !important;
 }
-
 .hover-dark {
     background: #f0f0f0 !important;
 }
@@ -154,7 +152,6 @@ button:after {
     display: block;
     /* #endif */
 }
-
 .clamp2 {
     /* #ifdef APP-PLUS-NVUE */
     lines: 2;
@@ -194,7 +191,6 @@ button:after {
 .fill {
     flex: 1;
 }
-
 /* input */
 .placeholder {
     color: #999 !important;

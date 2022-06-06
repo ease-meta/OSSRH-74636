@@ -138,7 +138,6 @@ export default {
 ::v-deep .el-drawer__header {
   display: none;
 }
-
 @include action-bar;
 
 .json-editor {

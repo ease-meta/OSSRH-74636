@@ -81,7 +81,6 @@ export default {
   display: block;
   margin-left: 0px;
 }
-
 ::v-deep .el-transfer__button:first-child {
   margin-bottom: 10px;
 }

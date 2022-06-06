@@ -75,7 +75,6 @@
 	export default {
 		mixins:[renderBiz]
 	}
-
 </script>
 <!-- #endif -->
 

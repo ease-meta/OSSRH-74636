@@ -1,5 +1,5 @@
 <template>
-  <view class="u-gap" :style="[gapStyle]"></view>
+	<view class="u-gap" :style="[gapStyle]"></view>
 </template>
 
 <script>

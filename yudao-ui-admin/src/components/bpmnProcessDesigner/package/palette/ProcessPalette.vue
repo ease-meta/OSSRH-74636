@@ -38,7 +38,6 @@ export default {
 .my-process-palette {
   box-sizing: border-box;
   padding: 80px 20px 20px 20px;
-
   .test-button {
     box-sizing: border-box;
     padding: 8px 16px;

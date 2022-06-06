@@ -29,5 +29,4 @@ function throttle(func, wait = 500, immediate = true) {
         }, wait)
     }
 }
-
 export default throttle

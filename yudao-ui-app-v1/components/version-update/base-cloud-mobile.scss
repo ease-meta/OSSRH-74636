@@ -419,6 +419,7 @@ $s: 0;
 }
 
 
+
 /* 文字溢出隐藏 */
 .clip {
   width: 100%;
@@ -602,7 +603,6 @@ $s: 0;
     left: auto;
   }
 }
-
 @for $i from 0 through 20 {
   .z#{$i} {
     z-index: $i !important;
@@ -1163,6 +1163,7 @@ $p: 200;
   }
   $p: $p - 5 ;
 }
+
 
 
 /* 阴影 */

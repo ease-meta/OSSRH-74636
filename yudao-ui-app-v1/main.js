@@ -32,7 +32,6 @@ const app = new Vue({
     ...App
 })
 app.$mount()
-
 // #endif
 export function createApp() {
     const app = createSSRApp(App)
@@ -40,5 +39,4 @@ export function createApp() {
         app
     }
 }
-
 // #endif

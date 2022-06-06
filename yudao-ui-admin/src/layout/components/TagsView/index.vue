@@ -239,7 +239,6 @@ export default {
   background: #fff;
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
-
   .tags-view-wrapper {
     .tags-view-item {
       display: inline-block;
@@ -254,20 +253,16 @@ export default {
       font-size: 12px;
       margin-left: 5px;
       margin-top: 4px;
-
       &:first-of-type {
         margin-left: 15px;
       }
-
       &:last-of-type {
         margin-right: 15px;
       }
-
       &.active {
         background-color: #42b983;
         color: #fff;
         border-color: #42b983;
-
         &::before {
           content: '';
           background: #fff;
@@ -281,7 +276,6 @@ export default {
       }
     }
   }
-
   .contextmenu {
     margin: 0;
     background: #fff;
@@ -294,12 +288,10 @@ export default {
     font-weight: 400;
     color: #333;
     box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, .3);
-
     li {
       margin: 0;
       padding: 7px 16px;
       cursor: pointer;
-
       &:hover {
         background: #eee;
       }
@@ -320,13 +312,11 @@ export default {
       text-align: center;
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
       transform-origin: 100% 50%;
-
       &:before {
         transform: scale(.6);
         display: inline-block;
         vertical-align: -3px;
       }
-
       &:hover {
         background-color: #b4bccc;
         color: #fff;

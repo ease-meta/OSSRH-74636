@@ -12,9 +12,9 @@ import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthSocialQuickLo
 import cn.iocoder.yudao.module.system.convert.auth.AuthConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
-import cn.iocoder.yudao.module.system.enums.auth.OAuth2ClientConstants;
 import cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum;
 import cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum;
+import cn.iocoder.yudao.module.system.enums.oauth2.OAuth2ClientConstants;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
 import cn.iocoder.yudao.module.system.service.common.CaptchaService;
 import cn.iocoder.yudao.module.system.service.logger.LoginLogService;
@@ -124,8 +124,7 @@ public class AdminAuthServiceImpl implements AdminAuthService {
     @Override
     public AuthLoginRespVO smsLogin(AuthSmsLoginReqVO reqVO) {
         // 校验验证码
-        smsCodeApi.useSmsCode(
-                AuthConvert.INSTANCE.convert(reqVO, SmsSceneEnum.ADMIN_MEMBER_LOGIN.getScene(), getClientIP()));
+        smsCodeApi.useSmsCode(AuthConvert.INSTANCE.convert(reqVO, SmsSceneEnum.ADMIN_MEMBER_LOGIN.getScene(), getClientIP()));
 
         // 获得用户信息
         AdminUserDO user = userService.getUserByMobile(reqVO.getMobile());
@@ -215,8 +214,7 @@ public class AdminAuthServiceImpl implements AdminAuthService {
 
     @Override
     public AuthLoginRespVO refreshToken(String refreshToken) {
-        OAuth2AccessTokenDO accessTokenDO = oauth2TokenService.refreshAccessToken(refreshToken,
-                OAuth2ClientConstants.CLIENT_ID_DEFAULT);
+        OAuth2AccessTokenDO accessTokenDO = oauth2TokenService.refreshAccessToken(refreshToken, OAuth2ClientConstants.CLIENT_ID_DEFAULT);
         return AuthConvert.INSTANCE.convert(accessTokenDO);
     }
 

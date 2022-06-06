@@ -77,7 +77,6 @@ export default {
   margin: 0;
   padding: 0;
   font-size: 0;
-
   li {
     list-style-type: none;
     text-align: center;
@@ -105,7 +104,6 @@ export default {
     }
   }
 }
-
 .icon-dialog {
   ::v-deep .el-dialog {
     border-radius: 8px;
@@ -116,11 +114,9 @@ export default {
     max-height: 92vh;
     overflow: hidden;
     box-sizing: border-box;
-
     .el-dialog__header {
       padding-top: 14px;
     }
-
     .el-dialog__body {
       margin: 0 20px 20px 20px;
       padding: 0;

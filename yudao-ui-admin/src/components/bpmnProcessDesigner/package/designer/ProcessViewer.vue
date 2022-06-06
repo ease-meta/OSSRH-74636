@@ -323,7 +323,6 @@ export default {
   stroke-dasharray: 4px !important;
   fill-opacity: 0.2 !important;
 }
-
 .highlight-todo.djs-shape .djs-visual > :nth-child(1) {
   fill: #1890ff !important;
   stroke: #1890ff !important;
@@ -351,17 +350,14 @@ export default {
   stroke: green !important;
   fill-opacity: 0.2 !important;
 }
-
 .highlight.djs-shape .djs-visual > :nth-child(2) {
   fill: green !important;
 }
-
 .highlight.djs-shape .djs-visual > path {
   fill: green !important;
   fill-opacity: 0.2 !important;
   stroke: green !important;
 }
-
 .highlight.djs-connection > .djs-visual > path {
   stroke: green !important;
 }
@@ -396,17 +392,14 @@ export default {
   stroke: red !important;
   fill-opacity: 0.2 !important;
 }
-
 .highlight-reject.djs-shape .djs-visual > :nth-child(2) {
   fill: red !important;
 }
-
 .highlight-reject.djs-shape .djs-visual > path {
   fill: red !important;
   fill-opacity: 0.2 !important;
   stroke: red !important;
 }
-
 .highlight-reject.djs-connection > .djs-visual > path {
   stroke: red !important;
 }
@@ -441,17 +434,14 @@ export default {
   stroke: grey !important;
   fill-opacity: 0.2 !important;
 }
-
 .highlight-cancel.djs-shape .djs-visual > :nth-child(2) {
   fill: grey !important;
 }
-
 .highlight-cancel.djs-shape .djs-visual > path {
   fill: grey !important;
   fill-opacity: 0.2 !important;
   stroke: grey !important;
 }
-
 .highlight-cancel.djs-connection > .djs-visual > path {
   stroke: grey !important;
 }

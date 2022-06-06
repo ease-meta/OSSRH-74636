@@ -978,63 +978,51 @@ export default {
   right: 0;
   top: 0;
   padding-top: 3px;
-
   .field-box {
     position: relative;
     height: calc(100vh - 42px);
     box-sizing: border-box;
     overflow: hidden;
   }
-
   .el-scrollbar {
     height: 100%;
   }
 }
-
 .select-item {
   display: flex;
   border: 1px dashed #fff;
   box-sizing: border-box;
-
   & .close-btn {
     cursor: pointer;
     color: #f56c6c;
   }
-
   & .el-input + .el-input {
     margin-left: 4px;
   }
 }
-
 .select-item + .select-item {
   margin-top: 4px;
 }
-
 .select-item.sortable-chosen {
   border: 1px dashed #409eff;
 }
-
 .select-line-icon {
   line-height: 32px;
   font-size: 22px;
   padding: 0 4px;
   color: #777;
 }
-
 .option-drag {
   cursor: move;
 }
-
 .time-range {
   .el-date-editor {
     width: 227px;
   }
-
   ::v-deep .el-icon-time {
     display: none;
   }
 }
-
 .document-link {
   position: absolute;
   display: block;

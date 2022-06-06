@@ -138,6 +138,7 @@ export default {
     line-height: 36 rpx;
   }
 }
+	
 
 
 </style>

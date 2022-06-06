@@ -36,6 +36,7 @@ export function deleteChannel(id) {
 // }
 
 
+
 // 获得支付渠道分页
 export function getChannelPage(query) {
   return request({

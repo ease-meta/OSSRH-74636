@@ -26,8 +26,8 @@
     /* #endif */
   }
 }
-
-
+ 
+ 
 // /* #ifdef APP-NVUE */
 // 此处加上!important并非随意乱用，而是因为目前*.nvue页面编译到H5时，
 // App.vue的样式会被uni-app的view元素的自带border属性覆盖，导致无效
@@ -38,7 +38,7 @@
   border-color: $u-border-color !important;
   border-style: solid;
 }
-
+ 
 .u-border-top {
   border-top-width: 0.5px !important;
   border-color: $u-border-color !important;
@@ -56,7 +56,7 @@
   border-color: $u-border-color !important;
   border-right-style: solid;
 }
-
+ 
 .u-border-bottom {
   border-bottom-width: 0.5px !important;
   border-color: $u-border-color !important;
@@ -70,7 +70,6 @@
   border-top-style: solid;
   border-bottom-style: solid;
 }
-
 // /* #endif */
 
 // 去除button的所有默认样式，让其表现跟普通的view、text元素一样
@@ -91,7 +90,6 @@
 .u-reset-button::after {
   border: none;
 }
-
 /* #endif */
 
 .u-hover-class {

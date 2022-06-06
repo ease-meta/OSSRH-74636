@@ -358,7 +358,6 @@ var types = {
         return typeof value === 'string' && !!value.match(pattern.hex)
     }
 }
-
 /**
  *  Rule for validating the type of a value.
  *
@@ -450,7 +449,6 @@ function range(rule, value, source, errors, options) {
 }
 
 const ENUM = 'enum'
-
 /**
  *  Rule for validating a value exists in an enumerable list.
  *
@@ -798,7 +796,6 @@ function object(rule, value, callback, source, options) {
 }
 
 const ENUM$1 = 'enum'
-
 /**
  *  Validates an enumerable list.
  *
@@ -1020,7 +1017,6 @@ function newMessages() {
         }
     }
 }
-
 const messages = newMessages()
 
 /**

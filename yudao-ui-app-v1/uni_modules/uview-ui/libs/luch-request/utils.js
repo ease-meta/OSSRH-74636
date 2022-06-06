@@ -111,7 +111,6 @@ export function isPlainObject(obj) {
  */
 export function deepMerge(/* obj1, obj2, obj3, ... */) {
     const result = {}
-
     function assignValue(val, key) {
         if (typeof result[key] === 'object' && typeof val === 'object') {
             result[key] = deepMerge(result[key], val)
@@ -121,7 +120,6 @@ export function deepMerge(/* obj1, obj2, obj3, ... */) {
             result[key] = val
         }
     }
-
     for (let i = 0, l = arguments.length; i < l; i++) {
         forEach(arguments[i], assignValue)
     }

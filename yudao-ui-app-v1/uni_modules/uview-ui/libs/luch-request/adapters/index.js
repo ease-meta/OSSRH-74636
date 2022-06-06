@@ -42,7 +42,7 @@ export default (config) => new Promise((resolve, reject) => {
         delete _config.header['content-type']
         delete _config.header['Content-Type']
         const otherConfig = {
-            // #ifdef MP-ALIPAY
+        // #ifdef MP-ALIPAY
             fileType: config.fileType,
             // #endif
             filePath: config.filePath,

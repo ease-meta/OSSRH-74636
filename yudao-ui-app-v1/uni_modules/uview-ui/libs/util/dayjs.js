@@ -97,7 +97,6 @@
         function d(t) {
             this.$L = D(t.locale, null, !0), this.parse(t)
         }
-
         const $ = d.prototype
         return $.parse = function (t) {
             this.$d = (function (t) {

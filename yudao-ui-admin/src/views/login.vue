@@ -308,18 +308,15 @@ export default {
   align-items: cen;
   cursor: pointer;
 }
-
 .oauth-login-item {
   display: flex;
   align-items: center;
   margin-right: 10px;
 }
-
 .oauth-login-item img {
   height: 25px;
   width: 25px;
 }
-
 .oauth-login-item span:hover {
   text-decoration: underline red;
   color: red;

@@ -1,6 +1,5 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.oauth2;
 
-import cn.iocoder.yudao.module.system.enums.auth.OAuth2GrantTypeEnum;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -82,7 +81,6 @@ public class OAuth2ClientDO extends BaseDO {
     /**
      * 授权类型（模式）
      * <p>
-     * 枚举 {@link OAuth2GrantTypeEnum}
      */
     @TableField(typeHandler = JacksonTypeHandler.class)
     private List<String> authorizedGrantTypes;
