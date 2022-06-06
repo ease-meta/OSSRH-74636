@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.service.file;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.file.core.client.FileClient;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigPageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -98,4 +98,5 @@ public interface FileConfigService {
      * @return 文件客户端
      */
     FileClient getMasterFileClient();
+
 }

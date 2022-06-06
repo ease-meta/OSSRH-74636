@@ -1,14 +1,18 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl.aliyun;
 
 import cn.hutool.core.util.ReflectUtil;
+import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;
-import cn.iocoder.yudao.framework.sms.core.enums.SmsFrameworkErrorCodeConstants;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsTemplateAuditStatusEnum;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
-import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
+import cn.iocoder.yudao.framework.common.util.collection.MapUtils;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
+import cn.iocoder.yudao.framework.sms.core.enums.SmsFrameworkErrorCodeConstants;
 import com.aliyuncs.AcsRequest;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.QuerySmsTemplateRequest;
@@ -17,10 +21,6 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.google.common.collect.Lists;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.util.collection.MapUtils;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatcher;
@@ -30,20 +30,15 @@ import org.mockito.Mock;
 import java.util.List;
 import java.util.function.Function;
 
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 
 /**
- * {@link cn.iocoder.yudao.framework.sms.core.client.impl.aliyun.AliyunSmsClient} 的单元测试
+ * {@link AliyunSmsClient} 的单元测试
  *
  * @author 芋道源码
  */
@@ -186,7 +181,7 @@ public class AliyunSmsClientTest extends BaseMockitoUnitTest {
         when(client.getAcsResponse(any(AcsRequest.class))).thenThrow(ex);
 
         // 调用，并断言异常
-        SmsCommonResult<?> result = smsClient.invoke(request, null);
+        SmsCommonResult<?> result = smsClient.invoke(request,null);
         // 断言
         assertEquals(ex.getErrCode(), result.getApiCode());
         assertEquals(ex.getErrMsg(), result.getApiMsg());
@@ -226,4 +221,5 @@ public class AliyunSmsClientTest extends BaseMockitoUnitTest {
         assertEquals(SmsTemplateAuditStatusEnum.SUCCESS.getStatus(), result.getData().getAuditStatus());
         assertEquals(response.getReason(), result.getData().getAuditReason());
     }
+
 }

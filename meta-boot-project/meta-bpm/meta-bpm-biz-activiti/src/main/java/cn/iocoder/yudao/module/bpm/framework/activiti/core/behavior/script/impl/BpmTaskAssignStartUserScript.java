@@ -2,7 +2,7 @@ package cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.impl
 
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskRuleScriptEnum;
 import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
-import io.github.meta.ease.common.util.collection.SetUtils;
+import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
 import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.springframework.stereotype.Component;
 
@@ -26,4 +26,5 @@ public class BpmTaskAssignStartUserScript implements BpmTaskAssignScript {
     public BpmTaskRuleScriptEnum getEnum() {
         return BpmTaskRuleScriptEnum.START_USER;
     }
+
 }

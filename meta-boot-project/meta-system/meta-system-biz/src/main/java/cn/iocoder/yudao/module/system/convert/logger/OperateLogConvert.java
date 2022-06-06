@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.convert.logger;
 
-import cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogExcelVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogRespVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.MapUtils;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.MapUtils;
+import cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,8 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.SUCCESS;
-
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.SUCCESS;
 
 @Mapper
 public interface OperateLogConvert {
@@ -38,4 +37,5 @@ public interface OperateLogConvert {
     }
 
     OperateLogExcelVO convert02(OperateLogDO bean);
+
 }

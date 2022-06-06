@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="异常处理（错误码）" url="https://doc.iocoder.cn/exception/"/>
+    <doc-alert title="异常处理（错误码）" url="https://doc.iocoder.cn/exception/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="错误码类型" prop="type">
@@ -10,8 +10,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="应用名" prop="applicationName">
-        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="错误码编码" prop="code">
         <el-input v-model="queryParams.code" placeholder="请输入错误码编码" clearable @keyup.enter.native="handleQuery"/>
@@ -21,7 +20,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -33,30 +32,27 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:error-code:create']">新增
-        </el-button>
+                   v-hasPermi="['system:error-code:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading"
-                   v-hasPermi="['system:error-code:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
+                   v-hasPermi="['system:error-code:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="编号" align="center" prop="id"/>
+      <el-table-column label="编号" align="center" prop="id" />
       <el-table-column label="类型" align="center" prop="type" width="80">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.SYSTEM_ERROR_CODE_TYPE" :value="scope.row.type"/>
+          <dict-tag :type="DICT_TYPE.SYSTEM_ERROR_CODE_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
-      <el-table-column label="应用名" align="center" prop="applicationName" width="200"/>
-      <el-table-column label="错误码编码" align="center" prop="code" width="120"/>
-      <el-table-column label="错误码提示" align="center" prop="message" width="300"/>
-      <el-table-column label="备注" align="center" prop="memo" width="200"/>
+      <el-table-column label="应用名" align="center" prop="applicationName" width="200" />
+      <el-table-column label="错误码编码" align="center" prop="code" width="120" />
+      <el-table-column label="错误码提示" align="center" prop="message" width="300" />
+      <el-table-column label="备注" align="center" prop="memo" width="200" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -65,11 +61,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['system:error-code:update']">修改
-          </el-button>
+                     v-hasPermi="['system:error-code:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['system:error-code:delete']">删除
-          </el-button>
+                     v-hasPermi="['system:error-code:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -81,16 +75,16 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="100px">
         <el-form-item label="应用名" prop="applicationName">
-          <el-input v-model="form.applicationName" placeholder="请输入应用名"/>
+          <el-input v-model="form.applicationName" placeholder="请输入应用名" />
         </el-form-item>
         <el-form-item label="错误码编码" prop="code">
-          <el-input v-model="form.code" placeholder="请输入错误码编码"/>
+          <el-input v-model="form.code" placeholder="请输入错误码编码" />
         </el-form-item>
         <el-form-item label="错误码提示" prop="message">
-          <el-input v-model="form.message" placeholder="请输入错误码提示"/>
+          <el-input v-model="form.message" placeholder="请输入错误码提示" />
         </el-form-item>
         <el-form-item label="备注" prop="memo">
-          <el-input v-model="form.memo" placeholder="请输入备注"/>
+          <el-input v-model="form.memo" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -102,18 +96,12 @@
 </template>
 
 <script>
-import {
-  createErrorCode,
-  deleteErrorCode,
-  exportErrorCodeExcel,
-  getErrorCode,
-  getErrorCodePage,
-  updateErrorCode
-} from "@/api/system/errorCode";
+import { createErrorCode, updateErrorCode, deleteErrorCode, getErrorCode, getErrorCodePage, exportErrorCodeExcel } from "@/api/system/errorCode";
 
 export default {
   name: "ErrorCode",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -144,9 +132,9 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        applicationName: [{required: true, message: "应用名不能为空", trigger: "blur"}],
-        code: [{required: true, message: "错误码编码不能为空", trigger: "blur"}],
-        message: [{required: true, message: "错误码提示不能为空", trigger: "blur"}],
+        applicationName: [{ required: true, message: "应用名不能为空", trigger: "blur" }],
+        code: [{ required: true, message: "错误码编码不能为空", trigger: "blur" }],
+        message: [{ required: true, message: "错误码提示不能为空", trigger: "blur" }],
       }
     };
   },
@@ -236,13 +224,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除错误码编号为"' + id + '"的数据项?').then(function () {
+      this.$modal.confirm('是否确认删除错误码编号为"' + id + '"的数据项?').then(function() {
         return deleteErrorCode(id);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -258,8 +245,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, '错误码.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     }
   }
 };

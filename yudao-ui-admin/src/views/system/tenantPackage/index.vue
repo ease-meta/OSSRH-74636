@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="SaaS 多租户" url="https://doc.iocoder.cn/saas-tenant/"/>
+    <doc-alert title="SaaS 多租户" url="https://doc.iocoder.cn/saas-tenant/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="套餐名" prop="name">
@@ -9,12 +9,12 @@
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择状态" clearable>
           <el-option v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                     :key="dict.value" :label="dict.label" :value="dict.value"/>
+                       :key="dict.value" :label="dict.label" :value="dict.value"/>
         </el-select>
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -26,22 +26,21 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:tenant-package:create']">新增
-        </el-button>
+                   v-hasPermi="['system:tenant-package:create']">新增</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="套餐编号" align="center" prop="id" width="120"/>
-      <el-table-column label="套餐名" align="center" prop="name"/>
+      <el-table-column label="套餐编号" align="center" prop="id" width="120" />
+      <el-table-column label="套餐名" align="center" prop="name" />
       <el-table-column label="状态" align="center" prop="status" width="100">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status"/>
+          <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark"/>
+      <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -50,11 +49,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['system:tenant-package:update']">修改
-          </el-button>
+                     v-hasPermi="['system:tenant-package:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['system:tenant-package:delete']">删除
-          </el-button>
+                     v-hasPermi="['system:tenant-package:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -66,7 +63,7 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="套餐名" prop="name">
-          <el-input v-model="form.name" placeholder="请输入套餐名"/>
+          <el-input v-model="form.name" placeholder="请输入套餐名" />
         </el-form-item>
         <el-form-item label="菜单权限">
           <el-checkbox v-model="menuExpand" @change="handleCheckedTreeExpand($event)">展开/折叠</el-checkbox>
@@ -77,12 +74,11 @@
         <el-form-item label="状态" prop="status">
           <el-radio-group v-model="form.status">
             <el-radio v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                      :key="dict.value" :label="parseInt(dict.value)">{{ dict.label }}
-            </el-radio>
+                      :key="dict.value" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+          <el-input v-model="form.remark" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -94,19 +90,14 @@
 </template>
 
 <script>
-import {
-  createTenantPackage,
-  deleteTenantPackage,
-  getTenantPackage,
-  getTenantPackagePage,
-  updateTenantPackage
-} from "@/api/system/tenantPackage";
-import {CommonStatusEnum} from "@/utils/constants";
+import { createTenantPackage, updateTenantPackage, deleteTenantPackage, getTenantPackage, getTenantPackagePage} from "@/api/system/tenantPackage";
+import {CommonStatusEnum, SystemMenuTypeEnum} from "@/utils/constants";
 import {listSimpleMenus} from "@/api/system/menu";
 
 export default {
   name: "TenantPackage",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -144,9 +135,9 @@ export default {
       menuOptions: [], // 菜单列表
       // 表单校验
       rules: {
-        name: [{required: true, message: "套餐名不能为空", trigger: "blur"}],
-        status: [{required: true, message: "状态不能为空", trigger: "blur"}],
-        menuIds: [{required: true, message: "关联的菜单编号不能为空", trigger: "blur"}],
+        name: [{ required: true, message: "套餐名不能为空", trigger: "blur" }],
+        status: [{ required: true, message: "状态不能为空", trigger: "blur" }],
+        menuIds: [{ required: true, message: "关联的菜单编号不能为空", trigger: "blur" }],
       }
     };
   },
@@ -271,13 +262,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除租户套餐编号为"' + id + '"的数据项?').then(function () {
-        return deleteTenantPackage(id);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除租户套餐编号为"' + id + '"的数据项?').then(function() {
+          return deleteTenantPackage(id);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+        }).catch(() => {});
     },
     // 树权限（展开/折叠）
     handleCheckedTreeExpand(value, type) {
@@ -288,7 +278,7 @@ export default {
     },
     // 树权限（全选/全不选）
     handleCheckedTreeNodeAll(value) {
-      this.$refs.menu.setCheckedNodes(value ? this.menuOptions : []);
+      this.$refs.menu.setCheckedNodes(value ? this.menuOptions: []);
     },
     // 树权限（父子联动）
     handleCheckedTreeConnect(value) {

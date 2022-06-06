@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.controller.admin.auth.vo;
 
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
-import io.github.meta.ease.common.validation.InEnum;
+import cn.iocoder.yudao.framework.common.validation.InEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -31,4 +31,5 @@ public class AuthSocialQuickLoginReqVO {
     @ApiModelProperty(value = "state", required = true, example = "9b2ffbc1-7425-4155-9894-9d5c08541d62")
     @NotEmpty(message = "state 不能为空")
     private String state;
+
 }

@@ -19,4 +19,5 @@ public enum SmsReceiveStatusEnum {
     ;
 
     private final int status;
+
 }

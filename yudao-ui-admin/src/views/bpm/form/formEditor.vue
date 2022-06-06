@@ -9,7 +9,7 @@
         <div class="components-list">
           <div v-for="(item, listIndex) in leftComponents" :key="listIndex">
             <div class="components-title">
-              <svg-icon icon-class="component"/>
+              <svg-icon icon-class="component" />
               {{ item.title }}
             </div>
             <draggable
@@ -28,7 +28,7 @@
                 @click="addComponent(element)"
               >
                 <div class="components-body">
-                  <svg-icon :icon-class="element.__config__.tagIcon"/>
+                  <svg-icon :icon-class="element.__config__.tagIcon" />
                   {{ element.__config__.label }}
                 </div>
               </div>
@@ -38,17 +38,16 @@
           <!-- 左边：动态表单 -->
           <el-form ref="form" :model="form" :rules="rules" label-width="80px">
             <el-form-item label="表单名" prop="name">
-              <el-input v-model="form.name" placeholder="请输入表单名"/>
+              <el-input v-model="form.name" placeholder="请输入表单名" />
             </el-form-item>
             <el-form-item label="开启状态" prop="status">
               <el-radio-group v-model="form.status">
                 <el-radio v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                          :key="dict.value" :label="parseInt(dict.value)">{{ dict.label }}
-                </el-radio>
+                          :key="dict.value" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
               </el-radio-group>
             </el-form-item>
             <el-form-item label="备注" prop="remark">
-              <el-input type="textarea" v-model="form.remark" placeholder="请输入备注"/>
+              <el-input type="textarea" v-model="form.remark" placeholder="请输入备注" />
             </el-form-item>
           </el-form>
         </div>
@@ -59,17 +58,17 @@
       <div class="action-bar">
         <el-button icon="el-icon-check" type="text" @click="save">保存</el-button>
         <!--        <el-button icon="el-icon-video-play" type="text" @click="run">-->
-        <!--          运行-->
-        <!--        </el-button>-->
+<!--          运行-->
+<!--        </el-button>-->
         <el-button icon="el-icon-view" type="text" @click="showJson">
           查看json
         </el-button>
-        <!--        <el-button icon="el-icon-download" type="text" @click="download">-->
-        <!--          导出vue文件-->
-        <!--        </el-button>-->
-        <!--        <el-button class="copy-btn-main" icon="el-icon-document-copy" type="text" @click="copy">-->
-        <!--          复制代码-->
-        <!--        </el-button>-->
+<!--        <el-button icon="el-icon-download" type="text" @click="download">-->
+<!--          导出vue文件-->
+<!--        </el-button>-->
+<!--        <el-button class="copy-btn-main" icon="el-icon-document-copy" type="text" @click="copy">-->
+<!--          复制代码-->
+<!--        </el-button>-->
         <el-button class="delete-btn" icon="el-icon-delete" type="text" @click="empty">
           清空
         </el-button>
@@ -115,12 +114,12 @@
       @fetch-data="fetchData"
     />
 
-    <!--    <form-drawer-->
-    <!--      :visible.sync="drawerVisible"-->
-    <!--      :form-data="formData"-->
-    <!--      size="100%"-->
-    <!--      :generate-conf="generateConf"-->
-    <!--    />-->
+<!--    <form-drawer-->
+<!--      :visible.sync="drawerVisible"-->
+<!--      :form-data="formData"-->
+<!--      size="100%"-->
+<!--      :generate-conf="generateConf"-->
+<!--    />-->
 
     <json-drawer
       size="60%"
@@ -129,43 +128,51 @@
       @refresh="refreshJson"
     />
 
-    <!--    <code-type-dialog-->
-    <!--      :visible.sync="dialogVisible"-->
-    <!--      title="选择生成类型"-->
-    <!--      :show-file-name="showFileName"-->
-    <!--      @confirm="generate"-->
-    <!--    />-->
+<!--    <code-type-dialog-->
+<!--      :visible.sync="dialogVisible"-->
+<!--      title="选择生成类型"-->
+<!--      :show-file-name="showFileName"-->
+<!--      @confirm="generate"-->
+<!--    />-->
 
-    <!--    <input id="copyNode" type="hidden">-->
+<!--    <input id="copyNode" type="hidden">-->
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
-import {debounce} from 'throttle-debounce'
-import {saveAs} from 'file-saver'
+import { debounce } from 'throttle-debounce'
+import { saveAs } from 'file-saver'
 import ClipboardJS from 'clipboard'
 import render from '@/components/render/render'
 import FormDrawer from '@/views/infra/build/FormDrawer'
 import JsonDrawer from '@/views/infra/build/JsonDrawer'
 import RightPanel from '@/views/infra/build/RightPanel'
-import {formConf, inputComponents, layoutComponents, selectComponents} from '@/components/generator/config'
-import {beautifierConf, deepClone, isObjectObject, titleCase} from '@/utils/index'
-import {cssStyle, makeUpHtml, vueScript, vueTemplate} from '@/components/generator/html'
-import {makeUpJs} from '@/components/generator/js'
-import {makeUpCss} from '@/components/generator/css'
+import {
+  inputComponents, selectComponents, layoutComponents, formConf
+} from '@/components/generator/config'
+import {
+  exportDefault, beautifierConf, isNumberStr, titleCase, deepClone, isObjectObject
+} from '@/utils/index'
+import {
+  makeUpHtml, vueTemplate, vueScript, cssStyle
+} from '@/components/generator/html'
+import { makeUpJs } from '@/components/generator/js'
+import { makeUpCss } from '@/components/generator/css'
 import drawingDefalut from '@/components/generator/drawingDefalut'
 import logo from '@/assets/logo/logo.png'
 import CodeTypeDialog from '@/views/infra/build/CodeTypeDialog'
 import DraggableItem from '@/views/infra/build/DraggableItem'
-import {getDrawingList, getFormConf, getIdGlobal, saveDrawingList, saveIdGlobal} from '@/utils/db'
+import {
+  getDrawingList, saveDrawingList, getIdGlobal, saveIdGlobal, getFormConf
+} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 import {CommonStatusEnum} from "@/utils/constants";
 import {createForm, getForm, updateForm} from "@/api/bpm/form";
 import {decodeFields} from "@/utils/formGenerator";
 
 let beautifier
-const emptyActiveData = {style: {}, autosize: {}}
+const emptyActiveData = { style: {}, autosize: {} }
 let oldActiveId
 let tempActiveData
 const drawingListInDB = getDrawingList()
@@ -229,12 +236,13 @@ export default {
       },
       // 表单校验
       rules: {
-        name: [{required: true, message: "表单名不能为空", trigger: "blur"}],
-        status: [{required: true, message: "开启状态不能为空", trigger: "blur"}],
+        name: [{ required: true, message: "表单名不能为空", trigger: "blur" }],
+        status: [{ required: true, message: "开启状态不能为空", trigger: "blur" }],
       }
     }
   },
-  computed: {},
+  computed: {
+  },
   watch: {
     // eslint-disable-next-line func-names
     'activeData.__config__.label': function (val, oldVal) {
@@ -331,7 +339,7 @@ export default {
       }, obj)
     },
     setRespData(component, resp) {
-      const {dataPath, renderKey, dataConsumer} = component.__config__
+      const { dataPath, renderKey, dataConsumer } = component.__config__
       if (!dataPath || !dataConsumer) return
       const respData = dataPath.split('.').reduce((pre, item) => pre[item], resp)
 
@@ -344,7 +352,7 @@ export default {
       if (i > -1) this.$set(this.drawingList, i, component)
     },
     fetchData(component) {
-      const {dataType, method, url} = component.__config__
+      const { dataType, method, url } = component.__config__
       if (dataType === 'dynamic' && method && url) {
         this.setLoading(component, true)
         this.$axios({
@@ -357,7 +365,7 @@ export default {
       }
     },
     setLoading(component, val) {
-      const {directives} = component
+      const { directives } = component
       if (Array.isArray(directives)) {
         const t = directives.find(d => d.name === 'loading')
         if (t) t.value = val
@@ -441,7 +449,7 @@ export default {
     },
     /** 关闭按钮 */
     close() {
-      this.$tab.closeOpenPage({path: "/bpm/manager/form"});
+      this.$tab.closeOpenPage({ path: "/bpm/manager/form" });
     },
     encodeFields() {
       const fields = []
@@ -461,14 +469,14 @@ export default {
     },
     execDownload(data) {
       const codeStr = this.generateCode()
-      const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
+      const blob = new Blob([codeStr], { type: 'text/plain;charset=utf-8' })
       saveAs(blob, data.fileName)
     },
     execCopy(data) {
       document.getElementById('copyNode').click()
     },
     empty() {
-      this.$confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
+      this.$confirm('确定要清空所有组件吗？', '提示', { type: 'warning' }).then(
         () => {
           this.drawingList = []
           this.idGlobal = 100
@@ -491,7 +499,7 @@ export default {
       })
     },
     generateCode() {
-      const {type} = this.generateConf
+      const { type } = this.generateConf
       this.AssembleFormData()
       const script = vueScript(makeUpJs(this.formData, type))
       const html = vueTemplate(makeUpHtml(this.formData, type))

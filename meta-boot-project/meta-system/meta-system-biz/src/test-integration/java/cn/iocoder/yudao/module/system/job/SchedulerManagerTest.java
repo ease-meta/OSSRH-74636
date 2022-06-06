@@ -4,7 +4,6 @@ import cn.hutool.core.util.StrUtil;
 import cn.iocoder.yudao.framework.quartz.core.scheduler.SchedulerManager;
 import cn.iocoder.yudao.module.system.job.auth.UserSessionTimeoutJob;
 import cn.iocoder.yudao.module.system.test.BaseDbUnitTest;
-
 import org.junit.jupiter.api.Test;
 import org.quartz.SchedulerException;
 
@@ -50,4 +49,5 @@ public class SchedulerManagerTest extends BaseDbUnitTest {
         String jobHandlerName = StrUtil.lowerFirst(UserSessionTimeoutJob.class.getSimpleName());
         schedulerManager.triggerJob(1L, jobHandlerName, "niubi!!!");
     }
+
 }

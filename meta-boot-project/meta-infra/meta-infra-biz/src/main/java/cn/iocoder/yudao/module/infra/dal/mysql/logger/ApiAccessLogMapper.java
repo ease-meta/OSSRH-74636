@@ -2,10 +2,10 @@ package cn.iocoder.yudao.module.infra.dal.mysql.logger;
 
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogPageReqVO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.QueryWrapperX;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiAccessLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.QueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -43,4 +43,5 @@ public interface ApiAccessLogMapper extends BaseMapperX<ApiAccessLogDO> {
                 .orderByDesc("id")
         );
     }
+
 }

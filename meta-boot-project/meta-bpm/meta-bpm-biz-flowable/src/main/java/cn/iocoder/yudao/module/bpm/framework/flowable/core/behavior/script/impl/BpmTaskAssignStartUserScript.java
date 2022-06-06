@@ -1,10 +1,11 @@
 package cn.iocoder.yudao.module.bpm.framework.flowable.core.behavior.script.impl;
 
+import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskRuleScriptEnum;
+
 import cn.iocoder.yudao.module.bpm.framework.flowable.core.behavior.script.BpmTaskAssignScript;
 import cn.iocoder.yudao.module.bpm.service.task.BpmProcessInstanceService;
-import io.github.meta.ease.common.util.collection.SetUtils;
-import io.github.meta.ease.common.util.number.NumberUtils;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.service.impl.persistence.entity.TaskEntity;
 import org.springframework.context.annotation.Lazy;
@@ -36,4 +37,5 @@ public class BpmTaskAssignStartUserScript implements BpmTaskAssignScript {
     public BpmTaskRuleScriptEnum getEnum() {
         return BpmTaskRuleScriptEnum.START_USER;
     }
+
 }

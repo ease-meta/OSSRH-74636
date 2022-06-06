@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.service.config;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigPageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.config.ConfigDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -70,4 +70,6 @@ public interface ConfigService {
      * @return 列表
      */
     List<ConfigDO> getConfigList(@Valid ConfigExportReqVO reqVO);
+
+
 }

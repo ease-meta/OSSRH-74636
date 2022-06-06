@@ -1,13 +1,13 @@
 package cn.iocoder.yudao.module.system.convert.errorcode;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExcelVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeAutoGenerateReqDTO;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeRespDTO;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeUpdateReqVO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -38,4 +38,5 @@ public interface ErrorCodeConvert {
     ErrorCodeDO convert(ErrorCodeAutoGenerateReqDTO bean);
 
     List<ErrorCodeRespDTO> convertList03(List<ErrorCodeDO> list);
+
 }

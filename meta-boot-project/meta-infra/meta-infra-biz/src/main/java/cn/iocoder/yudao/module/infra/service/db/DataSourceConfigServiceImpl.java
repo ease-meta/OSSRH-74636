@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.infra.service.db;
 
+import cn.iocoder.yudao.framework.mybatis.core.util.JdbcUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.db.vo.DataSourceConfigCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.db.vo.DataSourceConfigUpdateReqVO;
 import cn.iocoder.yudao.module.infra.convert.db.DataSourceConfigConvert;
@@ -7,7 +8,6 @@ import cn.iocoder.yudao.module.infra.dal.dataobject.db.DataSourceConfigDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.db.DataSourceConfigMapper;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DataSourceProperty;
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceProperties;
-import io.github.meta.ease.mybatis.mybatis.core.util.JdbcUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -15,9 +15,9 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.DATA_SOURCE_CONFIG_NOT_EXISTS;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.DATA_SOURCE_CONFIG_NOT_OK;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 数据源配置 Service 实现类
@@ -103,4 +103,5 @@ public class DataSourceConfigServiceImpl implements DataSourceConfigService {
                 .setUsername(dataSourceProperty.getUsername())
                 .setPassword(dataSourceProperty.getPassword());
     }
+
 }

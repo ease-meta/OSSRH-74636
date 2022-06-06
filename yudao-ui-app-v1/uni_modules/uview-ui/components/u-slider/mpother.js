@@ -61,7 +61,7 @@ export default {
             }
             // 滑块的左边不一定跟屏幕左边接壤，所以需要减去最外层父元素的左边值
             const x = this.getTouchX(e)
-            const {left, width} = this.sliderRect
+            const { left, width } = this.sliderRect
             const distanceX = x - left
             // 获得移动距离对整个滑块的百分比值，此为带有多位小数的值，不能用此更新视图
             // 否则造成通信阻塞，需要每改变一个step值时修改一次视图
@@ -79,7 +79,7 @@ export default {
         // 设置滑点的位置
         updateSliderPlacement(value, drag, event) {
             // 去掉小数部分，同时也是对step步进的处理
-            const {width} = this.sliderRect
+            const { width } = this.sliderRect
             const percent = this.formatStep(value)
             // 设置移动的值
             const barStyle = {
@@ -105,7 +105,7 @@ export default {
                 return
             }
             // 直接点击滑块的情况，计算方式与onTouchMove方法相同
-            const {left, width} = this.sliderRect
+            const { left, width } = this.sliderRect
             const value = ((e.detail.x - left) / width) * 100
             this.updateSliderPlacement(value, false, 'click')
         }

@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.service.dict;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.dict.core.dto.DictDataRespDTO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataExportReqVO;
@@ -14,9 +17,6 @@ import cn.iocoder.yudao.module.system.mq.producer.dict.DictDataProducer;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableTable;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -28,12 +28,8 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_DATA_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_DATA_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_DATA_VALUE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 字典数据 Service 实现类
@@ -68,20 +64,18 @@ public class DictDataServiceImpl implements DictDataService {
 
     /**
      * 字典数据缓存，第二个 key 使用 label
-     * <p>
+     *
      * key1：字典类型 dictType
      * key2：字典标签 label
      */
     private ImmutableTable<String, String, DictDataDO> labelDictDataCache;
-
     /**
      * 字典数据缓存，第二个 key 使用 value
-     * <p>
+     *
      * key1：字典类型 dictType
      * key2：字典值 value
      */
     private ImmutableTable<String, String, DictDataDO> valueDictDataCache;
-
     /**
      * 缓存字典数据的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -282,4 +276,5 @@ public class DictDataServiceImpl implements DictDataService {
             }
         });
     }
+
 }

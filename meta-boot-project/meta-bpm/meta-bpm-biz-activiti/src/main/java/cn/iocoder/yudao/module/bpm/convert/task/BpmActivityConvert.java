@@ -26,4 +26,5 @@ public interface BpmActivityConvert {
             @Mapping(source = "activityType", target = "type")
     })
     BpmActivityRespVO convert(HistoricActivityInstance bean);
+
 }

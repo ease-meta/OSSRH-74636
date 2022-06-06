@@ -30,4 +30,5 @@ public class RoleExcelVO {
     @ExcelProperty(value = "角色状态", converter = DictConvert.class)
     @DictFormat(DictTypeConstants.COMMON_STATUS)
     private String status;
+
 }

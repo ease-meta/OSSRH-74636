@@ -2,6 +2,8 @@ package cn.iocoder.yudao.module.system.service.logger;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.string.StrUtils;
 import cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogPageReqVO;
@@ -10,8 +12,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import cn.iocoder.yudao.module.system.dal.mysql.logger.OperateLogMapper;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.string.StrUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
@@ -24,9 +24,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
 import static cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO.JAVA_METHOD_ARGS_MAX_LENGTH;
 import static cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO.RESULT_MAX_LENGTH;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
 
 @Service
 @Validated
@@ -82,4 +82,5 @@ public class OperateLogServiceImpl implements OperateLogService {
         // 查询列表
         return operateLogMapper.selectList(reqVO, userIds);
     }
+
 }

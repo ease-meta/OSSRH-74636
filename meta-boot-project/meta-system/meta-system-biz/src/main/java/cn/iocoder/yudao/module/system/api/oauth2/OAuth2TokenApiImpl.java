@@ -44,4 +44,5 @@ public class OAuth2TokenApiImpl implements OAuth2TokenApi {
         OAuth2AccessTokenDO accessTokenDO = oauth2TokenService.refreshAccessToken(refreshToken, clientId);
         return OAuth2TokenConvert.INSTANCE.convert2(accessTokenDO);
     }
+
 }

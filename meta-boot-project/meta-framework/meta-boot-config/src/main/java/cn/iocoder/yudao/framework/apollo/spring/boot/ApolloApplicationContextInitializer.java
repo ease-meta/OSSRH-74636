@@ -9,7 +9,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 
 /**
  * 对 {@link com.ctrip.framework.apollo.spring.boot.ApolloApplicationContextInitializer} 的补充，目前的目的有：
- * <p>
+ *
  * 1. 将自定义的 apollo.jdbc 设置到 System 变量中
  *
  * @author 芋道源码
@@ -59,4 +59,5 @@ public class ApolloApplicationContextInitializer implements EnvironmentPostProce
     public void setOrder(int order) {
         this.order = order;
     }
+
 }

@@ -13,7 +13,7 @@
         <div class="components-list">
           <div v-for="(item, listIndex) in leftComponents" :key="listIndex">
             <div class="components-title">
-              <svg-icon icon-class="component"/>
+              <svg-icon icon-class="component" />
               {{ item.title }}
             </div>
             <draggable
@@ -32,7 +32,7 @@
                 @click="addComponent(element)"
               >
                 <div class="components-body">
-                  <svg-icon :icon-class="element.__config__.tagIcon"/>
+                  <svg-icon :icon-class="element.__config__.tagIcon" />
                   {{ element.__config__.label }}
                 </div>
               </div>
@@ -44,9 +44,9 @@
 
     <div class="center-board">
       <div class="action-bar">
-        <!--        <el-button icon="el-icon-video-play" type="text" @click="run">-->
-        <!--          运行-->
-        <!--        </el-button>-->
+<!--        <el-button icon="el-icon-video-play" type="text" @click="run">-->
+<!--          运行-->
+<!--        </el-button>-->
         <el-button icon="el-icon-view" type="text" @click="showJson">
           查看json
         </el-button>
@@ -122,27 +122,35 @@
 
 <script>
 import draggable from 'vuedraggable'
-import {debounce} from 'throttle-debounce'
-import {saveAs} from 'file-saver'
+import { debounce } from 'throttle-debounce'
+import { saveAs } from 'file-saver'
 import ClipboardJS from 'clipboard'
 import render from '@/components/render/render'
 import FormDrawer from './FormDrawer'
 import JsonDrawer from './JsonDrawer'
 import RightPanel from './RightPanel'
-import {formConf, inputComponents, layoutComponents, selectComponents} from '@/components/generator/config'
-import {beautifierConf, deepClone, isObjectObject, titleCase} from '@/utils/index'
-import {cssStyle, makeUpHtml, vueScript, vueTemplate} from '@/components/generator/html'
-import {makeUpJs} from '@/components/generator/js'
-import {makeUpCss} from '@/components/generator/css'
+import {
+  inputComponents, selectComponents, layoutComponents, formConf
+} from '@/components/generator/config'
+import {
+  exportDefault, beautifierConf, isNumberStr, titleCase, deepClone, isObjectObject
+} from '@/utils/index'
+import {
+  makeUpHtml, vueTemplate, vueScript, cssStyle
+} from '@/components/generator/html'
+import { makeUpJs } from '@/components/generator/js'
+import { makeUpCss } from '@/components/generator/css'
 import drawingDefalut from '@/components/generator/drawingDefalut'
 import logo from '@/assets/logo/logo.png'
 import CodeTypeDialog from './CodeTypeDialog'
 import DraggableItem from './DraggableItem'
-import {getDrawingList, getFormConf, getIdGlobal, saveDrawingList, saveIdGlobal} from '@/utils/db'
+import {
+  getDrawingList, saveDrawingList, getIdGlobal, saveIdGlobal, getFormConf
+} from '@/utils/db'
 import loadBeautifier from '@/utils/loadBeautifier'
 
 let beautifier
-const emptyActiveData = {style: {}, autosize: {}}
+const emptyActiveData = { style: {}, autosize: {} }
 let oldActiveId
 let tempActiveData
 const drawingListInDB = getDrawingList()
@@ -196,7 +204,8 @@ export default {
       ]
     }
   },
-  computed: {},
+  computed: {
+  },
   watch: {
     // eslint-disable-next-line func-names
     'activeData.__config__.label': function (val, oldVal) {
@@ -270,7 +279,7 @@ export default {
       }, obj)
     },
     setRespData(component, resp) {
-      const {dataPath, renderKey, dataConsumer} = component.__config__
+      const { dataPath, renderKey, dataConsumer } = component.__config__
       if (!dataPath || !dataConsumer) return
       const respData = dataPath.split('.').reduce((pre, item) => pre[item], resp)
 
@@ -283,7 +292,7 @@ export default {
       if (i > -1) this.$set(this.drawingList, i, component)
     },
     fetchData(component) {
-      const {dataType, method, url} = component.__config__
+      const { dataType, method, url } = component.__config__
       if (dataType === 'dynamic' && method && url) {
         this.setLoading(component, true)
         this.$axios({
@@ -296,7 +305,7 @@ export default {
       }
     },
     setLoading(component, val) {
-      const {directives} = component
+      const { directives } = component
       if (Array.isArray(directives)) {
         const t = directives.find(d => d.name === 'loading')
         if (t) t.value = val
@@ -361,19 +370,18 @@ export default {
     },
     execDownload(data) {
       const codeStr = this.generateCode()
-      const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
+      const blob = new Blob([codeStr], { type: 'text/plain;charset=utf-8' })
       saveAs(blob, data.fileName)
     },
     execCopy(data) {
       document.getElementById('copyNode').click()
     },
     empty() {
-      this.$confirm('确定要清空所有组件吗？', '提示', {type: 'warning'}).then(
+      this.$confirm('确定要清空所有组件吗？', '提示', { type: 'warning' }).then(
         () => {
           this.drawingList = []
           this.idGlobal = 100
-        }).catch(() => {
-      });
+        }).catch(() => {});
     },
     drawingItemCopy(item, list) {
       let clone = deepClone(item)
@@ -391,7 +399,7 @@ export default {
       })
     },
     generateCode() {
-      const {type} = this.generateConf
+      const { type } = this.generateConf
       this.AssembleFormData()
       const script = vueScript(makeUpJs(this.formData, type))
       const html = vueTemplate(makeUpHtml(this.formData, type))

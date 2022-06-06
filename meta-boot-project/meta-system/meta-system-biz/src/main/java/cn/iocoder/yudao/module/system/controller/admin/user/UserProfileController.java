@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.controller.admin.user;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
@@ -17,28 +20,20 @@ import cn.iocoder.yudao.module.system.service.permission.PermissionService;
 import cn.iocoder.yudao.module.system.service.permission.RoleService;
 import cn.iocoder.yudao.module.system.service.social.SocialUserService;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.exception.util.ServiceExceptionUtil;
-import io.github.meta.ease.common.pojo.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils.getLoginUserId;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_IS_EMPTY;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 用户个人中心")
 @RestController
@@ -49,19 +44,14 @@ public class UserProfileController {
 
     @Resource
     private AdminUserService userService;
-
     @Resource
     private DeptService deptService;
-
     @Resource
     private PostService postService;
-
     @Resource
     private PermissionService permissionService;
-
     @Resource
     private RoleService roleService;
-
     @Resource
     private SocialUserService socialService;
 
@@ -114,4 +104,5 @@ public class UserProfileController {
         String avatar = userService.updateUserAvatar(getLoginUserId(), file.getInputStream());
         return success(avatar);
     }
+
 }

@@ -3,7 +3,7 @@ import router from './router'
 
 window._hmt = window._hmt || []; // 用于 router push
 const HM_ID = process.env.VUE_APP_BAIDU_CODE || ''; // 有值的时候，才开启
-(function () {
+(function() {
   if (!HM_ID) {
     return;
   }

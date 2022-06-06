@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.mq.producer.sms;
 
-import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsChannelRefreshMessage;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
 import cn.iocoder.yudao.module.system.mq.message.sms.SmsTemplateRefreshMessage;
-import io.github.meta.ease.common.core.KeyValue;
+import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +25,7 @@ public class SmsProducer {
     private RedisMQTemplate redisMQTemplate;
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.sms.SmsChannelRefreshMessage} 消息
+     * 发送 {@link SmsChannelRefreshMessage} 消息
      */
     public void sendSmsChannelRefreshMessage() {
         SmsChannelRefreshMessage message = new SmsChannelRefreshMessage();
@@ -33,7 +33,7 @@ public class SmsProducer {
     }
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.sms.SmsTemplateRefreshMessage} 消息
+     * 发送 {@link SmsTemplateRefreshMessage} 消息
      */
     public void sendSmsTemplateRefreshMessage() {
         SmsTemplateRefreshMessage message = new SmsTemplateRefreshMessage();
@@ -41,12 +41,12 @@ public class SmsProducer {
     }
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage} 消息
+     * 发送 {@link SmsSendMessage} 消息
      *
-     * @param logId          短信日志编号
-     * @param mobile         手机号
-     * @param channelId      渠道编号
-     * @param apiTemplateId  短信模板编号
+     * @param logId 短信日志编号
+     * @param mobile 手机号
+     * @param channelId 渠道编号
+     * @param apiTemplateId 短信模板编号
      * @param templateParams 短信模板参数
      */
     public void sendSmsSendMessage(Long logId, String mobile,
@@ -55,4 +55,5 @@ public class SmsProducer {
         message.setChannelId(channelId).setApiTemplateId(apiTemplateId).setTemplateParams(templateParams);
         redisMQTemplate.send(message);
     }
+
 }

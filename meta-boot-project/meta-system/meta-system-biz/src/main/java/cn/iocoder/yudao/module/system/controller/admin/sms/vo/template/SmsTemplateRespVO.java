@@ -26,4 +26,5 @@ public class SmsTemplateRespVO extends SmsTemplateBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
+
 }

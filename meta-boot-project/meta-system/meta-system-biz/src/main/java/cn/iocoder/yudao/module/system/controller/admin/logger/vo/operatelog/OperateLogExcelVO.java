@@ -38,4 +38,5 @@ public class OperateLogExcelVO {
 
     @ExcelProperty("执行时长")
     private Integer duration;
+
 }

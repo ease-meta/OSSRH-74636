@@ -1,12 +1,15 @@
 package cn.iocoder.yudao.framework.activiti.core.util;
 
+import cn.hutool.core.util.ArrayUtil;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
 import com.alibaba.ttl.TransmittableThreadLocal;
-import io.github.meta.ease.common.util.number.NumberUtils;
 import org.activiti.bpmn.converter.BpmnXMLConverter;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.bpmn.model.FlowElement;
+import org.activiti.bpmn.model.Process;
 import org.activiti.engine.impl.identity.Authentication;
 import org.activiti.engine.impl.util.io.BytesStreamSource;
 
@@ -14,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 /**
  * Activiti 工具类
@@ -101,4 +105,5 @@ public class ActivitiUtils {
         // 由于 BpmnModel 未提供 equals 方法，所以只能转成字节数组，进行比较
         return Arrays.equals(getBpmnBytes(oldModel), getBpmnBytes(newModel));
     }
+
 }

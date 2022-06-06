@@ -3,19 +3,18 @@
     <el-form-item label="消息实例">
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap">
         <el-select v-model="bindMessageId" @change="updateTaskMessage">
-          <el-option v-for="id in Object.keys(messageMap)" :value="id" :label="messageMap[id]" :key="id"/>
+          <el-option v-for="id in Object.keys(messageMap)" :value="id" :label="messageMap[id]" :key="id" />
         </el-select>
-        <el-button size="mini" type="primary" icon="el-icon-plus" style="margin-left: 8px" @click="openMessageModel"/>
+        <el-button size="mini" type="primary" icon="el-icon-plus" style="margin-left: 8px" @click="openMessageModel" />
       </div>
     </el-form-item>
-    <el-dialog :visible.sync="messageModelVisible" :close-on-click-modal="false" title="创建新消息" width="400px"
-               append-to-body destroy-on-close>
+    <el-dialog :visible.sync="messageModelVisible" :close-on-click-modal="false" title="创建新消息" width="400px" append-to-body destroy-on-close>
       <el-form :model="newMessageForm" size="mini" label-width="90px" @submit.native.prevent>
         <el-form-item label="消息ID">
-          <el-input v-model="newMessageForm.id" clearable/>
+          <el-input v-model="newMessageForm.id" clearable />
         </el-form-item>
         <el-form-item label="消息名称">
-          <el-input v-model="newMessageForm.name" clearable/>
+          <el-input v-model="newMessageForm.name" clearable />
         </el-form-item>
       </el-form>
       <template slot="footer">

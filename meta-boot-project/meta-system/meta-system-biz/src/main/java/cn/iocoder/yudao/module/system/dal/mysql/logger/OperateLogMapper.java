@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.dal.mysql.logger;
 
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogPageReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Collection;
@@ -44,4 +44,5 @@ public interface OperateLogMapper extends BaseMapperX<OperateLogDO> {
         query.orderByDesc(OperateLogDO::getId); // 降序
         return selectList(query);
     }
+
 }

@@ -2,6 +2,12 @@ package cn.iocoder.yudao.framework.sms.core.client.impl.tencent;
 
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.collection.MapUtils;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
@@ -15,12 +21,6 @@ import com.tencentcloudapi.sms.v20210111.models.DescribeSmsTemplateListResponse;
 import com.tencentcloudapi.sms.v20210111.models.DescribeTemplateListStatus;
 import com.tencentcloudapi.sms.v20210111.models.SendSmsResponse;
 import com.tencentcloudapi.sms.v20210111.models.SendStatus;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.collection.MapUtils;
-import io.github.meta.ease.common.util.date.DateUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,20 +28,15 @@ import org.mockito.Mock;
 import java.util.ArrayList;
 import java.util.List;
 
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.when;
 
 /**
- * {@link cn.iocoder.yudao.framework.sms.core.client.impl.tencent.TencentSmsClient} 的单元测试
+ * {@link TencentSmsClient} 的单元测试
  *
  * @author shiwp
  */
@@ -107,11 +102,9 @@ public class TencentSmsClientTest extends BaseMockitoUnitTest {
             assertEquals(mobile, request.getPhoneNumberSet()[0]);
             assertEquals(properties.getSignature(), request.getSignName());
             assertEquals(apiTemplateId, request.getTemplateId());
-            assertEquals(toJsonString(
-                            ArrayUtils.toArray(new ArrayList<>(MapUtils.convertMap(templateParams).values()), String::valueOf)),
+            assertEquals(toJsonString(ArrayUtils.toArray(new ArrayList<>(MapUtils.convertMap(templateParams).values()), String::valueOf)),
                     toJsonString(request.getTemplateParamSet()));
-            assertEquals(sendLogId, ReflectUtil.getFieldValue(
-                    JsonUtils.parseObject(request.getSessionContext(), TencentSmsClient.SessionContext.class), "logId"));
+            assertEquals(sendLogId, ReflectUtil.getFieldValue(JsonUtils.parseObject(request.getSessionContext(), TencentSmsClient.SessionContext.class), "logId"));
             return true;
         }))).thenReturn(response);
 
@@ -225,4 +218,5 @@ public class TencentSmsClientTest extends BaseMockitoUnitTest {
         SmsTemplateRespDTO result = smsClient.convertTemplateStatusDTO(templateStatus);
         assertEquals(expected.getStatus(), result.getAuditStatus());
     }
+
 }

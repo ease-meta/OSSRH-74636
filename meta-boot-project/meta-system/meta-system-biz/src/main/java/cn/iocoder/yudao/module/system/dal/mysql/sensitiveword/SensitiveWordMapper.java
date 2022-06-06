@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.system.dal.mysql.sensitiveword;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordPageReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword.SensitiveWordDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -44,4 +44,5 @@ public interface SensitiveWordMapper extends BaseMapperX<SensitiveWordDO> {
 
     @Select("SELECT COUNT(*) FROM system_sensitive_word WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
+
 }

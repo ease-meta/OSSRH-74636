@@ -4,30 +4,29 @@
       <el-form-item label="回路特性">
         <el-select v-model="loopCharacteristics" @change="changeLoopCharacteristicsType">
           <!--bpmn:MultiInstanceLoopCharacteristics-->
-          <el-option label="并行多重事件" value="ParallelMultiInstance"/>
-          <el-option label="时序多重事件" value="SequentialMultiInstance"/>
+          <el-option label="并行多重事件" value="ParallelMultiInstance" />
+          <el-option label="时序多重事件" value="SequentialMultiInstance" />
           <!--bpmn:StandardLoopCharacteristics-->
-          <el-option label="循环事件" value="StandardLoop"/>
-          <el-option label="无" value="Null"/>
+          <el-option label="循环事件" value="StandardLoop" />
+          <el-option label="无" value="Null" />
         </el-select>
       </el-form-item>
-      <template
-        v-if="loopCharacteristics === 'ParallelMultiInstance' || loopCharacteristics === 'SequentialMultiInstance'">
+      <template v-if="loopCharacteristics === 'ParallelMultiInstance' || loopCharacteristics === 'SequentialMultiInstance'">
         <el-form-item label="循环基数" key="loopCardinality">
-          <el-input v-model="loopInstanceForm.loopCardinality" clearable @change="updateLoopCardinality"/>
+          <el-input v-model="loopInstanceForm.loopCardinality" clearable @change="updateLoopCardinality" />
         </el-form-item>
         <el-form-item label="集合" key="collection">
-          <el-input v-model="loopInstanceForm.collection" clearable @change="updateLoopBase"/>
+          <el-input v-model="loopInstanceForm.collection" clearable @change="updateLoopBase" />
         </el-form-item>
         <el-form-item label="元素变量" key="elementVariable">
-          <el-input v-model="loopInstanceForm.elementVariable" clearable @change="updateLoopBase"/>
+          <el-input v-model="loopInstanceForm.elementVariable" clearable @change="updateLoopBase" />
         </el-form-item>
         <el-form-item label="完成条件" key="completionCondition">
-          <el-input v-model="loopInstanceForm.completionCondition" clearable @change="updateLoopCondition"/>
+          <el-input v-model="loopInstanceForm.completionCondition" clearable @change="updateLoopCondition" />
         </el-form-item>
         <el-form-item label="异步状态" key="async">
-          <el-checkbox v-model="loopInstanceForm.asyncBefore" label="异步前" @change="updateLoopAsync('asyncBefore')"/>
-          <el-checkbox v-model="loopInstanceForm.asyncAfter" label="异步后" @change="updateLoopAsync('asyncAfter')"/>
+          <el-checkbox v-model="loopInstanceForm.asyncBefore" label="异步前" @change="updateLoopAsync('asyncBefore')" />
+          <el-checkbox v-model="loopInstanceForm.asyncAfter" label="异步后" @change="updateLoopAsync('asyncAfter')" />
           <el-checkbox
             v-model="loopInstanceForm.exclusive"
             v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
@@ -35,9 +34,8 @@
             @change="updateLoopAsync('exclusive')"
           />
         </el-form-item>
-        <el-form-item label="重试周期" prop="timeCycle" v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore"
-                      key="timeCycle">
-          <el-input v-model="loopInstanceForm.timeCycle" clearable @change="updateLoopTimeCycle"/>
+        <el-form-item label="重试周期" prop="timeCycle" v-if="loopInstanceForm.asyncAfter || loopInstanceForm.asyncBefore" key="timeCycle">
+          <el-input v-model="loopInstanceForm.timeCycle" clearable @change="updateLoopTimeCycle" />
         </el-form-item>
       </template>
     </el-form>
@@ -117,7 +115,7 @@ export default {
       // this.loopInstanceForm = { ...this.defaultLoopInstanceForm }; // 切换类型取消原表单配置
       // 取消多实例配置
       if (type === "Null") {
-        window.bpmnInstances.modeling.updateProperties(this.bpmnElement, {loopCharacteristics: null});
+        window.bpmnInstances.modeling.updateProperties(this.bpmnElement, { loopCharacteristics: null });
         return;
       }
       // 配置循环
@@ -131,7 +129,7 @@ export default {
       }
       // 时序
       if (type === "SequentialMultiInstance") {
-        this.multiLoopInstance = window.bpmnInstances.moddle.create("bpmn:MultiInstanceLoopCharacteristics", {isSequential: true});
+        this.multiLoopInstance = window.bpmnInstances.moddle.create("bpmn:MultiInstanceLoopCharacteristics", { isSequential: true });
       } else {
         this.multiLoopInstance = window.bpmnInstances.moddle.create("bpmn:MultiInstanceLoopCharacteristics");
       }
@@ -143,17 +141,17 @@ export default {
     updateLoopCardinality(cardinality) {
       let loopCardinality = null;
       if (cardinality && cardinality.length) {
-        loopCardinality = window.bpmnInstances.moddle.create("bpmn:FormalExpression", {body: cardinality});
+        loopCardinality = window.bpmnInstances.moddle.create("bpmn:FormalExpression", { body: cardinality });
       }
-      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, {loopCardinality});
+      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, { loopCardinality });
     },
     // 完成条件
     updateLoopCondition(condition) {
       let completionCondition = null;
       if (condition && condition.length) {
-        completionCondition = window.bpmnInstances.moddle.create("bpmn:FormalExpression", {body: condition});
+        completionCondition = window.bpmnInstances.moddle.create("bpmn:FormalExpression", { body: condition });
       }
-      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, {completionCondition});
+      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, { completionCondition });
     },
     // 重试周期
     updateLoopTimeCycle(timeCycle) {
@@ -164,7 +162,7 @@ export default {
           })
         ]
       });
-      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, {extensionElements});
+      window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.multiLoopInstance, { extensionElements });
     },
     // 直接更新的基础信息
     updateLoopBase() {
@@ -175,11 +173,11 @@ export default {
     },
     // 各异步状态
     updateLoopAsync(key) {
-      const {asyncBefore, asyncAfter} = this.loopInstanceForm;
+      const { asyncBefore, asyncAfter } = this.loopInstanceForm;
       let asyncAttr = Object.create(null);
       if (!asyncBefore && !asyncAfter) {
         this.$set(this.loopInstanceForm, "exclusive", false);
-        asyncAttr = {asyncBefore: false, asyncAfter: false, exclusive: false, extensionElements: null};
+        asyncAttr = { asyncBefore: false, asyncAfter: false, exclusive: false, extensionElements: null };
       } else {
         asyncAttr[key] = this.loopInstanceForm[key];
       }

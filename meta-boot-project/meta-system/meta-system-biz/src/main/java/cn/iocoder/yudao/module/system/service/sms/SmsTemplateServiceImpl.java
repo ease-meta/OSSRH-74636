@@ -3,6 +3,9 @@ package cn.iocoder.yudao.module.system.service.sms;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ReUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClient;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
@@ -17,9 +20,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
 import cn.iocoder.yudao.module.system.dal.mysql.sms.SmsTemplateMapper;
 import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -27,18 +27,11 @@ import org.springframework.util.Assert;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Pattern;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CHANNEL_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_TEMPLATE_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_TEMPLATE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 短信模板 Service 实现类
@@ -75,12 +68,11 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
 
     /**
      * 短信模板缓存
-     * key：短信模板编码 {@link cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO#getCode()}
-     * <p>
+     * key：短信模板编码 {@link SmsTemplateDO#getCode()}
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Map<String, SmsTemplateDO> smsTemplateCache;
-
     /**
      * 缓存短信模板的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -258,7 +250,7 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
     /**
      * 校验 API 短信平台的模板是否有效
      *
-     * @param channelId     渠道编号
+     * @param channelId 渠道编号
      * @param apiTemplateId API 模板编号
      */
     @VisibleForTesting
@@ -270,4 +262,5 @@ public class SmsTemplateServiceImpl implements SmsTemplateService {
         // 校验短信模板是否正确
         templateResult.checkError();
     }
+
 }

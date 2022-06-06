@@ -1,15 +1,16 @@
 package cn.iocoder.yudao.framework.pay.core.client;
 
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
 import cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants;
-import io.github.meta.ease.common.exception.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * 将 API 的错误码，转换为通用的错误码
  *
+ * @see PayCommonResult
+ * @see PayFrameworkErrorCodeConstants
+ *
  * @author 芋道源码
- * @see cn.iocoder.yudao.framework.pay.core.client.PayCommonResult
- * @see cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants
  */
 @Slf4j
 public abstract class AbstractPayCodeMapping {
@@ -28,4 +29,5 @@ public abstract class AbstractPayCodeMapping {
     }
 
     protected abstract ErrorCode apply0(String apiCode, String apiMsg);
+
 }

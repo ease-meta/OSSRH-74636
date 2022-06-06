@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.impl;
 
 import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
+
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
@@ -11,7 +12,7 @@ import org.springframework.util.Assert;
 import javax.annotation.Resource;
 import java.util.Set;
 
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static java.util.Collections.emptySet;
 
 /**
@@ -24,7 +25,6 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
 
     @Resource
     private AdminUserApi adminUserApi;
-
     @Resource
     private DeptApi deptApi;
 
@@ -59,4 +59,5 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
         }
         return deptApi.getDept(startUser.getDeptId());
     }
+
 }

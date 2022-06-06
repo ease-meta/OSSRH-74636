@@ -9,7 +9,7 @@ export default {
             const element = this.$refs['u-scroll-list__indicator__line__bar'].ref
             const scrollLeft = e.contentOffset.x
             const contentSize = e.contentSize.width
-            const {scrollWidth} = this
+            const { scrollWidth } = this
             const barAllMoveWidth = this.indicatorWidth - this.indicatorBarWidth
             // 在安卓和iOS上，需要除的倍数不一样，iOS需要除以2
             const actionNum = uni.$u.os() === 'ios' ? 2 : 1

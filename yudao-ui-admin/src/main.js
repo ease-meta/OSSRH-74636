@@ -12,12 +12,13 @@ import store from './store'
 import router from './router'
 import directive from './directive' // directive
 import plugins from './plugins' // plugins
+
 import './assets/icons' // icon
 import './permission' // permission control
 import './tongji' // 百度统计
-import {getDicts} from "@/api/system/dict/data";
-import {getConfigKey} from "@/api/infra/config";
-import {addBeginAndEndTime, addDateRange, handleTree, parseTime, resetForm} from "@/utils/ruoyi";
+import { getDicts } from "@/api/system/dict/data";
+import { getConfigKey } from "@/api/infra/config";
+import { parseTime, resetForm, addDateRange, addBeginAndEndTime, handleTree} from "@/utils/ruoyi";
 import Pagination from "@/components/Pagination";
 // 自定义表格工具扩展
 import RightToolbar from "@/components/RightToolbar"
@@ -25,24 +26,6 @@ import RightToolbar from "@/components/RightToolbar"
 // import hljs from 'highlight.js'
 // import 'highlight.js/styles/github-gist.css'
 import {DICT_TYPE, getDictDataLabel, getDictDatas, getDictDatas2} from "@/utils/dict";
-// 字典标签组件
-import DictTag from '@/components/DictTag'
-import DocAlert from '@/components/DocAlert'
-// 头部标签插件
-import VueMeta from 'vue-meta'
-// bpmnProcessDesigner 需要引入
-import MyPD from "@/components/bpmnProcessDesigner/package/index.js";
-import "@/components/bpmnProcessDesigner/package/theme/index.scss";
-import "bpmn-js/dist/assets/diagram-js.css";
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
-import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
-
-// Form Generator 组件需要使用到 tinymce
-import Tinymce from '@/components/tinymce/index.vue'
-import '@/icons'
-import request from "@/utils/request" // 实现 form generator 使用自己定义的 axios request 对象
-import '@/styles/index.scss'
 
 // 全局方法挂载
 Vue.prototype.getDicts = getDicts
@@ -62,16 +45,34 @@ Vue.component('DictTag', DictTag)
 Vue.component('DocAlert', DocAlert)
 Vue.component('Pagination', Pagination)
 Vue.component('RightToolbar', RightToolbar)
+// 字典标签组件
+import DictTag from '@/components/DictTag'
+import DocAlert from '@/components/DocAlert'
+// 头部标签插件
+import VueMeta from 'vue-meta'
 
 Vue.use(directive)
 Vue.use(plugins)
 Vue.use(VueMeta)
 // Vue.use(hljs.vuePlugin);
-Vue.use(MyPD);
 
+// bpmnProcessDesigner 需要引入
+import MyPD from "@/components/bpmnProcessDesigner/package/index.js";
+Vue.use(MyPD);
+import "@/components/bpmnProcessDesigner/package/theme/index.scss";
+import "bpmn-js/dist/assets/diagram-js.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css";
+import "bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css";
+
+// Form Generator 组件需要使用到 tinymce
+import Tinymce from '@/components/tinymce/index.vue'
 Vue.component('tinymce', Tinymce)
+import '@/icons'
+import request from "@/utils/request" // 实现 form generator 使用自己定义的 axios request 对象
 console.log(request)
 Vue.prototype.$axios = request
+import '@/styles/index.scss'
 
 /**
  * If you don't want to use mock-server

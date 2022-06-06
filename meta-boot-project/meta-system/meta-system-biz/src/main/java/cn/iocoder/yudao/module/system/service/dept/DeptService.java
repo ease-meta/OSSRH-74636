@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -57,7 +57,7 @@ public interface DeptService {
     /**
      * 获得所有子部门，从缓存中
      *
-     * @param parentId  部门编号
+     * @param parentId 部门编号
      * @param recursive 是否递归获取所有
      * @return 子部门列表
      */

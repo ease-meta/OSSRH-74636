@@ -1,9 +1,8 @@
 package cn.iocoder.yudao.module.system.controller.admin.auth.vo;
 
-
+import cn.iocoder.yudao.framework.common.validation.InEnum;
+import cn.iocoder.yudao.framework.common.validation.Mobile;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
-import io.github.meta.ease.common.validation.InEnum;
-import io.github.meta.ease.common.validation.Mobile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -30,4 +29,5 @@ public class AuthSmsSendReqVO {
     @NotNull(message = "发送场景不能为空")
     @InEnum(SmsSceneEnum.class)
     private Integer scene;
+
 }

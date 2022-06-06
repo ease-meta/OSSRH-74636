@@ -33,30 +33,27 @@ public class FtpFileClientConfig implements FileClientConfig {
      */
     @NotEmpty(message = "host 不能为空")
     private String host;
-
     /**
      * 主机端口
      */
     @NotNull(message = "port 不能为空")
     private Integer port;
-
     /**
      * 用户名
      */
     @NotEmpty(message = "用户名不能为空")
     private String username;
-
     /**
      * 密码
      */
     @NotEmpty(message = "密码不能为空")
     private String password;
-
     /**
      * 连接模式
-     * <p>
+     *
      * 使用 {@link  cn.hutool.extra.ftp.FtpMode} 对应的字符串
      */
     @NotEmpty(message = "连接模式不能为空")
     private String mode;
+
 }

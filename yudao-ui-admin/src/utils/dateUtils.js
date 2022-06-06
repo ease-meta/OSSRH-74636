@@ -6,9 +6,9 @@
  */
 export function getDate(ms) {
   const day = Math.floor(ms / (24 * 60 * 60 * 1000));
-  const hour = Math.floor((ms / (60 * 60 * 1000) - day * 24));
-  const minute = Math.floor(((ms / (60 * 1000)) - day * 24 * 60 - hour * 60));
-  const second = Math.floor((ms / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - minute * 60));
+  const hour =  Math.floor((ms / (60 * 60 * 1000) - day * 24));
+  const minute =  Math.floor(((ms / (60 * 1000)) - day * 24 * 60 - hour * 60));
+  const second =  Math.floor((ms / 1000 - day * 24 * 60 * 60 - hour * 60 * 60 - minute * 60));
   if (day > 0) {
     return day + "天" + hour + "小时" + minute + "分钟";
   }

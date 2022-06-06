@@ -2,8 +2,10 @@ package cn.iocoder.yudao.module.system.service.permission;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.map.MapUtil;
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.module.system.api.permission.dto.DeptDataPermissionRespDTO;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.MenuDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO;
@@ -20,31 +22,20 @@ import cn.iocoder.yudao.module.system.service.dept.DeptService;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojoList;
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singleton;
 import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.ArgumentMatchers.same;
 import static org.mockito.Mockito.verify;
@@ -59,25 +50,19 @@ public class PermissionServiceTest extends BaseDbUnitTest {
 
     @Resource
     private RoleMenuMapper roleMenuMapper;
-
     @Resource
     private RoleMenuBatchInsertMapper roleMenuBatchInsertMapper;
-
     @Resource
     private UserRoleMapper userRoleMapper;
-
     @Resource
     private UserRoleBatchInsertMapper userRoleBatchInsertMapper;
 
     @MockBean
     private RoleService roleService;
-
     @MockBean
     private MenuService menuService;
-
     @MockBean
     private DeptService deptService;
-
     @MockBean
     private AdminUserService userService;
 
@@ -154,9 +139,7 @@ public class PermissionServiceTest extends BaseDbUnitTest {
                 .put(200L, 2000L).put(200L, 2001L).build();
         permissionService.setRoleMenuCache(roleMenuCache);
         List<MenuDO> menuList = randomPojoList(MenuDO.class);
-        when(
-                menuService.getMenuListFromCache(eq(asList(1000L, 2000L, 2001L)), eq(menuTypes), eq(menusStatuses))).thenReturn(
-                menuList);
+        when(menuService.getMenuListFromCache(eq(asList(1000L, 2000L, 2001L)), eq(menuTypes), eq(menusStatuses))).thenReturn(menuList);
 
         // 调用
         List<MenuDO> result = permissionService.getRoleMenuListFromCache(roleIds, menuTypes, menusStatuses);
@@ -410,6 +393,7 @@ public class PermissionServiceTest extends BaseDbUnitTest {
         when(menuService.getMenuListByPermissionFromCache(eq("system:user:create"))).thenReturn(singletonList(menu));
         permissionService.setMenuRoleCache(ImmutableMultimap.<Long, Long>builder().put(1000L, 100L).build());
 
+
         // 调用
         boolean has = permissionService.hasAnyPermissions(userId, roles);
         // 断言
@@ -486,8 +470,7 @@ public class PermissionServiceTest extends BaseDbUnitTest {
         when(roleService.getRolesFromCache(eq(singleton(2L)))).thenReturn(singletonList(roleDO));
         when(roleService.getRoleFromCache(eq(2L))).thenReturn(roleDO);
         // mock 部门的返回
-        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null,
-                null); // 最后返回 null 的目的，看看会不会重复调用
+        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null, null); // 最后返回 null 的目的，看看会不会重复调用
 
         // 调用
         DeptDataPermissionRespDTO result = permissionService.getDeptDataPermission(userId);
@@ -511,8 +494,7 @@ public class PermissionServiceTest extends BaseDbUnitTest {
         when(roleService.getRolesFromCache(eq(singleton(2L)))).thenReturn(singletonList(roleDO));
         when(roleService.getRoleFromCache(eq(2L))).thenReturn(roleDO);
         // mock 部门的返回
-        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null,
-                null); // 最后返回 null 的目的，看看会不会重复调用
+        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null, null); // 最后返回 null 的目的，看看会不会重复调用
 
         // 调用
         DeptDataPermissionRespDTO result = permissionService.getDeptDataPermission(userId);
@@ -535,8 +517,7 @@ public class PermissionServiceTest extends BaseDbUnitTest {
         when(roleService.getRolesFromCache(eq(singleton(2L)))).thenReturn(singletonList(roleDO));
         when(roleService.getRoleFromCache(eq(2L))).thenReturn(roleDO);
         // mock 部门的返回
-        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null,
-                null); // 最后返回 null 的目的，看看会不会重复调用
+        when(userService.getUser(eq(1L))).thenReturn(new AdminUserDO().setDeptId(3L), null, null); // 最后返回 null 的目的，看看会不会重复调用
         // mock 方法（部门）
         DeptDO deptDO = randomPojo(DeptDO.class);
         when(deptService.getDeptsByParentIdFromCache(eq(3L), eq(true)))
@@ -571,4 +552,5 @@ public class PermissionServiceTest extends BaseDbUnitTest {
         assertTrue(result.getSelf());
         assertTrue(CollUtil.isEmpty(result.getDeptIds()));
     }
+
 }

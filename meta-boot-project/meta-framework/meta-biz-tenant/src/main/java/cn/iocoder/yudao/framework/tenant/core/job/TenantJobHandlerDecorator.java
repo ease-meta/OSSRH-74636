@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.framework.tenant.core.job;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.quartz.core.handler.JobHandler;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.yudao.framework.tenant.core.service.TenantFrameworkService;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.AllArgsConstructor;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * 多租户 JobHandler 装饰器
  * 任务执行时，会按照租户逐个执行 Job 的逻辑
- * <p>
+ *
  * 注意，需要保证 JobHandler 的幂等性。因为 Job 因为某个租户执行失败重试时，之前执行成功的租户也会再次执行。
  *
  * @author 芋道源码
@@ -23,7 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TenantJobHandlerDecorator implements JobHandler {
 
     private final TenantFrameworkService tenantFrameworkService;
-
     /**
      * 被装饰的 Job
      */
@@ -55,4 +54,5 @@ public class TenantJobHandlerDecorator implements JobHandler {
         });
         return JsonUtils.toJsonString(results);
     }
+
 }

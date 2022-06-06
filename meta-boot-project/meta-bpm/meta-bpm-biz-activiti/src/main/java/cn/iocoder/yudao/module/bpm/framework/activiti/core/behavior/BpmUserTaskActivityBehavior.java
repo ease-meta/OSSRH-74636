@@ -3,11 +3,12 @@ package cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
+import cn.iocoder.yudao.module.bpm.service.definition.BpmTaskAssignRuleService;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmTaskAssignRuleDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskAssignRuleTypeEnum;
-import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
-import cn.iocoder.yudao.module.bpm.service.definition.BpmTaskAssignRuleService;
 import cn.iocoder.yudao.module.bpm.service.definition.BpmUserGroupService;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
@@ -15,7 +16,6 @@ import cn.iocoder.yudao.module.system.api.permission.PermissionApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.bpmn.model.UserTask;
@@ -26,21 +26,14 @@ import org.activiti.engine.impl.el.ExpressionManager;
 import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.activiti.engine.impl.persistence.entity.TaskEntityManager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_SCRIPT_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_CREATE_FAIL_NO_CANDIDATE_USER;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
-
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_SCRIPT_NOT_EXISTS;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.TASK_CREATE_FAIL_NO_CANDIDATE_USER;
 
 /**
  * 自定义的流程任务的 assignee 负责人的分配
@@ -61,10 +54,8 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
 
     @Setter
     private DeptApi deptApi;
-
     @Setter
     private AdminUserApi adminUserApi;
-
     @Setter
     private PermissionApi permissionApi;
 
@@ -95,8 +86,7 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
     }
 
     private BpmTaskAssignRuleDO getTaskRule(TaskEntity task) {
-        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(
-                task.getProcessDefinitionId(),
+        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(task.getProcessDefinitionId(),
                 task.getTaskDefinitionKey());
         if (CollUtil.isEmpty(taskRules)) {
             throw new ActivitiException(StrUtil.format("流程任务({}/{}/{}) 找不到符合的任务规则",
@@ -202,4 +192,5 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
             return user == null || !CommonStatusEnum.ENABLE.getStatus().equals(user.getStatus());
         });
     }
+
 }

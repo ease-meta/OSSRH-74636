@@ -22,4 +22,5 @@ public class SmsChannelRespVO extends SmsChannelBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
+
 }

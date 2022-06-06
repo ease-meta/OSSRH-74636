@@ -3,10 +3,10 @@ package cn.iocoder.yudao.module.system.service.common;
 import cn.hutool.captcha.CaptchaUtil;
 import cn.hutool.captcha.CircleCaptcha;
 import cn.hutool.core.util.IdUtil;
-import cn.iocoder.yudao.module.system.controller.admin.common.vo.CaptchaImageRespVO;
 import cn.iocoder.yudao.module.system.convert.common.CaptchaConvert;
-import cn.iocoder.yudao.module.system.dal.redis.common.CaptchaRedisDAO;
 import cn.iocoder.yudao.module.system.framework.captcha.config.CaptchaProperties;
+import cn.iocoder.yudao.module.system.controller.admin.common.vo.CaptchaImageRespVO;
+import cn.iocoder.yudao.module.system.dal.redis.common.CaptchaRedisDAO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +23,8 @@ public class CaptchaServiceImpl implements CaptchaService {
 
     /**
      * 验证码是否开关
-     * <p>
-     * 虽然 {@link cn.iocoder.yudao.module.system.framework.captcha.config.CaptchaProperties#getEnable()} 有该属性，但是 Apollo 在 Spring Boot 下无法刷新 @ConfigurationProperties 注解，
+     *
+     * 虽然 {@link CaptchaProperties#getEnable()} 有该属性，但是 Apollo 在 Spring Boot 下无法刷新 @ConfigurationProperties 注解，
      * 所以暂时只能这么处理~
      */
     @Value("${yudao.captcha.enable}")
@@ -39,8 +39,7 @@ public class CaptchaServiceImpl implements CaptchaService {
             return CaptchaImageRespVO.builder().enable(enable).build();
         }
         // 生成验证码
-        CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(captchaProperties.getWidth(),
-                captchaProperties.getHeight());
+        CircleCaptcha captcha = CaptchaUtil.createCircleCaptcha(captchaProperties.getWidth(), captchaProperties.getHeight());
         // 缓存到 Redis 中
         String uuid = IdUtil.fastSimpleUUID();
         captchaRedisDAO.set(uuid, captcha.getCode(), captchaProperties.getTimeout());
@@ -62,4 +61,5 @@ public class CaptchaServiceImpl implements CaptchaService {
     public void deleteCaptchaCode(String uuid) {
         captchaRedisDAO.delete(uuid);
     }
+
 }

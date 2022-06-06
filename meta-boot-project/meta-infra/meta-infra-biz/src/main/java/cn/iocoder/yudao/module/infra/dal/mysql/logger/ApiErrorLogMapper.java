@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.logger;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.QueryWrapperX;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiErrorLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.QueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -38,7 +38,8 @@ public interface ApiErrorLogMapper extends BaseMapperX<ApiErrorLogDO> {
                 .likeIfPresent("request_url", reqVO.getRequestUrl())
                 .betweenIfPresent("exception_time", reqVO.getBeginExceptionTime(), reqVO.getEndExceptionTime())
                 .eqIfPresent("process_status", reqVO.getProcessStatus())
-                .orderByDesc("id")
+				.orderByDesc("id")
         );
     }
+
 }

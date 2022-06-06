@@ -1,12 +1,8 @@
 package cn.iocoder.yudao.module.infra.controller.admin.test.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
+import io.swagger.annotations.*;
+import javax.validation.constraints.*;
 
 @ApiModel("管理后台 - 字典类型更新 Request VO")
 @Data
@@ -17,4 +13,5 @@ public class TestDemoUpdateReqVO extends TestDemoBaseVO {
     @ApiModelProperty(value = "编号", required = true)
     @NotNull(message = "编号不能为空")
     private Long id;
+
 }

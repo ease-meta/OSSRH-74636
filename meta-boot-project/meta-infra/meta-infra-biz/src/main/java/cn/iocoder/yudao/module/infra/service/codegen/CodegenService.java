@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.infra.service.codegen;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.CodegenCreateListReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.CodegenUpdateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.table.CodegenTablePageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.table.DatabaseTableRespVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenColumnDO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenTableDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +22,7 @@ public interface CodegenService {
      * 基于数据库的表结构，创建代码生成器的表定义
      *
      * @param userId 用户编号
-     * @param reqVO  表信息
+     * @param reqVO 表信息
      * @return 创建的表定义的编号数组
      */
     List<Long> createCodegenList(Long userId, CodegenCreateListReqVO reqVO);
@@ -83,10 +83,12 @@ public interface CodegenService {
     /**
      * 获得数据库自带的表定义列表
      *
+     *
      * @param dataSourceConfigId 数据源的配置编号
-     * @param name               表名称
-     * @param comment            表描述
+     * @param name 表名称
+     * @param comment 表描述
      * @return 表定义列表
      */
     List<DatabaseTableRespVO> getDatabaseTableList(Long dataSourceConfigId, String name, String comment);
+
 }

@@ -4,7 +4,7 @@ import MyProcessViewer from './designer/index2';
 
 const components = [MyProcessDesigner, MyProcessPenal, MyProcessViewer];
 
-const install = function (Vue) {
+const install = function(Vue) {
   components.forEach(component => {
     Vue.component(component.name, component);
   });

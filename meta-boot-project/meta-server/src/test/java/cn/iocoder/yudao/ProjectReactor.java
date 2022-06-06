@@ -3,7 +3,7 @@ package cn.iocoder.yudao;
 import cn.hutool.core.io.FileTypeUtil;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.util.StrUtil;
-import io.github.meta.ease.common.util.collection.SetUtils;
+import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 

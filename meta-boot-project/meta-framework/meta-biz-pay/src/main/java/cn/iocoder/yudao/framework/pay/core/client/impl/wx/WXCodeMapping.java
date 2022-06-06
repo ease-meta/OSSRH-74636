@@ -1,16 +1,13 @@
 package cn.iocoder.yudao.framework.pay.core.client.impl.wx;
 
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.pay.core.client.AbstractPayCodeMapping;
-import io.github.meta.ease.common.exception.ErrorCode;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
 
 import java.util.Objects;
 
-import static cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants.PAY_CONFIG_APP_ID_ERROR;
-import static cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants.PAY_CONFIG_SIGN_ERROR;
-import static cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants.PAY_OPENID_ERROR;
-import static cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants.PAY_PARAM_MISSING;
+import static cn.iocoder.yudao.framework.pay.core.enums.PayFrameworkErrorCodeConstants.*;
 
 /**
  * 微信支付 PayCodeMapping 实现类
@@ -24,7 +21,6 @@ public class WXCodeMapping extends AbstractPayCodeMapping {
      * 由于 weixin-java-pay 封装的 Result 未返回 code，所以自己定义下
      */
     public static final String CODE_SUCCESS = "SUCCESS";
-
     /**
      * 错误提示 - 成功
      */
@@ -40,7 +36,7 @@ public class WXCodeMapping extends AbstractPayCodeMapping {
                 return PAY_CONFIG_APP_ID_ERROR;
             }
             if (Objects.equals(apiMsg, "签名错误，请检查后再试")
-                    || Objects.equals(apiMsg, "签名错误")) {
+                || Objects.equals(apiMsg, "签名错误")) {
                 return PAY_CONFIG_SIGN_ERROR;
             }
         }
@@ -56,4 +52,5 @@ public class WXCodeMapping extends AbstractPayCodeMapping {
         }
         return null;
     }
+
 }

@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.infra.service.codegen.inner;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import cn.iocoder.yudao.module.infra.convert.codegen.CodegenConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenColumnDO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenTableDO;
@@ -12,30 +13,22 @@ import cn.iocoder.yudao.module.infra.enums.codegen.CodegenTemplateTypeEnum;
 import com.baomidou.mybatisplus.generator.config.po.TableField;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.google.common.collect.Sets;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import static cn.hutool.core.text.CharSequenceUtil.subAfter;
-import static cn.hutool.core.text.CharSequenceUtil.subBefore;
-import static cn.hutool.core.text.CharSequenceUtil.toCamelCase;
-import static cn.hutool.core.text.CharSequenceUtil.upperFirst;
+import static cn.hutool.core.text.CharSequenceUtil.*;
 
 /**
  * 代码生成器的 Builder，负责：
- * 1. 将数据库的表 {@link TableInfo} 定义，构建成 {@link cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenTableDO}
- * 2. 将数据库的列 {@link TableField} 构定义，建成 {@link cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenColumnDO}
+ * 1. 将数据库的表 {@link TableInfo} 定义，构建成 {@link CodegenTableDO}
+ * 2. 将数据库的列 {@link TableField} 构定义，建成 {@link CodegenColumnDO}
  */
 @Component
 public class CodegenBuilder {
 
     /**
-     * 字段名与 {@link cn.iocoder.yudao.module.infra.enums.codegen.CodegenColumnListConditionEnum} 的默认映射
+     * 字段名与 {@link CodegenColumnListConditionEnum} 的默认映射
      * 注意，字段的匹配以后缀的方式
      */
     private static final Map<String, CodegenColumnListConditionEnum> columnListOperationConditionMappings =
@@ -46,7 +39,7 @@ public class CodegenBuilder {
                     .build();
 
     /**
-     * 字段名与 {@link cn.iocoder.yudao.module.infra.enums.codegen.CodegenColumnHtmlTypeEnum} 的默认映射
+     * 字段名与 {@link CodegenColumnHtmlTypeEnum} 的默认映射
      * 注意，字段的匹配以后缀的方式
      */
     private static final Map<String, CodegenColumnHtmlTypeEnum> columnHtmlTypeMappings =
@@ -67,27 +60,22 @@ public class CodegenBuilder {
      * 多租户编号的字段名
      */
     public static final String TENANT_ID_FIELD = "tenantId";
-
     /**
      * {@link cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO} 的字段
      */
     public static final Set<String> BASE_DO_FIELDS = new HashSet<>();
-
     /**
      * 新增操作，不需要传递的字段
      */
     private static final Set<String> CREATE_OPERATION_EXCLUDE_COLUMN = Sets.newHashSet("id");
-
     /**
      * 修改操作，不需要传递的字段
      */
     private static final Set<String> UPDATE_OPERATION_EXCLUDE_COLUMN = Sets.newHashSet();
-
     /**
      * 列表操作的条件，不需要传递的字段
      */
     private static final Set<String> LIST_OPERATION_EXCLUDE_COLUMN = Sets.newHashSet("id");
-
     /**
      * 列表操作的结果，不需要返回的字段
      */
@@ -180,4 +168,5 @@ public class CodegenBuilder {
             column.setHtmlType(CodegenColumnHtmlTypeEnum.INPUT.getType());
         }
     }
+
 }

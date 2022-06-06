@@ -33,4 +33,5 @@ public class ActivitiWebFilter extends OncePerRequestFilter {
             ActivitiUtils.clearAuthenticatedUserId();
         }
     }
+
 }

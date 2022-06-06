@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 针对 {@link cn.iocoder.yudao.module.system.mq.message.permission.RoleMenuRefreshMessage} 的消费者
+ * 针对 {@link RoleMenuRefreshMessage} 的消费者
  *
  * @author 芋道源码
  */
@@ -25,4 +25,5 @@ public class RoleMenuRefreshConsumer extends AbstractChannelMessageListener<Role
         log.info("[onMessage][收到 Role 与 Menu 的关联刷新消息]");
         permissionService.initLocalCache();
     }
+
 }

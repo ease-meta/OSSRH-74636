@@ -17,4 +17,5 @@ public class MenuRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.menu.refresh";
     }
+
 }

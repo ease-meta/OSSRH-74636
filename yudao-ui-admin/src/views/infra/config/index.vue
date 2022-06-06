@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="配置中心" url="https://doc.iocoder.cn/config-center/"/>
+    <doc-alert title="配置中心" url="https://doc.iocoder.cn/config-center/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="参数名称" prop="name">
@@ -19,7 +19,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRange" style="width: 240px" value-format="yyyy-MM-dd" type="daterange"
-                        range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+          range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -30,26 +30,24 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['infra:config:create']">新增
-        </el-button>
+                   v-hasPermi="['infra:config:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
-                   v-hasPermi="['infra:config:export']">导出
-        </el-button>
+                   v-hasPermi="['infra:config:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="configList">
-      <el-table-column label="参数主键" align="center" prop="id"/>
-      <el-table-column label="参数分类" align="center" prop="group"/>
-      <el-table-column label="参数名称" align="center" prop="name" :show-overflow-tooltip="true"/>
-      <el-table-column label="参数键名" align="center" prop="key" :show-overflow-tooltip="true"/>
-      <el-table-column label="参数键值" align="center" prop="value"/>
+      <el-table-column label="参数主键" align="center" prop="id" />
+      <el-table-column label="参数分类" align="center" prop="group" />
+      <el-table-column label="参数名称" align="center" prop="name" :show-overflow-tooltip="true" />
+      <el-table-column label="参数键名" align="center" prop="key" :show-overflow-tooltip="true" />
+      <el-table-column label="参数键值" align="center" prop="value" />
       <el-table-column label="系统内置" align="center" prop="type">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.INFRA_CONFIG_TYPE" :value="scope.row.type"/>
+          <dict-tag :type="DICT_TYPE.INFRA_CONFIG_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
       <el-table-column label="是否可见" align="center" prop="visible">
@@ -57,7 +55,7 @@
           <span>{{ scope.row.visible ? '是' : '否' }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true"/>
+      <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -66,32 +64,29 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['infra:config:update']">修改
-          </el-button>
+                     v-hasPermi="['infra:config:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['infra:config:delete']">删除
-          </el-button>
+                     v-hasPermi="['infra:config:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNo" :limit.sync="queryParams.pageSize"
-                @pagination="getList"/>
+    <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNo" :limit.sync="queryParams.pageSize" @pagination="getList"/>
 
     <!-- 添加或修改参数配置对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="参数分类" prop="category">
-          <el-input v-model="form.category" placeholder="请输入参数分类"/>
+          <el-input v-model="form.category" placeholder="请输入参数分类" />
         </el-form-item>
         <el-form-item label="参数名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入参数名称"/>
+          <el-input v-model="form.name" placeholder="请输入参数名称" />
         </el-form-item>
         <el-form-item label="参数键名" prop="key">
-          <el-input v-model="form.key" placeholder="请输入参数键名"/>
+          <el-input v-model="form.key" placeholder="请输入参数键名" />
         </el-form-item>
         <el-form-item label="参数键值" prop="value">
-          <el-input v-model="form.value" placeholder="请输入参数键值"/>
+          <el-input v-model="form.value" placeholder="请输入参数键值" />
         </el-form-item>
         <el-form-item label="是否可见" prop="type">
           <el-radio-group v-model="form.visible">
@@ -100,7 +95,7 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"/>
+          <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -112,7 +107,7 @@
 </template>
 
 <script>
-import {addConfig, delConfig, exportConfig, getConfig, listConfig, updateConfig} from "@/api/infra/config";
+import { listConfig, getConfig, delConfig, addConfig, updateConfig, exportConfig } from "@/api/infra/config";
 
 export default {
   name: "Config",
@@ -149,16 +144,16 @@ export default {
       // 表单校验
       rules: {
         category: [
-          {required: true, message: "参数分类不能为空", trigger: "blur"}
+          { required: true, message: "参数分类不能为空", trigger: "blur" }
         ],
         name: [
-          {required: true, message: "参数名称不能为空", trigger: "blur"}
+          { required: true, message: "参数名称不能为空", trigger: "blur" }
         ],
         key: [
-          {required: true, message: "参数键名不能为空", trigger: "blur"}
+          { required: true, message: "参数键名不能为空", trigger: "blur" }
         ],
         value: [
-          {required: true, message: "参数键值不能为空", trigger: "blur"}
+          { required: true, message: "参数键值不能为空", trigger: "blur" }
         ]
       }
     };
@@ -224,7 +219,7 @@ export default {
       });
     },
     /** 提交按钮 */
-    submitForm: function () {
+    submitForm: function() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
@@ -246,13 +241,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除参数编号为"' + ids + '"的数据项?').then(function () {
-        return delConfig(ids);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除参数编号为"' + ids + '"的数据项?').then(function() {
+          return delConfig(ids);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -261,13 +255,12 @@ export default {
         this.dateRange[1] ? this.dateRange[1] + ' 23:59:59' : undefined,
       ]);
       this.$modal.confirm('是否确认导出所有参数数据项?').then(() => {
-        this.exportLoading = true;
-        return exportConfig(queryParams);
-      }).then(response => {
-        this.$download.excel(response, '参数配置.xls');
-        this.exportLoading = false;
-      }).catch(() => {
-      });
+          this.exportLoading = true;
+          return exportConfig(queryParams);
+        }).then(response => {
+          this.$download.excel(response, '参数配置.xls');
+          this.exportLoading = false;
+      }).catch(() => {});
     },
   }
 };

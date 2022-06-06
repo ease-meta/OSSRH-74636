@@ -19,14 +19,14 @@ function exists(element) {
 function includesType(collection, type) {
   return (
     exists(collection) &&
-    some(collection, function (element) {
+    some(collection, function(element) {
       return is(element, type);
     })
   );
 }
 
 function anyType(element, types) {
-  return some(types, function (type) {
+  return some(types, function(type) {
     return is(element, type);
   });
 }
@@ -41,7 +41,7 @@ function isAllowed(propName, propDescriptor, newElement) {
 function FlowableModdleExtension(eventBus) {
   eventBus.on(
     "property.clone",
-    function (context) {
+    function(context) {
       var newElement = context.newElement,
         propDescriptor = context.propertyDescriptor;
 
@@ -53,7 +53,7 @@ function FlowableModdleExtension(eventBus) {
 
 FlowableModdleExtension.$inject = ["eventBus"];
 
-FlowableModdleExtension.prototype.canCloneProperty = function (newElement, propDescriptor) {
+FlowableModdleExtension.prototype.canCloneProperty = function(newElement, propDescriptor) {
   if (isAllowed("flowable:FailedJobRetryTimeCycle", propDescriptor, newElement)) {
     return (
       includesType(newElement.eventDefinitions, "bpmn:TimerEventDefinition") ||

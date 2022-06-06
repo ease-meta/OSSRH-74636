@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.file;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -28,4 +28,5 @@ public interface FileConfigMapper extends BaseMapperX<FileConfigDO> {
 
     @Select("SELECT COUNT(*) FROM infra_file_config WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
+
 }

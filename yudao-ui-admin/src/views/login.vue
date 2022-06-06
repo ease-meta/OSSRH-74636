@@ -66,8 +66,7 @@
                       <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
                     </template>
                     <template slot="append">
-                      <span v-if="mobileCodeTimer <= 0" class="getMobileCode" @click="getSmsCode"
-                            style="cursor: pointer;">获取验证码</span>
+                      <span v-if="mobileCodeTimer <= 0" class="getMobileCode" @click="getSmsCode" style="cursor: pointer;">获取验证码</span>
                       <span v-if="mobileCodeTimer > 0" class="getMobileCode">{{ mobileCodeTimer }}秒后可重新获取</span>
                     </template>
                   </el-input>
@@ -77,20 +76,19 @@
               <!-- 下方的登录按钮 -->
               <el-form-item style="width:100%;">
                 <el-button :loading="loading" size="medium" type="primary" style="width:100%;"
-                           @click.native.prevent="handleLogin">
+                    @click.native.prevent="handleLogin">
                   <span v-if="!loading">登 录</span>
                   <span v-else>登 录 中...</span>
                 </el-button>
               </el-form-item>
 
               <!--  社交登录 -->
-              <el-form-item style="width:100%;">
-                <div class="oauth-login" style="display:flex">
-                  <div class="oauth-login-item" v-for="item in SysUserSocialTypeEnum" :key="item.type"
-                       @click="doSocialLogin(item)">
-                    <img :src="item.img" height="25px" width="25px" alt="登录">
-                    <span>{{ item.title }}</span>
-                  </div>
+             <el-form-item style="width:100%;">
+                  <div class="oauth-login" style="display:flex">
+                    <div class="oauth-login-item" v-for="item in SysUserSocialTypeEnum" :key="item.type" @click="doSocialLogin(item)">
+                      <img :src="item.img" height="25px" width="25px" alt="登录" >
+                      <span>{{item.title}}</span>
+                    </div>
                 </div>
               </el-form-item>
             </el-form>
@@ -108,21 +106,16 @@
 <script>
 import {getCodeImg, sendSmsCode, socialAuthRedirect} from "@/api/login";
 import {getTenantIdByName} from "@/api/system/tenant";
+import Cookies from "js-cookie";
 import {SystemUserSocialTypeEnum} from "@/utils/constants";
 import {getTenantEnable} from "@/utils/ruoyi";
 import {
   getPassword,
-  getRememberMe,
-  getTenantName,
+  getRememberMe, getTenantName,
   getUsername,
-  removePassword,
-  removeRememberMe,
-  removeTenantName,
+  removePassword, removeRememberMe, removeTenantName,
   removeUsername,
-  setPassword,
-  setRememberMe,
-  setTenantId,
-  setTenantName,
+  setPassword, setRememberMe, setTenantId, setTenantName,
   setUsername
 } from "@/utils/auth";
 
@@ -306,7 +299,7 @@ export default {
 .oauth-login {
   display: flex;
   align-items: cen;
-  cursor: pointer;
+  cursor:pointer;
 }
 .oauth-login-item {
   display: flex;

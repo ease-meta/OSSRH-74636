@@ -1,24 +1,28 @@
 package cn.iocoder.yudao.framework.security.core.handler;
 
-
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
+import org.springframework.stereotype.Component;
 
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.FORBIDDEN;
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.FORBIDDEN;
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.UNAUTHORIZED;
 
 /**
- * 访问一个需要认证的 URL 资源，已经认证（登录）但是没有权限的情况下，返回 {@link io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants#FORBIDDEN} 错误码。
- * <p>
- * 补充：Spring Security 通过 {@link org.springframework.security.web.access.ExceptionTranslationFilter#handleAccessDeniedException(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.FilterChain, org.springframework.security.access.AccessDeniedException)} 方法，调用当前类
+ * 访问一个需要认证的 URL 资源，已经认证（登录）但是没有权限的情况下，返回 {@link GlobalErrorCodeConstants#FORBIDDEN} 错误码。
+ *
+ * 补充：Spring Security 通过 {@link ExceptionTranslationFilter#handleAccessDeniedException(HttpServletRequest, HttpServletResponse, FilterChain, AccessDeniedException)} 方法，调用当前类
  *
  * @author 芋道源码
  */
@@ -35,4 +39,5 @@ public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
         // 返回 403
         ServletUtils.writeJSON(response, CommonResult.error(FORBIDDEN));
     }
+
 }

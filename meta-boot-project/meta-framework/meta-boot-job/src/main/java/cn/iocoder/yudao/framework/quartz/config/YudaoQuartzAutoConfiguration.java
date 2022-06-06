@@ -17,4 +17,5 @@ public class YudaoQuartzAutoConfiguration {
     public SchedulerManager schedulerManager(Scheduler scheduler) {
         return new SchedulerManager(scheduler);
     }
+
 }

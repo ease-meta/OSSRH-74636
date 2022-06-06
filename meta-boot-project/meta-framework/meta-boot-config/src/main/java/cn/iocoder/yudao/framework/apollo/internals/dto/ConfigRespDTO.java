@@ -16,7 +16,6 @@ public class ConfigRespDTO {
      * 参数键名
      */
     private String key;
-
     /**
      * 参数键值
      */
@@ -26,9 +25,9 @@ public class ConfigRespDTO {
      * 是否删除
      */
     private Boolean deleted;
-
     /**
      * 更新时间
      */
     private Date updateTime;
+
 }

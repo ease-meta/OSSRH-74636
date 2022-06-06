@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.controller.admin.socail.vo;
 
+import cn.iocoder.yudao.framework.common.validation.InEnum;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
-import io.github.meta.ease.common.validation.InEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -27,4 +27,5 @@ public class SocialUserUnbindReqVO {
     @ApiModelProperty(value = "社交用户的 openid", required = true, example = "IPRmJ0wvBptiPIlGEZiPewGwiEiE")
     @NotEmpty(message = "社交用户的 openid 不能为空")
     private String openid;
+
 }

@@ -1,13 +1,10 @@
 package cn.iocoder.yudao.module.bpm.service.task;
 
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceCancelReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceCreateReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceMyPageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstancePageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceRespVO;
-import io.github.meta.ease.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.module.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
+import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.*;
+import org.flowable.common.engine.api.delegate.event.FlowableEngineEntityEvent;
 import org.flowable.engine.delegate.event.FlowableCancelledEvent;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.runtime.ProcessInstance;
@@ -53,17 +50,16 @@ public interface BpmProcessInstanceService {
     /**
      * 获得流程实例的分页
      *
-     * @param userId    用户编号
+     * @param userId 用户编号
      * @param pageReqVO 分页请求
      * @return 流程实例的分页
      */
     PageResult<BpmProcessInstancePageItemRespVO> getMyProcessInstancePage(Long userId,
                                                                           @Valid BpmProcessInstanceMyPageReqVO pageReqVO);
-
     /**
      * 创建流程实例（提供给前端）
      *
-     * @param userId      用户编号
+     * @param userId 用户编号
      * @param createReqVO 创建信息
      * @return 实例的编号
      */
@@ -72,7 +68,7 @@ public interface BpmProcessInstanceService {
     /**
      * 创建流程实例（提供给内部）
      *
-     * @param userId       用户编号
+     * @param userId 用户编号
      * @param createReqDTO 创建信息
      * @return 实例的编号
      */
@@ -89,7 +85,7 @@ public interface BpmProcessInstanceService {
     /**
      * 取消流程实例
      *
-     * @param userId      用户编号
+     * @param userId 用户编号
      * @param cancelReqVO 取消信息
      */
     void cancelProcessInstance(Long userId, @Valid BpmProcessInstanceCancelReqVO cancelReqVO);
@@ -144,8 +140,10 @@ public interface BpmProcessInstanceService {
     /**
      * 更新 ProcessInstance 拓展记录为不通过
      *
-     * @param id     流程编号
+     * @param id 流程编号
      * @param reason 理由。例如说，审批不通过时，需要传递该值
      */
     void updateProcessInstanceExtReject(String id, String reason);
+
+
 }

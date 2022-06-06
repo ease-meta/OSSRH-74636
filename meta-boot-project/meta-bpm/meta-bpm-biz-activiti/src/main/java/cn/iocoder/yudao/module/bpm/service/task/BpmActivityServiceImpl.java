@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.bpm.service.task;
 
 import cn.hutool.core.io.IoUtil;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.activity.BpmActivityRespVO;
 import cn.iocoder.yudao.module.bpm.convert.task.BpmActivityConvert;
 import cn.iocoder.yudao.module.bpm.service.definition.BpmProcessDefinitionService;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.activity.BpmActivityRespVO;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.HistoryService;
@@ -20,9 +20,8 @@ import java.io.InputStream;
 import java.util.Collections;
 import java.util.List;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_BPMN_MODEL_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_INSTANCE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
 
 /**
  * BPM 活动实例 Service 实现类
@@ -38,16 +37,13 @@ public class BpmActivityServiceImpl implements BpmActivityService {
 
     @Resource
     private ProcessDiagramGenerator processDiagramGenerator;
-
     @Resource
     private HistoryService historyService;
 
     @Resource
     private BpmProcessInstanceService processInstanceService;
-
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
-
     @Resource
     private BpmTaskService taskService;
 
@@ -80,9 +76,9 @@ public class BpmActivityServiceImpl implements BpmActivityService {
         }
 
         // 生成高亮流程图
-        InputStream inputStream = processDiagramGenerator.generateDiagram(bpmnModel, highLightedActivities,
-                Collections.emptyList(),
+        InputStream inputStream = processDiagramGenerator.generateDiagram(bpmnModel, highLightedActivities, Collections.emptyList(),
                 FONT_NAME, FONT_NAME, FONT_NAME);
         return IoUtil.readBytes(inputStream);
     }
+
 }

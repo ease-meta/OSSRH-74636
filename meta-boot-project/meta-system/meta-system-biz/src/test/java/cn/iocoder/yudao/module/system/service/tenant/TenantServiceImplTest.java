@@ -1,9 +1,10 @@
 package cn.iocoder.yudao.module.system.service.tenant;
 
 import cn.hutool.core.util.ReflectUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.tenant.config.TenantProperties;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant.TenantCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant.TenantExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant.TenantPageReqVO;
@@ -22,8 +23,7 @@ import cn.iocoder.yudao.module.system.service.permission.RoleService;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantInfoHandler;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantMenuHandler;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -36,39 +36,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.addTime;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
 import static cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantDO.PACKAGE_ID_SYSTEM;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_CAN_NOT_UPDATE_SYSTEM;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_EXPIRE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_NOT_EXISTS;
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
-import static io.github.meta.ease.common.util.date.DateUtils.addTime;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
-import static io.github.meta.ease.common.util.date.DateUtils.max;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static java.util.Arrays.asList;
 import static java.util.Collections.singleton;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.argThat;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.ArgumentMatchers.isNull;
-import static org.mockito.ArgumentMatchers.same;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.tenant.TenantServiceImpl} 的单元测试类
+ * {@link TenantServiceImpl} 的单元测试类
  *
  * @author 芋道源码
  */
@@ -83,22 +68,16 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private TenantProperties tenantProperties;
-
     @MockBean
     private TenantPackageService tenantPackageService;
-
     @MockBean
     private AdminUserService userService;
-
     @MockBean
     private RoleService roleService;
-
     @MockBean
     private MenuService menuService;
-
     @MockBean
     private PermissionService permissionService;
-
     @MockBean
     private TenantProducer tenantProducer;
 
@@ -514,7 +493,7 @@ public class TenantServiceImplTest extends BaseDbUnitTest {
         TenantContextHolder.setTenantId(dbTenant.getId());
         // mock 菜单
         when(menuService.getMenus()).thenReturn(Arrays.asList(randomPojo(MenuDO.class, o -> o.setId(100L)),
-                randomPojo(MenuDO.class, o -> o.setId(101L))));
+                        randomPojo(MenuDO.class, o -> o.setId(101L))));
 
         // 调用
         tenantService.handleTenantMenu(handler);

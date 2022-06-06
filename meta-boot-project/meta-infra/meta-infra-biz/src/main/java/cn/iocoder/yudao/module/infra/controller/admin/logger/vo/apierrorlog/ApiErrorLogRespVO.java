@@ -25,4 +25,5 @@ public class ApiErrorLogRespVO extends ApiErrorLogBaseVO {
 
     @ApiModelProperty(value = "处理用户编号", example = "233")
     private Integer processUserId;
+
 }

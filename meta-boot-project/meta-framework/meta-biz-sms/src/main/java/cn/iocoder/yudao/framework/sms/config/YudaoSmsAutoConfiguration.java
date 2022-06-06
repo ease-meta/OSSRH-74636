@@ -17,4 +17,5 @@ public class YudaoSmsAutoConfiguration {
     public SmsClientFactory smsClientFactory() {
         return new SmsClientFactoryImpl();
     }
+
 }

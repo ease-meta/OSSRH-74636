@@ -1,4 +1,4 @@
-import {deepClone} from '@/utils/index'
+import { deepClone } from '@/utils/index'
 
 const componentChild = {}
 /**
@@ -59,7 +59,7 @@ function buildDataObject(confClone, dataObject) {
       } else if (Array.isArray(dataObject[key])) {
         dataObject[key] = [...dataObject[key], ...val]
       } else {
-        dataObject[key] = {...dataObject[key], ...val}
+        dataObject[key] = { ...dataObject[key], ...val }
       }
     } else {
       dataObject.attrs[key] = val

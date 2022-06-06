@@ -15,9 +15,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * @description 注册工厂
  * @author Qingchen
  * @version 1.0.0
- * @description 注册工厂
  * @date 2021-08-28 23:07
  * @class cn.iocoder.yudao.framework.extension.core.factory.ExtensionRegisterFactory.java
  */
@@ -38,7 +38,7 @@ public class ExtensionRegisterFactory implements ExtensionFactory {
     @Override
     public void register(String basePackage) {
         final Map<String, Object> beans = applicationContext.getBeansWithAnnotation(Extension.class);
-        if (beans == null || beans.isEmpty()) {
+        if(beans == null || beans.isEmpty()) {
             return;
         }
 
@@ -50,7 +50,7 @@ public class ExtensionRegisterFactory implements ExtensionFactory {
     public <T extends ExtensionPoint> T get(BusinessScenario businessScenario, Class<T> clazz) {
 
         final ExtensionDefinition definition = registerExtensionBeans.get(businessScenario.getUniqueIdentity());
-        if (definition == null) {
+        if(definition == null) {
             log.error("获取业务场景扩展点实现失败，失败原因：尚未定义该业务场景相关扩展点。{}", businessScenario);
             throw new RuntimeException("尚未定义该业务场景相关扩展点 [" + businessScenario + "]");
         }
@@ -60,22 +60,20 @@ public class ExtensionRegisterFactory implements ExtensionFactory {
 
     /**
      * 注册扩展点
-     *
      * @param point
      */
     private void doRegister(@NotNull ExtensionPoint point) {
-        Class<?> extensionClazz = point.getClass();
+        Class<?>  extensionClazz = point.getClass();
 
         if (AopUtils.isAopProxy(point)) {
             extensionClazz = ClassUtils.getUserClass(point);
         }
 
         Extension extension = AnnotationUtils.findAnnotation(extensionClazz, Extension.class);
-        final BusinessScenario businessScenario = BusinessScenario.valueOf(extension.businessId(), extension.useCase(),
-                extension.scenario());
+        final BusinessScenario businessScenario = BusinessScenario.valueOf(extension.businessId(), extension.useCase(), extension.scenario());
         final ExtensionDefinition definition = ExtensionDefinition.valueOf(businessScenario, point);
         final ExtensionDefinition exist = registerExtensionBeans.get(businessScenario.getUniqueIdentity());
-        if (exist != null && !exist.equals(definition)) {
+        if(exist != null && !exist.equals(definition)) {
             throw new RuntimeException("相同的业务场景重复注册了不同类型的扩展点实现 :【" + definition + "】【" + exist + "】");
         }
 

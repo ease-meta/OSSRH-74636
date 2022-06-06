@@ -2,22 +2,19 @@
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="字典名称" prop="name">
-        <el-input v-model="queryParams.name" placeholder="请输入字典名称" clearable style="width: 240px"
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.name" placeholder="请输入字典名称" clearable style="width: 240px" @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="字典类型" prop="type">
-        <el-input v-model="queryParams.type" placeholder="请输入字典类型" clearable style="width: 240px"
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.type" placeholder="请输入字典类型" clearable style="width: 240px" @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="字典状态" clearable style="width: 240px">
-          <el-option v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="dict.label"
-                     :value="parseInt(dict.value)"/>
+          <el-option v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="dict.label" :value="parseInt(dict.value)"/>
         </el-select>
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd" type="daterange"
-                        range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+          range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -28,20 +25,18 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:dict:create']">新增
-        </el-button>
+                   v-hasPermi="['system:dict:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
-                   v-hasPermi="['system:dict:export']">导出
-        </el-button>
+                   v-hasPermi="['system:dict:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="typeList">
-      <el-table-column label="字典编号" align="center" prop="id"/>
-      <el-table-column label="字典名称" align="center" prop="name" :show-overflow-tooltip="true"/>
+      <el-table-column label="字典编号" align="center" prop="id" />
+      <el-table-column label="字典名称" align="center" prop="name" :show-overflow-tooltip="true" />
       <el-table-column label="字典类型" align="center" :show-overflow-tooltip="true">
         <template slot-scope="scope">
           <router-link :to="'/dict/type/data/' + scope.row.id" class="link-type">
@@ -54,7 +49,7 @@
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true"/>
+      <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -63,11 +58,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['system:dict:update']">修改
-          </el-button>
+                     v-hasPermi="['system:dict:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['system:dict:delete']">删除
-          </el-button>
+                     v-hasPermi="['system:dict:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -79,16 +72,14 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="字典名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入字典名称"/>
+          <el-input v-model="form.name" placeholder="请输入字典名称" />
         </el-form-item>
         <el-form-item label="字典类型" prop="type">
-          <el-input :disabled="typeof form.id !== 'undefined'" v-model="form.type" placeholder="请输入字典类型"/>
+          <el-input :disabled="typeof form.id !== 'undefined'" v-model="form.type" placeholder="请输入字典类型" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-radio-group v-model="form.status">
-            <el-radio v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="parseInt(dict.value)">
-              {{ dict.label }}
-            </el-radio>
+            <el-radio v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
@@ -104,10 +95,10 @@
 </template>
 
 <script>
-import {addType, delType, exportType, getType, listType, updateType} from "@/api/system/dict/type";
+import { listType, getType, delType, addType, updateType, exportType } from "@/api/system/dict/type";
 
-import {CommonStatusEnum} from '@/utils/constants'
-import {DICT_TYPE, getDictDatas} from '@/utils/dict'
+import { CommonStatusEnum } from '@/utils/constants'
+import { getDictDatas, DICT_TYPE } from '@/utils/dict'
 
 export default {
   name: "Dict",
@@ -144,10 +135,10 @@ export default {
       // 表单校验
       rules: {
         name: [
-          {required: true, message: "字典名称不能为空", trigger: "blur"}
+          { required: true, message: "字典名称不能为空", trigger: "blur" }
         ],
         type: [
-          {required: true, message: "字典类型不能为空", trigger: "blur"}
+          { required: true, message: "字典类型不能为空", trigger: "blur" }
         ]
       },
 
@@ -218,7 +209,7 @@ export default {
       });
     },
     /** 提交按钮 */
-    submitForm: function () {
+    submitForm: function() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
@@ -240,13 +231,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id || this.ids;
-      this.$modal.confirm('是否确认删除字典编号为"' + ids + '"的数据项?').then(function () {
-        return delType(ids);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除字典编号为"' + ids + '"的数据项?').then(function() {
+          return delType(ids);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -262,8 +252,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, '字典类型.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     }
   }
 };

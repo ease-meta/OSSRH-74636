@@ -1,6 +1,8 @@
 package cn.iocoder.yudao.framework.tenant.config;
 
 import cn.hutool.core.annotation.AnnotationUtil;
+import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
+import cn.iocoder.yudao.framework.mybatis.core.util.MyBatisUtils;
 import cn.iocoder.yudao.framework.quartz.core.handler.JobHandler;
 import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnoreAspect;
 import cn.iocoder.yudao.framework.tenant.core.db.TenantDatabaseInterceptor;
@@ -10,12 +12,10 @@ import cn.iocoder.yudao.framework.tenant.core.mq.TenantRedisMessageInterceptor;
 import cn.iocoder.yudao.framework.tenant.core.security.TenantSecurityWebFilter;
 import cn.iocoder.yudao.framework.tenant.core.service.TenantFrameworkService;
 import cn.iocoder.yudao.framework.tenant.core.web.TenantContextWebFilter;
+import cn.iocoder.yudao.framework.web.config.WebProperties;
+import cn.iocoder.yudao.framework.web.core.handler.GlobalExceptionHandler;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
-import io.github.meta.ease.common.enums.WebFilterOrderEnum;
-import io.github.meta.ease.mybatis.mybatis.core.util.MyBatisUtils;
-import io.github.meta.ease.web.config.WebProperties;
-import io.github.meta.ease.web.core.handler.GlobalExceptionHandler;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -25,8 +25,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnProperty(prefix = "yudao.tenant", value = "enable", matchIfMissing = false)
-// 允许使用 yudao.tenant.enable=false 禁用多租户
+@ConditionalOnProperty(prefix = "yudao.tenant", value = "enable", matchIfMissing = true) // 允许使用 yudao.tenant.enable=false 禁用多租户
 @EnableConfigurationProperties(TenantProperties.class)
 public class YudaoTenantAutoConfiguration {
 
@@ -100,6 +99,8 @@ public class YudaoTenantAutoConfiguration {
                 // 使用 TenantJobHandlerDecorator 装饰
                 return new TenantJobHandlerDecorator(tenantFrameworkService, (JobHandler) bean);
             }
+
         };
     }
+
 }

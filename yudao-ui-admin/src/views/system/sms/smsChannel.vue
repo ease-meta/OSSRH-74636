@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/"/>
+    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="短信签名" prop="signature">
@@ -14,7 +14,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -26,16 +26,15 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:sms-channel:create']">新增
-        </el-button>
+                   v-hasPermi="['system:sms-channel:create']">新增</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="编号" align="center" prop="id"/>
-      <el-table-column label="短信签名" align="center" prop="signature"/>
+      <el-table-column label="编号" align="center" prop="id" />
+      <el-table-column label="短信签名" align="center" prop="signature" />
       <el-table-column label="渠道编码" align="center" prop="code">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="scope.row.code"/>
@@ -45,12 +44,11 @@
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status"/>
         </template>
-      </el-table-column>
-      >
-      <el-table-column label="备注" align="center" prop="remark"/>
-      <el-table-column label="短信 API 的账号" align="center" prop="apiKey"/>
-      <el-table-column label="短信 API 的密钥" align="center" prop="apiSecret"/>
-      <el-table-column label="短信发送回调 URL" align="center" prop="callbackUrl"/>
+      </el-table-column>>
+      <el-table-column label="备注" align="center" prop="remark" />
+      <el-table-column label="短信 API 的账号" align="center" prop="apiKey" />
+      <el-table-column label="短信 API 的密钥" align="center" prop="apiSecret" />
+      <el-table-column label="短信发送回调 URL" align="center" prop="callbackUrl" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -59,11 +57,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['system:sms-channel:update']">修改
-          </el-button>
+                     v-hasPermi="['system:sms-channel:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['system:sms-channel:delete']">删除
-          </el-button>
+                     v-hasPermi="['system:sms-channel:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -75,7 +71,7 @@
     <el-dialog :title="title" :visible.sync="open" width="600px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="130px">
         <el-form-item label="短信签名" prop="signature">
-          <el-input v-model="form.signature" placeholder="请输入短信签名"/>
+          <el-input v-model="form.signature" placeholder="请输入短信签名" />
         </el-form-item>
         <el-form-item label="渠道编码" prop="code">
           <el-select v-model="form.code" placeholder="请选择渠道编码" clearable>
@@ -86,21 +82,20 @@
         <el-form-item label="启用状态">
           <el-radio-group v-model="form.status">
             <el-radio v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                      :key="dict.value" :label="parseInt(dict.value)">{{ dict.label }}
-            </el-radio>
+                      :key="dict.value" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+          <el-input v-model="form.remark" placeholder="请输入备注" />
         </el-form-item>
         <el-form-item label="短信 API 的账号" prop="apiKey">
-          <el-input v-model="form.apiKey" placeholder="请输入短信 API 的账号"/>
+          <el-input v-model="form.apiKey" placeholder="请输入短信 API 的账号" />
         </el-form-item>
         <el-form-item label="短信 API 的密钥" prop="apiSecret">
-          <el-input v-model="form.apiSecret" placeholder="请输入短信 API 的密钥"/>
+          <el-input v-model="form.apiSecret" placeholder="请输入短信 API 的密钥" />
         </el-form-item>
         <el-form-item label="短信发送回调 URL" prop="callbackUrl">
-          <el-input v-model="form.callbackUrl" placeholder="请输入短信发送回调 URL"/>
+          <el-input v-model="form.callbackUrl" placeholder="请输入短信发送回调 URL" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -112,17 +107,13 @@
 </template>
 
 <script>
-import {
-  createSmsChannel,
-  deleteSmsChannel,
-  getSmsChannel,
-  getSmsChannelPage,
-  updateSmsChannel
-} from "@/api/system/sms/smsChannel";
+import { createSmsChannel, updateSmsChannel, deleteSmsChannel, getSmsChannel, getSmsChannelPage,
+  getSimpleSmsChannels } from "@/api/system/sms/smsChannel";
 
 export default {
   name: "SmsChannel",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -149,10 +140,10 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        signature: [{required: true, message: "短信签名不能为空", trigger: "blur"}],
-        code: [{required: true, message: "渠道编码不能为空", trigger: "blur"}],
-        status: [{required: true, message: "启用状态不能为空", trigger: "blur"}],
-        apiKey: [{required: true, message: "短信 API 的账号不能为空", trigger: "blur"}],
+        signature: [{ required: true, message: "短信签名不能为空", trigger: "blur" }],
+        code: [{ required: true, message: "渠道编码不能为空", trigger: "blur" }],
+        status: [{ required: true, message: "启用状态不能为空", trigger: "blur" }],
+        apiKey: [{ required: true, message: "短信 API 的账号不能为空", trigger: "blur" }],
       },
     };
   },
@@ -245,13 +236,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除短信渠道编号为"' + id + '"的数据项?').then(function () {
+      this.$modal.confirm('是否确认删除短信渠道编号为"' + id + '"的数据项?').then(function() {
         return deleteSmsChannel(id);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      }).catch(() => {});
     }
   }
 };

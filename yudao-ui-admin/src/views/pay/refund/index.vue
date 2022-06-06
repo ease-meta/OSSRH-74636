@@ -5,14 +5,14 @@
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="120px">
       <el-form-item label="所属商户" prop="merchantId">
         <el-select v-model="queryParams.merchantId" clearable @clear="()=>{queryParams.merchantId = null}"
-                   filterable remote reserve-keyword placeholder="请选择所属商户" @change="handleGetAppListByMerchantId"
-                   :remote-method="handleGetMerchantListByName" :loading="merchantLoading">
-          <el-option v-for="item in merchantList" :key="item.id" :label="item.name" :value="item.id"/>
+          filterable remote reserve-keyword placeholder="请选择所属商户" @change="handleGetAppListByMerchantId"
+          :remote-method="handleGetMerchantListByName" :loading="merchantLoading">
+          <el-option v-for="item in merchantList" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="应用编号" prop="appId">
         <el-select clearable v-model="queryParams.appId" filterable placeholder="请选择应用信息">
-          <el-option v-for="item in appList" :key="item.id" :label="item.name" :value="item.id"/>
+          <el-option v-for="item in appList" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="渠道编码" prop="channelCode">
@@ -48,7 +48,7 @@
       <el-form-item label="创建时间">
         <el-date-picker
           v-model="dateRangeCreateTime" style="width: 350px"
-          value-format="yyyy-MM-dd HH:mm:ss" type="datetimerange" range-separator="-"
+          value-format="yyyy-MM-dd HH:mm:ss" type="datetimerange"  range-separator="-"
           :default-time="['00:00:00','23:59:59']" start-placeholder="开始日期" end-placeholder="结束日期">
         </el-date-picker>
       </el-form-item>
@@ -123,17 +123,17 @@
       </el-table-column>
       <el-table-column label="退款类型" align="center" prop="type" width="80">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_TYPE" :value="scope.row.type"/>
+          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_TYPE" :value="scope.row.type" />
         </template>
       </el-table-column>
       <el-table-column label="退款状态" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_STATUS" :value="scope.row.status"/>
+          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_STATUS" :value="scope.row.status" />
         </template>
       </el-table-column>
       <el-table-column label="回调状态" align="center" prop="notifyStatus">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="scope.row.notifyStatus"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="scope.row.notifyStatus" />
         </template>
       </el-table-column>
       <el-table-column label="退款原因" align="center" prop="reason" width="140" :show-overflow-tooltip="true"/>
@@ -169,7 +169,7 @@
       <el-divider></el-divider>
       <el-descriptions :column="2" label-class-name="desc-label">
         <el-descriptions-item label="商户退款单号">
-          <el-tag size="mini">{{ refundDetail.merchantRefundNo }}</el-tag>
+          <el-tag  size="mini">{{ refundDetail.merchantRefundNo }}</el-tag>
         </el-descriptions-item>
         <el-descriptions-item label="商户订单号">{{ refundDetail.merchantOrderId }}</el-descriptions-item>
         <el-descriptions-item label="交易订单号">{{ refundDetail.tradeNo }}</el-descriptions-item>
@@ -184,11 +184,11 @@
         </el-descriptions-item>
         <el-descriptions-item label="退款类型">
           <template slot-scope="scope">
-            <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_TYPE" :value="refundDetail.type"/>
+            <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_TYPE" :value="refundDetail.type" />
           </template>
         </el-descriptions-item>
         <el-descriptions-item label="退款状态">
-          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_STATUS" :value="refundDetail.status"/>
+          <dict-tag :type="DICT_TYPE.PAY_REFUND_ORDER_STATUS" :value="refundDetail.status" />
         </el-descriptions-item>
         <el-descriptions-item label="创建时间">{{ parseTime(refundDetail.createTime) }}</el-descriptions-item>
         <el-descriptions-item label="退款成功时间">{{ parseTime(refundDetail.successTime) }}</el-descriptions-item>
@@ -201,11 +201,11 @@
           {{ refundDetail.channelCodeName }}
         </el-descriptions-item>
         <el-descriptions-item label="支付IP" size="mini">
-          {{ refundDetail.userIp }}
+          {{refundDetail.userIp}}
         </el-descriptions-item>
         <el-descriptions-item label="回调地址">{{ refundDetail.notifyUrl }}</el-descriptions-item>
         <el-descriptions-item label="回调状态">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="refundDetail.notifyStatus"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="refundDetail.notifyStatus" />
         </el-descriptions-item>
         <el-descriptions-item label="回调时间">{{ parseTime(refundDetail.notifyTime) }}</el-descriptions-item>
       </el-descriptions>
@@ -213,8 +213,8 @@
       <el-descriptions :column="2" label-class-name="desc-label">
         <el-descriptions-item label="渠道订单号">{{ refundDetail.channelOrderNo }}</el-descriptions-item>
         <el-descriptions-item label="渠道退款单号">{{ refundDetail.channelRefundNo }}</el-descriptions-item>
-        <el-descriptions-item label="渠道错误码">{{ refundDetail.channelErrorCode }}</el-descriptions-item>
-        <el-descriptions-item label="渠道错误码描述">{{ refundDetail.channelErrorMsg }}</el-descriptions-item>
+        <el-descriptions-item label="渠道错误码">{{refundDetail.channelErrorCode}}</el-descriptions-item>
+        <el-descriptions-item label="渠道错误码描述">{{refundDetail.channelErrorMsg}}</el-descriptions-item>
       </el-descriptions>
       <br>
       <el-descriptions :column="1" label-class-name="desc-label" direction="vertical" border>
@@ -226,11 +226,14 @@
 </template>
 
 <script>
-import {exportRefundExcel, getRefund, getRefundPage} from "@/api/pay/refund";
+import {getRefundPage, exportRefundExcel, getRefund} from "@/api/pay/refund";
 import {getMerchantListByName} from "@/api/pay/merchant";
 import {getAppListByMerchantId} from "@/api/pay/app";
 import {DICT_TYPE, getDictDatas} from "@/utils/dict";
-import {PayOrderRefundStatusEnum, PayRefundStatusEnum} from "@/utils/constants";
+import {
+  PayOrderRefundStatusEnum,
+  PayRefundStatusEnum
+} from "@/utils/constants";
 import {getNowDateTime} from "@/utils/ruoyi";
 
 const defaultRefundDetail = {
@@ -339,14 +342,14 @@ export default {
     this.handleGetMerchantListByName(null);
   },
   methods: {
-    initTime() {
+    initTime(){
       this.dateRangeCreateTime = [getNowDateTime("00:00:00"), getNowDateTime("23:59:59")];
     },
     /** 查询列表 */
     getList() {
       // 判断选择的日期是否超过了一个月
       let oneMonthTime = 31 * 24 * 3600 * 1000;
-      if (this.dateRangeCreateTime == null) {
+      if (this.dateRangeCreateTime == null){
         this.initTime();
       } else {
         let minDateTime = new Date(this.dateRangeCreateTime[0]).getTime();
@@ -403,8 +406,7 @@ export default {
         return exportRefundExcel(params);
       }).then(response => {
         this.$download.excel(response, '退款订单.xls');
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /**
      * 根据商户名称模糊匹配商户信息

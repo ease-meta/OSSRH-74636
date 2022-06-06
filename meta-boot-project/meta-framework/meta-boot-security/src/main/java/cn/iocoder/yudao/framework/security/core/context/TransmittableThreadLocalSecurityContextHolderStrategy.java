@@ -44,4 +44,5 @@ public class TransmittableThreadLocalSecurityContextHolderStrategy implements Se
     public SecurityContext createEmptyContext() {
         return new SecurityContextImpl();
     }
+
 }

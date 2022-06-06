@@ -23,4 +23,5 @@ public class LocalFileClientTest {
         System.out.println("访问地址：" + fullPath);
         client.delete(path);
     }
+
 }

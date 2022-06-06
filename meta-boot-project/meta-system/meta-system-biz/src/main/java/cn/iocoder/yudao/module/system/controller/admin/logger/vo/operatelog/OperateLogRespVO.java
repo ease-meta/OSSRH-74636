@@ -17,4 +17,5 @@ public class OperateLogRespVO extends OperateLogBaseVO {
 
     @ApiModelProperty(value = "用户昵称", required = true, example = "芋艿")
     private String userNickname;
+
 }

@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * 自定义的 ActivityBehaviorFactory 实现类，目的如下：
- * 1. 自定义 {@link #createUserTaskActivityBehavior(org.activiti.bpmn.model.UserTask)}：实现自定义的流程任务的 assignee 负责人的分配
+ * 1. 自定义 {@link #createUserTaskActivityBehavior(UserTask)}：实现自定义的流程任务的 assignee 负责人的分配
  *
  * @author 芋道源码
  */
@@ -29,16 +29,13 @@ public class BpmActivityBehaviorFactory extends DefaultActivityBehaviorFactory {
 
     @Setter
     private BpmTaskAssignRuleService bpmTaskRuleService;
-
     @Setter
     private BpmUserGroupService userGroupService;
 
     @Setter
     private PermissionApi permissionApi;
-
     @Setter
     private DeptApi deptApi;
-
     @Setter
     private AdminUserApi adminUserApi;
 
@@ -60,4 +57,5 @@ public class BpmActivityBehaviorFactory extends DefaultActivityBehaviorFactory {
     // TODO 芋艿：并行任务 ParallelMultiInstanceBehavior
 
     // TODO 芋艿：并行任务 SequentialMultiInstanceBehavior
+
 }

@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.service.logger;
 
+import cn.iocoder.yudao.framework.apilog.core.service.ApiErrorLogFrameworkService;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiErrorLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.web.apilog.core.service.ApiErrorLogFrameworkService;
 
 import java.util.List;
 
@@ -34,9 +34,10 @@ public interface ApiErrorLogService extends ApiErrorLogFrameworkService {
     /**
      * 更新 API 错误日志已处理
      *
-     * @param id            API 日志编号
+     * @param id API 日志编号
      * @param processStatus 处理结果
      * @param processUserId 处理人
      */
     void updateApiErrorLogProcess(Long id, Integer processStatus, Long processUserId);
+
 }

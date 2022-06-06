@@ -17,4 +17,5 @@ public class TenantPackageSimpleRespVO {
     @ApiModelProperty(value = "套餐名", required = true, example = "VIP")
     @NotNull(message = "套餐名不能为空")
     private String name;
+
 }

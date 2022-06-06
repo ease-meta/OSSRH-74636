@@ -2,16 +2,8 @@ package cn.iocoder.yudao.framework.apollo.internals;
 
 import cn.iocoder.yudao.framework.apollo.spi.DBConfigFactory;
 import com.ctrip.framework.apollo.exceptions.ApolloConfigException;
-import com.ctrip.framework.apollo.internals.ConfigManager;
-import com.ctrip.framework.apollo.internals.ConfigServiceLocator;
-import com.ctrip.framework.apollo.internals.DefaultConfigManager;
-import com.ctrip.framework.apollo.internals.Injector;
-import com.ctrip.framework.apollo.internals.RemoteConfigLongPollService;
-import com.ctrip.framework.apollo.spi.ConfigFactory;
-import com.ctrip.framework.apollo.spi.ConfigFactoryManager;
-import com.ctrip.framework.apollo.spi.ConfigRegistry;
-import com.ctrip.framework.apollo.spi.DefaultConfigFactoryManager;
-import com.ctrip.framework.apollo.spi.DefaultConfigRegistry;
+import com.ctrip.framework.apollo.internals.*;
+import com.ctrip.framework.apollo.spi.*;
 import com.ctrip.framework.apollo.tracer.Tracer;
 import com.ctrip.framework.apollo.util.ConfigUtil;
 import com.ctrip.framework.apollo.util.factory.DefaultPropertiesFactory;
@@ -24,7 +16,7 @@ import com.google.inject.Singleton;
 
 /**
  * Guice injector
- * <p>
+ *
  * 基于 Guice 注入器实现类
  *
  * @author Jason Song(song_s@ctrip.com)
@@ -77,5 +69,7 @@ public class DefaultXInjector implements Injector {
             bind(YamlParser.class).in(Singleton.class);
             bind(PropertiesFactory.class).to(DefaultPropertiesFactory.class).in(Singleton.class);
         }
+
     }
+
 }

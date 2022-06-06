@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.convert.logger;
 
+import cn.iocoder.yudao.framework.apilog.core.service.dto.ApiErrorLogCreateReqDTO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogExcelVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogRespVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiErrorLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.web.apilog.core.service.dto.ApiErrorLogCreateReqDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -27,4 +27,5 @@ public interface ApiErrorLogConvert {
     List<ApiErrorLogExcelVO> convertList02(List<ApiErrorLogDO> list);
 
     ApiErrorLogDO convert(ApiErrorLogCreateReqDTO bean);
+
 }

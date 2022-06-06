@@ -1,8 +1,8 @@
-import {constantRoutes} from '@/router'
-import {getRouters} from '@/api/menu'
+import { constantRoutes } from '@/router'
+import { getRouters } from '@/api/menu'
 import Layout from '@/layout/index'
 import ParentView from '@/components/ParentView';
-import {toCamelCase} from "@/utils";
+import { toCamelCase } from "@/utils";
 
 const permission = {
   state: {
@@ -27,7 +27,7 @@ const permission = {
   },
   actions: {
     // 生成路由
-    GenerateRoutes({commit}) {
+    GenerateRoutes({ commit }) {
       return new Promise(resolve => {
         // 向后端请求路由数据
         getRouters().then(res => {
@@ -35,7 +35,7 @@ const permission = {
           const rdata = JSON.parse(JSON.stringify(res.data))
           const sidebarRoutes = filterAsyncRouter(sdata)
           const rewriteRoutes = filterAsyncRouter(rdata, false, true)
-          rewriteRoutes.push({path: '*', redirect: '/404', hidden: true})
+          rewriteRoutes.push({ path: '*', redirect: '/404', hidden: true })
           commit('SET_ROUTES', rewriteRoutes)
           commit('SET_SIDEBAR_ROUTERS', constantRoutes.concat(sidebarRoutes))
           commit('SET_DEFAULT_ROUTES', sidebarRoutes)

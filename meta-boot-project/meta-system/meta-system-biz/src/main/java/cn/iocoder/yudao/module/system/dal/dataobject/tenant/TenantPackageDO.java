@@ -1,17 +1,12 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.tenant;
 
-
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.mybatis.core.type.JsonLongSetTypeHandler;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
-import io.github.meta.ease.mybatis.mybatis.core.type.JsonLongSetTypeHandler;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.Set;
 
@@ -34,27 +29,24 @@ public class TenantPackageDO extends BaseDO {
      * 套餐编号，自增
      */
     private Long id;
-
     /**
      * 套餐名，唯一
      */
     private String name;
-
     /**
      * 租户状态
-     * <p>
-     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
+     *
+     * 枚举 {@link CommonStatusEnum}
      */
     private Integer status;
-
     /**
      * 备注
      */
     private String remark;
-
     /**
      * 关联的菜单编号
      */
     @TableField(typeHandler = JsonLongSetTypeHandler.class)
     private Set<Long> menuIds;
+
 }

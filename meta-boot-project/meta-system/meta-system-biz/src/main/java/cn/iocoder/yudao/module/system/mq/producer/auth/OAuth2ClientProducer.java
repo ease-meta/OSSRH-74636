@@ -16,10 +16,11 @@ public class OAuth2ClientProducer {
     private RedisMQTemplate redisMQTemplate;
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.auth.OAuth2ClientRefreshMessage} 消息
+     * 发送 {@link OAuth2ClientRefreshMessage} 消息
      */
     public void sendOAuth2ClientRefreshMessage() {
         OAuth2ClientRefreshMessage message = new OAuth2ClientRefreshMessage();
         redisMQTemplate.send(message);
     }
+
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="上传下载" url="https://doc.iocoder.cn/file/"/>
+    <doc-alert title="上传下载" url="https://doc.iocoder.cn/file/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="文件路径" prop="path">
@@ -8,7 +8,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -26,17 +26,17 @@
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="文件名" align="center" prop="path"/>
-      <el-table-column label="URL" align="center" prop="url"/>
-      <el-table-column label="文件大小" align="center" prop="size" width="120" :formatter="sizeFormat"/>
-      <el-table-column label="文件类型" align="center" prop="type" width="80"/>
-      <!--      <el-table-column label="文件内容" align="center" prop="content">-->
-      <!--        <template slot-scope="scope">-->
-      <!--          <img v-if="scope.row.type === 'jpg' || scope.row.type === 'png' || scope.row.type === 'gif'"-->
-      <!--               width="200px" :src="getFileUrl + scope.row.id">-->
-      <!--          <i v-else>非图片，无法预览</i>-->
-      <!--        </template>-->
-      <!--      </el-table-column>-->
+      <el-table-column label="文件名" align="center" prop="path" />
+      <el-table-column label="URL" align="center" prop="url" />
+      <el-table-column label="文件大小" align="center" prop="size" width="120" :formatter="sizeFormat" />
+      <el-table-column label="文件类型" align="center" prop="type" width="80" />
+<!--      <el-table-column label="文件内容" align="center" prop="content">-->
+<!--        <template slot-scope="scope">-->
+<!--          <img v-if="scope.row.type === 'jpg' || scope.row.type === 'png' || scope.row.type === 'gif'"-->
+<!--               width="200px" :src="getFileUrl + scope.row.id">-->
+<!--          <i v-else>非图片，无法预览</i>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="上传时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -45,8 +45,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="100">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['infra:file:delete']">删除
-          </el-button>
+                     v-hasPermi="['infra:file:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -77,7 +76,7 @@
 </template>
 
 <script>
-import {deleteFile, getFilePage} from "@/api/infra/file";
+import { deleteFile, getFilePage } from "@/api/infra/file";
 import {getAccessToken} from "@/utils/auth";
 
 export default {
@@ -109,7 +108,7 @@ export default {
         title: "", // 弹出层标题
         isUploading: false, // 是否禁用上传
         url: process.env.VUE_APP_BASE_API + "/admin-api/infra/file/upload", // 请求地址
-        headers: {Authorization: "Bearer " + getAccessToken()}, // 设置上传的请求头部
+        headers: { Authorization: "Bearer " + getAccessToken() }, // 设置上传的请求头部
         data: {} // 上传的额外数据，用于文件名
       },
     };
@@ -184,20 +183,19 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除文件编号为"' + id + '"的数据项?').then(function () {
+      this.$modal.confirm('是否确认删除文件编号为"' + id + '"的数据项?').then(function() {
         return deleteFile(id);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     // 用户昵称展示
     sizeFormat(row, column) {
-      const unitArr = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+      const unitArr = ["Bytes","KB","MB","GB","TB","PB","EB","ZB","YB"];
       const srcSize = parseFloat(row.size);
       const index = Math.floor(Math.log(srcSize) / Math.log(1024));
-      let size = srcSize / Math.pow(1024, index);
+      let size =srcSize/Math.pow(1024,index);
       size = size.toFixed(2);//保留的小数位数
       return size + ' ' + unitArr[index];
     },

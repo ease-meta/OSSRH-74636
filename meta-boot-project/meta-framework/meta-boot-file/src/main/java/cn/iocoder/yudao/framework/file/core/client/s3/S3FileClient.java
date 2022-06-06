@@ -4,11 +4,7 @@ import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.HttpUtil;
 import cn.iocoder.yudao.framework.file.core.client.AbstractFileClient;
-import io.minio.GetObjectArgs;
-import io.minio.GetObjectResponse;
-import io.minio.MinioClient;
-import io.minio.PutObjectArgs;
-import io.minio.RemoveObjectArgs;
+import io.minio.*;
 
 import java.io.ByteArrayInputStream;
 
@@ -16,7 +12,7 @@ import static cn.iocoder.yudao.framework.file.core.client.s3.S3FileClientConfig.
 
 /**
  * 基于 S3 协议的文件客户端，实现 MinIO、阿里云、腾讯云、七牛云、华为云等云服务
- * <p>
+ *
  * S3 协议的客户端，采用亚马逊提供的 software.amazon.awssdk.s3 库
  *
  * @author 芋道源码
@@ -112,4 +108,5 @@ public class S3FileClient extends AbstractFileClient<S3FileClientConfig> {
                 .build());
         return IoUtil.readBytes(response);
     }
+
 }

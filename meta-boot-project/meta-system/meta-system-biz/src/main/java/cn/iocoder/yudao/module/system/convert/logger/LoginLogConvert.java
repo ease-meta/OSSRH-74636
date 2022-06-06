@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.convert.logger;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.api.logger.dto.LoginLogCreateReqDTO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.loginlog.LoginLogExcelVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.loginlog.LoginLogRespVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.logger.LoginLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -20,4 +20,5 @@ public interface LoginLogConvert {
     List<LoginLogExcelVO> convertList(List<LoginLogDO> list);
 
     LoginLogDO convert(LoginLogCreateReqDTO bean);
+
 }

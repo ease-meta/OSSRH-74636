@@ -3,11 +3,11 @@
     <!-- 列表弹窗 -->
     <el-dialog title="任务分配规则" :visible.sync="visible" width="800px" append-to-body>
       <el-table v-loading="loading" :data="list">
-        <el-table-column label="任务名" align="center" prop="taskDefinitionName" width="120" fixed/>
-        <el-table-column label="任务标识" align="center" prop="taskDefinitionKey" width="120" show-tooltip-when-overflow/>
+        <el-table-column label="任务名" align="center" prop="taskDefinitionName" width="120" fixed />
+        <el-table-column label="任务标识" align="center" prop="taskDefinitionKey" width="120" show-tooltip-when-overflow />
         <el-table-column label="规则类型" align="center" prop="type" width="120">
           <template slot-scope="scope">
-            <dict-tag :type="DICT_TYPE.BPM_TASK_ASSIGN_RULE_TYPE" :value="scope.row.type"/>
+            <dict-tag :type="DICT_TYPE.BPM_TASK_ASSIGN_RULE_TYPE" :value="scope.row.type" />
           </template>
         </el-table-column>
         <el-table-column label="规则范围" align="center" prop="options" width="440px">
@@ -20,8 +20,7 @@
         <el-table-column v-if="modelId" label="操作" align="center" width="80" fixed="right">
           <template slot-scope="scope">
             <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdateTaskAssignRule(scope.row)"
-                       v-hasPermi="['bpm:task-assign-rule:update']">修改
-            </el-button>
+                       v-hasPermi="['bpm:task-assign-rule:update']">修改</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -30,21 +29,19 @@
     <el-dialog title="修改任务规则" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="taskAssignRuleForm" :model="form" :rules="rules" label-width="110px">
         <el-form-item label="任务名称" prop="taskDefinitionName">
-          <el-input v-model="form.taskDefinitionName" disabled/>
+          <el-input v-model="form.taskDefinitionName" disabled />
         </el-form-item>
         <el-form-item label="任务标识" prop="taskDefinitionKey">
-          <el-input v-model="form.taskDefinitionKey" disabled/>
+          <el-input v-model="form.taskDefinitionKey" disabled />
         </el-form-item>
         <el-form-item label="规则类型" prop="type">
           <el-select v-model="form.type" clearable style="width: 100%">
-            <el-option v-for="dict in taskAssignRuleTypeDictDatas" :key="parseInt(dict.value)" :label="dict.label"
-                       :value="parseInt(dict.value)"/>
+            <el-option v-for="dict in taskAssignRuleTypeDictDatas" :key="parseInt(dict.value)" :label="dict.label" :value="parseInt(dict.value)"/>
           </el-select>
         </el-form-item>
         <el-form-item v-if="form.type === 10" label="指定角色" prop="roleIds">
           <el-select v-model="form.roleIds" multiple clearable style="width: 100%">
-            <el-option v-for="item in roleOptions" :key="parseInt(item.id)" :label="item.name"
-                       :value="parseInt(item.id)"/>
+            <el-option v-for="item in roleOptions" :key="parseInt(item.id)" :label="item.name" :value="parseInt(item.id)" />
           </el-select>
         </el-form-item>
         <el-form-item v-if="form.type === 20 || form.type === 21" label="指定部门" prop="deptIds">
@@ -53,20 +50,17 @@
         </el-form-item>
         <el-form-item v-if="form.type === 22" label="指定岗位" prop="postIds">
           <el-select v-model="form.postIds" multiple clearable style="width: 100%">
-            <el-option v-for="item in postOptions" :key="parseInt(item.id)" :label="item.name"
-                       :value="parseInt(item.id)"/>
+            <el-option v-for="item in postOptions" :key="parseInt(item.id)" :label="item.name" :value="parseInt(item.id)" />
           </el-select>
         </el-form-item>
         <el-form-item v-if="form.type === 30" label="指定用户" prop="userIds">
           <el-select v-model="form.userIds" multiple clearable style="width: 100%">
-            <el-option v-for="item in userOptions" :key="parseInt(item.id)" :label="item.nickname"
-                       :value="parseInt(item.id)"/>
+            <el-option v-for="item in userOptions" :key="parseInt(item.id)" :label="item.nickname" :value="parseInt(item.id)" />
           </el-select>
         </el-form-item>
         <el-form-item v-if="form.type === 40" label="指定用户组" prop="userGroupIds">
           <el-select v-model="form.userGroupIds" multiple clearable style="width: 100%">
-            <el-option v-for="item in userGroupOptions" :key="parseInt(item.id)" :label="item.name"
-                       :value="parseInt(item.id)"/>
+            <el-option v-for="item in userGroupOptions" :key="parseInt(item.id)" :label="item.name" :value="parseInt(item.id)" />
           </el-select>
         </el-form-item>
         <el-form-item v-if="form.type === 50" label="指定脚本" prop="scripts">
@@ -115,9 +109,9 @@ export default {
       open: false, // 是否打开
       form: {}, // 表单
       rules: { // 表单校验规则
-        type: [{required: true, message: "规则类型不能为空", trigger: "change"}],
-        roleIds: [{required: true, message: "指定角色不能为空", trigger: "change"}],
-        deptIds: [{required: true, message: "指定部门不能为空", trigger: "change"}],
+        type: [{ required: true, message: "规则类型不能为空", trigger: "change" }],
+        roleIds: [{required: true, message: "指定角色不能为空", trigger: "change" }],
+        deptIds: [{required: true, message: "指定部门不能为空", trigger: "change" }],
         postIds: [{required: true, message: "指定岗位不能为空", trigger: "change"}],
         userIds: [{required: true, message: "指定用户不能为空", trigger: "change"}],
         userGroupIds: [{required: true, message: "指定用户组不能为空", trigger: "change"}],

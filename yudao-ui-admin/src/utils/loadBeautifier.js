@@ -5,7 +5,7 @@ import pluginsConfig from './pluginsConfig'
 let beautifierObj
 
 export default function loadBeautifier(cb) {
-  const {beautifierUrl} = pluginsConfig
+  const { beautifierUrl } = pluginsConfig
   if (beautifierObj) {
     cb(beautifierObj)
     return

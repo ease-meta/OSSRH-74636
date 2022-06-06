@@ -4,10 +4,10 @@
       <div v-if="elementBaseInfo.$type === 'bpmn:Process'"> <!-- 如果是 Process 信息的时候，使用自定义表单 -->
         <el-form-item label="流程标识" prop="key">
           <el-input v-model="model.key" placeholder="请输入流标标识"
-                    :disabled="model.id !== undefined && model.id.length > 0" @change="handleKeyUpdate"/>
+                    :disabled="model.id !== undefined && model.id.length > 0" @change="handleKeyUpdate" />
         </el-form-item>
         <el-form-item label="流程名称" prop="name">
-          <el-input v-model="model.name" placeholder="请输入流程名称" clearable @change="handleNameUpdate"/>
+          <el-input v-model="model.name" placeholder="请输入流程名称" clearable @change="handleNameUpdate" />
         </el-form-item>
       </div>
       <div v-else>
@@ -15,7 +15,7 @@
           <el-input v-model="elementBaseInfo.id" clearable @change="updateBaseInfo('id')"/>
         </el-form-item>
         <el-form-item label="名称">
-          <el-input v-model="elementBaseInfo.name" clearable @change="updateBaseInfo('name')"/>
+          <el-input v-model="elementBaseInfo.name" clearable @change="updateBaseInfo('name')" />
         </el-form-item>
       </div>
     </el-form>
@@ -36,15 +36,15 @@ export default {
       forms: [],
       // 流程模型的校验
       rules: {
-        key: [{required: true, message: "流程标识不能为空", trigger: "blur"}],
-        name: [{required: true, message: "流程名称不能为空", trigger: "blur"}],
+        key: [{ required: true, message: "流程标识不能为空", trigger: "blur" }],
+        name: [{ required: true, message: "流程名称不能为空", trigger: "blur" }],
       },
     };
   },
   watch: {
     businessObject: {
       immediate: false,
-      handler: function (val) {
+      handler: function(val) {
         if (val) {
           this.$nextTick(() => this.resetBaseInfo());
         }
@@ -103,7 +103,7 @@ export default {
       if (key === "id") {
         window.bpmnInstances.modeling.updateProperties(this.bpmnElement, {
           id: this.elementBaseInfo[key],
-          di: {id: `${this.elementBaseInfo[key]}_di`}
+          di: { id: `${this.elementBaseInfo[key]}_di` }
         });
       } else {
         window.bpmnInstances.modeling.updateProperties(this.bpmnElement, attrObj);

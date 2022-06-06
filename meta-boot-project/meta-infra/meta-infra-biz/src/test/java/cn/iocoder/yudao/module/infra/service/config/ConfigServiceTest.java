@@ -1,5 +1,8 @@
 package cn.iocoder.yudao.module.infra.service.config;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.RandomUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigCreateReqVO;
@@ -10,9 +13,6 @@ import cn.iocoder.yudao.module.infra.dal.dataobject.config.ConfigDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.config.ConfigMapper;
 import cn.iocoder.yudao.module.infra.enums.config.ConfigTypeEnum;
 import cn.iocoder.yudao.module.infra.mq.producer.config.ConfigProducer;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -23,18 +23,12 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CONFIG_CAN_NOT_DELETE_SYSTEM_TYPE;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CONFIG_KEY_DUPLICATE;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CONFIG_NOT_EXISTS;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -46,7 +40,6 @@ public class ConfigServiceTest extends BaseDbUnitTest {
 
     @Resource
     private ConfigMapper configMapper;
-
     @MockBean
     private ConfigProducer configProducer;
 
@@ -255,4 +248,5 @@ public class ConfigServiceTest extends BaseDbUnitTest {
         };
         return RandomUtils.randomPojo(ConfigDO.class, ArrayUtils.append(consumer, consumers));
     }
+
 }

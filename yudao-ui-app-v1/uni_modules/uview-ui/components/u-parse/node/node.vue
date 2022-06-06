@@ -3,86 +3,67 @@
     <block v-for="(n, i) in childs" v-bind:key="i">
       <!-- 图片 -->
       <!-- 占位图 -->
-      <image v-if="n.name=='img'&&((opts[1]&&!ctrl[i])||ctrl[i]<0)" class="_img" :style="n.attrs.style"
-             :src="ctrl[i]<0?opts[2]:opts[1]" mode="widthFix"/>
+      <image v-if="n.name=='img'&&((opts[1]&&!ctrl[i])||ctrl[i]<0)" class="_img" :style="n.attrs.style" :src="ctrl[i]<0?opts[2]:opts[1]" mode="widthFix" />
       <!-- 显示图片 -->
       <!-- #ifdef H5 || APP-PLUS -->
-      <img v-if="n.name=='img'" :id="n.attrs.id" :class="'_img '+n.attrs.class"
-           :style="(ctrl[i]==-1?'display:none;':'')+n.attrs.style"
-           :src="n.attrs.src||(ctrl.load?n.attrs['data-src']:'')" :data-i="i" @load="imgLoad" @error="mediaError"
-           @tap.stop="imgTap" @longpress="imgLongTap"/>
+      <img v-if="n.name=='img'" :id="n.attrs.id" :class="'_img '+n.attrs.class" :style="(ctrl[i]==-1?'display:none;':'')+n.attrs.style" :src="n.attrs.src||(ctrl.load?n.attrs['data-src']:'')" :data-i="i" @load="imgLoad" @error="mediaError" @tap.stop="imgTap" @longpress="imgLongTap"/>
       <!-- #endif -->
       <!-- #ifndef H5 || APP-PLUS -->
-      <image v-if="n.name=='img'" :id="n.attrs.id" :class="'_img '+n.attrs.class"
-             :style="(ctrl[i]==-1?'display:none;':'')+'width:'+(ctrl[i]||1)+'px;height:1px;'+n.attrs.style"
-             :src="n.attrs.src" :mode="n.h?'':'widthFix'" :lazy-load="opts[0]" :webp="n.webp"
-             :show-menu-by-longpress="opts[3]&&!n.attrs.ignore" :image-menu-prevent="!opts[3]||n.attrs.ignore"
-             :data-i="i" @load="imgLoad" @error="mediaError" @tap.stop="imgTap" @longpress="imgLongTap"/>
+      <image v-if="n.name=='img'" :id="n.attrs.id" :class="'_img '+n.attrs.class" :style="(ctrl[i]==-1?'display:none;':'')+'width:'+(ctrl[i]||1)+'px;height:1px;'+n.attrs.style" :src="n.attrs.src" :mode="n.h?'':'widthFix'" :lazy-load="opts[0]" :webp="n.webp" :show-menu-by-longpress="opts[3]&&!n.attrs.ignore" :image-menu-prevent="!opts[3]||n.attrs.ignore" :data-i="i" @load="imgLoad" @error="mediaError" @tap.stop="imgTap" @longpress="imgLongTap" />
       <!-- #endif -->
       <!-- 文本 -->
       <!-- #ifndef MP-BAIDU -->
-      <text v-else-if="n.type=='text'" decode>{{ n.text }}</text>
+      <text v-else-if="n.type=='text'" decode>{{n.text}}</text>
       <!-- #endif -->
       <text v-else-if="n.name=='br'">\n</text>
       <!-- 链接 -->
-      <view v-else-if="n.name=='a'" :id="n.attrs.id" :class="(n.attrs.href?'_a ':'')+n.attrs.class" hover-class="_hover"
-            :style="'display:inline;'+n.attrs.style" :data-i="i" @tap.stop="linkTap">
-        <node name="span" :childs="n.children" :opts="opts" style="display:inherit"/>
+      <view v-else-if="n.name=='a'" :id="n.attrs.id" :class="(n.attrs.href?'_a ':'')+n.attrs.class" hover-class="_hover" :style="'display:inline;'+n.attrs.style" :data-i="i" @tap.stop="linkTap">
+        <node name="span" :childs="n.children" :opts="opts" style="display:inherit" />
       </view>
       <!-- 视频 -->
       <!-- #ifdef APP-PLUS -->
-      <view v-else-if="n.html" :id="n.attrs.id" :class="'_video '+n.attrs.class" :style="n.attrs.style"
-            v-html="n.html"/>
+      <view v-else-if="n.html" :id="n.attrs.id" :class="'_video '+n.attrs.class" :style="n.attrs.style" v-html="n.html" />
       <!-- #endif -->
       <!-- #ifndef APP-PLUS -->
-      <video v-else-if="n.name=='video'" :id="n.attrs.id" :class="n.attrs.class" :style="n.attrs.style"
-             :autoplay="n.attrs.autoplay" :controls="n.attrs.controls" :loop="n.attrs.loop" :muted="n.attrs.muted"
-             :poster="n.attrs.poster" :src="n.src[ctrl[i]||0]" :data-i="i" @play="play" @error="mediaError"/>
+      <video v-else-if="n.name=='video'" :id="n.attrs.id" :class="n.attrs.class" :style="n.attrs.style" :autoplay="n.attrs.autoplay" :controls="n.attrs.controls" :loop="n.attrs.loop" :muted="n.attrs.muted" :poster="n.attrs.poster" :src="n.src[ctrl[i]||0]" :data-i="i" @play="play" @error="mediaError" />
       <!-- #endif -->
       <!-- #ifdef H5 || APP-PLUS -->
-      <iframe v-else-if="n.name=='iframe'" :style="n.attrs.style" :allowfullscreen="n.attrs.allowfullscreen"
-              :frameborder="n.attrs.frameborder" :src="n.attrs.src"/>
-      <embed v-else-if="n.name=='embed'" :style="n.attrs.style" :src="n.attrs.src"/>
+      <iframe v-else-if="n.name=='iframe'" :style="n.attrs.style" :allowfullscreen="n.attrs.allowfullscreen" :frameborder="n.attrs.frameborder" :src="n.attrs.src" />
+      <embed v-else-if="n.name=='embed'" :style="n.attrs.style" :src="n.attrs.src" />
       <!-- #endif -->
       <!-- #ifndef MP-TOUTIAO -->
       <!-- 音频 -->
-      <audio v-else-if="n.name=='audio'" :id="n.attrs.id" :class="n.attrs.class" :style="n.attrs.style"
-             :author="n.attrs.author" :controls="n.attrs.controls" :loop="n.attrs.loop" :name="n.attrs.name"
-             :poster="n.attrs.poster" :src="n.src[ctrl[i]||0]" :data-i="i" @play="play" @error="mediaError"/>
+      <audio v-else-if="n.name=='audio'" :id="n.attrs.id" :class="n.attrs.class" :style="n.attrs.style" :author="n.attrs.author" :controls="n.attrs.controls" :loop="n.attrs.loop" :name="n.attrs.name" :poster="n.attrs.poster" :src="n.src[ctrl[i]||0]" :data-i="i" @play="play" @error="mediaError" />
       <!-- #endif -->
-      <view v-else-if="(n.name=='table'&&n.c)||n.name=='li'" :id="n.attrs.id" :class="'_'+n.name+' '+n.attrs.class"
-            :style="n.attrs.style">
-        <node v-if="n.name=='li'" :childs="n.children" :opts="opts"/>
-        <view v-else v-for="(tbody, x) in n.children" v-bind:key="x" :class="'_'+tbody.name+' '+tbody.attrs.class"
-              :style="tbody.attrs.style">
-          <node v-if="tbody.name=='td'||tbody.name=='th'" :childs="tbody.children" :opts="opts"/>
+      <view v-else-if="(n.name=='table'&&n.c)||n.name=='li'" :id="n.attrs.id" :class="'_'+n.name+' '+n.attrs.class" :style="n.attrs.style">
+        <node v-if="n.name=='li'" :childs="n.children" :opts="opts" />
+        <view v-else v-for="(tbody, x) in n.children" v-bind:key="x" :class="'_'+tbody.name+' '+tbody.attrs.class" :style="tbody.attrs.style">
+          <node v-if="tbody.name=='td'||tbody.name=='th'" :childs="tbody.children" :opts="opts" />
           <block v-else v-for="(tr, y) in tbody.children" v-bind:key="y">
             <view v-if="tr.name=='td'||tr.name=='th'" :class="'_'+tr.name+' '+tr.attrs.class" :style="tr.attrs.style">
-              <node :childs="tr.children" :opts="opts"/>
+              <node :childs="tr.children" :opts="opts" />
             </view>
             <view v-else :class="'_'+tr.name+' '+tr.attrs.class" :style="tr.attrs.style">
-              <view v-for="(td, z) in tr.children" v-bind:key="z" :class="'_'+td.name+' '+td.attrs.class"
-                    :style="td.attrs.style">
-                <node :childs="td.children" :opts="opts"/>
+              <view v-for="(td, z) in tr.children" v-bind:key="z" :class="'_'+td.name+' '+td.attrs.class" :style="td.attrs.style">
+                <node :childs="td.children" :opts="opts" />
               </view>
             </view>
           </block>
         </view>
       </view>
-
+      
       <!-- 富文本 -->
       <!-- #ifdef H5 || MP-WEIXIN || MP-QQ || APP-PLUS || MP-360 -->
-      <rich-text v-else-if="handler.use(n)" :id="n.attrs.id" :style="n.f" :nodes="[n]"/>
+      <rich-text v-else-if="handler.use(n)" :id="n.attrs.id" :style="n.f" :nodes="[n]" />
       <!-- #endif -->
       <!-- #ifndef H5 || MP-WEIXIN || MP-QQ || APP-PLUS || MP-360 -->
-      <rich-text v-else-if="!n.c" :id="n.attrs.id" :style="n.f+';display:inline'" :preview="false" :nodes="[n]"/>
+      <rich-text v-else-if="!n.c" :id="n.attrs.id" :style="n.f+';display:inline'" :preview="false" :nodes="[n]" />
       <!-- #endif -->
       <!-- 继续递归 -->
       <view v-else-if="n.c==2" :id="n.attrs.id" :class="'_'+n.name+' '+n.attrs.class" :style="n.f+';'+n.attrs.style">
-        <node v-for="(n2, j) in n.children" v-bind:key="j" :style="n2.f" :name="n2.name" :attrs="n2.attrs"
-              :childs="n2.children" :opts="opts"/>
+        <node v-for="(n2, j) in n.children" v-bind:key="j" :style="n2.f" :name="n2.name" :attrs="n2.attrs" :childs="n2.children" :opts="opts" />
       </view>
-      <node v-else :style="n.f" :name="n.name" :attrs="n.attrs" :childs="n.children" :opts="opts"/>
+      <node v-else :style="n.f" :name="n.name" :attrs="n.attrs" :childs="n.children" :opts="opts" />
     </block>
   </view>
 </template>
@@ -120,7 +101,6 @@ module.exports = {
 <script>
 
 import node from './node'
-
 export default {
   name: 'node',
   // #ifdef MP-WEIXIN
@@ -149,7 +129,7 @@ export default {
     node
   },
   mounted() {
-    for (this.root = this.$parent; this.root.$options.name != 'mp-html'; this.root = this.root.$parent) ;
+    for (this.root = this.$parent; this.root.$options.name != 'mp-html'; this.root = this.root.$parent);
     // #ifdef H5 || APP-PLUS
     if (this.opts[0]) {
       for (var i = this.childs.length; i--;)
@@ -176,14 +156,13 @@ export default {
       this.observer.disconnect()
     // #endif
   },
-  methods: {
+  methods:{
     // #ifdef MP-WEIXIN
-    toJSON() {
-    },
+    toJSON() { },
     // #endif
     /**
      * @description 播放视频事件
-     * @param {Event} e
+     * @param {Event} e 
      */
     play(e) {
       // #ifndef APP-PLUS
@@ -198,9 +177,9 @@ export default {
         // 将自己加入列表
         if (!flag) {
           var ctx = uni.createVideoContext(id
-              // #ifndef MP-BAIDU
-              , this
-              // #endif
+            // #ifndef MP-BAIDU
+            , this
+            // #endif
           )
           ctx.id = id
           this.root._videos.push(ctx)
@@ -211,7 +190,7 @@ export default {
 
     /**
      * @description 图片点击事件
-     * @param {Event} e
+     * @param {Event} e 
      */
     imgTap(e) {
       var node = this.childs[e.currentTarget.dataset.i]
@@ -261,7 +240,7 @@ export default {
 
     /**
      * @description 图片加载完成事件
-     * @param {Event} e
+     * @param {Event} e 
      */
     imgLoad(e) {
       var i = e.currentTarget.dataset.i
@@ -270,25 +249,24 @@ export default {
       if (!this.childs[i].w)
         this.$set(this.ctrl, i, e.detail.width)
       else
-          // #endif
-          // 加载完毕，取消加载中占位图
-      if ((this.opts[1] && !this.ctrl[i]) || this.ctrl[i] == -1)
-        this.$set(this.ctrl, i, 1)
+        // #endif
+        // 加载完毕，取消加载中占位图
+        if ((this.opts[1] && !this.ctrl[i]) || this.ctrl[i] == -1)
+          this.$set(this.ctrl, i, 1)
     },
 
     /**
      * @description 链接点击事件
-     * @param {Event} e
+     * @param {Event} e 
      */
     linkTap(e) {
       var attrs = e.currentTarget ? this.childs[e.currentTarget.dataset.i].attrs : e,
-          href = attrs.href
+        href = attrs.href
       this.root.$emit('linktap', attrs)
       if (href) {
         // 跳转锚点
         if (href[0] == '#')
-          this.root.navigateTo(href.substring(1)).catch(() => {
-          })
+          this.root.navigateTo(href.substring(1)).catch(() => { })
         // 复制外部链接
         else if (href.includes('://')) {
           if (this.root.copyLink) {
@@ -299,9 +277,9 @@ export default {
             uni.setClipboardData({
               data: href,
               success: () =>
-                  uni.showToast({
-                    title: '链接已复制'
-                  })
+                uni.showToast({
+                  title: '链接已复制'
+                })
             })
             // #endif
             // #ifdef APP-PLUS
@@ -316,8 +294,7 @@ export default {
             fail() {
               uni.switchTab({
                 url: href,
-                fail() {
-                }
+                fail() { }
               })
             }
           })
@@ -326,11 +303,11 @@ export default {
 
     /**
      * @description 错误事件
-     * @param {Event} e
+     * @param {Event} e 
      */
     mediaError(e) {
       var i = e.currentTarget.dataset.i,
-          node = this.childs[i]
+        node = this.childs[i]
       // 加载其他源
       if (node.name == 'video' || node.name == 'audio') {
         var index = (this.ctrl[i] || 0) + 1

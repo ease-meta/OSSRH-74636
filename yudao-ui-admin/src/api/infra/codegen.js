@@ -39,7 +39,7 @@ export function syncCodegenFromSQL(tableId, sql) {
   return request({
     url: '/infra/codegen/sync-from-sql?tableId=' + tableId,
     method: 'put',
-    headers: {
+    headers:{
       'Content-type': 'application/x-www-form-urlencoded'
     },
     data: 'tableId=' + tableId + "&sql=" + sql,

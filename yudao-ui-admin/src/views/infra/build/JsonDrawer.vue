@@ -3,31 +3,31 @@
     <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose">
       <div class="action-bar" :style="{'text-align': 'left'}">
         <span class="bar-btn" @click="refresh">
-          <i class="el-icon-refresh"/>
+          <i class="el-icon-refresh" />
           刷新
         </span>
         <span ref="copyBtn" class="bar-btn copy-json-btn">
-          <i class="el-icon-document-copy"/>
+          <i class="el-icon-document-copy" />
           复制JSON
         </span>
         <span class="bar-btn" @click="exportJsonFile">
-          <i class="el-icon-download"/>
+          <i class="el-icon-download" />
           导出JSON文件
         </span>
         <span class="bar-btn delete-btn" @click="$emit('update:visible', false)">
-          <i class="el-icon-circle-close"/>
+          <i class="el-icon-circle-close" />
           关闭
         </span>
       </div>
-      <div id="editorJson" class="json-editor"/>
+      <div id="editorJson" class="json-editor" />
     </el-drawer>
   </div>
 </template>
 
 <script>
-import {beautifierConf} from '@/utils/index'
+import { beautifierConf } from '@/utils/index'
 import ClipboardJS from 'clipboard'
-import {saveAs} from 'file-saver'
+import { saveAs } from 'file-saver'
 import loadMonaco from '@/utils/loadMonaco'
 import loadBeautifier from '@/utils/loadBeautifier'
 
@@ -47,8 +47,7 @@ export default {
   },
   computed: {},
   watch: {},
-  created() {
-  },
+  created() {},
   mounted() {
     window.addEventListener('keydown', this.preventDefaultSave)
     const clipboard = new ClipboardJS('.copy-json-btn', {
@@ -85,8 +84,7 @@ export default {
         })
       })
     },
-    onClose() {
-    },
+    onClose() {},
     setEditorValue(id, codeStr) {
       if (this.jsonEditor) {
         this.jsonEditor.setValue(codeStr)
@@ -110,10 +108,10 @@ export default {
         inputValue: `${+new Date()}.json`,
         closeOnClickModal: false,
         inputPlaceholder: '请输入文件名'
-      }).then(({value}) => {
+      }).then(({ value }) => {
         if (!value) value = `${+new Date()}.json`
         const codeStr = this.jsonEditor.getValue()
-        const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
+        const blob = new Blob([codeStr], { type: 'text/plain;charset=utf-8' })
         saveAs(blob, value)
       })
     },
@@ -140,7 +138,7 @@ export default {
 }
 @include action-bar;
 
-.json-editor {
+.json-editor{
   height: calc(100vh - 33px);
 }
 </style>

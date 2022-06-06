@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.service.permission;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleExportReqVO;
@@ -11,36 +14,21 @@ import cn.iocoder.yudao.module.system.dal.mysql.permission.RoleMapper;
 import cn.iocoder.yudao.module.system.enums.permission.DataScopeEnum;
 import cn.iocoder.yudao.module.system.enums.permission.RoleTypeEnum;
 import cn.iocoder.yudao.module.system.mq.producer.permission.RoleProducer;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_CAN_NOT_UPDATE_SYSTEM_TYPE_ROLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_NOT_EXISTS;
-import static io.github.meta.ease.common.util.date.DateUtils.max;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 // TODO @芋艿：单测的代码质量可以提升下
@@ -55,7 +43,6 @@ public class RoleServiceTest extends BaseDbUnitTest {
 
     @MockBean
     private PermissionService permissionService;
-
     @MockBean
     private RoleProducer roleProducer;
 
@@ -119,8 +106,7 @@ public class RoleServiceTest extends BaseDbUnitTest {
 
     @Test
     public void testUpdateRoleStatus_success() {
-        RoleDO roleDO = createRoleDO("role_name", RoleTypeEnum.CUSTOM, DataScopeEnum.ALL,
-                CommonStatusEnum.ENABLE.getStatus());
+        RoleDO roleDO = createRoleDO("role_name", RoleTypeEnum.CUSTOM, DataScopeEnum.ALL, CommonStatusEnum.ENABLE.getStatus());
         roleMapper.insert(roleDO);
         Long roleId = roleDO.getId();
 
@@ -246,8 +232,7 @@ public class RoleServiceTest extends BaseDbUnitTest {
 
         String duplicateName = "role_name";
 
-        assertServiceException(() -> roleService.checkDuplicateRole(duplicateName, randomString(), null),
-                ROLE_NAME_DUPLICATE, duplicateName);
+        assertServiceException(() -> roleService.checkDuplicateRole(duplicateName, randomString(), null), ROLE_NAME_DUPLICATE, duplicateName);
     }
 
     @Test
@@ -264,8 +249,7 @@ public class RoleServiceTest extends BaseDbUnitTest {
         String randomName = randomString();
         String duplicateCode = "code";
 
-        assertServiceException(() -> roleService.checkDuplicateRole(randomName, duplicateCode, null), ROLE_CODE_DUPLICATE,
-                duplicateCode);
+        assertServiceException(() -> roleService.checkDuplicateRole(randomName, duplicateCode, null), ROLE_CODE_DUPLICATE, duplicateCode);
     }
 
     @Test
@@ -292,11 +276,10 @@ public class RoleServiceTest extends BaseDbUnitTest {
     }
 
     private RoleDO createRoleDO(String name, RoleTypeEnum typeEnum, DataScopeEnum scopeEnum, Integer status) {
-        return createRoleDO(name, typeEnum, scopeEnum, status, randomString());
+        return createRoleDO( name, typeEnum, scopeEnum, status, randomString());
     }
 
-    private RoleDO createRoleDO(String name, RoleTypeEnum typeEnum, DataScopeEnum scopeEnum, Integer status,
-                                String code) {
+    private RoleDO createRoleDO(String name, RoleTypeEnum typeEnum, DataScopeEnum scopeEnum, Integer status, String code) {
         return createRoleDO(null, name, typeEnum, scopeEnum, status, code);
     }
 
@@ -304,8 +287,7 @@ public class RoleServiceTest extends BaseDbUnitTest {
         return createRoleDO(null, name, typeEnum, scopeEnum, randomCommonStatus(), randomString());
     }
 
-    private RoleDO createRoleDO(Long id, String name, RoleTypeEnum typeEnum, DataScopeEnum scopeEnum, Integer status,
-                                String code) {
+    private RoleDO createRoleDO(Long id, String name, RoleTypeEnum typeEnum, DataScopeEnum scopeEnum, Integer status, String code) {
         return randomPojo(RoleDO.class, o -> {
             o.setId(id);
             o.setName(name);
@@ -320,4 +302,5 @@ public class RoleServiceTest extends BaseDbUnitTest {
         return randomPojo(RoleDO.class,
                 o -> o.setDataScope(RandomUtil.randomEle(DataScopeEnum.values()).getScope()));
     }
+
 }

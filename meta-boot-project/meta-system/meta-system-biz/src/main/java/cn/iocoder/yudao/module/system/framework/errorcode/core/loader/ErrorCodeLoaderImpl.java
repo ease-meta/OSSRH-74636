@@ -3,7 +3,7 @@ package cn.iocoder.yudao.module.system.framework.errorcode.core.loader;
 import cn.hutool.core.collection.CollUtil;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeRespDTO;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.service.ErrorCodeFrameworkService;
-import io.github.meta.ease.common.util.date.DateUtils;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * ErrorCodeLoader 的实现类，从 infra 的数据库中，加载错误码。
- * <p>
+ *
  * 考虑到错误码会刷新，所以按照 {@link #REFRESH_ERROR_CODE_PERIOD} 频率，增量加载错误码。
  *
  * @author dlyan
@@ -33,7 +33,6 @@ public class ErrorCodeLoaderImpl implements ErrorCodeLoader {
      * 应用分组
      */
     private final String applicationName;
-
     /**
      * 错误码 Service
      */
@@ -70,4 +69,5 @@ public class ErrorCodeLoaderImpl implements ErrorCodeLoader {
             maxUpdateTime = DateUtils.max(maxUpdateTime, errorCodeRespDTO.getUpdateTime());
         });
     }
+
 }

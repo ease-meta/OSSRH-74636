@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.system.service.dict;
 
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.type.DictTypeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.type.DictTypeExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.type.DictTypePageReqVO;
@@ -9,17 +10,13 @@ import cn.iocoder.yudao.module.system.convert.dict.DictTypeConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictTypeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dict.DictTypeMapper;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_HAS_CHILDREN;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_TYPE_DUPLICATE;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 字典类型 Service 实现类
@@ -144,4 +141,5 @@ public class DictTypeServiceImpl implements DictTypeService {
         }
         return dictType;
     }
+
 }

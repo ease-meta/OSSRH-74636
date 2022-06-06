@@ -6,9 +6,9 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * 代码生成字段定义 Base VO，提供给添加、修改、详细的子 VO 使用
- * 如果子 VO 存在差异的字段，请不要添加到这里，影响 Swagger 文档生成
- */
+* 代码生成字段定义 Base VO，提供给添加、修改、详细的子 VO 使用
+* 如果子 VO 存在差异的字段，请不要添加到这里，影响 Swagger 文档生成
+*/
 @Data
 public class CodegenColumnBaseVO {
 
@@ -81,4 +81,5 @@ public class CodegenColumnBaseVO {
     @ApiModelProperty(value = "显示类型", required = true, example = "input")
     @NotNull(message = "显示类型不能为空")
     private String htmlType;
+
 }

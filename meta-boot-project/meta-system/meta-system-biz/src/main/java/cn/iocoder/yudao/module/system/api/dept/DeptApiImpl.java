@@ -45,4 +45,5 @@ public class DeptApiImpl implements DeptApi {
         Map<Long, DeptDO> depts = deptService.getDeptMap(ids);
         return DeptConvert.INSTANCE.convertMap(depts);
     }
+
 }

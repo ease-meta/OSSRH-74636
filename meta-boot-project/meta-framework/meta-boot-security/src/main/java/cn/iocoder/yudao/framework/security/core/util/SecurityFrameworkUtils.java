@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.framework.security.core.util;
 
 import cn.iocoder.yudao.framework.security.core.LoginUser;
-import io.github.meta.ease.web.util.WebFrameworkUtils;
+import cn.iocoder.yudao.framework.web.core.util.WebFrameworkUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,14 +22,13 @@ public class SecurityFrameworkUtils {
 
     public static final String AUTHORIZATION_BEARER = "Bearer";
 
-    private SecurityFrameworkUtils() {
-    }
+    private SecurityFrameworkUtils() {}
 
     /**
      * 从请求中，获得认证 Token
      *
      * @param request 请求
-     * @param header  认证 Token 对应的 Header 名字
+     * @param header 认证 Token 对应的 Header 名字
      * @return 认证 Token
      */
     public static String obtainAuthorization(HttpServletRequest request, String header) {
@@ -86,7 +85,7 @@ public class SecurityFrameworkUtils {
      * 设置当前用户
      *
      * @param loginUser 登录用户
-     * @param request   请求
+     * @param request 请求
      */
     public static void setLoginUser(LoginUser loginUser, HttpServletRequest request) {
         // 创建 Authentication，并设置到上下文
@@ -106,4 +105,5 @@ public class SecurityFrameworkUtils {
         authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         return authenticationToken;
     }
+
 }

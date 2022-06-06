@@ -1,5 +1,5 @@
-import {isArray} from 'util'
-import {deepClone, exportDefault, titleCase} from '@/utils/index'
+import { isArray } from 'util'
+import { exportDefault, titleCase, deepClone } from '@/utils/index'
 import ruleTrigger from './ruleTrigger'
 
 const units = {
@@ -99,8 +99,7 @@ function callInCreated(methodName, created) {
 
 // 混入处理函数
 function mixinMethod(type) {
-  const list = [];
-  const
+  const list = []; const
     minxins = {
       file: confGlobal.formBtns ? {
         submitForm: `submitForm() {
@@ -177,11 +176,9 @@ function buildRules(scheme, ruleList) {
 function buildOptions(scheme, optionsList) {
   if (scheme.__vModel__ === undefined) return
   // el-cascader直接有options属性，其他组件都是定义在slot中，所以有两处判断
-  let {options} = scheme
+  let { options } = scheme
   if (!options) options = scheme.__slot__.options
-  if (scheme.__config__.dataType === 'dynamic') {
-    options = []
-  }
+  if (scheme.__config__.dataType === 'dynamic') { options = [] }
   const str = `${scheme.__vModel__}Options: ${JSON.stringify(options)},`
   optionsList.push(str)
 }
@@ -194,10 +191,7 @@ function buildProps(scheme, propsList) {
 // el-upload的BeforeUpload
 function buildBeforeUpload(scheme) {
   const config = scheme.__config__
-  const unitNum = units[config.sizeUnit];
-  let rightSizeCode = '';
-  let acceptCode = '';
-  const
+  const unitNum = units[config.sizeUnit]; let rightSizeCode = ''; let acceptCode = ''; const
     returnList = []
   if (config.fileSize) {
     rightSizeCode = `let isRightSize = file.size / ${unitNum} < ${config.fileSize}

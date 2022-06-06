@@ -2,7 +2,7 @@
 
 // utils is a library of generic helper functions non-specific to axios
 
-const {toString} = Object.prototype
+const { toString } = Object.prototype
 
 /**
  * Determine if a value is an Array
@@ -64,17 +64,17 @@ export function forEach(obj, fn) {
 
     // Force an array if not already something iterable
     if (typeof obj !== 'object') {
-        /* eslint no-param-reassign:0 */
+    /* eslint no-param-reassign:0 */
         obj = [obj]
     }
 
     if (isArray(obj)) {
-        // Iterate over array values
+    // Iterate over array values
         for (let i = 0, l = obj.length; i < l; i++) {
             fn.call(null, obj[i], i, obj)
         }
     } else {
-        // Iterate over object keys
+    // Iterate over object keys
         for (const key in obj) {
             if (Object.prototype.hasOwnProperty.call(obj, key)) {
                 fn.call(null, obj[key], key, obj)

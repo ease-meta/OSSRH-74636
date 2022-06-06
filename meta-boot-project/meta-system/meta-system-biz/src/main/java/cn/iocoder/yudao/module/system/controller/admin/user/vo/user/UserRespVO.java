@@ -2,10 +2,7 @@ package cn.iocoder.yudao.module.system.controller.admin.user.vo.user;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -30,4 +27,5 @@ public class UserRespVO extends UserBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true, example = "时间戳格式")
     private Date createTime;
+
 }

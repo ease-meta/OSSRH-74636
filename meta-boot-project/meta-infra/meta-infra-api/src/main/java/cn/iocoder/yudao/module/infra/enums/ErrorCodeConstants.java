@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.module.infra.enums;
 
-
-import io.github.meta.ease.common.exception.ErrorCode;
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
 
 /**
  * Infra 错误码枚举类
- * <p>
+ *
  * infra 系统，使用 1-001-000-000 段
  */
 public interface ErrorCodeConstants {
@@ -54,4 +53,5 @@ public interface ErrorCodeConstants {
     // ========== 数据源配置 1001007000 ==========
     ErrorCode DATA_SOURCE_CONFIG_NOT_EXISTS = new ErrorCode(1001007000, "数据源配置不存在");
     ErrorCode DATA_SOURCE_CONFIG_NOT_OK = new ErrorCode(1001007001, "数据源配置不正确，无法进行连接");
+
 }

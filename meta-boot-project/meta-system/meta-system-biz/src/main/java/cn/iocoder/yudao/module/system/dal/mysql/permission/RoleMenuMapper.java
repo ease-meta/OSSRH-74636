@@ -1,9 +1,9 @@
 package cn.iocoder.yudao.module.system.dal.mysql.permission;
 
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleMenuDO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
@@ -38,4 +38,5 @@ public interface RoleMenuMapper extends BaseMapperX<RoleMenuDO> {
 
     @Select("SELECT COUNT(*) FROM system_role_menu WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
+
 }

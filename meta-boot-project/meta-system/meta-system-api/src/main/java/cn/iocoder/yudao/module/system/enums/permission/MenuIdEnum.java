@@ -16,4 +16,5 @@ public enum MenuIdEnum {
     ROOT(0L);
 
     private final Long id;
+
 }

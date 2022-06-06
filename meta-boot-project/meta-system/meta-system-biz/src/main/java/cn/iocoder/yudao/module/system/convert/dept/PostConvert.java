@@ -1,12 +1,8 @@
 package cn.iocoder.yudao.module.system.convert.dept;
 
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostUpdateReqVO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.*;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -28,4 +24,5 @@ public interface PostConvert {
     PostDO convert(PostUpdateReqVO reqVO);
 
     List<PostExcelVO> convertList03(List<PostDO> list);
+
 }

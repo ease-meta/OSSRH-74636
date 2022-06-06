@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.StringJoiner;
 
 /**
+ * @description 业务场景 = businessId + useCase + scenario, 用来标识系统中唯一的一个场景<br/>
  * @author Qingchen
  * @version 1.0.0
- * @description 业务场景 = businessId + useCase + scenario, 用来标识系统中唯一的一个场景<br/>
  * @date 2021-08-28 22:19
  * @class cn.iocoder.yudao.framework.extension.core.BusinessScenario.java
  */
@@ -95,20 +95,17 @@ public class BusinessScenario implements Serializable {
 
     /**
      * 构建业务场景
-     *
      * @param businessId
      * @param useCase
      * @param scenario
      * @return
      */
-    public static BusinessScenario valueOf(@NotNull String businessId, @NotNull String useCase,
-                                           @NotNull String scenario) {
+    public static BusinessScenario valueOf(@NotNull String businessId, @NotNull String useCase, @NotNull String scenario) {
         return new BusinessScenario(businessId, useCase, scenario);
     }
 
     /**
      * 构建业务场景
-     *
      * @param useCase
      * @param scenario
      * @return
@@ -119,7 +116,6 @@ public class BusinessScenario implements Serializable {
 
     /**
      * 构建业务场景
-     *
      * @param scenario
      * @return
      */
@@ -129,10 +125,9 @@ public class BusinessScenario implements Serializable {
 
     /**
      * 业务场景唯一标识
-     *
      * @return
      */
-    public String getUniqueIdentity() {
+    public String getUniqueIdentity(){
         return new StringJoiner(DOT_SEPARATOR).add(businessId).add(useCase).add(scenario).toString();
     }
 

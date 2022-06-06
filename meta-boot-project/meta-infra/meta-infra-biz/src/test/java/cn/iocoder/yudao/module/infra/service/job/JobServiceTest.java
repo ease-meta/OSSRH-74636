@@ -1,5 +1,7 @@
 package cn.iocoder.yudao.module.infra.service.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.quartz.core.scheduler.SchedulerManager;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobCreateReqVO;
@@ -10,8 +12,6 @@ import cn.iocoder.yudao.module.infra.convert.job.JobConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.job.JobMapper;
 import cn.iocoder.yudao.module.infra.enums.job.JobStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.quartz.SchedulerException;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,15 +26,8 @@ import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEq
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CHANGE_STATUS_EQUALS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CHANGE_STATUS_INVALID;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CRON_EXPRESSION_VALID;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_HANDLER_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_NOT_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_UPDATE_ONLY_NORMAL_STATUS;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -44,10 +37,8 @@ public class JobServiceTest extends BaseDbUnitTest {
 
     @Resource
     private JobServiceImpl jobService;
-
     @Resource
     private JobMapper jobMapper;
-
     @MockBean
     private SchedulerManager schedulerManager;
 
@@ -82,13 +73,12 @@ public class JobServiceTest extends BaseDbUnitTest {
         assertPojoEquals(reqVO, job);
         assertEquals(JobStatusEnum.NORMAL.getStatus(), job.getStatus());
         // 校验调用
-        verify(schedulerManager, times(1)).addJob(eq(job.getId()), eq(job.getHandlerName()), eq(job.getHandlerParam()),
-                eq(job.getCronExpression()),
+        verify(schedulerManager, times(1)).addJob(eq(job.getId()), eq(job.getHandlerName()), eq(job.getHandlerParam()), eq(job.getCronExpression()),
                 eq(reqVO.getRetryCount()), eq(reqVO.getRetryInterval()));
     }
 
     @Test
-    public void testUpdateJob_jobNotExists() {
+    public void testUpdateJob_jobNotExists(){
         // 准备参数
         JobUpdateReqVO reqVO = randomPojo(JobUpdateReqVO.class, o -> o.setCronExpression("0 0/1 * * * ? *"));
         // 调用，并断言异常
@@ -96,7 +86,7 @@ public class JobServiceTest extends BaseDbUnitTest {
     }
 
     @Test
-    public void testUpdateJob_onlyNormalStatus() {
+    public void testUpdateJob_onlyNormalStatus(){
         // mock 数据
         JobCreateReqVO createReqVO = randomPojo(JobCreateReqVO.class, o -> o.setCronExpression("0 0/1 * * * ? *"));
         JobDO job = JobConvert.INSTANCE.convert(createReqVO);
@@ -133,16 +123,14 @@ public class JobServiceTest extends BaseDbUnitTest {
         JobDO updateJob = jobMapper.selectById(updateReqVO.getId());
         assertPojoEquals(updateReqVO, updateJob);
         // 校验调用
-        verify(schedulerManager, times(1)).updateJob(eq(job.getHandlerName()), eq(updateReqVO.getHandlerParam()),
-                eq(updateReqVO.getCronExpression()),
+        verify(schedulerManager, times(1)).updateJob(eq(job.getHandlerName()), eq(updateReqVO.getHandlerParam()), eq(updateReqVO.getCronExpression()),
                 eq(updateReqVO.getRetryCount()), eq(updateReqVO.getRetryInterval()));
     }
 
     @Test
     public void testUpdateJobStatus_changeStatusInvalid() {
         // 调用，并断言异常
-        assertServiceException(() -> jobService.updateJobStatus(1L, JobStatusEnum.INIT.getStatus()),
-                JOB_CHANGE_STATUS_INVALID);
+        assertServiceException(() -> jobService.updateJobStatus(1L, JobStatusEnum.INIT.getStatus()), JOB_CHANGE_STATUS_INVALID);
     }
 
     @Test
@@ -302,4 +290,5 @@ public class JobServiceTest extends BaseDbUnitTest {
             job.setMonitorTimeout(0);
         }
     }
+
 }

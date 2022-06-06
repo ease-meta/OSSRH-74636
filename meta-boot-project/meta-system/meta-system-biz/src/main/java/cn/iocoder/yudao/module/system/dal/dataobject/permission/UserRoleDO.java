@@ -1,10 +1,9 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.permission;
 
-
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,14 +23,13 @@ public class UserRoleDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 用户 ID
      */
     private Long userId;
-
     /**
      * 角色 ID
      */
     private Long roleId;
+
 }

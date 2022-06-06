@@ -16,4 +16,5 @@ public enum DeptIdEnum {
     ROOT(0L);
 
     private final Long id;
+
 }

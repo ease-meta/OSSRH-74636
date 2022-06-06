@@ -18,4 +18,5 @@ public interface BpmActivityService {
      * @return 活动实例列表
      */
     List<BpmActivityRespVO> getActivityListByProcessInstanceId(String processInstanceId);
+
 }

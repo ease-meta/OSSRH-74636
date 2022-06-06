@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.service.test;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoPageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.test.TestDemoDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -71,4 +71,5 @@ public interface TestDemoService {
      * @return 字典类型列表
      */
     List<TestDemoDO> getTestDemoList(TestDemoExportReqVO exportReqVO);
+
 }

@@ -25,4 +25,5 @@ public class BpmTaskAssignLeaderX2Script extends BpmTaskAssignLeaderAbstractScri
     public BpmTaskRuleScriptEnum getEnum() {
         return BpmTaskRuleScriptEnum.LEADER_X2;
     }
+
 }

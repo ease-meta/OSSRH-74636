@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqVO;
@@ -13,8 +16,6 @@ import cn.iocoder.yudao.module.system.mq.producer.dept.DeptProducer;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,21 +24,10 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_EXITS_CHILDREN;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NOT_FOUND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_IS_CHILD;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_NOT_EXITS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 部门 Service 实现类
@@ -57,22 +47,20 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 部门缓存
-     * key：部门编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO#getId()}
-     * <p>
+     * key：部门编号 {@link DeptDO#getId()}
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @SuppressWarnings("FieldCanBeLocal")
     private volatile Map<Long, DeptDO> deptCache;
-
     /**
      * 父部门缓存
-     * key：部门编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO#getParentId()}
+     * key：部门编号 {@link DeptDO#getParentId()}
      * value: 直接子部门列表
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Multimap<Long, DeptDO> parentDeptCache;
-
     /**
      * 缓存部门的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -173,7 +161,7 @@ public class DeptServiceImpl implements DeptService {
         checkDeptExists(id);
         // 校验是否有子部门
         if (deptMapper.selectCountByParentId(id) > 0) {
-            throw exception(DEPT_EXITS_CHILDREN);
+            throw ServiceExceptionUtil.exception(DEPT_EXITS_CHILDREN);
         }
         // 删除部门
         deptMapper.deleteById(id);
@@ -202,10 +190,10 @@ public class DeptServiceImpl implements DeptService {
     /**
      * 递归获取所有的子部门，添加到 result 结果
      *
-     * @param result         结果
-     * @param parentId       父编号
+     * @param result 结果
+     * @param parentId 父编号
      * @param recursiveCount 递归次数
-     * @param parentDeptMap  父部门 Map，使用缓存，避免变化
+     * @param parentDeptMap 父部门 Map，使用缓存，避免变化
      */
     private void getDeptsByParentIdFromCache(List<DeptDO> result, Long parentId, int recursiveCount,
                                              Multimap<Long, DeptDO> parentDeptMap) {
@@ -239,21 +227,21 @@ public class DeptServiceImpl implements DeptService {
         }
         // 不能设置自己为父部门
         if (parentId.equals(id)) {
-            throw exception(DEPT_PARENT_ERROR);
+            throw ServiceExceptionUtil.exception(DEPT_PARENT_ERROR);
         }
         // 父岗位不存在
         DeptDO dept = deptMapper.selectById(parentId);
         if (dept == null) {
-            throw exception(DEPT_PARENT_NOT_EXITS);
+            throw ServiceExceptionUtil.exception(DEPT_PARENT_NOT_EXITS);
         }
         // 父部门被禁用
         if (!CommonStatusEnum.ENABLE.getStatus().equals(dept.getStatus())) {
-            throw exception(DEPT_NOT_ENABLE);
+            throw ServiceExceptionUtil.exception(DEPT_NOT_ENABLE);
         }
         // 父部门不能是原来的子部门
         List<DeptDO> children = this.getDeptsByParentIdFromCache(id, true);
         if (children.stream().anyMatch(dept1 -> dept1.getId().equals(parentId))) {
-            throw exception(DEPT_PARENT_IS_CHILD);
+            throw ServiceExceptionUtil.exception(DEPT_PARENT_IS_CHILD);
         }
     }
 
@@ -263,7 +251,7 @@ public class DeptServiceImpl implements DeptService {
         }
         DeptDO dept = deptMapper.selectById(id);
         if (dept == null) {
-            throw exception(DEPT_NOT_FOUND);
+            throw ServiceExceptionUtil.exception(DEPT_NOT_FOUND);
         }
     }
 
@@ -274,10 +262,10 @@ public class DeptServiceImpl implements DeptService {
         }
         // 如果 id 为空，说明不用比较是否为相同 id 的岗位
         if (id == null) {
-            throw exception(DEPT_NAME_DUPLICATE);
+            throw ServiceExceptionUtil.exception(DEPT_NAME_DUPLICATE);
         }
         if (!menu.getId().equals(id)) {
-            throw exception(DEPT_NAME_DUPLICATE);
+            throw ServiceExceptionUtil.exception(DEPT_NAME_DUPLICATE);
         }
     }
 
@@ -315,4 +303,5 @@ public class DeptServiceImpl implements DeptService {
     public List<DeptDO> getSimpleDepts(Collection<Long> ids) {
         return deptMapper.selectBatchIds(ids);
     }
+
 }

@@ -13,4 +13,5 @@ public class FileConfigRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "infra.file-config.refresh";
     }
+
 }

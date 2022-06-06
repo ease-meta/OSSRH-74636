@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.convert.test;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExcelVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoRespVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.test.TestDemoDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -32,4 +32,5 @@ public interface TestDemoConvert {
     PageResult<TestDemoRespVO> convertPage(PageResult<TestDemoDO> page);
 
     List<TestDemoExcelVO> convertList02(List<TestDemoDO> list);
+
 }

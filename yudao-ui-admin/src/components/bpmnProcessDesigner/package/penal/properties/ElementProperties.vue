@@ -1,15 +1,14 @@
 <template>
   <div class="panel-tab__content">
     <el-table :data="elementPropertyList" size="mini" max-height="240" border fit>
-      <el-table-column label="序号" width="50px" type="index"/>
-      <el-table-column label="属性名" prop="name" min-width="100px" show-overflow-tooltip/>
-      <el-table-column label="属性值" prop="value" min-width="100px" show-overflow-tooltip/>
+      <el-table-column label="序号" width="50px" type="index" />
+      <el-table-column label="属性名" prop="name" min-width="100px" show-overflow-tooltip />
+      <el-table-column label="属性值" prop="value" min-width="100px" show-overflow-tooltip />
       <el-table-column label="操作" width="90px">
         <template slot-scope="{ row, $index }">
           <el-button size="mini" type="text" @click="openAttributesForm(row, $index)">编辑</el-button>
-          <el-divider direction="vertical"/>
-          <el-button size="mini" type="text" style="color: #ff4d4f" @click="removeAttributes(row, $index)">移除
-          </el-button>
+          <el-divider direction="vertical" />
+          <el-button size="mini" type="text" style="color: #ff4d4f" @click="removeAttributes(row, $index)">移除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -20,10 +19,10 @@
     <el-dialog :visible.sync="propertyFormModelVisible" title="属性配置" width="600px" append-to-body destroy-on-close>
       <el-form :model="propertyForm" label-width="80px" size="mini" ref="attributeFormRef" @submit.native.prevent>
         <el-form-item label="属性名：" prop="name">
-          <el-input v-model="propertyForm.name" clearable/>
+          <el-input v-model="propertyForm.name" clearable />
         </el-form-item>
         <el-form-item label="属性值：" prop="value">
-          <el-input v-model="propertyForm.value" clearable/>
+          <el-input v-model="propertyForm.value" clearable />
         </el-form-item>
       </el-form>
       <template slot="footer">
@@ -104,7 +103,7 @@ export default {
         .catch(() => console.info("操作取消"));
     },
     saveAttribute() {
-      const {name, value} = this.propertyForm;
+      const { name, value } = this.propertyForm;
       console.log(this.bpmnElementPropertyList);
       if (this.editingPropertyIndex !== -1) {
         window.bpmnInstances.modeling.updateModdleProperties(this.bpmnElement, this.bpmnElementPropertyList[this.editingPropertyIndex], {
@@ -113,7 +112,7 @@ export default {
         });
       } else {
         // 新建属性字段
-        const newPropertyObject = window.bpmnInstances.moddle.create(`${this.prefix}:Property`, {name, value});
+        const newPropertyObject = window.bpmnInstances.moddle.create(`${this.prefix}:Property`, { name, value });
         // 新建一个属性字段的保存列表
         const propertiesObject = window.bpmnInstances.moddle.create(`${this.prefix}:Properties`, {
           values: this.bpmnElementPropertyList.concat([newPropertyObject])

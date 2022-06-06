@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.service.sensitiveword;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordPageReqVO;
@@ -12,9 +15,6 @@ import cn.iocoder.yudao.module.system.mq.producer.sensitiveword.SensitiveWordPro
 import cn.iocoder.yudao.module.system.util.collection.SimpleTrie;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,18 +23,11 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SENSITIVE_WORD_EXISTS;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SENSITIVE_WORD_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 敏感词 Service 实现类
@@ -54,7 +47,7 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
 
     /**
      * 敏感词标签缓存
-     * key：敏感词编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword.SensitiveWordDO#getId()}
+     * key：敏感词编号 {@link SensitiveWordDO#getId()}
      * <p>
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
@@ -78,7 +71,6 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
      */
     @Getter
     private volatile SimpleTrie defaultSensitiveWordTrie = new SimpleTrie(Collections.emptySet());
-
     /**
      * 标签与敏感词的字段数的映射
      */
@@ -269,4 +261,5 @@ public class SensitiveWordServiceImpl implements SensitiveWordService {
         }
         return true;
     }
+
 }

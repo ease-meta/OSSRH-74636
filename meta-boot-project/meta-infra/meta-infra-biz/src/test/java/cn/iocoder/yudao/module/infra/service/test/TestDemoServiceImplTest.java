@@ -1,5 +1,8 @@
 package cn.iocoder.yudao.module.infra.service.test;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExportReqVO;
@@ -7,24 +10,19 @@ import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoPageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.test.TestDemoDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.test.TestDemoMapper;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.TEST_DEMO_NOT_EXISTS;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * {@link TestDemoServiceImpl} 的单元测试类
@@ -185,4 +183,5 @@ public class TestDemoServiceImplTest extends BaseDbUnitTest {
         assertEquals(1, list.size());
         assertPojoEquals(dbTestDemo, list.get(0));
     }
+
 }

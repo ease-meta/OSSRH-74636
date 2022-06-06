@@ -20,16 +20,15 @@ public class ErrorCodeAutoGenerateReqDTO {
      */
     @NotNull(message = "应用名不能为空")
     private String applicationName;
-
     /**
      * 错误码编码
      */
     @NotNull(message = "错误码编码不能为空")
     private Integer code;
-
     /**
      * 错误码错误提示
      */
     @NotEmpty(message = "错误码错误提示不能为空")
     private String message;
+
 }

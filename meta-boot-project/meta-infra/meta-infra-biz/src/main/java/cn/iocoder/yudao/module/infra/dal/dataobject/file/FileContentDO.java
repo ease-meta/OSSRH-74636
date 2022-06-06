@@ -1,20 +1,15 @@
 package cn.iocoder.yudao.module.infra.dal.dataobject.file;
 
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * 文件内容表
- * <p>
+ *
  * 专门用于存储 {@link cn.iocoder.yudao.framework.file.core.client.db.DBFileClient} 的文件内容
  *
  * @author 芋道源码
@@ -34,21 +29,19 @@ public class FileContentDO extends BaseDO {
      */
     @TableId(type = IdType.INPUT)
     private String id;
-
     /**
      * 配置编号
-     * <p>
+     *
      * 关联 {@link FileConfigDO#getId()}
      */
     private Long configId;
-
     /**
      * 路径，即文件名
      */
     private String path;
-
     /**
      * 文件内容
      */
     private byte[] content;
+
 }

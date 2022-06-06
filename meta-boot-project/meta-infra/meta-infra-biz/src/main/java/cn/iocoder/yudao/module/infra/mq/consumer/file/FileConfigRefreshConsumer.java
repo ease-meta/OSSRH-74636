@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 针对 {@link cn.iocoder.yudao.module.infra.mq.message.file.FileConfigRefreshMessage} 的消费者
+ * 针对 {@link FileConfigRefreshMessage} 的消费者
  *
  * @author 芋道源码
  */
@@ -25,4 +25,5 @@ public class FileConfigRefreshConsumer extends AbstractChannelMessageListener<Fi
         log.info("[onMessage][收到 FileConfig 刷新消息]");
         fileConfigService.initFileClients();
     }
+
 }

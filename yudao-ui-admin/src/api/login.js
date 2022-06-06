@@ -1,6 +1,6 @@
 import request from '@/utils/request'
-import service from '@/utils/request'
 import {getRefreshToken} from "@/utils/auth";
+import service from "@/utils/request";
 
 // 登录方法
 export function login(username, password, code, uuid) {
@@ -132,7 +132,7 @@ export function authorize(responseType, clientId, redirectUri, state,
   // 发起请求
   return service({
     url: '/system/oauth2/authorize',
-    headers: {
+    headers:{
       'Content-type': 'application/x-www-form-urlencoded',
     },
     params: {

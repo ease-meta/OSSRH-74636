@@ -20,4 +20,5 @@ public enum JobLogStatusEnum {
      * 状态
      */
     private final Integer status;
+
 }

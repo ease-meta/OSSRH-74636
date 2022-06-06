@@ -5,14 +5,14 @@
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="120px">
       <el-form-item label="所属商户" prop="merchantId">
         <el-select v-model="queryParams.merchantId" clearable @clear="()=>{queryParams.merchantId = null}"
-                   filterable remote reserve-keyword placeholder="请选择所属商户" @change="handleGetAppListByMerchantId"
-                   :remote-method="handleGetMerchantListByName" :loading="merchantLoading">
+          filterable remote reserve-keyword placeholder="请选择所属商户"  @change="handleGetAppListByMerchantId"
+          :remote-method="handleGetMerchantListByName" :loading="merchantLoading">
           <el-option v-for="item in merchantList" :key="item.id" :label="item.name" :value="item.id"/>
         </el-select>
       </el-form-item>
       <el-form-item label="应用编号" prop="appId">
         <el-select clearable v-model="queryParams.appId" filterable placeholder="请选择应用信息">
-          <el-option v-for="item in appList" :key="item.id" :label="item.name" :value="item.id"/>
+          <el-option v-for="item in appList" :key="item.id" :label="item.name" :value="item.id" />
         </el-select>
       </el-form-item>
       <el-form-item label="渠道编码" prop="channelCode">
@@ -50,7 +50,7 @@
       <el-form-item label="创建时间">
         <el-date-picker
           v-model="dateRangeCreateTime" style="width: 350px"
-          value-format="yyyy-MM-dd HH:mm:ss" type="datetimerange" range-separator="-"
+          value-format="yyyy-MM-dd HH:mm:ss" type="datetimerange"  range-separator="-"
           :default-time="['00:00:00','23:59:59']" start-placeholder="开始日期" end-placeholder="结束日期">
         </el-date-picker>
       </el-form-item>
@@ -73,8 +73,8 @@
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
       <el-table-column label="订单编号" align="center" prop="id" width="80"/>
-      <!--      <el-table-column label="商户名称" align="center" prop="merchantName" width="120"/>-->
-      <!--      <el-table-column label="应用名称" align="center" prop="appName" width="120"/>-->
+<!--      <el-table-column label="商户名称" align="center" prop="merchantName" width="120"/>-->
+<!--      <el-table-column label="应用名称" align="center" prop="appName" width="120"/>-->
       <el-table-column label="支付渠道" align="center" width="130">
         <template v-slot="scope">
           <el-popover trigger="hover" placement="top">
@@ -89,18 +89,12 @@
       </el-table-column>
       <el-table-column label="支付订单" align="left" width="280">
         <template v-slot="scope">
-          <p class="order-font">
-            <el-tag size="mini">商户</el-tag>
-            {{ scope.row.merchantOrderId }}
-          </p>
-          <p class="order-font">
-            <el-tag size="mini" type="warning">支付</el-tag>
-            {{ scope.row.channelOrderNo }}
-          </p>
+          <p class="order-font"><el-tag size="mini">商户</el-tag> {{scope.row.merchantOrderId}}</p>
+          <p class="order-font"><el-tag size="mini" type="warning">支付</el-tag> {{scope.row.channelOrderNo}}</p>
         </template>
       </el-table-column>
-      <!--      <el-table-column label="商户订单编号" align="center" prop="merchantOrderId" width="140"/>-->
-      <!--      <el-table-column label="渠道订单号" align="center" prop="channelOrderNo" width="140"/>-->
+<!--      <el-table-column label="商户订单编号" align="center" prop="merchantOrderId" width="140"/>-->
+<!--      <el-table-column label="渠道订单号" align="center" prop="channelOrderNo" width="140"/>-->
       <el-table-column label="商品标题" align="center" prop="subject" width="180" :show-overflow-tooltip="true"/>
       <el-table-column label="支付金额" align="center" prop="amount" width="100">
         <template slot-scope="scope">
@@ -119,18 +113,18 @@
       </el-table-column>
       <el-table-column label="支付状态" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_STATUS" :value="scope.row.status"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_STATUS" :value="scope.row.status" />
         </template>
 
       </el-table-column>
-      <!--      <el-table-column label="退款状态" align="center" prop="refundStatus">-->
-      <!--        <template slot-scope="scope">-->
-      <!--          <span>{{ getDictDataLabel(DICT_TYPE.PAY_ORDER_REFUND_STATUS, scope.row.refundStatus) }}</span>-->
-      <!--        </template>-->
-      <!--      </el-table-column>-->
+<!--      <el-table-column label="退款状态" align="center" prop="refundStatus">-->
+<!--        <template slot-scope="scope">-->
+<!--          <span>{{ getDictDataLabel(DICT_TYPE.PAY_ORDER_REFUND_STATUS, scope.row.refundStatus) }}</span>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column label="回调状态" align="center" prop="notifyStatus" width="100">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="scope.row.notifyStatus"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="scope.row.notifyStatus" />
         </template>
       </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime" width="100">
@@ -185,10 +179,10 @@
           {{ parseFloat(orderDetail.channelFeeRate / 100, 2) }}%
         </el-descriptions-item>
         <el-descriptions-item label="支付状态">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_STATUS" :value="orderDetail.status"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_STATUS" :value="orderDetail.status" />
         </el-descriptions-item>
         <el-descriptions-item label="回调状态">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="orderDetail.notifyStatus"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_NOTIFY_STATUS" :value="orderDetail.notifyStatus" />
         </el-descriptions-item>
         <el-descriptions-item label="回调地址">{{ orderDetail.notifyUrl }}</el-descriptions-item>
         <el-descriptions-item label="创建时间">{{ parseTime(orderDetail.createTime) }}</el-descriptions-item>
@@ -201,7 +195,7 @@
         <el-descriptions-item label="支付渠道">{{ orderDetail.channelCodeName }}</el-descriptions-item>
         <el-descriptions-item label="支付IP">{{ orderDetail.userIp }}</el-descriptions-item>
         <el-descriptions-item label="退款状态">
-          <dict-tag :type="DICT_TYPE.PAY_ORDER_REFUND_STATUS" :value="orderDetail.refundStatus"/>
+          <dict-tag :type="DICT_TYPE.PAY_ORDER_REFUND_STATUS" :value="orderDetail.refundStatus" />
         </el-descriptions-item>
         <el-descriptions-item label="退款次数">{{ orderDetail.refundTimes }}</el-descriptions-item>
         <el-descriptions-item label="退款金额">
@@ -224,11 +218,12 @@
 </template>
 
 <script>
-import {exportOrderExcel, getOrder, getOrderPage} from "@/api/pay/order";
+import {getOrder, getOrderPage, exportOrderExcel} from "@/api/pay/order";
 import {getMerchantListByName} from "@/api/pay/merchant";
 import {getAppListByMerchantId} from "@/api/pay/app";
 import {DICT_TYPE, getDictDatas} from "@/utils/dict";
-import {getNowDateTime} from "@/utils/ruoyi";
+import {PayOrderNotifyStatusEnum, PayOrderRefundStatusEnum, PayOrderStatusEnum} from "@/utils/constants";
+import { getNowDateTime} from "@/utils/ruoyi";
 
 const defaultOrderDetail = {
   merchantName: '',
@@ -328,14 +323,14 @@ export default {
     this.handleGetMerchantListByName(null);
   },
   methods: {
-    initTime() {
+    initTime(){
       this.dateRangeCreateTime = [getNowDateTime("00:00:00"), getNowDateTime("23:59:59")];
     },
     /** 查询列表 */
     getList() {
       // 判断选择的日期是否超过了一个月
       let oneMonthTime = 31 * 24 * 3600 * 1000;
-      if (this.dateRangeCreateTime == null) {
+      if (this.dateRangeCreateTime == null){
         this.initTime();
       } else {
         let minDateTime = new Date(this.dateRangeCreateTime[0]).getTime();
@@ -407,8 +402,7 @@ export default {
         return exportOrderExcel(params);
       }).then(response => {
         this.$download.excel(response, '支付订单.xls');
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /**
      * 根据商户名称模糊匹配商户信息
@@ -456,7 +450,7 @@ export default {
   border-color: #ffadd2;
 }
 
-.order-font {
+.order-font{
   font-size: 12px;
   padding: 2px 0;
 }

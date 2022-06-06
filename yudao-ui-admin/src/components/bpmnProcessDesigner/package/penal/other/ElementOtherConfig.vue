@@ -31,7 +31,7 @@ export default {
   watch: {
     id: {
       immediate: true,
-      handler: function (id) {
+      handler: function(id) {
         if (id && id.length) {
           this.$nextTick(() => {
             const documentations = window.bpmnInstances.bpmnElement.businessObject?.documentation;
@@ -46,7 +46,7 @@ export default {
   methods: {
     updateDocumentation() {
       (this.bpmnElement && this.bpmnElement.id === this.id) || (this.bpmnElement = window.bpmnInstances.elementRegistry.get(this.id));
-      const documentation = window.bpmnInstances.bpmnFactory.create("bpmn:Documentation", {text: this.documentation});
+      const documentation = window.bpmnInstances.bpmnFactory.create("bpmn:Documentation", { text: this.documentation });
       window.bpmnInstances.modeling.updateProperties(this.bpmnElement, {
         documentation: [documentation]
       });

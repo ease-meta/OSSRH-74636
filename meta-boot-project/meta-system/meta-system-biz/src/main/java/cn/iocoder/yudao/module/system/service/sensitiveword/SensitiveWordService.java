@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.system.service.sensitiveword;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword.SensitiveWordDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -100,4 +100,5 @@ public interface SensitiveWordService {
      * @return 是否包含
      */
     boolean isTextValid(String text, List<String> tags);
+
 }

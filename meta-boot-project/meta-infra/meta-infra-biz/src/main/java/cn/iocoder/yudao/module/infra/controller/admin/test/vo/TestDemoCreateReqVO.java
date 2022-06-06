@@ -1,9 +1,7 @@
 package cn.iocoder.yudao.module.infra.controller.admin.test.vo;
 
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
+import io.swagger.annotations.*;
 
 @ApiModel("管理后台 - 字典类型创建 Request VO")
 @Data

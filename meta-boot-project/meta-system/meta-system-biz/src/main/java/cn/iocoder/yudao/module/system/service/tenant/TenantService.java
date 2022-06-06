@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.system.service.tenant;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.yudao.framework.tenant.core.service.TenantFrameworkService;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant.TenantCreateReqVO;
@@ -9,7 +10,6 @@ import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant.TenantUp
 import cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantDO;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantInfoHandler;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantMenuHandler;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -46,7 +46,7 @@ public interface TenantService extends TenantFrameworkService {
      * 更新租户的角色菜单
      *
      * @param tenantId 租户编号
-     * @param menuIds  菜单编号数组
+     * @param menuIds 菜单编号数组
      */
     void updateTenantRoleMenu(Long tenantId, Set<Long> menuIds);
 

@@ -1,19 +1,19 @@
 package cn.iocoder.yudao.module.system.service.dict;
 
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictTypeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dict.DictDataMapper;
 import cn.iocoder.yudao.module.system.mq.producer.dict.DictDataProducer;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import com.google.common.collect.ImmutableTable;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -24,23 +24,13 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static cn.hutool.core.bean.BeanUtil.getFieldValue;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_DATA_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_DATA_VALUE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DICT_TYPE_NOT_EXISTS;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Import(DictDataServiceImpl.class)
 public class DictDataServiceTest extends BaseDbUnitTest {
@@ -50,10 +40,8 @@ public class DictDataServiceTest extends BaseDbUnitTest {
 
     @Resource
     private DictDataMapper dictDataMapper;
-
     @MockBean
     private DictTypeService dictTypeService;
-
     @MockBean
     private DictDataProducer dictDataProducer;
 
@@ -102,8 +90,7 @@ public class DictDataServiceTest extends BaseDbUnitTest {
         // 测试 dictType 不匹配
         dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setDictType("nai")));
         // 测试 status 不匹配
-        dictDataMapper.insert(
-                ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 准备参数
         DictDataPageReqVO reqVO = new DictDataPageReqVO();
         reqVO.setLabel("芋");
@@ -132,8 +119,7 @@ public class DictDataServiceTest extends BaseDbUnitTest {
         // 测试 dictType 不匹配
         dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setDictType("nai")));
         // 测试 status 不匹配
-        dictDataMapper.insert(
-                ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+        dictDataMapper.insert(ObjectUtils.cloneIgnoreId(dbDictData, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
         // 准备参数
         DictDataExportReqVO reqVO = new DictDataExportReqVO();
         reqVO.setLabel("芋");
@@ -306,4 +292,5 @@ public class DictDataServiceTest extends BaseDbUnitTest {
             o.setStatus(CommonStatusEnum.ENABLE.getStatus()); // 保证 status 是开启
         });
     }
+
 }

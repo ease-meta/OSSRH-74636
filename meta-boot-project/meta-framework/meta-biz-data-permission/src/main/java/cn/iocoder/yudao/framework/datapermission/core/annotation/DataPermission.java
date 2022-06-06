@@ -2,11 +2,7 @@ package cn.iocoder.yudao.framework.datapermission.core.annotation;
 
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * 数据权限注解
@@ -35,4 +31,5 @@ public @interface DataPermission {
      * 排除的数据权限规则数组，优先级最低
      */
     Class<? extends DataPermissionRule>[] excludeRules() default {};
+
 }

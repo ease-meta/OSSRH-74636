@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.controller.admin.auth.vo;
 
+import cn.iocoder.yudao.framework.common.validation.InEnum;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
-import io.github.meta.ease.common.validation.InEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -44,4 +44,5 @@ public class AuthSocialBindLoginReqVO {
     @NotEmpty(message = "密码不能为空")
     @Length(min = 4, max = 16, message = "密码长度为 4-16 位")
     private String password;
+
 }

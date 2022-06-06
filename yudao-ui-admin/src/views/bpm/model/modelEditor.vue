@@ -3,13 +3,12 @@
 
     <!-- 流程设计器，负责绘制流程等 -->
     <my-process-designer :key="`designer-${reloadIndex}`" v-model="xmlString" v-bind="controlForm"
-                         keyboard ref="processDesigner" @init-finished="initModeler"
-                         @save="save"/>
+      keyboard ref="processDesigner" @init-finished="initModeler"
+      @save="save"/>
 
     <!-- 流程属性器，负责编辑每个流程节点的属性 -->
-    <my-properties-panel :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix"
-                         class="process-panel"
-                         :model="model"/>
+    <my-properties-panel :key="`penal-${reloadIndex}`" :bpmn-modeler="modeler" :prefix="controlForm.prefix" class="process-panel"
+      :model="model" />
 
   </div>
 </template>
@@ -28,7 +27,7 @@ import {createModel, getModel, updateModel} from "@/api/bpm/model";
 
 export default {
   name: "App",
-  components: {MyProcessPalette},
+  components: { MyProcessPalette },
   data() {
     return {
       xmlString: "", // BPMN XML
@@ -112,7 +111,7 @@ export default {
     },
     /** 关闭按钮 */
     close() {
-      this.$tab.closeOpenPage({path: "/bpm/manager/model"});
+      this.$tab.closeOpenPage({ path: "/bpm/manager/model" });
     },
   }
 };

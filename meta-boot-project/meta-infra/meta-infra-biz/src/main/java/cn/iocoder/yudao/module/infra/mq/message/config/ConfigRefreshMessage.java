@@ -13,4 +13,5 @@ public class ConfigRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "infra.config.refresh";
     }
+
 }

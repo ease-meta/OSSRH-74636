@@ -55,7 +55,7 @@ export function exportSensitiveWordExcel(query) {
 }
 
 // 获取所有敏感词的标签数组
-export function getSensitiveWordTags() {
+export function getSensitiveWordTags(){
   return request({
     url: '/system/sensitive-word/get-tags',
     method: 'get'

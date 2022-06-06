@@ -1,9 +1,10 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.dict;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,50 +24,43 @@ public class DictDataDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 字典排序
      */
     private Integer sort;
-
     /**
      * 字典标签
      */
     private String label;
-
     /**
      * 字典值
      */
     private String value;
-
     /**
      * 字典类型
-     * <p>
-     * 冗余 {@link cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO#getDictType()}
+     *
+     * 冗余 {@link DictDataDO#getDictType()}
      */
     private String dictType;
-
     /**
      * 状态
-     * <p>
-     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
+     *
+     * 枚举 {@link CommonStatusEnum}
      */
     private Integer status;
-
     /**
      * 颜色类型
-     * <p>
+     *
      * 对应到 element-ui 为 default、primary、success、info、warning、danger
      */
     private String colorType;
-
     /**
      * css 样式
      */
     private String cssClass;
-
     /**
      * 备注
      */
     private String remark;
+
 }

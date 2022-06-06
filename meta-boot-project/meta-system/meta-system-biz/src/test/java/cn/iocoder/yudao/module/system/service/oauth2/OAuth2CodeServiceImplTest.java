@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.system.service.oauth2;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2CodeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2CodeMapper;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
@@ -14,20 +14,16 @@ import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.addTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CODE_EXPIRE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CODE_NOT_EXISTS;
-import static io.github.meta.ease.common.util.date.DateUtils.addTime;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.oauth2.OAuth2CodeServiceImpl} 的单元测试类
+ * {@link OAuth2CodeServiceImpl} 的单元测试类
  *
  * @author 芋道源码
  */
@@ -100,4 +96,5 @@ class OAuth2CodeServiceImplTest extends BaseDbUnitTest {
         assertPojoEquals(codeDO, result);
         assertNull(oauth2CodeMapper.selectByCode(code));
     }
+
 }

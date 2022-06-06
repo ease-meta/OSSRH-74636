@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.infra.service.test;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoPageReqVO;
@@ -7,7 +8,6 @@ import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoUpdateReqV
 import cn.iocoder.yudao.module.infra.convert.test.TestDemoConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.test.TestDemoDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.test.TestDemoMapper;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.TEST_DEMO_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 字典类型 Service 实现类
@@ -87,4 +87,5 @@ public class TestDemoServiceImpl implements TestDemoService {
     public List<TestDemoDO> getTestDemoList(TestDemoExportReqVO exportReqVO) {
         return testDemoMapper.selectList(exportReqVO);
     }
+
 }

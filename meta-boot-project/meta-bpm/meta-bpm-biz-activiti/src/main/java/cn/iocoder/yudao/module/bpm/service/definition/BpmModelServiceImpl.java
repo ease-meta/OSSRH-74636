@@ -1,23 +1,21 @@
 package cn.iocoder.yudao.module.bpm.service.definition;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.framework.activiti.core.util.ActivitiUtils;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelCreateReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelPageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelPageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelUpdateReqVO;
+import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
+import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.*;
 import cn.iocoder.yudao.module.bpm.convert.definition.BpmModelConvert;
-import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmModelMetaInfoRespDTO;
+import cn.iocoder.yudao.framework.activiti.core.util.ActivitiUtils;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
+import cn.iocoder.yudao.framework.common.util.object.PageUtils;
+import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.rule.BpmTaskAssignRuleRespVO;
+import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmProcessDefinitionCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
-import io.github.meta.ease.common.util.object.PageUtils;
-import io.github.meta.ease.common.util.validation.ValidationUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.RepositoryService;
@@ -26,31 +24,22 @@ import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.Model;
 import org.activiti.engine.repository.ModelQuery;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.FORM_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_DEPLOY_FAIL_FORM_NOT_CONFIG;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_DEPLOY_FAIL_TASK_INFO_EQUALS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_KEY_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_KEY_VALID;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
 
 /**
  * 流程定义实现
- * 主要进行 Activiti {@link org.activiti.engine.repository.Model} 的维护
+ * 主要进行 Activiti {@link Model} 的维护
  *
  * @author yunlongn
  * @author 芋道源码
@@ -58,17 +47,14 @@ import static io.github.meta.ease.common.util.collection.CollectionUtils.convert
 @Service
 @Validated
 @Slf4j
-public class BpmModelServiceImpl implements BpmModelService {
+public class BpmModelServiceImpl  implements BpmModelService {
 
     @Resource
     private RepositoryService repositoryService;
-
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
-
     @Resource
     private BpmFormService bpmFormService;
-
     @Resource
     private BpmTaskAssignRuleService taskAssignRuleService;
 
@@ -100,15 +86,12 @@ public class BpmModelServiceImpl implements BpmModelService {
         models.forEach(model -> CollectionUtils.addIfNotNull(deploymentIds, model.getDeploymentId()));
         Map<String, Deployment> deploymentMap = processDefinitionService.getDeploymentMap(deploymentIds);
         // 获得 ProcessDefinition Map
-        List<ProcessDefinition> processDefinitions = processDefinitionService.getProcessDefinitionListByDeploymentIds(
-                deploymentIds);
-        Map<String, ProcessDefinition> processDefinitionMap = convertMap(processDefinitions,
-                ProcessDefinition::getDeploymentId);
+        List<ProcessDefinition> processDefinitions = processDefinitionService.getProcessDefinitionListByDeploymentIds(deploymentIds);
+        Map<String, ProcessDefinition> processDefinitionMap = convertMap(processDefinitions, ProcessDefinition::getDeploymentId);
 
         // 拼接结果
         long modelCount = modelQuery.count();
-        return new PageResult<>(BpmModelConvert.INSTANCE.convertList(models, formMap, deploymentMap, processDefinitionMap),
-                modelCount);
+        return new PageResult<>(BpmModelConvert.INSTANCE.convertList(models, formMap, deploymentMap, processDefinitionMap), modelCount);
     }
 
     @Override
@@ -188,13 +171,10 @@ public class BpmModelServiceImpl implements BpmModelService {
         taskAssignRuleService.checkTaskAssignRuleAllConfig(id);
 
         // 校验模型是否发生修改。如果未修改，则不允许创建
-        BpmProcessDefinitionCreateReqDTO definitionCreateReqDTO = BpmModelConvert.INSTANCE.convert2(model, form)
-                .setBpmnBytes(bpmnBytes);
+        BpmProcessDefinitionCreateReqDTO definitionCreateReqDTO = BpmModelConvert.INSTANCE.convert2(model, form).setBpmnBytes(bpmnBytes);
         if (processDefinitionService.isProcessDefinitionEquals(definitionCreateReqDTO)) { // 流程定义的信息相等
-            ProcessDefinition oldProcessInstance = processDefinitionService.getProcessDefinitionByDeploymentId(
-                    model.getDeploymentId());
-            if (oldProcessInstance != null && taskAssignRuleService.isTaskAssignRulesEquals(model.getId(),
-                    oldProcessInstance.getId())) {
+            ProcessDefinition oldProcessInstance = processDefinitionService.getProcessDefinitionByDeploymentId(model.getDeploymentId());
+            if (oldProcessInstance != null && taskAssignRuleService.isTaskAssignRulesEquals(model.getId(), oldProcessInstance.getId())) {
                 throw exception(MODEL_DEPLOY_FAIL_TASK_INFO_EQUALS);
             }
         }
@@ -235,11 +215,10 @@ public class BpmModelServiceImpl implements BpmModelService {
         if (oldDefinition == null) {
             return;
         }
-        if (oldDefinition.isSuspended()) {
+        if(oldDefinition.isSuspended()) {
             return;
         }
-        processDefinitionService.updateProcessDefinitionState(oldDefinition.getId(),
-                SuspensionState.SUSPENDED.getStateCode());
+        processDefinitionService.updateProcessDefinitionState(oldDefinition.getId(), SuspensionState.SUSPENDED.getStateCode());
     }
 
     @Override
@@ -284,7 +263,7 @@ public class BpmModelServiceImpl implements BpmModelService {
      * @param metaInfoStr 流程模型 metaInfo 字段
      * @return 流程表单
      */
-    private BpmFormDO checkFormConfig(String metaInfoStr) {
+    private BpmFormDO checkFormConfig(String  metaInfoStr) {
         BpmModelMetaInfoRespDTO metaInfo = JsonUtils.parseObject(metaInfoStr, BpmModelMetaInfoRespDTO.class);
         if (metaInfo == null || metaInfo.getFormType() == null) {
             throw exception(MODEL_DEPLOY_FAIL_FORM_NOT_CONFIG);
@@ -299,4 +278,5 @@ public class BpmModelServiceImpl implements BpmModelService {
         }
         return null;
     }
+
 }

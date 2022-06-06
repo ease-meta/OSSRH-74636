@@ -23,4 +23,5 @@ public enum LoginLogTypeEnum {
      * 日志类型
      */
     private final Integer type;
+
 }

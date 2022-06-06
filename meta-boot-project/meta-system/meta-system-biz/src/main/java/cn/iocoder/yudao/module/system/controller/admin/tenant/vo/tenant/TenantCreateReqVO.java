@@ -1,10 +1,7 @@
 package cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
+import io.swagger.annotations.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -28,4 +25,5 @@ public class TenantCreateReqVO extends TenantBaseVO {
     @NotEmpty(message = "密码不能为空")
     @Length(min = 4, max = 16, message = "密码长度为 4-16 位")
     private String password;
+
 }

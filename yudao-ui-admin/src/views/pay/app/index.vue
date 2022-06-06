@@ -210,9 +210,9 @@
 </template>
 
 <script>
-import {changeAppStatus, createApp, deleteApp, exportAppExcel, getApp, getAppPage, updateApp} from "@/api/pay/app";
+import {createApp, updateApp, changeAppStatus, deleteApp, getApp, getAppPage, exportAppExcel} from "@/api/pay/app";
 import {DICT_TYPE, getDictDatas} from "@/utils/dict";
-import {CommonStatusEnum, PayChannelEnum, PayType} from "@/utils/constants";
+import {PayType, PayChannelEnum, CommonStatusEnum} from "@/utils/constants";
 import {getMerchantListByName} from "@/api/pay/merchant";
 import wechatChannelForm from "@/views/pay/app/components/wechatChannelForm";
 import aliPayChannelForm from "@/views/pay/app/components/aliPayChannelForm";
@@ -418,8 +418,7 @@ export default {
         return exportAppExcel(params);
       }).then(response => {
         this.$download.excel(response, '支付应用信息.xls');
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /**
      * 根据商户名称模糊匹配商户信息

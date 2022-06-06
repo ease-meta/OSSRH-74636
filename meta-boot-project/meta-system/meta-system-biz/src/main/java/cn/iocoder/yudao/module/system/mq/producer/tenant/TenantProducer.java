@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.system.mq.producer.tenant;
 
 import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
+import cn.iocoder.yudao.module.system.mq.message.permission.RoleRefreshMessage;
 import cn.iocoder.yudao.module.system.mq.message.tenant.TenantRefreshMessage;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +19,11 @@ public class TenantProducer {
     private RedisMQTemplate redisMQTemplate;
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.permission.RoleRefreshMessage} 消息
+     * 发送 {@link RoleRefreshMessage} 消息
      */
     public void sendTenantRefreshMessage() {
         TenantRefreshMessage message = new TenantRefreshMessage();
         redisMQTemplate.send(message);
     }
+
 }

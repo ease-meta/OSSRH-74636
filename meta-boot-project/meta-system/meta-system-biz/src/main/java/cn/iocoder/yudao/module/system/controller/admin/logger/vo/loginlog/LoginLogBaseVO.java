@@ -39,4 +39,5 @@ public class LoginLogBaseVO {
     @ApiModelProperty(value = "浏览器 UserAgent", required = true, example = "Mozilla/5.0")
     @NotEmpty(message = "浏览器 UserAgent 不能为空")
     private String userAgent;
+
 }

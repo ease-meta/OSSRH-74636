@@ -56,9 +56,9 @@ export default {
         },
         // 初始化按钮位置
         initButtonStyle({
-                            barStyle,
-                            buttonWrapperStyle
-                        }) {
+            barStyle,
+            buttonWrapperStyle
+        }) {
             this.barStyle = barStyle
             this.buttonWrapperStyle = buttonWrapperStyle
         },

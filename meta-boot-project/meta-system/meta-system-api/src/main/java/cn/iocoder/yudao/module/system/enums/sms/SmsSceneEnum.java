@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.system.enums.sms;
 
 import cn.hutool.core.util.ArrayUtil;
-import io.github.meta.ease.common.core.IntArrayValuable;
+import cn.iocoder.yudao.framework.common.core.IntArrayValuable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -28,12 +28,10 @@ public enum SmsSceneEnum implements IntArrayValuable {
      * 验证场景的编号
      */
     private final Integer scene;
-
     /**
      * 模版编码
      */
     private final String templateCode;
-
     /**
      * 描述
      */
@@ -48,4 +46,5 @@ public enum SmsSceneEnum implements IntArrayValuable {
         return ArrayUtil.firstMatch(sceneEnum -> sceneEnum.getScene().equals(scene),
                 values());
     }
+
 }

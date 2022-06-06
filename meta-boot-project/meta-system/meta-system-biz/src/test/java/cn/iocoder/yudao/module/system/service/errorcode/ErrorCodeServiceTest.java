@@ -1,17 +1,17 @@
 package cn.iocoder.yudao.module.system.service.errorcode;
 
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
+import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeAutoGenerateReqDTO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.errorcode.ErrorCodeMapper;
 import cn.iocoder.yudao.module.system.enums.errorcode.ErrorCodeTypeEnum;
-import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeAutoGenerateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
@@ -21,18 +21,13 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
-import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
-import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomInteger;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ERROR_CODE_DUPLICATE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ERROR_CODE_NOT_EXISTS;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
+import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Import(ErrorCodeServiceImpl.class)
 public class ErrorCodeServiceTest extends BaseDbUnitTest {
@@ -86,29 +81,29 @@ public class ErrorCodeServiceTest extends BaseDbUnitTest {
 
         // 调用
         errorCodeService.deleteErrorCode(id);
-        // 校验数据不存在了
-        assertNull(errorCodeMapper.selectById(id));
+       // 校验数据不存在了
+       assertNull(errorCodeMapper.selectById(id));
     }
 
     @Test
     public void testGetErrorCodePage() {
-        // mock 数据
-        ErrorCodeDO dbErrorCode = initGetErrorCodePage();
-        // 准备参数
-        ErrorCodePageReqVO reqVO = new ErrorCodePageReqVO();
-        reqVO.setType(ErrorCodeTypeEnum.AUTO_GENERATION.getType());
-        reqVO.setApplicationName("tu");
-        reqVO.setCode(1);
-        reqVO.setMessage("ma");
-        reqVO.setBeginCreateTime(buildTime(2020, 11, 1));
-        reqVO.setEndCreateTime(buildTime(2020, 11, 30));
+       // mock 数据
+       ErrorCodeDO dbErrorCode = initGetErrorCodePage();
+       // 准备参数
+       ErrorCodePageReqVO reqVO = new ErrorCodePageReqVO();
+       reqVO.setType(ErrorCodeTypeEnum.AUTO_GENERATION.getType());
+       reqVO.setApplicationName("tu");
+       reqVO.setCode(1);
+       reqVO.setMessage("ma");
+       reqVO.setBeginCreateTime(buildTime(2020, 11, 1));
+       reqVO.setEndCreateTime(buildTime(2020, 11, 30));
 
-        // 调用
-        PageResult<ErrorCodeDO> pageResult = errorCodeService.getErrorCodePage(reqVO);
-        // 断言
-        assertEquals(1, pageResult.getTotal());
-        assertEquals(1, pageResult.getList().size());
-        assertPojoEquals(dbErrorCode, pageResult.getList().get(0));
+       // 调用
+       PageResult<ErrorCodeDO> pageResult = errorCodeService.getErrorCodePage(reqVO);
+       // 断言
+       assertEquals(1, pageResult.getTotal());
+       assertEquals(1, pageResult.getList().size());
+       assertPojoEquals(dbErrorCode, pageResult.getList().get(0));
     }
 
     /**
@@ -124,8 +119,7 @@ public class ErrorCodeServiceTest extends BaseDbUnitTest {
         });
         errorCodeMapper.insert(dbErrorCode);
         // 测试 type 不匹配
-        errorCodeMapper.insert(
-                ObjectUtils.cloneIgnoreId(dbErrorCode, o -> o.setType(ErrorCodeTypeEnum.MANUAL_OPERATION.getType())));
+        errorCodeMapper.insert(ObjectUtils.cloneIgnoreId(dbErrorCode, o -> o.setType(ErrorCodeTypeEnum.MANUAL_OPERATION.getType())));
         // 测试 applicationName 不匹配
         errorCodeMapper.insert(ObjectUtils.cloneIgnoreId(dbErrorCode, o -> o.setApplicationName("yuan")));
         // 测试 code 不匹配
@@ -256,7 +250,7 @@ public class ErrorCodeServiceTest extends BaseDbUnitTest {
         // 准备参数
         ErrorCodeAutoGenerateReqDTO generateReqDTO = randomPojo(ErrorCodeAutoGenerateReqDTO.class,
                 o -> o.setCode(dbErrorCode.getCode()).setApplicationName(dbErrorCode.getApplicationName())
-                        .setMessage(dbErrorCode.getMessage()));
+                    .setMessage(dbErrorCode.getMessage()));
         // mock 方法
 
         // 调用
@@ -295,4 +289,5 @@ public class ErrorCodeServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(ErrorCodeDO.class, ArrayUtils.append(consumer, consumers));
     }
+
 }

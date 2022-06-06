@@ -1,5 +1,5 @@
 <script>
-import {deepClone} from '@/utils/index'
+import { deepClone } from '@/utils/index'
 import render from '@/components/render/render.js'
 import {getAccessToken} from "@/utils/auth";
 
@@ -25,8 +25,8 @@ const layouts = {
     return (
       <el-col span={config.span}>
         <el-form-item label-width={labelWidth} prop={scheme.__vModel__}
-                      label={config.showLabel ? config.label : ''}>
-          <render conf={scheme} on={listeners}/>
+          label={config.showLabel ? config.label : ''}>
+          <render conf={scheme} on={listeners} />
         </el-form-item>
       </el-col>
     )
@@ -35,8 +35,8 @@ const layouts = {
     let child = renderChildren.apply(this, arguments)
     if (scheme.type === 'flex') {
       child = <el-row type={scheme.type} justify={scheme.justify} align={scheme.align}>
-        {child}
-      </el-row>
+              {child}
+            </el-row>
     }
     return (
       <el-col span={scheme.span}>
@@ -49,7 +49,7 @@ const layouts = {
 }
 
 function renderFrom(h) {
-  const {formConfCopy} = this
+  const { formConfCopy } = this
 
   return (
     <el-row gutter={formConfCopy.gutter}>
@@ -60,7 +60,7 @@ function renderFrom(h) {
         label-width={`${formConfCopy.labelWidth}px`}
         ref={formConfCopy.formRef}
         // model不能直接赋值 https://github.com/vuejs/jsx/issues/49#issuecomment-472013664
-        props={{model: this[formConfCopy.formModel]}}
+        props={{ model: this[formConfCopy.formModel] }}
         rules={this[formConfCopy.formRules]}
       >
         {renderFormItem.call(this, h, formConfCopy.fields)}
@@ -93,10 +93,10 @@ function renderFormItem(h, elementList) {
     const val = data[vModel]
     if (scheme.__config__.tag === 'el-upload') {
       // 回显图片
-      scheme['file-list'] = (val || []).map(url => ({name: url, url}))
+      scheme['file-list'] = (val || []).map(url => ({ name: url, url }))
       // 上传地址 + 请求头
       scheme.action = process.env.VUE_APP_BASE_API + "/admin-api/infra/file/upload"
-      scheme.headers = {Authorization: "Bearer " + getAccessToken()}
+      scheme.headers = { Authorization: "Bearer " + getAccessToken() }
       // 注意 on-success 不能绑定箭头函数！！！
       scheme['on-success'] = function (response, file, fileList) {
         if (response.code !== 0) {
@@ -191,7 +191,7 @@ export default {
         const config = cur.__config__
         if (Array.isArray(config.regList)) {
           if (config.required) {
-            const required = {required: config.required, message: cur.placeholder}
+            const required = { required: config.required, message: cur.placeholder }
             if (Array.isArray(config.defaultValue)) {
               required.type = 'array'
               required.message = `请至少选择一个${config.label}`

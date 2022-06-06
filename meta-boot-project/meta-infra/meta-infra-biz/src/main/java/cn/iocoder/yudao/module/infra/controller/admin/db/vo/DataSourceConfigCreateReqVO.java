@@ -1,12 +1,9 @@
 package cn.iocoder.yudao.module.infra.controller.admin.db.vo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
+import java.util.*;
+import io.swagger.annotations.*;
+import javax.validation.constraints.*;
 
 @ApiModel("管理后台 - 数据源配置创建 Request VO")
 @Data
@@ -17,4 +14,5 @@ public class DataSourceConfigCreateReqVO extends DataSourceConfigBaseVO {
     @ApiModelProperty(value = "密码", required = true, example = "123456")
     @NotNull(message = "密码不能为空")
     private String password;
+
 }

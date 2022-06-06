@@ -1,22 +1,18 @@
 package cn.iocoder.yudao.framework.datapermission.core.db;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.util.collection.SetUtils;
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule;
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRuleFactory;
+import cn.iocoder.yudao.framework.mybatis.core.util.MyBatisUtils;
 import com.alibaba.ttl.TransmittableThreadLocal;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.PluginUtils;
 import com.baomidou.mybatisplus.extension.parser.JsqlParserSupport;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
-import io.github.meta.ease.common.util.collection.SetUtils;
-import io.github.meta.ease.mybatis.mybatis.core.util.MyBatisUtils;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.sf.jsqlparser.expression.BinaryExpression;
-import net.sf.jsqlparser.expression.Expression;
-import net.sf.jsqlparser.expression.Function;
-import net.sf.jsqlparser.expression.NotExpression;
-import net.sf.jsqlparser.expression.Parenthesis;
+import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
 import net.sf.jsqlparser.expression.operators.conditional.OrExpression;
 import net.sf.jsqlparser.expression.operators.relational.ExistsExpression;
@@ -25,19 +21,7 @@ import net.sf.jsqlparser.expression.operators.relational.InExpression;
 import net.sf.jsqlparser.expression.operators.relational.ItemsList;
 import net.sf.jsqlparser.schema.Table;
 import net.sf.jsqlparser.statement.delete.Delete;
-import net.sf.jsqlparser.statement.select.FromItem;
-import net.sf.jsqlparser.statement.select.Join;
-import net.sf.jsqlparser.statement.select.LateralSubSelect;
-import net.sf.jsqlparser.statement.select.PlainSelect;
-import net.sf.jsqlparser.statement.select.Select;
-import net.sf.jsqlparser.statement.select.SelectBody;
-import net.sf.jsqlparser.statement.select.SelectExpressionItem;
-import net.sf.jsqlparser.statement.select.SelectItem;
-import net.sf.jsqlparser.statement.select.SetOperationList;
-import net.sf.jsqlparser.statement.select.SubJoin;
-import net.sf.jsqlparser.statement.select.SubSelect;
-import net.sf.jsqlparser.statement.select.ValuesList;
-import net.sf.jsqlparser.statement.select.WithItem;
+import net.sf.jsqlparser.statement.select.*;
 import net.sf.jsqlparser.statement.update.Update;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -48,18 +32,13 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
 import java.sql.Connection;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 数据权限拦截器，通过 {@link cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule} 数据权限规则，重写 SQL 的方式来实现
- * 主要的 SQL 重写方法，可见 {@link #builderExpression(net.sf.jsqlparser.expression.Expression, net.sf.jsqlparser.schema.Table)} 方法
- * <p>
+ * 数据权限拦截器，通过 {@link DataPermissionRule} 数据权限规则，重写 SQL 的方式来实现
+ * 主要的 SQL 重写方法，可见 {@link #builderExpression(Expression, Table)} 方法
+ *
  * 整体的代码实现上，参考 {@link com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor} 实现。
  * 所以每次 MyBatis Plus 升级时，需要 Review 下其具体的实现是否有变更！
  *
@@ -407,7 +386,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
     }
 
     /**
-     * 判断 SQL 是否重写。如果没有重写，则添加到 {@link cn.iocoder.yudao.framework.datapermission.core.db.DataPermissionDatabaseInterceptor.MappedStatementCache} 中
+     * 判断 SQL 是否重写。如果没有重写，则添加到 {@link MappedStatementCache} 中
      *
      * @param ms MappedStatement
      */
@@ -420,17 +399,16 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
     }
 
     /**
-     * SQL 解析上下文，方便透传 {@link cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule} 规则
+     * SQL 解析上下文，方便透传 {@link DataPermissionRule} 规则
      *
      * @author 芋道源码
      */
     static final class ContextHolder {
 
         /**
-         * 该 {@link org.apache.ibatis.mapping.MappedStatement} 对应的规则
+         * 该 {@link MappedStatement} 对应的规则
          */
         private static final ThreadLocal<List<DataPermissionRule>> RULES = new TransmittableThreadLocal<>();
-
         /**
          * SQL 是否进行重写
          */
@@ -457,11 +435,12 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         public static List<DataPermissionRule> getRules() {
             return RULES.get();
         }
+
     }
 
     /**
-     * {@link org.apache.ibatis.mapping.MappedStatement} 缓存
-     * 目前主要用于，记录 {@link cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule} 是否对指定 {@link org.apache.ibatis.mapping.MappedStatement} 无效
+     * {@link MappedStatement} 缓存
+     * 目前主要用于，记录 {@link DataPermissionRule} 是否对指定 {@link MappedStatement} 无效
      * 如果无效，则可以避免 SQL 的解析，加快速度
      *
      * @author 芋道源码
@@ -470,8 +449,8 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
 
         /**
          * 指定数据权限规则，对指定 MappedStatement 无需重写（不生效)的缓存
-         * <p>
-         * value：{@link org.apache.ibatis.mapping.MappedStatement#getId()} 编号
+         *
+         * value：{@link MappedStatement#getId()} 编号
          */
         @Getter
         private final Map<Class<? extends DataPermissionRule>, Set<String>> noRewritableMappedStatements = new ConcurrentHashMap<>();
@@ -480,7 +459,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
          * 判断是否无需重写
          * ps：虽然有点中文式英语，但是容易读懂即可
          *
-         * @param ms    MappedStatement
+         * @param ms MappedStatement
          * @param rules 数据权限规则数组
          * @return 是否无需重写
          */
@@ -502,7 +481,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         /**
          * 添加无需重写的 MappedStatement
          *
-         * @param ms    MappedStatement
+         * @param ms MappedStatement
          * @param rules 数据权限规则数组
          */
         public void addNoRewritable(MappedStatement ms, List<DataPermissionRule> rules) {
@@ -523,5 +502,7 @@ public class DataPermissionDatabaseInterceptor extends JsqlParserSupport impleme
         public void clear() {
             noRewritableMappedStatements.clear();
         }
+
     }
+
 }

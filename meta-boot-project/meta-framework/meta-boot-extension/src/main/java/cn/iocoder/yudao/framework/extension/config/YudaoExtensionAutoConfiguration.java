@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * @description 扩展点组件自动装配
  * @author Qingchen
  * @version 1.0.0
- * @description 扩展点组件自动装配
  * @date 2021-08-28 21:50
  * @class cn.iocoder.yudao.framework.extension.config.YudaoExtensionAutoConfiguration.java
  */
@@ -22,7 +22,6 @@ public class YudaoExtensionAutoConfiguration {
 
     /**
      * 组件初始化
-     *
      * @return
      */
     @Bean(initMethod = "init")
@@ -33,7 +32,6 @@ public class YudaoExtensionAutoConfiguration {
 
     /**
      * 扩展点工厂
-     *
      * @return
      */
     @Bean
@@ -44,7 +42,6 @@ public class YudaoExtensionAutoConfiguration {
 
     /**
      * 扩展组件上下文对象
-     *
      * @return
      */
     @Bean
@@ -55,7 +52,6 @@ public class YudaoExtensionAutoConfiguration {
 
     /**
      * 扩展组件执行器
-     *
      * @return
      */
     @Bean

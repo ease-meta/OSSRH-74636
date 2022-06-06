@@ -4,14 +4,13 @@
       <slot name="control-header"></slot>
       <template v-if="!$slots['control-header']">
         <el-button-group key="file-control">
-          <el-button :size="headerButtonSize" icon="el-icon-folder-opened" @click="$refs.refFile.click()">打开文件
-          </el-button>
+          <el-button :size="headerButtonSize" icon="el-icon-folder-opened" @click="$refs.refFile.click()">打开文件</el-button>
           <el-tooltip effect="light">
             <div slot="content">
               <el-button :size="headerButtonSize" type="text" @click="downloadProcessAsXml()">下载为XML文件</el-button>
-              <br/>
+              <br />
               <el-button :size="headerButtonSize" type="text" @click="downloadProcessAsSvg()">下载为SVG文件</el-button>
-              <br/>
+              <br />
               <el-button :size="headerButtonSize" type="text" @click="downloadProcessAsBpmn()">下载为BPMN文件</el-button>
             </div>
             <el-button :size="headerButtonSize" icon="el-icon-download">下载文件</el-button>
@@ -19,7 +18,7 @@
           <el-tooltip effect="light">
             <div slot="content">
               <el-button :size="headerButtonSize" type="text" @click="previewProcessXML">预览XML</el-button>
-              <br/>
+              <br />
               <el-button :size="headerButtonSize" type="text" @click="previewProcessJson">预览JSON</el-button>
             </div>
             <el-button :size="headerButtonSize" icon="el-icon-view">预览</el-button>
@@ -32,62 +31,51 @@
         </el-button-group>
         <el-button-group key="align-control">
           <el-tooltip effect="light" content="向左对齐">
-            <el-button :size="headerButtonSize" class="align align-left" icon="el-icon-s-data"
-                       @click="elementsAlign('left')"/>
+            <el-button :size="headerButtonSize" class="align align-left" icon="el-icon-s-data" @click="elementsAlign('left')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向右对齐">
-            <el-button :size="headerButtonSize" class="align align-right" icon="el-icon-s-data"
-                       @click="elementsAlign('right')"/>
+            <el-button :size="headerButtonSize" class="align align-right" icon="el-icon-s-data" @click="elementsAlign('right')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向上对齐">
-            <el-button :size="headerButtonSize" class="align align-top" icon="el-icon-s-data"
-                       @click="elementsAlign('top')"/>
+            <el-button :size="headerButtonSize" class="align align-top" icon="el-icon-s-data" @click="elementsAlign('top')" />
           </el-tooltip>
           <el-tooltip effect="light" content="向下对齐">
-            <el-button :size="headerButtonSize" class="align align-bottom" icon="el-icon-s-data"
-                       @click="elementsAlign('bottom')"/>
+            <el-button :size="headerButtonSize" class="align align-bottom" icon="el-icon-s-data" @click="elementsAlign('bottom')" />
           </el-tooltip>
           <el-tooltip effect="light" content="水平居中">
-            <el-button :size="headerButtonSize" class="align align-center" icon="el-icon-s-data"
-                       @click="elementsAlign('center')"/>
+            <el-button :size="headerButtonSize" class="align align-center" icon="el-icon-s-data" @click="elementsAlign('center')" />
           </el-tooltip>
           <el-tooltip effect="light" content="垂直居中">
-            <el-button :size="headerButtonSize" class="align align-middle" icon="el-icon-s-data"
-                       @click="elementsAlign('middle')"/>
+            <el-button :size="headerButtonSize" class="align align-middle" icon="el-icon-s-data" @click="elementsAlign('middle')" />
           </el-tooltip>
         </el-button-group>
         <el-button-group key="scale-control">
           <el-tooltip effect="light" content="缩小视图">
-            <el-button :size="headerButtonSize" :disabled="defaultZoom < 0.2" icon="el-icon-zoom-out"
-                       @click="processZoomOut()"/>
+            <el-button :size="headerButtonSize" :disabled="defaultZoom < 0.2" icon="el-icon-zoom-out" @click="processZoomOut()" />
           </el-tooltip>
           <el-button :size="headerButtonSize">{{ Math.floor(this.defaultZoom * 10 * 10) + "%" }}</el-button>
           <el-tooltip effect="light" content="放大视图">
-            <el-button :size="headerButtonSize" :disabled="defaultZoom > 4" icon="el-icon-zoom-in"
-                       @click="processZoomIn()"/>
+            <el-button :size="headerButtonSize" :disabled="defaultZoom > 4" icon="el-icon-zoom-in" @click="processZoomIn()" />
           </el-tooltip>
           <el-tooltip effect="light" content="重置视图并居中">
-            <el-button :size="headerButtonSize" icon="el-icon-c-scale-to-original" @click="processReZoom()"/>
+            <el-button :size="headerButtonSize" icon="el-icon-c-scale-to-original" @click="processReZoom()" />
           </el-tooltip>
         </el-button-group>
         <el-button-group key="stack-control">
           <el-tooltip effect="light" content="撤销">
-            <el-button :size="headerButtonSize" :disabled="!revocable" icon="el-icon-refresh-left"
-                       @click="processUndo()"/>
+            <el-button :size="headerButtonSize" :disabled="!revocable" icon="el-icon-refresh-left" @click="processUndo()" />
           </el-tooltip>
           <el-tooltip effect="light" content="恢复">
-            <el-button :size="headerButtonSize" :disabled="!recoverable" icon="el-icon-refresh-right"
-                       @click="processRedo()"/>
+            <el-button :size="headerButtonSize" :disabled="!recoverable" icon="el-icon-refresh-right" @click="processRedo()" />
           </el-tooltip>
           <el-tooltip effect="light" content="重新绘制">
-            <el-button :size="headerButtonSize" icon="el-icon-refresh" @click="processRestart"/>
+            <el-button :size="headerButtonSize" icon="el-icon-refresh" @click="processRestart" />
           </el-tooltip>
         </el-button-group>
-        <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-plus" @click="processSave">保存模型
-        </el-button>
+        <el-button :size="headerButtonSize" :type="headerButtonType" icon="el-icon-plus" @click="processSave">保存模型</el-button>
       </template>
       <!-- 用于打开本地文件-->
-      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn" @change="importLocalFile"/>
+      <input type="file" id="files" ref="refFile" style="display: none" accept=".xml, .bpmn" @change="importLocalFile" />
     </div>
     <div class="my-process-designer__container">
       <div class="my-process-designer__canvas" ref="bpmn-canvas"></div>
@@ -122,7 +110,6 @@ import convert from "xml-js";
 // 代码高亮插件
 import hljs from "highlight.js/lib/highlight";
 import "highlight.js/styles/github-gist.css";
-
 hljs.registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 hljs.registerLanguage("json", require("highlight.js/lib/languages/json"));
 
@@ -275,7 +262,7 @@ export default {
       if (this.bpmnModeler) return;
       this.bpmnModeler = new BpmnModeler({
         container: this.$refs["bpmn-canvas"],
-        keyboard: this.keyboard ? {bindTo: document} : null,
+        keyboard: this.keyboard ? { bindTo: document } : null,
         additionalModules: this.additionalModules,
         moddleExtensions: this.moddleExtensions
       });
@@ -287,7 +274,7 @@ export default {
       const that = this;
       // 注册需要的监听事件, 将. 替换为 - , 避免解析异常
       this.events.forEach(event => {
-        EventBus.on(event, function (eventObj) {
+        EventBus.on(event, function(eventObj) {
           let eventName = event.replace(/\./g, "-");
           let element = eventObj ? eventObj.element : null;
           that.$emit(eventName, element, eventObj);
@@ -298,7 +285,7 @@ export default {
         try {
           this.recoverable = this.bpmnModeler.get("commandStack").canRedo();
           this.revocable = this.bpmnModeler.get("commandStack").canUndo();
-          let {xml} = await this.bpmnModeler.saveXML({format: true});
+          let { xml } = await this.bpmnModeler.saveXML({ format: true });
           this.$emit("commandStack-changed", event);
           this.$emit("input", xml);
           this.$emit("change", xml);
@@ -307,9 +294,9 @@ export default {
         }
       });
       // 监听视图缩放变化
-      this.bpmnModeler.on("canvas.viewbox.changed", ({viewbox}) => {
-        this.$emit("canvas-viewbox-changed", {viewbox});
-        const {scale} = viewbox;
+      this.bpmnModeler.on("canvas.viewbox.changed", ({ viewbox }) => {
+        this.$emit("canvas-viewbox-changed", { viewbox });
+        const { scale } = viewbox;
         this.defaultZoom = Math.floor(scale * 100) / 100;
       });
     },
@@ -321,7 +308,7 @@ export default {
       let xmlString = xml || DefaultEmptyXML(newId, newName, this.prefix);
       try {
         console.log(this.bpmnModeler.importXML);
-        let {warnings} = await this.bpmnModeler.importXML(xmlString);
+        let { warnings } = await this.bpmnModeler.importXML(xmlString);
         if (warnings && warnings.length) {
           warnings.forEach(warn => console.warn(warn));
         }
@@ -336,20 +323,20 @@ export default {
         const _this = this;
         // 按需要类型创建文件并下载
         if (type === "xml" || type === "bpmn") {
-          const {err, xml} = await this.bpmnModeler.saveXML();
+          const { err, xml } = await this.bpmnModeler.saveXML();
           // 读取异常时抛出异常
           if (err) {
             console.error(`[Process Designer Warn ]: ${err.message || err}`);
           }
-          let {href, filename} = _this.setEncoded(type.toUpperCase(), name, xml);
+          let { href, filename } = _this.setEncoded(type.toUpperCase(), name, xml);
           downloadFunc(href, filename);
         } else {
-          const {err, svg} = await this.bpmnModeler.saveSVG();
+          const { err, svg } = await this.bpmnModeler.saveSVG();
           // 读取异常时抛出异常
           if (err) {
             return console.error(err);
           }
-          let {href, filename} = _this.setEncoded("SVG", name, svg);
+          let { href, filename } = _this.setEncoded("SVG", name, svg);
           downloadFunc(href, filename);
         }
       } catch (e) {
@@ -383,7 +370,7 @@ export default {
       const file = this.$refs.refFile.files[0];
       const reader = new FileReader();
       reader.readAsText(file);
-      reader.onload = function () {
+      reader.onload = function() {
         let xmlStr = this.result;
         that.createNewDiagram(xmlStr);
       };
@@ -459,22 +446,22 @@ export default {
     },
     /*-----------------------------    方法结束     ---------------------------------*/
     previewProcessXML() {
-      this.bpmnModeler.saveXML({format: true}).then(({xml}) => {
+      this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
         this.previewResult = xml;
         this.previewType = "xml";
         this.previewModelVisible = true;
       });
     },
     previewProcessJson() {
-      this.bpmnModeler.saveXML({format: true}).then(({xml}) => {
-        this.previewResult = convert.xml2json(xml, {spaces: 2});
+      this.bpmnModeler.saveXML({ format: true }).then(({ xml }) => {
+        this.previewResult = convert.xml2json(xml, { spaces: 2 });
         this.previewType = "json";
         this.previewModelVisible = true;
       });
     },
     /* ------------------------------------------------ 芋道源码 methods ------------------------------------------------------ */
     async processSave() {
-      const {err, xml} = await this.bpmnModeler.saveXML();
+      const { err, xml } = await this.bpmnModeler.saveXML();
       // 读取异常时抛出异常
       if (err) {
         this.$modal.msgError('保存模型失败，请重试！')

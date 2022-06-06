@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 针对 {@link cn.iocoder.yudao.module.system.mq.message.permission.MenuRefreshMessage} 的消费者
+ * 针对 {@link MenuRefreshMessage} 的消费者
  *
  * @author 芋道源码
  */
@@ -25,4 +25,5 @@ public class MenuRefreshConsumer extends AbstractChannelMessageListener<MenuRefr
         log.info("[onMessage][收到 Menu 刷新消息]");
         menuService.initLocalCache();
     }
+
 }

@@ -63,7 +63,7 @@ export default {
         touchstart(event) {
             if (this.disabled) return
             this.closeOther()
-            const {touches} = event
+            const { touches } = event
             // 记录触摸开始点的坐标值
             this.startX = touches[0].pageX
             this.startY = touches[0].pageY
@@ -71,12 +71,12 @@ export default {
         // // 触摸滑动
         touchmove(event) {
             if (this.disabled) return
-            const {touches} = event
-            const {pageX} = touches[0]
-            const {pageY} = touches[0]
+            const { touches } = event
+            const { pageX } = touches[0]
+            const { pageY } = touches[0]
             let moveX = pageX - this.startX
             const moveY = pageY - this.startY
-            const {buttonsWidth} = this
+            const { buttonsWidth } = this
             const len = this.buttons.length
 
             // 判断前后两次的移动距离，如果小于一定值，则不进行移动处理
@@ -113,9 +113,9 @@ export default {
         touchend(event) {
             if (this.disabled) return
             const touches = event.changedTouches ? event.changedTouches[0] : {}
-            const {pageX} = touches
-            const {pageY} = touches
-            const {buttonsWidth} = this
+            const { pageX } = touches
+            const { pageY } = touches
+            const { buttonsWidth } = this
             this.moveX = pageX - this.startX
             if (this.status === 'open') {
                 // 在展开的状态下，继续左滑，无需操作
@@ -173,8 +173,7 @@ export default {
                     duration: 0,
                     delay: 0,
                     timingFunction: 'linear'
-                }, () => {
-                })
+                }, () => {})
                 // 记录本按钮之前的所有按钮的移动距离之和
                 previewButtonsMoveX += translateX
             }
@@ -183,7 +182,7 @@ export default {
         closeSwipeAction() {
             if (this.status === 'close') return
             this.moving = true
-            const {buttonsWidth} = this
+            const { buttonsWidth } = this
             animation.transition(this.$refs['u-swipe-action-item__content'].ref, {
                 styles: {
                     transform: 'translateX(0px)'
@@ -208,8 +207,7 @@ export default {
                     },
                     duration: this.getDuratin,
                     timingFunction: 'ease-in-out'
-                }, () => {
-                })
+                }, () => {})
             }
         },
         // 打开菜单
@@ -245,8 +243,7 @@ export default {
                     },
                     duration: this.getDuratin,
                     timingFunction: 'ease-in-out'
-                }, () => {
-                })
+                }, () => {})
                 previewButtonsMoveX += translateX
             }
         },

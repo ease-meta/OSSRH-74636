@@ -2,7 +2,7 @@ package cn.iocoder.yudao.framework.file.core.client.s3;
 
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.IdUtil;
-import io.github.meta.ease.common.util.validation.ValidationUtils;
+import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -113,4 +113,5 @@ public class S3FileClientTest {
             client.delete(path);
         }
     }
+
 }

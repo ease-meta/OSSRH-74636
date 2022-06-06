@@ -1,6 +1,8 @@
 package cn.iocoder.yudao.module.system.service.tenant;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackageCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackagePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackageUpdateReqVO;
@@ -8,8 +10,6 @@ import cn.iocoder.yudao.module.system.convert.tenant.TenantPackageConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantPackageDO;
 import cn.iocoder.yudao.module.system.dal.mysql.tenant.TenantPackageMapper;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,10 +18,8 @@ import org.springframework.validation.annotation.Validated;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_PACKAGE_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_PACKAGE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_PACKAGE_USED;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 租户套餐 Service 实现类
@@ -113,4 +111,5 @@ public class TenantPackageServiceImpl implements TenantPackageService {
     public List<TenantPackageDO> getTenantPackageListByStatus(Integer status) {
         return tenantPackageMapper.selectListByStatus(status);
     }
+
 }

@@ -1,9 +1,10 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.dept;
 
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,18 +24,17 @@ public class UserPostDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 用户 ID
-     * <p>
-     * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO#getId()}
+     *
+     * 关联 {@link AdminUserDO#getId()}
      */
     private Long userId;
-
     /**
      * 角色 ID
-     * <p>
-     * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO#getId()}
+     *
+     * 关联 {@link PostDO#getId()}
      */
     private Long postId;
+
 }

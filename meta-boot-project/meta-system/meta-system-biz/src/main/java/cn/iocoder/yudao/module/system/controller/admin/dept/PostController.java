@@ -1,34 +1,20 @@
 package cn.iocoder.yudao.module.system.controller.admin.dept;
 
-
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostPageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.*;
 import cn.iocoder.yudao.module.system.convert.dept.PostConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.service.dept.PostService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -38,8 +24,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 岗位")
 @RestController
@@ -109,4 +95,5 @@ public class PostController {
         // 输出
         ExcelUtils.write(response, "岗位数据.xls", "岗位列表", PostExcelVO.class, data);
     }
+
 }

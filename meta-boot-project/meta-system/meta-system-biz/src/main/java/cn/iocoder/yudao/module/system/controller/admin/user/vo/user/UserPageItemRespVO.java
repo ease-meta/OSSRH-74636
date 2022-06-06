@@ -28,5 +28,7 @@ public class UserPageItemRespVO extends UserRespVO {
 
         @ApiModelProperty(value = "部门名称", required = true, example = "研发部")
         private String name;
+
     }
+
 }

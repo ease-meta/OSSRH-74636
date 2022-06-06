@@ -7,9 +7,9 @@ import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 
 /**
  * 多租户 {@link AbstractRedisMessage} 拦截器
- * <p>
- * 1. Producer 发送消息时，将 {@link cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder} 租户编号，添加到消息的 Header 中
- * 2. Consumer 消费消息时，将消息的 Header 的租户编号，添加到 {@link cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder} 中
+ *
+ * 1. Producer 发送消息时，将 {@link TenantContextHolder} 租户编号，添加到消息的 Header 中
+ * 2. Consumer 消费消息时，将消息的 Header 的租户编号，添加到 {@link TenantContextHolder} 中
  *
  * @author 芋道源码
  */
@@ -38,4 +38,5 @@ public class TenantRedisMessageInterceptor implements RedisMessageInterceptor {
         // 注意，Consumer 是一个逻辑的入口，所以不考虑原本上下文就存在租户编号的情况
         TenantContextHolder.clear();
     }
+
 }

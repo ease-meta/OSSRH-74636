@@ -1,36 +1,24 @@
 package cn.iocoder.yudao.module.system.controller.admin.dept;
 
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptUpdateReqVO;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.*;
 import cn.iocoder.yudao.module.system.convert.dept.DeptConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.service.dept.DeptService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
-
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 部门")
 @RestController
@@ -94,4 +82,5 @@ public class DeptController {
     public CommonResult<DeptRespVO> getDept(@RequestParam("id") Long id) {
         return success(DeptConvert.INSTANCE.convert(deptService.getDept(id)));
     }
+
 }

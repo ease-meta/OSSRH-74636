@@ -1,8 +1,8 @@
 <template>
   <div class="app-container">
-    <doc-alert title="定时任务" url="https://doc.iocoder.cn/job/"/>
-    <doc-alert title="异步任务" url="https://doc.iocoder.cn/async-task/"/>
-    <doc-alert title="消息队列" url="https://doc.iocoder.cn/message-queue/"/>
+    <doc-alert title="定时任务" url="https://doc.iocoder.cn/job/" />
+    <doc-alert title="异步任务" url="https://doc.iocoder.cn/async-task/" />
+    <doc-alert title="消息队列" url="https://doc.iocoder.cn/message-queue/" />
     <!-- 搜索栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="任务名称" prop="name">
@@ -15,8 +15,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="处理器的名字" prop="handlerName">
-        <el-input v-model="queryParams.handlerName" placeholder="请输入处理器的名字" clearable
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.handlerName" placeholder="请输入处理器的名字" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -27,48 +26,40 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['infra:job:create']">新增
-        </el-button>
+                   v-hasPermi="['infra:job:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
-                   v-hasPermi="['infra:job:export']">导出
-        </el-button>
+                   v-hasPermi="['infra:job:export']">导出</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="info" icon="el-icon-s-operation" size="mini" @click="handleJobLog"
-                   v-hasPermi="['infra:job:query']">执行日志
-        </el-button>
+                   v-hasPermi="['infra:job:query']">执行日志</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="jobList">
-      <el-table-column label="任务编号" align="center" prop="id"/>
-      <el-table-column label="任务名称" align="center" prop="name"/>
+      <el-table-column label="任务编号" align="center" prop="id" />
+      <el-table-column label="任务名称" align="center" prop="name" />
       <el-table-column label="任务状态" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status"/>
+          <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status" />
         </template>
-      </el-table-column>
-      >
-      <el-table-column label="处理器的名字" align="center" prop="handlerName"/>
-      <el-table-column label="处理器的参数" align="center" prop="handlerParam"/>
-      <el-table-column label="CRON 表达式" align="center" prop="cronExpression"/>
+      </el-table-column>>
+      <el-table-column label="处理器的名字" align="center" prop="handlerName" />
+      <el-table-column label="处理器的参数" align="center" prop="handlerParam" />
+      <el-table-column label="CRON 表达式" align="center" prop="cronExpression" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['infra:job:update']">修改
-          </el-button>
+                     v-hasPermi="['infra:job:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-check" @click="handleChangeStatus(scope.row, true)"
-                     v-if="scope.row.status === InfJobStatusEnum.STOP" v-hasPermi="['infra:job:update']">开启
-          </el-button>
+                     v-if="scope.row.status === InfJobStatusEnum.STOP" v-hasPermi="['infra:job:update']">开启</el-button>
           <el-button size="mini" type="text" icon="el-icon-close" @click="handleChangeStatus(scope.row, false)"
-                     v-if="scope.row.status === InfJobStatusEnum.NORMAL" v-hasPermi="['infra:job:update']">暂停
-          </el-button>
+                     v-if="scope.row.status === InfJobStatusEnum.NORMAL" v-hasPermi="['infra:job:update']">暂停</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['infra:job:delete']">删除
-          </el-button>
+                     v-hasPermi="['infra:job:delete']">删除</el-button>
           <el-dropdown size="mini" @command="(command) => handleCommand(command, scope.row)"
                        v-hasPermi="['infra:job:trigger', 'infra:job:query']">
             <span class="el-dropdown-link">
@@ -76,14 +67,11 @@
             </span>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item command="handleRun" icon="el-icon-caret-right"
-                                v-hasPermi="['infra:job:trigger']">执行一次
-              </el-dropdown-item>
+                                v-hasPermi="['infra:job:trigger']">执行一次</el-dropdown-item>
               <el-dropdown-item command="handleView" icon="el-icon-view"
-                                v-hasPermi="['infra:job:query']">任务详细
-              </el-dropdown-item>
+                                v-hasPermi="['infra:job:query']">任务详细</el-dropdown-item>
               <el-dropdown-item command="handleJobLog" icon="el-icon-s-operation"
-                                v-hasPermi="['infra:job:query']">调度日志
-              </el-dropdown-item>
+                                v-hasPermi="['infra:job:query']">调度日志</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
@@ -97,13 +85,13 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
         <el-form-item label="任务名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入任务名称"/>
+          <el-input v-model="form.name" placeholder="请输入任务名称" />
         </el-form-item>
         <el-form-item label="处理器的名字" prop="handlerName">
-          <el-input v-model="form.handlerName" placeholder="请输入处理器的名字" v-bind:readonly="form.id !== undefined"/>
+          <el-input v-model="form.handlerName" placeholder="请输入处理器的名字" v-bind:readonly="form.id !== undefined" />
         </el-form-item>
         <el-form-item label="处理器的参数" prop="handlerParam">
-          <el-input v-model="form.handlerParam" placeholder="请输入处理器的参数"/>
+          <el-input v-model="form.handlerParam" placeholder="请输入处理器的参数" />
         </el-form-item>
         <el-form-item label="CRON 表达式" prop="cronExpression">
           <el-input v-model="form.cronExpression" placeholder="请输入CRON 表达式">
@@ -116,13 +104,13 @@
           </el-input>
         </el-form-item>
         <el-form-item label="重试次数" prop="retryCount">
-          <el-input v-model="form.retryCount" placeholder="请输入重试次数。设置为 0 时，不进行重试"/>
+          <el-input v-model="form.retryCount" placeholder="请输入重试次数。设置为 0 时，不进行重试" />
         </el-form-item>
         <el-form-item label="重试间隔" prop="retryInterval">
-          <el-input v-model="form.retryInterval" placeholder="请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔"/>
+          <el-input v-model="form.retryInterval" placeholder="请输入重试间隔，单位：毫秒。设置为 0 时，无需间隔" />
         </el-form-item>
         <el-form-item label="监控超时时间" prop="monitorTimeout">
-          <el-input v-model="form.monitorTimeout" placeholder="请输入监控超时时间，单位：毫秒"/>
+          <el-input v-model="form.monitorTimeout" placeholder="请输入监控超时时间，单位：毫秒" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -143,18 +131,15 @@
             <el-form-item label="任务编号：">{{ form.id }}</el-form-item>
             <el-form-item label="任务名称：">{{ form.name }}</el-form-item>
             <el-form-item label="任务名称：">
-              <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="form.status"/>
+              <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="form.status" />
             </el-form-item>
             <el-form-item label="处理器的名字：">{{ form.handlerName }}</el-form-item>
             <el-form-item label="处理器的参数：">{{ form.handlerParam }}</el-form-item>
             <el-form-item label="cron表达式：">{{ form.cronExpression }}</el-form-item>
             <el-form-item label="重试次数：">{{ form.retryCount }}</el-form-item>
             <el-form-item label="重试间隔：">{{ form.retryInterval + " 毫秒" }}</el-form-item>
-            <el-form-item label="监控超时时间：">{{
-                form.monitorTimeout > 0 ? form.monitorTimeout + " 毫秒" : "未开启"
-              }}
-            </el-form-item>
-            <el-form-item label="后续执行时间：">{{ Array.from(nextTimes, x => parseTime(x)).join('; ') }}</el-form-item>
+            <el-form-item label="监控超时时间：">{{ form.monitorTimeout > 0 ? form.monitorTimeout + " 毫秒" : "未开启" }}</el-form-item>
+            <el-form-item label="后续执行时间：">{{ Array.from(nextTimes, x => parseTime(x)).join('; ')}}</el-form-item>
           </el-col>
         </el-row>
       </el-form>
@@ -166,22 +151,12 @@
 </template>
 
 <script>
-import {
-  addJob,
-  delJob,
-  exportJob,
-  getJob,
-  getJobNextTimes,
-  listJob,
-  runJob,
-  updateJob,
-  updateJobStatus
-} from "@/api/infra/job";
-import {InfraJobStatusEnum} from "@/utils/constants";
+import { listJob, getJob, delJob, addJob, updateJob, exportJob, runJob, updateJobStatus, getJobNextTimes } from "@/api/infra/job";
+import { InfraJobStatusEnum } from "@/utils/constants";
 import Crontab from '@/components/Crontab'
 
 export default {
-  components: {Crontab},
+  components: { Crontab },
   name: "Job",
   data() {
     return {
@@ -219,11 +194,11 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        name: [{required: true, message: "任务名称不能为空", trigger: "blur"}],
-        handlerName: [{required: true, message: "处理器的名字不能为空", trigger: "blur"}],
-        cronExpression: [{required: true, message: "CRON 表达式不能为空", trigger: "blur"}],
-        retryCount: [{required: true, message: "重试次数不能为空", trigger: "blur"}],
-        retryInterval: [{required: true, message: "重试间隔不能为空", trigger: "blur"}],
+        name: [{ required: true, message: "任务名称不能为空", trigger: "blur" }],
+        handlerName: [{ required: true, message: "处理器的名字不能为空", trigger: "blur" }],
+        cronExpression: [{ required: true, message: "CRON 表达式不能为空", trigger: "blur" }],
+        retryCount: [{ required: true, message: "重试次数不能为空", trigger: "blur" }],
+        retryInterval: [{ required: true, message: "重试间隔不能为空", trigger: "blur" }],
       },
       nextTimes: [], // 后续执行时间
 
@@ -276,12 +251,11 @@ export default {
     },
     /** 立即执行一次 **/
     handleRun(row) {
-      this.$modal.confirm('确认要立即执行一次"' + row.name + '"任务吗?').then(function () {
-        return runJob(row.id);
-      }).then(() => {
-        this.$modal.msgSuccess("执行成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('确认要立即执行一次"' + row.name + '"任务吗?').then(function() {
+          return runJob(row.id);
+        }).then(() => {
+          this.$modal.msgSuccess("执行成功");
+      }).catch(() => {});
     },
     /** 任务详细信息 */
     handleView(row) {
@@ -307,8 +281,8 @@ export default {
     handleJobLog(row) {
       if (row.id) {
         this.$router.push({
-          path: "/job/log",
-          query: {
+          path:"/job/log",
+          query:{
             jobId: row.id
           }
         });
@@ -333,7 +307,7 @@ export default {
       });
     },
     /** 提交按钮 */
-    submitForm: function () {
+    submitForm: function() {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.id !== undefined) {
@@ -355,26 +329,24 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const ids = row.id;
-      this.$modal.confirm('是否确认删除定时任务编号为"' + ids + '"的数据项?').then(function () {
-        return delJob(ids);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除定时任务编号为"' + ids + '"的数据项?').then(function() {
+          return delJob(ids);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     /** 更新状态操作 */
     handleChangeStatus(row, open) {
       const id = row.id;
       let status = open ? InfraJobStatusEnum.NORMAL : InfraJobStatusEnum.STOP;
       let statusStr = open ? '开启' : '关闭';
-      this.$modal.confirm('是否确认' + statusStr + '定时任务编号为"' + id + '"的数据项?').then(function () {
+      this.$modal.confirm('是否确认' + statusStr + '定时任务编号为"' + id + '"的数据项?').then(function() {
         return updateJobStatus(id, status);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess(statusStr + "成功");
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     // 更多操作触发
     handleCommand(command, row) {
@@ -396,13 +368,12 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal.confirm("是否确认导出所有定时任务数据项?").then(() => {
-        this.exportLoading = true;
-        return exportJob(queryParams);
-      }).then(response => {
-        this.$download.excel(response, '定时任务.xls');
-        this.exportLoading = false;
-      }).catch(() => {
-      });
+          this.exportLoading = true;
+          return exportJob(queryParams);
+        }).then(response => {
+          this.$download.excel(response, '定时任务.xls');
+          this.exportLoading = false;
+      }).catch(() => {});
     }
   }
 };

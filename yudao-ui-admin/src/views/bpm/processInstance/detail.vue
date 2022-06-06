@@ -5,7 +5,7 @@
       <div slot="header" class="clearfix">
         <span class="el-icon-picture-outline">审批任务【{{ item.name }}】</span>
       </div>
-      <el-col :span="16" :offset="6">
+      <el-col :span="16" :offset="6" >
         <el-form :ref="'form' + index" :model="auditForms[index]" :rules="auditRule" label-width="100px">
           <el-form-item label="流程名" v-if="processInstance && processInstance.name">
             {{ processInstance.name }}
@@ -15,16 +15,13 @@
             <el-tag type="info" size="mini">{{ processInstance.startUser.deptName }}</el-tag>
           </el-form-item>
           <el-form-item label="审批建议" prop="reason">
-            <el-input type="textarea" v-model="auditForms[index].reason" placeholder="请输入审批建议"/>
+            <el-input type="textarea" v-model="auditForms[index].reason" placeholder="请输入审批建议" />
           </el-form-item>
         </el-form>
         <div style="margin-left: 10%; margin-bottom: 20px; font-size: 14px;">
-          <el-button icon="el-icon-edit-outline" type="success" size="mini" @click="handleAudit(item, true)">通过
-          </el-button>
-          <el-button icon="el-icon-circle-close" type="danger" size="mini" @click="handleAudit(item, false)">不通过
-          </el-button>
-          <el-button icon="el-icon-edit-outline" type="primary" size="mini" @click="handleUpdateAssignee(item)">转办
-          </el-button>
+          <el-button  icon="el-icon-edit-outline" type="success" size="mini" @click="handleAudit(item, true)">通过</el-button>
+          <el-button  icon="el-icon-circle-close" type="danger" size="mini" @click="handleAudit(item, false)">不通过</el-button>
+          <el-button  icon="el-icon-edit-outline" type="primary" size="mini" @click="handleUpdateAssignee(item)">转办</el-button>
           <el-button icon="el-icon-edit-outline" type="primary" size="mini" @click="handleDelegate(item)">委派</el-button>
           <el-button icon="el-icon-refresh-left" type="warning" size="mini" @click="handleBack(item)">退回</el-button>
         </div>
@@ -37,8 +34,8 @@
       </div>
       <el-col v-if="this.processInstance.processDefinition && this.processInstance.processDefinition.formType === 10"
               :span="16" :offset="6">
-        <div>
-          <parser :key="new Date().getTime()" :form-conf="detailForm" @submit="submitForm"/>
+        <div >
+          <parser :key="new Date().getTime()" :form-conf="detailForm" @submit="submitForm" />
         </div>
       </el-col>
       <div v-if="this.processInstance.processDefinition && this.processInstance.processDefinition.formType === 20">
@@ -52,7 +49,7 @@
       <div slot="header" class="clearfix">
         <span class="el-icon-picture-outline">审批记录</span>
       </div>
-      <el-col :span="16" :offset="4">
+      <el-col :span="16" :offset="4" >
         <div class="block">
           <el-timeline>
             <el-timeline-item v-for="(item, index) in tasks" :key="index"
@@ -66,12 +63,9 @@
                 <label style="font-weight: normal">创建时间：</label>
                 <label style="color:#8a909c; font-weight: normal">{{ parseTime(item.createTime) }}</label>
                 <label v-if="item.endTime" style="margin-left: 30px;font-weight: normal">审批时间：</label>
-                <label v-if="item.endTime" style="color:#8a909c;font-weight: normal"> {{
-                    parseTime(item.endTime)
-                  }}</label>
+                <label v-if="item.endTime" style="color:#8a909c;font-weight: normal"> {{ parseTime(item.endTime) }}</label>
                 <label v-if="item.durationInMillis" style="margin-left: 30px;font-weight: normal">耗时：</label>
-                <label v-if="item.durationInMillis" style="color:#8a909c;font-weight: normal">
-                  {{ getDateStar(item.durationInMillis) }} </label>
+                <label v-if="item.durationInMillis" style="color:#8a909c;font-weight: normal"> {{ getDateStar(item.durationInMillis) }} </label>
                 <p v-if="item.reason">
                   <el-tag :type="getTimelineItemType(item)">{{ item.reason }}</el-tag>
                 </p>
@@ -88,7 +82,7 @@
         <span class="el-icon-picture-outline">流程图</span>
       </div>
       <my-process-viewer key="designer" v-model="bpmnXML" v-bind="bpmnControlForm" :activityData="activityList"
-                         :processInstanceData="processInstance" :taskData="tasks"/>
+            :processInstanceData="processInstance" :taskData="tasks" />
     </el-card>
 
     <!-- 对话框(转派审批人) -->
@@ -96,8 +90,7 @@
       <el-form ref="updateAssigneeForm" :model="updateAssignee.form" :rules="updateAssignee.rules" label-width="110px">
         <el-form-item label="新审批人" prop="assigneeUserId">
           <el-select v-model="updateAssignee.form.assigneeUserId" clearable style="width: 100%">
-            <el-option v-for="item in userOptions" :key="parseInt(item.id)" :label="item.nickname"
-                       :value="parseInt(item.id)"/>
+            <el-option v-for="item in userOptions" :key="parseInt(item.id)" :label="item.nickname" :value="parseInt(item.id)" />
           </el-select>
         </el-form-item>
       </el-form>
@@ -155,7 +148,7 @@ export default {
       runningTasks: [],
       auditForms: [],
       auditRule: {
-        reason: [{required: true, message: "审批建议不能为空", trigger: "blur"}],
+        reason: [{ required: true, message: "审批建议不能为空", trigger: "blur" }],
       },
 
       // 转派审批人
@@ -166,7 +159,7 @@ export default {
           assigneeUserId: undefined,
         },
         rules: {
-          assigneeUserId: [{required: true, message: "新审批人不能为空", trigger: "change"}],
+          assigneeUserId: [{ required: true, message: "新审批人不能为空", trigger: "change" }],
         }
       },
 
@@ -287,7 +280,7 @@ export default {
           fields: decodeFields(row.formFields)
         }
       } else if (row.formCustomCreatePath) {
-        this.$router.push({path: row.formCustomCreatePath});
+        this.$router.push({ path: row.formCustomCreatePath});
         // 这里暂时无需加载流程图，因为跳出到另外个 Tab；
       }
     },

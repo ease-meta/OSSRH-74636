@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.codegen;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.table.CodegenTablePageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenTableDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -27,4 +27,5 @@ public interface CodegenTableMapper extends BaseMapperX<CodegenTableDO> {
     default List<CodegenTableDO> selectListByDataSourceConfigId(Long dataSourceConfigId) {
         return selectList(CodegenTableDO::getDataSourceConfigId, dataSourceConfigId);
     }
+
 }

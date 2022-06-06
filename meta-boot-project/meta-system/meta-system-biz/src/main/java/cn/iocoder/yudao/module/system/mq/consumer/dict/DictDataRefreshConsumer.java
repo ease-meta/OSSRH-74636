@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 针对 {@link cn.iocoder.yudao.module.system.mq.message.dict.DictDataRefreshMessage} 的消费者
+ * 针对 {@link DictDataRefreshMessage} 的消费者
  *
  * @author 芋道源码
  */
@@ -25,4 +25,5 @@ public class DictDataRefreshConsumer extends AbstractChannelMessageListener<Dict
         log.info("[onMessage][收到 DictData 刷新消息]");
         dictDataService.initLocalCache();
     }
+
 }

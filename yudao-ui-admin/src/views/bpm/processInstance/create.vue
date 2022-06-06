@@ -12,7 +12,7 @@
         </el-table-column>
         <el-table-column label="流程分类" align="center" prop="category" width="100">
           <template slot-scope="scope">
-            <dict-tag :type="DICT_TYPE.BPM_MODEL_CATEGORY" :value="scope.row.category"/>
+            <dict-tag :type="DICT_TYPE.BPM_MODEL_CATEGORY" :value="scope.row.category" />
           </template>
         </el-table-column>
         <el-table-column label="流程版本" align="center" prop="processDefinition.version" width="80">
@@ -20,7 +20,7 @@
             <el-tag size="medium" v-if="scope.row">v{{ scope.row.version }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="流程描述" align="center" prop="description" width="300" show-overflow-tooltip/>
+        <el-table-column label="流程描述" align="center" prop="description" width="300" show-overflow-tooltip />
         <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
           <template slot-scope="scope">
             <el-button type="text" size="small" icon="el-icon-plus" @click="handleSelect(scope.row)">选择</el-button>
@@ -30,14 +30,14 @@
     </div>
     <!-- 第二步，填写表单，进行流程的提交 -->
     <div v-else>
-      <el-card class="box-card">
+      <el-card class="box-card" >
         <div slot="header" class="clearfix">
           <span class="el-icon-document">申请信息【{{ selectProcessInstance.name }}】</span>
           <el-button style="float: right;" type="primary" @click="selectProcessInstance = undefined">选择其它流程</el-button>
         </div>
         <el-col :span="16" :offset="6">
           <div>
-            <parser :key="new Date().getTime()" :form-conf="detailForm" @submit="submitForm"/>
+            <parser :key="new Date().getTime()" :form-conf="detailForm" @submit="submitForm" />
           </div>
         </el-col>
       </el-card>
@@ -45,7 +45,7 @@
         <div slot="header" class="clearfix">
           <span class="el-icon-picture-outline">流程图</span>
         </div>
-        <my-process-viewer key="designer" v-model="bpmnXML" v-bind="bpmnControlForm"/>
+        <my-process-viewer key="designer" v-model="bpmnXML" v-bind="bpmnControlForm" />
       </el-card>
     </div>
 
@@ -123,7 +123,7 @@ export default {
           this.bpmnXML = response.data
         })
       } else if (row.formCustomCreatePath) {
-        this.$router.push({path: row.formCustomCreatePath});
+        this.$router.push({ path: row.formCustomCreatePath});
         // 这里暂时无需加载流程图，因为跳出到另外个 Tab；
       }
     },

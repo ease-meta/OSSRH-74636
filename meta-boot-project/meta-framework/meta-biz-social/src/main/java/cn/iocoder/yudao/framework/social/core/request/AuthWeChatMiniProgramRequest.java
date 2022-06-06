@@ -1,9 +1,9 @@
 package cn.iocoder.yudao.framework.social.core.request;
 
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.social.core.enums.AuthExtendSource;
 import cn.iocoder.yudao.framework.social.core.model.AuthExtendToken;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.Data;
 import me.zhyd.oauth.cache.AuthStateCache;
 import me.zhyd.oauth.config.AuthConfig;
@@ -90,14 +90,11 @@ public class AuthWeChatMiniProgramRequest extends AuthDefaultRequest {
     @Data
     private static class CodeSessionResponse {
         private int errcode;
-
         private String errmsg;
-
         @JsonProperty("session_key")
         private String sessionKey;
-
         private String openid;
-
         private String unionid;
     }
+
 }

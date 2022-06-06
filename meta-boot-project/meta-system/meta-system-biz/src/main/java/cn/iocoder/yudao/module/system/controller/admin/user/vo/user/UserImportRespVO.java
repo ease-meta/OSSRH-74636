@@ -21,4 +21,5 @@ public class UserImportRespVO {
 
     @ApiModelProperty(value = "导入失败的用户集合", required = true, notes = "key 为用户名，value 为失败原因")
     private Map<String, String> failureUsernames;
+
 }

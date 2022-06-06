@@ -1,13 +1,12 @@
 package cn.iocoder.yudao.module.system.service.oauth2;
 
-
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2CodeDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import cn.iocoder.yudao.module.system.service.auth.AdminAuthService;
 import com.google.common.collect.Lists;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,17 +15,13 @@ import java.util.List;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.oauth2.OAuth2GrantServiceImpl} 的单元测试
+ * {@link OAuth2GrantServiceImpl} 的单元测试
  *
  * @author 芋道源码
  */
@@ -37,10 +32,8 @@ public class OAuth2GrantServiceImplTest extends BaseMockitoUnitTest {
 
     @Mock
     private OAuth2TokenService oauth2TokenService;
-
     @Mock
     private OAuth2CodeService oauth2CodeService;
-
     @Mock
     private AdminAuthService adminAuthService;
 
@@ -168,4 +161,5 @@ public class OAuth2GrantServiceImplTest extends BaseMockitoUnitTest {
         // 调用，并断言
         assertTrue(oauth2GrantService.revokeToken(clientId, accessToken));
     }
+
 }

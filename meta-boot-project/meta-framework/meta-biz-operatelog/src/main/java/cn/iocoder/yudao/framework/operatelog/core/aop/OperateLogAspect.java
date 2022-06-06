@@ -4,17 +4,17 @@ import cn.hutool.core.exceptions.ExceptionUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.servlet.ServletUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
+import cn.iocoder.yudao.framework.common.util.monitor.TracerUtils;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
 import cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO;
 import cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum;
 import cn.iocoder.yudao.framework.operatelog.core.service.OperateLogFrameworkService;
+import cn.iocoder.yudao.framework.web.core.util.WebFrameworkUtils;
 import com.google.common.collect.Maps;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.util.json.JsonUtils;
-import io.github.meta.ease.common.util.monitor.TracerUtils;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
-import io.github.meta.ease.web.util.WebFrameworkUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,25 +33,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.INTERNAL_SERVER_ERROR;
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.SUCCESS;
-
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.INTERNAL_SERVER_ERROR;
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.SUCCESS;
 
 /**
  * 拦截使用 @OperateLog 注解，如果满足条件，则生成操作日志。
  * 满足如下任一条件，则会进行记录：
  * 1. 使用 @ApiOperation + 非 @GetMapping
  * 2. 使用 @OperateLog 注解
- * <p>
+ *
  * 但是，如果声明 @OperateLog 注解时，将 enable 属性设置为 false 时，强制不记录。
  *
  * @author 芋道源码
@@ -63,14 +57,13 @@ public class OperateLogAspect {
     /**
      * 用于记录操作内容的上下文
      *
-     * @see cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO#getContent()
+     * @see OperateLogCreateReqDTO#getContent()
      */
     private static final ThreadLocal<String> CONTENT = new ThreadLocal<>();
-
     /**
      * 用于记录拓展字段的上下文
      *
-     * @see cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO#getExts()
+     * @see OperateLogCreateReqDTO#getExts()
      */
     private static final ThreadLocal<Map<String, Object>> EXTS = new ThreadLocal<>();
 
@@ -84,14 +77,12 @@ public class OperateLogAspect {
         return around0(joinPoint, operateLog, apiOperation);
     }
 
-    @Around("!@annotation(io.swagger.annotations.ApiOperation) && @annotation(operateLog)")
-    // 兼容处理，只添加 @OperateLog 注解的情况
+    @Around("!@annotation(io.swagger.annotations.ApiOperation) && @annotation(operateLog)") // 兼容处理，只添加 @OperateLog 注解的情况
     public Object around(ProceedingJoinPoint joinPoint, OperateLog operateLog) throws Throwable {
         return around0(joinPoint, operateLog, null);
     }
 
-    private Object around0(ProceedingJoinPoint joinPoint, OperateLog operateLog, ApiOperation apiOperation)
-            throws Throwable {
+    private Object around0(ProceedingJoinPoint joinPoint, OperateLog operateLog, ApiOperation apiOperation) throws Throwable {
         // 目前，只有管理员，才记录操作日志！所以非管理员，直接调用，不进行记录
         Integer userType = WebFrameworkUtils.getLoginUserType();
         if (!Objects.equals(userType, UserTypeEnum.ADMIN.getValue())) {
@@ -265,9 +256,9 @@ public class OperateLogAspect {
             return null;
         }
         return Arrays.stream(requestMethods).filter(requestMethod ->
-                        requestMethod == RequestMethod.POST
-                                || requestMethod == RequestMethod.PUT
-                                || requestMethod == RequestMethod.DELETE)
+                           requestMethod == RequestMethod.POST
+                        || requestMethod == RequestMethod.PUT
+                        || requestMethod == RequestMethod.DELETE)
                 .findFirst().orElse(null);
     }
 
@@ -369,4 +360,5 @@ public class OperateLogAspect {
                 || object instanceof HttpServletResponse
                 || object instanceof BindingResult;
     }
+
 }

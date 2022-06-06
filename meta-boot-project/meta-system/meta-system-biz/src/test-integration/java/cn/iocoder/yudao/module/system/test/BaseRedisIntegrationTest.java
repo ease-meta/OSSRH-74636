@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.test;
 
 import cn.iocoder.yudao.framework.redis.config.YudaoRedisAutoConfiguration;
-
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,4 +19,5 @@ public class BaseRedisIntegrationTest {
     })
     public static class Application {
     }
+
 }

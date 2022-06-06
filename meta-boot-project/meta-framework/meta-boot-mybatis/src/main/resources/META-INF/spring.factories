@@ -1,5 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  io.github.meta.ease.mybatis.datasource.config.DataSourceAutoConfiguration,\
-  io.github.meta.ease.mybatis.mybatis.config.MybatisAutoConfiguration
+  cn.iocoder.yudao.framework.datasource.config.YudaoDataSourceAutoConfiguration,\
+  cn.iocoder.yudao.framework.mybatis.config.YudaoMybatisAutoConfiguration
 org.springframework.boot.env.EnvironmentPostProcessor=\
-  io.github.meta.ease.mybatis.mybatis.config.IdTypeEnvironmentPostProcessor
+  cn.iocoder.yudao.framework.mybatis.config.IdTypeEnvironmentPostProcessor

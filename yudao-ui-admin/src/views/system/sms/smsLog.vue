@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/"/>
+    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="100px">
       <el-form-item label="手机号" prop="mobile">
@@ -10,7 +10,7 @@
         <el-select v-model="queryParams.channelId" placeholder="请选择短信渠道" clearable>
           <el-option v-for="channel in channelOptions"
                      :key="channel.id" :value="channel.id"
-                     :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'"/>
+                     :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'" />
         </el-select>
       </el-form-item>
       <el-form-item label="模板编号" prop="templateId">
@@ -24,7 +24,7 @@
       </el-form-item>
       <el-form-item label="发送时间">
         <el-date-picker v-model="dateRangeSendTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item label="接收状态" prop="receiveStatus">
         <el-select v-model="queryParams.receiveStatus" placeholder="请选择接收状态" clearable>
@@ -34,7 +34,7 @@
       </el-form-item>
       <el-form-item label="接收时间">
         <el-date-picker v-model="dateRangeReceiveTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -46,21 +46,18 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:sms-log:create']">新增
-        </el-button>
+                   v-hasPermi="['system:sms-log:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading"
-                   v-hasPermi="['system:sms-log:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
+                   v-hasPermi="['system:sms-log:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="编号" align="center" prop="id"/>
+      <el-table-column label="编号" align="center" prop="id" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -70,12 +67,11 @@
         <template slot-scope="scope">
           <div>{{ scope.row.mobile }}</div>
           <div v-if="scope.row.userType && scope.row.userId">
-            <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType"/>
-            {{ '(' + scope.row.userId + ')' }}
+            <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType"/>{{ '(' + scope.row.userId + ')' }}
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="短信内容" align="center" prop="templateContent" width="300"/>
+      <el-table-column label="短信内容" align="center" prop="templateContent" width="300" />
       <el-table-column label="发送状态" align="center" width="180">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATUS" :value="scope.row.sendStatus"/>
@@ -94,7 +90,7 @@
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="scope.row.channelCode"/>
         </template>
       </el-table-column>
-      <el-table-column label="模板编号" align="center" prop="templateId"/>
+      <el-table-column label="模板编号" align="center" prop="templateId" />
       <el-table-column label="短信类型" align="center" prop="templateType">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE" :value="scope.row.templateType"/>
@@ -103,8 +99,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-view" @click="handleView(scope.row,scope.index)"
-                     v-hasPermi="['system:sms-log:query']">详细
-          </el-button>
+                     v-hasPermi="['system:sms-log:query']">详细</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -121,7 +116,7 @@
           </el-col>
           <el-col :span="24">
             <el-form-item label="短信渠道：">
-              {{ formatChannelSignature(form.channelId) }}
+              {{formatChannelSignature(form.channelId) }}
               <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="form.channelCode"/>
             </el-form-item>
           </el-col>
@@ -194,12 +189,13 @@
 </template>
 
 <script>
-import {exportSmsLogExcel, getSmsLogPage} from "@/api/system/sms/smsLog";
-import {getSimpleSmsChannels} from "@/api/system/sms/smsChannel";
+import { getSmsLogPage, exportSmsLogExcel } from "@/api/system/sms/smsLog";
+import {  getSimpleSmsChannels } from "@/api/system/sms/smsChannel";
 
 export default {
   name: "SmsLog",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -288,8 +284,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, '短信日志.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /** 详细按钮操作 */
     handleView(row) {

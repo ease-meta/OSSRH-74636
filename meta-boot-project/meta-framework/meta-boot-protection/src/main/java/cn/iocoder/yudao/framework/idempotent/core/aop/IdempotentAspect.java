@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.framework.idempotent.core.aop;
 
+import cn.iocoder.yudao.framework.common.exception.ServiceException;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.idempotent.core.annotation.Idempotent;
 import cn.iocoder.yudao.framework.idempotent.core.keyresolver.IdempotentKeyResolver;
 import cn.iocoder.yudao.framework.idempotent.core.redis.IdempotentRedisDAO;
-import io.github.meta.ease.common.exception.ServiceException;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 拦截声明了 {@link cn.iocoder.yudao.framework.idempotent.core.annotation.Idempotent} 注解的方法，实现幂等操作
+ * 拦截声明了 {@link Idempotent} 注解的方法，实现幂等操作
  *
  * @author 芋道源码
  */
@@ -52,4 +52,5 @@ public class IdempotentAspect {
             throw new ServiceException(GlobalErrorCodeConstants.REPEATED_REQUESTS.getCode(), idempotent.message());
         }
     }
+
 }

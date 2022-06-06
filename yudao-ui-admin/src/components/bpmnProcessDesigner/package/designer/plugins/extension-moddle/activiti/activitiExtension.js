@@ -19,14 +19,14 @@ function exists(element) {
 function includesType(collection, type) {
   return (
     exists(collection) &&
-    some(collection, function (element) {
+    some(collection, function(element) {
       return is(element, type);
     })
   );
 }
 
 function anyType(element, types) {
-  return some(types, function (type) {
+  return some(types, function(type) {
     return is(element, type);
   });
 }
@@ -41,7 +41,7 @@ function isAllowed(propName, propDescriptor, newElement) {
 function ActivitiModdleExtension(eventBus) {
   eventBus.on(
     "property.clone",
-    function (context) {
+    function(context) {
       var newElement = context.newElement,
         propDescriptor = context.propertyDescriptor;
 
@@ -53,7 +53,7 @@ function ActivitiModdleExtension(eventBus) {
 
 ActivitiModdleExtension.$inject = ["eventBus"];
 
-ActivitiModdleExtension.prototype.canCloneProperty = function (newElement, propDescriptor) {
+ActivitiModdleExtension.prototype.canCloneProperty = function(newElement, propDescriptor) {
   if (isAllowed("activiti:FailedJobRetryTimeCycle", propDescriptor, newElement)) {
     return (
       includesType(newElement.eventDefinitions, "bpmn:TimerEventDefinition") ||

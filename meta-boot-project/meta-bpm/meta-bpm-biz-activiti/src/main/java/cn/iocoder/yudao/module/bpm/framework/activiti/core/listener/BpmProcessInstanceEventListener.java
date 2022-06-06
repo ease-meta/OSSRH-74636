@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.bpm.framework.activiti.core.listener;
 
+import cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmProcessInstanceExtDO;
 import cn.iocoder.yudao.module.bpm.service.task.BpmProcessInstanceService;
 import org.activiti.api.model.shared.event.RuntimeEvent;
 import org.activiti.api.process.model.ProcessInstance;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 监听 {@link org.activiti.api.process.model.ProcessInstance} 的开始与完成，创建与更新对应的 {@link cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmProcessInstanceExtDO} 记录
+ * 监听 {@link ProcessInstance} 的开始与完成，创建与更新对应的 {@link BpmProcessInstanceExtDO} 记录
  *
  * @author 芋道源码
  */
@@ -53,4 +54,5 @@ public class BpmProcessInstanceEventListener<T extends RuntimeEvent<?, ?>>
         // 其它事件，进行更新拓展表
         processInstanceService.updateProcessInstanceExt(event.getEntity());
     }
+
 }

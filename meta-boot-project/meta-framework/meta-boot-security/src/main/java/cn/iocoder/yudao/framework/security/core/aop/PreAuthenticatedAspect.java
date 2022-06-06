@@ -7,9 +7,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.UNAUTHORIZED;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.UNAUTHORIZED;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 
 @Aspect
 @Slf4j
@@ -22,4 +21,5 @@ public class PreAuthenticatedAspect {
         }
         return joinPoint.proceed();
     }
+
 }

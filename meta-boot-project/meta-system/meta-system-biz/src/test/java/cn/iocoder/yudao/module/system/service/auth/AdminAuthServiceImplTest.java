@@ -1,5 +1,7 @@
 package cn.iocoder.yudao.module.system.service.auth;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.AssertUtils;
 import cn.iocoder.yudao.module.system.api.sms.SmsCodeApi;
@@ -15,8 +17,6 @@ import cn.iocoder.yudao.module.system.service.member.MemberService;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2TokenService;
 import cn.iocoder.yudao.module.system.service.social.SocialUserService;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,18 +29,9 @@ import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEq
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_BAD_CREDENTIALS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_CAPTCHA_CODE_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_CAPTCHA_NOT_FOUND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.argThat;
-import static org.mockito.Mockito.isNull;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Import(AdminAuthServiceImpl.class)
 public class AdminAuthServiceImplTest extends BaseDbUnitTest {
@@ -50,22 +41,16 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private AdminUserService userService;
-
     @MockBean
     private CaptchaService captchaService;
-
     @MockBean
     private LoginLogService loginLogService;
-
     @MockBean
     private SocialUserService socialService;
-
     @MockBean
     private SmsCodeApi smsCodeApi;
-
     @MockBean
     private OAuth2TokenService oauth2TokenService;
-
     @MockBean
     private MemberService memberService;
 
@@ -176,8 +161,8 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         assertServiceException(() -> authService.verifyCaptcha(reqVO), AUTH_LOGIN_CAPTCHA_NOT_FOUND);
         // 校验调用参数
         verify(loginLogService, times(1)).createLoginLog(
-                argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
-                        && o.getResult().equals(LoginResultEnum.CAPTCHA_NOT_FOUND.getResult()))
+            argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
+                    && o.getResult().equals(LoginResultEnum.CAPTCHA_NOT_FOUND.getResult()))
         );
     }
 
@@ -194,8 +179,8 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         assertServiceException(() -> authService.verifyCaptcha(reqVO), AUTH_LOGIN_CAPTCHA_CODE_ERROR);
         // 校验调用参数
         verify(loginLogService).createLoginLog(
-                argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
-                        && o.getResult().equals(LoginResultEnum.CAPTCHA_CODE_ERROR.getResult()))
+            argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
+                    && o.getResult().equals(LoginResultEnum.CAPTCHA_CODE_ERROR.getResult()))
         );
     }
 
@@ -224,9 +209,9 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         assertPojoEquals(accessTokenDO, loginRespVO);
         // 校验调用参数
         verify(loginLogService).createLoginLog(
-                argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
-                        && o.getResult().equals(LoginResultEnum.SUCCESS.getResult())
-                        && o.getUserId().equals(user.getId()))
+            argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGIN_USERNAME.getType())
+                    && o.getResult().equals(LoginResultEnum.SUCCESS.getResult())
+                    && o.getUserId().equals(user.getId()))
         );
     }
 
@@ -243,7 +228,7 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         authService.logout(token, LoginLogTypeEnum.LOGOUT_SELF.getType());
         // 校验调用参数
         verify(loginLogService).createLoginLog(argThat(o -> o.getLogType().equals(LoginLogTypeEnum.LOGOUT_SELF.getType())
-                && o.getResult().equals(LoginResultEnum.SUCCESS.getResult()))
+                    && o.getResult().equals(LoginResultEnum.SUCCESS.getResult()))
         );
     }
 
@@ -257,4 +242,5 @@ public class AdminAuthServiceImplTest extends BaseDbUnitTest {
         // 校验调用参数
         verify(loginLogService, never()).createLoginLog(any());
     }
+
 }

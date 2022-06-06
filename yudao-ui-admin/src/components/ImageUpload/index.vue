@@ -23,8 +23,8 @@
     <!-- 上传提示 -->
     <div class="el-upload__tip" slot="tip" v-if="showTip">
       请上传
-      <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b></template>
-      <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b></template>
+      <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
+      <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
       的文件
     </div>
 
@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {getAccessToken} from "@/utils/auth";
+import { getAccessToken } from "@/utils/auth";
 
 export default {
   props: {
@@ -77,7 +77,7 @@ export default {
       dialogVisible: false,
       hideUpload: false,
       uploadFileUrl: process.env.VUE_APP_BASE_API + "/admin-api/infra/file/upload", // 请求地址
-      headers: {Authorization: "Bearer " + getAccessToken()}, // 设置上传的请求头部
+      headers: { Authorization: "Bearer " + getAccessToken() }, // 设置上传的请求头部
       fileList: []
     };
   },
@@ -91,7 +91,7 @@ export default {
           this.fileList = list.map(item => {
             if (typeof item === "string") {
               // edit by 芋道源码
-              item = {name: item, url: item};
+              item = { name: item, url: item };
             }
             return item;
           });
@@ -114,7 +114,7 @@ export default {
     // 删除图片
     handleRemove(file, fileList) {
       const findex = this.fileList.map(f => f.name).indexOf(file.name);
-      if (findex > -1) {
+      if(findex > -1) {
         this.fileList.splice(findex, 1);
         this.$emit("input", this.listToString(this.fileList));
       }
@@ -122,7 +122,7 @@ export default {
     // 上传成功回调
     handleUploadSuccess(res) {
       // edit by 芋道源码
-      this.uploadList.push({name: res.data, url: res.data});
+      this.uploadList.push({ name: res.data, url: res.data });
       if (this.uploadList.length === this.number) {
         this.fileList = this.fileList.concat(this.uploadList);
         this.uploadList = [];

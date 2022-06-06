@@ -10,9 +10,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
+ * @description 扩展定义（扩展坐标），标识唯一一个业务场景实现
  * @author Qingchen
  * @version 1.0.0
- * @description 扩展定义（扩展坐标），标识唯一一个业务场景实现
  * @date 2021-08-28 23:14
  * @class cn.iocoder.yudao.framework.extension.core.factory.ExtensionDefinition.java
  */
@@ -57,7 +57,6 @@ public class ExtensionDefinition implements Serializable {
 
     /**
      * 构建definition
-     *
      * @param businessScenario
      * @param point
      * @return
@@ -75,8 +74,7 @@ public class ExtensionDefinition implements Serializable {
             return false;
         }
         ExtensionDefinition that = (ExtensionDefinition) o;
-        return Objects.equals(uniqueIdentify, that.uniqueIdentify) && Objects.equals(extensionPointName,
-                that.extensionPointName);
+        return Objects.equals(uniqueIdentify, that.uniqueIdentify) && Objects.equals(extensionPointName, that.extensionPointName);
     }
 
     @Override

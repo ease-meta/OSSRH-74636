@@ -17,4 +17,5 @@ public class JobCreateReqVO extends JobBaseVO {
     @ApiModelProperty(value = "处理器的名字", required = true, example = "sysUserSessionTimeoutJob")
     @NotNull(message = "处理器的名字不能为空")
     private String handlerName;
+
 }

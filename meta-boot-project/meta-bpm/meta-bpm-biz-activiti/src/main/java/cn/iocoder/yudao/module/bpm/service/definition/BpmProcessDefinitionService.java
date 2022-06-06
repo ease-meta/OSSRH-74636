@@ -5,9 +5,9 @@ import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmPro
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionRespVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmProcessDefinitionExtDO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmProcessDefinitionCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
@@ -45,7 +45,7 @@ public interface BpmProcessDefinitionService {
     /**
      * 更新流程定义状态
      *
-     * @param id    流程定义的编号
+     * @param id 流程定义的编号
      * @param state 状态
      */
     void updateProcessDefinitionState(String id, Integer state);
@@ -100,7 +100,7 @@ public interface BpmProcessDefinitionService {
 
     /**
      * 获得编号对应的 ProcessDefinition
-     * <p>
+     *
      * 相比 {@link #getProcessDefinition(String)} 方法，category 的取值是正确
      *
      * @param id 编号
@@ -157,4 +157,5 @@ public interface BpmProcessDefinitionService {
      * @return 流程定义的数组
      */
     List<ProcessDefinition> getProcessDefinitionListByDeploymentIds(Set<String> deploymentIds);
+
 }

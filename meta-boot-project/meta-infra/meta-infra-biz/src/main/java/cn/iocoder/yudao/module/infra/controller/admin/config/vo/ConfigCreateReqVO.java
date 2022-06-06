@@ -17,4 +17,5 @@ public class ConfigCreateReqVO extends ConfigBaseVO {
     @NotBlank(message = "参数键名长度不能为空")
     @Size(max = 100, message = "参数键名长度不能超过100个字符")
     private String key;
+
 }

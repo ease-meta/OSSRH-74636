@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.framework.security.config;
 
-import io.github.meta.ease.web.config.WebProperties;
+import cn.iocoder.yudao.framework.web.config.WebProperties;
 import org.springframework.core.Ordered;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,4 +32,5 @@ public abstract class AuthorizeRequestsCustomizer
     public int getOrder() {
         return 0;
     }
+
 }

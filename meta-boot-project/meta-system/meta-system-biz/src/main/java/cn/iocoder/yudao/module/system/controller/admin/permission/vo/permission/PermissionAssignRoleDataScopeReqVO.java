@@ -23,4 +23,5 @@ public class PermissionAssignRoleDataScopeReqVO {
 
     @ApiModelProperty(value = "部门编号列表", example = "1,3,5", notes = "只有范围类型为 DEPT_CUSTOM 时，该字段才需要")
     private Set<Long> dataScopeDeptIds = Collections.emptySet(); // 兜底
+
 }

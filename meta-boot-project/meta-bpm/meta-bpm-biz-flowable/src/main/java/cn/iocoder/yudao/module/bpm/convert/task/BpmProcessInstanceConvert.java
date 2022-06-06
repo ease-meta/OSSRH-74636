@@ -1,5 +1,7 @@
 package cn.iocoder.yudao.module.bpm.convert.task;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstancePageItemRespVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceRespVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmProcessDefinitionExtDO;
@@ -9,8 +11,6 @@ import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcess
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcessInstanceRejectReqDTO;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.number.NumberUtils;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.runtime.ProcessInstance;
@@ -47,8 +47,7 @@ public interface BpmProcessInstanceConvert {
 
     List<BpmProcessInstancePageItemRespVO.Task> convertList2(List<Task> tasks);
 
-    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance,
-                                              BpmProcessInstanceExtDO processInstanceExt,
+    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance, BpmProcessInstanceExtDO processInstanceExt,
                                               ProcessDefinition processDefinition, BpmProcessDefinitionExtDO processDefinitionExt,
                                               String bpmnXml, AdminUserRespDTO startUser, DeptRespDTO dept) {
         BpmProcessInstanceRespVO respVO = convert2(processInstance);
@@ -97,8 +96,8 @@ public interface BpmProcessInstanceConvert {
         return event;
     }
 
-    default BpmMessageSendWhenProcessInstanceApproveReqDTO convert2ApprovedReq(ProcessInstance instance) {
-        return new BpmMessageSendWhenProcessInstanceApproveReqDTO()
+    default BpmMessageSendWhenProcessInstanceApproveReqDTO convert2ApprovedReq(ProcessInstance instance){
+        return  new BpmMessageSendWhenProcessInstanceApproveReqDTO()
                 .setStartUserId(NumberUtils.parseLong(instance.getStartUserId()))
                 .setProcessInstanceId(instance.getId())
                 .setProcessInstanceName(instance.getName());
@@ -106,9 +105,10 @@ public interface BpmProcessInstanceConvert {
 
     default BpmMessageSendWhenProcessInstanceRejectReqDTO convert2RejectReq(ProcessInstance instance, String reason) {
         return new BpmMessageSendWhenProcessInstanceRejectReqDTO()
-                .setProcessInstanceName(instance.getName())
-                .setProcessInstanceId(instance.getId())
-                .setReason(reason)
-                .setStartUserId(NumberUtils.parseLong(instance.getStartUserId()));
+            .setProcessInstanceName(instance.getName())
+            .setProcessInstanceId(instance.getId())
+            .setReason(reason)
+            .setStartUserId(NumberUtils.parseLong(instance.getStartUserId()));
     }
+
 }

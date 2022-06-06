@@ -25,4 +25,5 @@ public class TenantRefreshConsumer extends AbstractChannelMessageListener<Tenant
         log.info("[onMessage][收到 Tenant 刷新消息]");
         tenantService.initLocalCache();
     }
+
 }

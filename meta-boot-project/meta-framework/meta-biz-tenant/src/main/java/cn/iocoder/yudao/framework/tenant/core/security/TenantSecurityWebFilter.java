@@ -1,17 +1,17 @@
 package cn.iocoder.yudao.framework.tenant.core.security;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
 import cn.iocoder.yudao.framework.security.core.LoginUser;
 import cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils;
 import cn.iocoder.yudao.framework.tenant.config.TenantProperties;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.yudao.framework.tenant.core.service.TenantFrameworkService;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
-import io.github.meta.ease.web.config.WebProperties;
-import io.github.meta.ease.web.core.filter.ApiRequestFilter;
-import io.github.meta.ease.web.core.handler.GlobalExceptionHandler;
+import cn.iocoder.yudao.framework.web.config.WebProperties;
+import cn.iocoder.yudao.framework.web.core.filter.ApiRequestFilter;
+import cn.iocoder.yudao.framework.web.core.handler.GlobalExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 
@@ -27,7 +27,7 @@ import java.util.Objects;
  * 1. 如果是登陆的用户，校验是否有权限访问该租户，避免越权问题。
  * 2. 如果请求未带租户的编号，检查是否是忽略的 URL，否则也不允许访问。
  * 3. 校验租户是合法，例如说被禁用、到期
- * <p>
+ *
  * 校验用户访问的租户，是否是其所在的租户，
  *
  * @author 芋道源码
@@ -40,7 +40,6 @@ public class TenantSecurityWebFilter extends ApiRequestFilter {
     private final AntPathMatcher pathMatcher;
 
     private final GlobalExceptionHandler globalExceptionHandler;
-
     private final TenantFrameworkService tenantFrameworkService;
 
     public TenantSecurityWebFilter(TenantProperties tenantProperties,
@@ -65,7 +64,7 @@ public class TenantSecurityWebFilter extends ApiRequestFilter {
             if (tenantId == null) {
                 tenantId = user.getTenantId();
                 TenantContextHolder.setTenantId(tenantId);
-                // 如果传递了租户编号，则进行比对租户编号，避免越权问题
+            // 如果传递了租户编号，则进行比对租户编号，避免越权问题
             } else if (!Objects.equals(user.getTenantId(), TenantContextHolder.getTenantId())) {
                 log.error("[doFilterInternal][租户({}) User({}/{}) 越权访问租户({}) URL({}/{})]",
                         user.getTenantId(), user.getId(), user.getUserType(),
@@ -116,4 +115,5 @@ public class TenantSecurityWebFilter extends ApiRequestFilter {
         }
         return false;
     }
+
 }

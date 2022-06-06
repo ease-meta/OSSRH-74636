@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.framework.excel.core.convert;
 
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import com.alibaba.excel.converters.Converter;
 import com.alibaba.excel.enums.CellDataTypeEnum;
 import com.alibaba.excel.metadata.GlobalConfiguration;
-import com.alibaba.excel.metadata.data.CellData;
+import com.alibaba.excel.metadata.data.ReadCellData;
 import com.alibaba.excel.metadata.data.WriteCellData;
 import com.alibaba.excel.metadata.property.ExcelContentProperty;
-import io.github.meta.ease.common.util.json.JsonUtils;
 
 /**
  * Excel Json 转换器
@@ -25,9 +25,8 @@ public class JsonConvert implements Converter<Object> {
         throw new UnsupportedOperationException("暂不支持，也不需要");
     }
 
-
-    public Object convertToJavaData(CellData cellData, ExcelContentProperty contentProperty,
-                                    GlobalConfiguration globalConfiguration) {
+    @Override
+    public Object convertToJavaData(ReadCellData cellData, ExcelContentProperty contentProperty, GlobalConfiguration globalConfiguration) {
         throw new UnsupportedOperationException("暂不支持，也不需要");
     }
 
@@ -37,4 +36,5 @@ public class JsonConvert implements Converter<Object> {
         // 生成 Excel 小表格
         return new WriteCellData<>(JsonUtils.toJsonString(value));
     }
+
 }

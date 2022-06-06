@@ -50,7 +50,7 @@ const config = {
 
     }
 }
-const {windowWidth} = uni.getSystemInfoSync()
+const { windowWidth } = uni.getSystemInfoSync()
 const blankChar = makeMap(' ,\r,\n,\t,\f')
 let idIndex = 0 // #ifdef H5 || APP-PLUS
 
@@ -173,10 +173,10 @@ parser.prototype.hook = function (node) {
  */
 
 parser.prototype.getUrl = function (url) {
-    const {domain} = this.options
+    const { domain } = this.options
 
     if (url[0] == '/') {
-        // // 开头的补充协议名
+    // // 开头的补充协议名
         if (url[1] == '/') url = `${domain ? domain.split('://')[0] : 'http'}:${url}` // 否则补充整个域名
         else if (domain) url = domain + url
     } else if (domain && !url.includes('data:') && !url.includes('://')) url = `${domain}/${url}`
@@ -190,13 +190,13 @@ parser.prototype.getUrl = function (url) {
  */
 
 parser.prototype.parseStyle = function (node) {
-    const {attrs} = node
+    const { attrs } = node
     const list = (this.tagStyle[node.name] || '').split(';').concat((attrs.style || '').split(';'))
     const styleObj = {}
     let tmp = ''
 
     if (attrs.id) {
-        // 暴露锚点
+    // 暴露锚点
         if (this.options.useAnchor) this.expose(); else if (node.name != 'img' && node.name != 'a' && node.name != 'video' && node.name != 'audio') attrs.id = void 0
     } // 转换 width 和 height 属性
 
@@ -218,7 +218,7 @@ parser.prototype.parseStyle = function (node) {
 
         if (value[0] == '-' && value.lastIndexOf('-') > 0 || value.includes('safe')) tmp += ';'.concat(key, ':').concat(value) // 重复的样式进行覆盖
         else if (!styleObj[key] || value.includes('import') || !styleObj[key].includes('import')) {
-            // 填充链接
+        // 填充链接
             if (value.includes('url')) {
                 let j = value.indexOf('(') + 1
 
@@ -261,7 +261,7 @@ parser.prototype.onAttrName = function (name) {
     name = this.xml ? name : name.toLowerCase()
 
     if (name.substr(0, 5) == 'data-') {
-        // data-src 自动转为 src
+    // data-src 自动转为 src
         if (name == 'data-src' && !this.attrs.src) this.attrName = 'src' // a 和 img 标签保留 data- 的属性，可以在 imgtap 和 linktap 事件中使用
         else if (this.tagName == 'img' || this.tagName == 'a') this.attrName = name // 剩余的移除以减小大小
         else this.attrName = void 0
@@ -294,13 +294,13 @@ parser.prototype.onOpenTag = function (selfClose) {
     node.name = this.tagName
     node.attrs = this.attrs
     this.attrs = Object.create(null)
-    const {attrs} = node
+    const { attrs } = node
     const parent = this.stack[this.stack.length - 1]
     const siblings = parent ? parent.children : this.nodes
     const close = this.xml ? selfClose : config.voidTags[node.name] // 转换 embed 标签
 
     if (node.name == 'embed') {
-        // #ifndef H5 || APP-PLUS
+    // #ifndef H5 || APP-PLUS
         const src = attrs.src || '' // 按照后缀名和 type 将 embed 转为 video 或 audio
 
         if (src.includes('.mp4') || src.includes('.3gp') || src.includes('.m3u8') || (attrs.type || '').includes('video')) node.name = 'video'; else if (src.includes('.mp3') || src.includes('.wav') || src.includes('.aac') || src.includes('.m4a') || (attrs.type || '').includes('audio')) node.name = 'audio'
@@ -313,7 +313,7 @@ parser.prototype.onOpenTag = function (selfClose) {
     // 处理音视频
 
     if (node.name == 'video' || node.name == 'audio') {
-        // 设置 id 以便获取 context
+    // 设置 id 以便获取 context
         if (node.name == 'video' && !attrs.id) attrs.id = `v${idIndex++}` // 没有设置 controls 也没有设置 autoplay 的自动设置 controls
 
         if (!attrs.controls && !attrs.autoplay) attrs.controls = 'T' // 用数组存储所有可用的 source
@@ -487,13 +487,13 @@ parser.prototype.onCloseTag = function (name) {
 
 parser.prototype.popNode = function () {
     const node = this.stack.pop()
-    let {attrs} = node
-    const {children} = node
+    let { attrs } = node
+    const { children } = node
     const parent = this.stack[this.stack.length - 1]
     const siblings = parent ? parent.children : this.nodes
 
     if (!this.hook(node) || config.ignoreTags[node.name]) {
-        // 获取标题
+    // 获取标题
         if (node.name == 'title' && children.length && children[0].type == 'text' && this.options.setTitle) {
             uni.setNavigationBarTitle({
                 title: children[0].text
@@ -504,7 +504,7 @@ parser.prototype.popNode = function () {
     }
 
     if (node.pre) {
-        // 是否合并空白符标识
+    // 是否合并空白符标识
         node.pre = this.pre = void 0
 
         for (let i = this.stack.length; i--;) {
@@ -515,9 +515,9 @@ parser.prototype.popNode = function () {
     const styleObj = {} // 转换 svg
 
     if (node.name == 'svg') {
-        // #ifndef APP-PLUS-NVUE
+    // #ifndef APP-PLUS-NVUE
         let src = ''
-        const {style} = attrs
+        const { style } = attrs
         attrs.style = ''
         attrs.xmlns = 'http://www.w3.org/2000/svg';
 
@@ -600,7 +600,7 @@ parser.prototype.popNode = function () {
     if (config.blockTags[node.name]) node.name = 'div' // 未知标签转为 span，避免无法显示
     else if (!config.trustTags[node.name] && !this.xml) node.name = 'span'
     if (node.name == 'a' || node.name == 'ad' // #ifdef H5 || APP-PLUS
-        || node.name == 'iframe' // #endif
+  || node.name == 'iframe' // #endif
     ) this.expose() // #ifdef APP-PLUS
     else if (node.name == 'video') {
         let str = '<video style="width:100%;height:100%"' // 空白图占位
@@ -755,7 +755,7 @@ parser.prototype.popNode = function () {
         } // 给表格添加一个单独的横向滚动层
 
         if (this.options.scrollTable && !(attrs.style || '').includes('inline')) {
-            const table = {...node}
+            const table = { ...node }
             node.name = 'div'
             node.attrs = {
                 style: 'overflow:auto'
@@ -812,10 +812,10 @@ parser.prototype.popNode = function () {
     } // flex 布局时部分样式需要提取到 rich-text 外层
 
     const flex = parent && (parent.attrs.style || '').includes('flex') // #ifdef MP-WEIXIN
-        // 检查基础库版本 virtualHost 是否可用
-        && !(node.c && wx.getNFCAdapter) // #endif
-        // #ifndef MP-WEIXIN || MP-QQ || MP-BAIDU || MP-TOUTIAO
-        && !node.c // #endif
+  // 检查基础库版本 virtualHost 是否可用
+  && !(node.c && wx.getNFCAdapter) // #endif
+  // #ifndef MP-WEIXIN || MP-QQ || MP-BAIDU || MP-TOUTIAO
+  && !node.c // #endif
 
     if (flex) node.f = ';max-width:100%' // #endif
 
@@ -827,9 +827,7 @@ parser.prototype.popNode = function () {
                 node.f += val
                 if (key == 'width') attrs.style += ';width:100%'
             } else // #endif
-            {
-                attrs.style += val
-            }
+            { attrs.style += val }
         }
     }
 
@@ -842,7 +840,7 @@ parser.prototype.popNode = function () {
 
 parser.prototype.onText = function (text) {
     if (!this.pre) {
-        // 合并空白符
+    // 合并空白符
         let trim = ''
         let flag
 
@@ -932,7 +930,7 @@ lexer.prototype.text = function () {
     this.i = this.content.indexOf('<', this.i) // 查找最近的标签
 
     if (this.i == -1) {
-        // 没有标签了
+    // 没有标签了
         if (this.start < this.content.length) this.handler.onText(this.content.substring(this.start, this.content.length))
         return
     }
@@ -940,7 +938,7 @@ lexer.prototype.text = function () {
     const c = this.content[this.i + 1]
 
     if (c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
-        // 标签开头
+    // 标签开头
         if (this.start != this.i) this.handler.onText(this.content.substring(this.start, this.i))
         this.start = ++this.i
         this.state = this.tagName
@@ -972,7 +970,7 @@ lexer.prototype.text = function () {
 
 lexer.prototype.tagName = function () {
     if (blankChar[this.content[this.i]]) {
-        // 解析到标签名
+    // 解析到标签名
         this.handler.onTagName(this.content.substring(this.start, this.i))
 
         while (blankChar[this.content[++this.i]]) {
@@ -994,7 +992,7 @@ lexer.prototype.attrName = function () {
     let c = this.content[this.i]
 
     if (blankChar[c] || c == '=') {
-        // 解析到属性名
+    // 解析到属性名
         this.handler.onAttrName(this.content.substring(this.start, this.i))
         let needVal = c == '='
         const len = this.content.length

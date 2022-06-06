@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.system.controller.admin.errorcode.vo;
 
 import cn.iocoder.yudao.framework.excel.core.annotations.DictFormat;
 import cn.iocoder.yudao.framework.excel.core.convert.DictConvert;
+//import cn.iocoder.yudao.adminserver.modules.infra.enums.InfDictTypeConstants;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 
@@ -36,4 +37,5 @@ public class ErrorCodeExcelVO {
 
     @ExcelProperty("创建时间")
     private Date createTime;
+
 }

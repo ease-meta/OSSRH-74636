@@ -7,8 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-import static io.github.meta.ease.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
-
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
 
 @ApiModel("管理后台 - 登录日志分页列表 Request VO")
 @Data
@@ -30,4 +29,5 @@ public class LoginLogExportReqVO {
     @ApiModelProperty(value = "结束时间", example = "2020-10-24")
     @DateTimeFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND)
     private Date endTime;
+
 }

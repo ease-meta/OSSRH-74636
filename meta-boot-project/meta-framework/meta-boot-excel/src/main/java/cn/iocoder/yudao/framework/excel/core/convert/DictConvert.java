@@ -7,13 +7,13 @@ import cn.iocoder.yudao.framework.excel.core.annotations.DictFormat;
 import com.alibaba.excel.converters.Converter;
 import com.alibaba.excel.enums.CellDataTypeEnum;
 import com.alibaba.excel.metadata.GlobalConfiguration;
-import com.alibaba.excel.metadata.data.CellData;
+import com.alibaba.excel.metadata.data.ReadCellData;
 import com.alibaba.excel.metadata.data.WriteCellData;
 import com.alibaba.excel.metadata.property.ExcelContentProperty;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Excel {@link cn.iocoder.yudao.framework.dict.core.dto.DictDataRespDTO} 数据字典转换器
+ * Excel {@link DictDataRespDTO} 数据字典转换器
  *
  * @author 芋道源码
  */
@@ -30,7 +30,8 @@ public class DictConvert implements Converter<Object> {
         throw new UnsupportedOperationException("暂不支持，也不需要");
     }
 
-    public Object convertToJavaData(CellData cellData, ExcelContentProperty contentProperty,
+    @Override
+    public Object convertToJavaData(ReadCellData cellData, ExcelContentProperty contentProperty,
                                     GlobalConfiguration globalConfiguration) {
         // 使用字典解析
         String type = getType(contentProperty);
@@ -46,7 +47,7 @@ public class DictConvert implements Converter<Object> {
     }
 
     @Override
-    public WriteCellData<?> convertToExcelData(Object object, ExcelContentProperty contentProperty,
+    public WriteCellData<String> convertToExcelData(Object object, ExcelContentProperty contentProperty,
                                                GlobalConfiguration globalConfiguration) {
         // 空时，返回空
         if (object == null) {
@@ -68,4 +69,5 @@ public class DictConvert implements Converter<Object> {
     private static String getType(ExcelContentProperty contentProperty) {
         return contentProperty.getField().getAnnotation(DictFormat.class).value();
     }
+
 }

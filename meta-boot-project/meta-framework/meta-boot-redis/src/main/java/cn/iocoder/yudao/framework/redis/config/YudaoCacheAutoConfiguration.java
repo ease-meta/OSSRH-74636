@@ -18,7 +18,7 @@ public class YudaoCacheAutoConfiguration {
 
     /**
      * RedisCacheConfiguration Bean
-     * <p>
+     *
      * 参考 org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration 的 createConfiguration 方法
      */
     @Bean
@@ -26,8 +26,7 @@ public class YudaoCacheAutoConfiguration {
     public RedisCacheConfiguration redisCacheConfiguration(CacheProperties cacheProperties) {
         // 设置使用 JSON 序列化方式
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
-        config = config.serializeValuesWith(
-                RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json()));
+        config = config.serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(RedisSerializer.json()));
 
         // 设置 CacheProperties.Redis 的属性
         CacheProperties.Redis redisProperties = cacheProperties.getRedis();
@@ -45,4 +44,5 @@ public class YudaoCacheAutoConfiguration {
         }
         return config;
     }
+
 }

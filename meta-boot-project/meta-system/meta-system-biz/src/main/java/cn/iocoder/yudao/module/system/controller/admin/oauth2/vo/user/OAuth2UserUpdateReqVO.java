@@ -31,4 +31,5 @@ public class OAuth2UserUpdateReqVO {
 
     @ApiModelProperty(value = "用户性别", example = "1", notes = "参见 SexEnum 枚举类")
     private Integer sex;
+
 }

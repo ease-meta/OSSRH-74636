@@ -21,4 +21,5 @@ public class SmsTemplateSendReqVO {
 
     @ApiModelProperty(value = "模板参数")
     private Map<String, Object> templateParams;
+
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 针对 {@link cn.iocoder.yudao.module.system.mq.message.sms.SmsChannelRefreshMessage} 的消费者
+ * 针对 {@link SmsChannelRefreshMessage} 的消费者
  *
  * @author 芋道源码
  */
@@ -25,4 +25,5 @@ public class SmsChannelRefreshConsumer extends AbstractChannelMessageListener<Sm
         log.info("[onMessage][收到 SmsChannel 刷新消息]");
         smsChannelService.initSmsClients();
     }
+
 }

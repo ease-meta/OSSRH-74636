@@ -1,9 +1,14 @@
 package cn.iocoder.yudao.module.system.service.logger;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.monitor.TracerUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.operatelog.core.dto.OperateLogCreateReqDTO;
 import cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum;
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.RandomUtils;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogPageReqVO;
@@ -12,12 +17,7 @@ import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import cn.iocoder.yudao.module.system.dal.mysql.logger.OperateLogMapper;
 import cn.iocoder.yudao.module.system.enums.common.SexEnum;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.monitor.TracerUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -29,10 +29,10 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.BAD_REQUEST;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.BAD_REQUEST;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -95,14 +95,11 @@ public class OperateLogServiceImplTest extends BaseDbUnitTest {
         // module 不同
         operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setModule("user")));
         // type 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setType(OperateTypeEnum.IMPORT.getType())));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setType(OperateTypeEnum.IMPORT.getType())));
         // createTime 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setStartTime(buildTime(2021, 2, 6))));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setStartTime(buildTime(2021, 2, 6))));
         // resultCode 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setResultCode(BAD_REQUEST.getCode())));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setResultCode(BAD_REQUEST.getCode())));
 
         // 构造调用参数
         OperateLogPageReqVO reqVO = new OperateLogPageReqVO();
@@ -150,14 +147,11 @@ public class OperateLogServiceImplTest extends BaseDbUnitTest {
         // module 不同
         operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setModule("user")));
         // type 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setType(OperateTypeEnum.IMPORT.getType())));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setType(OperateTypeEnum.IMPORT.getType())));
         // createTime 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setStartTime(buildTime(2021, 2, 6))));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setStartTime(buildTime(2021, 2, 6))));
         // resultCode 不同
-        operateLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setResultCode(BAD_REQUEST.getCode())));
+        operateLogMapper.insert(ObjectUtils.cloneIgnoreId(sysOperateLogDO, logDO -> logDO.setResultCode(BAD_REQUEST.getCode())));
 
         // 构造调用参数
         OperateLogExportReqVO reqVO = new OperateLogExportReqVO();
@@ -174,4 +168,5 @@ public class OperateLogServiceImplTest extends BaseDbUnitTest {
         assertEquals(1, list.size());
         assertPojoEquals(sysOperateLogDO, list.get(0));
     }
+
 }

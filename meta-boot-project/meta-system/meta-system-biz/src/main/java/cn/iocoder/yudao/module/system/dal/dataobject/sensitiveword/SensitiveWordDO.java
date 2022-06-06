@@ -1,18 +1,13 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword;
 
-
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.mybatis.core.type.StringListTypeHandler;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
-import io.github.meta.ease.mybatis.mybatis.core.type.StringListTypeHandler;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.List;
 
@@ -36,31 +31,28 @@ public class SensitiveWordDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 敏感词
      */
     private String name;
-
     /**
      * 描述
      */
     private String description;
-
     /**
      * 标签数组
-     * <p>
+     *
      * 用于实现不同的业务场景下，需要使用不同标签的敏感词。
      * 例如说，tag 有短信、论坛两种，敏感词 "推广" 在短信下是敏感词，在论坛下不是敏感词。
      * 此时，我们会存储一条敏感词记录，它的 name 为"推广"，tag 为短信。
      */
     @TableField(typeHandler = StringListTypeHandler.class)
     private List<String> tags;
-
     /**
      * 状态
-     * <p>
-     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
+     *
+     * 枚举 {@link CommonStatusEnum}
      */
     private Integer status;
+
 }

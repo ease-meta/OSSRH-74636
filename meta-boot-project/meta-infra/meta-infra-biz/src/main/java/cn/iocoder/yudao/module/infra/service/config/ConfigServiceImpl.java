@@ -1,6 +1,8 @@
 package cn.iocoder.yudao.module.infra.service.config;
 
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.config.vo.ConfigPageReqVO;
@@ -12,8 +14,6 @@ import cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants;
 import cn.iocoder.yudao.module.infra.enums.config.ConfigTypeEnum;
 import cn.iocoder.yudao.module.infra.mq.producer.config.ConfigProducer;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.exception.util.ServiceExceptionUtil;
-import io.github.meta.ease.common.pojo.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -128,4 +128,5 @@ public class ConfigServiceImpl implements ConfigService {
             throw ServiceExceptionUtil.exception(ErrorCodeConstants.CONFIG_KEY_DUPLICATE);
         }
     }
+
 }

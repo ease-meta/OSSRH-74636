@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/"/>
+    <doc-alert title="短信配置" url="https://doc.iocoder.cn/sms/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="150px">
       <el-form-item label="短信类型" prop="type">
@@ -19,19 +19,18 @@
         <el-input v-model="queryParams.code" placeholder="请输入模板编码" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="短信 API 的模板编号" prop="apiTemplateId">
-        <el-input v-model="queryParams.apiTemplateId" placeholder="请输入短信 API 的模板编号" clearable size="small"
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.apiTemplateId" placeholder="请输入短信 API 的模板编号" clearable size="small" @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="短信渠道" prop="channelId">
         <el-select v-model="queryParams.channelId" placeholder="请选择短信渠道" clearable>
           <el-option v-for="channel in channelOptions"
                      :key="channel.id" :value="channel.id"
-                     :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'"/>
+                     :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'" />
         </el-select>
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -43,23 +42,20 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:sms-template:create']">新增
-        </el-button>
+                   v-hasPermi="['system:sms-template:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading"
-                   v-hasPermi="['system:sms-template:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
+                   v-hasPermi="['system:sms-template:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="模板编码" align="center" prop="code"/>
-      <el-table-column label="模板名称" align="center" prop="name"/>
-      <el-table-column label="模板内容" align="center" prop="content" width="300"/>
+      <el-table-column label="模板编码" align="center" prop="code" />
+      <el-table-column label="模板名称" align="center" prop="name" />
+      <el-table-column label="模板内容" align="center" prop="content" width="300" />
       <el-table-column label="短信类型" align="center" prop="type">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE" :value="scope.row.type"/>
@@ -70,8 +66,8 @@
           <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark"/>
-      <el-table-column label="短信 API 的模板编号" align="center" prop="apiTemplateId" width="180"/>
+      <el-table-column label="备注" align="center" prop="remark" />
+      <el-table-column label="短信 API 的模板编号" align="center" prop="apiTemplateId" width="180" />
       <el-table-column label="短信渠道" align="center" width="120">
         <template slot-scope="scope">
           <div>{{ formatChannelSignature(scope.row.channelId) }}</div>
@@ -86,14 +82,11 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="150">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-share" @click="handleSendSms(scope.row)"
-                     v-hasPermi="['system:sms-template:send-sms']">测试
-          </el-button>
+                     v-hasPermi="['system:sms-template:send-sms']">测试</el-button>
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['system:sms-template:update']">修改
-          </el-button>
+                     v-hasPermi="['system:sms-template:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['system:sms-template:delete']">删除
-          </el-button>
+                     v-hasPermi="['system:sms-template:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -108,36 +101,35 @@
           <el-select v-model="form.channelId" placeholder="请选择短信渠道编号">
             <el-option v-for="channel in channelOptions"
                        :key="channel.id" :value="channel.id"
-                       :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'"/>
+                       :label="channel.signature + '【' + getDictDataLabel(DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE, channel.code) + '】'" />
           </el-select>
         </el-form-item>
         <el-form-item label="短信类型" prop="type">
           <el-select v-model="form.type" placeholder="请选择短信类型">
             <el-option v-for="dict in this.getDictDatas(DICT_TYPE.SYSTEM_SMS_TEMPLATE_TYPE)"
-                       :key="dict.value" :label="dict.label" :value="parseInt(dict.value)"/>
+                       :key="dict.value" :label="dict.label" :value="parseInt(dict.value)" />
           </el-select>
         </el-form-item>
         <el-form-item label="模板编号" prop="code">
-          <el-input v-model="form.code" placeholder="请输入模板编号"/>
+          <el-input v-model="form.code" placeholder="请输入模板编号" />
         </el-form-item>
         <el-form-item label="模板名称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入模板名称"/>
+          <el-input v-model="form.name" placeholder="请输入模板名称" />
         </el-form-item>
         <el-form-item label="模板内容" prop="content">
-          <el-input type="textarea" v-model="form.content" placeholder="请输入模板内容"/>
+          <el-input type="textarea" v-model="form.content" placeholder="请输入模板内容" />
         </el-form-item>
         <el-form-item label="开启状态" prop="status">
           <el-radio-group v-model="form.status">
             <el-radio v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                      :key="dict.value" :label="parseInt(dict.value)">{{ dict.label }}
-            </el-radio>
+                      :key="dict.value" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="短信 API 模板编号" prop="apiTemplateId">
-          <el-input v-model="form.apiTemplateId" placeholder="请输入短信 API 的模板编号"/>
+          <el-input v-model="form.apiTemplateId" placeholder="请输入短信 API 的模板编号" />
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+          <el-input v-model="form.remark" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -150,14 +142,13 @@
     <el-dialog title="测试发送短信" :visible.sync="sendSmsOpen" width="500px" append-to-body>
       <el-form ref="sendSmsForm" :model="sendSmsForm" :rules="sendSmsRules" label-width="140px">
         <el-form-item label="模板内容" prop="content">
-          <el-input v-model="sendSmsForm.content" type="textarea" placeholder="请输入模板内容" readonly/>
+          <el-input v-model="sendSmsForm.content" type="textarea" placeholder="请输入模板内容" readonly />
         </el-form-item>
         <el-form-item label="手机号" prop="mobile">
-          <el-input v-model="sendSmsForm.mobile" placeholder="请输入手机号"/>
+          <el-input v-model="sendSmsForm.mobile" placeholder="请输入手机号" />
         </el-form-item>
-        <el-form-item v-for="param in sendSmsForm.params" :key="param" :label="'参数 {' + param + '}'"
-                      :prop="'templateParams.' + param">
-          <el-input v-model="sendSmsForm.templateParams[param]" :placeholder="'请输入 ' + param + ' 参数'"/>
+        <el-form-item v-for="param in sendSmsForm.params" :key="param" :label="'参数 {' + param + '}'" :prop="'templateParams.' + param">
+          <el-input v-model="sendSmsForm.templateParams[param]" :placeholder="'请输入 ' + param + ' 参数'" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -170,16 +161,9 @@
 </template>
 
 <script>
-import {
-  createSmsTemplate,
-  deleteSmsTemplate,
-  exportSmsTemplateExcel,
-  getSmsTemplate,
-  getSmsTemplatePage,
-  sendSms,
-  updateSmsTemplate
-} from "@/api/system/sms/smsTemplate";
-import {getSimpleSmsChannels} from "@/api/system/sms/smsChannel";
+import { createSmsTemplate, updateSmsTemplate, deleteSmsTemplate, getSmsTemplate, getSmsTemplatePage,
+  exportSmsTemplateExcel, sendSms } from "@/api/system/sms/smsTemplate";
+import {  getSimpleSmsChannels } from "@/api/system/sms/smsChannel";
 
 export default {
   name: "SmsTemplate",
@@ -215,13 +199,13 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        type: [{required: true, message: "短信类型不能为空", trigger: "change"}],
-        status: [{required: true, message: "开启状态不能为空", trigger: "blur"}],
-        code: [{required: true, message: "模板编码不能为空", trigger: "blur"}],
-        name: [{required: true, message: "模板名称不能为空", trigger: "blur"}],
-        content: [{required: true, message: "模板内容不能为空", trigger: "blur"}],
-        apiTemplateId: [{required: true, message: "短信 API 的模板编号不能为空", trigger: "blur"}],
-        channelId: [{required: true, message: "短信渠道编号不能为空", trigger: "change"}],
+        type: [{ required: true, message: "短信类型不能为空", trigger: "change" }],
+        status: [{ required: true, message: "开启状态不能为空", trigger: "blur" }],
+        code: [{ required: true, message: "模板编码不能为空", trigger: "blur" }],
+        name: [{ required: true, message: "模板名称不能为空", trigger: "blur" }],
+        content: [{ required: true, message: "模板内容不能为空", trigger: "blur" }],
+        apiTemplateId: [{ required: true, message: "短信 API 的模板编号不能为空", trigger: "blur" }],
+        channelId: [{ required: true, message: "短信渠道编号不能为空", trigger: "change" }],
       },
       // 短信渠道
       channelOptions: [],
@@ -231,9 +215,9 @@ export default {
         params: [], // 模板的参数列表
       },
       sendSmsRules: {
-        mobile: [{required: true, message: "手机不能为空", trigger: "blur"}],
-        templateCode: [{required: true, message: "手机不能为空", trigger: "blur"}],
-        templateParams: {}
+        mobile: [{ required: true, message: "手机不能为空", trigger: "blur" }],
+        templateCode: [{ required: true, message: "手机不能为空", trigger: "blur" }],
+        templateParams: { }
       }
     };
   },
@@ -331,13 +315,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除短信模板编号为"' + id + '"的数据项?').then(function () {
+      this.$modal.confirm('是否确认删除短信模板编号为"' + id + '"的数据项?').then(function() {
         return deleteSmsTemplate(id);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -353,8 +336,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, '短信模板.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /** 发送短息按钮 */
     handleSendSms(row) {
@@ -363,13 +345,13 @@ export default {
       this.sendSmsForm.content = row.content;
       this.sendSmsForm.params = row.params;
       this.sendSmsForm.templateCode = row.code;
-      this.sendSmsForm.templateParams = row.params.reduce(function (obj, item) {
+      this.sendSmsForm.templateParams = row.params.reduce(function(obj, item) {
         obj[item] = undefined;
         return obj;
       }, {});
       // 根据 row 重置 rules
-      this.sendSmsRules.templateParams = row.params.reduce(function (obj, item) {
-        obj[item] = {required: true, message: '参数 ' + item + " 不能为空", trigger: "change"};
+      this.sendSmsRules.templateParams = row.params.reduce(function(obj, item) {
+        obj[item] = { required: true, message: '参数 ' + item + " 不能为空", trigger: "change" };
         return obj;
       }, {});
       // 设置打开

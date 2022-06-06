@@ -23,4 +23,5 @@ class TenantRedisKeyDefineTest {
         // 断言
         assertEquals("user:10:1:30", key);
     }
+
 }

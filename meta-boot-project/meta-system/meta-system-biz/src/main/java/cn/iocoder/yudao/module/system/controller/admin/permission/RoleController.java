@@ -1,35 +1,20 @@
 package cn.iocoder.yudao.module.system.controller.admin.permission;
 
-
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RolePageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleUpdateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleUpdateStatusReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.*;
 import cn.iocoder.yudao.module.system.convert.permission.RoleConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO;
 import cn.iocoder.yudao.module.system.service.permission.RoleService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -39,8 +24,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 角色")
 @RestController
@@ -117,4 +102,5 @@ public class RoleController {
         // 输出
         ExcelUtils.write(response, "角色数据.xls", "角色列表", RoleExcelVO.class, data);
     }
+
 }

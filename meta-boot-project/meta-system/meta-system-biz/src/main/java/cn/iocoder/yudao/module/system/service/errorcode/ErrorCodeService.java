@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.service.errorcode;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
+import cn.iocoder.yudao.module.system.framework.errorcode.core.service.ErrorCodeFrameworkService;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
-import cn.iocoder.yudao.module.system.framework.errorcode.core.service.ErrorCodeFrameworkService;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -63,4 +63,5 @@ public interface ErrorCodeService extends ErrorCodeFrameworkService {
      * @return 错误码列表
      */
     List<ErrorCodeDO> getErrorCodeList(ErrorCodeExportReqVO exportReqVO);
+
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/"/>
+    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="登录地址" prop="userIp">
@@ -19,8 +19,7 @@
       </el-form-item>
       <el-form-item label="登录时间">
         <el-date-picker v-model="dateRange" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期"
-                        end-placeholder="结束日期"></el-date-picker>
+          type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -31,25 +30,24 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="warning" icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
-                   v-hasPermi="['system:login-log:export']">导出
-        </el-button>
+                   v-hasPermi="['system:login-log:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="访问编号" align="center" prop="id"/>
+      <el-table-column label="访问编号" align="center" prop="id" />
       <el-table-column label="日志类型" align="center" prop="logType" width="120">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType"/>
+          <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_TYPE" :value="scope.row.logType" />
         </template>
       </el-table-column>
-      <el-table-column label="用户名称" align="center" prop="username"/>
-      <el-table-column label="登录地址" align="center" prop="userIp" width="130" :show-overflow-tooltip="true"/>
-      <el-table-column label="userAgent" align="center" prop="userAgent" width="400" :show-overflow-tooltip="true"/>
+      <el-table-column label="用户名称" align="center" prop="username" />
+      <el-table-column label="登录地址" align="center" prop="userIp" width="130" :show-overflow-tooltip="true" />
+      <el-table-column label="userAgent" align="center" prop="userAgent" width="400" :show-overflow-tooltip="true" />
       <el-table-column label="结果" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="scope.row.result"/>
+          <dict-tag :type="DICT_TYPE.SYSTEM_LOGIN_RESULT" :value="scope.row.result" />
         </template>
       </el-table-column>
       <el-table-column label="登录日期" align="center" prop="loginTime" width="180">
@@ -65,7 +63,7 @@
 </template>
 
 <script>
-import {exportLoginLog, list} from "@/api/system/loginlog";
+import { list, exportLoginLog } from "@/api/system/loginlog";
 
 export default {
   name: "Logininfor",
@@ -127,13 +125,12 @@ export default {
     handleExport() {
       const queryParams = this.queryParams;
       this.$modal.confirm('是否确认导出所有操作日志数据项?').then(() => {
-        this.exportLoading = true;
-        return exportLoginLog(queryParams);
-      }).then(response => {
-        this.$download.excel(response, '登录日志.xls');
-        this.exportLoading = false;
-      }).catch(() => {
-      });
+          this.exportLoading = true;
+          return exportLoginLog(queryParams);
+        }).then(response => {
+          this.$download.excel(response, '登录日志.xls');
+          this.exportLoading = false;
+      }).catch(() => {});
     }
   }
 };

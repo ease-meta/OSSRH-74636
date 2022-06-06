@@ -38,16 +38,13 @@ public class DBConfigRepository extends AbstractConfigRepository {
     }
 
     private final ConfigUtil m_configUtil;
-
     private final PropertiesFactory propertiesFactory;
-
     private final String m_namespace;
 
     /**
      * 配置缓存，使用 Properties 存储
      */
     private volatile Properties m_configCache;
-
     /**
      * 缓存配置的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -83,8 +80,7 @@ public class DBConfigRepository extends AbstractConfigRepository {
         String password = System.getProperty(ConfigConsts.APOLLO_JDBC_PASSWORD);
         // 创建 DBConfigRepository 对象
         Class<? extends ConfigFrameworkDAO> clazz = ClassUtil.loadClass(dao);
-        Constructor<? extends ConfigFrameworkDAO> constructor = ReflectUtil.getConstructor(clazz, String.class,
-                String.class, String.class);
+        Constructor<? extends ConfigFrameworkDAO> constructor = ReflectUtil.getConstructor(clazz, String.class, String.class, String.class);
         return constructor.newInstance(url, username, password);
     }
 
@@ -150,14 +146,14 @@ public class DBConfigRepository extends AbstractConfigRepository {
         log.debug("Schedule periodic refresh with interval: {} {}",
                 m_configUtil.getRefreshInterval(), m_configUtil.getRefreshIntervalTimeUnit());
         m_executorService.scheduleAtFixedRate(() -> {
-                    Tracer.logEvent("Apollo.ConfigService", String.format("periodicRefresh: %s", m_namespace));
-                    log.debug("refresh config for namespace: {}", m_namespace);
+            Tracer.logEvent("Apollo.ConfigService", String.format("periodicRefresh: %s", m_namespace));
+            log.debug("refresh config for namespace: {}", m_namespace);
 
-                    // 执行同步. 内部已经 try catch 掉异常，无需在处理
-                    trySync();
+            // 执行同步. 内部已经 try catch 掉异常，无需在处理
+            trySync();
 
-                    Tracer.logEvent("Apollo.Client.Version", Apollo.VERSION);
-                }, m_configUtil.getRefreshInterval(), m_configUtil.getRefreshInterval(),
+            Tracer.logEvent("Apollo.Client.Version", Apollo.VERSION);
+        }, m_configUtil.getRefreshInterval(), m_configUtil.getRefreshInterval(),
                 m_configUtil.getRefreshIntervalTimeUnit());
     }
 
@@ -183,4 +179,5 @@ public class DBConfigRepository extends AbstractConfigRepository {
         // 第二步，如果有更新，则从数据库加载所有配置
         return configFrameworkDAO.selectList();
     }
+
 }

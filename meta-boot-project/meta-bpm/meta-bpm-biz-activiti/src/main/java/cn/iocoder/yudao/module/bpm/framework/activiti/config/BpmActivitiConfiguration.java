@@ -47,9 +47,9 @@ public class BpmActivitiConfiguration {
 
     /**
      * 用于设置自定义的 ActivityBehaviorFactory 实现的 ProcessEngineConfigurationConfigurer 实现类
-     * <p>
+     *
      * 目的：覆盖 {@link org.activiti.spring.boot.ProcessEngineAutoConfiguration} 的
-     * defaultActivityBehaviorFactoryMappingConfigurer 方法创建的 Bean
+     *      defaultActivityBehaviorFactoryMappingConfigurer 方法创建的 Bean
      */
     @Bean(name = BEHAVIOR_FACTORY_MAPPING_CONFIGURER)
     public ProcessEngineConfigurationConfigurer defaultActivityBehaviorFactoryMappingConfigurer(
@@ -76,4 +76,5 @@ public class BpmActivitiConfiguration {
         bpmActivityBehaviorFactory.setScripts(scripts);
         return bpmActivityBehaviorFactory;
     }
+
 }

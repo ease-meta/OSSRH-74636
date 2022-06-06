@@ -3,6 +3,9 @@ package cn.iocoder.yudao.module.system.service.oauth2;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.token.OAuth2AccessTokenPageReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
@@ -11,9 +14,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2RefreshTokenDO
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2AccessTokenMapper;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2RefreshTokenMapper;
 import cn.iocoder.yudao.module.system.dal.redis.oauth2.OAuth2AccessTokenRedisDAO;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +21,8 @@ import javax.annotation.Resource;
 import java.util.Calendar;
 import java.util.List;
 
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception0;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception0;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
 
 /**
  * OAuth2.0 Token Service 实现类
@@ -34,7 +34,6 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
 
     @Resource
     private OAuth2AccessTokenMapper oauth2AccessTokenMapper;
-
     @Resource
     private OAuth2RefreshTokenMapper oauth2RefreshTokenMapper;
 
@@ -146,8 +145,7 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
         return accessTokenDO;
     }
 
-    private OAuth2RefreshTokenDO createOAuth2RefreshToken(Long userId, Integer userType, OAuth2ClientDO clientDO,
-                                                          List<String> scopes) {
+    private OAuth2RefreshTokenDO createOAuth2RefreshToken(Long userId, Integer userType, OAuth2ClientDO clientDO, List<String> scopes) {
         OAuth2RefreshTokenDO refreshToken = new OAuth2RefreshTokenDO().setRefreshToken(generateRefreshToken())
                 .setUserId(userId).setUserType(userType)
                 .setClientId(clientDO.getClientId()).setScopes(scopes)
@@ -163,4 +161,5 @@ public class OAuth2TokenServiceImpl implements OAuth2TokenService {
     private static String generateRefreshToken() {
         return IdUtil.fastSimpleUUID();
     }
+
 }

@@ -1,9 +1,11 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.dept;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -24,45 +26,39 @@ public class DeptDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 部门名称
      */
     private String name;
-
     /**
      * 父部门ID
-     * <p>
+     *
      * 关联 {@link #id}
      */
     private Long parentId;
-
     /**
      * 显示顺序
      */
     private Integer sort;
-
     /**
      * 负责人
-     * <p>
-     * 关联 {@link cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO#getId()}
+     *
+     * 关联 {@link AdminUserDO#getId()}
      */
     private Long leaderUserId;
-
     /**
      * 联系电话
      */
     private String phone;
-
     /**
      * 邮箱
      */
     private String email;
-
     /**
      * 部门状态
-     * <p>
-     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
+     *
+     * 枚举 {@link CommonStatusEnum}
      */
     private Integer status;
+
 }

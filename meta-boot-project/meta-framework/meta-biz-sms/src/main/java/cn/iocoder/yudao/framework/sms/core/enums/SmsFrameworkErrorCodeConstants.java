@@ -1,11 +1,10 @@
 package cn.iocoder.yudao.framework.sms.core.enums;
 
-
-import io.github.meta.ease.common.exception.ErrorCode;
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
 
 /**
  * 短信框架的错误码枚举
- * <p>
+ *
  * 短信框架，使用 2-001-000-000 段
  *
  * @author 芋道源码
@@ -48,4 +47,5 @@ public interface SmsFrameworkErrorCodeConstants {
     ErrorCode SMS_APP_ID_INVALID = new ErrorCode(2001000903, "SdkAppId不合法");
 
     ErrorCode EXCEPTION = new ErrorCode(2001000999, "调用异常");
+
 }

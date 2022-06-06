@@ -3,6 +3,8 @@ package cn.iocoder.yudao.module.bpm.service.definition;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.flowable.core.util.FlowableUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.rule.BpmTaskAssignRuleCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.rule.BpmTaskAssignRuleRespVO;
@@ -10,15 +12,13 @@ import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.rule.BpmTaskAs
 import cn.iocoder.yudao.module.bpm.convert.definition.BpmTaskAssignRuleConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmTaskAssignRuleDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmTaskAssignRuleMapper;
+import cn.iocoder.yudao.module.bpm.enums.DictTypeConstants;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskAssignRuleTypeEnum;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.PostApi;
 import cn.iocoder.yudao.module.system.api.dict.DictDataApi;
 import cn.iocoder.yudao.module.system.api.permission.RoleApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
-import io.github.meta.ease.bpm.enums.DictTypeConstants;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.BpmnModel;
 import org.flowable.bpmn.model.UserTask;
@@ -28,18 +28,10 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_DEPLOY_FAIL_TASK_ASSIGN_RULE_NOT_CONFIG;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_RULE_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_RULE_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_UPDATE_FAIL_NOT_MODEL;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
 
 /**
  * BPM 任务分配规则 Service 实现类
@@ -47,40 +39,31 @@ import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exc
 @Service
 @Validated
 @Slf4j
-public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService {
+public class BpmTaskAssignRuleServiceImpl implements BpmTaskAssignRuleService{
 
     @Resource
     private BpmTaskAssignRuleMapper taskRuleMapper;
-
     @Resource
     @Lazy // 解决循环依赖
     private BpmModelService modelService;
-
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessDefinitionService processDefinitionService;
-
     @Resource
     private BpmUserGroupService userGroupService;
-
     @Resource
     private RoleApi roleApi;
-
     @Resource
     private DeptApi deptApi;
-
     @Resource
     private PostApi postApi;
-
     @Resource
     private AdminUserApi adminUserApi;
-
     @Resource
     private DictDataApi dictDataApi;
 
     @Override
-    public List<BpmTaskAssignRuleDO> getTaskAssignRuleListByProcessDefinitionId(String processDefinitionId,
-                                                                                String taskDefinitionKey) {
+    public List<BpmTaskAssignRuleDO> getTaskAssignRuleListByProcessDefinitionId(String processDefinitionId, String taskDefinitionKey) {
         return taskRuleMapper.selectListByProcessDefinitionId(processDefinitionId, taskDefinitionKey);
     }
 

@@ -9,7 +9,7 @@ import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcess
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenProcessInstanceRejectReqDTO;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.repository.ProcessDefinition;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -45,7 +45,6 @@ public interface BpmProcessInstanceConvert {
             @Mapping(source = "from.startTime", target = "createTime"),
     })
     void copyTo(ProcessInstance from, @MappingTarget BpmProcessInstanceExtDO to);
-
     @Mapping(source = "from.id", target = "id", ignore = true)
     void copyTo(ProcessDefinition from, @MappingTarget BpmProcessInstanceExtDO to);
 
@@ -72,8 +71,7 @@ public interface BpmProcessInstanceConvert {
     })
     BpmProcessInstanceExtDO convert(org.activiti.api.process.model.ProcessInstance bean);
 
-    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance,
-                                              BpmProcessInstanceExtDO processInstanceExt,
+    default BpmProcessInstanceRespVO convert2(HistoricProcessInstance processInstance, BpmProcessInstanceExtDO processInstanceExt,
                                               ProcessDefinition processDefinition, BpmProcessDefinitionExtDO processDefinitionExt,
                                               String bpmnXml, AdminUserRespDTO startUser, DeptRespDTO dept) {
         BpmProcessInstanceRespVO respVO = convert2(processInstance);
@@ -93,15 +91,11 @@ public interface BpmProcessInstanceConvert {
     }
 
     BpmProcessInstanceRespVO convert2(HistoricProcessInstance bean);
-
     @Mapping(source = "from.id", target = "to.id", ignore = true)
     void copyTo(BpmProcessInstanceExtDO from, @MappingTarget BpmProcessInstanceRespVO to);
-
     BpmProcessInstanceRespVO.ProcessDefinition convert2(ProcessDefinition bean);
-
     @Mapping(source = "from.id", target = "to.id", ignore = true)
     void copyTo(BpmProcessDefinitionExtDO from, @MappingTarget BpmProcessInstanceRespVO.ProcessDefinition to);
-
     BpmProcessInstanceRespVO.User convert2(AdminUserRespDTO bean);
 
     default BpmProcessInstanceResultEvent convert(Object source, ProcessInstance instance, Integer result) {
@@ -128,7 +122,6 @@ public interface BpmProcessInstanceConvert {
         reqDTO.setReason(reason);
         return reqDTO;
     }
-
     @Mapping(source = "name", target = "processInstanceName")
     void copyTo(ProcessInstance from, @MappingTarget BpmMessageSendWhenProcessInstanceRejectReqDTO to);
 
@@ -137,6 +130,6 @@ public interface BpmProcessInstanceConvert {
             @Mapping(source = "name", target = "processInstanceName"),
             @Mapping(source = "initiator", target = "startUserId")
     })
-    BpmMessageSendWhenProcessInstanceApproveReqDTO convert2(
-            org.activiti.api.process.model.ProcessInstance processInstance);
+    BpmMessageSendWhenProcessInstanceApproveReqDTO convert2(org.activiti.api.process.model.ProcessInstance processInstance);
+
 }

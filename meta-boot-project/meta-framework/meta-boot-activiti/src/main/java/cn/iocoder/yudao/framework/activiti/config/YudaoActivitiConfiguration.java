@@ -1,10 +1,14 @@
 package cn.iocoder.yudao.framework.activiti.config;
 
 import cn.iocoder.yudao.framework.activiti.core.web.ActivitiWebFilter;
-import io.github.meta.ease.common.enums.WebFilterOrderEnum;
+import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
 import org.activiti.image.ProcessDiagramGenerator;
 import org.activiti.image.impl.DefaultProcessDiagramGenerator;
+import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.activiti.spring.boot.ProcessEngineConfigurationConfigurer;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.transaction.TransactionFactory;
+import org.mybatis.spring.transaction.SpringManagedTransactionFactory;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,4 +41,5 @@ public class YudaoActivitiConfiguration {
             PlatformTransactionManager platformTransactionManager) {
         return processEngineConfiguration -> processEngineConfiguration.setTransactionManager(platformTransactionManager);
     }
+
 }

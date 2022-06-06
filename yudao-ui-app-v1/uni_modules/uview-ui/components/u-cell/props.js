@@ -78,8 +78,7 @@ export default {
         // 左侧图标样式
         iconStyle: {
             type: Object,
-            default: () => {
-            }
+            default: () => {}
         },
         // 右侧箭头图标的样式
         rightIconStyle: {

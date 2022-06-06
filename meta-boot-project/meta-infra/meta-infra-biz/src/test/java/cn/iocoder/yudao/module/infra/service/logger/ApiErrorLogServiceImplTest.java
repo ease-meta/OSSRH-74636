@@ -1,6 +1,10 @@
 package cn.iocoder.yudao.module.infra.service.logger;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.iocoder.yudao.framework.apilog.core.service.dto.ApiErrorLogCreateReqDTO;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.RandomUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiErrorLogExportReqVO;
@@ -8,10 +12,6 @@ import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apierrorlog.ApiE
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiErrorLogDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.logger.ApiErrorLogMapper;
 import cn.iocoder.yudao.module.infra.enums.logger.ApiErrorLogProcessStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.ObjectUtils;
-import io.github.meta.ease.web.apilog.core.service.dto.ApiErrorLogCreateReqDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
@@ -20,11 +20,11 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.API_ERROR_LOG_NOT_FOUND;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.API_ERROR_LOG_PROCESSED;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -61,18 +61,15 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        infApiErrorLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        infApiErrorLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
         // progressStatus 不同的
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO,
-                logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
 
         // 构造调用参数
         ApiErrorLogPageReqVO reqVO = new ApiErrorLogPageReqVO();
@@ -117,18 +114,15 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        infApiErrorLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        infApiErrorLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setExceptionTime(buildTime(2021, 2, 6))));
         // progressStatus 不同的
-        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO,
-                logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
+        infApiErrorLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiErrorLogDO, logDO -> logDO.setProcessStatus(ApiErrorLogProcessStatusEnum.DONE.getStatus())));
 
         // 构造调用参数
         ApiErrorLogExportReqVO reqVO = new ApiErrorLogExportReqVO();
@@ -177,13 +171,9 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         ApiErrorLogDO secondSelect = infApiErrorLogMapper.selectOne("id", secondId);
 
         // id 为 0 查询不到，应该抛出异常 API_ERROR_LOG_NOT_FOUND
-        assertServiceException(
-                () -> apiErrorLogService.updateApiErrorLogProcess(0L, ApiErrorLogProcessStatusEnum.DONE.getStatus(),
-                        processUserId), API_ERROR_LOG_NOT_FOUND);
+        assertServiceException(() -> apiErrorLogService.updateApiErrorLogProcess(0L, ApiErrorLogProcessStatusEnum.DONE.getStatus(), processUserId), API_ERROR_LOG_NOT_FOUND);
         // id 为 first 的 progressStatus 为 DONE ，应该抛出 API_ERROR_LOG_PROCESSED
-        assertServiceException(
-                () -> apiErrorLogService.updateApiErrorLogProcess(firstId, ApiErrorLogProcessStatusEnum.DONE.getStatus(),
-                        processUserId), API_ERROR_LOG_PROCESSED);
+        assertServiceException(() -> apiErrorLogService.updateApiErrorLogProcess(firstId, ApiErrorLogProcessStatusEnum.DONE.getStatus(), processUserId), API_ERROR_LOG_PROCESSED);
         // 验证 progressStatus 是否修改成功
         Assertions.assertEquals(ApiErrorLogProcessStatusEnum.DONE.getStatus(), secondSelect.getProcessStatus());
         // 验证 progressUserId 是否修改成功
@@ -203,4 +193,5 @@ public class ApiErrorLogServiceImplTest extends BaseDbUnitTest {
         assertNotNull(infApiErrorLogDO);
         assertPojoEquals(createDTO, infApiErrorLogDO);
     }
+
 }

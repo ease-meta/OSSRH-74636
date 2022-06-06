@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
+import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsChannelDO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.channel.SmsChannelCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.channel.SmsChannelPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.channel.SmsChannelUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsChannelDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -75,4 +75,5 @@ public interface SmsChannelService {
      * @return 短信渠道分页
      */
     PageResult<SmsChannelDO> getSmsChannelPage(SmsChannelPageReqVO pageReqVO);
+
 }

@@ -1,8 +1,7 @@
 package cn.iocoder.yudao.module.bpm.api.task;
 
 import cn.iocoder.yudao.module.bpm.service.task.BpmProcessInstanceService;
-import io.github.meta.ease.bpm.api.task.BpmProcessInstanceApi;
-import io.github.meta.ease.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
+import cn.iocoder.yudao.module.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -24,4 +23,5 @@ public class BpmProcessInstanceApiImpl implements BpmProcessInstanceApi {
     public String createProcessInstance(Long userId, BpmProcessInstanceCreateReqDTO reqDTO) {
         return processInstanceService.createProcessInstance(userId, reqDTO);
     }
+
 }

@@ -18,27 +18,23 @@ import java.util.function.Function;
  *
  * @author 芋道源码
  */
-public class DefaultStreamMessageListenerContainerX<K, V extends Record<K, ?>> extends
-        DefaultStreamMessageListenerContainer<K, V> {
+public class DefaultStreamMessageListenerContainerX<K, V extends Record<K, ?>> extends DefaultStreamMessageListenerContainer<K, V> {
 
     /**
-     * 参考 {@link org.springframework.data.redis.stream.StreamMessageListenerContainer#create(RedisConnectionFactory, StreamMessageListenerContainerOptions)} 的实现
+     * 参考 {@link StreamMessageListenerContainer#create(RedisConnectionFactory, StreamMessageListenerContainerOptions)} 的实现
      */
-    public static <K, V extends Record<K, ?>> StreamMessageListenerContainer<K, V> create(
-            RedisConnectionFactory connectionFactory,
-            StreamMessageListenerContainer.StreamMessageListenerContainerOptions<K, V> options) {
+    public static <K, V extends Record<K, ?>> StreamMessageListenerContainer<K, V> create(RedisConnectionFactory connectionFactory, StreamMessageListenerContainer.StreamMessageListenerContainerOptions<K, V> options) {
         Assert.notNull(connectionFactory, "RedisConnectionFactory must not be null!");
         Assert.notNull(options, "StreamMessageListenerContainerOptions must not be null!");
         return new DefaultStreamMessageListenerContainerX<>(connectionFactory, options);
     }
 
-    public DefaultStreamMessageListenerContainerX(RedisConnectionFactory connectionFactory,
-                                                  StreamMessageListenerContainerOptions<K, V> containerOptions) {
+    public DefaultStreamMessageListenerContainerX(RedisConnectionFactory connectionFactory, StreamMessageListenerContainerOptions<K, V> containerOptions) {
         super(connectionFactory, containerOptions);
     }
 
     /**
-     * 参考 {@link org.springframework.data.redis.stream.DefaultStreamMessageListenerContainer#register(StreamReadRequest, org.springframework.data.redis.stream.StreamListener)} 的实现
+     * 参考 {@link DefaultStreamMessageListenerContainer#register(StreamReadRequest, StreamListener)} 的实现
      */
     @Override
     public Subscription register(StreamReadRequest<K> streamRequest, StreamListener<K, V> listener) {
@@ -49,8 +45,7 @@ public class DefaultStreamMessageListenerContainerX<K, V extends Record<K, ?>> e
     private StreamPollTask<K, V> getReadTaskX(StreamReadRequest<K> streamRequest, StreamListener<K, V> listener) {
         StreamPollTask<K, V> task = ReflectUtil.invoke(this, "getReadTask", streamRequest, listener);
         // 修改 readFunction 方法
-        Function<ReadOffset, List<ByteRecord>> readFunction = (Function<ReadOffset, List<ByteRecord>>) ReflectUtil.getFieldValue(
-                task, "readFunction");
+        Function<ReadOffset, List<ByteRecord>> readFunction = (Function<ReadOffset, List<ByteRecord>>) ReflectUtil.getFieldValue(task, "readFunction");
         ReflectUtil.setFieldValue(task, "readFunction", (Function<ReadOffset, List<ByteRecord>>) readOffset -> {
             List<ByteRecord> records = readFunction.apply(readOffset);
             //【重点】保证 records 不是空，避免 NPE 的问题！！！
@@ -62,5 +57,6 @@ public class DefaultStreamMessageListenerContainerX<K, V extends Record<K, ?>> e
     private Subscription doRegisterX(Task task) {
         return ReflectUtil.invoke(this, "doRegister", task);
     }
+
 }
 

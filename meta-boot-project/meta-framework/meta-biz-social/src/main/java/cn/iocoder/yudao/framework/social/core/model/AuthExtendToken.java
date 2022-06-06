@@ -1,9 +1,6 @@
 package cn.iocoder.yudao.framework.social.core.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import me.zhyd.oauth.model.AuthToken;
 
 /**
@@ -22,4 +19,5 @@ public class AuthExtendToken extends AuthToken {
      * 微信小程序 - 会话密钥
      */
     private String miniSessionKey;
+
 }

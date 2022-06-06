@@ -40,10 +40,10 @@ public class DictDataBaseVO {
 
     @ApiModelProperty(value = "颜色类型", example = "default", notes = "default、primary、success、info、warning、danger")
     private String colorType;
-
     @ApiModelProperty(value = "css 样式", example = "btn-visible")
     private String cssClass;
 
     @ApiModelProperty(value = "备注", example = "我是一个角色")
     private String remark;
+
 }

@@ -1,31 +1,19 @@
 package cn.iocoder.yudao.module.system.controller.admin.sensitiveword;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordPageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.*;
 import cn.iocoder.yudao.module.system.convert.sensitiveword.SensitiveWordConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword.SensitiveWordDO;
 import cn.iocoder.yudao.module.system.service.sensitiveword.SensitiveWordService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -34,8 +22,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 敏感词")
 @RestController
@@ -92,7 +80,7 @@ public class SensitiveWordController {
     @PreAuthorize("@ss.hasPermission('system:sensitive-word:export')")
     @OperateLog(type = EXPORT)
     public void exportSensitiveWordExcel(@Valid SensitiveWordExportReqVO exportReqVO,
-                                         HttpServletResponse response) throws IOException {
+              HttpServletResponse response) throws IOException {
         List<SensitiveWordDO> list = sensitiveWordService.getSensitiveWordList(exportReqVO);
         // 导出 Excel
         List<SensitiveWordExcelVO> datas = SensitiveWordConvert.INSTANCE.convertList02(list);
@@ -112,4 +100,5 @@ public class SensitiveWordController {
                                                    @RequestParam(value = "tags", required = false) List<String> tags) {
         return success(sensitiveWordService.validateText(text, tags));
     }
+
 }

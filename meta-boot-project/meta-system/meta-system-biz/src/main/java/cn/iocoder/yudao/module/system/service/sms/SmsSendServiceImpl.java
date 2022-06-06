@@ -3,6 +3,9 @@ package cn.iocoder.yudao.module.system.service.sms;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClient;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
@@ -15,9 +18,6 @@ import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
 import cn.iocoder.yudao.module.system.service.member.MemberService;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -25,10 +25,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_MOBILE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_MOBILE_TEMPLATE_PARAM_MISS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_TEMPLATE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 短信发送 Service 发送的实现
@@ -40,13 +38,11 @@ public class SmsSendServiceImpl implements SmsSendService {
 
     @Resource
     private AdminUserService adminUserService;
-
     @Resource
     private MemberService memberService;
 
     @Resource
     private SmsTemplateService smsTemplateService;
-
     @Resource
     private SmsLogService smsLogService;
 
@@ -57,8 +53,7 @@ public class SmsSendServiceImpl implements SmsSendService {
     private SmsProducer smsProducer;
 
     @Override
-    public Long sendSingleSmsToAdmin(String mobile, Long userId, String templateCode,
-                                     Map<String, Object> templateParams) {
+    public Long sendSingleSmsToAdmin(String mobile, Long userId, String templateCode, Map<String, Object> templateParams) {
         // 如果 mobile 为空，则加载用户编号对应的手机号
         if (StrUtil.isEmpty(mobile)) {
             AdminUserDO user = adminUserService.getUser(userId);
@@ -71,8 +66,7 @@ public class SmsSendServiceImpl implements SmsSendService {
     }
 
     @Override
-    public Long sendSingleSmsToMember(String mobile, Long userId, String templateCode,
-                                      Map<String, Object> templateParams) {
+    public Long sendSingleSmsToMember(String mobile, Long userId, String templateCode, Map<String, Object> templateParams) {
         // 如果 mobile 为空，则加载用户编号对应的手机号
         if (StrUtil.isEmpty(mobile)) {
             mobile = memberService.getMemberUserMobile(userId);
@@ -118,16 +112,15 @@ public class SmsSendServiceImpl implements SmsSendService {
 
     /**
      * 将参数模板，处理成有序的 KeyValue 数组
-     * <p>
+     *
      * 原因是，部分短信平台并不是使用 key 作为参数，而是数组下标，例如说腾讯云 https://cloud.tencent.com/document/product/382/39023
      *
-     * @param template       短信模板
+     * @param template 短信模板
      * @param templateParams 原始参数
      * @return 处理后的参数
      */
     @VisibleForTesting
-    public List<KeyValue<String, Object>> buildTemplateParams(SmsTemplateDO template,
-                                                              Map<String, Object> templateParams) {
+    public List<KeyValue<String, Object>> buildTemplateParams(SmsTemplateDO template, Map<String, Object> templateParams) {
         return template.getParams().stream().map(key -> {
             Object value = templateParams.get(key);
             if (value == null) {
@@ -172,4 +165,5 @@ public class SmsSendServiceImpl implements SmsSendService {
         receiveResults.forEach(result -> smsLogService.updateSmsReceiveResult(result.getLogId(),
                 result.getSuccess(), result.getReceiveTime(), result.getErrorCode(), result.getErrorCode()));
     }
+
 }

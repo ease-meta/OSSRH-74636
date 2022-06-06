@@ -1,12 +1,13 @@
 package cn.iocoder.yudao.module.bpm.framework.flowable.core.behavior.script.impl;
 
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
 import cn.iocoder.yudao.module.bpm.framework.flowable.core.behavior.script.BpmTaskAssignScript;
 import cn.iocoder.yudao.module.bpm.service.task.BpmProcessInstanceService;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.util.number.NumberUtils;
+
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.service.impl.persistence.entity.TaskEntity;
 import org.springframework.context.annotation.Lazy;
@@ -15,7 +16,7 @@ import org.springframework.util.Assert;
 import javax.annotation.Resource;
 import java.util.Set;
 
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static java.util.Collections.emptySet;
 
 /**
@@ -28,10 +29,8 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
 
     @Resource
     private AdminUserApi adminUserApi;
-
     @Resource
     private DeptApi deptApi;
-
     @Resource
     @Lazy // 解决循环依赖
     private BpmProcessInstanceService bpmProcessInstanceService;
@@ -68,4 +67,5 @@ public abstract class BpmTaskAssignLeaderAbstractScript implements BpmTaskAssign
         }
         return deptApi.getDept(startUser.getDeptId());
     }
+
 }

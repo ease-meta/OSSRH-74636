@@ -3,12 +3,12 @@ package cn.iocoder.yudao.framework.mq.config;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.system.SystemUtil;
+import cn.iocoder.yudao.framework.common.enums.DocumentEnum;
 import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
 import cn.iocoder.yudao.framework.mq.core.interceptor.RedisMessageInterceptor;
 import cn.iocoder.yudao.framework.mq.core.pubsub.AbstractChannelMessageListener;
 import cn.iocoder.yudao.framework.mq.core.stream.AbstractStreamMessageListener;
 import cn.iocoder.yudao.framework.redis.config.YudaoRedisAutoConfiguration;
-import io.github.meta.ease.common.enums.DocumentEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
@@ -72,7 +72,7 @@ public class YudaoMQAutoConfiguration {
 
     /**
      * 创建 Redis Stream 集群消费的容器
-     * <p>
+     *
      * Redis Stream 的 xreadgroup 命令：https://www.geek-book.com/src/docs/redis/redis/redis.io/commands/xreadgroup.html
      */
     @Bean(initMethod = "start", destroyMethod = "stop")
@@ -90,8 +90,7 @@ public class YudaoMQAutoConfiguration {
         // 创建 container 对象
         StreamMessageListenerContainer<String, ObjectRecord<String, String>> container =
 //                StreamMessageListenerContainer.create(redisTemplate.getRequiredConnectionFactory(), containerOptions);
-                DefaultStreamMessageListenerContainerX.create(redisMQTemplate.getRedisTemplate().getRequiredConnectionFactory(),
-                        containerOptions);
+                DefaultStreamMessageListenerContainerX.create(redisMQTemplate.getRedisTemplate().getRequiredConnectionFactory(), containerOptions);
 
         // 第二步，注册监听器，消费对应的 Stream 主题
         String consumerName = buildConsumerName();
@@ -99,8 +98,7 @@ public class YudaoMQAutoConfiguration {
             // 创建 listener 对应的消费者分组
             try {
                 redisTemplate.opsForStream().createGroup(listener.getStreamKey(), listener.getGroup());
-            } catch (Exception ignore) {
-            }
+            } catch (Exception ignore) {}
             // 设置 listener 对应的 redisTemplate
             listener.setRedisMQTemplate(redisMQTemplate);
             // 创建 Consumer 对象
@@ -141,4 +139,5 @@ public class YudaoMQAutoConfiguration {
                     "请参考 {} 文档进行安装。", version, DocumentEnum.REDIS_INSTALL.getUrl()));
         }
     }
+
 }

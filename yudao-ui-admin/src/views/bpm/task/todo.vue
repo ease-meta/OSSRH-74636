@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="工作流" url="https://doc.iocoder.cn/bpm"/>
+    <doc-alert title="工作流" url="https://doc.iocoder.cn/bpm" />
 
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -19,10 +19,10 @@
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="任务编号" align="center" prop="id" width="320"/>
-      <el-table-column label="任务名称" align="center" prop="name"/>
-      <el-table-column label="所属流程" align="center" prop="processInstance.name"/>
-      <el-table-column label="流程发起人" align="center" prop="processInstance.startUserNickname"/>
+      <el-table-column label="任务编号" align="center" prop="id" width="320" />
+      <el-table-column label="任务名称" align="center" prop="name" />
+      <el-table-column label="所属流程" align="center" prop="processInstance.name" />
+      <el-table-column label="流程发起人" align="center" prop="processInstance.startUserNickname" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -37,8 +37,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleAudit(scope.row)"
-                     v-hasPermi="['bpm:task:update']">审批
-          </el-button>
+                     v-hasPermi="['bpm:task:update']">审批</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -51,10 +50,12 @@
 
 <script>
 import {getTodoTaskPage} from '@/api/bpm/task'
+import {listSimpleUsers} from "@/api/system/user";
 
 export default {
   name: "Todo",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -103,7 +104,7 @@ export default {
     },
     /** 处理审批按钮 */
     handleAudit(row) {
-      this.$router.push({path: "/bpm/process-instance/detail", query: {id: row.processInstance.id}});
+      this.$router.push({ path: "/bpm/process-instance/detail", query: { id: row.processInstance.id}});
     },
   }
 };

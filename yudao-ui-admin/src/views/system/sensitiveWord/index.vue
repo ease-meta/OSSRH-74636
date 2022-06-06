@@ -30,18 +30,16 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['system:sensitive-word:create']">新增
-        </el-button>
+                   v-hasPermi="['system:sensitive-word:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading" v-hasPermi="['system:sensitive-word:export']">导出
-        </el-button>
+                   :loading="exportLoading" v-hasPermi="['system:sensitive-word:export']">导出</el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button type="success" plain icon="el-icon-document-checked" size="mini" @click="handleTest">测试</el-button>
       </el-col>
-      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"/>
+      <right-toolbar :showSearch.sync="showSearch" @queryTable="getList" />
     </el-row>
 
     <!-- 列表 -->
@@ -90,15 +88,14 @@
         <el-form-item label="状态">
           <el-radio-group v-model="form.status">
             <el-radio v-for="dict in this.getDictDatas(DICT_TYPE.COMMON_STATUS)"
-                      :key="dict.value" :label="parseInt(dict.value)">{{ dict.label }}
-            </el-radio>
+                      :key="dict.value" :label="parseInt(dict.value)">{{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="description">
-          <el-input v-model="form.description" type="textarea" placeholder="请输入内容"/>
+          <el-input v-model="form.description" type="textarea" placeholder="请输入内容" />
         </el-form-item>
         <el-form-item label="标签" prop="tags">
-          <el-select v-model="form.tags" multiple filterable allow-create placeholder="请选择文章标签" style="width: 380px">
+          <el-select v-model="form.tags" multiple filterable allow-create placeholder="请选择文章标签" style="width: 380px" >
             <el-option v-for="tag in tags" :key="tag" :label="tag" :value="tag"/>
           </el-select>
         </el-form-item>
@@ -116,7 +113,7 @@
           <el-input type="textarea" v-model="testForm.text" placeholder="请输入测试文本"/>
         </el-form-item>
         <el-form-item label="标签" prop="tags">
-          <el-select v-model="testForm.tags" multiple placeholder="请选择标签" style="width: 380px">
+          <el-select v-model="testForm.tags" multiple placeholder="请选择标签" style="width: 380px" >
             <el-option v-for="tag in tags" :key="tag" :label="tag" :value="tag"/>
           </el-select>
         </el-form-item>
@@ -130,16 +127,8 @@
 </template>
 
 <script>
-import {
-  createSensitiveWord,
-  deleteSensitiveWord,
-  exportSensitiveWordExcel,
-  getSensitiveWord,
-  getSensitiveWordPage,
-  getSensitiveWordTags,
-  updateSensitiveWord,
-  validateText
-} from "@/api/system/sensitiveWord";
+import { createSensitiveWord, updateSensitiveWord, deleteSensitiveWord, getSensitiveWord, getSensitiveWordPage,
+  exportSensitiveWordExcel, validateText, getSensitiveWordTags} from "@/api/system/sensitiveWord";
 import {CommonStatusEnum} from "@/utils/constants";
 
 export default {
@@ -190,7 +179,7 @@ export default {
   },
   methods: {
     /** 初始化标签select*/
-    getTags() {
+    getTags(){
       getSensitiveWordTags().then(response => {
         this.tags = response.data;
       });
@@ -281,8 +270,7 @@ export default {
             this.$modal.msgSuccess("修改成功");
             this.open = false;
             this.getList();
-          }).catch(err => {
-          });
+          }).catch(err => {});
           return;
         }
         // 添加的提交
@@ -290,8 +278,7 @@ export default {
           this.$modal.msgSuccess("新增成功");
           this.open = false;
           this.getList();
-        }).catch(err => {
-        });
+        }).catch(err => {});
       });
     },
     /** 测试文本2提交按钮 */
@@ -342,7 +329,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss">
-.el-tag + .el-tag {
-  margin-left: 10px;
-}
+  .el-tag+.el-tag {
+    margin-left: 10px;
+  }
 </style>

@@ -58,7 +58,7 @@ export function updateJobStatus(jobId, status) {
   return request({
     url: '/infra/job/update-status',
     method: 'put',
-    headers: {
+    headers:{
       'Content-type': 'application/x-www-form-urlencoded'
     },
     data: 'id=' + jobId + "&status=" + status,

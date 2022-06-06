@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-import static io.github.meta.ease.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
 
 @ApiModel(value = "管理后台 - API 错误日志 Excel 导出 Request VO", description = "参数和 ApiErrorLogPageReqVO 是一致的")
 @Data
@@ -35,4 +35,5 @@ public class ApiErrorLogExportReqVO {
 
     @ApiModelProperty(value = "处理状态", example = "0")
     private Integer processStatus;
+
 }

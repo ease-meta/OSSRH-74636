@@ -15,4 +15,5 @@ public class DeptUpdateReqVO extends DeptBaseVO {
     @ApiModelProperty(value = "部门编号", required = true, example = "1024")
     @NotNull(message = "部门编号不能为空")
     private Long id;
+
 }

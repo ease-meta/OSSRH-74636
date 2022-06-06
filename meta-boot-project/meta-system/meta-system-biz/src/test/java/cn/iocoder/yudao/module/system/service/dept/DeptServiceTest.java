@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
-
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptListReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.dept.DeptUpdateReqVO;
@@ -9,10 +8,10 @@ import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dept.DeptMapper;
 import cn.iocoder.yudao.module.system.enums.dept.DeptIdEnum;
 import cn.iocoder.yudao.module.system.mq.producer.dept.DeptProducer;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import com.google.common.collect.Multimap;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -25,26 +24,16 @@ import java.util.function.Consumer;
 
 import static cn.hutool.core.bean.BeanUtil.getFieldValue;
 import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomCommonStatus;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_EXITS_CHILDREN;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_NOT_FOUND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_IS_CHILD;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.DEPT_PARENT_NOT_EXITS;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.dept.DeptServiceImpl} 的单元测试类
+ * {@link DeptServiceImpl} 的单元测试类
  *
  * @author niudehua
  */
@@ -53,10 +42,8 @@ public class DeptServiceTest extends BaseDbUnitTest {
 
     @Resource
     private DeptServiceImpl deptService;
-
     @Resource
     private DeptMapper deptMapper;
-
     @MockBean
     private DeptProducer deptProducer;
 
@@ -113,10 +100,10 @@ public class DeptServiceTest extends BaseDbUnitTest {
     void testCreateDept_success() {
         // 准备参数
         DeptCreateReqVO reqVO = randomPojo(DeptCreateReqVO.class,
-                o -> {
-                    o.setParentId(DeptIdEnum.ROOT.getId());
-                    o.setStatus(randomCommonStatus());
-                });
+            o -> {
+                o.setParentId(DeptIdEnum.ROOT.getId());
+                o.setStatus(randomCommonStatus());
+            });
         // 调用
         Long deptId = deptService.createDept(reqVO);
         // 断言
@@ -174,14 +161,14 @@ public class DeptServiceTest extends BaseDbUnitTest {
         deptMapper.insert(nameDeptDO);
         // 准备参数
         DeptUpdateReqVO reqVO = randomPojo(DeptUpdateReqVO.class,
-                o -> {
-                    // 设置根节点部门
-                    o.setParentId(DeptIdEnum.ROOT.getId());
-                    // 设置更新的 ID
-                    o.setId(deptDO.getId());
-                    // 模拟 name 重复
-                    o.setName(nameDeptDO.getName());
-                });
+            o -> {
+                // 设置根节点部门
+                o.setParentId(DeptIdEnum.ROOT.getId());
+                // 设置更新的 ID
+                o.setId(deptDO.getId());
+                // 模拟 name 重复
+                o.setName(nameDeptDO.getName());
+            });
         // 调用, 并断言异常
         assertServiceException(() -> deptService.updateDept(reqVO), DEPT_NAME_DUPLICATE);
     }
@@ -189,7 +176,7 @@ public class DeptServiceTest extends BaseDbUnitTest {
     @Test
     void testCheckDept_parentNotExitsForCreate() {
         DeptCreateReqVO reqVO = randomPojo(DeptCreateReqVO.class,
-                o -> o.setStatus(randomCommonStatus()));
+            o -> o.setStatus(randomCommonStatus()));
         // 调用,并断言异常
         assertServiceException(() -> deptService.createDept(reqVO), DEPT_PARENT_NOT_EXITS);
     }
@@ -225,12 +212,12 @@ public class DeptServiceTest extends BaseDbUnitTest {
         deptMapper.insert(dbDeptDO);
         // 准备参数
         DeptUpdateReqVO reqVO = randomPojo(DeptUpdateReqVO.class,
-                o -> {
-                    // 设置自己为父部门
-                    o.setParentId(dbDeptDO.getId());
-                    // 设置更新的 ID
-                    o.setId(dbDeptDO.getId());
-                });
+            o -> {
+                // 设置自己为父部门
+                o.setParentId(dbDeptDO.getId());
+                // 设置更新的 ID
+                o.setId(dbDeptDO.getId());
+            });
         // 调用, 并断言异常
         assertServiceException(() -> deptService.updateDept(reqVO), DEPT_PARENT_ERROR);
     }
@@ -242,10 +229,10 @@ public class DeptServiceTest extends BaseDbUnitTest {
         deptMapper.insert(deptDO);
         // 准备参数
         DeptCreateReqVO reqVO = randomPojo(DeptCreateReqVO.class,
-                o -> {
-                    // 设置未启用的部门为副部门
-                    o.setParentId(deptDO.getId());
-                });
+            o -> {
+                // 设置未启用的部门为副部门
+                o.setParentId(deptDO.getId());
+            });
         // 调用, 并断言异常
         assertServiceException(() -> deptService.createDept(reqVO), DEPT_NOT_ENABLE);
     }
@@ -264,12 +251,12 @@ public class DeptServiceTest extends BaseDbUnitTest {
         deptService.initLocalCache();
         // 准备参数
         DeptUpdateReqVO reqVO = randomPojo(DeptUpdateReqVO.class,
-                o -> {
-                    // 设置自己的子部门为父部门
-                    o.setParentId(childDept.getId());
-                    // 设置更新的 ID
-                    o.setId(parentDept.getId());
-                });
+            o -> {
+                // 设置自己的子部门为父部门
+                o.setParentId(childDept.getId());
+                // 设置更新的 ID
+                o.setId(parentDept.getId());
+            });
         // 调用, 并断言异常
         assertServiceException(() -> deptService.updateDept(reqVO), DEPT_PARENT_IS_CHILD);
     }
@@ -281,4 +268,5 @@ public class DeptServiceTest extends BaseDbUnitTest {
         };
         return randomPojo(DeptDO.class, ArrayUtils.append(consumer, consumers));
     }
+
 }

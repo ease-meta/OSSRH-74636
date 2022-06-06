@@ -1,22 +1,8 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package cn.iocoder.yudao.module.bpm.service.definition;
 
-
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.AssertUtils;
 import cn.iocoder.yudao.framework.test.core.util.RandomUtils;
@@ -25,24 +11,20 @@ import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserG
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmUserGroupMapper;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.USER_GROUP_NOT_EXISTS;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
-
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.USER_GROUP_NOT_EXISTS;
 
 /**
- * {@link cn.iocoder.yudao.module.bpm.service.definition.BpmUserGroupServiceImpl} 的单元测试类
- *
- * @author 芋道源码
- */
+* {@link BpmUserGroupServiceImpl} 的单元测试类
+*
+* @author 芋道源码
+*/
 @Import(BpmUserGroupServiceImpl.class)
 public class BpmUserGroupServiceTest extends BaseDbUnitTest {
 
@@ -102,8 +84,8 @@ public class BpmUserGroupServiceTest extends BaseDbUnitTest {
 
         // 调用
         userGroupService.deleteUserGroup(id);
-        // 校验数据不存在了
-        Assertions.assertNull(userGroupMapper.selectById(id));
+       // 校验数据不存在了
+       Assertions.assertNull(userGroupMapper.selectById(id));
     }
 
     @Test
@@ -117,31 +99,32 @@ public class BpmUserGroupServiceTest extends BaseDbUnitTest {
 
     @Test
     public void testGetUserGroupPage() {
-        // mock 数据
-        BpmUserGroupDO dbUserGroup = RandomUtils.randomPojo(BpmUserGroupDO.class, o -> { // 等会查询到
-            o.setName("芋道源码");
-            o.setStatus(CommonStatusEnum.ENABLE.getStatus());
-            o.setCreateTime(DateUtils.buildTime(2021, 11, 11));
-        });
-        userGroupMapper.insert(dbUserGroup);
-        // 测试 name 不匹配
-        userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setName("芋道")));
-        // 测试 status 不匹配
-        userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
-        // 测试 createTime 不匹配
-        userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setCreateTime(DateUtils.buildTime(2021, 12, 12))));
-        // 准备参数
-        BpmUserGroupPageReqVO reqVO = new BpmUserGroupPageReqVO();
-        reqVO.setName("源码");
-        reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
-        reqVO.setBeginCreateTime(DateUtils.buildTime(2021, 11, 10));
-        reqVO.setEndCreateTime(DateUtils.buildTime(2021, 11, 12));
+       // mock 数据
+       BpmUserGroupDO dbUserGroup = RandomUtils.randomPojo(BpmUserGroupDO.class, o -> { // 等会查询到
+           o.setName("芋道源码");
+           o.setStatus(CommonStatusEnum.ENABLE.getStatus());
+           o.setCreateTime(DateUtils.buildTime(2021, 11, 11));
+       });
+       userGroupMapper.insert(dbUserGroup);
+       // 测试 name 不匹配
+       userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setName("芋道")));
+       // 测试 status 不匹配
+       userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+       // 测试 createTime 不匹配
+       userGroupMapper.insert(cloneIgnoreId(dbUserGroup, o -> o.setCreateTime(DateUtils.buildTime(2021, 12, 12))));
+       // 准备参数
+       BpmUserGroupPageReqVO reqVO = new BpmUserGroupPageReqVO();
+       reqVO.setName("源码");
+       reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
+       reqVO.setBeginCreateTime(DateUtils.buildTime(2021, 11, 10));
+       reqVO.setEndCreateTime(DateUtils.buildTime(2021, 11, 12));
 
-        // 调用
-        PageResult<BpmUserGroupDO> pageResult = userGroupService.getUserGroupPage(reqVO);
-        // 断言
-        Assertions.assertEquals(1, pageResult.getTotal());
-        Assertions.assertEquals(1, pageResult.getList().size());
-        AssertUtils.assertPojoEquals(dbUserGroup, pageResult.getList().get(0));
+       // 调用
+       PageResult<BpmUserGroupDO> pageResult = userGroupService.getUserGroupPage(reqVO);
+       // 断言
+       Assertions.assertEquals(1, pageResult.getTotal());
+       Assertions.assertEquals(1, pageResult.getList().size());
+       AssertUtils.assertPojoEquals(dbUserGroup, pageResult.getList().get(0));
     }
+
 }

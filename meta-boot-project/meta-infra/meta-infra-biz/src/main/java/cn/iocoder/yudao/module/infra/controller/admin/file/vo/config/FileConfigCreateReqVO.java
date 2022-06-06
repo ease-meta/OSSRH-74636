@@ -22,4 +22,5 @@ public class FileConfigCreateReqVO extends FileConfigBaseVO {
     @ApiModelProperty(value = "存储配置", required = true, notes = "配置是动态参数，所以使用 Map 接收")
     @NotNull(message = "存储配置不能为空")
     private Map<String, Object> config;
+
 }

@@ -1,6 +1,7 @@
 package cn.iocoder.yudao.module.infra.service.file;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.file.core.client.FileClient;
 import cn.iocoder.yudao.framework.file.core.client.FileClientConfig;
 import cn.iocoder.yudao.framework.file.core.client.FileClientFactory;
@@ -13,7 +14,6 @@ import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigU
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.file.FileConfigMapper;
 import cn.iocoder.yudao.module.infra.mq.producer.file.FileConfigProducer;
-import io.github.meta.ease.common.pojo.PageResult;
 import lombok.Data;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -25,32 +25,24 @@ import java.io.Serializable;
 import java.util.Map;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_CONFIG_DELETE_FAIL_MASTER;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_CONFIG_NOT_EXISTS;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
-import static io.github.meta.ease.common.util.date.DateUtils.max;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
- * {@link FileConfigServiceImpl} 的单元测试类
- *
- * @author 芋道源码
- */
+* {@link FileConfigServiceImpl} 的单元测试类
+*
+* @author 芋道源码
+*/
 @Import(FileConfigServiceImpl.class)
 public class FileConfigServiceImplTest extends BaseDbUnitTest {
 
@@ -62,10 +54,8 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
 
     @MockBean
     private FileConfigProducer fileConfigProducer;
-
     @MockBean
     private Validator validator;
-
     @MockBean
     private FileClientFactory fileClientFactory;
 
@@ -182,8 +172,8 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
 
         // 调用
         fileConfigService.deleteFileConfig(id);
-        // 校验数据不存在了
-        assertNull(fileConfigMapper.selectById(id));
+       // 校验数据不存在了
+       assertNull(fileConfigMapper.selectById(id));
         // verify 调用
         verify(fileConfigProducer).sendFileConfigRefreshMessage();
     }
@@ -211,30 +201,30 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
 
     @Test
     public void testGetFileConfigPage() {
-        // mock 数据
-        FileConfigDO dbFileConfig = randomFileConfigDO().setName("芋道源码")
-                .setStorage(FileStorageEnum.LOCAL.getStorage());
-        dbFileConfig.setCreateTime(buildTime(2022, 11, 11));// 等会查询到
-        fileConfigMapper.insert(dbFileConfig);
-        // 测试 name 不匹配
-        fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setName("源码")));
-        // 测试 storage 不匹配
-        fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setStorage(FileStorageEnum.DB.getStorage())));
-        // 测试 createTime 不匹配
-        fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setCreateTime(buildTime(2022, 12, 12))));
-        // 准备参数
-        FileConfigPageReqVO reqVO = new FileConfigPageReqVO();
-        reqVO.setName("芋道");
-        reqVO.setStorage(FileStorageEnum.LOCAL.getStorage());
-        reqVO.setBeginCreateTime(buildTime(2022, 11, 10));
-        reqVO.setEndCreateTime(buildTime(2022, 11, 12));
+       // mock 数据
+       FileConfigDO dbFileConfig = randomFileConfigDO().setName("芋道源码")
+               .setStorage(FileStorageEnum.LOCAL.getStorage());
+       dbFileConfig.setCreateTime(buildTime(2022, 11, 11));// 等会查询到
+       fileConfigMapper.insert(dbFileConfig);
+       // 测试 name 不匹配
+       fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setName("源码")));
+       // 测试 storage 不匹配
+       fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setStorage(FileStorageEnum.DB.getStorage())));
+       // 测试 createTime 不匹配
+       fileConfigMapper.insert(cloneIgnoreId(dbFileConfig, o -> o.setCreateTime(buildTime(2022, 12, 12))));
+       // 准备参数
+       FileConfigPageReqVO reqVO = new FileConfigPageReqVO();
+       reqVO.setName("芋道");
+       reqVO.setStorage(FileStorageEnum.LOCAL.getStorage());
+       reqVO.setBeginCreateTime(buildTime(2022, 11, 10));
+       reqVO.setEndCreateTime(buildTime(2022, 11, 12));
 
-        // 调用
-        PageResult<FileConfigDO> pageResult = fileConfigService.getFileConfigPage(reqVO);
-        // 断言
-        assertEquals(1, pageResult.getTotal());
-        assertEquals(1, pageResult.getList().size());
-        assertPojoEquals(dbFileConfig, pageResult.getList().get(0));
+       // 调用
+       PageResult<FileConfigDO> pageResult = fileConfigService.getFileConfigPage(reqVO);
+       // 断言
+       assertEquals(1, pageResult.getTotal());
+       assertEquals(1, pageResult.getList().size());
+       assertPojoEquals(dbFileConfig, pageResult.getList().get(0));
     }
 
     @Test
@@ -262,4 +252,5 @@ public class FileConfigServiceImplTest extends BaseDbUnitTest {
     public static class EmptyFileClientConfig implements FileClientConfig, Serializable {
 
     }
+
 }

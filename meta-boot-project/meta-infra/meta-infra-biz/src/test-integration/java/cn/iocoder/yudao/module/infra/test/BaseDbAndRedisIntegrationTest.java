@@ -3,10 +3,8 @@ package cn.iocoder.yudao.module.infra.test;
 import cn.iocoder.yudao.framework.datasource.config.YudaoDataSourceAutoConfiguration;
 import cn.iocoder.yudao.framework.mybatis.config.YudaoMybatisAutoConfiguration;
 import cn.iocoder.yudao.framework.redis.config.YudaoRedisAutoConfiguration;
-
 import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
-
 import org.redisson.spring.starter.RedissonAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -36,4 +34,5 @@ public class BaseDbAndRedisIntegrationTest {
     })
     public static class Application {
     }
+
 }

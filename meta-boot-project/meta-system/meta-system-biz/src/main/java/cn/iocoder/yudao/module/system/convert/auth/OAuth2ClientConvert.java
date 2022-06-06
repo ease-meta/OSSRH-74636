@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.convert.auth;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -29,4 +29,5 @@ public interface OAuth2ClientConvert {
     List<OAuth2ClientRespVO> convertList(List<OAuth2ClientDO> list);
 
     PageResult<OAuth2ClientRespVO> convertPage(PageResult<OAuth2ClientDO> page);
+
 }

@@ -5,9 +5,19 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.extra.template.TemplateConfig;
 import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.engine.velocity.VelocityEngine;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageParam;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.excel.core.annotations.DictFormat;
 import cn.iocoder.yudao.framework.excel.core.convert.DictConvert;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
 import cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum;
 import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenColumnDO;
@@ -15,16 +25,6 @@ import cn.iocoder.yudao.module.infra.dal.dataobject.codegen.CodegenTableDO;
 import cn.iocoder.yudao.module.infra.enums.codegen.CodegenSceneEnum;
 import cn.iocoder.yudao.module.infra.framework.codegen.config.CodegenProperties;
 import com.google.common.collect.Maps;
-import io.github.meta.ease.common.exception.util.ServiceExceptionUtil;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageParam;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.date.DateUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -35,16 +35,12 @@ import java.util.List;
 import java.util.Map;
 
 import static cn.hutool.core.map.MapUtil.getStr;
-import static cn.hutool.core.text.CharSequenceUtil.lowerFirst;
-import static cn.hutool.core.text.CharSequenceUtil.removePrefix;
-import static cn.hutool.core.text.CharSequenceUtil.toSymbolCase;
-import static cn.hutool.core.text.CharSequenceUtil.toUnderlineCase;
-import static cn.hutool.core.text.CharSequenceUtil.upperFirst;
+import static cn.hutool.core.text.CharSequenceUtil.*;
 
 /**
  * 代码生成的引擎，用于具体生成代码
  * 目前基于 {@link org.apache.velocity.app.Velocity} 模板引擎实现
- * <p>
+ *
  * 考虑到 Java 模板引擎的框架非常多，Freemarker、Velocity、Thymeleaf 等等，所以我们采用 hutool 封装的 {@link cn.hutool.extra.template.Template} 抽象
  *
  * @author 芋道源码
@@ -100,7 +96,6 @@ public class CodegenEngine {
      * 模板引擎，由 hutool 实现
      */
     private final TemplateEngine templateEngine;
-
     /**
      * 全局通用变量映射
      */
@@ -233,4 +228,5 @@ public class CodegenEngine {
         return "yudao-ui-${sceneEnum.basePackage}/" + // 顶级目录
                 "src/" + path;
     }
+
 }

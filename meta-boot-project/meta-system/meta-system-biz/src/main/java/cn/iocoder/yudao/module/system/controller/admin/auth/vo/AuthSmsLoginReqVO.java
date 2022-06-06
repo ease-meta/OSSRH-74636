@@ -25,6 +25,7 @@ public class AuthSmsLoginReqVO {
     private String mobile;
 
 
+
     @ApiModelProperty(value = "短信验证码", required = true, example = "1024", notes = "验证码开启时，需要传递")
     @NotEmpty(message = "验证码不能为空", groups = CodeEnableGroup.class)
     private String code;
@@ -32,6 +33,6 @@ public class AuthSmsLoginReqVO {
     /**
      * 开启验证码的 Group
      */
-    public interface CodeEnableGroup {
-    }
+    public interface CodeEnableGroup {}
+
 }

@@ -21,4 +21,5 @@ public class DictDataApiImpl implements DictDataApi {
     public void validDictDatas(String dictType, Collection<String> values) {
         dictDataService.validDictDatas(dictType, values);
     }
+
 }

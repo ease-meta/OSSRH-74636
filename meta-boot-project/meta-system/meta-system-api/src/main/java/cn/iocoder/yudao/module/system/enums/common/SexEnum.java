@@ -12,13 +12,9 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum SexEnum {
 
-    /**
-     * 男
-     */
+    /** 男 */
     MALE(1),
-    /**
-     * 女
-     */
+    /** 女 */
     FEMALE(2),
     /* 未知 */
     UNKNOWN(3);
@@ -27,4 +23,5 @@ public enum SexEnum {
      * 性别
      */
     private final Integer sex;
+
 }

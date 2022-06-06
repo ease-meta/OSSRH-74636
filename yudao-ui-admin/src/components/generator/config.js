@@ -38,7 +38,7 @@ export const inputComponents = [
     },
     // 其余的为可直接写在组件标签上的属性
     placeholder: '请输入',
-    style: {width: '100%'},
+    style: { width: '100%' },
     clearable: true,
     'prefix-icon': '',
     'suffix-icon': '',
@@ -68,7 +68,7 @@ export const inputComponents = [
       minRows: 4,
       maxRows: 4
     },
-    style: {width: '100%'},
+    style: { width: '100%' },
     maxlength: null,
     'show-word-limit': false,
     readonly: false,
@@ -95,7 +95,7 @@ export const inputComponents = [
     },
     placeholder: '请输入',
     'show-password': true,
-    style: {width: '100%'},
+    style: { width: '100%' },
     clearable: true,
     'prefix-icon': '',
     'suffix-icon': '',
@@ -175,7 +175,7 @@ export const selectComponents = [
       }]
     },
     placeholder: '请选择',
-    style: {width: '100%'},
+    style: { width: '100%' },
     clearable: true,
     disabled: false,
     filterable: false,
@@ -212,7 +212,7 @@ export const selectComponents = [
       }]
     }],
     placeholder: '请选择',
-    style: {width: '100%'},
+    style: { width: '100%' },
     props: {
       props: {
         multiple: false,
@@ -351,7 +351,7 @@ export const selectComponents = [
       document: 'https://element.eleme.cn/#/zh-CN/component/time-picker'
     },
     placeholder: '请选择',
-    style: {width: '100%'},
+    style: { width: '100%' },
     disabled: false,
     clearable: true,
     'picker-options': {
@@ -375,7 +375,7 @@ export const selectComponents = [
       changeTag: true,
       document: 'https://element.eleme.cn/#/zh-CN/component/time-picker'
     },
-    style: {width: '100%'},
+    style: { width: '100%' },
     disabled: false,
     clearable: true,
     'is-range': true,
@@ -402,7 +402,7 @@ export const selectComponents = [
     },
     placeholder: '请选择',
     type: 'date',
-    style: {width: '100%'},
+    style: { width: '100%' },
     disabled: false,
     clearable: true,
     format: 'yyyy-MM-dd',
@@ -424,7 +424,7 @@ export const selectComponents = [
       changeTag: true,
       document: 'https://element.eleme.cn/#/zh-CN/component/date-picker'
     },
-    style: {width: '100%'},
+    style: { width: '100%' },
     type: 'daterange',
     'range-separator': '至',
     'start-placeholder': '开始日期',

@@ -6,15 +6,14 @@
 </template>
 
 <script>
-import {assign} from "min-dash";
+import { assign } from "min-dash";
 
 export default {
   name: "MyProcessPalette",
   data() {
     return {};
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     addTask(event, options = {}) {
       const ElementFactory = window.bpmnInstances.elementFactory;
@@ -22,7 +21,7 @@ export default {
 
       console.log(ElementFactory, create);
 
-      const shape = ElementFactory.createShape(assign({type: "bpmn:UserTask"}, options));
+      const shape = ElementFactory.createShape(assign({ type: "bpmn:UserTask" }, options));
 
       if (options) {
         shape.businessObject.di.isExpanded = options.isExpanded;

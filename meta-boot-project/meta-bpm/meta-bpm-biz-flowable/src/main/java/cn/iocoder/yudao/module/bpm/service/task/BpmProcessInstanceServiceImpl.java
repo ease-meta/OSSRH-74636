@@ -3,11 +3,10 @@ package cn.iocoder.yudao.module.bpm.service.task;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceCancelReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceCreateReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceMyPageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstancePageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.BpmProcessInstanceRespVO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
+import cn.iocoder.yudao.module.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
+import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance.*;
 import cn.iocoder.yudao.module.bpm.convert.task.BpmProcessInstanceConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmProcessDefinitionExtDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmProcessInstanceExtDO;
@@ -22,9 +21,6 @@ import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.bpm.api.task.dto.BpmProcessInstanceCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.number.NumberUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.engine.HistoryService;
 import org.flowable.engine.RuntimeService;
@@ -40,27 +36,21 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_IS_SUSPENDED;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_INSTANCE_CANCEL_FAIL_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_INSTANCE_CANCEL_FAIL_NOT_SELF;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertList;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertList;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.PROCESS_INSTANCE_CANCEL_FAIL_NOT_SELF;
 
 /**
  * 流程实例 Service 实现类
- * <p>
+ *
  * ProcessDefinition & ProcessInstance & Execution & Task 的关系：
- * 1. https://blog.csdn.net/bobozai86/article/details/105210414
- * <p>
+ *     1. https://blog.csdn.net/bobozai86/article/details/105210414
+ *
  * HistoricProcessInstance & ProcessInstance 的关系：
- * 1.https://my.oschina.net/843294669/blog/719024
+ *     1.https://my.oschina.net/843294669/blog/719024
  * 简单来说，前者 = 历史 + 运行中的流程实例，后者仅是运行中的流程实例
  *
  * @author 芋道源码
@@ -72,32 +62,23 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
 
     @Resource
     private RuntimeService runtimeService;
-
     @Resource
     private BpmProcessInstanceExtMapper processInstanceExtMapper;
-
     @Resource
     @Lazy // 解决循环依赖
     private BpmTaskService taskService;
-
     @Resource
     private BpmProcessDefinitionService processDefinitionService;
-
     @Resource
     private HistoryService historyService;
-
     @Resource
     private AdminUserApi adminUserApi;
-
     @Resource
     private DeptApi deptApi;
-
     @Resource
     private BpmProcessInstanceResultEventPublisher processInstanceResultEventPublisher;
-
     @Resource
     private BpmMessageService messageService;
-
     @Override
     public ProcessInstance getProcessInstance(String id) {
         return runtimeService.createProcessInstanceQuery().processInstanceId(id).singleResult();
@@ -136,8 +117,7 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
     @Override
     public String createProcessInstance(Long userId, @Valid BpmProcessInstanceCreateReqDTO createReqDTO) {
         // 获得流程定义
-        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(
-                createReqDTO.getProcessDefinitionKey());
+        ProcessDefinition definition = processDefinitionService.getActiveProcessDefinition(createReqDTO.getProcessDefinitionKey());
         // 发起流程
         return createProcessInstance0(userId, definition, createReqDTO.getVariables(), createReqDTO.getBusinessKey());
     }
@@ -154,7 +134,7 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
 
         // 获得流程定义
         ProcessDefinition processDefinition = processDefinitionService
-                .getProcessDefinition(processInstance.getProcessDefinitionId());
+                                                    .getProcessDefinition(processInstance.getProcessDefinitionId());
         Assert.notNull(processDefinition, "流程定义({}) 不存在", processInstance.getProcessDefinitionId());
         BpmProcessDefinitionExtDO processDefinitionExt = processDefinitionService.getProcessDefinitionExt(
                 processInstance.getProcessDefinitionId());
@@ -227,7 +207,7 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
     @Override
     public void updateProcessInstanceExtCancel(FlowableCancelledEvent event) {
         // 判断是否为 Reject 不通过。如果是，则不进行更新
-        if (BpmProcessInstanceDeleteReasonEnum.isRejectReason((String) event.getCause())) {
+        if (BpmProcessInstanceDeleteReasonEnum.isRejectReason((String)event.getCause())) {
             return;
         }
 
@@ -262,8 +242,7 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         processInstanceExtMapper.updateByProcessInstanceId(instanceExtDO);
 
         // 发送流程被通过的消息
-        messageService.sendMessageWhenProcessInstanceApprove(
-                BpmProcessInstanceConvert.INSTANCE.convert2ApprovedReq(instance));
+        messageService.sendMessageWhenProcessInstanceApprove(BpmProcessInstanceConvert.INSTANCE.convert2ApprovedReq(instance));
 
         // 发送流程实例的状态事件
         processInstanceResultEventPublisher.sendProcessInstanceResultEvent(
@@ -286,8 +265,7 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         processInstanceExtMapper.updateByProcessInstanceId(instanceExtDO);
 
         // 发送流程被不通过的消息
-        messageService.sendMessageWhenProcessInstanceReject(
-                BpmProcessInstanceConvert.INSTANCE.convert2RejectReq(processInstance, reason));
+        messageService.sendMessageWhenProcessInstanceReject(BpmProcessInstanceConvert.INSTANCE.convert2RejectReq(processInstance, reason));
 
         // 发送流程实例的状态事件
         processInstanceResultEventPublisher.sendProcessInstanceResultEvent(
@@ -314,9 +292,8 @@ public class BpmProcessInstanceServiceImpl implements BpmProcessInstanceService 
         runtimeService.setProcessInstanceName(instance.getId(), definition.getName());
 
         // 补全流程实例的拓展表
-        processInstanceExtMapper.updateByProcessInstanceId(
-                new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
-                        .setFormVariables(variables));
+        processInstanceExtMapper.updateByProcessInstanceId(new BpmProcessInstanceExtDO().setProcessInstanceId(instance.getId())
+                .setFormVariables(variables));
 
         return instance.getId();
     }

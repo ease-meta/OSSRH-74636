@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.module.bpm.controller.admin.task;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.activity.BpmActivityRespVO;
 import cn.iocoder.yudao.module.bpm.service.task.BpmActivityService;
-import io.github.meta.ease.common.pojo.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 流程活动实例")
 @RestController

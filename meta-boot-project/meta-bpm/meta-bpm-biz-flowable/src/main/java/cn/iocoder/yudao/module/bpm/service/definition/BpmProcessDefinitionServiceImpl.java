@@ -3,6 +3,8 @@ package cn.iocoder.yudao.module.bpm.service.definition;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.PageUtils;
 import cn.iocoder.yudao.framework.flowable.core.util.FlowableUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionListReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionPageItemRespVO;
@@ -13,8 +15,6 @@ import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmProcessDefinitionExtDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmProcessDefinitionExtMapper;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmProcessDefinitionCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.converter.BpmnXMLConverter;
 import org.flowable.bpmn.model.BpmnModel;
@@ -29,26 +29,18 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_KEY_NOT_MATCH;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NAME_NOT_MATCH;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.addIfNotNull;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertList;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.*;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_KEY_NOT_MATCH;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NAME_NOT_MATCH;
 import static java.util.Collections.emptyList;
 
 /**
  * 流程定义实现
- * 主要进行 Flowable {@link org.flowable.engine.repository.ProcessDefinition} 和 {@link org.flowable.engine.repository.Deployment} 的维护
+ * 主要进行 Flowable {@link ProcessDefinition} 和 {@link Deployment} 的维护
  *
  * @author yunlongn
  * @author ZJQ
@@ -68,7 +60,7 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
     private BpmProcessDefinitionExtMapper processDefinitionMapper;
 
     @Resource
-    private BpmFormService bpmFormService;
+    private BpmFormService formService;
 
     @Override
     public ProcessDefinition getProcessDefinition(String id) {
@@ -135,8 +127,7 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
                 .deploy();
 
         // 设置 ProcessDefinition 的 category 分类
-        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().deploymentId(deploy.getId())
-                .singleResult();
+        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().deploymentId(deploy.getId()).singleResult();
         repositoryService.setProcessDefinitionCategory(definition.getId(), createReqDTO.getCategory());
         // 注意 1，ProcessDefinition 的 key 和 name 是通过 BPMN 中的 <bpmn2:process /> 的 id 和 name 决定
         // 注意 2，目前该项目的设计上，需要保证 Model、Deployment、ProcessDefinition 使用相同的 key，保证关联性。
@@ -221,11 +212,12 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
      * @param bpmnBytes 原始的 BPMN XML 字节数组
      * @return BPMN Model
      */
-    private BpmnModel buildBpmnModel(byte[] bpmnBytes) {
+    private  BpmnModel buildBpmnModel(byte[] bpmnBytes) {
         // 转换成 BpmnModel 对象
         BpmnXMLConverter converter = new BpmnXMLConverter();
         return converter.convertToBpmnModel(new BytesStreamSource(bpmnBytes), true, true);
     }
+
 
 
     @Override
@@ -284,11 +276,12 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
 
         // 获得 Form Map
         Set<Long> formIds = convertSet(processDefinitionDOs, BpmProcessDefinitionExtDO::getFormId);
-        Map<Long, BpmFormDO> formMap = bpmFormService.getFormMap(formIds);
+        Map<Long, BpmFormDO> formMap = formService.getFormMap(formIds);
 
         // 拼接结果
         long definitionCount = definitionQuery.count();
         return new PageResult<>(BpmProcessDefinitionConvert.INSTANCE.convertList(processDefinitions, deploymentMap,
                 processDefinitionDOMap, formMap), definitionCount);
     }
+
 }

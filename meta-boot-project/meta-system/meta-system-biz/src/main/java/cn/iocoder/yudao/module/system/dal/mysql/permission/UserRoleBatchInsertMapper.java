@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Repository;
 
 /**
- * 实体 {@link cn.iocoder.yudao.module.system.dal.dataobject.permission.UserRoleDO} 的批量插入 Mapper
+ * 实体 {@link UserRoleDO} 的批量插入 Mapper
  *
  * @author 芋道源码
  */

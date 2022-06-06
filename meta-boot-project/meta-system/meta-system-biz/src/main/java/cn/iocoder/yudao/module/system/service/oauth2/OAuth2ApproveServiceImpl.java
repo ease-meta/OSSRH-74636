@@ -2,24 +2,19 @@ package cn.iocoder.yudao.module.system.service.oauth2;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ApproveDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2ApproveMapper;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
 
 /**
  * OAuth2 批准 Service 实现类
@@ -43,8 +38,7 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
 
     @Override
     @Transactional
-    public boolean checkForPreApproval(Long userId, Integer userType, String clientId,
-                                       Collection<String> requestedScopes) {
+    public boolean checkForPreApproval(Long userId, Integer userType, String clientId, Collection<String> requestedScopes) {
         // 第一步，基于 Client 的自动授权计算，如果 scopes 都在自动授权中，则返回 true 通过
         OAuth2ClientDO clientDO = oauth2ClientService.validOAuthClientFromCache(clientId);
         Assert.notNull(clientDO, "客户端不能为空"); // 防御性编程
@@ -66,8 +60,7 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
 
     @Override
     @Transactional
-    public boolean updateAfterApproval(Long userId, Integer userType, String clientId,
-                                       Map<String, Boolean> requestedScopes) {
+    public boolean updateAfterApproval(Long userId, Integer userType, String clientId, Map<String, Boolean> requestedScopes) {
         // 如果 requestedScopes 为空，说明没有要求，则返回 true 通过
         if (CollUtil.isEmpty(requestedScopes)) {
             return true;
@@ -76,7 +69,7 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
         // 更新批准的信息
         boolean success = false; // 需要至少有一个同意
         Date expireTime = DateUtils.addDate(Calendar.SECOND, TIMEOUT);
-        for (Map.Entry<String, Boolean> entry : requestedScopes.entrySet()) {
+        for (Map.Entry<String, Boolean> entry :requestedScopes.entrySet()) {
             if (entry.getValue()) {
                 success = true;
             }
@@ -105,4 +98,5 @@ public class OAuth2ApproveServiceImpl implements OAuth2ApproveService {
         // 失败，则说明不存在，进行更新
         oauth2ApproveMapper.insert(approveDO);
     }
+
 }

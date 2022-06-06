@@ -1,31 +1,24 @@
 package cn.iocoder.yudao.module.system.controller.admin.notice;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeUpdateReqVO;
 import cn.iocoder.yudao.module.system.convert.notice.NoticeConvert;
 import cn.iocoder.yudao.module.system.service.notice.NoticeService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 通知公告")
 @RestController
@@ -75,4 +68,5 @@ public class NoticeController {
     public CommonResult<NoticeRespVO> getNotice(@RequestParam("id") Long id) {
         return success(NoticeConvert.INSTANCE.convert(noticeService.getNotice(id)));
     }
+
 }

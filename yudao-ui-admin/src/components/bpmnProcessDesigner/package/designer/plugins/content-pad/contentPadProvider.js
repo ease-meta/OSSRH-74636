@@ -1,14 +1,14 @@
-import {assign, forEach, isArray} from "min-dash";
+import { assign, forEach, isArray } from "min-dash";
 
-import {is} from "bpmn-js/lib/util/ModelUtil";
+import { is } from "bpmn-js/lib/util/ModelUtil";
 
-import {isEventSubProcess, isExpanded} from "bpmn-js/lib/util/DiUtil";
+import { isExpanded, isEventSubProcess } from "bpmn-js/lib/util/DiUtil";
 
-import {isAny} from "bpmn-js/lib/features/modeling/util/ModelingUtil";
+import { isAny } from "bpmn-js/lib/features/modeling/util/ModelingUtil";
 
-import {getChildLanes} from "bpmn-js/lib/features/modeling/util/LaneUtil";
+import { getChildLanes } from "bpmn-js/lib/features/modeling/util/LaneUtil";
 
-import {hasPrimaryModifier} from "diagram-js/lib/util/Mouse";
+import { hasPrimaryModifier } from "diagram-js/lib/util/Mouse";
 
 /**
  * A provider for BPMN 2.0 elements context pad
@@ -48,7 +48,7 @@ export default function ContextPadProvider(
     this._autoPlace = injector.get("autoPlace", false);
   }
 
-  eventBus.on("create.end", 250, function (event) {
+  eventBus.on("create.end", 250, function(event) {
     var context = event.context,
       shape = context.shape;
 
@@ -80,7 +80,7 @@ ContextPadProvider.$inject = [
   "elementRegistry"
 ];
 
-ContextPadProvider.prototype.getContextPadEntries = function (element) {
+ContextPadProvider.prototype.getContextPadEntries = function(element) {
   var contextPad = this._contextPad,
     modeling = this._modeling,
     elementFactory = this._elementFactory,
@@ -141,22 +141,22 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
   function appendAction(type, className, title, options) {
     if (typeof title !== "string") {
       options = title;
-      title = translate("Append {type}", {type: type.replace(/^bpmn:/, "")});
+      title = translate("Append {type}", { type: type.replace(/^bpmn:/, "") });
     }
 
     function appendStart(event, element) {
-      var shape = elementFactory.createShape(assign({type: type}, options));
+      var shape = elementFactory.createShape(assign({ type: type }, options));
       create.start(event, shape, {
         source: element
       });
     }
 
     var append = autoPlace
-      ? function (event, element) {
-        var shape = elementFactory.createShape(assign({type: type}, options));
+      ? function(event, element) {
+          var shape = elementFactory.createShape(assign({ type: type }, options));
 
-        autoPlace.append(element, shape);
-      }
+          autoPlace.append(element, shape);
+        }
       : appendStart;
 
     return {
@@ -171,7 +171,7 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
   }
 
   function splitLaneHandler(count) {
-    return function (event, element) {
+    return function(event, element) {
       // actual split
       modeling.splitLane(element, count);
 
@@ -190,7 +190,7 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
         className: "bpmn-icon-lane-insert-above",
         title: translate("Add Lane above"),
         action: {
-          click: function (event, element) {
+          click: function(event, element) {
             modeling.addLane(element, "top");
           }
         }
@@ -231,7 +231,7 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
         className: "bpmn-icon-lane-insert-below",
         title: translate("Add Lane below"),
         action: {
-          click: function (event, element) {
+          click: function(event, element) {
             modeling.addLane(element, "bottom");
           }
         }
@@ -247,25 +247,25 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
           "bpmn:IntermediateCatchEvent",
           "bpmn-icon-intermediate-event-catch-message",
           translate("Append MessageIntermediateCatchEvent"),
-          {eventDefinitionType: "bpmn:MessageEventDefinition"}
+          { eventDefinitionType: "bpmn:MessageEventDefinition" }
         ),
         "append.timer-intermediate-event": appendAction(
           "bpmn:IntermediateCatchEvent",
           "bpmn-icon-intermediate-event-catch-timer",
           translate("Append TimerIntermediateCatchEvent"),
-          {eventDefinitionType: "bpmn:TimerEventDefinition"}
+          { eventDefinitionType: "bpmn:TimerEventDefinition" }
         ),
         "append.condition-intermediate-event": appendAction(
           "bpmn:IntermediateCatchEvent",
           "bpmn-icon-intermediate-event-catch-condition",
           translate("Append ConditionIntermediateCatchEvent"),
-          {eventDefinitionType: "bpmn:ConditionalEventDefinition"}
+          { eventDefinitionType: "bpmn:ConditionalEventDefinition" }
         ),
         "append.signal-intermediate-event": appendAction(
           "bpmn:IntermediateCatchEvent",
           "bpmn-icon-intermediate-event-catch-signal",
           translate("Append SignalIntermediateCatchEvent"),
-          {eventDefinitionType: "bpmn:SignalEventDefinition"}
+          { eventDefinitionType: "bpmn:SignalEventDefinition" }
         )
       });
     } else if (isEventType(businessObject, "bpmn:BoundaryEvent", "bpmn:CompensateEventDefinition")) {
@@ -301,9 +301,9 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
         className: "bpmn-icon-screw-wrench",
         title: translate("Change type"),
         action: {
-          click: function (event, element) {
+          click: function(event, element) {
             var position = assign(getReplaceMenuPosition(element), {
-              cursor: {x: event.x, y: event.y}
+              cursor: { x: event.x, y: event.y }
             });
 
             popupMenu.open(element, "bpmn-replace", position);
@@ -350,7 +350,7 @@ ContextPadProvider.prototype.getContextPadEntries = function (element) {
   }
 
   // delete element entry, only show if allowed by rules
-  var deleteAllowed = rules.allowed("elements.delete", {elements: [element]});
+  var deleteAllowed = rules.allowed("elements.delete", { elements: [element] });
 
   if (isArray(deleteAllowed)) {
     // was the element returned as a deletion candidate?
@@ -380,7 +380,7 @@ function isEventType(eventBo, type, definition) {
   var isDefinition = false;
 
   var definitions = eventBo.eventDefinitions || [];
-  forEach(definitions, function (def) {
+  forEach(definitions, function(def) {
     if (def.$type === definition) {
       isDefinition = true;
     }

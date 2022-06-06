@@ -3,8 +3,8 @@ package cn.iocoder.yudao.module.bpm.controller.admin.task;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.activity.BpmActivityRespVO;
 import cn.iocoder.yudao.module.bpm.service.task.BpmActivityService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 流程活动实例")
 @RestController
@@ -51,4 +51,5 @@ public class BpmActivityController {
         byte[] bytes = activityService.generateHighlightDiagram(processInstanceId);
         ServletUtils.writeAttachment(response, StrUtil.format("流程图-{}.svg", processInstanceId), bytes);
     }
+
 }

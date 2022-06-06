@@ -1,7 +1,7 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.db;
 
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
 import cn.iocoder.yudao.module.infra.dal.dataobject.db.DataSourceConfigDO;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

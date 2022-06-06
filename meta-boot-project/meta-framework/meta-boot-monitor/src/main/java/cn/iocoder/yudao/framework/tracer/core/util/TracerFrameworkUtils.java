@@ -19,7 +19,7 @@ public class TracerFrameworkUtils {
      * 将异常记录到 Span 中，参考自 com.aliyuncs.utils.TraceUtils
      *
      * @param throwable 异常
-     * @param span      Span
+     * @param span Span
      */
     public static void onError(Throwable throwable, Span span) {
         Tags.ERROR.set(span, Boolean.TRUE);
@@ -42,4 +42,5 @@ public class TracerFrameworkUtils {
         errorLogs.put("stack", sw.toString());
         return errorLogs;
     }
+
 }

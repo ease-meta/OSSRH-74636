@@ -4,6 +4,10 @@ import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.util.http.HttpUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.open.OAuth2OpenAccessTokenRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.open.OAuth2OpenAuthorizeInfoRespVO;
@@ -18,22 +22,13 @@ import cn.iocoder.yudao.module.system.service.oauth2.OAuth2ClientService;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2GrantService;
 import cn.iocoder.yudao.module.system.service.oauth2.OAuth2TokenService;
 import cn.iocoder.yudao.module.system.util.oauth2.OAuth2Utils;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.util.http.HttpUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -41,21 +36,21 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import static cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants.BAD_REQUEST;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception0;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertList;
 import static cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils.getLoginUserId;
-import static io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants.BAD_REQUEST;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception0;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertList;
 
 /**
  * 提供给外部应用调用为主
- * <p>
+ *
  * 一般来说，管理后台的 /system-api/* 是不直接提供给外部应用使用，主要是外部应用能够访问的数据与接口是有限的，而管理后台的 RBAC 无法很好的控制。
  * 参考大量的开放平台，都是独立的一套 OpenAPI，对应到【本系统】就是在 Controller 下新建 open 包，实现 /open-api/* 接口，然后通过 scope 进行控制。
  * 另外，一个公司如果有多个管理后台，它们 client_id 产生的 access token 相互之间是无法互通的，即无法访问它们系统的 API 接口，直到两个 client_id 产生信任授权。
- * <p>
+ *
  * 考虑到【本系统】暂时不想做的过于复杂，默认只有获取到 access token 之后，可以访问【本系统】管理后台的 /system-api/* 所有接口，除非手动添加 scope 控制。
- * scope 的使用示例，可见 {@link cn.iocoder.yudao.module.system.controller.admin.oauth2.OAuth2UserController} 类
+ * scope 的使用示例，可见 {@link OAuth2UserController} 类
  *
  * @author 芋道源码
  */
@@ -68,25 +63,22 @@ public class OAuth2OpenController {
 
     @Resource
     private OAuth2GrantService oauth2GrantService;
-
     @Resource
     private OAuth2ClientService oauth2ClientService;
-
     @Resource
     private OAuth2ApproveService oauth2ApproveService;
-
     @Resource
     private OAuth2TokenService oauth2TokenService;
 
     /**
      * 对应 Spring Security OAuth 的 TokenEndpoint 类的 postAccessToken 方法
-     * <p>
+     *
      * 授权码 authorization_code 模式时：code + redirectUri + state 参数
      * 密码 password 模式时：username + password + scope 参数
      * 刷新 refresh_token 模式时：refreshToken 参数
      * 客户端 client_credentials 模式：scope 参数
      * 简化 implicit 模式时：不支持
-     * <p>
+     *
      * 注意，默认需要传递 client_id + client_secret 参数
      */
     @PostMapping("/token")
@@ -202,12 +194,12 @@ public class OAuth2OpenController {
 
     /**
      * 对应 Spring Security OAuth 的 AuthorizationEndpoint 类的 approveOrDeny 方法
-     * <p>
+     *
      * 场景一：【自动授权 autoApprove = true】
-     * 刚进入 sso.vue 界面，调用该接口，用户历史已经给该应用做过对应的授权，或者 OAuth2Client 支持该 scope 的自动授权
+     *      刚进入 sso.vue 界面，调用该接口，用户历史已经给该应用做过对应的授权，或者 OAuth2Client 支持该 scope 的自动授权
      * 场景二：【手动授权 autoApprove = false】
-     * 在 sso.vue 界面，用户选择好 scope 授权范围，调用该接口，进行授权。此时，approved 为 true 或者 false
-     * <p>
+     *      在 sso.vue 界面，用户选择好 scope 授权范围，调用该接口，进行授权。此时，approved 为 true 或者 false
+     *
      * 因为前后端分离，Axios 无法很好的处理 302 重定向，所以和 Spring Security OAuth 略有不同，返回结果是重定向的 URL，剩余交给前端处理
      */
     @PostMapping("/authorize")
@@ -215,8 +207,7 @@ public class OAuth2OpenController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "response_type", required = true, value = "响应类型", example = "code", dataTypeClass = String.class),
             @ApiImplicitParam(name = "client_id", required = true, value = "客户端编号", example = "tudou", dataTypeClass = String.class),
-            @ApiImplicitParam(name = "scope", value = "授权范围", example = "userinfo.read", dataTypeClass = String.class),
-            // 使用 Map<String, Boolean> 格式，Spring MVC 暂时不支持这么接收参数
+            @ApiImplicitParam(name = "scope", value = "授权范围", example = "userinfo.read", dataTypeClass = String.class), // 使用 Map<String, Boolean> 格式，Spring MVC 暂时不支持这么接收参数
             @ApiImplicitParam(name = "redirect_uri", required = true, value = "重定向 URI", example = "https://www.iocoder.cn", dataTypeClass = String.class),
             @ApiImplicitParam(name = "auto_approve", required = true, value = "用户是否接受", example = "true", dataTypeClass = Boolean.class),
             @ApiImplicitParam(name = "state", example = "1", dataTypeClass = String.class)
@@ -303,4 +294,5 @@ public class OAuth2OpenController {
         }
         return clientIdAndSecret;
     }
+
 }

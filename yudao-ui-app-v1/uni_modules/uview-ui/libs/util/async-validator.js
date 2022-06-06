@@ -18,11 +18,10 @@ function _extends() {
 
 /* eslint no-console:0 */
 const formatRegExp = /%[sdj%]/g
-let warning = function warning() {
-} // don't print warning message when in production env or node runtime
+let warning = function warning() {} // don't print warning message when in production env or node runtime
 
 if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production' && typeof window
-    !== 'undefined' && typeof document !== 'undefined') {
+	!== 'undefined' && typeof document !== 'undefined') {
     warning = function warning(type, errors) {
         if (typeof console !== 'undefined' && console.warn) {
             if (errors.every((e) => typeof e === 'string')) {
@@ -36,7 +35,7 @@ function convertFieldsError(errors) {
     if (!errors || !errors.length) return null
     const fields = {}
     errors.forEach((error) => {
-        const {field} = error
+        const { field } = error
         fields[field] = fields[field] || []
         fields[field].push(error)
     })
@@ -67,23 +66,23 @@ function format() {
             }
 
             switch (x) {
-                case '%s':
-                    return String(args[i++])
+            case '%s':
+                return String(args[i++])
 
-                case '%d':
-                    return Number(args[i++])
+            case '%d':
+                return Number(args[i++])
 
-                case '%j':
-                    try {
-                        return JSON.stringify(args[i++])
-                    } catch (_) {
-                        return '[Circular]'
-                    }
+            case '%j':
+                try {
+                    return JSON.stringify(args[i++])
+                } catch (_) {
+                    return '[Circular]'
+                }
 
-                    break
+                break
 
-                default:
-                    return x
+            default:
+                return x
             }
         })
 
@@ -251,7 +250,7 @@ function deepMerge(target, source) {
                 const value = source[s]
 
                 if (typeof value === 'object' && typeof target[s] === 'object') {
-                    target[s] = {...target[s], ...value}
+                    target[s] = { ...target[s], ...value }
                 } else {
                     target[s] = value
                 }
@@ -332,7 +331,7 @@ var types = {
     },
     date: function date(value) {
         return typeof value.getTime === 'function' && typeof value.getMonth === 'function' && typeof value.getYear
-            === 'function'
+			=== 'function'
     },
     number: function number(value) {
         if (isNaN(value)) {
@@ -1068,8 +1067,7 @@ Schema.prototype = {
         }
 
         if (oc === void 0) {
-            oc = function oc() {
-            }
+            oc = function oc() {}
         }
 
         let source = source_
@@ -1143,7 +1141,7 @@ Schema.prototype = {
 
                 if (typeof rule.transform === 'function') {
                     if (source === source_) {
-                        source = {...source}
+                        source = { ...source }
                     }
 
                     value = source[z] = rule.transform(value)
@@ -1154,7 +1152,7 @@ Schema.prototype = {
                         validator: rule
                     }
                 } else {
-                    rule = {...rule}
+                    rule = { ...rule }
                 }
 
                 rule.validator = _this.getValidationMethod(rule)
@@ -1177,14 +1175,14 @@ Schema.prototype = {
         })
         const errorFields = {}
         return asyncMap(series, options, (data, doIt) => {
-            const {rule} = data
+            const { rule } = data
             let deep = (rule.type === 'object' || rule.type === 'array') && (typeof rule.fields === 'object' || typeof rule.defaultField
-                === 'object')
+				=== 'object')
             deep = deep && (rule.required || !rule.required && data.value)
             rule.field = data.field
 
             function addFullfield(key, schema) {
-                return {...schema, fullField: `${rule.fullField}.${key}`}
+                return { ...schema, fullField: `${rule.fullField}.${key}` }
             }
 
             function cb(e) {
@@ -1241,7 +1239,7 @@ Schema.prototype = {
                         }
                     }
 
-                    fieldsSchema = {...fieldsSchema, ...data.rule.fields}
+                    fieldsSchema = { ...fieldsSchema, ...data.rule.fields }
 
                     for (const f in fieldsSchema) {
                         if (fieldsSchema.hasOwnProperty(f)) {

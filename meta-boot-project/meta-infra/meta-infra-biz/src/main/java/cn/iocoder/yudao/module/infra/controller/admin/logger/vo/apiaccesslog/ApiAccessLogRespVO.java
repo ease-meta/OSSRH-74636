@@ -19,4 +19,5 @@ public class ApiAccessLogRespVO extends ApiAccessLogBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
+
 }

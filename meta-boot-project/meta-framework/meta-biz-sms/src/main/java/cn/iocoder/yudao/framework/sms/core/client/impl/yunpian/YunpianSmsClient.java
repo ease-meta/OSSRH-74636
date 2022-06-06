@@ -4,6 +4,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
@@ -11,6 +12,7 @@ import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.impl.AbstractSmsClient;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsTemplateAuditStatusEnum;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.annotations.VisibleForTesting;
@@ -18,24 +20,16 @@ import com.yunpian.sdk.YunpianClient;
 import com.yunpian.sdk.constant.YunpianConstant;
 import com.yunpian.sdk.model.Result;
 import com.yunpian.sdk.model.Template;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.StringJoiner;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import static io.github.meta.ease.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
-import static io.github.meta.ease.common.util.date.DateUtils.TIME_ZONE_DEFAULT;
-
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.TIME_ZONE_DEFAULT;
 
 /**
  * 云片短信客户端的实现类
@@ -117,28 +111,22 @@ public class YunpianSmsClient extends AbstractSmsClient {
         }, response -> {
             Template template = response.get(0);
             return new SmsTemplateRespDTO().setId(String.valueOf(template.getTpl_id())).setContent(template.getTpl_content())
-                    .setAuditStatus(convertSmsTemplateAuditStatus(template.getCheck_status()))
-                    .setAuditReason(template.getReason());
+                   .setAuditStatus(convertSmsTemplateAuditStatus(template.getCheck_status())).setAuditReason(template.getReason());
         });
     }
 
     @VisibleForTesting
     Integer convertSmsTemplateAuditStatus(String checkStatus) {
         switch (checkStatus) {
-            case "CHECKING":
-                return SmsTemplateAuditStatusEnum.CHECKING.getStatus();
-            case "SUCCESS":
-                return SmsTemplateAuditStatusEnum.SUCCESS.getStatus();
-            case "FAIL":
-                return SmsTemplateAuditStatusEnum.FAIL.getStatus();
-            default:
-                throw new IllegalArgumentException(String.format("未知审核状态(%s)", checkStatus));
+            case "CHECKING": return SmsTemplateAuditStatusEnum.CHECKING.getStatus();
+            case "SUCCESS": return SmsTemplateAuditStatusEnum.SUCCESS.getStatus();
+            case "FAIL": return SmsTemplateAuditStatusEnum.FAIL.getStatus();
+            default: throw new IllegalArgumentException(String.format("未知审核状态(%s)", checkStatus));
         }
     }
 
     @VisibleForTesting
-    <T, R> SmsCommonResult<R> invoke(Supplier<Result<T>> requestConsumer, Function<T, R> responseConsumer)
-            throws Throwable {
+    <T, R> SmsCommonResult<R> invoke(Supplier<Result<T>> requestConsumer, Function<T, R> responseConsumer) throws Throwable {
         // 执行请求
         Result<T> result = requestConsumer.get();
         if (result.getThrowable() != null) {
@@ -162,7 +150,7 @@ public class YunpianSmsClient extends AbstractSmsClient {
 
     /**
      * 短信接收状态
-     * <p>
+     *
      * 参见 https://www.yunpian.com/official/document/sms/zh_cn/domestic_push_report 文档
      *
      * @author 芋道源码
@@ -172,50 +160,46 @@ public class YunpianSmsClient extends AbstractSmsClient {
 
         /**
          * 接收状态
-         * <p>
+         *
          * 目前仅有 SUCCESS / FAIL，所以使用 Boolean 接收
          */
         @JsonProperty("report_status")
         private String reportStatus;
-
         /**
          * 接收手机号
          */
         private String mobile;
-
         /**
          * 运营商返回的代码，如："DB:0103"
-         * <p>
+         *
          * 由于不同运营商信息不同，此字段仅供参考；
          */
         @JsonProperty("error_msg")
         private String errorMsg;
-
         /**
          * 运营商反馈代码的中文解释
-         * <p>
+         *
          * 默认不推送此字段，如需推送，请联系客服
          */
         @JsonProperty("error_detail")
         private String errorDetail;
-
         /**
          * 短信编号
          */
         private Long sid;
-
         /**
          * 用户自定义 id
-         * <p>
+         *
          * 这里我们传递的是 SysSmsLogDO 的日志编号
          */
         private Long uid;
-
         /**
          * 用户接收时间
          */
         @JsonProperty("user_receive_time")
         @JsonFormat(pattern = FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND, timezone = TIME_ZONE_DEFAULT)
         private Date userReceiveTime;
+
     }
+
 }

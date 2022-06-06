@@ -17,4 +17,5 @@ public class SmsChannelUpdateReqVO extends SmsChannelBaseVO {
     @ApiModelProperty(value = "编号", required = true, example = "1024")
     @NotNull(message = "编号不能为空")
     private Long id;
+
 }

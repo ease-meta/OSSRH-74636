@@ -30,8 +30,7 @@
               <el-form-item prop="scopes">
                 <el-checkbox-group v-model="loginForm.scopes">
                   <el-checkbox v-for="scope in params.scopes" :label="scope" :key="scope"
-                               style="display: block; margin-bottom: -10px;">{{ formatScope(scope) }}
-                  </el-checkbox>
+                               style="display: block; margin-bottom: -10px;">{{formatScope(scope)}}</el-checkbox>
                 </el-checkbox-group>
               </el-form-item>
               <!-- 下方的登录按钮 -->
@@ -42,8 +41,7 @@
                   <span v-else>授 权 中...</span>
                 </el-button>
                 <el-button size="medium" style="width:36%"
-                           @click.native.prevent="handleAuthorize(false)">拒绝
-                </el-button>
+                           @click.native.prevent="handleAuthorize(false)">拒绝</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -148,7 +146,7 @@ export default {
             scopes.push(scope)
           }
         }
-        // 1.2 如果 params.scope 为空，则使用返回的 scopes 设置它
+      // 1.2 如果 params.scope 为空，则使用返回的 scopes 设置它
       } else {
         scopes = res.data.scopes
         for (const scope of scopes) {
@@ -201,18 +199,15 @@ export default {
     },
     doAuthorize(autoApprove, checkedScopes, uncheckedScopes) {
       return authorize(this.params.responseType, this.params.clientId, this.params.redirectUri, this.params.state,
-        autoApprove, checkedScopes, uncheckedScopes)
+          autoApprove, checkedScopes, uncheckedScopes)
     },
     formatScope(scope) {
       // 格式化 scope 授权范围，方便用户理解。
       // 这里仅仅是一个 demo，可以考虑录入到字典数据中，例如说字典类型 "system_oauth2_scope"，它的每个 scope 都是一条字典数据。
       switch (scope) {
-        case 'user.read':
-          return '访问你的个人信息'
-        case 'user.write':
-          return '修改你的个人信息'
-        default:
-          return scope
+        case 'user.read': return '访问你的个人信息'
+        case 'user.write': return '修改你的个人信息'
+        default: return scope
       }
     }
   }
@@ -223,7 +218,7 @@ export default {
 .oauth-login {
   display: flex;
   align-items: cen;
-  cursor: pointer;
+  cursor:pointer;
 }
 .oauth-login-item {
   display: flex;

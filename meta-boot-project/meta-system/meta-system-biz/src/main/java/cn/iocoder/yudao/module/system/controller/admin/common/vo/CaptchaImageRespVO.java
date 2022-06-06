@@ -23,4 +23,5 @@ public class CaptchaImageRespVO {
 
     @ApiModelProperty(value = "图片", notes = "enable = true 时，非空！验证码的图片内容，使用 Base64 编码")
     private String img;
+
 }

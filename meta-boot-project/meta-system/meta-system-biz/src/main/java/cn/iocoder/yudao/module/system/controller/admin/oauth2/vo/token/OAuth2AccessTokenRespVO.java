@@ -37,4 +37,5 @@ public class OAuth2AccessTokenRespVO {
 
     @ApiModelProperty(value = "过期时间", required = true)
     private Date expiresTime;
+
 }

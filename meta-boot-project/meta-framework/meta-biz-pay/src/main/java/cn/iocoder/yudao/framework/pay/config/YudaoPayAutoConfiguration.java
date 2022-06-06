@@ -19,4 +19,5 @@ public class YudaoPayAutoConfiguration {
     public PayClientFactory payClientFactory() {
         return new PayClientFactoryImpl();
     }
+
 }

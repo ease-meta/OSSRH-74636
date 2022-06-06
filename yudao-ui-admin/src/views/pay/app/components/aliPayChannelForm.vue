@@ -172,7 +172,7 @@ export default {
   },
   data() {
     return {
-      title: '',
+      title:'',
       form: JSON.parse(JSON.stringify(defaultForm)),
       rules: {
         feeRate: [{

@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.system.convert.sensitiveword;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordExcelVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.sensitiveword.vo.SensitiveWordUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sensitiveword.SensitiveWordDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -32,4 +32,5 @@ public interface SensitiveWordConvert {
     PageResult<SensitiveWordRespVO> convertPage(PageResult<SensitiveWordDO> page);
 
     List<SensitiveWordExcelVO> convertList02(List<SensitiveWordDO> list);
+
 }

@@ -1,6 +1,6 @@
 <template>
   <div :class="{'show':show}" class="header-search">
-    <svg-icon class-name="search-icon" icon-class="search" @click.stop="click"/>
+    <svg-icon class-name="search-icon" icon-class="search" @click.stop="click" />
     <el-select
       ref="headerSearchSelect"
       v-model="search"
@@ -12,8 +12,7 @@
       class="header-search-select"
       @change="change"
     >
-      <el-option v-for="option in options" :key="option.item.path" :value="option.item"
-                 :label="option.item.title.join(' > ')"/>
+      <el-option v-for="option in options" :key="option.item.path" :value="option.item" :label="option.item.title.join(' > ')" />
     </el-select>
   </div>
 </template>
@@ -71,7 +70,7 @@ export default {
       this.show = false
     },
     change(val) {
-      if (this.ishttp(val.path)) {
+      if(this.ishttp(val.path)) {
         // http(s):// 路径新窗口打开
         window.open(val.path, "_blank");
       } else {
@@ -107,9 +106,7 @@ export default {
 
       for (const router of routes) {
         // skip hidden router
-        if (router.hidden) {
-          continue
-        }
+        if (router.hidden) { continue }
 
         const data = {
           path: !this.ishttp(router.path) ? path.resolve(basePath, router.path) : router.path,

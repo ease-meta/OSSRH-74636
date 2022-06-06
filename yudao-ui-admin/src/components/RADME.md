@@ -13,8 +13,7 @@ github 地址：https://github.com/miyuesc/bpmn-process-designer
 
 * bpmnProcessDesigner
 
-TODO 目前存在的问题，如果选择 activiti 类型时，因为不支持内置表单的设计，所以会报 Error: unknown type activiti:FormData
-错误。具体可见 https://github.com/miyuesc/bpmn-process-designer/issues/16 。
+TODO 目前存在的问题，如果选择 activiti 类型时，因为不支持内置表单的设计，所以会报 Error: unknown type activiti:FormData 错误。具体可见 https://github.com/miyuesc/bpmn-process-designer/issues/16 。
 
 另外几个流程设计器的选型：
 

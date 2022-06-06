@@ -81,4 +81,5 @@ public class OperateLogBaseVO {
 
     @ApiModelProperty(value = "结果数据")
     private String resultData;
+
 }

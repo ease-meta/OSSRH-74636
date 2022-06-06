@@ -9,7 +9,7 @@
         </el-select>
       </el-form-item>
       <el-form-item label="表名称" prop="name">
-        <el-input v-model="queryParams.name" placeholder="请输入表名称" clearable @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.name" placeholder="请输入表名称" clearable  @keyup.enter.native="handleQuery" />
       </el-form-item>
       <el-form-item label="表描述" prop="comment">
         <el-input v-model="queryParams.comment" placeholder="请输入表描述" clearable @keyup.enter.native="handleQuery"/>
@@ -22,9 +22,9 @@
     <el-row>
       <el-table v-loading="loading" @row-click="clickRow" ref="table" :data="dbTableList"
                 @selection-change="handleSelectionChange" height="260px">
-        <el-table-column type="selection" width="55"/>
-        <el-table-column prop="name" label="表名称" :show-overflow-tooltip="true"/>
-        <el-table-column prop="comment" label="表描述" :show-overflow-tooltip="true"/>
+        <el-table-column type="selection" width="55" />
+        <el-table-column prop="name" label="表名称" :show-overflow-tooltip="true" />
+        <el-table-column prop="comment" label="表描述" :show-overflow-tooltip="true" />
       </el-table>
     </el-row>
     <div slot="footer" class="dialog-footer">
@@ -35,9 +35,8 @@
 </template>
 
 <script>
-import {createCodegenList, getSchemaTableList} from "@/api/infra/codegen";
+import { getSchemaTableList, createCodegenList } from "@/api/infra/codegen";
 import {getDataSourceConfigList} from "@/api/infra/dataSourceConfig";
-
 export default {
   data() {
     return {

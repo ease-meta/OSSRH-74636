@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.convert.file;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigRespVO;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.config.FileConfigUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -32,4 +32,5 @@ public interface FileConfigConvert {
     List<FileConfigRespVO> convertList(List<FileConfigDO> list);
 
     PageResult<FileConfigRespVO> convertPage(PageResult<FileConfigDO> page);
+
 }

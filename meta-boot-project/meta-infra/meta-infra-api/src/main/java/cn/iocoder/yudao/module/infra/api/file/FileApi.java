@@ -15,16 +15,17 @@ public interface FileApi {
      * @param content 文件内容
      * @return 文件路径
      */
-    default String createFile(byte[] content) throws Exception {
-        return createFile(IdUtil.fastUUID(), content);
-    }
+   default String createFile(byte[] content) throws Exception {
+       return createFile(IdUtil.fastUUID(), content);
+   }
 
     /**
      * 保存文件，并返回文件的访问路径
      *
-     * @param path    文件路径
+     * @param path 文件路径
      * @param content 文件内容
      * @return 文件路径
      */
     String createFile(String path, byte[] content) throws Exception;
+
 }

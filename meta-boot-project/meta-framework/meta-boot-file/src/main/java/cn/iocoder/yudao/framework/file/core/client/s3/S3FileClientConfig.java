@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 public class S3FileClientConfig implements FileClientConfig {
 
     public static final String ENDPOINT_QINIU = "qiniucs.com";
-
     public static final String ENDPOINT_ALIYUN = "aliyuncs.com";
 
     /**
@@ -31,7 +30,6 @@ public class S3FileClientConfig implements FileClientConfig {
      */
     @NotNull(message = "endpoint 不能为空")
     private String endpoint;
-
     /**
      * 自定义域名
      * 1. MinIO：通过 Nginx 配置
@@ -42,7 +40,6 @@ public class S3FileClientConfig implements FileClientConfig {
      */
     @URL(message = "domain 必须是 URL 格式")
     private String domain;
-
     /**
      * 存储 Bucket
      */
@@ -59,7 +56,6 @@ public class S3FileClientConfig implements FileClientConfig {
      */
     @NotNull(message = "accessKey 不能为空")
     private String accessKey;
-
     /**
      * 访问 Secret
      */
@@ -76,4 +72,5 @@ public class S3FileClientConfig implements FileClientConfig {
         }
         return true;
     }
+
 }

@@ -2,8 +2,8 @@ package cn.iocoder.yudao.framework.file.core.client.sftp;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.extra.ssh.Sftp;
+import cn.iocoder.yudao.framework.common.util.io.FileUtils;
 import cn.iocoder.yudao.framework.file.core.client.AbstractFileClient;
-import io.github.meta.ease.common.util.io.FileUtils;
 
 import java.io.File;
 
@@ -57,4 +57,5 @@ public class SftpFileClient extends AbstractFileClient<SftpFileClientConfig> {
     private String getFilePath(String path) {
         return config.getBasePath() + path;
     }
+
 }

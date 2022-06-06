@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.controller.admin.user.vo.user;
 
-
-import io.github.meta.ease.common.validation.Mobile;
+import cn.iocoder.yudao.framework.common.validation.Mobile;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -51,4 +50,5 @@ public class UserBaseVO {
 
     @ApiModelProperty(value = "用户头像", example = "https://www.iocoder.cn/xxx.png")
     private String avatar;
+
 }

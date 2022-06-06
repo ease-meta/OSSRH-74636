@@ -17,4 +17,5 @@ public class SmsChannelRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.sms-channel.refresh";
     }
+
 }

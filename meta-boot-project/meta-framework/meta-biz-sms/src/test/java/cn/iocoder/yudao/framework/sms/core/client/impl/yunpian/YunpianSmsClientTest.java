@@ -1,13 +1,16 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl.yunpian;
 
 import cn.hutool.core.util.ReflectUtil;
+import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsTemplateAuditStatusEnum;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
-import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import com.google.common.collect.Lists;
 import com.yunpian.sdk.YunpianClient;
 import com.yunpian.sdk.api.SmsApi;
@@ -16,9 +19,6 @@ import com.yunpian.sdk.constant.YunpianConstant;
 import com.yunpian.sdk.model.Result;
 import com.yunpian.sdk.model.SmsSingleSend;
 import com.yunpian.sdk.model.Template;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,24 +29,13 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojoList;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
 import static com.yunpian.sdk.constant.Code.OK;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 /**
- * 对 {@link cn.iocoder.yudao.framework.sms.core.client.impl.yunpian.YunpianSmsClient} 的单元测试
+ * 对 {@link YunpianSmsClient} 的单元测试
  *
  * @author 芋道源码
  */
@@ -209,4 +198,5 @@ public class YunpianSmsClientTest extends BaseMockitoUnitTest {
         assertNull(result.getApiRequestId());
         assertEquals(String.valueOf(responseResult.getData().getSid()), result.getData().getSerialNo());
     }
+
 }

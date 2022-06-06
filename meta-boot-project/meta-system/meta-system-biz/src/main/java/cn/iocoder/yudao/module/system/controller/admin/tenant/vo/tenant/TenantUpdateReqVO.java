@@ -1,12 +1,8 @@
 package cn.iocoder.yudao.module.system.controller.admin.tenant.vo.tenant;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-
-import javax.validation.constraints.NotNull;
+import lombok.*;
+import io.swagger.annotations.*;
+import javax.validation.constraints.*;
 
 @ApiModel("管理后台 - 租户更新 Request VO")
 @Data
@@ -17,4 +13,5 @@ public class TenantUpdateReqVO extends TenantBaseVO {
     @ApiModelProperty(value = "租户编号", required = true, example = "1024")
     @NotNull(message = "租户编号不能为空")
     private Long id;
+
 }

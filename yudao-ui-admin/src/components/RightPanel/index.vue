@@ -1,16 +1,16 @@
 <template>
   <div ref="rightPanel" :class="{show:show}" class="rightPanel-container">
-    <div class="rightPanel-background"/>
+    <div class="rightPanel-background" />
     <div class="rightPanel">
       <div class="rightPanel-items">
-        <slot/>
+        <slot />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {addClass, removeClass} from '@/utils'
+import { addClass, removeClass } from '@/utils'
 
 export default {
   name: 'RightPanel',

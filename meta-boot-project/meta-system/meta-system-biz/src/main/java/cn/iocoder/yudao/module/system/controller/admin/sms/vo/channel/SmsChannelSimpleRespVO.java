@@ -20,4 +20,5 @@ public class SmsChannelSimpleRespVO {
 
     @ApiModelProperty(value = "渠道编码", required = true, example = "YUN_PIAN", notes = "参见 SmsChannelEnum 枚举类")
     private String code;
+
 }

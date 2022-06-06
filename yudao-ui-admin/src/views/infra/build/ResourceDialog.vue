@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import {deepClone} from '@/utils/index'
+import { deepClone } from '@/utils/index'
 
 export default {
   components: {},
@@ -73,10 +73,8 @@ export default {
   },
   computed: {},
   watch: {},
-  created() {
-  },
-  mounted() {
-  },
+  created() {},
+  mounted() {},
   methods: {
     onOpen() {
       this.resources = this.originResource.length ? deepClone(this.originResource) : ['']
@@ -109,11 +107,10 @@ export default {
 
 </script>
 <style lang="scss" scoped>
-.add-item {
+.add-item{
   margin-top: 8px;
 }
-
-.url-item {
+.url-item{
   margin-bottom: 12px;
 }
 </style>

@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl;
 
+import cn.iocoder.yudao.framework.common.core.KeyValue;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClient;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCodeMapping;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
@@ -7,7 +8,6 @@ import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
-import io.github.meta.ease.common.core.KeyValue;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -25,7 +25,6 @@ public abstract class AbstractSmsClient implements SmsClient {
      * 短信渠道配置
      */
     protected volatile SmsChannelProperties properties;
-
     /**
      * 错误码枚举类
      */
@@ -124,4 +123,5 @@ public abstract class AbstractSmsClient implements SmsClient {
     }
 
     protected abstract SmsCommonResult<SmsTemplateRespDTO> doGetSmsTemplate(String apiTemplateId) throws Throwable;
+
 }

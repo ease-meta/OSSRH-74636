@@ -1,9 +1,9 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl.debug;
 
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCodeMapping;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsFrameworkErrorCodeConstants;
-import io.github.meta.ease.common.exception.ErrorCode;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
 
 import java.util.Objects;
 
@@ -18,4 +18,5 @@ public class DebugDingTalkCodeMapping implements SmsCodeMapping {
     public ErrorCode apply(String apiCode) {
         return Objects.equals(apiCode, "0") ? GlobalErrorCodeConstants.SUCCESS : SmsFrameworkErrorCodeConstants.SMS_UNKNOWN;
     }
+
 }

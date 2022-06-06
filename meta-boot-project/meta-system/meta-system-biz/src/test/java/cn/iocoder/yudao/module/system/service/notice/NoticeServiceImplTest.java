@@ -1,31 +1,29 @@
 package cn.iocoder.yudao.module.system.service.notice;
 
-
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.notice.NoticeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.notice.NoticeMapper;
 import cn.iocoder.yudao.module.system.enums.notice.NoticeTypeEnum;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
+
 import java.util.function.Consumer;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.NOTICE_NOT_FOUND;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.NOTICE_NOT_FOUND;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Import(NoticeServiceImpl.class)
 class NoticeServiceImplTest extends BaseDbUnitTest {
@@ -51,6 +49,7 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         // 测试 status 不匹配
         sysNoticeMapper.insert(ObjectUtils.cloneIgnoreId(dbNotice, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
 
+
         // 查询
         NoticePageReqVO reqVO = new NoticePageReqVO();
         reqVO.setTitle("尼古拉斯赵四来啦！");
@@ -61,6 +60,7 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         assertEquals(1, pageResult.getTotal());
         assertEquals(1, pageResult.getList().size());
         assertPojoEquals(dbNotice, pageResult.getList().get(0));
+
     }
 
     @Test
@@ -158,4 +158,6 @@ class NoticeServiceImplTest extends BaseDbUnitTest {
         reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
         return reqVO;
     }
+
+
 }

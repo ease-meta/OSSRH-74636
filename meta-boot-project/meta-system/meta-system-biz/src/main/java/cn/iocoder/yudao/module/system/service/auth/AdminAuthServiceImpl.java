@@ -1,20 +1,20 @@
 package cn.iocoder.yudao.module.system.service.auth;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.util.monitor.TracerUtils;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
+import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
 import cn.iocoder.yudao.module.system.api.logger.dto.LoginLogCreateReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.SmsCodeApi;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthLoginReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthLoginRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthSmsLoginReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthSmsSendReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthSocialBindLoginReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.auth.vo.AuthSocialQuickLoginReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.auth.vo.*;
 import cn.iocoder.yudao.module.system.convert.auth.AuthConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
+import cn.iocoder.yudao.module.system.enums.oauth2.OAuth2ClientConstants;
 import cn.iocoder.yudao.module.system.enums.logger.LoginLogTypeEnum;
 import cn.iocoder.yudao.module.system.enums.logger.LoginResultEnum;
-import cn.iocoder.yudao.module.system.enums.oauth2.OAuth2ClientConstants;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
 import cn.iocoder.yudao.module.system.service.common.CaptchaService;
 import cn.iocoder.yudao.module.system.service.logger.LoginLogService;
@@ -23,11 +23,6 @@ import cn.iocoder.yudao.module.system.service.oauth2.OAuth2TokenService;
 import cn.iocoder.yudao.module.system.service.social.SocialUserService;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.util.monitor.TracerUtils;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
-import io.github.meta.ease.common.util.validation.ValidationUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -35,15 +30,9 @@ import javax.annotation.Resource;
 import javax.validation.Validator;
 import java.util.Objects;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_BAD_CREDENTIALS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_CAPTCHA_CODE_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_CAPTCHA_NOT_FOUND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_MOBILE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_THIRD_LOGIN_NOT_BIND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.servlet.ServletUtils.getClientIP;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.servlet.ServletUtils.getClientIP;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * Auth Service 实现类
@@ -56,19 +45,14 @@ public class AdminAuthServiceImpl implements AdminAuthService {
 
     @Resource
     private AdminUserService userService;
-
     @Resource
     private CaptchaService captchaService;
-
     @Resource
     private LoginLogService loginLogService;
-
     @Resource
     private OAuth2TokenService oauth2TokenService;
-
     @Resource
     private SocialUserService socialUserService;
-
     @Resource
     private MemberService memberService;
 
@@ -267,4 +251,5 @@ public class AdminAuthServiceImpl implements AdminAuthService {
     private UserTypeEnum getUserType() {
         return UserTypeEnum.ADMIN;
     }
+
 }

@@ -1,13 +1,12 @@
 package cn.iocoder.yudao.framework.sms.core.client.impl.aliyun;
 
-
+import cn.iocoder.yudao.framework.common.core.KeyValue;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsTemplateRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.impl.aliyun.AliyunSmsClient;
 import cn.iocoder.yudao.framework.sms.core.enums.SmsChannelEnum;
 import cn.iocoder.yudao.framework.sms.core.property.SmsChannelProperties;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -52,4 +51,5 @@ public class AliyunSmsClientIntegrationTest {
         SmsCommonResult<SmsTemplateRespDTO> result = smsClient.getSmsTemplate(apiTemplateId);
         System.out.println(result);
     }
+
 }

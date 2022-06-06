@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.framework.mq.core;
 
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.mq.core.interceptor.RedisMessageInterceptor;
 import cn.iocoder.yudao.framework.mq.core.message.AbstractRedisMessage;
 import cn.iocoder.yudao.framework.mq.core.pubsub.AbstractChannelMessage;
 import cn.iocoder.yudao.framework.mq.core.stream.AbstractStreamMessage;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.data.redis.connection.stream.RecordId;
@@ -24,7 +24,6 @@ public class RedisMQTemplate {
 
     @Getter
     private final RedisTemplate<String, ?> redisTemplate;
-
     /**
      * 拦截器数组
      */
@@ -84,4 +83,5 @@ public class RedisMQTemplate {
             interceptors.get(i).sendMessageAfter(message);
         }
     }
+
 }

@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.QueryWrapperX;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.log.JobLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.log.JobLogPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.QueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -39,4 +39,5 @@ public interface JobLogMapper extends BaseMapperX<JobLogDO> {
                 .orderByDesc("id") // ID 倒序
         );
     }
+
 }

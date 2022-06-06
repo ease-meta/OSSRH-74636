@@ -57,13 +57,13 @@ export function exportChannelExcel(query) {
 }
 
 // 获得支付渠道
-export function getChannel(merchantId, appId, code) {
+export function getChannel(merchantId,appId,code) {
   return request({
     url: '/pay/channel/get-channel',
-    params: {
-      merchantId: merchantId,
-      appId: appId,
-      code: code
+    params:{
+      merchantId:merchantId,
+      appId:appId,
+      code:code
     },
     method: 'get'
   })

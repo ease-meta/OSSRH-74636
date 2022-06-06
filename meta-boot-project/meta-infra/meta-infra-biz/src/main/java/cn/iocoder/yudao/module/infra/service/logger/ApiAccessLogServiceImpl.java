@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.infra.service.logger;
 
+import cn.iocoder.yudao.framework.apilog.core.service.dto.ApiAccessLogCreateReqDTO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogPageReqVO;
 import cn.iocoder.yudao.module.infra.convert.logger.ApiAccessLogConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiAccessLogDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.logger.ApiAccessLogMapper;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.web.apilog.core.service.dto.ApiAccessLogCreateReqDTO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -42,4 +42,5 @@ public class ApiAccessLogServiceImpl implements ApiAccessLogService {
         ApiAccessLogDO apiAccessLog = ApiAccessLogConvert.INSTANCE.convert(createDTO);
         apiAccessLogMapper.insert(apiAccessLog);
     }
+
 }

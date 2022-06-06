@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.module.system.dal.mysql.permission;
 
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.UserRoleDO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -41,4 +41,5 @@ public interface UserRoleMapper extends BaseMapperX<UserRoleDO> {
 
     @Select("SELECT COUNT(*) FROM system_user_role WHERE update_time > #{maxUpdateTime}")
     Long selectCountByUpdateTimeGt(Date maxUpdateTime);
+
 }

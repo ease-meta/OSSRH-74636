@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.system.service.sms;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeCheckReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeSendReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeUseReqDTO;
@@ -9,7 +10,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsCodeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.sms.SmsCodeMapper;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
 import cn.iocoder.yudao.module.system.framework.sms.SmsCodeProperties;
-import io.github.meta.ease.common.exception.util.ServiceExceptionUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -17,11 +17,7 @@ import javax.annotation.Resource;
 import java.util.Date;
 
 import static cn.hutool.core.util.RandomUtil.randomInt;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CODE_EXCEED_SEND_MAXIMUM_QUANTITY_PER_DAY;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CODE_EXPIRED;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CODE_NOT_FOUND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CODE_SEND_TOO_FAST;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_CODE_USED;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 短信验证码 Service 实现类
@@ -54,7 +50,7 @@ public class SmsCodeServiceImpl implements SmsCodeService {
 
     private String createSmsCode(String mobile, Integer scene, String ip) {
         // 校验是否可以发送验证码，不用筛选场景
-        SmsCodeDO lastSmsCode = smsCodeMapper.selectLastByMobile(mobile, null, null);
+        SmsCodeDO lastSmsCode = smsCodeMapper.selectLastByMobile(mobile, null,null);
         if (lastSmsCode != null) {
             if (lastSmsCode.getTodayIndex() >= smsCodeProperties.getSendMaximumQuantityPerDay()) { // 超过当天发送的上限。
                 throw ServiceExceptionUtil.exception(SMS_CODE_EXCEED_SEND_MAXIMUM_QUANTITY_PER_DAY);
@@ -92,7 +88,7 @@ public class SmsCodeServiceImpl implements SmsCodeService {
 
     public SmsCodeDO checkSmsCode0(String mobile, String code, Integer scene) {
         // 校验验证码
-        SmsCodeDO lastSmsCode = smsCodeMapper.selectLastByMobile(mobile, code, scene);
+        SmsCodeDO lastSmsCode = smsCodeMapper.selectLastByMobile(mobile,code,scene);
         // 若验证码不存在，抛出异常
         if (lastSmsCode == null) {
             throw ServiceExceptionUtil.exception(SMS_CODE_NOT_FOUND);
@@ -108,4 +104,5 @@ public class SmsCodeServiceImpl implements SmsCodeService {
         }
         return lastSmsCode;
     }
+
 }

@@ -3,6 +3,10 @@ package cn.iocoder.yudao.module.system.service.tenant;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.tenant.config.TenantProperties;
 import cn.iocoder.yudao.framework.tenant.core.context.TenantContextHolder;
 import cn.iocoder.yudao.framework.tenant.core.util.TenantUtils;
@@ -26,10 +30,6 @@ import cn.iocoder.yudao.module.system.service.permission.RoleService;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantInfoHandler;
 import cn.iocoder.yudao.module.system.service.tenant.handler.TenantMenuHandler;
 import cn.iocoder.yudao.module.system.service.user.AdminUserService;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.date.DateUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,20 +43,12 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_CAN_NOT_UPDATE_SYSTEM;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_EXPIRE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.TENANT_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertImmutableMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.getMaxValue;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertImmutableMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.getMaxValue;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static java.util.Collections.singleton;
 
 /**
@@ -77,13 +69,12 @@ public class TenantServiceImpl implements TenantService {
 
     /**
      * 角色缓存
-     * key：角色编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO#getId()}
-     * <p>
+     * key：角色编号 {@link RoleDO#getId()}
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter
     private volatile Map<Long, TenantDO> tenantCache;
-
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -99,17 +90,13 @@ public class TenantServiceImpl implements TenantService {
 
     @Resource
     private TenantPackageService tenantPackageService;
-
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private AdminUserService userService;
-
     @Resource
     private RoleService roleService;
-
     @Resource
     private MenuService menuService;
-
     @Resource
     private PermissionService permissionService;
 
@@ -362,4 +349,5 @@ public class TenantServiceImpl implements TenantService {
     private boolean isTenantDisable() {
         return tenantProperties == null || Boolean.FALSE.equals(tenantProperties.getEnable());
     }
+
 }

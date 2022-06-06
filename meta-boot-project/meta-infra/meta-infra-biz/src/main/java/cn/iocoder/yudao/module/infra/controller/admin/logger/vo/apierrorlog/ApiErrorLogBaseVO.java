@@ -7,12 +7,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-import static io.github.meta.ease.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.FORMAT_YEAR_MONTH_DAY_HOUR_MINUTE_SECOND;
 
 /**
- * API 错误日志 Base VO，提供给添加、修改、详细的子 VO 使用
- * 如果子 VO 存在差异的字段，请不要添加到这里，影响 Swagger 文档生成
- */
+* API 错误日志 Base VO，提供给添加、修改、详细的子 VO 使用
+* 如果子 VO 存在差异的字段，请不要添加到这里，影响 Swagger 文档生成
+*/
 @Data
 public class ApiErrorLogBaseVO {
 
@@ -92,4 +92,5 @@ public class ApiErrorLogBaseVO {
     @ApiModelProperty(value = "处理状态", required = true, example = "0")
     @NotNull(message = "处理状态不能为空")
     private Integer processStatus;
+
 }

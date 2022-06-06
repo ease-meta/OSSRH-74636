@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.bpm.framework.activiti.core.listener;
 
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.yudao.module.bpm.service.definition.BpmProcessDefinitionService;
+import org.activiti.api.task.runtime.events.listener.TaskEventListener;
 import org.activiti.engine.delegate.event.ActivitiEvent;
 import org.activiti.engine.delegate.event.ActivitiEventListener;
 import org.activiti.engine.delegate.event.ActivitiEventType;
@@ -14,8 +15,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * 监听 {@link org.activiti.engine.impl.persistence.entity.TaskEntity} 相关的事件，设置相关属性。
- * 目的：解决 {@link org.activiti.api.task.runtime.events.listener.TaskEventListener} 无法解决的场景
+ * 监听 {@link TaskEntity} 相关的事件，设置相关属性。
+ * 目的：解决 {@link TaskEventListener} 无法解决的场景
  *
  * @author 芋道源码
  */
@@ -35,8 +36,7 @@ public class BpmTackActivitiEventListener implements ActivitiEventListener {
                 return;
             }
             // 设置 name
-            ProcessDefinition processDefinition = processDefinitionService.getProcessDefinition2(
-                    task.getProcessDefinitionId());
+            ProcessDefinition processDefinition = processDefinitionService.getProcessDefinition2(task.getProcessDefinitionId());
             if (processDefinition == null) {
                 return;
             }
@@ -48,4 +48,5 @@ public class BpmTackActivitiEventListener implements ActivitiEventListener {
     public boolean isFailOnException() {
         return true;
     }
+
 }

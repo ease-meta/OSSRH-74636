@@ -2,11 +2,12 @@ package cn.iocoder.yudao.module.system.dal.mysql.user;
 
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserPageReqVO;
+import cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Collection;
@@ -35,6 +36,7 @@ public interface AdminUserMapper extends BaseMapperX<AdminUserDO> {
                 .betweenIfPresent(AdminUserDO::getCreateTime, reqVO.getBeginTime(), reqVO.getEndTime())
                 .inIfPresent(AdminUserDO::getDeptId, deptIds)
                 .orderByDesc(AdminUserDO::getId));
+
     }
 
     default List<AdminUserDO> selectList(UserExportReqVO reqVO, Collection<Long> deptIds) {
@@ -61,5 +63,6 @@ public interface AdminUserMapper extends BaseMapperX<AdminUserDO> {
     default List<AdminUserDO> selectListByDeptIds(Collection<Long> deptIds) {
         return selectList(AdminUserDO::getDeptId, deptIds);
     }
+
 }
 

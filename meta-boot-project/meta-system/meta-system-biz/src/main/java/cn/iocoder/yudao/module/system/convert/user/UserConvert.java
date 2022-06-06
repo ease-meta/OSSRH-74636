@@ -4,12 +4,7 @@ import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserImportExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserPageItemRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.*;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO;
@@ -59,4 +54,5 @@ public interface UserConvert {
     List<AdminUserRespDTO> convertList4(List<AdminUserDO> users);
 
     Map<Long, AdminUserRespDTO> convertMap4(Map<Long, AdminUserDO> map);
+
 }

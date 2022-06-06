@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.framework.tracer.config;
 
+import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
 import cn.iocoder.yudao.framework.tracer.core.aop.BizTraceAspect;
 import cn.iocoder.yudao.framework.tracer.core.filter.TraceFilter;
-import io.github.meta.ease.common.enums.WebFilterOrderEnum;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -51,4 +51,5 @@ public class YudaoTracerAutoConfiguration {
         registrationBean.setOrder(WebFilterOrderEnum.TRACE_FILTER);
         return registrationBean;
     }
+
 }

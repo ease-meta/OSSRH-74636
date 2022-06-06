@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/"/>
+    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="用户编号" prop="userId">
@@ -13,15 +13,14 @@
         </el-select>
       </el-form-item>
       <el-form-item label="应用名" prop="applicationName">
-        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="请求地址" prop="requestUrl">
         <el-input v-model="queryParams.requestUrl" placeholder="请输入请求地址" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="请求时间">
         <el-date-picker v-model="dateRangeBeginTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item label="执行时长" prop="duration">
         <el-input v-model="queryParams.duration" placeholder="请输入执行时长" clearable @keyup.enter.native="handleQuery"/>
@@ -38,27 +37,24 @@
     <!-- 操作工具栏 -->
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading"
-                   @click="handleExport"
-                   v-hasPermi="['infra:api-access-log:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading" @click="handleExport"
+                   v-hasPermi="['infra:api-access-log:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id"/>
-      <el-table-column label="用户编号" align="center" prop="userId"/>
+      <el-table-column label="日志编号" align="center" prop="id" />
+      <el-table-column label="用户编号" align="center" prop="userId" />
       <el-table-column label="用户类型" align="center" prop="userType">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType"/>
         </template>
-      </el-table-column>
-      >
-      <el-table-column label="应用名" align="center" prop="applicationName"/>
-      <el-table-column label="请求方法名" align="center" prop="requestMethod"/>
-      <el-table-column label="请求地址" align="center" prop="requestUrl" width="250"/>
+      </el-table-column>>
+      <el-table-column label="应用名" align="center" prop="applicationName" />
+      <el-table-column label="请求方法名" align="center" prop="requestMethod" />
+      <el-table-column label="请求地址" align="center" prop="requestUrl" width="250" />
       <el-table-column label="请求时间" align="center" prop="beginTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginTime) }}</span>
@@ -77,8 +73,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-view" @click="handleView(scope.row,scope.index)"
-                     v-hasPermi="['infra:api-access-log:query']">详细
-          </el-button>
+                     v-hasPermi="['infra:api-access-log:query']">详细</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -95,18 +90,16 @@
             <el-form-item label="链路追踪：">{{ form.traceId }}</el-form-item>
             <el-form-item label="应用名：">{{ form.applicationName }}</el-form-item>
             <el-form-item label="用户信息：">
-              {{ form.userId }}
-              <dict-tag :type="DICT_TYPE.USER_TYPE" :value="form.userType"/>
-              | {{ form.userIp }} | {{ form.userAgent }}
+              {{ form.userId }} <dict-tag :type="DICT_TYPE.USER_TYPE" :value="form.userType"/> | {{ form.userIp }} | {{ form.userAgent}}
             </el-form-item>
-            <el-form-item label="请求信息：">{{ form.requestMethod }} | {{ form.requestUrl }}</el-form-item>
+            <el-form-item label="请求信息：">{{ form.requestMethod }} | {{ form.requestUrl }} </el-form-item>
             <el-form-item label="请求参数：">{{ form.requestParams }}</el-form-item>
             <el-form-item label="开始时间：">
               {{ parseTime(form.beginTime) }} ~ {{ parseTime(form.endTime) }} | {{ form.duration }} ms
             </el-form-item>
             <el-form-item label="操作结果：">
               <div v-if="form.resultCode === 0">正常</div>
-              <div v-else-if="form.resultCode > 0">失败 | {{ form.resultCode }} || {{ form.resultMsg }}</div>
+              <div v-else-if="form.resultCode > 0">失败 | {{ form.resultCode }} || {{ form.resultMsg}}</div>
             </el-form-item>
           </el-col>
         </el-row>
@@ -120,11 +113,12 @@
 </template>
 
 <script>
-import {exportApiAccessLogExcel, getApiAccessLogPage} from "@/api/infra/apiAccessLog";
+import { getApiAccessLogPage, exportApiAccessLogExcel } from "@/api/infra/apiAccessLog";
 
 export default {
   name: "ApiAccessLog",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -214,8 +208,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, 'API 访问日志.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     }
   }
 };

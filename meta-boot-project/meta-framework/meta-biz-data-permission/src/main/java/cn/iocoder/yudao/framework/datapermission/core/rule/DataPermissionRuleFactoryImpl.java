@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 /**
  * 默认的 DataPermissionRuleFactoryImpl 实现类
- * 支持通过 {@link cn.iocoder.yudao.framework.datapermission.core.aop.DataPermissionContextHolder} 过滤数据权限
+ * 支持通过 {@link DataPermissionContextHolder} 过滤数据权限
  *
  * @author 芋道源码
  */
@@ -58,4 +58,5 @@ public class DataPermissionRuleFactoryImpl implements DataPermissionRuleFactory 
         // 6. 已配置，全部规则
         return rules;
     }
+
 }

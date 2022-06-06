@@ -26,7 +26,7 @@
           :class="active===icon?'active-item':''"
           @click="onSelect(icon)"
         >
-          <i :class="icon"/>
+          <i :class="icon" />
           <div>{{ icon }}</div>
         </li>
       </ul>
@@ -62,8 +62,7 @@ export default {
       this.active = this.current
       this.key = ''
     },
-    onClose() {
-    },
+    onClose() {},
     onSelect(icon) {
       this.active = icon
       this.$emit('select', icon)
@@ -88,16 +87,13 @@ export default {
     padding: 15px 6px 6px 6px;
     cursor: pointer;
     overflow: hidden;
-
     &:hover {
       background: #f2f2f2;
     }
-
-    &.active-item {
+    &.active-item{
       background: #e1f3fb;
       color: #7a6df0
     }
-
     > i {
       font-size: 30px;
       line-height: 50px;

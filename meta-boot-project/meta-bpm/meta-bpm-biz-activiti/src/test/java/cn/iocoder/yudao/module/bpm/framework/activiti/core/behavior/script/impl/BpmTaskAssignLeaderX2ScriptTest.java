@@ -11,11 +11,12 @@ import org.activiti.engine.impl.persistence.entity.TaskEntityImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Set;
 
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
@@ -27,7 +28,6 @@ class BpmTaskAssignLeaderX2ScriptTest extends BaseMockitoUnitTest {
 
     @Mock
     private AdminUserApi adminUserApi;
-
     @Mock
     private DeptApi deptApi;
 
@@ -90,4 +90,5 @@ class BpmTaskAssignLeaderX2ScriptTest extends BaseMockitoUnitTest {
         task.getProcessInstance().setStartUserId(String.valueOf(startUserId));
         return task;
     }
+
 }

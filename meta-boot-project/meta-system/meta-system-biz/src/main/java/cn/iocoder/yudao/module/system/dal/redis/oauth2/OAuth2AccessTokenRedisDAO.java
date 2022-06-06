@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.module.system.dal.redis.oauth2;
 
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import static cn.iocoder.yudao.module.system.dal.redis.RedisKeyConstants.OAUTH2_ACCESS_TOKEN;
 
 /**
- * {@link cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO} 的 RedisDAO
+ * {@link OAuth2AccessTokenDO} 的 RedisDAO
  *
  * @author 芋道源码
  */
@@ -50,4 +50,5 @@ public class OAuth2AccessTokenRedisDAO {
     private static String formatKey(String accessToken) {
         return String.format(OAUTH2_ACCESS_TOKEN.getKeyTemplate(), accessToken);
     }
+
 }

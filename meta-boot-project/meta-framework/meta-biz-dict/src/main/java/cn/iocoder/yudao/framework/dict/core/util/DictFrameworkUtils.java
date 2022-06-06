@@ -24,4 +24,5 @@ public class DictFrameworkUtils {
     public static DictDataRespDTO parseDictDataFromCache(String type, String label) {
         return service.parseDictDataFromCache(type, label);
     }
+
 }

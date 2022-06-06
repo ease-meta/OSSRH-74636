@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/"/>
+    <doc-alert title="系统日志" url="https://doc.iocoder.cn/system-log/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="用户编号" prop="userId">
@@ -13,15 +13,14 @@
         </el-select>
       </el-form-item>
       <el-form-item label="应用名" prop="applicationName">
-        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable
-                  @keyup.enter.native="handleQuery"/>
+        <el-input v-model="queryParams.applicationName" placeholder="请输入应用名" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="请求地址" prop="requestUrl">
         <el-input v-model="queryParams.requestUrl" placeholder="请输入请求地址" clearable @keyup.enter.native="handleQuery"/>
       </el-form-item>
       <el-form-item label="异常时间">
         <el-date-picker v-model="dateRangeExceptionTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item label="处理状态" prop="processStatus">
         <el-select v-model="queryParams.processStatus" placeholder="请选择处理状态" clearable>
@@ -38,53 +37,45 @@
     <!-- 操作工具栏 -->
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading"
-                   v-hasPermi="['infra:api-error-log:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
+                   v-hasPermi="['infra:api-error-log:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="日志编号" align="center" prop="id"/>
-      <el-table-column label="用户编号" align="center" prop="userId"/>
+      <el-table-column label="日志编号" align="center" prop="id" />
+      <el-table-column label="用户编号" align="center" prop="userId" />
       <el-table-column label="用户类型" align="center" prop="userType">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType"/>
         </template>
-      </el-table-column>
-      >
-      <el-table-column label="应用名" align="center" prop="applicationName"/>
-      <el-table-column label="请求方法名" align="center" prop="requestMethod"/>
-      <el-table-column label="请求地址" align="center" prop="requestUrl" width="250"/>
+      </el-table-column>>
+      <el-table-column label="应用名" align="center" prop="applicationName" />
+      <el-table-column label="请求方法名" align="center" prop="requestMethod" />
+      <el-table-column label="请求地址" align="center" prop="requestUrl" width="250" />
       <el-table-column label="异常发生时间" align="center" prop="exceptionTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.exceptionTime) }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="异常名" align="center" prop="exceptionName" width="250"/>
+      <el-table-column label="异常名" align="center" prop="exceptionName" width="250" />
       <el-table-column label="处理状态" align="center" prop="processStatus">
         <template slot-scope="scope">
-          <dict-tag :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS" :value="scope.row.processStatus"/>
+          <dict-tag :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS" :value="scope.row.processStatus" />
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-view" @click="handleView(scope.row,scope.index)"
-                     v-hasPermi="['infra:api-access-log:query']">详细
-          </el-button>
+                     v-hasPermi="['infra:api-access-log:query']">详细</el-button>
           <el-button type="text" size="mini" icon="el-icon-check"
-                     v-if="scope.row.processStatus === InfApiErrorLogProcessStatusEnum.INIT"
-                     v-hasPermi="['infra:api-error-log:update-status']"
-                     @click="handleProcessClick(scope.row, InfApiErrorLogProcessStatusEnum.DONE)">已处理
-          </el-button>
+              v-if="scope.row.processStatus === InfApiErrorLogProcessStatusEnum.INIT" v-hasPermi="['infra:api-error-log:update-status']"
+              @click="handleProcessClick(scope.row, InfApiErrorLogProcessStatusEnum.DONE)">已处理</el-button>
           <el-button type="text" size="mini" icon="el-icon-check"
-                     v-if="scope.row.processStatus === InfApiErrorLogProcessStatusEnum.INIT"
-                     v-hasPermi="['infra:api-error-log:update-status']"
-                     @click="handleProcessClick(scope.row, InfApiErrorLogProcessStatusEnum.IGNORE)">已忽略
-          </el-button>
+                     v-if="scope.row.processStatus === InfApiErrorLogProcessStatusEnum.INIT" v-hasPermi="['infra:api-error-log:update-status']"
+                     @click="handleProcessClick(scope.row, InfApiErrorLogProcessStatusEnum.IGNORE)">已忽略</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -102,20 +93,17 @@
             <el-form-item label="链路追踪：">{{ form.traceId }}</el-form-item>
             <el-form-item label="应用名：">{{ form.applicationName }}</el-form-item>
             <el-form-item label="用户信息：">
-              {{ form.userId }}
-              <dict-tag :type="DICT_TYPE.USER_TYPE" :value="form.userType"/>
-              | {{ form.userIp }} | {{ form.userAgent }}
+              {{ form.userId }} <dict-tag :type="DICT_TYPE.USER_TYPE" :value="form.userType" /> | {{ form.userIp }} | {{ form.userAgent}}
             </el-form-item>
-            <el-form-item label="请求信息：">{{ form.requestMethod }} | {{ form.requestUrl }}</el-form-item>
+            <el-form-item label="请求信息：">{{ form.requestMethod }} | {{ form.requestUrl }} </el-form-item>
             <el-form-item label="请求参数：">{{ form.requestParams }}</el-form-item>
             <el-form-item label="异常时间：">{{ parseTime(form.exceptionTime) }}</el-form-item>
             <el-form-item label="异常名">{{ form.exceptionName }}</el-form-item>
             <el-form-item label="异常名">
-              <el-input type="textarea" :readonly="true" :autosize="{ maxRows: 20}"
-                        v-model="form.exceptionStackTrace"></el-input>
+              <el-input type="textarea" :readonly="true" :autosize="{ maxRows: 20}" v-model="form.exceptionStackTrace"></el-input>
             </el-form-item>
             <el-form-item label="处理状态">
-              <dict-tag :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS" :value="form.processStatus"/>
+              <dict-tag :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS" :value="form.processStatus" />
             </el-form-item>
             <el-form-item label="处理人">{{ form.processUserId }}</el-form-item>
             <el-form-item label="处理时间">{{ parseTime(form.processTime) }}</el-form-item>
@@ -131,12 +119,13 @@
 </template>
 
 <script>
-import {exportApiErrorLogExcel, getApiErrorLogPage, updateApiErrorLogProcess} from "@/api/infra/apiErrorLog";
-import {InfraApiErrorLogProcessStatusEnum} from '@/utils/constants'
+import { updateApiErrorLogProcess, getApiErrorLogPage, exportApiErrorLogExcel } from "@/api/infra/apiErrorLog";
+import { InfraApiErrorLogProcessStatusEnum } from '@/utils/constants'
 
 export default {
   name: "ApiErrorLog",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -221,8 +210,7 @@ export default {
           this.$modal.msgSuccess("修改成功");
           this.getList();
         });
-      }).catch(() => {
-      });
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -238,8 +226,7 @@ export default {
       }).then(response => {
         this.$download.excel(response, 'API 错误日志.xls');
         this.exportLoading = false;
-      }).catch(() => {
-      });
+      }).catch(() => {});
     }
   }
 };

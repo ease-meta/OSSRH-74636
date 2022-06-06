@@ -50,8 +50,8 @@ export function getMerchant(id) {
 export function getMerchantListByName(name) {
   return request({
     url: '/pay/merchant/list-by-name',
-    params: {
-      name: name
+    params:{
+      name:name
     },
     method: 'get'
   })

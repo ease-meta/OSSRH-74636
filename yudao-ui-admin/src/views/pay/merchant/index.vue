@@ -14,8 +14,7 @@
       </el-form-item>
       <el-form-item label="开启状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择开启状态" clearable>
-          <el-option v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="dict.label"
-                     :value="parseInt(dict.value)"/>
+          <el-option v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="dict.label" :value="parseInt(dict.value)"/>
         </el-select>
       </el-form-item>
       <el-form-item label="备注" prop="remark">
@@ -23,7 +22,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -35,31 +34,27 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['pay:merchant:create']">新增
-        </el-button>
+                   v-hasPermi="['pay:merchant:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading"
-                   @click="handleExport"
-                   v-hasPermi="['pay:merchant:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" :loading="exportLoading" @click="handleExport"
+                   v-hasPermi="['pay:merchant:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="商户编号" align="center" prop="id"/>
-      <el-table-column label="商户号" align="center" prop="no"/>
-      <el-table-column label="商户全称" align="center" prop="name"/>
-      <el-table-column label="商户简称" align="center" prop="shortName"/>
-      <el-table-column label="开启状态" align="center" prop="status">
+      <el-table-column label="商户编号" align="center" prop="id" />
+      <el-table-column label="商户号" align="center" prop="no" />
+      <el-table-column label="商户全称" align="center" prop="name" />
+      <el-table-column label="商户简称" align="center" prop="shortName" />
+      <el-table-column label="开启状态" align="center" prop="status" >
         <template slot-scope="scope">
-          <el-switch v-model="scope.row.status" :active-value="0" :inactive-value="1"
-                     @change="handleStatusChange(scope.row)"/>
+          <el-switch v-model="scope.row.status" :active-value="0" :inactive-value="1" @change="handleStatusChange(scope.row)" />
         </template>
       </el-table-column>
-      <el-table-column label="备注" align="center" prop="remark"/>
+      <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -68,11 +63,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['pay:merchant:update']">修改
-          </el-button>
+                     v-hasPermi="['pay:merchant:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['pay:merchant:delete']">删除
-          </el-button>
+                     v-hasPermi="['pay:merchant:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -83,24 +76,23 @@
     <!-- 对话框(添加 / 修改) -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <!--        <el-form-item label="商户号" prop="no">-->
-        <!--          <el-input v-model="form.no" placeholder="请输入商户号" />-->
-        <!--        </el-form-item>-->
+<!--        <el-form-item label="商户号" prop="no">-->
+<!--          <el-input v-model="form.no" placeholder="请输入商户号" />-->
+<!--        </el-form-item>-->
         <el-form-item label="商户全称" prop="name">
-          <el-input v-model="form.name" placeholder="请输入商户全称"/>
+          <el-input v-model="form.name" placeholder="请输入商户全称" />
         </el-form-item>
         <el-form-item label="商户简称" prop="shortName">
-          <el-input v-model="form.shortName" placeholder="请输入商户简称"/>
+          <el-input v-model="form.shortName" placeholder="请输入商户简称" />
         </el-form-item>
         <el-form-item label="开启状态" prop="status">
           <el-radio-group v-model="form.status">
             <el-radio v-for="dict in statusDictDatas" :key="parseInt(dict.value)" :label="parseInt(dict.value)">
-              {{ dict.label }}
-            </el-radio>
+              {{dict.label}}</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+          <el-input v-model="form.remark" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -113,20 +105,21 @@
 
 <script>
 import {
-  changeMerchantStatus,
   createMerchant,
+  updateMerchant,
+  changeMerchantStatus,
   deleteMerchant,
-  exportMerchantExcel,
   getMerchant,
   getMerchantPage,
-  updateMerchant
+  exportMerchantExcel
 } from "@/api/pay/merchant";
 import {DICT_TYPE, getDictDatas} from "@/utils/dict";
 import {CommonStatusEnum} from "@/utils/constants";
 
 export default {
   name: "Merchant",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -158,10 +151,10 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        no: [{required: true, message: "商户号不能为空", trigger: "blur"}],
-        name: [{required: true, message: "商户全称不能为空", trigger: "blur"}],
-        shortName: [{required: true, message: "商户简称不能为空", trigger: "blur"}],
-        status: [{required: true, message: "开启状态不能为空", trigger: "blur"}],
+        no: [{ required: true, message: "商户号不能为空", trigger: "blur" }],
+        name: [{ required: true, message: "商户全称不能为空", trigger: "blur" }],
+        shortName: [{ required: true, message: "商户简称不能为空", trigger: "blur" }],
+        status: [{ required: true, message: "开启状态不能为空", trigger: "blur" }],
       },
       // 商户状态数据字典
       statusDictDatas: getDictDatas(DICT_TYPE.COMMON_STATUS)
@@ -232,11 +225,11 @@ export default {
     // 用户状态修改
     handleStatusChange(row) {
       let text = row.status === CommonStatusEnum.ENABLE ? "启用" : "停用";
-      this.$modal.confirm('确认要"' + text + '""' + row.name + '"商户吗?').then(function () {
+      this.$modal.confirm('确认要"' + text + '""' + row.name + '"商户吗?').then(function() {
         return changeMerchantStatus(row.id, row.status);
       }).then(() => {
         this.$modal.msgSuccess(text + "成功");
-      }).catch(function () {
+      }).catch(function() {
         row.status = row.status === CommonStatusEnum.ENABLE ? CommonStatusEnum.DISABLE
           : CommonStatusEnum.ENABLE;
       });
@@ -267,13 +260,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除支付商户信息编号为"' + id + '"的数据项?').then(function () {
-        return deleteMerchant(id);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除支付商户信息编号为"' + id + '"的数据项?').then(function() {
+          return deleteMerchant(id);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -284,13 +276,12 @@ export default {
       this.addBeginAndEndTime(params, this.dateRangeCreateTime, 'createTime');
       // 执行导出
       this.$modal.confirm('是否确认导出所有支付商户信息数据项?').then(() => {
-        this.exportLoading = true;
-        return exportMerchantExcel(params);
-      }).then(response => {
-        this.$download.excel(response, '支付商户信息.xls');
-        this.exportLoading = false;
-      }).catch(() => {
-      });
+          this.exportLoading = true;
+          return exportMerchantExcel(params);
+        }).then(response => {
+          this.$download.excel(response, '支付商户信息.xls');
+          this.exportLoading = false;
+      }).catch(() => {});
     }
   }
 };

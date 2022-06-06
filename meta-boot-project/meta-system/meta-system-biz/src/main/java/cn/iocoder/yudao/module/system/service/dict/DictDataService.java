@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.service.dict;
 
 import cn.iocoder.yudao.framework.dict.core.service.DictDataFrameworkService;
+import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import java.util.Collection;
 import java.util.List;
@@ -90,7 +90,8 @@ public interface DictDataService extends DictDataFrameworkService {
      * 2. 字典数据被禁用
      *
      * @param dictType 字典类型
-     * @param values   字典数据值的数组
+     * @param values 字典数据值的数组
      */
     void validDictDatas(String dictType, Collection<String> values);
+
 }

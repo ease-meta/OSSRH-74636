@@ -1,9 +1,10 @@
 package cn.iocoder.yudao.module.system.dal.dataobject.dept;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,31 +24,27 @@ public class PostDO extends BaseDO {
      */
     @TableId
     private Long id;
-
     /**
      * 岗位名称
      */
     private String name;
-
     /**
      * 岗位编码
      */
     private String code;
-
     /**
      * 岗位排序
      */
     private Integer sort;
-
     /**
      * 状态
-     * <p>
-     * 枚举 {@link io.github.meta.ease.common.enums.CommonStatusEnum}
+     *
+     * 枚举 {@link CommonStatusEnum}
      */
     private Integer status;
-
     /**
      * 备注
      */
     private String remark;
+
 }

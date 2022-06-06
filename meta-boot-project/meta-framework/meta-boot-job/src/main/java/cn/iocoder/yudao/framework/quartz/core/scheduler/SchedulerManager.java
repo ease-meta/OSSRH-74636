@@ -2,24 +2,15 @@ package cn.iocoder.yudao.framework.quartz.core.scheduler;
 
 import cn.iocoder.yudao.framework.quartz.core.enums.JobDataKeyEnum;
 import cn.iocoder.yudao.framework.quartz.core.handler.JobHandlerInvoker;
-import org.quartz.CronScheduleBuilder;
-import org.quartz.JobBuilder;
-import org.quartz.JobDataMap;
-import org.quartz.JobDetail;
-import org.quartz.JobKey;
-import org.quartz.Scheduler;
-import org.quartz.SchedulerException;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.TriggerKey;
+import org.quartz.*;
 
 /**
  * {@link org.quartz.Scheduler} 的管理器，负责创建任务
- * <p>
+ *
  * 考虑到实现的简洁性，我们使用 jobHandlerName 作为唯一标识，即：
  * 1. Job 的 {@link JobDetail#getKey()}
  * 2. Trigger 的 {@link Trigger#getKey()}
- * <p>
+ *
  * 另外，jobHandlerName 对应到 Spring Bean 的名字，直接调用
  *
  * @author 芋道源码
@@ -35,12 +26,12 @@ public class SchedulerManager {
     /**
      * 添加 Job 到 Quartz 中
      *
-     * @param jobId           任务编号
-     * @param jobHandlerName  任务处理器的名字
+     * @param jobId 任务编号
+     * @param jobHandlerName 任务处理器的名字
      * @param jobHandlerParam 任务处理器的参数
-     * @param cronExpression  CRON 表达式
-     * @param retryCount      重试次数
-     * @param retryInterval   重试间隔
+     * @param cronExpression CRON 表达式
+     * @param retryCount 重试次数
+     * @param retryInterval 重试间隔
      * @throws SchedulerException 添加异常
      */
     public void addJob(Long jobId, String jobHandlerName, String jobHandlerParam, String cronExpression,
@@ -60,11 +51,11 @@ public class SchedulerManager {
     /**
      * 更新 Job 到 Quartz
      *
-     * @param jobHandlerName  任务处理器的名字
+     * @param jobHandlerName 任务处理器的名字
      * @param jobHandlerParam 任务处理器的参数
-     * @param cronExpression  CRON 表达式
-     * @param retryCount      重试次数
-     * @param retryInterval   重试间隔
+     * @param cronExpression CRON 表达式
+     * @param retryCount 重试次数
+     * @param retryInterval 重试间隔
      * @throws SchedulerException 更新异常
      */
     public void updateJob(String jobHandlerName, String jobHandlerParam, String cronExpression,
@@ -110,8 +101,8 @@ public class SchedulerManager {
     /**
      * 立即触发一次 Quartz 中的 Job
      *
-     * @param jobId           任务编号
-     * @param jobHandlerName  任务处理器的名字
+     * @param jobId 任务编号
+     * @param jobHandlerName 任务处理器的名字
      * @param jobHandlerParam 任务处理器的参数
      * @throws SchedulerException 触发异常
      */
@@ -135,4 +126,5 @@ public class SchedulerManager {
                 .usingJobData(JobDataKeyEnum.JOB_RETRY_INTERVAL.name(), retryInterval)
                 .build();
     }
+
 }

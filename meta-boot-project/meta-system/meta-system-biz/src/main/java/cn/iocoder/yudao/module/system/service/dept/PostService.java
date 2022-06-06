@@ -1,19 +1,18 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.springframework.lang.Nullable;
 
 import java.util.Collection;
 import java.util.List;
 
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
-
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 
 /**
  * 岗位 Service 接口
@@ -57,7 +56,7 @@ public interface PostService {
     /**
      * 获得符合条件的岗位列表
      *
-     * @param ids      岗位编号数组。如果为空，不进行筛选
+     * @param ids 岗位编号数组。如果为空，不进行筛选
      * @param statuses 状态数组。如果为空，不进行筛选
      * @return 部门列表
      */
@@ -95,4 +94,5 @@ public interface PostService {
      * @param ids 岗位编号数组
      */
     void validPosts(Collection<Long> ids);
+
 }

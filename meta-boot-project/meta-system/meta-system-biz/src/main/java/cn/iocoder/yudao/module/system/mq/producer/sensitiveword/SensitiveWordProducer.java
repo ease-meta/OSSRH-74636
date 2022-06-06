@@ -16,10 +16,11 @@ public class SensitiveWordProducer {
     private RedisMQTemplate redisMQTemplate;
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.system.mq.message.sensitiveword.SensitiveWordRefreshMessage} 消息
+     * 发送 {@link SensitiveWordRefreshMessage} 消息
      */
     public void sendSensitiveWordRefreshMessage() {
         SensitiveWordRefreshMessage message = new SensitiveWordRefreshMessage();
         redisMQTemplate.send(message);
     }
+
 }

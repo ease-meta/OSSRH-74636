@@ -1,17 +1,17 @@
 <template>
   <div class="app-container">
-    <doc-alert title="工作流" url="https://doc.iocoder.cn/bpm"/>
+    <doc-alert title="工作流" url="https://doc.iocoder.cn/bpm" />
 
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="请假类型" prop="type">
         <el-select v-model="queryParams.type" placeholder="请选择请假类型" clearable>
-          <el-option v-for="dict in leaveTypeDictData" :key="dict.value" :label="dict.label" :value="dict.value"/>
+          <el-option v-for="dict in leaveTypeDictData" :key="dict.value" :label="dict.label" :value="dict.value" />
         </el-select>
       </el-form-item>
       <el-form-item label="申请时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item label="结果" prop="result">
         <el-select v-model="queryParams.result" placeholder="请选择流结果" clearable>
@@ -32,15 +32,14 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini"
-                   v-hasPermi="['bpm:oa-leave:create']" @click="handleAdd">发起请假
-        </el-button>
+                   v-hasPermi="['bpm:oa-leave:create']" @click="handleAdd">发起请假</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="申请编号" align="center" prop="id"/>
+      <el-table-column label="申请编号" align="center" prop="id" />
       <el-table-column label="状态" align="center" prop="result">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.BPM_PROCESS_INSTANCE_RESULT" :value="scope.row.result"/>
@@ -61,7 +60,7 @@
           <dict-tag :type="DICT_TYPE.BPM_OA_LEAVE_TYPE" :value="scope.row.type"/>
         </template>
       </el-table-column>
-      <el-table-column label="原因" align="center" prop="reason"/>
+      <el-table-column label="原因" align="center" prop="reason" />
       <el-table-column label="申请时间" align="center" prop="applyTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -70,13 +69,10 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width" width="200">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleCancel(scope.row)"
-                     v-hasPermi="['bpm:oa-leave:create']" v-if="scope.row.result === 1">取消请假
-          </el-button>
+                     v-hasPermi="['bpm:oa-leave:create']" v-if="scope.row.result === 1">取消请假</el-button>
           <el-button size="mini" type="text" icon="el-icon-view" @click="handleDetail(scope.row)"
-                     v-hasPermi="['bpm:oa-leave:query']">详情
-          </el-button>
-          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleProcessDetail(scope.row)">审批进度
-          </el-button>
+                     v-hasPermi="['bpm:oa-leave:query']">详情</el-button>
+          <el-button size="mini" type="text" icon="el-icon-edit" @click="handleProcessDetail(scope.row)">审批进度</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -88,13 +84,14 @@
 </template>
 
 <script>
-import {getLeavePage} from "@/api/bpm/leave"
-import {DICT_TYPE, getDictDatas} from '@/utils/dict'
+import { getLeavePage } from "@/api/bpm/leave"
+import { getDictDatas, DICT_TYPE } from '@/utils/dict'
 import {cancelProcessInstance} from "@/api/bpm/processInstance";
 
 export default {
   name: "Leave",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -150,15 +147,15 @@ export default {
     },
     /** 新增按钮操作 */
     handleAdd() {
-      this.$router.push({path: "/bpm/oa/leave/create"});
+      this.$router.push({ path: "/bpm/oa/leave/create"});
     },
     /** 详情按钮操作 */
     handleDetail(row) {
-      this.$router.push({path: "/bpm/oa/leave/detail", query: {id: row.id}});
+      this.$router.push({ path: "/bpm/oa/leave/detail", query: { id: row.id}});
     },
     /** 查看审批进度的操作 */
     handleProcessDetail(row) {
-      this.$router.push({path: "/bpm/process-instance/detail", query: {id: row.processInstanceId}});
+      this.$router.push({ path: "/bpm/process-instance/detail", query: { id: row.processInstanceId}});
     },
     /** 取消请假 */
     handleCancel(row) {
@@ -169,7 +166,7 @@ export default {
         cancelButtonText: "取消",
         inputPattern: /^[\s\S]*.*[^\s][\s\S]*$/, // 判断非空，且非空格
         inputErrorMessage: "取消原因不能为空",
-      }).then(({value}) => {
+      }).then(({ value }) => {
         return cancelProcessInstance(id, value);
       }).then(() => {
         this.getList();

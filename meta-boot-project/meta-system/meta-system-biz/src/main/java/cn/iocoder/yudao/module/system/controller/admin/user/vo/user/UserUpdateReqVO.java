@@ -15,4 +15,5 @@ public class UserUpdateReqVO extends UserBaseVO {
     @ApiModelProperty(value = "用户编号", required = true, example = "1024")
     @NotNull(message = "用户编号不能为空")
     private Long id;
+
 }

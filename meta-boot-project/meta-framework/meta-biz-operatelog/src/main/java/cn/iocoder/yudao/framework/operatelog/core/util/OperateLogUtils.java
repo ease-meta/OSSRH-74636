@@ -17,4 +17,5 @@ public class OperateLogUtils {
     public static void addExt(String key, Object value) {
         OperateLogAspect.addExt(key, value);
     }
+
 }

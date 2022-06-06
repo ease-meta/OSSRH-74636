@@ -2,6 +2,8 @@ package cn.iocoder.yudao.module.system.service.permission;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.menu.MenuCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.menu.MenuListReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.menu.MenuUpdateReqVO;
@@ -16,8 +18,6 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import io.github.meta.ease.common.exception.util.ServiceExceptionUtil;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -28,20 +28,10 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_EXISTS_CHILDREN;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_NOT_DIR_OR_MENU;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.MENU_PARENT_NOT_EXISTS;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 菜单 Service 实现
@@ -61,20 +51,18 @@ public class MenuServiceImpl implements MenuService {
     /**
      * 菜单缓存
      * key：菜单编号
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Map<Long, MenuDO> menuCache;
-
     /**
      * 权限与菜单缓存
-     * key：权限 {@link cn.iocoder.yudao.module.system.dal.dataobject.permission.MenuDO#getPermission()}
+     * key：权限 {@link MenuDO#getPermission()}
      * value：MenuDO 数组，因为一个权限可能对应多个 MenuDO 对象
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     private volatile Multimap<String, MenuDO> permissionMenuCache;
-
     /**
      * 缓存菜单的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -82,10 +70,8 @@ public class MenuServiceImpl implements MenuService {
 
     @Resource
     private MenuMapper menuMapper;
-
     @Resource
     private PermissionService permissionService;
-
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private TenantService tenantService;
@@ -207,6 +193,7 @@ public class MenuServiceImpl implements MenuService {
             public void afterCommit() {
                 menuProducer.sendMenuRefreshMessage();
             }
+
         });
     }
 
@@ -236,7 +223,7 @@ public class MenuServiceImpl implements MenuService {
         }
         // 创建新数组，避免缓存被修改
         return menuCache.values().stream().filter(menu -> menuTypes.contains(menu.getType())
-                        && menusStatuses.contains(menu.getStatus()))
+                && menusStatuses.contains(menu.getStatus()))
                 .collect(Collectors.toList());
     }
 
@@ -248,8 +235,8 @@ public class MenuServiceImpl implements MenuService {
             return Collections.emptyList();
         }
         return menuCache.values().stream().filter(menu -> menuIds.contains(menu.getId())
-                        && menuTypes.contains(menu.getType())
-                        && menusStatuses.contains(menu.getStatus()))
+                && menuTypes.contains(menu.getType())
+                && menusStatuses.contains(menu.getStatus()))
                 .collect(Collectors.toList());
     }
 
@@ -265,13 +252,13 @@ public class MenuServiceImpl implements MenuService {
 
     /**
      * 校验父菜单是否合法
-     * <p>
+     *
      * 1. 不能设置自己为父菜单
      * 2. 父菜单不存在
      * 3. 父菜单必须是 {@link MenuTypeEnum#MENU} 菜单类型
      *
      * @param parentId 父菜单编号
-     * @param childId  当前菜单编号
+     * @param childId 当前菜单编号
      */
     @VisibleForTesting
     public void checkParentResource(Long parentId, Long childId) {
@@ -289,19 +276,19 @@ public class MenuServiceImpl implements MenuService {
         }
         // 父菜单必须是目录或者菜单类型
         if (!MenuTypeEnum.DIR.getType().equals(menu.getType())
-                && !MenuTypeEnum.MENU.getType().equals(menu.getType())) {
+            && !MenuTypeEnum.MENU.getType().equals(menu.getType())) {
             throw ServiceExceptionUtil.exception(MENU_PARENT_NOT_DIR_OR_MENU);
         }
     }
 
     /**
      * 校验菜单是否合法
-     * <p>
+     *
      * 1. 校验相同父菜单编号下，是否存在相同的菜单名
      *
-     * @param name     菜单名字
+     * @param name 菜单名字
      * @param parentId 父菜单编号
-     * @param id       菜单编号
+     * @param id 菜单编号
      */
     @VisibleForTesting
     public void checkResource(Long parentId, String name, Long id) {
@@ -320,7 +307,7 @@ public class MenuServiceImpl implements MenuService {
 
     /**
      * 初始化菜单的通用属性。
-     * <p>
+     *
      * 例如说，只有目录或者菜单类型的菜单，才设置 icon
      *
      * @param menu 菜单
@@ -333,4 +320,5 @@ public class MenuServiceImpl implements MenuService {
             menu.setPath("");
         }
     }
+
 }

@@ -1,6 +1,9 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostPageReqVO;
@@ -8,8 +11,6 @@ import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostUpdateRe
 import cn.iocoder.yudao.module.system.convert.dept.PostConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dept.PostMapper;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -18,12 +19,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_NOT_ENABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_NOT_FOUND;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 岗位 Service 实现类
@@ -100,10 +98,10 @@ public class PostServiceImpl implements PostService {
         }
         // 如果 id 为空，说明不用比较是否为相同 id 的岗位
         if (id == null) {
-            throw exception(POST_NAME_DUPLICATE);
+            throw ServiceExceptionUtil.exception(POST_NAME_DUPLICATE);
         }
         if (!post.getId().equals(id)) {
-            throw exception(POST_NAME_DUPLICATE);
+            throw ServiceExceptionUtil.exception(POST_NAME_DUPLICATE);
         }
     }
 
@@ -114,10 +112,10 @@ public class PostServiceImpl implements PostService {
         }
         // 如果 id 为空，说明不用比较是否为相同 id 的岗位
         if (id == null) {
-            throw exception(POST_CODE_DUPLICATE);
+            throw ServiceExceptionUtil.exception(POST_CODE_DUPLICATE);
         }
         if (!post.getId().equals(id)) {
-            throw exception(POST_CODE_DUPLICATE);
+            throw ServiceExceptionUtil.exception(POST_CODE_DUPLICATE);
         }
     }
 
@@ -127,7 +125,7 @@ public class PostServiceImpl implements PostService {
         }
         PostDO post = postMapper.selectById(id);
         if (post == null) {
-            throw exception(POST_NOT_FOUND);
+            throw ServiceExceptionUtil.exception(POST_NOT_FOUND);
         }
     }
 

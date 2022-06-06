@@ -237,9 +237,7 @@
     {
       "name": "Initiator",
       "isAbstract": true,
-      "extends": [
-        "bpmn:StartEvent"
-      ],
+      "extends": [ "bpmn:StartEvent" ],
       "properties": [
         {
           "name": "initiator",
@@ -332,9 +330,7 @@
     },
     {
       "name": "Assignable",
-      "extends": [
-        "bpmn:UserTask"
-      ],
+      "extends": [ "bpmn:UserTask" ],
       "properties": [
         {
           "name": "assignee",
@@ -370,9 +366,7 @@
     },
     {
       "name": "CallActivity",
-      "extends": [
-        "bpmn:CallActivity"
-      ],
+      "extends": [ "bpmn:CallActivity" ],
       "properties": [
         {
           "name": "calledElementBinding",
@@ -532,9 +526,7 @@
         "Element"
       ],
       "meta": {
-        "allowedIn": [
-          "*"
-        ]
+        "allowedIn": [ "*" ]
       },
       "properties": [
         {
@@ -645,9 +637,7 @@
     },
     {
       "name": "List",
-      "superClass": [
-        "InputOutputParameterDefinition"
-      ],
+      "superClass": [ "InputOutputParameterDefinition" ],
       "properties": [
         {
           "name": "items",
@@ -658,9 +648,7 @@
     },
     {
       "name": "Map",
-      "superClass": [
-        "InputOutputParameterDefinition"
-      ],
+      "superClass": [ "InputOutputParameterDefinition" ],
       "properties": [
         {
           "name": "entries",
@@ -713,9 +701,7 @@
     },
     {
       "name": "Script",
-      "superClass": [
-        "InputOutputParameterDefinition"
-      ],
+      "superClass": [ "InputOutputParameterDefinition" ],
       "properties": [
         {
           "name": "scriptFormat",
@@ -736,9 +722,7 @@
     },
     {
       "name": "Field",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "camunda:ServiceTaskLike",
@@ -769,25 +753,17 @@
     },
     {
       "name": "InputParameter",
-      "superClass": [
-        "InputOutputParameter"
-      ]
+      "superClass": [ "InputOutputParameter" ]
     },
     {
       "name": "OutputParameter",
-      "superClass": [
-        "InputOutputParameter"
-      ]
+      "superClass": [ "InputOutputParameter" ]
     },
     {
       "name": "Collectable",
       "isAbstract": true,
-      "extends": [
-        "bpmn:MultiInstanceLoopCharacteristics"
-      ],
-      "superClass": [
-        "camunda:AsyncCapable"
-      ],
+      "extends": [ "bpmn:MultiInstanceLoopCharacteristics" ],
+      "superClass": [ "camunda:AsyncCapable" ],
       "properties": [
         {
           "name": "collection",
@@ -803,9 +779,7 @@
     },
     {
       "name": "FailedJobRetryTimeCycle",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "camunda:AsyncCapable",
@@ -822,9 +796,7 @@
     },
     {
       "name": "ExecutionListener",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "bpmn:Task",
@@ -883,9 +855,7 @@
     },
     {
       "name": "TaskListener",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "bpmn:UserTask"
@@ -935,9 +905,7 @@
     },
     {
       "name": "FormProperty",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "bpmn:StartEvent",
@@ -1004,9 +972,7 @@
     },
     {
       "name": "FormData",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "meta": {
         "allowedIn": [
           "bpmn:StartEvent",
@@ -1028,9 +994,7 @@
     },
     {
       "name": "FormField",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "properties": [
         {
           "name": "id",
@@ -1074,9 +1038,7 @@
     },
     {
       "name": "Validation",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "properties": [
         {
           "name": "constraints",
@@ -1087,9 +1049,7 @@
     },
     {
       "name": "Constraint",
-      "superClass": [
-        "Element"
-      ],
+      "superClass": [ "Element" ],
       "properties": [
         {
           "name": "name",
@@ -1123,5 +1083,5 @@
       ]
     }
   ],
-  "emumerations": []
+  "emumerations": [ ]
 }

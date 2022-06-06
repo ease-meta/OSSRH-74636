@@ -5,8 +5,8 @@ import cn.iocoder.yudao.framework.datapermission.core.db.DataPermissionDatabaseI
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRule;
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRuleFactory;
 import cn.iocoder.yudao.framework.datapermission.core.rule.DataPermissionRuleFactoryImpl;
+import cn.iocoder.yudao.framework.mybatis.core.util.MyBatisUtils;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
-import io.github.meta.ease.mybatis.mybatis.core.util.MyBatisUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -41,4 +41,5 @@ public class YudaoDataPermissionAutoConfiguration {
     public DataPermissionAnnotationAdvisor dataPermissionAnnotationAdvisor() {
         return new DataPermissionAnnotationAdvisor();
     }
+
 }

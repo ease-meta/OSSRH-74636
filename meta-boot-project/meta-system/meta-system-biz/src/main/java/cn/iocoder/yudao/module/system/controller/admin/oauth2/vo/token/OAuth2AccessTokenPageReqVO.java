@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.token;
 
-import io.github.meta.ease.common.pojo.PageParam;
+import cn.iocoder.yudao.framework.common.pojo.PageParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,4 +19,5 @@ public class OAuth2AccessTokenPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "客户端编号", required = true, example = "2")
     private String clientId;
+
 }

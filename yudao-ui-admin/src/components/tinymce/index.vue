@@ -1,11 +1,11 @@
 <template>
-  <textarea :id="tinymceId" style="visibility: hidden"/>
+  <textarea :id="tinymceId" style="visibility: hidden" />
 </template>
 
 <script>
 import loadTinymce from '@/utils/loadTinymce'
-import {plugins, toolbar} from './config'
-import {debounce} from 'throttle-debounce'
+import { plugins, toolbar } from './config'
+import { debounce } from 'throttle-debounce'
 
 let num = 1
 

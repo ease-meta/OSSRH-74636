@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.service.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.quartz.core.service.JobLogFrameworkService;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.log.JobLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.log.JobLogPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import java.util.Collection;
 import java.util.List;
@@ -47,4 +47,5 @@ public interface JobLogService extends JobLogFrameworkService {
      * @return 定时任务分页
      */
     List<JobLogDO> getJobLogList(JobLogExportReqVO exportReqVO);
+
 }

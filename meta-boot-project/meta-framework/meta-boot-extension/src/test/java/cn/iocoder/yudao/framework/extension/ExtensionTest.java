@@ -18,9 +18,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.math.BigDecimal;
 
 /**
+ * @description 
  * @author Qingchen
  * @version 1.0.0
- * @description
  * @date 2021-08-30 10:30
  * @class cn.iocoder.yudao.framework.extension.ExtensionTest.java
  */
@@ -35,10 +35,8 @@ public class ExtensionTest {
     @Test
     public void unifiedOrder() {
         final BusinessScenario scenario = BusinessScenario.valueOf("pay", "jsapi", "wechat");
-        final TransactionsCommand command = new TransactionsCommand(IdUtil.objectId(), new BigDecimal(105),
-                "Image形象店-深圳腾大-QQ公仔", "https://www.weixin.qq.com/wxpay/pay.php");
-        final TransactionsResult result = extensionExecutor.execute(PayExtensionPoint.class, scenario,
-                extension -> extension.unifiedOrder(command));
+        final TransactionsCommand command = new TransactionsCommand(IdUtil.objectId(), new BigDecimal(105), "Image形象店-深圳腾大-QQ公仔", "https://www.weixin.qq.com/wxpay/pay.php");
+        final TransactionsResult result = extensionExecutor.execute(PayExtensionPoint.class, scenario, extension -> extension.unifiedOrder(command));
         log.info("result is: {}", JSONUtil.toJsonStr(result));
         Assert.assertSame("wechat", result.getChannel());
     }

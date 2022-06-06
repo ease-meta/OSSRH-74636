@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.framework.mq.core.stream;
 
 import cn.hutool.core.util.TypeUtil;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
 import cn.iocoder.yudao.framework.mq.core.interceptor.RedisMessageInterceptor;
 import cn.iocoder.yudao.framework.mq.core.message.AbstractRedisMessage;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
@@ -19,6 +19,7 @@ import java.util.List;
  * Redis Stream 监听器抽象类，用于实现集群消费
  *
  * @param <T> 消息类型。一定要填写噢，不然会报错
+ *
  * @author 芋道源码
  */
 public abstract class AbstractStreamMessageListener<T extends AbstractStreamMessage>
@@ -28,7 +29,6 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
      * 消息类型
      */
     private final Class<T> messageType;
-
     /**
      * Redis Channel
      */
@@ -41,7 +41,6 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
     @Value("${spring.application.name}")
     @Getter
     private String group;
-
     /**
      * RedisMQTemplate
      */
@@ -110,4 +109,5 @@ public abstract class AbstractStreamMessageListener<T extends AbstractStreamMess
             interceptors.get(i).consumeMessageAfter(message);
         }
     }
+
 }

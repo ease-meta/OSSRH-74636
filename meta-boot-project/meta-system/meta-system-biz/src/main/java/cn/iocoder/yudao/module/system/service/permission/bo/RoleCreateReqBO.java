@@ -45,4 +45,5 @@ public class RoleCreateReqBO {
      */
     @NotNull(message = "角色类型不能为空")
     private Integer type;
+
 }

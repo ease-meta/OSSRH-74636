@@ -18,14 +18,12 @@ export default {
                     x: 0,
                     y: 0
                 }
-            }
-            if (e.touches && e.touches[0]) {
+            } if (e.touches && e.touches[0]) {
                 return {
                     x: e.touches[0].pageX,
                     y: e.touches[0].pageY
                 }
-            }
-            if (e.changedTouches && e.changedTouches[0]) {
+            } if (e.changedTouches && e.changedTouches[0]) {
                 return {
                     x: e.changedTouches[0].pageX,
                     y: e.changedTouches[0].pageY
@@ -55,7 +53,7 @@ export default {
             this.deltaY = touch.y - this.startY
             this.offsetX = Math.abs(this.deltaX)
             this.offsetY = Math.abs(this.deltaY)
-            this.direction = this.direction || getDirection(this.offsetX, this.offsetY)
+            this.direction =				this.direction || getDirection(this.offsetX, this.offsetY)
         }
     }
 }

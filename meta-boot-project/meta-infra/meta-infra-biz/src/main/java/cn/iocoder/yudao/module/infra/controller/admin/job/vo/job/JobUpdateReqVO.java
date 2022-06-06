@@ -17,4 +17,5 @@ public class JobUpdateReqVO extends JobBaseVO {
     @ApiModelProperty(value = "任务编号", required = true, example = "1024")
     @NotNull(message = "任务编号不能为空")
     private Long id;
+
 }

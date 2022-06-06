@@ -1,32 +1,19 @@
 package cn.iocoder.yudao.module.system.controller.admin.dict;
 
+import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataPageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataSimpleRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.DictDataUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.dict.vo.data.*;
 import cn.iocoder.yudao.module.system.convert.dict.DictDataConvert;
-import cn.iocoder.yudao.module.system.dal.dataobject.dict.DictDataDO;
 import cn.iocoder.yudao.module.system.service.dict.DictDataService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -34,8 +21,8 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 字典数据")
 @RestController
@@ -104,4 +91,5 @@ public class DictDataController {
         // 输出
         ExcelUtils.write(response, "字典数据.xls", "数据列表", DictDataExcelVO.class, data);
     }
+
 }

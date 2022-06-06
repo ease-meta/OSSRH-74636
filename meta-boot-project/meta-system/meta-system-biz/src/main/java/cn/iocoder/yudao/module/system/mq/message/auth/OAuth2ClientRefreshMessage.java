@@ -17,4 +17,5 @@ public class OAuth2ClientRefreshMessage extends AbstractChannelMessage {
     public String getChannel() {
         return "system.oauth2-client.refresh";
     }
+
 }

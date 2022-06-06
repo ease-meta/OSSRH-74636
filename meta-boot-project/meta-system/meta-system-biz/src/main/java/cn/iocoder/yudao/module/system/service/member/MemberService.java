@@ -14,4 +14,5 @@ public interface MemberService {
      * @return 手机号码
      */
     String getMemberUserMobile(Long id);
+
 }

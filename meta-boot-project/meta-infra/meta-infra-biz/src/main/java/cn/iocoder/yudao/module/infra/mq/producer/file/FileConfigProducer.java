@@ -16,10 +16,11 @@ public class FileConfigProducer {
     private RedisMQTemplate redisMQTemplate;
 
     /**
-     * 发送 {@link cn.iocoder.yudao.module.infra.mq.message.file.FileConfigRefreshMessage} 消息
+     * 发送 {@link FileConfigRefreshMessage} 消息
      */
     public void sendFileConfigRefreshMessage() {
         FileConfigRefreshMessage message = new FileConfigRefreshMessage();
         redisMQTemplate.send(message);
     }
+
 }

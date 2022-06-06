@@ -17,8 +17,7 @@ public class SecurityConfiguration {
         return new AuthorizeRequestsCustomizer() {
 
             @Override
-            public void customize(
-                    ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
+            public void customize(ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry) {
                 // 登录的接口
                 registry.antMatchers(buildAdminApi("/system/auth/login")).permitAll();
                 registry.antMatchers(buildAdminApi("/system/auth/logout")).permitAll();
@@ -40,6 +39,8 @@ public class SecurityConfiguration {
                 registry.antMatchers(buildAdminApi("/system/oauth2/token")).permitAll();
                 registry.antMatchers(buildAdminApi("/system/oauth2/check-token")).permitAll();
             }
+
         };
     }
+
 }

@@ -14,7 +14,7 @@
         @contextmenu.prevent.native="openMenu(tag,$event)"
       >
         {{ tag.title }}
-        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)"/>
+        <span v-if="!isAffix(tag)" class="el-icon-close" @click.prevent.stop="closeSelectedTag(tag)" />
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
@@ -33,7 +33,7 @@ import ScrollPane from './ScrollPane'
 import path from 'path'
 
 export default {
-  components: {ScrollPane},
+  components: { ScrollPane },
   data() {
     return {
       visible: false,
@@ -108,7 +108,7 @@ export default {
             fullPath: tagPath,
             path: tagPath,
             name: route.name,
-            meta: {...route.meta}
+            meta: { ...route.meta }
           })
         }
         if (route.children) {
@@ -130,7 +130,7 @@ export default {
       }
     },
     addTags() {
-      const {name} = this.$route
+      const { name } = this.$route
       if (name) {
         this.$store.dispatch('tagsView/addView', this.$route)
       }
@@ -155,7 +155,7 @@ export default {
       this.$tab.refreshPage(view);
     },
     closeSelectedTag(view) {
-      this.$tab.closePage(view).then(({visitedViews}) => {
+      this.$tab.closePage(view).then(({ visitedViews }) => {
         if (this.isActive(view)) {
           this.toLastView(visitedViews, view)
         }
@@ -176,14 +176,13 @@ export default {
       })
     },
     closeOthersTags() {
-      this.$router.push(this.selectedTag).catch(() => {
-      });
+      this.$router.push(this.selectedTag).catch(()=>{});
       this.$tab.closeOtherPage(this.selectedTag).then(() => {
         this.moveToCurrentTag()
       })
     },
     closeAllTags(view) {
-      this.$tab.closeAllPage().then(({visitedViews}) => {
+      this.$tab.closeAllPage().then(({ visitedViews }) => {
         if (this.affixTags.some(tag => tag.path === this.$route.path)) {
           return
         }
@@ -199,7 +198,7 @@ export default {
         // you can adjust it according to your needs.
         if (view.name === 'Dashboard') {
           // to reload home page
-          this.$router.replace({path: '/redirect' + view.fullPath})
+          this.$router.replace({ path: '/redirect' + view.fullPath })
         } else {
           this.$router.push('/')
         }

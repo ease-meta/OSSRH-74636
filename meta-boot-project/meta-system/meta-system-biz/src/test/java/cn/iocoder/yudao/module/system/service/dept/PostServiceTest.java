@@ -1,16 +1,16 @@
 package cn.iocoder.yudao.module.system.service.dept;
 
-import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
+import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.ArrayUtils;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.dept.vo.post.PostUpdateReqVO;
-import cn.iocoder.yudao.module.system.dal.dataobject.dept.PostDO;
 import cn.iocoder.yudao.module.system.dal.mysql.dept.PostMapper;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.ArrayUtils;
-import io.github.meta.ease.common.util.object.ObjectUtils;
+import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
@@ -23,19 +23,14 @@ import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEq
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.POST_NOT_FOUND;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Import(PostServiceImpl.class)
 public class PostServiceTest extends BaseDbUnitTest {
 
     @Resource
     private PostServiceImpl postService;
-
     @Resource
     private PostMapper postMapper;
 
@@ -108,7 +103,7 @@ public class PostServiceTest extends BaseDbUnitTest {
     void testCreatePost_success() {
         // 准备参数
         PostCreateReqVO reqVO = randomPojo(PostCreateReqVO.class,
-                o -> o.setStatus(randomEle(CommonStatusEnum.values()).getStatus()));
+            o -> o.setStatus(randomEle(CommonStatusEnum.values()).getStatus()));
         // 调用
         Long postId = postService.createPost(reqVO);
         // 断言
@@ -125,11 +120,11 @@ public class PostServiceTest extends BaseDbUnitTest {
         postMapper.insert(postDO);// @Sql: 先插入出一条存在的数据
         // 准备参数
         PostUpdateReqVO reqVO = randomPojo(PostUpdateReqVO.class,
-                o -> {
-                    // 设置更新的 ID
-                    o.setId(postDO.getId());
-                    o.setStatus(randomEle(CommonStatusEnum.values()).getStatus());
-                });
+            o -> {
+                // 设置更新的 ID
+                o.setId(postDO.getId());
+                o.setStatus(randomEle(CommonStatusEnum.values()).getStatus());
+            });
         // 调用
         postService.updatePost(reqVO);
         // 校验是否更新正确
@@ -164,8 +159,8 @@ public class PostServiceTest extends BaseDbUnitTest {
         postMapper.insert(postDO);// @Sql: 先插入出一条存在的数据
         // 准备参数
         PostCreateReqVO reqVO = randomPojo(PostCreateReqVO.class,
-                // 模拟 name 重复
-                o -> o.setName(postDO.getName()));
+            // 模拟 name 重复
+            o -> o.setName(postDO.getName()));
         assertServiceException(() -> postService.createPost(reqVO), POST_NAME_DUPLICATE);
     }
 
@@ -179,12 +174,12 @@ public class PostServiceTest extends BaseDbUnitTest {
         postMapper.insert(codePostDO);
         // 准备参数
         PostUpdateReqVO reqVO = randomPojo(PostUpdateReqVO.class,
-                o -> {
-                    // 设置更新的 ID
-                    o.setId(postDO.getId());
-                    // 模拟 code 重复
-                    o.setCode(codePostDO.getCode());
-                });
+            o -> {
+                // 设置更新的 ID
+                o.setId(postDO.getId());
+                // 模拟 code 重复
+                o.setCode(codePostDO.getCode());
+            });
         // 调用, 并断言异常
         assertServiceException(() -> postService.updatePost(reqVO), POST_CODE_DUPLICATE);
     }

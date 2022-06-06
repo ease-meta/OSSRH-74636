@@ -5,8 +5,8 @@ import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmPro
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionRespVO;
 import cn.iocoder.yudao.module.bpm.service.definition.BpmProcessDefinitionService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -18,9 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+
 import java.util.List;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 流程定义")
 @RestController
@@ -31,7 +32,7 @@ public class BpmProcessDefinitionController {
     @Resource
     private BpmProcessDefinitionService bpmDefinitionService;
 
-    @GetMapping("/page")
+    @GetMapping ("/page")
     @ApiOperation(value = "获得流程定义分页")
     @PreAuthorize("@ss.hasPermission('bpm:process-definition:query')")
     public CommonResult<PageResult<BpmProcessDefinitionPageItemRespVO>> getProcessDefinitionPage(
@@ -39,7 +40,7 @@ public class BpmProcessDefinitionController {
         return success(bpmDefinitionService.getProcessDefinitionPage(pageReqVO));
     }
 
-    @GetMapping("/list")
+    @GetMapping ("/list")
     @ApiOperation(value = "获得流程定义列表")
     @PreAuthorize("@ss.hasPermission('bpm:process-definition:query')")
     public CommonResult<List<BpmProcessDefinitionRespVO>> getProcessDefinitionList(
@@ -47,7 +48,7 @@ public class BpmProcessDefinitionController {
         return success(bpmDefinitionService.getProcessDefinitionList(listReqVO));
     }
 
-    @GetMapping("/get-bpmn-xml")
+    @GetMapping ("/get-bpmn-xml")
     @ApiOperation(value = "获得流程定义的 BPMN XML")
     @ApiImplicitParam(name = "id", value = "编号", required = true, example = "1024", dataTypeClass = String.class)
     @PreAuthorize("@ss.hasPermission('bpm:process-definition:query')")
@@ -55,4 +56,5 @@ public class BpmProcessDefinitionController {
         String bpmnXML = bpmDefinitionService.getProcessDefinitionBpmnXML(id);
         return success(bpmnXML);
     }
+
 }

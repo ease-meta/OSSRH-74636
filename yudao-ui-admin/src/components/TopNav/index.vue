@@ -6,10 +6,8 @@
   >
     <template v-for="(item, index) in topMenus">
       <el-menu-item :style="{'--theme': theme}" :index="item.path" :key="index" v-if="index < visibleNumber"
-      >
-        <svg-icon :icon-class="item.meta.icon"/>
-        {{ item.meta.title }}
-      </el-menu-item
+      ><svg-icon :icon-class="item.meta.icon" />
+        {{ item.meta.title }}</el-menu-item
       >
     </template>
 
@@ -21,10 +19,8 @@
           :index="item.path"
           :key="index"
           v-if="index >= visibleNumber"
-        >
-          <svg-icon :icon-class="item.meta.icon"/>
-          {{ item.meta.title }}
-        </el-menu-item
+        ><svg-icon :icon-class="item.meta.icon" />
+          {{ item.meta.title }}</el-menu-item
         >
       </template>
     </el-submenu>
@@ -32,7 +28,7 @@
 </template>
 
 <script>
-import {constantRoutes} from "@/router";
+import { constantRoutes } from "@/router";
 
 export default {
   data() {
@@ -74,10 +70,10 @@ export default {
       this.routers.map((router) => {
         for (var item in router.children) {
           if (router.children[item].parentPath === undefined) {
-            if (router.path === "/") {
+            if(router.path === "/") {
               router.children[item].path = "/" + router.children[item].path;
             } else {
-              if (!this.ishttp(router.children[item].path)) {
+              if(!this.ishttp(router.children[item].path)) {
                 router.children[item].path = router.path + "/" + router.children[item].path;
               }
             }
@@ -103,7 +99,7 @@ export default {
           activePath = "index";
         }
         this.$store.dispatch('app/toggleSideBarHide', true);
-      } else if (!this.$route.children) {
+      } else if(!this.$route.children) {
         activePath = path;
         this.$store.dispatch('app/toggleSideBarHide', true);
       }
@@ -135,7 +131,7 @@ export default {
         window.open(key, "_blank");
       } else if (!route || !route.children) {
         // 没有子路由路径内部打开
-        this.$router.push({path: key});
+        this.$router.push({ path: key });
         this.$store.dispatch('app/toggleSideBarHide', true);
       } else {
         // 显示左侧联动菜单
@@ -153,7 +149,7 @@ export default {
           }
         });
       }
-      if (routes.length > 0) {
+      if(routes.length > 0) {
         this.$store.commit("SET_SIDEBAR_ROUTERS", routes);
       }
     },

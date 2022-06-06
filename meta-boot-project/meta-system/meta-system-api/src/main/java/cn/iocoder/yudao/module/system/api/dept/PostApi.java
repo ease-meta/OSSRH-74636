@@ -17,4 +17,5 @@ public interface PostApi {
      * @param ids 岗位编号数组
      */
     void validPosts(Collection<Long> ids);
+
 }

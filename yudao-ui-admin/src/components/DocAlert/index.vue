@@ -1,5 +1,5 @@
 <template>
-  <el-alert v-if="enable()" :title="'【' + title + '】文档地址：' + url" type="success" show-icon/>
+  <el-alert v-if="enable()" :title="'【' + title + '】文档地址：' + url" type="success" show-icon />
 </template>
 
 <script>

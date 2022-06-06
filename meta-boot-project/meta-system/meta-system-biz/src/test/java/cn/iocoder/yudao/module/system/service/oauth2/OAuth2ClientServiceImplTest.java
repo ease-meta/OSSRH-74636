@@ -1,6 +1,8 @@
 package cn.iocoder.yudao.module.system.service.oauth2;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientPageReqVO;
@@ -8,8 +10,6 @@ import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2Cl
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2ClientMapper;
 import cn.iocoder.yudao.module.system.mq.producer.auth.OAuth2ClientProducer;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -18,30 +18,20 @@ import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.Map;
 
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.cloneIgnoreId;
+import static cn.iocoder.yudao.framework.common.util.object.ObjectUtils.max;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_AUTHORIZED_GRANT_TYPE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_CLIENT_SECRET_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_REDIRECT_URI_NOT_MATCH;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_SCOPE_OVER;
-import static io.github.meta.ease.common.util.date.DateUtils.max;
-import static io.github.meta.ease.common.util.object.ObjectUtils.cloneIgnoreId;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.oauth2.OAuth2ClientServiceImpl} 的单元测试类
- *
- * @author 芋道源码
- */
+* {@link OAuth2ClientServiceImpl} 的单元测试类
+*
+* @author 芋道源码
+*/
 @Import(OAuth2ClientServiceImpl.class)
 public class OAuth2ClientServiceImplTest extends BaseDbUnitTest {
 
@@ -168,27 +158,27 @@ public class OAuth2ClientServiceImplTest extends BaseDbUnitTest {
 
     @Test
     public void testGetOAuth2ClientPage() {
-        // mock 数据
-        OAuth2ClientDO dbOAuth2Client = randomPojo(OAuth2ClientDO.class, o -> { // 等会查询到
-            o.setName("潜龙");
-            o.setStatus(CommonStatusEnum.ENABLE.getStatus());
-        });
-        oauth2ClientMapper.insert(dbOAuth2Client);
-        // 测试 name 不匹配
-        oauth2ClientMapper.insert(cloneIgnoreId(dbOAuth2Client, o -> o.setName("凤凰")));
-        // 测试 status 不匹配
-        oauth2ClientMapper.insert(cloneIgnoreId(dbOAuth2Client, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
-        // 准备参数
-        OAuth2ClientPageReqVO reqVO = new OAuth2ClientPageReqVO();
-        reqVO.setName("龙");
-        reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
+       // mock 数据
+       OAuth2ClientDO dbOAuth2Client = randomPojo(OAuth2ClientDO.class, o -> { // 等会查询到
+           o.setName("潜龙");
+           o.setStatus(CommonStatusEnum.ENABLE.getStatus());
+       });
+       oauth2ClientMapper.insert(dbOAuth2Client);
+       // 测试 name 不匹配
+       oauth2ClientMapper.insert(cloneIgnoreId(dbOAuth2Client, o -> o.setName("凤凰")));
+       // 测试 status 不匹配
+       oauth2ClientMapper.insert(cloneIgnoreId(dbOAuth2Client, o -> o.setStatus(CommonStatusEnum.DISABLE.getStatus())));
+       // 准备参数
+       OAuth2ClientPageReqVO reqVO = new OAuth2ClientPageReqVO();
+       reqVO.setName("龙");
+       reqVO.setStatus(CommonStatusEnum.ENABLE.getStatus());
 
-        // 调用
-        PageResult<OAuth2ClientDO> pageResult = oauth2ClientService.getOAuth2ClientPage(reqVO);
-        // 断言
-        assertEquals(1, pageResult.getTotal());
-        assertEquals(1, pageResult.getList().size());
-        assertPojoEquals(dbOAuth2Client, pageResult.getList().get(0));
+       // 调用
+       PageResult<OAuth2ClientDO> pageResult = oauth2ClientService.getOAuth2ClientPage(reqVO);
+       // 断言
+       assertEquals(1, pageResult.getTotal());
+       assertEquals(1, pageResult.getList().size());
+       assertPojoEquals(dbOAuth2Client, pageResult.getList().get(0));
     }
 
     @Test
@@ -221,4 +211,5 @@ public class OAuth2ClientServiceImplTest extends BaseDbUnitTest {
                 client.getAuthorizedGrantTypes().get(0), client.getScopes(), client.getRedirectUris().get(0));
         assertPojoEquals(client, result);
     }
+
 }

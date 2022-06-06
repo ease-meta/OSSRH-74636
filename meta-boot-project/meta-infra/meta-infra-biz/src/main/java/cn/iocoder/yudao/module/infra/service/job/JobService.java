@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.service.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobPageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.quartz.SchedulerException;
 
 import javax.validation.Valid;
@@ -37,7 +37,7 @@ public interface JobService {
     /**
      * 更新定时任务的状态
      *
-     * @param id     任务编号
+     * @param id 任务编号
      * @param status 状态
      */
     void updateJobStatus(Long id, Integer status) throws SchedulerException;
@@ -87,4 +87,5 @@ public interface JobService {
      * @return 定时任务分页
      */
     List<JobDO> getJobList(JobExportReqVO exportReqVO);
+
 }

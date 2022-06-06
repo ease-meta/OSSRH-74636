@@ -1,17 +1,17 @@
 package cn.iocoder.yudao.module.infra.service.logger;
 
 import cn.hutool.core.util.RandomUtil;
+import cn.iocoder.yudao.framework.apilog.core.service.dto.ApiAccessLogCreateReqDTO;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.ObjectUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.framework.test.core.util.RandomUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogPageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiAccessLogDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.logger.ApiAccessLogMapper;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.ObjectUtils;
-import io.github.meta.ease.web.apilog.core.service.dto.ApiAccessLogCreateReqDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
@@ -19,8 +19,8 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.buildTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
-import static io.github.meta.ease.common.util.date.DateUtils.buildTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -59,15 +59,13 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        apiAccessLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        apiAccessLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
+        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
         // duration 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setDuration(100)));
         // resultCode 不同的
@@ -119,15 +117,13 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         // userId 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserId(3344L)));
         // userType
-        apiAccessLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
+        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setUserType(UserTypeEnum.MEMBER.getValue())));
         // applicationName 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setApplicationName("test")));
         // requestUrl 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setRequestUrl("bar")));
         // 构造一个早期时间 2021-02-06 00:00:00
-        apiAccessLogMapper.insert(
-                ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
+        apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setBeginTime(buildTime(2021, 2, 6))));
         // duration 不同的
         apiAccessLogMapper.insert(ObjectUtils.cloneIgnoreId(infApiAccessLogDO, logDO -> logDO.setDuration(100)));
         // resultCode 不同的
@@ -165,4 +161,6 @@ public class ApiAccessLogServiceImplTest extends BaseDbUnitTest {
         assertNotNull(infApiAccessLogDO);
         assertPojoEquals(createDTO, infApiAccessLogDO);
     }
+
+
 }

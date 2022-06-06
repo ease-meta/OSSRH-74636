@@ -11,7 +11,7 @@ import java.util.Arrays;
 import static cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils.getLoginUserId;
 
 /**
- * 默认的 {@link cn.iocoder.yudao.framework.security.core.service.SecurityFrameworkService} 实现类
+ * 默认的 {@link SecurityFrameworkService} 实现类
  *
  * @author 芋道源码
  */
@@ -53,4 +53,5 @@ public class SecurityFrameworkServiceImpl implements SecurityFrameworkService {
         }
         return CollUtil.containsAny(user.getScopes(), Arrays.asList(scope));
     }
+
 }

@@ -282,29 +282,29 @@ function timeFrom(timestamp = null, format = 'yyyy-mm-dd') {
     // 如果小于5分钟,则返回"刚刚",其他以此类推
     let tips = ''
     switch (true) {
-        case timer < 300:
-            tips = '刚刚'
-            break
-        case timer >= 300 && timer < 3600:
-            tips = `${parseInt(timer / 60)}分钟前`
-            break
-        case timer >= 3600 && timer < 86400:
-            tips = `${parseInt(timer / 3600)}小时前`
-            break
-        case timer >= 86400 && timer < 2592000:
-            tips = `${parseInt(timer / 86400)}天前`
-            break
-        default:
-            // 如果format为false，则无论什么时间戳，都显示xx之前
-            if (format === false) {
-                if (timer >= 2592000 && timer < 365 * 86400) {
-                    tips = `${parseInt(timer / (86400 * 30))}个月前`
-                } else {
-                    tips = `${parseInt(timer / (86400 * 365))}年前`
-                }
+    case timer < 300:
+        tips = '刚刚'
+        break
+    case timer >= 300 && timer < 3600:
+        tips = `${parseInt(timer / 60)}分钟前`
+        break
+    case timer >= 3600 && timer < 86400:
+        tips = `${parseInt(timer / 3600)}小时前`
+        break
+    case timer >= 86400 && timer < 2592000:
+        tips = `${parseInt(timer / 86400)}天前`
+        break
+    default:
+        // 如果format为false，则无论什么时间戳，都显示xx之前
+        if (format === false) {
+            if (timer >= 2592000 && timer < 365 * 86400) {
+                tips = `${parseInt(timer / (86400 * 30))}个月前`
             } else {
-                tips = timeFormat(timestamp, format)
+                tips = `${parseInt(timer / (86400 * 365))}年前`
             }
+        } else {
+            tips = timeFormat(timestamp, format)
+        }
     }
     return tips
 }
@@ -316,14 +316,11 @@ function trim(str, pos = 'both') {
     str = String(str)
     if (pos == 'both') {
         return str.replace(/^\s+|\s+$/g, '')
-    }
-    if (pos == 'left') {
+    } if (pos == 'left') {
         return str.replace(/^\s*/, '')
-    }
-    if (pos == 'right') {
+    } if (pos == 'right') {
         return str.replace(/(\s*$)/g, '')
-    }
-    if (pos == 'all') {
+    } if (pos == 'all') {
         return str.replace(/\s+/g, '')
     }
     return str
@@ -348,36 +345,36 @@ function queryParams(data = {}, isPrefix = true, arrayFormat = 'brackets') {
         if (value.constructor === Array) {
             // e.g. {ids: [1, 2, 3]}
             switch (arrayFormat) {
-                case 'indices':
-                    // 结果: ids[0]=1&ids[1]=2&ids[2]=3
-                    for (let i = 0; i < value.length; i++) {
-                        _result.push(`${key}[${i}]=${value[i]}`)
-                    }
-                    break
-                case 'brackets':
-                    // 结果: ids[]=1&ids[]=2&ids[]=3
-                    value.forEach((_value) => {
-                        _result.push(`${key}[]=${_value}`)
-                    })
-                    break
-                case 'repeat':
-                    // 结果: ids=1&ids=2&ids=3
-                    value.forEach((_value) => {
-                        _result.push(`${key}=${_value}`)
-                    })
-                    break
-                case 'comma':
-                    // 结果: ids=1,2,3
-                    let commaStr = ''
-                    value.forEach((_value) => {
-                        commaStr += (commaStr ? ',' : '') + _value
-                    })
-                    _result.push(`${key}=${commaStr}`)
-                    break
-                default:
-                    value.forEach((_value) => {
-                        _result.push(`${key}[]=${_value}`)
-                    })
+            case 'indices':
+                // 结果: ids[0]=1&ids[1]=2&ids[2]=3
+                for (let i = 0; i < value.length; i++) {
+                    _result.push(`${key}[${i}]=${value[i]}`)
+                }
+                break
+            case 'brackets':
+                // 结果: ids[]=1&ids[]=2&ids[]=3
+                value.forEach((_value) => {
+                    _result.push(`${key}[]=${_value}`)
+                })
+                break
+            case 'repeat':
+                // 结果: ids=1&ids=2&ids=3
+                value.forEach((_value) => {
+                    _result.push(`${key}=${_value}`)
+                })
+                break
+            case 'comma':
+                // 结果: ids=1,2,3
+                let commaStr = ''
+                value.forEach((_value) => {
+                    commaStr += (commaStr ? ',' : '') + _value
+                })
+                _result.push(`${key}=${commaStr}`)
+                break
+            default:
+                value.forEach((_value) => {
+                    _result.push(`${key}[]=${_value}`)
+                })
             }
         } else {
             _result.push(`${key}=${value}`)
@@ -405,23 +402,23 @@ function type2icon(type = 'success', fill = false) {
     let iconName = ''
     // 目前(2019-12-12),info和primary使用同一个图标
     switch (type) {
-        case 'primary':
-            iconName = 'info-circle'
-            break
-        case 'info':
-            iconName = 'info-circle'
-            break
-        case 'error':
-            iconName = 'close-circle'
-            break
-        case 'warning':
-            iconName = 'error-circle'
-            break
-        case 'success':
-            iconName = 'checkmark-circle'
-            break
-        default:
-            iconName = 'checkmark-circle'
+    case 'primary':
+        iconName = 'info-circle'
+        break
+    case 'info':
+        iconName = 'info-circle'
+        break
+    case 'error':
+        iconName = 'close-circle'
+        break
+    case 'warning':
+        iconName = 'error-circle'
+        break
+    case 'success':
+        iconName = 'checkmark-circle'
+        break
+    default:
+        iconName = 'checkmark-circle'
     }
     // 是否是实体类型,加上-fill,在icon组件库中,实体的类名是后面加-fill的
     if (fill) iconName += '-fill'
@@ -485,8 +482,7 @@ function formValidate(instance, event) {
     // 如果发生变化的input或者textarea等，其父组件中有u-form-item或者u-form等，就执行form的validate方法
     // 同时将form-item的pros传递给form，让其进行精确对象验证
     if (formItem && form) {
-        form.validateField(formItem.prop, () => {
-        }, event)
+        form.validateField(formItem.prop, () => { }, event)
     }
 }
 
@@ -497,8 +493,7 @@ function getProperty(obj, key) {
     }
     if (typeof key !== 'string' || key === '') {
         return ''
-    }
-    if (key.indexOf('.') !== -1) {
+    } if (key.indexOf('.') !== -1) {
         const keys = key.split('.')
         let firstObj = obj[keys[0]] || {}
 

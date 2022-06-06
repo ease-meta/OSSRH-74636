@@ -2,6 +2,8 @@ package cn.iocoder.yudao.module.infra.service.codegen;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.CodegenCreateListReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.CodegenUpdateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.codegen.vo.table.CodegenTablePageReqVO;
@@ -18,8 +20,6 @@ import cn.iocoder.yudao.module.infra.service.db.DatabaseTableService;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import com.baomidou.mybatisplus.generator.config.po.TableField;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,15 +30,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_COLUMN_NOT_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_IMPORT_COLUMNS_NULL;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_IMPORT_TABLE_NULL;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_SYNC_NONE_CHANGE;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_TABLE_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_TABLE_INFO_COLUMN_COMMENT_IS_NULL;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_TABLE_INFO_TABLE_COMMENT_IS_NULL;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.CODEGEN_TABLE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.*;
 
 /**
  * 代码生成 Service 实现类
@@ -53,7 +46,6 @@ public class CodegenServiceImpl implements CodegenService {
 
     @Resource
     private CodegenTableMapper codegenTableMapper;
-
     @Resource
     private CodegenColumnMapper codegenColumnMapper;
 
@@ -62,7 +54,6 @@ public class CodegenServiceImpl implements CodegenService {
 
     @Resource
     private CodegenBuilder codegenBuilder;
-
     @Resource
     private CodegenEngine codegenEngine;
 
@@ -71,8 +62,7 @@ public class CodegenServiceImpl implements CodegenService {
     public List<Long> createCodegenList(Long userId, CodegenCreateListReqVO reqVO) {
         List<Long> ids = new ArrayList<>(reqVO.getTableNames().size());
         // 遍历添加。虽然效率会低一点，但是没必要做成完全批量，因为不会这么大量
-        reqVO.getTableNames()
-                .forEach(tableName -> ids.add(createCodegen(userId, reqVO.getDataSourceConfigId(), tableName)));
+        reqVO.getTableNames().forEach(tableName -> ids.add(createCodegen(userId, reqVO.getDataSourceConfigId(), tableName)));
         return ids;
     }
 
@@ -168,8 +158,7 @@ public class CodegenServiceImpl implements CodegenService {
         tableFields.removeIf(column -> codegenColumnNames.contains(column.getColumnName()));
         // 计算需要删除的字段
         Set<String> tableFieldNames = CollectionUtils.convertSet(tableFields, TableField::getName);
-        Set<Long> deleteColumnIds = codegenColumns.stream()
-                .filter(column -> !tableFieldNames.contains(column.getColumnName()))
+        Set<Long> deleteColumnIds = codegenColumns.stream().filter(column -> !tableFieldNames.contains(column.getColumnName()))
                 .map(CodegenColumnDO::getId).collect(Collectors.toSet());
         if (CollUtil.isEmpty(tableFields) && CollUtil.isEmpty(deleteColumnIds)) {
             throw exception(CODEGEN_SYNC_NONE_CHANGE);
@@ -243,4 +232,5 @@ public class CodegenServiceImpl implements CodegenService {
         tables.removeIf(table -> existsTables.contains(table.getName()));
         return CodegenConvert.INSTANCE.convertList04(tables);
     }
+
 }

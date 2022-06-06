@@ -28,4 +28,5 @@ public class DBConfigFactory implements ConfigFactory {
     private ConfigRepository createDBConfigRepository(String namespace) {
         return new DBConfigRepository(namespace);
     }
+
 }

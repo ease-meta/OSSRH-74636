@@ -40,6 +40,6 @@ public class AuthLoginReqVO {
     /**
      * 开启验证码的 Group
      */
-    public interface CodeEnableGroup {
-    }
+    public interface CodeEnableGroup {}
+
 }

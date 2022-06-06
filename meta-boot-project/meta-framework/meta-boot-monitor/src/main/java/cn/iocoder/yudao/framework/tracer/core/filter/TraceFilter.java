@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.framework.tracer.core.filter;
 
-import io.github.meta.ease.common.util.monitor.TracerUtils;
+import cn.iocoder.yudao.framework.common.util.monitor.TracerUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -29,4 +29,5 @@ public class TraceFilter extends OncePerRequestFilter {
         // 继续过滤
         chain.doFilter(request, response);
     }
+
 }

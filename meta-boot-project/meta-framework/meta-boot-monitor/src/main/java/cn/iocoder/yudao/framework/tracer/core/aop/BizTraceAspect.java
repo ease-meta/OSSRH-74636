@@ -3,8 +3,8 @@ package cn.iocoder.yudao.framework.tracer.core.aop;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.iocoder.yudao.framework.tracer.core.annotation.BizTrace;
+import cn.iocoder.yudao.framework.common.util.spring.SpringExpressionUtils;
 import cn.iocoder.yudao.framework.tracer.core.util.TracerFrameworkUtils;
-import io.github.meta.ease.common.util.spring.SpringExpressionUtils;
 import io.opentracing.Span;
 import io.opentracing.Tracer;
 import io.opentracing.tag.Tags;
@@ -19,7 +19,7 @@ import java.util.Map;
 import static java.util.Arrays.asList;
 
 /**
- * {@link cn.iocoder.yudao.framework.tracer.core.annotation.BizTrace} 切面，记录业务链路
+ * {@link BizTrace} 切面，记录业务链路
  *
  * @author mashu
  */
@@ -73,4 +73,5 @@ public class BizTraceAspect {
             log.error("[setBizTag][解析 bizType 与 bizId 发生异常]", ex);
         }
     }
+
 }

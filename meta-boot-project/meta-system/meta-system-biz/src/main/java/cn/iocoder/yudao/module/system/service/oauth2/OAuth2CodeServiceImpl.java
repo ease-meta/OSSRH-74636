@@ -1,9 +1,9 @@
 package cn.iocoder.yudao.module.system.service.oauth2;
 
 import cn.hutool.core.util.IdUtil;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2CodeDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2CodeMapper;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -11,9 +11,9 @@ import javax.annotation.Resource;
 import java.util.Calendar;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CODE_EXPIRE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CODE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * OAuth2.0 授权码 Service 实现类
@@ -60,4 +60,5 @@ public class OAuth2CodeServiceImpl implements OAuth2CodeService {
     private static String generateCode() {
         return IdUtil.fastSimpleUUID();
     }
+
 }

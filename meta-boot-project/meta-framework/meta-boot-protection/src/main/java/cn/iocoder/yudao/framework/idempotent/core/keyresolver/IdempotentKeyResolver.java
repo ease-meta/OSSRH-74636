@@ -18,4 +18,5 @@ public interface IdempotentKeyResolver {
      * @return Key
      */
     String resolver(JoinPoint joinPoint, Idempotent idempotent);
+
 }

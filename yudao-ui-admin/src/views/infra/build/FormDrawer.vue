@@ -6,52 +6,52 @@
           <el-col :md="24" :lg="12" class="left-editor">
             <div class="setting" title="资源引用" @click="showResource">
               <el-badge :is-dot="!!resources.length" class="item">
-                <i class="el-icon-setting"/>
+                <i class="el-icon-setting" />
               </el-badge>
             </div>
             <el-tabs v-model="activeTab" type="card" class="editor-tabs">
               <el-tab-pane name="html">
                 <span slot="label">
-                  <i v-if="activeTab==='html'" class="el-icon-edit"/>
-                  <i v-else class="el-icon-document"/>
+                  <i v-if="activeTab==='html'" class="el-icon-edit" />
+                  <i v-else class="el-icon-document" />
                   template
                 </span>
               </el-tab-pane>
               <el-tab-pane name="js">
                 <span slot="label">
-                  <i v-if="activeTab==='js'" class="el-icon-edit"/>
-                  <i v-else class="el-icon-document"/>
+                  <i v-if="activeTab==='js'" class="el-icon-edit" />
+                  <i v-else class="el-icon-document" />
                   script
                 </span>
               </el-tab-pane>
               <el-tab-pane name="css">
                 <span slot="label">
-                  <i v-if="activeTab==='css'" class="el-icon-edit"/>
-                  <i v-else class="el-icon-document"/>
+                  <i v-if="activeTab==='css'" class="el-icon-edit" />
+                  <i v-else class="el-icon-document" />
                   css
                 </span>
               </el-tab-pane>
             </el-tabs>
-            <div v-show="activeTab==='html'" id="editorHtml" class="tab-editor"/>
-            <div v-show="activeTab==='js'" id="editorJs" class="tab-editor"/>
-            <div v-show="activeTab==='css'" id="editorCss" class="tab-editor"/>
+            <div v-show="activeTab==='html'" id="editorHtml" class="tab-editor" />
+            <div v-show="activeTab==='js'" id="editorJs" class="tab-editor" />
+            <div v-show="activeTab==='css'" id="editorCss" class="tab-editor" />
           </el-col>
           <el-col :md="24" :lg="12" class="right-preview">
             <div class="action-bar" :style="{'text-align': 'left'}">
               <span class="bar-btn" @click="runCode">
-                <i class="el-icon-refresh"/>
+                <i class="el-icon-refresh" />
                 刷新
               </span>
               <span class="bar-btn" @click="exportFile">
-                <i class="el-icon-download"/>
+                <i class="el-icon-download" />
                 导出vue文件
               </span>
               <span ref="copyBtn" class="bar-btn copy-btn">
-                <i class="el-icon-document-copy"/>
+                <i class="el-icon-document-copy" />
                 复制代码
               </span>
               <span class="bar-btn delete-btn" @click="$emit('update:visible', false)">
-                <i class="el-icon-circle-close"/>
+                <i class="el-icon-circle-close" />
                 关闭
               </span>
             </div>
@@ -63,7 +63,7 @@
               src="preview.html"
               @load="iframeLoad"
             />
-            <div v-show="!isIframeLoaded" v-loading="true" class="result-wrapper"/>
+            <div v-show="!isIframeLoaded" v-loading="true" class="result-wrapper" />
           </el-col>
         </el-row>
       </div>
@@ -76,13 +76,15 @@
   </div>
 </template>
 <script>
-import {parse} from '@babel/parser'
+import { parse } from '@babel/parser'
 import ClipboardJS from 'clipboard'
-import {saveAs} from 'file-saver'
-import {cssStyle, makeUpHtml, vueScript, vueTemplate} from '@/components/generator/html'
-import {makeUpJs} from '@/components/generator/js'
-import {makeUpCss} from '@/components/generator/css'
-import {beautifierConf, exportDefault} from '@/utils/index'
+import { saveAs } from 'file-saver'
+import {
+  makeUpHtml, vueTemplate, vueScript, cssStyle
+} from '@/components/generator/html'
+import { makeUpJs } from '@/components/generator/js'
+import { makeUpCss } from '@/components/generator/css'
+import { exportDefault, beautifierConf, titleCase } from '@/utils/index'
 import ResourceDialog from './ResourceDialog'
 import loadMonaco from '@/utils/loadMonaco'
 import loadBeautifier from '@/utils/loadBeautifier'
@@ -101,7 +103,7 @@ let beautifier
 let monaco
 
 export default {
-  components: {ResourceDialog},
+  components: { ResourceDialog },
   props: ['formData', 'generateConf'],
   data() {
     return {
@@ -154,7 +156,7 @@ export default {
       }
     },
     onOpen() {
-      const {type} = this.generateConf
+      const { type } = this.generateConf
       this.htmlCode = makeUpHtml(this.formData, type)
       this.jsCode = makeUpJs(this.formData, type)
       this.cssCode = makeUpCss(this.formData)
@@ -208,7 +210,7 @@ export default {
     runCode() {
       const jsCodeStr = editorObj.js.getValue()
       try {
-        const ast = parse(jsCodeStr, {sourceType: 'module'})
+        const ast = parse(jsCodeStr, { sourceType: 'module' })
         const astBody = ast.program.body
         if (astBody.length > 1) {
           this.$confirm(
@@ -216,8 +218,7 @@ export default {
             '提示',
             {
               type: 'warning'
-            }).catch(() => {
-          });
+            }).catch(() => {});
           return
         }
         if (astBody[0].type === 'ExportDefaultDeclaration') {
@@ -256,10 +257,10 @@ export default {
         inputValue: `${+new Date()}.vue`,
         closeOnClickModal: false,
         inputPlaceholder: '请输入文件名'
-      }).then(({value}) => {
+      }).then(({ value }) => {
         if (!value) value = `${+new Date()}.vue`
         const codeStr = this.generateCode()
-        const blob = new Blob([codeStr], {type: 'text/plain;charset=utf-8'})
+        const blob = new Blob([codeStr], { type: 'text/plain;charset=utf-8' })
         saveAs(blob, value)
       })
     },
@@ -267,8 +268,7 @@ export default {
       this.resourceVisible = true
     },
     setResource(arr) {
-      const scripts = [];
-      const
+      const scripts = []; const
         links = []
       if (Array.isArray(arr)) {
         arr.forEach(item => {
@@ -299,15 +299,13 @@ export default {
   right: 0;
   font-size: 14px;
 }
-
 .left-editor {
   position: relative;
   height: 100%;
   background: #1e1e1e;
   overflow: hidden;
 }
-
-.setting {
+.setting{
   position: absolute;
   right: 15px;
   top: 3px;
@@ -316,7 +314,6 @@ export default {
   cursor: pointer;
   z-index: 1;
 }
-
 .right-preview {
   height: 100%;
   .result-wrapper {

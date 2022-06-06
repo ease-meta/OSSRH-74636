@@ -23,4 +23,5 @@ public enum CodegenColumnListConditionEnum {
      * 条件
      */
     private final String condition;
+
 }

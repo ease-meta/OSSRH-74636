@@ -17,4 +17,5 @@ public interface TenantInfoHandler {
      * @param tenant 租户信息
      */
     void handle(TenantDO tenant);
+
 }

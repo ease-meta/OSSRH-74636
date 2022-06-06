@@ -16,4 +16,5 @@ public class JobExportReqVO {
 
     @ApiModelProperty(value = "处理器的名字", example = "UserSessionTimeoutJob", notes = "模糊匹配")
     private String handlerName;
+
 }

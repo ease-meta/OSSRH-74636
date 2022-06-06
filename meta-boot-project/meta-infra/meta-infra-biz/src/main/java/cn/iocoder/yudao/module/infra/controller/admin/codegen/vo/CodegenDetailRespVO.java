@@ -17,4 +17,5 @@ public class CodegenDetailRespVO {
 
     @ApiModelProperty("字段定义")
     private List<CodegenColumnRespVO> columns;
+
 }

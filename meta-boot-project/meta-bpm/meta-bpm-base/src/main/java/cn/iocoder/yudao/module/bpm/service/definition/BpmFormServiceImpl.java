@@ -1,50 +1,28 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package cn.iocoder.yudao.module.bpm.service.definition;
 
 import cn.hutool.core.lang.Assert;
+import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.form.BpmFormUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.convert.definition.BpmFormConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmFormMapper;
+import cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmModelFormTypeEnum;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmFormFieldRespDTO;
+import cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmModelMetaInfoRespDTO;
-import io.github.meta.ease.bpm.enums.ErrorCodeConstants;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.json.JsonUtils;
-import io.github.meta.ease.common.util.validation.ValidationUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.FORM_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_DEPLOY_FAIL_FORM_NOT_CONFIG;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.MODEL_KEY_VALID;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
 
 /**
  * 动态表单 Service 实现类
@@ -88,7 +66,7 @@ public class BpmFormServiceImpl implements BpmFormService {
 
     private void validateFormExists(Long id) {
         if (formMapper.selectById(id) == null) {
-            throw exception(FORM_NOT_EXISTS);
+            throw ServiceExceptionUtil.exception(ErrorCodeConstants.FORM_NOT_EXISTS);
         }
     }
 
@@ -112,10 +90,10 @@ public class BpmFormServiceImpl implements BpmFormService {
         return formMapper.selectPage(pageReqVO);
     }
 
+
     @Override
     public BpmFormDO checkFormConfig(String configStr) {
-        BpmModelMetaInfoRespDTO metaInfo = JsonUtils.parseObject(configStr,
-                BpmModelMetaInfoRespDTO.class);
+        BpmModelMetaInfoRespDTO metaInfo = JsonUtils.parseObject(configStr, BpmModelMetaInfoRespDTO.class);
         if (metaInfo == null || metaInfo.getFormType() == null) {
             throw exception(MODEL_DEPLOY_FAIL_FORM_NOT_CONFIG);
         }
@@ -135,7 +113,6 @@ public class BpmFormServiceImpl implements BpmFormService {
             throw exception(MODEL_KEY_VALID);
         }
     }
-
     /**
      * 校验 Field，避免 field 重复
      *
@@ -152,8 +129,8 @@ public class BpmFormServiceImpl implements BpmFormService {
                 continue;
             }
             // 如果存在，则报错
-            throw exception(ErrorCodeConstants.FORM_FIELD_REPEAT, oldLabel,
-                    fieldDTO.getLabel(), fieldDTO.getVModel());
+            throw ServiceExceptionUtil.exception(ErrorCodeConstants.FORM_FIELD_REPEAT, oldLabel, fieldDTO.getLabel(), fieldDTO.getVModel());
         }
     }
+
 }

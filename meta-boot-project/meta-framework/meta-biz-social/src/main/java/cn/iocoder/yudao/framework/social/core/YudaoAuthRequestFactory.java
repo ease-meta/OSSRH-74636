@@ -8,13 +8,14 @@ import com.xkcoding.justauth.AuthRequestFactory;
 import com.xkcoding.justauth.autoconfigure.JustAuthProperties;
 import me.zhyd.oauth.cache.AuthStateCache;
 import me.zhyd.oauth.config.AuthConfig;
+import me.zhyd.oauth.config.AuthSource;
 import me.zhyd.oauth.request.AuthRequest;
 
 import java.lang.reflect.Method;
 
 /**
  * 第三方授权拓展 request 工厂类
- * 为使得拓展配置 {@link me.zhyd.oauth.config.AuthConfig} 和默认配置齐平，所以自定义本工厂类
+ * 为使得拓展配置 {@link AuthConfig} 和默认配置齐平，所以自定义本工厂类
  *
  * @author timfruit
  * @date 2021-10-31
@@ -23,7 +24,6 @@ import java.lang.reflect.Method;
 public class YudaoAuthRequestFactory extends AuthRequestFactory {
 
     protected JustAuthProperties properties;
-
     protected AuthStateCache authStateCache;
 
     /**
@@ -41,8 +41,8 @@ public class YudaoAuthRequestFactory extends AuthRequestFactory {
     /**
      * 返回 AuthRequest 对象
      *
-     * @param source {@link me.zhyd.oauth.config.AuthSource}
-     * @return {@link me.zhyd.oauth.request.AuthRequest}
+     * @param source {@link AuthSource}
+     * @return {@link AuthRequest}
      */
     public AuthRequest get(String source) {
         // 先尝试获取自定义扩展的
@@ -82,4 +82,5 @@ public class YudaoAuthRequestFactory extends AuthRequestFactory {
                 return null;
         }
     }
+
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
-    <doc-alert title="代码生成" url="https://doc.iocoder.cn/new-feature/"/>
-    <doc-alert title="单元测试" url="https://doc.iocoder.cn/unit-test/"/>
+    <doc-alert title="代码生成" url="https://doc.iocoder.cn/new-feature/" />
+    <doc-alert title="单元测试" url="https://doc.iocoder.cn/unit-test/" />
     <!-- 操作工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
       <el-form-item label="表名称" prop="tableName">
@@ -26,8 +26,7 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="info" plain icon="el-icon-upload" size="mini" @click="openImportTable"
-                   v-hasPermi="['infra:codegen:create']">导入
-        </el-button>
+                   v-hasPermi="['infra:codegen:create']">导入</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
@@ -50,30 +49,18 @@
       </el-table-column>
       <el-table-column label="操作" align="center" width="300px" class-name="small-padding fixed-width">
         <template slot-scope="scope">
-          <el-button type="text" size="small" icon="el-icon-view" @click="handlePreview(scope.row)"
-                     v-hasPermi="['infra:codegen:preview']">预览
-          </el-button>
-          <el-button type="text" size="small" icon="el-icon-edit" @click="handleEditTable(scope.row)"
-                     v-hasPermi="['infra:codegen:update']">编辑
-          </el-button>
-          <el-button type="text" size="small" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['infra:codegen:delete']">删除
-          </el-button>
-          <el-button type="text" size="small" icon="el-icon-refresh" @click="handleSynchDb(scope.row)"
-                     v-hasPermi="['infra:codegen:update']">同步
-          </el-button>
-          <el-button type="text" size="small" icon="el-icon-download" @click="handleGenTable(scope.row)"
-                     v-hasPermi="['infra:codegen:download']">生成代码
-          </el-button>
+          <el-button type="text" size="small" icon="el-icon-view" @click="handlePreview(scope.row)" v-hasPermi="['infra:codegen:preview']">预览</el-button>
+          <el-button type="text" size="small" icon="el-icon-edit" @click="handleEditTable(scope.row)" v-hasPermi="['infra:codegen:update']">编辑</el-button>
+          <el-button type="text" size="small" icon="el-icon-delete" @click="handleDelete(scope.row)" v-hasPermi="['infra:codegen:delete']">删除</el-button>
+          <el-button type="text" size="small" icon="el-icon-refresh" @click="handleSynchDb(scope.row)" v-hasPermi="['infra:codegen:update']">同步</el-button>
+          <el-button type="text" size="small" icon="el-icon-download" @click="handleGenTable(scope.row)" v-hasPermi="['infra:codegen:download']">生成代码</el-button>
         </template>
       </el-table-column>
     </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNo" :limit.sync="queryParams.pageSize"
-                @pagination="getList"/>
+    <pagination v-show="total>0" :total="total" :page.sync="queryParams.pageNo" :limit.sync="queryParams.pageSize" @pagination="getList"/>
 
     <!-- 预览界面 -->
-    <el-dialog :title="preview.title" :visible.sync="preview.open" width="90%" top="5vh" append-to-body
-               class="scrollbar">
+    <el-dialog :title="preview.title" :visible.sync="preview.open" width="90%" top="5vh" append-to-body class="scrollbar">
       <el-row>
         <el-col :span="7">
           <el-tree :data="preview.fileTree" :expand-on-click-node="false" default-expand-all highlight-current
@@ -81,12 +68,9 @@
         </el-col>
         <el-col :span="17">
           <el-tabs v-model="preview.activeName">
-            <el-tab-pane v-for="item in preview.data"
-                         :label="item.filePath.substring(item.filePath.lastIndexOf('/') + 1)"
+            <el-tab-pane v-for="item in preview.data" :label="item.filePath.substring(item.filePath.lastIndexOf('/') + 1)"
                          :name="item.filePath" :key="item.filePath">
-              <el-link :underline="false" icon="el-icon-document-copy" v-clipboard:copy="item.code"
-                       v-clipboard:success="clipboardSuccess" style="float:right">复制
-              </el-link>
+              <el-link :underline="false" icon="el-icon-document-copy" v-clipboard:copy="item.code" v-clipboard:success="clipboardSuccess" style="float:right">复制</el-link>
               <pre><code class="hljs" v-html="highlightedCode(item)"></code></pre>
             </el-tab-pane>
           </el-tabs>
@@ -95,25 +79,19 @@
     </el-dialog>
 
     <!-- 基于 DB 导入 -->
-    <import-table ref="import" @ok="handleQuery"/>
+    <import-table ref="import" @ok="handleQuery" />
   </div>
 </template>
 
 <script>
-import {
-  deleteCodegen,
-  downloadCodegen,
-  getCodegenTablePage,
-  previewCodegen,
-  syncCodegenFromDB
-} from "@/api/infra/codegen";
+import { getCodegenTablePage, previewCodegen, downloadCodegen, deleteCodegen,
+  syncCodegenFromDB, syncCodegenFromSQL, createCodegenListFromSQL } from "@/api/infra/codegen";
 
 import importTable from "./importTable";
 // 代码高亮插件
 import hljs from "highlight.js/lib/highlight";
 import "highlight.js/styles/github-gist.css";
 import {getDataSourceConfigList} from "@/api/infra/dataSourceConfig";
-
 hljs.registerLanguage("java", require("highlight.js/lib/languages/java"));
 hljs.registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 hljs.registerLanguage("html", require("highlight.js/lib/languages/xml"));
@@ -123,7 +101,7 @@ hljs.registerLanguage("sql", require("highlight.js/lib/languages/sql"));
 
 export default {
   name: "Codegen",
-  components: {importTable},
+  components: { importTable },
   data() {
     return {
       // 遮罩层
@@ -181,10 +159,10 @@ export default {
         this.dateRange[0] ? this.dateRange[0] + ' 00:00:00' : undefined,
         this.dateRange[1] ? this.dateRange[1] + ' 23:59:59' : undefined,
       ], 'CreateTime')).then(response => {
-          this.tableList = response.data.list;
-          this.total = response.data.total;
-          this.loading = false;
-        }
+            this.tableList = response.data.list;
+            this.total = response.data.total;
+            this.loading = false;
+          }
       );
     },
     /** 搜索按钮操作 */
@@ -202,12 +180,11 @@ export default {
     handleSynchDb(row) {
       // 基于 DB 同步
       const tableName = row.tableName;
-      this.$modal.confirm('确认要强制同步"' + tableName + '"表结构吗？').then(function () {
-        return syncCodegenFromDB(row.id);
+      this.$modal.confirm('确认要强制同步"' + tableName + '"表结构吗？').then(function() {
+          return syncCodegenFromDB(row.id);
       }).then(() => {
-        this.$modal.msgSuccess("同步成功");
-      }).catch(() => {
-      });
+          this.$modal.msgSuccess("同步成功");
+      }).catch(() => {});
     },
     /** 打开导入表弹窗 */
     openImportTable() {
@@ -225,7 +202,7 @@ export default {
         this.preview.data = response.data;
         let files = this.handleFiles(response.data);
         this.preview.fileTree = this.handleTree(files, "id", "parentId", "children",
-          "/"); // "/" 为根节点
+            "/"); // "/" 为根节点
         // console.log(this.preview.fileTree)
         this.preview.activeName = response.data[0].filePath;
         this.preview.open = true;
@@ -240,7 +217,7 @@ export default {
       return result.value || '&nbsp;';
     },
     /** 复制代码成功 */
-    clipboardSuccess() {
+    clipboardSuccess(){
       this.$modal.msgSuccess("复制成功");
     },
     /** 生成 files 目录 **/
@@ -320,13 +297,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const tableIds = row.id;
-      this.$modal.confirm('是否确认删除表名称为"' + row.tableName + '"的数据项?').then(function () {
-        return deleteCodegen(tableIds);
+      this.$modal.confirm('是否确认删除表名称为"' + row.tableName + '"的数据项?').then(function() {
+          return deleteCodegen(tableIds);
       }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     // 数据源配置的名字
     dataSourceConfigNameFormat(row, column) {

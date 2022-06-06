@@ -18,4 +18,5 @@ public class PermissionAssignUserRoleReqVO {
 
     @ApiModelProperty(value = "角色编号列表", example = "1,3,5")
     private Set<Long> roleIds = Collections.emptySet(); // 兜底
+
 }

@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
+import cn.iocoder.yudao.framework.common.exception.ServiceException;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeCheckReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeSendReqDTO;
 import cn.iocoder.yudao.module.system.api.sms.dto.code.SmsCodeUseReqDTO;
@@ -23,7 +24,7 @@ public interface SmsCodeService {
     /**
      * 验证短信验证码，并进行使用
      * 如果正确，则将验证码标记成已使用
-     * 如果错误，则抛出 {@link io.github.meta.ease.common.exception.ServiceException} 异常
+     * 如果错误，则抛出 {@link ServiceException} 异常
      *
      * @param reqDTO 使用请求
      */
@@ -35,4 +36,5 @@ public interface SmsCodeService {
      * @param reqDTO 校验请求
      */
     void checkSmsCode(@Valid SmsCodeCheckReqDTO reqDTO);
+
 }

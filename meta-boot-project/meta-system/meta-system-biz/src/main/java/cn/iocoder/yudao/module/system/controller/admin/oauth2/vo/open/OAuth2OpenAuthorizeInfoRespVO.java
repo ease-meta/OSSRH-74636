@@ -1,7 +1,6 @@
 package cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.open;
 
-
-import io.github.meta.ease.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -34,5 +33,7 @@ public class OAuth2OpenAuthorizeInfoRespVO {
 
         @ApiModelProperty(value = "应用图标", required = true, example = "https://www.iocoder.cn/xx.png")
         private String logo;
+
     }
+
 }

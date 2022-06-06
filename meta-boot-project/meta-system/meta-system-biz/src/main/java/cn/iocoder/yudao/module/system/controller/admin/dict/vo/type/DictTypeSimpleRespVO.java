@@ -20,4 +20,5 @@ public class DictTypeSimpleRespVO {
 
     @ApiModelProperty(value = "字典类型", required = true, example = "sys_common_sex")
     private String type;
+
 }

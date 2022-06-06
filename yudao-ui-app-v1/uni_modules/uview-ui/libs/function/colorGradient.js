@@ -22,7 +22,7 @@ function colorGradient(startColor = 'rgb(0, 0, 0)', endColor = 'rgb(255, 255, 25
     for (let i = 0; i < step; i++) {
         // 计算每一步的hex值
         let hex = rgbToHex(`rgb(${Math.round((sR * i + startR))},${Math.round((sG * i + startG))},${Math.round((sB
-            * i + startB))})`)
+			* i + startB))})`)
         // 确保第一个颜色值为startColor的值
         if (i === 0) hex = rgbToHex(startColor)
         // 确保最后一个颜色值为endColor的值
@@ -53,8 +53,7 @@ function hexToRgb(sColor, str = true) {
             return sColorChange
         }
         return `rgb(${sColorChange[0]},${sColorChange[1]},${sColorChange[2]})`
-    }
-    if (/^(rgb|RGB)/.test(sColor)) {
+    } if (/^(rgb|RGB)/.test(sColor)) {
         const arr = sColor.replace(/(?:\(|\)|rgb|RGB)*/g, '').split(',')
         return arr.map((val) => Number(val))
     }
@@ -80,13 +79,11 @@ function rgbToHex(rgb) {
             strHex = _this
         }
         return strHex
-    }
-    if (reg.test(_this)) {
+    } if (reg.test(_this)) {
         const aNum = _this.replace(/#/, '').split('')
         if (aNum.length === 6) {
             return _this
-        }
-        if (aNum.length === 3) {
+        } if (aNum.length === 3) {
             let numHex = '#'
             for (let i = 0; i < aNum.length; i += 1) {
                 numHex += (aNum[i] + aNum[i])
@@ -99,10 +96,10 @@ function rgbToHex(rgb) {
 }
 
 /**
- * JS颜色十六进制转换为rgb或rgba,返回的格式为 rgba（255，255，255，0.5）字符串
- * sHex为传入的十六进制的色值
- * alpha为rgba的透明度
- */
+* JS颜色十六进制转换为rgb或rgba,返回的格式为 rgba（255，255，255，0.5）字符串
+* sHex为传入的十六进制的色值
+* alpha为rgba的透明度
+*/
 function colorToRgba(color, alpha) {
     color = rgbToHex(color)
     // 十六进制颜色值的正则表达式

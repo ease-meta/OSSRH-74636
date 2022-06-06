@@ -1,21 +1,21 @@
 package cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
+import cn.iocoder.yudao.module.bpm.service.definition.BpmTaskAssignRuleService;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmTaskAssignRuleDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskAssignRuleTypeEnum;
 import cn.iocoder.yudao.module.bpm.enums.definition.BpmTaskRuleScriptEnum;
-import cn.iocoder.yudao.module.bpm.framework.activiti.core.behavior.script.BpmTaskAssignScript;
-import cn.iocoder.yudao.module.bpm.service.definition.BpmTaskAssignRuleService;
 import cn.iocoder.yudao.module.bpm.service.definition.BpmUserGroupService;
 import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.permission.PermissionApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import org.activiti.engine.impl.persistence.entity.TaskEntity;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -26,8 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static cn.iocoder.yudao.framework.common.util.collection.SetUtils.asSet;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static io.github.meta.ease.common.util.collection.SetUtils.asSet;
 import static java.util.Collections.singleton;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
@@ -37,19 +37,15 @@ public class BpmUserTaskActivityBehaviorTest extends BaseMockitoUnitTest {
 
     @InjectMocks
     private BpmUserTaskActivityBehavior behavior;
-
     @Mock
     private BpmTaskAssignRuleService bpmTaskRuleService;
-
     @Mock
     private BpmUserGroupService userGroupService;
 
     @Mock
     private DeptApi deptApi;
-
     @Mock
     private AdminUserApi adminUserApi;
-
     @Mock
     private PermissionApi permissionApi;
 
@@ -214,4 +210,5 @@ public class BpmUserTaskActivityBehaviorTest extends BaseMockitoUnitTest {
                 id -> new AdminUserRespDTO().setId(id).setStatus(CommonStatusEnum.ENABLE.getStatus()));
         when(adminUserApi.getUserMap(eq(assigneeUserIds))).thenReturn(userMap);
     }
+
 }

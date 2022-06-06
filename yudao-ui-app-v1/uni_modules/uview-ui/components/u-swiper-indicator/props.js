@@ -20,10 +20,10 @@ export default {
             type: String,
             default: uni.$u.props.swiperIndicator.indicatorInactiveColor
         },
-        // 指示器模式，line-线型，dot-点型
-        indicatorMode: {
-            type: String,
-            default: uni.$u.props.swiperIndicator.indicatorMode
-        }
+		// 指示器模式，line-线型，dot-点型
+		indicatorMode: {
+		    type: String,
+		    default: uni.$u.props.swiperIndicator.indicatorMode
+		}
     }
 }

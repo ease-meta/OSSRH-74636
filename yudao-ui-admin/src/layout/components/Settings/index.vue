@@ -8,8 +8,7 @@
         <div class="setting-drawer-block-checbox">
           <div class="setting-drawer-block-checbox-item" @click="handleTheme('theme-dark')">
             <img src="@/assets/images/dark.svg" alt="dark">
-            <div v-if="sideTheme === 'theme-dark'" class="setting-drawer-block-checbox-selectIcon"
-                 style="display: block;">
+            <div v-if="sideTheme === 'theme-dark'" class="setting-drawer-block-checbox-selectIcon" style="display: block;">
               <i aria-label="图标: check" class="anticon anticon-check">
                 <svg viewBox="64 64 896 896" data-icon="check" width="1em" height="1em" :fill="theme" aria-hidden="true"
                      focusable="false" class="">
@@ -21,8 +20,7 @@
           </div>
           <div class="setting-drawer-block-checbox-item" @click="handleTheme('theme-light')">
             <img src="@/assets/images/light.svg" alt="light">
-            <div v-if="sideTheme === 'theme-light'" class="setting-drawer-block-checbox-selectIcon"
-                 style="display: block;">
+            <div v-if="sideTheme === 'theme-light'" class="setting-drawer-block-checbox-selectIcon" style="display: block;">
               <i aria-label="图标: check" class="anticon anticon-check">
                 <svg viewBox="64 64 896 896" data-icon="check" width="1em" height="1em" :fill="theme" aria-hidden="true"
                      focusable="false" class="">
@@ -36,7 +34,7 @@
 
         <div class="drawer-item">
           <span>主题颜色</span>
-          <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange"/>
+          <theme-picker style="float: right;height: 26px;margin: -3px 8px 0 0;" @change="themeChange" />
         </div>
       </div>
 
@@ -46,27 +44,27 @@
 
       <div class="drawer-item">
         <span>开启 TopNav</span>
-        <el-switch v-model="topNav" class="drawer-switch"/>
+        <el-switch v-model="topNav" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>开启 Tags-Views</span>
-        <el-switch v-model="tagsView" class="drawer-switch"/>
+        <el-switch v-model="tagsView" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>固定 Header</span>
-        <el-switch v-model="fixedHeader" class="drawer-switch"/>
+        <el-switch v-model="fixedHeader" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>显示 Logo</span>
-        <el-switch v-model="sidebarLogo" class="drawer-switch"/>
+        <el-switch v-model="sidebarLogo" class="drawer-switch" />
       </div>
 
       <div class="drawer-item">
         <span>动态标题</span>
-        <el-switch v-model="dynamicTitle" class="drawer-switch"/>
+        <el-switch v-model="dynamicTitle" class="drawer-switch" />
       </div>
 
       <el-divider/>
@@ -81,7 +79,7 @@
 import ThemePicker from '@/components/ThemePicker'
 
 export default {
-  components: {ThemePicker},
+  components: { ThemePicker },
   data() {
     return {
       theme: this.$store.state.settings.theme,

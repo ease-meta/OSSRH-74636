@@ -30,4 +30,5 @@ public class YudaoDeptDataPermissionAutoConfiguration {
         customizers.forEach(customizer -> customizer.customize(rule));
         return rule;
     }
+
 }

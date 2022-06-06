@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.convert.notice;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.notice.vo.NoticeUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.notice.NoticeDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -20,4 +20,5 @@ public interface NoticeConvert {
     NoticeDO convert(NoticeUpdateReqVO bean);
 
     NoticeDO convert(NoticeCreateReqVO bean);
+
 }

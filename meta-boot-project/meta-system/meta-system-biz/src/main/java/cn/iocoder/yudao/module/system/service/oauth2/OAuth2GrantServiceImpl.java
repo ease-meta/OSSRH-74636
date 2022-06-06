@@ -3,18 +3,18 @@ package cn.iocoder.yudao.module.system.service.oauth2;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2CodeDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.user.AdminUserDO;
 import cn.iocoder.yudao.module.system.enums.ErrorCodeConstants;
 import cn.iocoder.yudao.module.system.service.auth.AdminAuthService;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * OAuth2 授予 Service 实现类
@@ -26,10 +26,8 @@ public class OAuth2GrantServiceImpl implements OAuth2GrantService {
 
     @Resource
     private OAuth2TokenService oauth2TokenService;
-
     @Resource
     private OAuth2CodeService oauth2CodeService;
-
     @Resource
     private AdminAuthService adminAuthService;
 
@@ -102,4 +100,5 @@ public class OAuth2GrantServiceImpl implements OAuth2GrantService {
         // 再删除
         return oauth2TokenService.removeAccessToken(accessToken) != null;
     }
+
 }

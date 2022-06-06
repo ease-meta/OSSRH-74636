@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.service.oauth2;
 
 import cn.hutool.core.util.ObjectUtil;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.util.date.DateUtils;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbUnitTest;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ApproveDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2ApproveMapper;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.util.date.DateUtils;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,27 +14,19 @@ import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
 import java.time.Duration;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static cn.hutool.core.util.RandomUtil.randomBoolean;
-import static cn.hutool.core.util.RandomUtil.randomDay;
-import static cn.hutool.core.util.RandomUtil.randomEle;
+import static cn.hutool.core.util.RandomUtil.*;
+import static cn.iocoder.yudao.framework.common.util.date.DateUtils.addTime;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static io.github.meta.ease.common.util.date.DateUtils.addTime;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 /**
- * {@link cn.iocoder.yudao.module.system.service.oauth2.OAuth2ApproveServiceImpl} 的单元测试类
+ * {@link OAuth2ApproveServiceImpl} 的单元测试类
  *
  * @author 芋道源码
  */
@@ -271,4 +263,5 @@ public class OAuth2ApproveServiceImplTest extends BaseDbUnitTest {
         assertEquals(approved, result.get(0).getApproved());
         assertEquals(expireTime, result.get(0).getExpiresTime());
     }
+
 }

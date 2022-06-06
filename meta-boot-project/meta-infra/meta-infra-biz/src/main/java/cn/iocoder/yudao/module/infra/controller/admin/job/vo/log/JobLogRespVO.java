@@ -19,4 +19,5 @@ public class JobLogRespVO extends JobLogBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
+
 }

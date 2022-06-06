@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="用户体系" url="https://doc.iocoder.cn/user-center/"/>
+    <doc-alert title="用户体系" url="https://doc.iocoder.cn/user-center/" />
     <!-- 搜索工作栏 -->
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" label-width="68px">
       <el-form-item label="用户编号" prop="userId">
@@ -19,9 +19,9 @@
 
     </el-form>
     <el-table v-loading="loading" :data="list" style="width: 100%;">
-      <el-table-column label="访问令牌" align="center" prop="accessToken" width="300"/>
-      <el-table-column label="刷新令牌" align="center" prop="refreshToken" width="300"/>
-      <el-table-column label="用户编号" align="center" prop="userId"/>
+      <el-table-column label="访问令牌" align="center" prop="accessToken" width="300" />
+      <el-table-column label="刷新令牌" align="center" prop="refreshToken" width="300" />
+      <el-table-column label="用户编号" align="center" prop="userId" />
       <el-table-column label="用户类型" align="center" prop="userType" width="100">
         <template slot-scope="scope">
           <dict-tag :type="DICT_TYPE.USER_TYPE" :value="scope.row.userType"/>
@@ -40,8 +40,7 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleForceLogout(scope.row)"
-                     v-hasPermi="['system:oauth2-token:delete']">强退
-          </el-button>
+            v-hasPermi="['system:oauth2-token:delete']">强退</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -52,7 +51,7 @@
 </template>
 
 <script>
-import {deleteAccessToken, getAccessTokenPage} from "@/api/system/oauth2/oauth2Token";
+import { getAccessTokenPage, deleteAccessToken } from "@/api/system/oauth2/oauth2Token";
 
 export default {
   name: "OAuth2Token",
@@ -98,13 +97,12 @@ export default {
     },
     /** 强退按钮操作 */
     handleForceLogout(row) {
-      this.$modal.confirm('是否确认强退令牌为"' + row.accessToken + '"的数据项?').then(function () {
-        return deleteAccessToken(row.accessToken);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("强退成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认强退令牌为"' + row.accessToken + '"的数据项?').then(function() {
+          return deleteAccessToken(row.accessToken);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("强退成功");
+      }).catch(() => {});
     }
   }
 };

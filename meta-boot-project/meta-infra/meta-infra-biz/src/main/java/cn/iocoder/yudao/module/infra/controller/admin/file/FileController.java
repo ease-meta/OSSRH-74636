@@ -1,15 +1,15 @@
 package cn.iocoder.yudao.module.infra.controller.admin.file;
 
 import cn.hutool.core.io.IoUtil;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.servlet.ServletUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.file.FilePageReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.file.FileRespVO;
 import cn.iocoder.yudao.module.infra.convert.file.FileConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileDO;
 import cn.iocoder.yudao.module.infra.service.file.FileService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.servlet.ServletUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -18,20 +18,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 文件存储")
 @RestController
@@ -67,7 +61,7 @@ public class FileController {
     @GetMapping("/{configId}/get/{path}")
     @ApiOperation("下载文件")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "configId", value = "配置编号", required = true, dataTypeClass = Long.class),
+            @ApiImplicitParam(name = "configId", value = "配置编号",  required = true, dataTypeClass = Long.class),
             @ApiImplicitParam(name = "path", value = "文件路径", required = true, dataTypeClass = String.class)
     })
     public void getFileContent(HttpServletResponse response,
@@ -89,4 +83,5 @@ public class FileController {
         PageResult<FileDO> pageResult = fileService.getFilePage(pageVO);
         return success(FileConvert.INSTANCE.convertPage(pageResult));
     }
+
 }

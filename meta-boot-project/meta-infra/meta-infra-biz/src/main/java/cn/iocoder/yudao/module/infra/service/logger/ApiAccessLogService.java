@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.service.logger;
 
+import cn.iocoder.yudao.framework.apilog.core.service.ApiAccessLogFrameworkService;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogExportReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.logger.vo.apiaccesslog.ApiAccessLogPageReqVO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.dal.dataobject.logger.ApiAccessLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.web.apilog.core.service.ApiAccessLogFrameworkService;
 
 import java.util.List;
 
@@ -30,4 +30,5 @@ public interface ApiAccessLogService extends ApiAccessLogFrameworkService {
      * @return API 访问日志分页
      */
     List<ApiAccessLogDO> getApiAccessLogList(ApiAccessLogExportReqVO exportReqVO);
+
 }

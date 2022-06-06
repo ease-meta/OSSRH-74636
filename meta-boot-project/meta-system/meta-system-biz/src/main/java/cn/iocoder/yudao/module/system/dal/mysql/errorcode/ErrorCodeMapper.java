@@ -1,12 +1,12 @@
 package cn.iocoder.yudao.module.system.dal.mysql.errorcode;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.QueryWrapperX;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodePageReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.QueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Collection;
@@ -48,4 +48,5 @@ public interface ErrorCodeMapper extends BaseMapperX<ErrorCodeDO> {
         return selectList(new QueryWrapperX<ErrorCodeDO>().eq("application_name", applicationName)
                 .gtIfPresent("update_time", minUpdateTime));
     }
+
 }

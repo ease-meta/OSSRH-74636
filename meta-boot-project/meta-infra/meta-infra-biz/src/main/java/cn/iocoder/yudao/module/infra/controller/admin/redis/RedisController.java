@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.controller.admin.redis;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
 import cn.iocoder.yudao.framework.redis.core.RedisKeyDefine;
 import cn.iocoder.yudao.framework.redis.core.RedisKeyRegistry;
 import cn.iocoder.yudao.module.infra.controller.admin.redis.vo.RedisKeyRespVO;
 import cn.iocoder.yudao.module.infra.controller.admin.redis.vo.RedisMonitorRespVO;
 import cn.iocoder.yudao.module.infra.convert.redis.RedisConvert;
-import io.github.meta.ease.common.pojo.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.data.redis.connection.RedisServerCommands;
@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Properties;
 
-import static io.github.meta.ease.common.pojo.CommonResult.success;
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - Redis 监控")
 @RestController
@@ -51,4 +51,5 @@ public class RedisController {
         List<RedisKeyDefine> keyDefines = RedisKeyRegistry.list();
         return success(RedisConvert.INSTANCE.convertList(keyDefines));
     }
+
 }

@@ -3,18 +3,18 @@ package cn.iocoder.yudao.module.bpm.service.definition;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.module.bpm.convert.definition.BpmProcessDefinitionConvert;
 import cn.iocoder.yudao.framework.activiti.core.util.ActivitiUtils;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.object.PageUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionListReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionPageItemRespVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.process.BpmProcessDefinitionRespVO;
-import cn.iocoder.yudao.module.bpm.convert.definition.BpmProcessDefinitionConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmProcessDefinitionExtDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.definition.BpmProcessDefinitionExtMapper;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmProcessDefinitionCreateReqDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.object.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.activiti.bpmn.model.BpmnModel;
 import org.activiti.engine.RepositoryService;
@@ -27,26 +27,17 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_KEY_NOT_MATCH;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NAME_NOT_MATCH;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.addIfNotNull;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertList;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.*;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_KEY_NOT_MATCH;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.PROCESS_DEFINITION_NAME_NOT_MATCH;
 import static java.util.Collections.emptyList;
 
 /**
  * 流程定义实现
- * 主要进行 Activiti {@link org.activiti.engine.repository.ProcessDefinition} 和 {@link org.activiti.engine.repository.Deployment} 的维护
+ * 主要进行 Activiti {@link ProcessDefinition} 和 {@link Deployment} 的维护
  *
  * @author yunlongn
  * @author ZJQ
@@ -61,7 +52,6 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
 
     @Resource
     private RepositoryService repositoryService;
-
     @Resource
     private BpmFormService formService;
 
@@ -238,8 +228,7 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
                 .deploy();
 
         // 设置 ProcessDefinition 的 category 分类
-        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().deploymentId(deploy.getId())
-                .singleResult();
+        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().deploymentId(deploy.getId()).singleResult();
         repositoryService.setProcessDefinitionCategory(definition.getId(), createReqDTO.getCategory());
         // 注意 1，ProcessDefinition 的 key 和 name 是通过 BPMN 中的 <bpmn2:process /> 的 id 和 name 决定
         // 注意 2，目前该项目的设计上，需要保证 Model、Deployment、ProcessDefinition 使用相同的 key，保证关联性。
@@ -274,4 +263,5 @@ public class BpmProcessDefinitionServiceImpl implements BpmProcessDefinitionServ
         }
         log.error("[updateProcessDefinitionState][流程定义({}) 修改未知状态({})]", id, state);
     }
+
 }

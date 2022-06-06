@@ -1,18 +1,18 @@
 package cn.iocoder.yudao.module.system.service.errorcode;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeUpdateReqVO;
-import cn.iocoder.yudao.module.system.convert.errorcode.ErrorCodeConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.errorcode.ErrorCodeDO;
-import cn.iocoder.yudao.module.system.dal.mysql.errorcode.ErrorCodeMapper;
-import cn.iocoder.yudao.module.system.enums.errorcode.ErrorCodeTypeEnum;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeAutoGenerateReqDTO;
 import cn.iocoder.yudao.module.system.framework.errorcode.core.dto.ErrorCodeRespDTO;
+import cn.iocoder.yudao.module.system.convert.errorcode.ErrorCodeConvert;
+import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodeExportReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.errorcode.vo.ErrorCodePageReqVO;
+import cn.iocoder.yudao.module.system.dal.mysql.errorcode.ErrorCodeMapper;
+import cn.iocoder.yudao.module.system.enums.errorcode.ErrorCodeTypeEnum;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.pojo.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +23,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ERROR_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ERROR_CODE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
 
 /**
  * 错误码 Service 实现类
@@ -78,11 +77,11 @@ public class ErrorCodeServiceImpl implements ErrorCodeService {
 
     /**
      * 校验错误码的唯一字段是否重复
-     * <p>
+     *
      * 是否存在相同编码的错误码
      *
      * @param code 错误码编码
-     * @param id   错误码编号
+     * @param id 错误码编号
      */
     @VisibleForTesting
     public void validateCodeDuplicate(Integer code, Long id) {
@@ -169,5 +168,6 @@ public class ErrorCodeServiceImpl implements ErrorCodeService {
                 applicationName, minUpdateTime);
         return ErrorCodeConvert.INSTANCE.convertList03(errorCodeDOs);
     }
+
 }
 

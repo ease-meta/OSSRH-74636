@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.framework.mq.core.pubsub;
 
 import cn.hutool.core.util.TypeUtil;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.mq.core.RedisMQTemplate;
 import cn.iocoder.yudao.framework.mq.core.interceptor.RedisMessageInterceptor;
 import cn.iocoder.yudao.framework.mq.core.message.AbstractRedisMessage;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import org.springframework.data.redis.connection.Message;
@@ -17,6 +17,7 @@ import java.util.List;
  * Redis Pub/Sub 监听器抽象类，用于实现广播消费
  *
  * @param <T> 消息类型。一定要填写噢，不然会报错
+ *
  * @author 芋道源码
  */
 public abstract class AbstractChannelMessageListener<T extends AbstractChannelMessage> implements MessageListener {
@@ -25,12 +26,10 @@ public abstract class AbstractChannelMessageListener<T extends AbstractChannelMe
      * 消息类型
      */
     private final Class<T> messageType;
-
     /**
      * Redis Channel
      */
     private final String channel;
-
     /**
      * RedisMQTemplate
      */
@@ -100,4 +99,5 @@ public abstract class AbstractChannelMessageListener<T extends AbstractChannelMe
             interceptors.get(i).consumeMessageAfter(message);
         }
     }
+
 }

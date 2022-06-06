@@ -1,31 +1,13 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package cn.iocoder.yudao.module.bpm.service.definition;
+
+import java.util.*;
+import javax.validation.*;
 
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupCreateReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupPageReqVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.group.BpmUserGroupUpdateReqVO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
-import io.github.meta.ease.common.pojo.PageResult;
-
-import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 
 /**
  * 用户组 Service 接口
@@ -96,4 +78,5 @@ public interface BpmUserGroupService {
      * @param ids 用户组编号数组
      */
     void validUserGroups(Set<Long> ids);
+
 }

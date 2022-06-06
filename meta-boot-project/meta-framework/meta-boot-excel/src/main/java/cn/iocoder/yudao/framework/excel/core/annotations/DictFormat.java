@@ -1,14 +1,10 @@
 package cn.iocoder.yudao.framework.excel.core.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * 字典格式化
- * <p>
+ *
  * 实现将字典数据的值，格式化成字典数据的标签
  */
 @Target({ElementType.FIELD})
@@ -22,4 +18,5 @@ public @interface DictFormat {
      * @return 字典类型
      */
     String value();
+
 }

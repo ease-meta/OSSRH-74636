@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.infra.dal.mysql.file;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.mybatis.core.mapper.BaseMapperX;
+import cn.iocoder.yudao.framework.mybatis.core.query.LambdaQueryWrapperX;
 import cn.iocoder.yudao.module.infra.controller.admin.file.vo.file.FilePageReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.mybatis.mybatis.core.mapper.BaseMapperX;
-import io.github.meta.ease.mybatis.mybatis.core.query.LambdaQueryWrapperX;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -22,4 +22,5 @@ public interface FileMapper extends BaseMapperX<FileDO> {
                 .betweenIfPresent(FileDO::getCreateTime, reqVO.getBeginCreateTime(), reqVO.getEndCreateTime())
                 .orderByDesc(FileDO::getId));
     }
+
 }

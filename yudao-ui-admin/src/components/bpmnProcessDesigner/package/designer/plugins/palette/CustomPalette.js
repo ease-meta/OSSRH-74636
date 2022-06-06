@@ -1,16 +1,15 @@
 import PaletteProvider from "bpmn-js/lib/features/palette/PaletteProvider";
-import {assign} from "min-dash";
+import { assign } from "min-dash";
 
 export default function CustomPalette(palette, create, elementFactory, spaceTool, lassoTool, handTool, globalConnect, translate) {
   PaletteProvider.call(this, palette, create, elementFactory, spaceTool, lassoTool, handTool, globalConnect, translate, 2000);
 }
 
-const F = function () {
-}; // 核心，利用空对象作为中介；
+const F = function() {}; // 核心，利用空对象作为中介；
 F.prototype = PaletteProvider.prototype; // 核心，将父类的原型赋值给空对象F；
 
 // 利用中介函数重写原型链方法
-F.prototype.getPaletteEntries = function () {
+F.prototype.getPaletteEntries = function() {
   var actions = {},
     create = this._create,
     elementFactory = this._elementFactory,
@@ -22,7 +21,7 @@ F.prototype.getPaletteEntries = function () {
 
   function createAction(type, group, className, title, options) {
     function createListener(event) {
-      var shape = elementFactory.createShape(assign({type: type}, options));
+      var shape = elementFactory.createShape(assign({ type: type }, options));
 
       if (options) {
         shape.businessObject.di.isExpanded = options.isExpanded;
@@ -36,7 +35,7 @@ F.prototype.getPaletteEntries = function () {
     return {
       group: group,
       className: className,
-      title: title || translate("Create {type}", {type: shortType}),
+      title: title || translate("Create {type}", { type: shortType }),
       action: {
         dragstart: createListener,
         click: createListener
@@ -76,7 +75,7 @@ F.prototype.getPaletteEntries = function () {
       className: "bpmn-icon-hand-tool",
       title: translate("Activate the hand tool"),
       action: {
-        click: function (event) {
+        click: function(event) {
           handTool.activateHand(event);
         }
       }
@@ -86,7 +85,7 @@ F.prototype.getPaletteEntries = function () {
       className: "bpmn-icon-lasso-tool",
       title: translate("Activate the lasso tool"),
       action: {
-        click: function (event) {
+        click: function(event) {
           lassoTool.activateSelection(event);
         }
       }
@@ -96,7 +95,7 @@ F.prototype.getPaletteEntries = function () {
       className: "bpmn-icon-space-tool",
       title: translate("Activate the create/remove space tool"),
       action: {
-        click: function (event) {
+        click: function(event) {
           spaceTool.activateSelection(event);
         }
       }
@@ -106,7 +105,7 @@ F.prototype.getPaletteEntries = function () {
       className: "bpmn-icon-connection-multi",
       title: translate("Activate the global connect tool"),
       action: {
-        click: function (event) {
+        click: function(event) {
           globalConnect.toggle(event);
         }
       }

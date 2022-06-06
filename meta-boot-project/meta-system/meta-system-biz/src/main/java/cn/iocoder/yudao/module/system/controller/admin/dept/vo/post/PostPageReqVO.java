@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.system.controller.admin.dept.vo.post;
 
-import io.github.meta.ease.common.pojo.PageParam;
+import cn.iocoder.yudao.framework.common.pojo.PageParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -19,4 +19,5 @@ public class PostPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "展示状态", example = "1", notes = "参见 CommonStatusEnum 枚举类")
     private Integer status;
+
 }

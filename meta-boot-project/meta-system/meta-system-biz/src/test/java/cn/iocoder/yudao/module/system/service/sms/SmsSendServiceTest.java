@@ -1,18 +1,18 @@
 package cn.iocoder.yudao.module.system.service.sms;
 
 import cn.hutool.core.map.MapUtil;
+import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
+import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
+import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClient;
 import cn.iocoder.yudao.framework.sms.core.client.SmsClientFactory;
 import cn.iocoder.yudao.framework.sms.core.client.SmsCommonResult;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsReceiveRespDTO;
 import cn.iocoder.yudao.framework.sms.core.client.dto.SmsSendRespDTO;
 import cn.iocoder.yudao.framework.test.core.ut.BaseMockitoUnitTest;
-import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
-import cn.iocoder.yudao.module.system.mq.message.sms.SmsSendMessage;
-import cn.iocoder.yudao.module.system.mq.producer.sms.SmsProducer;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -24,23 +24,11 @@ import java.util.Map;
 
 import static cn.hutool.core.util.RandomUtil.randomEle;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomLongId;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojoList;
-import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_MOBILE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_MOBILE_TEMPLATE_PARAM_MISS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SMS_SEND_TEMPLATE_NOT_EXISTS;
+import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.*;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.anyList;
-import static org.mockito.Mockito.anyLong;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class SmsSendServiceTest extends BaseMockitoUnitTest {
 
@@ -49,13 +37,10 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
 
     @Mock
     private SmsTemplateService smsTemplateService;
-
     @Mock
     private SmsLogService smsLogService;
-
     @Mock
     private SmsProducer smsProducer;
-
     @Mock
     private SmsClientFactory smsClientFactory;
 
@@ -201,8 +186,8 @@ public class SmsSendServiceTest extends BaseMockitoUnitTest {
         // 调用
         smsService.receiveSmsStatus(channelCode, text);
         // 断言
-        receiveResults.forEach(
-                result -> smsLogService.updateSmsReceiveResult(eq(result.getLogId()), eq(result.getSuccess()),
-                        eq(result.getReceiveTime()), eq(result.getErrorCode()), eq(result.getErrorCode())));
+        receiveResults.forEach(result -> smsLogService.updateSmsReceiveResult(eq(result.getLogId()), eq(result.getSuccess()),
+                eq(result.getReceiveTime()), eq(result.getErrorCode()), eq(result.getErrorCode())));
     }
+
 }

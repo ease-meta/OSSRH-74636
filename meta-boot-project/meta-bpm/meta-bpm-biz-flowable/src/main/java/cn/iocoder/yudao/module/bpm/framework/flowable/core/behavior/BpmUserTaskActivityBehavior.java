@@ -3,6 +3,7 @@ package cn.iocoder.yudao.module.bpm.framework.flowable.core.behavior;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
 import cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmTaskAssignRuleDO;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmUserGroupDO;
@@ -16,7 +17,6 @@ import cn.iocoder.yudao.module.system.api.permission.PermissionApi;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.bpmn.model.UserTask;
@@ -29,21 +29,14 @@ import org.flowable.engine.impl.util.TaskHelper;
 import org.flowable.task.service.TaskService;
 import org.flowable.task.service.impl.persistence.entity.TaskEntity;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_SCRIPT_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_CREATE_FAIL_NO_CANDIDATE_USER;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
-
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.TASK_ASSIGN_SCRIPT_NOT_EXISTS;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.TASK_CREATE_FAIL_NO_CANDIDATE_USER;
 
 /**
  * 自定义的流程任务的 assignee 负责人的分配
@@ -58,16 +51,12 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
 
     @Setter
     private BpmTaskAssignRuleService bpmTaskRuleService;
-
     @Setter
     private BpmUserGroupService userGroupService;
-
     @Setter
     private DeptApi deptApi;
-
     @Setter
     private AdminUserApi adminUserApi;
-
     @Setter
     private PermissionApi permissionApi;
 
@@ -84,10 +73,9 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
         this.scriptMap = convertMap(scripts, script -> script.getEnum().getId());
     }
 
+    @Override
     @DataPermission(enable = false) // 不需要处理数据权限， 不然会有问题，查询不到数据
-    protected void handleAssignments(TaskService taskService, String assignee, String owner, List<String> candidateUsers,
-                                     List<String> candidateGroups, TaskEntity task, ExpressionManager expressionManager, DelegateExecution execution,
-                                     ProcessEngineConfigurationImpl processEngineConfiguration) {
+    protected void handleAssignments(TaskService taskService, String assignee, String owner, List<String> candidateUsers, List<String> candidateGroups, TaskEntity task, ExpressionManager expressionManager, DelegateExecution execution, ProcessEngineConfigurationImpl processEngineConfiguration) {
         // 第一步，获得任务的规则
         BpmTaskAssignRuleDO rule = getTaskRule(task);
         // 第二步，获得任务的候选用户们
@@ -98,8 +86,7 @@ public class BpmUserTaskActivityBehavior extends UserTaskActivityBehavior {
     }
 
     private BpmTaskAssignRuleDO getTaskRule(TaskEntity task) {
-        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(
-                task.getProcessDefinitionId(),
+        List<BpmTaskAssignRuleDO> taskRules = bpmTaskRuleService.getTaskAssignRuleListByProcessDefinitionId(task.getProcessDefinitionId(),
                 task.getTaskDefinitionKey());
         if (CollUtil.isEmpty(taskRules)) {
             throw new FlowableException(StrUtil.format("流程任务({}/{}/{}) 找不到符合的任务规则",

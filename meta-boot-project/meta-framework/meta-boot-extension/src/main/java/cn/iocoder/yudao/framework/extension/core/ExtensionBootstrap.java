@@ -9,9 +9,9 @@ import org.springframework.context.ApplicationContextAware;
 import javax.annotation.PostConstruct;
 
 /**
+ * @description 
  * @author Qingchen
  * @version 1.0.0
- * @description
  * @date 2021-08-29 00:18
  * @class cn.iocoder.yudao.framework.extension.core.ExtensionBootstrap.java
  */

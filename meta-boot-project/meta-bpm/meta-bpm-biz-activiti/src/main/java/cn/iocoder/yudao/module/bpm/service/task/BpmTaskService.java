@@ -1,16 +1,9 @@
 package cn.iocoder.yudao.module.bpm.service.task;
 
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskApproveReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskDonePageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskDonePageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskRejectReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskTodoPageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskTodoPageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskUpdateAssigneeReqVO;
+import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.*;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmTaskExtDO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import org.activiti.engine.task.Task;
 
 import javax.validation.Valid;
@@ -70,7 +63,7 @@ public interface BpmTaskService {
     /**
      * 获得待办的流程任务分页
      *
-     * @param userId    用户编号
+     * @param userId 用户编号
      * @param pageReqVO 分页请求
      * @return 流程任务分页
      */
@@ -79,7 +72,7 @@ public interface BpmTaskService {
     /**
      * 获得已办的流程任务分页
      *
-     * @param userId    用户编号
+     * @param userId 用户编号
      * @param pageReqVO 分页请求
      * @return 流程任务分页
      */
@@ -89,14 +82,14 @@ public interface BpmTaskService {
      * 将流程任务分配给指定用户
      *
      * @param userId 用户编号
-     * @param reqVO  分配请求
+     * @param reqVO 分配请求
      */
     void updateTaskAssignee(Long userId, BpmTaskUpdateAssigneeReqVO reqVO);
 
     /**
      * 将流程任务分配给指定用户
      *
-     * @param id     流程任务编号
+     * @param id 流程任务编号
      * @param userId 用户编号
      */
     void updateTaskAssignee(String id, Long userId);
@@ -105,7 +98,7 @@ public interface BpmTaskService {
      * 通过任务
      *
      * @param userId 用户编号
-     * @param reqVO  通过请求
+     * @param reqVO 通过请求
      */
     void approveTask(Long userId, @Valid BpmTaskApproveReqVO reqVO);
 
@@ -113,7 +106,7 @@ public interface BpmTaskService {
      * 不通过任务
      *
      * @param userId 用户编号
-     * @param reqVO  不通过请求
+     * @param reqVO 不通过请求
      */
     void rejectTask(Long userId, @Valid BpmTaskRejectReqVO reqVO);
 
@@ -161,4 +154,6 @@ public interface BpmTaskService {
      * @return Task 拓展列表
      */
     List<BpmTaskExtDO> getTaskExtListByProcessInstanceId(String processInstanceId);
+
+
 }

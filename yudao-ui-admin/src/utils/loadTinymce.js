@@ -5,7 +5,7 @@ import pluginsConfig from './pluginsConfig'
 let tinymceObj
 
 export default function loadTinymce(cb) {
-  const {tinymceUrl} = pluginsConfig
+  const { tinymceUrl } = pluginsConfig
 
   if (tinymceObj) {
     cb(tinymceObj)

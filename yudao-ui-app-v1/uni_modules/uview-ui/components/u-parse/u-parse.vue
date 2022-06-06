@@ -1,49 +1,47 @@
 <template>
   <view id="_root" :class="(selectable?'_select ':'')+'_root'">
-    <slot v-if="!nodes[0]"/>
+    <slot v-if="!nodes[0]" />
     <!-- #ifndef APP-PLUS-NVUE -->
-    <node v-else :childs="nodes" :opts="[lazyLoad,loadingImg,errorImg,showImgMenu]"/>
+    <node v-else :childs="nodes" :opts="[lazyLoad,loadingImg,errorImg,showImgMenu]" />
     <!-- #endif -->
     <!-- #ifdef APP-PLUS-NVUE -->
-    <web-view ref="web" src="/static/app-plus/mp-html/local.html" :style="'margin-top:-2px;height:' + height + 'px'"
-              @onPostMessage="_onMessage"/>
+    <web-view ref="web" src="/static/app-plus/mp-html/local.html" :style="'margin-top:-2px;height:' + height + 'px'" @onPostMessage="_onMessage" />
     <!-- #endif -->
   </view>
 </template>
 
 <script>
-import props from './props.js';
-// #ifndef APP-PLUS-NVUE
-import node from './node/node'
-
+	import props from './props.js';
 /**
  * mp-html v2.0.4
  * @description 富文本组件
  * @tutorial https://github.com/jin-yufeng/mp-html
- * @property {String}      bgColor    背景颜色，只适用与APP-PLUS-NVUE
- * @property {String}      content    用于渲染的富文本字符串（默认 true ）
- * @property {Boolean}      copyLink  是否允许外部链接被点击时自动复制
- * @property {String}      domain    主域名，用于拼接链接
- * @property {String}      errorImg  图片出错时的占位图链接
- * @property {Boolean}      lazyLoad  是否开启图片懒加载（默认 true ）
- * @property {string}      loadingImg  图片加载过程中的占位图链接
- * @property {Boolean}      pauseVideo  是否在播放一个视频时自动暂停其它视频（默认 true ）
- * @property {Boolean}      previewImg  是否允许图片被点击时自动预览（默认 true ）
- * @property {Boolean}      scrollTable  是否给每个表格添加一个滚动层使其能单独横向滚动
- * @property {Boolean}      selectable  是否开启长按复制
- * @property {Boolean}      setTitle  是否将 title 标签的内容设置到页面标题（默认 true ）
- * @property {Boolean}      showImgMenu  是否允许图片被长按时显示菜单（默认 true ）
- * @property {Object}      tagStyle  标签的默认样式
- * @property {Boolean | Number}  useAnchor  是否使用锚点链接
- *
- * @event {Function}  load  dom 结构加载完毕时触发
- * @event {Function}  ready  所有图片加载完毕时触发
- * @event {Function}  imgTap  图片被点击时触发
- * @event {Function}  linkTap  链接被点击时触发
- * @event {Function}  error  媒体加载出错时触发
+ * @property {String}			bgColor		背景颜色，只适用与APP-PLUS-NVUE
+ * @property {String}			content		用于渲染的富文本字符串（默认 true ）
+ * @property {Boolean}			copyLink	是否允许外部链接被点击时自动复制
+ * @property {String}			domain		主域名，用于拼接链接
+ * @property {String}			errorImg	图片出错时的占位图链接
+ * @property {Boolean}			lazyLoad	是否开启图片懒加载（默认 true ）
+ * @property {string}			loadingImg	图片加载过程中的占位图链接
+ * @property {Boolean}			pauseVideo	是否在播放一个视频时自动暂停其它视频（默认 true ）
+ * @property {Boolean}			previewImg	是否允许图片被点击时自动预览（默认 true ）
+ * @property {Boolean}			scrollTable	是否给每个表格添加一个滚动层使其能单独横向滚动
+ * @property {Boolean}			selectable	是否开启长按复制
+ * @property {Boolean}			setTitle	是否将 title 标签的内容设置到页面标题（默认 true ）
+ * @property {Boolean}			showImgMenu	是否允许图片被长按时显示菜单（默认 true ）
+ * @property {Object}			tagStyle	标签的默认样式
+ * @property {Boolean | Number}	useAnchor	是否使用锚点链接
+ * 
+ * @event {Function}	load	dom 结构加载完毕时触发
+ * @event {Function}	ready	所有图片加载完毕时触发
+ * @event {Function}	imgTap	图片被点击时触发
+ * @event {Function}	linkTap	链接被点击时触发
+ * @event {Function}	error	媒体加载出错时触发
  */
-const plugins = []
+const plugins=[]
 const parser = require('./parser')
+// #ifndef APP-PLUS-NVUE
+import node from './node/node'
 // #endif
 // #ifdef APP-PLUS-NVUE
 const dom = weex.requireModule('dom')
@@ -58,7 +56,7 @@ export default {
       // #endif
     }
   },
-  mixins: [props],
+  mixins:[props],
   // #ifndef APP-PLUS-NVUE
   components: {
     node
@@ -132,13 +130,13 @@ export default {
         deep = '>>>'
         // #endif
         const selector = uni.createSelectorQuery()
-            // #ifndef MP-ALIPAY
-            .in(this._in ? this._in.page : this)
-            // #endif
-            .select((this._in ? this._in.selector : '._root') + (id ? `${deep}#${id}` : '')).boundingClientRect()
+          // #ifndef MP-ALIPAY
+          .in(this._in ? this._in.page : this)
+          // #endif
+          .select((this._in ? this._in.selector : '._root') + (id ? `${deep}#${id}` : '')).boundingClientRect()
         if (this._in)
           selector.select(this._in.selector).scrollOffset()
-              .select(this._in.selector).boundingClientRect() // 获取 scroll-view 的位置和滚动距离
+            .select(this._in.selector).boundingClientRect() // 获取 scroll-view 的位置和滚动距离
         else
           selector.selectViewport().scrollOffset() // 获取窗口的滚动距离
         selector.exec(res => {
@@ -146,10 +144,10 @@ export default {
             return reject('Label not found')
           const scrollTop = res[1].scrollTop + res[0].top - (res[2] ? res[2].top : 0) + offset
           if (this._in)
-              // scroll-view 跳转
+            // scroll-view 跳转
             this._in.page[this._in.scrollTop] = scrollTop
           else
-              // 页面跳转
+            // 页面跳转
             uni.pageScrollTo({
               scrollTop,
               duration: 300
@@ -198,10 +196,10 @@ export default {
     getRect() {
       return new Promise((resolve, reject) => {
         uni.createSelectorQuery()
-            // #ifndef MP-ALIPAY
-            .in(this)
-            // #endif
-            .select('#_root').boundingClientRect().exec(res => res[0] ? resolve(res[0]) : reject('Root label not found'))
+          // #ifndef MP-ALIPAY
+          .in(this)
+          // #endif
+          .select('#_root').boundingClientRect().exec(res => res[0] ? resolve(res[0]) : reject('Root label not found'))
       })
     },
 
@@ -238,8 +236,7 @@ export default {
             clearInterval(this._timer)
           }
           height = rect.height
-        }).catch(() => {
-        })
+        }).catch(() => { })
       }, 350)
       // #endif
     },
@@ -267,30 +264,29 @@ export default {
     _onMessage(e) {
       const message = e.detail.data[0]
       switch (message.action) {
-          // web-view 初始化完毕
+        // web-view 初始化完毕
         case 'onJSBridgeReady':
           this._ready = true
           if (this.nodes)
             this._set(this.nodes)
           break
-          // 内容 dom 加载完毕
+        // 内容 dom 加载完毕
         case 'onLoad':
           this.height = message.height
           this._hook('onLoad')
           this.$emit('load')
           break
-          // 所有图片加载完毕
+        // 所有图片加载完毕
         case 'onReady':
           this.getRect().then(res => {
             this.$emit('ready', res)
-          }).catch(() => {
-          })
+          }).catch(() => { })
           break
-          // 总高度发生变化
+        // 总高度发生变化
         case 'onHeightChange':
           this.height = message.height
           break
-          // 图片点击
+        // 图片点击
         case 'onImgTap':
           this.$emit('imgTap', message.attrs)
           if (this.previewImg)
@@ -299,7 +295,7 @@ export default {
               urls: this.imgList
             })
           break
-          // 链接点击
+        // 链接点击
         case 'onLinkTap':
           const href = message.attrs.href
           this.$emit('linkTap', message.attrs)
@@ -315,7 +311,8 @@ export default {
             else if (href.includes('://')) {
               if (this.copyLink)
                 plus.runtime.openWeb(href)
-            } else
+            }
+            else
               uni.navigateTo({
                 url: href,
                 fail() {
@@ -326,7 +323,7 @@ export default {
               })
           }
           break
-          // 获取到锚点的偏移量
+        // 获取到锚点的偏移量
         case 'getOffset':
           if (typeof message.offset == 'number') {
             dom.scrollToElement(this.$refs.web, {
@@ -336,11 +333,11 @@ export default {
           } else
             this._navigateTo.reject('Label not found')
           break
-          // 点击
+        // 点击
         case 'onClick':
           this.$emit('tap')
           break
-          // 出错
+        // 出错
         case 'onError':
           this.$emit('error', {
             source: message.source,

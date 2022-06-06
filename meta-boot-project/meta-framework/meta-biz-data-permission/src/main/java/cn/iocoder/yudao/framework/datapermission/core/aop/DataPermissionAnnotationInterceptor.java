@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * {@link cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission} 注解的拦截器
+ * {@link DataPermission} 注解的拦截器
  * 1. 在执行方法前，将 @DataPermission 注解入栈
  * 2. 在执行方法后，将 @DataPermission 注解出栈
  *
@@ -22,10 +22,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DataPermissionAnnotationInterceptor implements MethodInterceptor {
 
     /**
-     * DataPermission 空对象，用于方法无 {@link cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission} 注解时，使用 DATA_PERMISSION_NULL 进行占位
+     * DataPermission 空对象，用于方法无 {@link DataPermission} 注解时，使用 DATA_PERMISSION_NULL 进行占位
      */
-    static final DataPermission DATA_PERMISSION_NULL = DataPermissionAnnotationInterceptor.class.getAnnotation(
-            DataPermission.class);
+    static final DataPermission DATA_PERMISSION_NULL = DataPermissionAnnotationInterceptor.class.getAnnotation(DataPermission.class);
 
     @Getter
     private final Map<MethodClassKey, DataPermission> dataPermissionCache = new ConcurrentHashMap<>();
@@ -69,4 +68,5 @@ public class DataPermissionAnnotationInterceptor implements MethodInterceptor {
         dataPermissionCache.put(methodClassKey, dataPermission != null ? dataPermission : DATA_PERMISSION_NULL);
         return dataPermission;
     }
+
 }

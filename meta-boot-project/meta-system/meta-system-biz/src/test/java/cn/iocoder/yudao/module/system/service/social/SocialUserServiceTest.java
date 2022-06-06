@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.system.service.social;
 
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
 import cn.iocoder.yudao.framework.test.core.ut.BaseDbAndRedisUnitTest;
 import cn.iocoder.yudao.module.system.api.social.dto.SocialUserBindReqDTO;
 import cn.iocoder.yudao.module.system.dal.dataobject.social.SocialUserBindDO;
@@ -8,7 +9,6 @@ import cn.iocoder.yudao.module.system.dal.mysql.social.SocialUserBindMapper;
 import cn.iocoder.yudao.module.system.dal.mysql.social.SocialUserMapper;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
 import com.xkcoding.justauth.AuthRequestFactory;
-import io.github.meta.ease.common.enums.UserTypeEnum;
 import me.zhyd.oauth.enums.AuthResponseStatus;
 import me.zhyd.oauth.model.AuthCallback;
 import me.zhyd.oauth.model.AuthResponse;
@@ -25,19 +25,14 @@ import java.util.List;
 
 import static cn.hutool.core.util.RandomUtil.randomLong;
 import static cn.hutool.core.util.RandomUtil.randomString;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertPojoEquals;
 import static cn.iocoder.yudao.framework.test.core.util.AssertUtils.assertServiceException;
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomPojo;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_AUTH_FAILURE;
 import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_NOT_FOUND;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.any;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.eq;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @Import(SocialUserServiceImpl.class)
 public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
@@ -47,7 +42,6 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
 
     @Resource
     private SocialUserMapper socialUserMapper;
-
     @Resource
     private SocialUserBindMapper socialUserBindMapper;
 
@@ -194,9 +188,8 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
                 .setCode(reqDTO.getCode()).setState(reqDTO.getState());
         socialUserMapper.insert(socialUser);
         // mock 数据：用户可能之前已经绑定过该社交类型
-        socialUserBindMapper.insert(
-                randomPojo(SocialUserBindDO.class).setUserId(1L).setUserType(UserTypeEnum.ADMIN.getValue())
-                        .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(-1L));
+        socialUserBindMapper.insert(randomPojo(SocialUserBindDO.class).setUserId(1L).setUserType(UserTypeEnum.ADMIN.getValue())
+                .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(-1L));
         // mock 数据：社交用户可能之前绑定过别的用户
         socialUserBindMapper.insert(randomPojo(SocialUserBindDO.class).setUserType(UserTypeEnum.ADMIN.getValue())
                 .setSocialType(SocialTypeEnum.GITEE.getType()).setSocialUserId(socialUser.getId()));
@@ -259,4 +252,5 @@ public class SocialUserServiceTest extends BaseDbAndRedisUnitTest {
         // 断言
         assertEquals(userId, result);
     }
+
 }

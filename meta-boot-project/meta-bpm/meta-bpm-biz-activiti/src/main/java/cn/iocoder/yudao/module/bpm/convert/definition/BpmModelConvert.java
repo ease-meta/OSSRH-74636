@@ -1,17 +1,12 @@
 package cn.iocoder.yudao.module.bpm.convert.definition;
 
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModeImportReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelBaseVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelCreateReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelPageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.BpmModelUpdateReqVO;
+import cn.iocoder.yudao.module.bpm.controller.admin.definition.vo.model.*;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.definition.BpmFormDO;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmModelMetaInfoRespDTO;
 import cn.iocoder.yudao.module.bpm.service.definition.dto.BpmProcessDefinitionCreateReqDTO;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import org.activiti.engine.impl.persistence.entity.SuspensionState;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.Model;
@@ -42,14 +37,12 @@ public interface BpmModelConvert {
             BpmModelMetaInfoRespDTO metaInfo = JsonUtils.parseObject(model.getMetaInfo(), BpmModelMetaInfoRespDTO.class);
             BpmFormDO form = metaInfo != null ? formMap.get(metaInfo.getFormId()) : null;
             Deployment deployment = model.getDeploymentId() != null ? deploymentMap.get(model.getDeploymentId()) : null;
-            ProcessDefinition processDefinition =
-                    model.getDeploymentId() != null ? processDefinitionMap.get(model.getDeploymentId()) : null;
+            ProcessDefinition processDefinition = model.getDeploymentId() != null ? processDefinitionMap.get(model.getDeploymentId()) : null;
             return convert(model, form, deployment, processDefinition);
         });
     }
 
-    default BpmModelPageItemRespVO convert(Model model, BpmFormDO form, Deployment deployment,
-                                           ProcessDefinition processDefinition) {
+    default BpmModelPageItemRespVO convert(Model model, BpmFormDO form, Deployment deployment, ProcessDefinition processDefinition) {
         BpmModelPageItemRespVO modelRespVO = new BpmModelPageItemRespVO();
         modelRespVO.setId(model.getId());
         modelRespVO.setCreateTime(model.getCreateTime());
@@ -145,4 +138,5 @@ public interface BpmModelConvert {
     BpmModelPageItemRespVO.ProcessDefinition convert(ProcessDefinition bean);
 
     BpmModelCreateReqVO convert(BpmModeImportReqVO bean);
+
 }

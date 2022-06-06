@@ -17,4 +17,5 @@ public interface TenantMenuHandler {
      * @param menuIds 菜单列表
      */
     void handle(Set<Long> menuIds);
+
 }

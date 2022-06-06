@@ -3,6 +3,9 @@ package cn.iocoder.yudao.module.system.service.oauth2;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.string.StrUtils;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientPageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client.OAuth2ClientUpdateReqVO;
@@ -11,9 +14,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
 import cn.iocoder.yudao.module.system.dal.mysql.oauth2.OAuth2ClientMapper;
 import cn.iocoder.yudao.module.system.mq.producer.auth.OAuth2ClientProducer;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.string.StrUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -23,21 +23,12 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_AUTHORIZED_GRANT_TYPE_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_CLIENT_SECRET_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_REDIRECT_URI_NOT_MATCH;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.OAUTH2_CLIENT_SCOPE_OVER;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.getMaxValue;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.getMaxValue;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * OAuth2.0 Client Service 实现类
@@ -57,14 +48,13 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
 
     /**
      * 客户端缓存
-     * key：客户端编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO#getClientId()} ()}
-     * <p>
+     * key：客户端编号 {@link OAuth2ClientDO#getClientId()} ()}
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter // 解决单测
     @Setter // 解决单测
     private volatile Map<String, OAuth2ClientDO> clientCache;
-
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -204,8 +194,7 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
             throw exception(OAUTH2_CLIENT_CLIENT_SECRET_ERROR);
         }
         // 校验授权方式
-        if (StrUtil.isNotEmpty(authorizedGrantType) && !CollUtil.contains(client.getAuthorizedGrantTypes(),
-                authorizedGrantType)) {
+        if (StrUtil.isNotEmpty(authorizedGrantType) && !CollUtil.contains(client.getAuthorizedGrantTypes(), authorizedGrantType)) {
             throw exception(OAUTH2_CLIENT_AUTHORIZED_GRANT_TYPE_NOT_EXISTS);
         }
         // 校验授权范围
@@ -218,4 +207,5 @@ public class OAuth2ClientServiceImpl implements OAuth2ClientService {
         }
         return client;
     }
+
 }

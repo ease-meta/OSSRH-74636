@@ -1,31 +1,19 @@
 package cn.iocoder.yudao.module.infra.controller.admin.test;
 
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
 import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoCreateReqVO;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExcelVO;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoExportReqVO;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoPageReqVO;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoRespVO;
-import cn.iocoder.yudao.module.infra.controller.admin.test.vo.TestDemoUpdateReqVO;
+import cn.iocoder.yudao.module.infra.controller.admin.test.vo.*;
 import cn.iocoder.yudao.module.infra.convert.test.TestDemoConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.test.TestDemoDO;
 import cn.iocoder.yudao.module.infra.service.test.TestDemoService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -34,8 +22,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 字典类型")
 @RestController
@@ -90,21 +78,20 @@ public class TestDemoController {
 
     @GetMapping("/page")
     @ApiOperation("获得字典类型分页")
-    @PreAuthorize("@ss.hasPermission('infra:test-demo:query')")
-    public CommonResult<PageResult<TestDemoRespVO>> getTestDemoPage(@Valid TestDemoPageReqVO pageVO) {
+    @PreAuthorize("@ss.hasPermission('infra:test-demo:query')")    public CommonResult<PageResult<TestDemoRespVO>> getTestDemoPage(@Valid TestDemoPageReqVO pageVO) {
         PageResult<TestDemoDO> pageResult = testDemoService.getTestDemoPage(pageVO);
         return success(TestDemoConvert.INSTANCE.convertPage(pageResult));
     }
 
     @GetMapping("/export-excel")
     @ApiOperation("导出字典类型 Excel")
-    @PreAuthorize("@ss.hasPermission('infra:test-demo:export')")
-    @OperateLog(type = EXPORT)
+    @PreAuthorize("@ss.hasPermission('infra:test-demo:export')")    @OperateLog(type = EXPORT)
     public void exportTestDemoExcel(@Valid TestDemoExportReqVO exportReqVO,
-                                    HttpServletResponse response) throws IOException {
+              HttpServletResponse response) throws IOException {
         List<TestDemoDO> list = testDemoService.getTestDemoList(exportReqVO);
         // 导出 Excel
         List<TestDemoExcelVO> datas = TestDemoConvert.INSTANCE.convertList02(list);
         ExcelUtils.write(response, "字典类型.xls", "数据", TestDemoExcelVO.class, datas);
     }
+
 }

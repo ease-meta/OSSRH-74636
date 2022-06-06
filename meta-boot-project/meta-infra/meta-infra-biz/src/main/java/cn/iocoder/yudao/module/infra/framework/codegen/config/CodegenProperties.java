@@ -24,4 +24,5 @@ public class CodegenProperties {
      */
     @NotEmpty(message = "数据库不能为空")
     private Collection<String> dbSchemas;
+
 }

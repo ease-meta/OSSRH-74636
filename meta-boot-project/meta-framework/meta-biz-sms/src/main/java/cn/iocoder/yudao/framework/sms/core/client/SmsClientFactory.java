@@ -32,4 +32,5 @@ public interface SmsClientFactory {
      * @param properties 配置对象
      */
     void createOrUpdateSmsClient(SmsChannelProperties properties);
+
 }

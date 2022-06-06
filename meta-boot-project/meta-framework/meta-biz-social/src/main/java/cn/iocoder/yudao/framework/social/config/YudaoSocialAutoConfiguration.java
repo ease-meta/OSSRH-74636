@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.framework.social.config;
 
+import cn.hutool.core.util.ReflectUtil;
 import cn.iocoder.yudao.framework.social.core.YudaoAuthRequestFactory;
 import com.xkcoding.http.HttpUtil;
 import com.xkcoding.http.support.hutool.HutoolImpl;
@@ -30,4 +31,5 @@ public class YudaoSocialAutoConfiguration {
         // 创建 YudaoAuthRequestFactory
         return new YudaoAuthRequestFactory(properties, authStateCache);
     }
+
 }

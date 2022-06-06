@@ -4,15 +4,14 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.exception.ServiceException;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.module.infra.api.file.FileApi;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdatePasswordReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.user.vo.profile.UserProfileUpdateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserImportExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserImportRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserPageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.UserUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.user.vo.user.*;
 import cn.iocoder.yudao.module.system.convert.user.UserConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.DeptDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.dept.UserPostDO;
@@ -24,10 +23,6 @@ import cn.iocoder.yudao.module.system.service.dept.PostService;
 import cn.iocoder.yudao.module.system.service.permission.PermissionService;
 import cn.iocoder.yudao.module.system.service.tenant.TenantService;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.exception.ServiceException;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
@@ -37,30 +32,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_COUNT_MAX;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_EMAIL_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_IMPORT_LIST_IS_EMPTY;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_IS_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_MOBILE_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_NOT_EXISTS;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_PASSWORD_FAILED;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.USER_USERNAME_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertList;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertList;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 后台用户 Service 实现类
- *
  * @author 芋道源码
  */
 @Service("adminUserService")
@@ -75,16 +55,12 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     @Resource
     private DeptService deptService;
-
     @Resource
     private PostService postService;
-
     @Resource
     private PermissionService permissionService;
-
     @Resource
     private PasswordEncoder passwordEncoder;
-
     @Resource
     @Lazy // 延迟，避免循环依赖报错
     private TenantService tenantService;
@@ -309,7 +285,6 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     /**
      * 获得部门条件：查询指定部门的子部门编号们，包括自身
-     *
      * @param deptId 部门编号
      * @return 部门编号集合
      */
@@ -406,7 +381,6 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     /**
      * 校验旧密码
-     *
      * @param id          用户 id
      * @param oldPassword 旧密码
      */
@@ -478,4 +452,5 @@ public class AdminUserServiceImpl implements AdminUserService {
     private String encodePassword(String password) {
         return passwordEncoder.encode(password);
     }
+
 }

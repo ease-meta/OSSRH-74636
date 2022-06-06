@@ -40,9 +40,7 @@ $buttonHeight: $buttonH * 1px;
     float: right;
     img {
       cursor: pointer;
-      width: 100%;
-      max-width: 100px;
-      height: auto;
+      width:100%;max-width:100px; height:auto;
       vertical-align: middle;
     }
   }
@@ -104,20 +102,14 @@ $buttonHeight: $buttonH * 1px;
       position: absolute;
       top: 0;
       left: $picWidth;
-      display: flex;
+      display:flex;
       justify-content: center;
       align-items: center;
-
-      .pc-title {
-        width: 100%;
-        clear: both;
-      }
-
+      .pc-title{ width: 100%; clear: both;}
       .mobile-title,
       .mobile-switch {
         display: none;
       }
-
       .form {
         box-sizing: border-box;
         width: $formWidth;
@@ -171,7 +163,7 @@ $buttonHeight: $buttonH * 1px;
         :deep(.el-input__inner::-moz-placeholder) { /* Mozilla Firefox 19+ */
           font-weight: 400;
           color: #8C8C8C;
-          opacity: 1;
+          opacity:1;
         }
         :deep(.el-input__inner:-ms-input-placeholder) { /* Internet Explorer 10+ */
           font-weight: 400;

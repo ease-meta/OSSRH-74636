@@ -1,6 +1,6 @@
 package cn.iocoder.yudao.module.infra.controller.admin.job.vo.job;
 
-import io.github.meta.ease.common.pojo.PageParam;
+import cn.iocoder.yudao.framework.common.pojo.PageParam;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,4 +21,5 @@ public class JobPageReqVO extends PageParam {
 
     @ApiModelProperty(value = "处理器的名字", example = "sysUserSessionTimeoutJob", notes = "模糊匹配")
     private String handlerName;
+
 }

@@ -1,5 +1,7 @@
 package cn.iocoder.yudao.module.bpm.convert.task;
 
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskDonePageItemRespVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskRespVO;
 import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskTodoPageItemRespVO;
@@ -7,18 +9,13 @@ import cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmTaskExtDO;
 import cn.iocoder.yudao.module.bpm.service.message.dto.BpmMessageSendWhenTaskCreatedReqDTO;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.number.NumberUtils;
+
 import org.flowable.common.engine.impl.db.SuspensionState;
 import org.flowable.engine.history.HistoricProcessInstance;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.api.Task;
 import org.flowable.task.api.history.HistoricTaskInstance;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -34,8 +31,7 @@ public interface BpmTaskConvert {
 
     BpmTaskConvert INSTANCE = Mappers.getMapper(BpmTaskConvert.class);
 
-    default List<BpmTaskTodoPageItemRespVO> convertList1(List<Task> tasks,
-                                                         Map<String, ProcessInstance> processInstanceMap,
+    default List<BpmTaskTodoPageItemRespVO> convertList1(List<Task> tasks, Map<String, ProcessInstance> processInstanceMap,
                                                          Map<Long, AdminUserRespDTO> userMap) {
         return CollectionUtils.convertList(tasks, task -> {
             BpmTaskTodoPageItemRespVO respVO = convert1(task);
@@ -57,8 +53,7 @@ public interface BpmTaskConvert {
                 SuspensionState.ACTIVE.getStateCode();
     }
 
-    default List<BpmTaskDonePageItemRespVO> convertList2(List<HistoricTaskInstance> tasks,
-                                                         Map<String, BpmTaskExtDO> bpmTaskExtDOMap,
+    default List<BpmTaskDonePageItemRespVO> convertList2(List<HistoricTaskInstance> tasks, Map<String, BpmTaskExtDO> bpmTaskExtDOMap,
                                                          Map<String, HistoricProcessInstance> historicProcessInstanceMap,
                                                          Map<Long, AdminUserRespDTO> userMap) {
         return CollectionUtils.convertList(tasks, task -> {
@@ -123,10 +118,9 @@ public interface BpmTaskConvert {
             @Mapping(source = "processInstance.processDefinitionId", target = "processDefinitionId"),
             @Mapping(source = "startUser.nickname", target = "startUserNickname")
     })
-    BpmTaskTodoPageItemRespVO.ProcessInstance convert(HistoricProcessInstance processInstance,
-                                                      AdminUserRespDTO startUser);
+    BpmTaskTodoPageItemRespVO.ProcessInstance convert(HistoricProcessInstance processInstance, AdminUserRespDTO startUser);
 
-    default BpmTaskExtDO convert2TaskExt(Task task) {
+    default BpmTaskExtDO convert2TaskExt(Task task){
         BpmTaskExtDO taskExtDO = new BpmTaskExtDO()
                 .setTaskId(task.getId())
                 .setAssigneeUserId(NumberUtils.parseLong(task.getAssignee()))
@@ -137,8 +131,7 @@ public interface BpmTaskConvert {
         return taskExtDO;
     }
 
-    default BpmMessageSendWhenTaskCreatedReqDTO convert(ProcessInstance processInstance, AdminUserRespDTO startUser,
-                                                        Task task) {
+    default BpmMessageSendWhenTaskCreatedReqDTO convert(ProcessInstance processInstance, AdminUserRespDTO startUser, Task task) {
         BpmMessageSendWhenTaskCreatedReqDTO reqDTO = new BpmMessageSendWhenTaskCreatedReqDTO();
         reqDTO.setProcessInstanceId(processInstance.getProcessInstanceId())
                 .setProcessInstanceName(processInstance.getName())

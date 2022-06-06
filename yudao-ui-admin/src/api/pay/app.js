@@ -70,8 +70,8 @@ export function exportAppExcel(query) {
 export function getAppListByMerchantId(merchantId) {
   return request({
     url: '/pay/app/list-merchant-id',
-    params: {
-      merchantId: merchantId
+    params:{
+      merchantId:merchantId
     },
     method: 'get'
   })

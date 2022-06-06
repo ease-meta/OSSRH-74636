@@ -24,4 +24,5 @@ public interface MenuConvert {
     MenuRespVO convert(MenuDO bean);
 
     List<MenuSimpleRespVO> convertList02(List<MenuDO> list);
+
 }

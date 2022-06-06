@@ -2,6 +2,7 @@ package cn.iocoder.yudao.module.system.service.social;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
+import cn.iocoder.yudao.framework.common.util.http.HttpUtils;
 import cn.iocoder.yudao.module.system.api.social.dto.SocialUserBindReqDTO;
 import cn.iocoder.yudao.module.system.dal.dataobject.social.SocialUserBindDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.social.SocialUserDO;
@@ -9,7 +10,6 @@ import cn.iocoder.yudao.module.system.dal.mysql.social.SocialUserBindMapper;
 import cn.iocoder.yudao.module.system.dal.mysql.social.SocialUserMapper;
 import cn.iocoder.yudao.module.system.enums.social.SocialTypeEnum;
 import com.xkcoding.justauth.AuthRequestFactory;
-import io.github.meta.ease.common.util.http.HttpUtils;
 import lombok.extern.slf4j.Slf4j;
 import me.zhyd.oauth.model.AuthCallback;
 import me.zhyd.oauth.model.AuthResponse;
@@ -24,12 +24,10 @@ import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.AUTH_THIRD_LOGIN_NOT_BIND;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_AUTH_FAILURE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.SOCIAL_USER_NOT_FOUND;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 社交用户 Service 实现类
@@ -46,7 +44,6 @@ public class SocialUserServiceImpl implements SocialUserService {
 
     @Resource
     private SocialUserBindMapper socialUserBindMapper;
-
     @Resource
     private SocialUserMapper socialUserMapper;
 
@@ -78,10 +75,8 @@ public class SocialUserServiceImpl implements SocialUserService {
             socialUser = new SocialUserDO();
         }
         socialUser.setType(type).setCode(code).setState(state) // 需要保存 code + state 字段，保证后续可查询
-                .setOpenid(authUser.getUuid()).setToken(authUser.getToken().getAccessToken())
-                .setRawTokenInfo((toJsonString(authUser.getToken())))
-                .setNickname(authUser.getNickname()).setAvatar(authUser.getAvatar())
-                .setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
+                .setOpenid(authUser.getUuid()).setToken(authUser.getToken().getAccessToken()).setRawTokenInfo((toJsonString(authUser.getToken())))
+                .setNickname(authUser.getNickname()).setAvatar(authUser.getAvatar()).setRawUserInfo(toJsonString(authUser.getRawUserInfo()));
         if (socialUser.getId() == null) {
             socialUserMapper.insert(socialUser);
         } else {
@@ -152,8 +147,8 @@ public class SocialUserServiceImpl implements SocialUserService {
     /**
      * 请求社交平台，获得授权的用户
      *
-     * @param type  社交平台的类型
-     * @param code  授权码
+     * @param type 社交平台的类型
+     * @param code 授权码
      * @param state 授权 state
      * @return 授权的用户
      */
@@ -168,4 +163,5 @@ public class SocialUserServiceImpl implements SocialUserService {
         }
         return (AuthUser) authResponse.getData();
     }
+
 }

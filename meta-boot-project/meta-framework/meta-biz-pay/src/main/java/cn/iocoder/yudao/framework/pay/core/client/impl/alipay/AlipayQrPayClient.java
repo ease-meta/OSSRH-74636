@@ -9,8 +9,7 @@ import com.alipay.api.request.AlipayTradePrecreateRequest;
 import com.alipay.api.response.AlipayTradePrecreateResponse;
 import lombok.extern.slf4j.Slf4j;
 
-import static io.github.meta.ease.common.util.json.JsonUtils.toJsonString;
-
+import static cn.iocoder.yudao.framework.common.util.json.JsonUtils.toJsonString;
 
 /**
  * 支付宝【扫码支付】的 PayClient 实现类

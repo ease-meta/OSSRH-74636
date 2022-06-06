@@ -1,5 +1,6 @@
 package cn.iocoder.yudao.module.infra.service.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.quartz.core.scheduler.SchedulerManager;
 import cn.iocoder.yudao.framework.quartz.core.util.CronUtils;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobCreateReqVO;
@@ -10,7 +11,6 @@ import cn.iocoder.yudao.module.infra.convert.job.JobConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.job.JobMapper;
 import cn.iocoder.yudao.module.infra.enums.job.JobStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,14 +20,9 @@ import javax.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CHANGE_STATUS_EQUALS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CHANGE_STATUS_INVALID;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_CRON_EXPRESSION_VALID;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_HANDLER_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_NOT_EXISTS;
-import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.JOB_UPDATE_ONLY_NORMAL_STATUS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.containsAny;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.*;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.containsAny;
 
 /**
  * 定时任务 Service 实现类
@@ -161,12 +156,12 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public PageResult<JobDO> getJobPage(JobPageReqVO pageReqVO) {
-        return jobMapper.selectPage(pageReqVO);
+		return jobMapper.selectPage(pageReqVO);
     }
 
     @Override
     public List<JobDO> getJobList(JobExportReqVO exportReqVO) {
-        return jobMapper.selectList(exportReqVO);
+		return jobMapper.selectList(exportReqVO);
     }
 
     private static void fillJobMonitorTimeoutEmpty(JobDO job) {
@@ -174,4 +169,5 @@ public class JobServiceImpl implements JobService {
             job.setMonitorTimeout(0);
         }
     }
+
 }

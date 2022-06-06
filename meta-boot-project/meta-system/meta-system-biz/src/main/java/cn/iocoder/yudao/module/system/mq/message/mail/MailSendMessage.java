@@ -21,13 +21,11 @@ public class MailSendMessage extends AbstractStreamMessage {
      */
     @NotNull(message = "邮箱地址不能为空")
     private String address;
-
     /**
      * 短信模板编号
      */
     @NotNull(message = "短信模板编号不能为空")
     private String templateCode;
-
     /**
      * 短信模板参数
      */
@@ -37,7 +35,6 @@ public class MailSendMessage extends AbstractStreamMessage {
      * 用户编号，允许空
      */
     private Integer userId;
-
     /**
      * 用户类型，允许空
      */
@@ -47,4 +44,5 @@ public class MailSendMessage extends AbstractStreamMessage {
     public String getStreamKey() {
         return "system.mail.send";
     }
+
 }

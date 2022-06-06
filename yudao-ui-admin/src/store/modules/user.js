@@ -1,5 +1,5 @@
-import {getInfo, login, logout, smsLogin, socialBindLogin, socialQuickLogin} from '@/api/login'
-import {removeToken, setToken} from '@/utils/auth'
+import {login, logout, getInfo, socialQuickLogin, socialBindLogin, smsLogin} from '@/api/login'
+import {getAccessToken, setToken, removeToken, getRefreshToken} from '@/utils/auth'
 
 const user = {
   state: {
@@ -30,7 +30,7 @@ const user = {
 
   actions: {
     // 登录
-    Login({commit}, userInfo) {
+    Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       const password = userInfo.password
       const code = userInfo.code
@@ -48,7 +48,7 @@ const user = {
     },
 
     // 社交登录
-    SocialLogin({commit}, userInfo) {
+    SocialLogin({ commit }, userInfo) {
       const code = userInfo.code
       const state = userInfo.state
       const type = userInfo.type
@@ -65,7 +65,7 @@ const user = {
     },
 
     // 社交登录
-    SocialLogin2({commit}, userInfo) {
+    SocialLogin2({ commit }, userInfo) {
       const code = userInfo.code
       const state = userInfo.state
       const type = userInfo.type
@@ -83,11 +83,11 @@ const user = {
       })
     },
     // 登录
-    SmsLogin({commit}, userInfo) {
+    SmsLogin({ commit }, userInfo) {
       const mobile = userInfo.mobile.trim()
       const mobileCode = userInfo.mobileCode
       return new Promise((resolve, reject) => {
-        smsLogin(mobile, mobileCode).then(res => {
+        smsLogin(mobile,mobileCode).then(res => {
           res = res.data;
           // 设置 token
           setToken(res)
@@ -98,7 +98,7 @@ const user = {
       })
     },
     // 获取用户信息
-    GetInfo({commit, state}) {
+    GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo().then(res => {
           // 没有 data 数据，赋予个默认值
@@ -135,7 +135,7 @@ const user = {
     },
 
     // 退出系统
-    LogOut({commit, state}) {
+    LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
           commit('SET_ROLES', [])

@@ -32,6 +32,7 @@ public class RedisKeyDefine {
          */
         @JsonValue
         private final String type;
+
     }
 
     @Getter
@@ -47,35 +48,31 @@ public class RedisKeyDefine {
          */
         @JsonValue
         private final Integer type;
+
     }
 
     /**
      * Key 模板
      */
     private final String keyTemplate;
-
     /**
      * Key 类型的枚举
      */
     private final KeyTypeEnum keyType;
-
     /**
      * Value 类型
-     * <p>
+     *
      * 如果是使用分布式锁，设置为 {@link java.util.concurrent.locks.Lock} 类型
      */
     private final Class<?> valueType;
-
     /**
      * 超时类型
      */
     private final TimeoutTypeEnum timeoutType;
-
     /**
      * 过期时间
      */
     private final Duration timeout;
-
     /**
      * 备注
      */
@@ -97,14 +94,13 @@ public class RedisKeyDefine {
         this(memo, keyTemplate, keyType, valueType, TimeoutTypeEnum.FIXED, timeout);
     }
 
-    public RedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType,
-                          TimeoutTypeEnum timeoutType) {
+    public RedisKeyDefine(String memo, String keyTemplate, KeyTypeEnum keyType, Class<?> valueType, TimeoutTypeEnum timeoutType) {
         this(memo, keyTemplate, keyType, valueType, timeoutType, Duration.ZERO);
     }
 
     /**
      * 格式化 Key
-     * <p>
+     *
      * 注意，内部采用 {@link String#format(String, Object...)} 实现
      *
      * @param args 格式化的参数
@@ -113,4 +109,5 @@ public class RedisKeyDefine {
     public String formatKey(Object... args) {
         return String.format(keyTemplate, args);
     }
+
 }

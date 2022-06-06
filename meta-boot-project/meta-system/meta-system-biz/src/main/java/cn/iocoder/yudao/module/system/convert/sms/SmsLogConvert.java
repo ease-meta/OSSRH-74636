@@ -3,7 +3,7 @@ package cn.iocoder.yudao.module.system.convert.sms;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.log.SmsLogExcelVO;
 import cn.iocoder.yudao.module.system.controller.admin.sms.vo.log.SmsLogRespVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -26,4 +26,5 @@ public interface SmsLogConvert {
     PageResult<SmsLogRespVO> convertPage(PageResult<SmsLogDO> page);
 
     List<SmsLogExcelVO> convertList02(List<SmsLogDO> list);
+
 }

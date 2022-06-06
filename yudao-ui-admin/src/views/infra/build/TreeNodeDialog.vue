@@ -71,8 +71,8 @@
   </div>
 </template>
 <script>
-import {isNumberStr} from '@/utils/index'
-import {getTreeNodeId, saveTreeNodeId} from '@/utils/db'
+import { isNumberStr } from '@/utils/index'
+import { getTreeNodeId, saveTreeNodeId } from '@/utils/db'
 
 const id = getTreeNodeId()
 
@@ -126,10 +126,8 @@ export default {
       saveTreeNodeId(val)
     }
   },
-  created() {
-  },
-  mounted() {
-  },
+  created() {},
+  mounted() {},
   methods: {
     onOpen() {
       this.formData = {
@@ -137,8 +135,7 @@ export default {
         value: undefined
       }
     },
-    onClose() {
-    },
+    onClose() {},
     close() {
       this.$emit('update:visible', false)
     },

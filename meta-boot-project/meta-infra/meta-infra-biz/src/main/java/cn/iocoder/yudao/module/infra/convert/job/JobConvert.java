@@ -1,11 +1,11 @@
 package cn.iocoder.yudao.module.infra.convert.job;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobCreateReqVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobExcelVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobRespVO;
 import cn.iocoder.yudao.module.infra.controller.admin.job.vo.job.JobUpdateReqVO;
 import cn.iocoder.yudao.module.infra.dal.dataobject.job.JobDO;
-import io.github.meta.ease.common.pojo.PageResult;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -32,4 +32,5 @@ public interface JobConvert {
     PageResult<JobRespVO> convertPage(PageResult<JobDO> page);
 
     List<JobExcelVO> convertList02(List<JobDO> list);
+
 }

@@ -19,4 +19,5 @@ public class CodegenColumnRespVO extends CodegenColumnBaseVO {
 
     @ApiModelProperty(value = "创建时间", required = true)
     private Date createTime;
+
 }

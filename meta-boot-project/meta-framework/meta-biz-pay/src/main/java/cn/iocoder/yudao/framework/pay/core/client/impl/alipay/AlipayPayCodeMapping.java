@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.framework.pay.core.client.impl.alipay;
 
+import cn.iocoder.yudao.framework.common.exception.ErrorCode;
+import cn.iocoder.yudao.framework.common.exception.enums.GlobalErrorCodeConstants;
 import cn.iocoder.yudao.framework.pay.core.client.AbstractPayCodeMapping;
-import io.github.meta.ease.common.exception.ErrorCode;
-import io.github.meta.ease.common.exception.enums.GlobalErrorCodeConstants;
 
 import java.util.Objects;
 
@@ -24,4 +24,5 @@ public class AlipayPayCodeMapping extends AbstractPayCodeMapping {
         }
         return null;
     }
+
 }

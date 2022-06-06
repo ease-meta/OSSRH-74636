@@ -13,4 +13,5 @@ public class DatabaseTableRespVO {
 
     @ApiModelProperty(value = "表描述", required = true, example = "芋道源码")
     private String comment;
+
 }

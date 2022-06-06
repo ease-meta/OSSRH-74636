@@ -29,4 +29,5 @@ public class YudaoRedisAutoConfiguration {
         template.setHashValueSerializer(RedisSerializer.json());
         return template;
     }
+
 }

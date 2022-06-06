@@ -3,6 +3,10 @@ package cn.iocoder.yudao.module.infra.service.file;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.io.resource.ResourceUtil;
 import cn.hutool.core.util.IdUtil;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
+import cn.iocoder.yudao.framework.common.util.validation.ValidationUtils;
 import cn.iocoder.yudao.framework.file.core.client.FileClient;
 import cn.iocoder.yudao.framework.file.core.client.FileClientConfig;
 import cn.iocoder.yudao.framework.file.core.client.FileClientFactory;
@@ -14,10 +18,6 @@ import cn.iocoder.yudao.module.infra.convert.file.FileConfigConvert;
 import cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO;
 import cn.iocoder.yudao.module.infra.dal.mysql.file.FileConfigMapper;
 import cn.iocoder.yudao.module.infra.mq.producer.file.FileConfigProducer;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
-import io.github.meta.ease.common.util.validation.ValidationUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
@@ -36,9 +36,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_CONFIG_DELETE_FAIL_MASTER;
 import static cn.iocoder.yudao.module.infra.enums.ErrorCodeConstants.FILE_CONFIG_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
 
 /**
  * 文件配置 Service 实现类
@@ -64,9 +64,8 @@ public class FileConfigServiceImpl implements FileConfigService {
 
     @Resource
     private FileClientFactory fileClientFactory;
-
     /**
-     * Master FileClient 对象，有且仅有一个，即 {@link cn.iocoder.yudao.module.infra.dal.dataobject.file.FileConfigDO#getMaster()} 对应的
+     * Master FileClient 对象，有且仅有一个，即 {@link FileConfigDO#getMaster()} 对应的
      */
     @Getter
     private FileClient masterFileClient;
@@ -174,6 +173,7 @@ public class FileConfigServiceImpl implements FileConfigService {
             public void afterCommit() {
                 fileConfigProducer.sendFileConfigRefreshMessage();
             }
+
         });
     }
 
@@ -193,7 +193,7 @@ public class FileConfigServiceImpl implements FileConfigService {
         // 校验存在
         FileConfigDO config = this.validateFileConfigExists(id);
         if (Boolean.TRUE.equals(config.getMaster())) {
-            throw exception(FILE_CONFIG_DELETE_FAIL_MASTER);
+             throw exception(FILE_CONFIG_DELETE_FAIL_MASTER);
         }
         // 删除
         fileConfigMapper.deleteById(id);
@@ -237,4 +237,5 @@ public class FileConfigServiceImpl implements FileConfigService {
     public FileClient getFileClient(Long id) {
         return fileClientFactory.getFileClient(id);
     }
+
 }

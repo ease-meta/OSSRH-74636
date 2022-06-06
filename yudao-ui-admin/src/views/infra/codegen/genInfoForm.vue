@@ -6,7 +6,7 @@
           <span slot="label">生成模板</span>
           <el-select v-model="info.templateType" @change="tplSelectChange">
             <el-option v-for="dict in this.getDictDatas(DICT_TYPE.INFRA_CODEGEN_TEMPLATE_TYPE)"
-                       :key="parseInt(dict.value)" :label="dict.label" :value="parseInt(dict.value)"/>
+                :key="parseInt(dict.value)" :label="dict.label" :value="parseInt(dict.value)"/>
           </el-select>
         </el-form-item>
       </el-col>
@@ -20,17 +20,17 @@
         </el-form-item>
       </el-col>
 
-      <!--      <el-col :span="12">-->
-      <!--        <el-form-item prop="packageName">-->
-      <!--          <span slot="label">-->
-      <!--            生成包路径-->
-      <!--            <el-tooltip content="生成在哪个java包下，例如 com.ruoyi.system" placement="top">-->
-      <!--              <i class="el-icon-question"></i>-->
-      <!--            </el-tooltip>-->
-      <!--          </span>-->
-      <!--          <el-input v-model="info.packageName" />-->
-      <!--        </el-form-item>-->
-      <!--      </el-col>-->
+<!--      <el-col :span="12">-->
+<!--        <el-form-item prop="packageName">-->
+<!--          <span slot="label">-->
+<!--            生成包路径-->
+<!--            <el-tooltip content="生成在哪个java包下，例如 com.ruoyi.system" placement="top">-->
+<!--              <i class="el-icon-question"></i>-->
+<!--            </el-tooltip>-->
+<!--          </span>-->
+<!--          <el-input v-model="info.packageName" />-->
+<!--        </el-form-item>-->
+<!--      </el-col>-->
 
       <el-col :span="12">
         <el-form-item prop="moduleName">
@@ -40,7 +40,7 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="info.moduleName"/>
+          <el-input v-model="info.moduleName" />
         </el-form-item>
       </el-col>
 
@@ -52,21 +52,21 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="info.businessName"/>
+          <el-input v-model="info.businessName" />
         </el-form-item>
       </el-col>
 
-      <!--      <el-col :span="12">-->
-      <!--        <el-form-item prop="businessPackage">-->
-      <!--          <span slot="label">-->
-      <!--            业务包-->
-      <!--            <el-tooltip content="业务包，自定义二级目录。例如说，我们希望将 dictType 和 dictData 归类成 dict 业务" placement="top">-->
-      <!--              <i class="el-icon-question"></i>-->
-      <!--            </el-tooltip>-->
-      <!--          </span>-->
-      <!--          <el-input v-model="info.businessPackage" />-->
-      <!--        </el-form-item>-->
-      <!--      </el-col>-->
+<!--      <el-col :span="12">-->
+<!--        <el-form-item prop="businessPackage">-->
+<!--          <span slot="label">-->
+<!--            业务包-->
+<!--            <el-tooltip content="业务包，自定义二级目录。例如说，我们希望将 dictType 和 dictData 归类成 dict 业务" placement="top">-->
+<!--              <i class="el-icon-question"></i>-->
+<!--            </el-tooltip>-->
+<!--          </span>-->
+<!--          <el-input v-model="info.businessPackage" />-->
+<!--        </el-form-item>-->
+<!--      </el-col>-->
 
       <el-col :span="12">
         <el-form-item prop="className">
@@ -76,7 +76,7 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="info.className"/>
+          <el-input v-model="info.className" />
         </el-form-item>
       </el-col>
 
@@ -88,7 +88,7 @@
               <i class="el-icon-question"></i>
             </el-tooltip>
           </span>
-          <el-input v-model="info.classComment"/>
+          <el-input v-model="info.classComment" />
         </el-form-item>
       </el-col>
 
@@ -101,7 +101,7 @@
             </el-tooltip>
           </span>
           <treeselect :append-to-body="true" v-model="info.parentMenuId" :options="menus"
-                      :normalizer="normalizer" :show-count="true" placeholder="请选择系统菜单"/>
+            :normalizer="normalizer" :show-count="true" placeholder="请选择系统菜单" />
         </el-form-item>
       </el-col>
 
@@ -232,7 +232,7 @@ import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
 export default {
   name: "BasicInfoForm",
-  components: {Treeselect},
+  components: { Treeselect },
   props: {
     info: {
       type: Object,
@@ -252,36 +252,35 @@ export default {
       subColumns: [],
       rules: {
         templateType: [
-          {required: true, message: "请选择生成模板", trigger: "blur"}
+          { required: true, message: "请选择生成模板", trigger: "blur" }
         ],
         scene: [
-          {required: true, message: "请选择生成场景", trigger: "blur"}
+          { required: true, message: "请选择生成场景", trigger: "blur" }
         ],
         // packageName: [
         //   { required: true, message: "请输入生成包路径", trigger: "blur" }
         // ],
         moduleName: [
-          {required: true, message: "请输入生成模块名", trigger: "blur"}
+          { required: true, message: "请输入生成模块名", trigger: "blur" }
         ],
         businessName: [
-          {required: true, message: "请输入生成业务名", trigger: "blur"}
+          { required: true, message: "请输入生成业务名", trigger: "blur" }
         ],
         businessPackage: [
-          {required: true, message: "请输入生成业务包", trigger: "blur"}
+          { required: true, message: "请输入生成业务包", trigger: "blur" }
         ],
         className: [
-          {required: true, message: "请输入生成类名称", trigger: "blur"}
+          { required: true, message: "请输入生成类名称", trigger: "blur" }
         ],
         classComment: [
-          {required: true, message: "请输入生成类描述", trigger: "blur"}
+          { required: true, message: "请输入生成类描述", trigger: "blur" }
         ],
       }
     };
   },
-  created() {
-  },
+  created() {},
   watch: {
-    'info.subTableName': function (val) {
+    'info.subTableName': function(val) {
       this.setSubTableColumns(val);
     }
   },
@@ -308,7 +307,7 @@ export default {
         this.$modal.msgError('暂时不考虑支持【树形】和【主子表】的代码生成。原因是：导致 vm 模板过于复杂，不利于胖友二次开发');
         return false;
       }
-      if (value !== 'sub') {
+      if(value !== 'sub') {
         this.info.subTableName = '';
         this.info.subTableFkName = '';
       }

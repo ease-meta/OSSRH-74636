@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 配置 Framework DAO 接口
- * <p>
+ *
  * 注意，实现类必须提供 (String jdbcUrl, String username, String password) 构造方法
  *
  * @author 芋道源码
@@ -28,4 +28,5 @@ public interface ConfigFrameworkDAO {
      * @return 配置列表
      */
     List<ConfigRespDTO> selectList();
+
 }

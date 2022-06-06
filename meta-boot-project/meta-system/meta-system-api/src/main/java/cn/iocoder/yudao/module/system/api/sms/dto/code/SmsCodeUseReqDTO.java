@@ -1,8 +1,8 @@
 package cn.iocoder.yudao.module.system.api.sms.dto.code;
 
+import cn.iocoder.yudao.framework.common.validation.InEnum;
+import cn.iocoder.yudao.framework.common.validation.Mobile;
 import cn.iocoder.yudao.module.system.enums.sms.SmsSceneEnum;
-import io.github.meta.ease.common.validation.InEnum;
-import io.github.meta.ease.common.validation.Mobile;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -22,23 +22,21 @@ public class SmsCodeUseReqDTO {
     @Mobile
     @NotEmpty(message = "手机号不能为空")
     private String mobile;
-
     /**
      * 发送场景
      */
     @NotNull(message = "发送场景不能为空")
     @InEnum(SmsSceneEnum.class)
     private Integer scene;
-
     /**
      * 验证码
      */
     @NotEmpty(message = "验证码")
     private String code;
-
     /**
      * 使用 IP
      */
     @NotEmpty(message = "使用 IP 不能为空")
     private String usedIp;
+
 }

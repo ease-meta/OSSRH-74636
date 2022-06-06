@@ -19,4 +19,5 @@ public enum NoticeTypeEnum {
      * 类型
      */
     private final Integer type;
+
 }

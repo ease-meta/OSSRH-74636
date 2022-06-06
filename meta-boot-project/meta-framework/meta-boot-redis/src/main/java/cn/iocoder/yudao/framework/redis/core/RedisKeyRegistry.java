@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * {@link cn.iocoder.yudao.framework.redis.core.RedisKeyDefine} 注册表
+ * {@link RedisKeyDefine} 注册表
  */
 public class RedisKeyRegistry {
 
@@ -24,4 +24,5 @@ public class RedisKeyRegistry {
     public static int size() {
         return defines.size();
     }
+
 }

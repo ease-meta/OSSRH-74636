@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <doc-alert title="数据库文档" url="https://doc.iocoder.cn/db-doc/"/>
+    <doc-alert title="数据库文档" url="https://doc.iocoder.cn/db-doc/" />
     <!-- 操作工作栏 -->
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
@@ -12,17 +12,17 @@
 
     <!-- 展示文档 -->
     <div v-loading="loading" :style="'height:'+ height">
-      <i-frame :src="src"/>
+      <i-frame :src="src" />
     </div>
   </div>
 </template>
 <script>
-import {exportHtml, exportMarkdown, exportWord} from "@/api/infra/dbDoc";
+import { exportHtml, exportWord, exportMarkdown} from "@/api/infra/dbDoc";
 import iFrame from "@/components/iFrame/index";
 
 export default {
   name: "DBDoc",
-  components: {iFrame},
+  components: { iFrame },
   data() {
     return {
       height: document.documentElement.clientHeight - 94.5 + "px;",
@@ -30,7 +30,7 @@ export default {
       src: undefined,
     };
   },
-  mounted: function () {
+  mounted: function() {
     setTimeout(() => {
       this.loading = false;
     }, 230);
@@ -42,7 +42,7 @@ export default {
   created() {
     // 加载 Html，进行预览
     exportHtml().then(response => {
-      let blob = new Blob([response], {type: 'text/html'});
+      let blob = new Blob([response], {type : 'text/html'});
       this.src = window.URL.createObjectURL(blob);
     })
   },

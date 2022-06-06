@@ -1,5 +1,8 @@
 package cn.iocoder.yudao.module.system.convert.oauth2;
 
+import cn.iocoder.yudao.framework.common.core.KeyValue;
+import cn.iocoder.yudao.framework.common.enums.UserTypeEnum;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
 import cn.iocoder.yudao.framework.security.core.util.SecurityFrameworkUtils;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.open.OAuth2OpenAccessTokenRespVO;
 import cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.open.OAuth2OpenAuthorizeInfoRespVO;
@@ -8,9 +11,6 @@ import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2AccessTokenDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ApproveDO;
 import cn.iocoder.yudao.module.system.dal.dataobject.oauth2.OAuth2ClientDO;
 import cn.iocoder.yudao.module.system.util.oauth2.OAuth2Utils;
-import io.github.meta.ease.common.core.KeyValue;
-import io.github.meta.ease.common.enums.UserTypeEnum;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -30,7 +30,6 @@ public interface OAuth2OpenConvert {
         respVO.setScope(OAuth2Utils.buildScopeStr(bean.getScopes()));
         return respVO;
     }
-
     OAuth2OpenAccessTokenRespVO convert0(OAuth2AccessTokenDO bean);
 
     default OAuth2OpenCheckTokenRespVO convert2(OAuth2AccessTokenDO bean) {
@@ -39,7 +38,6 @@ public interface OAuth2OpenConvert {
         respVO.setUserType(UserTypeEnum.ADMIN.getValue());
         return respVO;
     }
-
     OAuth2OpenCheckTokenRespVO convert3(OAuth2AccessTokenDO bean);
 
     default OAuth2OpenAuthorizeInfoRespVO convert(OAuth2ClientDO client, List<OAuth2ApproveDO> approves) {
@@ -54,4 +52,5 @@ public interface OAuth2OpenConvert {
         return new OAuth2OpenAuthorizeInfoRespVO(
                 new OAuth2OpenAuthorizeInfoRespVO.Client(client.getName(), client.getLogo()), scopes);
     }
+
 }

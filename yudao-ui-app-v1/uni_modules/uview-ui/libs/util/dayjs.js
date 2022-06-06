@@ -1,6 +1,6 @@
 !(function (t, e) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = e() : typeof define === 'function'
-    && define.amd ? define(e) : t.dayjs = e()
+		&& define.amd ? define(e) : t.dayjs = e()
 }(this, () => {
     'use strict'
 
@@ -111,7 +111,7 @@
                         const i = r[2] - 1 || 0
                         const s = (r[7] || '0').substring(0, 3)
                         return n ? new Date(Date.UTC(r[1], i, r[3] || 1, r[4] || 0, r[5] || 0, r[6] || 0, s)) : new Date(r[1], i, r[3]
-                            || 1, r[4] || 0, r[5] || 0, r[6] || 0, s)
+								|| 1, r[4] || 0, r[5] || 0, r[6] || 0, s)
                     }
                 }
                 return new Date(e)
@@ -119,7 +119,7 @@
         }, $.init = function () {
             const t = this.$d
             this.$y = t.getFullYear(), this.$M = t.getMonth(), this.$D = t.getDate(), this.$W = t.getDay(), this.$H = t.getHours(),
-                this.$m = t.getMinutes(), this.$s = t.getSeconds(), this.$ms = t.getMilliseconds()
+            this.$m = t.getMinutes(), this.$s = t.getSeconds(), this.$ms = t.getMilliseconds()
         }, $.$utils = function () {
             return g
         }, $.isValid = function () {
@@ -153,34 +153,33 @@
             const m = this.$D
             const D = `set${this.$u ? 'UTC' : ''}`
             switch (d) {
-                case o:
-                    return c ? $(1, 0) : $(31, 11)
-                case u:
-                    return c ? $(1, M) : $(0, M + 1)
-                case s:
-                    var v = this.$locale().weekStart || 0
-                    var S = (y < v ? y + 7 : y) - v
-                    return $(c ? m - S : m + (6 - S), M)
-                case i:
-                case f:
-                    return l(`${D}Hours`, 0)
-                case r:
-                    return l(`${D}Minutes`, 1)
-                case n:
-                    return l(`${D}Seconds`, 2)
-                case e:
-                    return l(`${D}Milliseconds`, 3)
-                default:
-                    return this.clone()
+            case o:
+                return c ? $(1, 0) : $(31, 11)
+            case u:
+                return c ? $(1, M) : $(0, M + 1)
+            case s:
+                var v = this.$locale().weekStart || 0
+                var S = (y < v ? y + 7 : y) - v
+                return $(c ? m - S : m + (6 - S), M)
+            case i:
+            case f:
+                return l(`${D}Hours`, 0)
+            case r:
+                return l(`${D}Minutes`, 1)
+            case n:
+                return l(`${D}Seconds`, 2)
+            case e:
+                return l(`${D}Milliseconds`, 3)
+            default:
+                return this.clone()
             }
         }, $.endOf = function (t) {
             return this.startOf(t, !1)
         }, $.$set = function (s, a) {
-            let h;
-            const c = g.p(s)
+            let h; const c = g.p(s)
             const d = `set${this.$u ? 'UTC' : ''}`
             const $ = (h = {}, h[i] = `${d}Date`, h[f] = `${d}Date`, h[u] = `${d}Month`, h[o] = `${d}FullYear`, h[r] = `${d}Hours`,
-                h[n] = `${d}Minutes`, h[e] = `${d}Seconds`, h[t] = `${d}Milliseconds`, h)[c]
+            h[n] = `${d}Minutes`, h[e] = `${d}Seconds`, h[t] = `${d}Milliseconds`, h)[c]
             const l = c === i ? this.$D + (a - this.$W) : a
             if (c === u || c === o) {
                 const y = this.clone().set(f, 1)
@@ -192,8 +191,7 @@
         }, $.get = function (t) {
             return this[g.p(t)]()
         }, $.add = function (t, a) {
-            let f;
-            const
+            let f; const
                 h = this
             t = Number(t)
             const c = g.p(a)
@@ -261,13 +259,12 @@
         }, $.utcOffset = function () {
             return 15 * -Math.round(this.$d.getTimezoneOffset() / 15)
         }, $.diff = function (t, f, h) {
-            let c;
-            const d = g.p(f)
+            let c; const d = g.p(f)
             const $ = v(t)
             const l = 6e4 * ($.utcOffset() - this.utcOffset())
             const y = this - $
             let M = g.m(this, $)
-            return M = (c = {}, c[o] = M / 12, c[u] = M, c[a] = M / 3, c[s] = (y - l) / 6048e5, c[i] = (y - l) / 864e5, c[r] = y / 36e5, c[n] = y / 6e4, c[e] = y / 1e3, c)[d] || y, h ? M : g.a(M)
+            return M = (c = {}, c[o] = M / 12, c[u] = M, c[a] = M / 3, c[s] = (y - l) / 6048e5, c[i] = (y - l) / 864e5, c[r] =					y / 36e5, c[n] = y / 6e4, c[e] = y / 1e3, c)[d] || y, h ? M : g.a(M)
         }, $.daysInMonth = function () {
             return this.endOf(u).$D
         }, $.$locale = function () {

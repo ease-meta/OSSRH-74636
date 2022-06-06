@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.service.logger;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.framework.operatelog.core.service.OperateLogFrameworkService;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogExportReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.logger.vo.operatelog.OperateLogPageReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.logger.OperateLogDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import java.util.List;
 
@@ -28,4 +28,5 @@ public interface OperateLogService extends OperateLogFrameworkService {
      * @return 日志列表
      */
     List<OperateLogDO> getOperateLogs(OperateLogExportReqVO reqVO);
+
 }

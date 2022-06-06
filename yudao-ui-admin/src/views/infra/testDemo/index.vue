@@ -8,12 +8,12 @@
       </el-form-item>
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="请选择状态" clearable>
-          <el-option label="请选择字典生成" value=""/>
+          <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
       <el-form-item label="类型" prop="type">
         <el-select v-model="queryParams.type" placeholder="请选择类型" clearable>
-          <el-option label="请选择字典生成" value=""/>
+          <el-option label="请选择字典生成" value="" />
         </el-select>
       </el-form-item>
       <el-form-item label="分类" prop="category">
@@ -24,7 +24,7 @@
       </el-form-item>
       <el-form-item label="创建时间">
         <el-date-picker v-model="dateRangeCreateTime" style="width: 240px" value-format="yyyy-MM-dd"
-                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期"/>
+                        type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" @click="handleQuery">搜索</el-button>
@@ -36,26 +36,23 @@
     <el-row :gutter="10" class="mb8">
       <el-col :span="1.5">
         <el-button type="primary" plain icon="el-icon-plus" size="mini" @click="handleAdd"
-                   v-hasPermi="['infra:test-demo:create']">新增
-        </el-button>
+                   v-hasPermi="['infra:test-demo:create']">新增</el-button>
       </el-col>
       <el-col :span="1.5">
-        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport"
-                   :loading="exportLoading"
-                   v-hasPermi="['infra:test-demo:export']">导出
-        </el-button>
+        <el-button type="warning" plain icon="el-icon-download" size="mini" @click="handleExport" :loading="exportLoading"
+                   v-hasPermi="['infra:test-demo:export']">导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <!-- 列表 -->
     <el-table v-loading="loading" :data="list">
-      <el-table-column label="编号" align="center" prop="id"/>
-      <el-table-column label="名字" align="center" prop="name"/>
-      <el-table-column label="状态" align="center" prop="status"/>
-      <el-table-column label="类型" align="center" prop="type"/>
-      <el-table-column label="分类" align="center" prop="category"/>
-      <el-table-column label="备注" align="center" prop="remark"/>
+      <el-table-column label="编号" align="center" prop="id" />
+      <el-table-column label="名字" align="center" prop="name" />
+      <el-table-column label="状态" align="center" prop="status" />
+      <el-table-column label="类型" align="center" prop="type" />
+      <el-table-column label="分类" align="center" prop="category" />
+      <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="创建时间" align="center" prop="createTime" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.createTime) }}</span>
@@ -64,11 +61,9 @@
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button size="mini" type="text" icon="el-icon-edit" @click="handleUpdate(scope.row)"
-                     v-hasPermi="['infra:test-demo:update']">修改
-          </el-button>
+                     v-hasPermi="['infra:test-demo:update']">修改</el-button>
           <el-button size="mini" type="text" icon="el-icon-delete" @click="handleDelete(scope.row)"
-                     v-hasPermi="['infra:test-demo:delete']">删除
-          </el-button>
+                     v-hasPermi="['infra:test-demo:delete']">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -80,7 +75,7 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="名字" prop="name">
-          <el-input v-model="form.name" placeholder="请输入名字"/>
+          <el-input v-model="form.name" placeholder="请输入名字" />
         </el-form-item>
         <el-form-item label="状态" prop="status">
           <el-radio-group v-model="form.status">
@@ -89,14 +84,14 @@
         </el-form-item>
         <el-form-item label="类型" prop="type">
           <el-select v-model="form.type" placeholder="请选择类型">
-            <el-option label="请选择字典生成" value=""/>
+            <el-option label="请选择字典生成" value="" />
           </el-select>
         </el-form-item>
         <el-form-item label="分类" prop="category">
-          <el-input v-model="form.category" placeholder="请输入分类"/>
+          <el-input v-model="form.category" placeholder="请输入分类" />
         </el-form-item>
         <el-form-item label="备注" prop="remark">
-          <el-input v-model="form.remark" placeholder="请输入备注"/>
+          <el-input v-model="form.remark" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -108,18 +103,12 @@
 </template>
 
 <script>
-import {
-  createTestDemo,
-  deleteTestDemo,
-  exportTestDemoExcel,
-  getTestDemo,
-  getTestDemoPage,
-  updateTestDemo
-} from "@/api/infra/testDemo";
+import { createTestDemo, updateTestDemo, deleteTestDemo, getTestDemo, getTestDemoPage, exportTestDemoExcel } from "@/api/infra/testDemo";
 
 export default {
   name: "TestDemo",
-  components: {},
+  components: {
+  },
   data() {
     return {
       // 遮罩层
@@ -151,10 +140,10 @@ export default {
       form: {},
       // 表单校验
       rules: {
-        name: [{required: true, message: "名字不能为空", trigger: "blur"}],
-        status: [{required: true, message: "状态不能为空", trigger: "blur"}],
-        type: [{required: true, message: "类型不能为空", trigger: "change"}],
-        category: [{required: true, message: "分类不能为空", trigger: "blur"}],
+        name: [{ required: true, message: "名字不能为空", trigger: "blur" }],
+        status: [{ required: true, message: "状态不能为空", trigger: "blur" }],
+        type: [{ required: true, message: "类型不能为空", trigger: "change" }],
+        category: [{ required: true, message: "分类不能为空", trigger: "blur" }],
       }
     };
   },
@@ -245,13 +234,12 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const id = row.id;
-      this.$modal.confirm('是否确认删除字典类型编号为"' + id + '"的数据项?').then(function () {
-        return deleteTestDemo(id);
-      }).then(() => {
-        this.getList();
-        this.$modal.msgSuccess("删除成功");
-      }).catch(() => {
-      });
+      this.$modal.confirm('是否确认删除字典类型编号为"' + id + '"的数据项?').then(function() {
+          return deleteTestDemo(id);
+        }).then(() => {
+          this.getList();
+          this.$modal.msgSuccess("删除成功");
+      }).catch(() => {});
     },
     /** 导出按钮操作 */
     handleExport() {
@@ -262,13 +250,12 @@ export default {
       this.addBeginAndEndTime(params, this.dateRangeCreateTime, 'createTime');
       // 执行导出
       this.$modal.confirm('是否确认导出所有字典类型数据项?').then(() => {
-        this.exportLoading = true;
-        return exportTestDemoExcel(params);
-      }).then(response => {
-        this.$download.excel(response, '字典类型.xls');
-        this.exportLoading = false;
-      }).catch(() => {
-      });
+          this.exportLoading = true;
+          return exportTestDemoExcel(params);
+        }).then(response => {
+          this.$download.excel(response, '字典类型.xls');
+          this.exportLoading = false;
+      }).catch(() => {});
     }
   }
 };

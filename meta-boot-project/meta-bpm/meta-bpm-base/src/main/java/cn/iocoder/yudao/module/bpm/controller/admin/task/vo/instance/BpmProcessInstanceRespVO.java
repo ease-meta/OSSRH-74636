@@ -1,19 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package cn.iocoder.yudao.module.bpm.controller.admin.task.vo.instance;
 
 import io.swagger.annotations.ApiModel;
@@ -71,15 +55,14 @@ public class BpmProcessInstanceRespVO {
 
         @ApiModelProperty(value = "用户编号", required = true, example = "1")
         private Long id;
-
         @ApiModelProperty(value = "用户昵称", required = true, example = "芋艿")
         private String nickname;
 
         @ApiModelProperty(value = "部门编号", required = true, example = "1")
         private Long deptId;
-
         @ApiModelProperty(value = "部门名称", required = true, example = "研发部")
         private String deptName;
+
     }
 
     @ApiModel("流程定义信息")
@@ -91,23 +74,24 @@ public class BpmProcessInstanceRespVO {
 
         @ApiModelProperty(value = "表单类型", notes = "参见 bpm_model_form_type 数据字典", example = "1")
         private Integer formType;
-
         @ApiModelProperty(value = "表单编号", example = "1024", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private Long formId;
-
-        @ApiModelProperty(value = "表单的配置", required = true, notes = "JSON 字符串。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+        @ApiModelProperty(value = "表单的配置", required = true,
+                notes = "JSON 字符串。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formConf;
-
-        @ApiModelProperty(value = "表单项的数组", required = true, notes = "JSON 字符串的数组。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+        @ApiModelProperty(value = "表单项的数组", required = true,
+                notes = "JSON 字符串的数组。在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private List<String> formFields;
-
-        @ApiModelProperty(value = "自定义表单的提交路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/create", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+        @ApiModelProperty(value = "自定义表单的提交路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/create",
+                notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formCustomCreatePath;
-
-        @ApiModelProperty(value = "自定义表单的查看路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/view", notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
+        @ApiModelProperty(value = "自定义表单的查看路径，使用 Vue 的路由地址", example = "/bpm/oa/leave/view",
+                notes = "在表单类型为 {@link BpmModelFormTypeEnum#CUSTOM} 时，必须非空")
         private String formCustomViewPath;
 
         @ApiModelProperty(value = "BPMN XML", required = true)
         private String bpmnXml;
+
     }
+
 }

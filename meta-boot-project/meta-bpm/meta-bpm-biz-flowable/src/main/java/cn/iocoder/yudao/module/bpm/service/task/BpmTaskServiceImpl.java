@@ -2,14 +2,10 @@ package cn.iocoder.yudao.module.bpm.service.task;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskApproveReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskDonePageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskDonePageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskRejectReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskTodoPageItemRespVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskTodoPageReqVO;
-import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.BpmTaskUpdateAssigneeReqVO;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.number.NumberUtils;
+import cn.iocoder.yudao.framework.common.util.object.PageUtils;
+import cn.iocoder.yudao.module.bpm.controller.admin.task.vo.task.*;
 import cn.iocoder.yudao.module.bpm.convert.task.BpmTaskConvert;
 import cn.iocoder.yudao.module.bpm.dal.dataobject.task.BpmTaskExtDO;
 import cn.iocoder.yudao.module.bpm.dal.mysql.task.BpmTaskExtMapper;
@@ -19,9 +15,6 @@ import cn.iocoder.yudao.module.system.api.dept.DeptApi;
 import cn.iocoder.yudao.module.system.api.dept.dto.DeptRespDTO;
 import cn.iocoder.yudao.module.system.api.user.AdminUserApi;
 import cn.iocoder.yudao.module.system.api.user.dto.AdminUserRespDTO;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.number.NumberUtils;
-import io.github.meta.ease.common.util.object.PageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.flowable.engine.HistoryService;
 import org.flowable.engine.TaskService;
@@ -38,20 +31,12 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.PROCESS_INSTANCE_NOT_EXISTS;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_COMPLETE_FAIL_ASSIGN_NOT_SELF;
-import static io.github.meta.ease.bpm.enums.ErrorCodeConstants.TASK_COMPLETE_FAIL_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertMap;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
-
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertMap;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.module.bpm.enums.ErrorCodeConstants.*;
 
 /**
  * 流程任务实例 Service 实现类
@@ -61,26 +46,21 @@ import static io.github.meta.ease.common.util.collection.CollectionUtils.convert
  */
 @Slf4j
 @Service
-public class BpmTaskServiceImpl implements BpmTaskService {
+public class BpmTaskServiceImpl implements BpmTaskService{
 
     @Resource
     private TaskService taskService;
-
     @Resource
     private HistoryService historyService;
 
     @Resource
     private BpmProcessInstanceService processInstanceService;
-
     @Resource
     private AdminUserApi adminUserApi;
-
     @Resource
     private DeptApi deptApi;
-
     @Resource
     private BpmTaskExtMapper taskExtMapper;
-
     @Resource
     private BpmMessageService messageService;
 
@@ -139,8 +119,7 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         }
 
         // 获得 TaskExtDO Map
-        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(
-                convertSet(tasks, HistoricTaskInstance::getId));
+        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(convertSet(tasks, HistoricTaskInstance::getId));
         Map<String, BpmTaskExtDO> bpmTaskExtDOMap = convertMap(bpmTaskExtDOs, BpmTaskExtDO::getTaskId);
         // 获得 ProcessInstance Map
         Map<String, HistoricProcessInstance> historicProcessInstanceMap = processInstanceService.getHistoricProcessInstanceMap(
@@ -149,8 +128,7 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         Map<Long, AdminUserRespDTO> userMap = adminUserApi.getUserMap(
                 convertSet(historicProcessInstanceMap.values(), instance -> Long.valueOf(instance.getStartUserId())));
         // 拼接结果
-        return new PageResult<>(
-                BpmTaskConvert.INSTANCE.convertList2(tasks, bpmTaskExtDOMap, historicProcessInstanceMap, userMap),
+        return new PageResult<>(BpmTaskConvert.INSTANCE.convertList2(tasks, bpmTaskExtDOMap, historicProcessInstanceMap, userMap),
                 taskQuery.count());
     }
 
@@ -174,8 +152,7 @@ public class BpmTaskServiceImpl implements BpmTaskService {
         }
 
         // 获得 TaskExtDO Map
-        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(
-                convertSet(tasks, HistoricTaskInstance::getId));
+        List<BpmTaskExtDO> bpmTaskExtDOs = taskExtMapper.selectListByTaskIds(convertSet(tasks, HistoricTaskInstance::getId));
         Map<String, BpmTaskExtDO> bpmTaskExtDOMap = convertMap(bpmTaskExtDOs, BpmTaskExtDO::getTaskId);
         // 获得 ProcessInstance Map
         HistoricProcessInstance processInstance = processInstanceService.getHistoricProcessInstance(processInstanceId);
@@ -273,7 +250,6 @@ public class BpmTaskServiceImpl implements BpmTaskService {
 
     /**
      * 校验任务是否存在， 并且是否是分配给自己的任务
-     *
      * @param userId 用户 id
      * @param taskId task id
      */

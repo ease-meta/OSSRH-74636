@@ -1,4 +1,4 @@
-import {deepMerge, isUndefined} from '../utils'
+import { deepMerge, isUndefined } from '../utils'
 
 /**
  * 合并局部配置优先的配置，如果局部有该配置项则用局部，如果全局有该配置项则用全局
@@ -31,21 +31,21 @@ export default (globalsConfig, config2 = {}) => {
         method,
         url: config2.url || '',
         params: config2.params || {},
-        custom: {...(globalsConfig.custom || {}), ...(config2.custom || {})},
+        custom: { ...(globalsConfig.custom || {}), ...(config2.custom || {}) },
         header: deepMerge(globalsConfig.header || {}, config2.header || {})
     }
     const defaultToConfig2Keys = ['getTask', 'validateStatus']
-    config = {...config, ...mergeKeys(defaultToConfig2Keys, globalsConfig, config2)}
+    config = { ...config, ...mergeKeys(defaultToConfig2Keys, globalsConfig, config2) }
 
     // eslint-disable-next-line no-empty
     if (method === 'DOWNLOAD') {
-        // #ifdef H5 || APP-PLUS
+    // #ifdef H5 || APP-PLUS
         if (!isUndefined(config2.timeout)) {
             config.timeout = config2.timeout
         } else if (!isUndefined(globalsConfig.timeout)) {
             config.timeout = globalsConfig.timeout
         }
-        // #endif
+    // #endif
     } else if (method === 'UPLOAD') {
         delete config.header['content-type']
         delete config.header['Content-Type']
@@ -75,7 +75,7 @@ export default (globalsConfig, config2 = {}) => {
         if (isUndefined(config.timeout) && !isUndefined(globalsConfig.timeout)) {
             config.timeout = globalsConfig.timeout
         }
-        // #endif
+    // #endif
     } else {
         const defaultsKeys = [
             'data',
@@ -96,7 +96,7 @@ export default (globalsConfig, config2 = {}) => {
             'firstIpv4'
             // #endif
         ]
-        config = {...config, ...mergeKeys(defaultsKeys, globalsConfig, config2)}
+        config = { ...config, ...mergeKeys(defaultsKeys, globalsConfig, config2) }
     }
 
     return config

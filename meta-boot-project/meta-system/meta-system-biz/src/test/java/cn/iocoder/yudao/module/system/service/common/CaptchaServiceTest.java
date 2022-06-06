@@ -1,18 +1,16 @@
 package cn.iocoder.yudao.module.system.service.common;
 
-import cn.iocoder.yudao.framework.test.core.ut.BaseRedisUnitTest;
 import cn.iocoder.yudao.module.system.controller.admin.common.vo.CaptchaImageRespVO;
 import cn.iocoder.yudao.module.system.dal.redis.common.CaptchaRedisDAO;
 import cn.iocoder.yudao.module.system.framework.captcha.config.CaptchaProperties;
+import cn.iocoder.yudao.framework.test.core.ut.BaseRedisUnitTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Import;
 
 import javax.annotation.Resource;
 
 import static cn.iocoder.yudao.framework.test.core.util.RandomUtils.randomString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Import({CaptchaServiceImpl.class, CaptchaProperties.class, CaptchaRedisDAO.class})
 public class CaptchaServiceTest extends BaseRedisUnitTest {
@@ -22,7 +20,6 @@ public class CaptchaServiceTest extends BaseRedisUnitTest {
 
     @Resource
     private CaptchaRedisDAO captchaRedisDAO;
-
     @Resource
     private CaptchaProperties captchaProperties;
 
@@ -64,4 +61,5 @@ public class CaptchaServiceTest extends BaseRedisUnitTest {
         // 断言
         assertNull(captchaRedisDAO.get(uuid));
     }
+
 }

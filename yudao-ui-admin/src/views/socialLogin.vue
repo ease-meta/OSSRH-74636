@@ -63,9 +63,10 @@
 </template>
 
 <script>
+import Cookies from "js-cookie";
+import { encrypt, decrypt } from '@/utils/jsencrypt'
 import {
-  getPassword,
-  getRememberMe,
+  getPassword, getRememberMe,
   getUsername,
   removePassword,
   removeUsername,
@@ -89,10 +90,10 @@ export default {
       },
       loginRules: {
         username: [
-          {required: true, trigger: "blur", message: "用户名不能为空"}
+          { required: true, trigger: "blur", message: "用户名不能为空" }
         ],
         password: [
-          {required: true, trigger: "blur", message: "密码不能为空"}
+          { required: true, trigger: "blur", message: "密码不能为空" }
         ],
       },
       loading: false,
@@ -125,8 +126,7 @@ export default {
       state: this.state,
       type: this.type
     }).then(() => {
-      this.$router.push({path: this.redirect || "/"}).catch(() => {
-      });
+      this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
     }).catch(() => {
       this.loading = false;
     });
@@ -177,8 +177,7 @@ export default {
             username: this.loginForm.username,
             password: this.loginForm.password
           }).then(() => {
-            this.$router.push({path: this.redirect || "/"}).catch(() => {
-            });
+            this.$router.push({ path: this.redirect || "/" }).catch(()=>{});
           }).catch(() => {
             this.loading = false;
           });

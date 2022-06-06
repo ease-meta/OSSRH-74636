@@ -1,14 +1,13 @@
 package cn.iocoder.yudao.framework.extension.pay.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
+ * @description 下单: 预支付交易单返回结果
  * @author Qingchen
  * @version 1.0.0
- * @description 下单: 预支付交易单返回结果
  * @date 2021-08-30 10:43
  * @class cn.iocoder.yudao.framework.extension.pay.domain.TransactionsResult.java
  */
@@ -35,4 +34,6 @@ public class TransactionsResult implements Serializable {
      * 支付渠道：微信 or 支付宝
      */
     private String channel;
+
+
 }

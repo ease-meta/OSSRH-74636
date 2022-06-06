@@ -1,9 +1,7 @@
 package cn.iocoder.yudao.module.system.controller.admin.oauth2.vo.client;
 
-import io.swagger.annotations.ApiModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
+import io.swagger.annotations.*;
 
 @ApiModel("管理后台 - OAuth2 客户端创建 Request VO")
 @Data

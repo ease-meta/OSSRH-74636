@@ -20,4 +20,5 @@ public class DeptSimpleRespVO {
 
     @ApiModelProperty(value = "父部门 ID", required = true, example = "1024")
     private Long parentId;
+
 }

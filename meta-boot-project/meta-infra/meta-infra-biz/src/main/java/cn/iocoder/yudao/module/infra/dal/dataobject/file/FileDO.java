@@ -1,14 +1,11 @@
 package cn.iocoder.yudao.module.infra.dal.dataobject.file;
 
+import cn.iocoder.yudao.framework.mybatis.core.dataobject.BaseDO;
 import com.baomidou.mybatisplus.annotation.KeySequence;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.github.meta.ease.mybatis.mybatis.core.dataobject.BaseDO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+
+import java.io.InputStream;
 
 /**
  * 文件表
@@ -30,33 +27,29 @@ public class FileDO extends BaseDO {
      * 编号，数据库自增
      */
     private Long id;
-
     /**
      * 配置编号
-     * <p>
+     *
      * 关联 {@link FileConfigDO#getId()}
      */
     private Long configId;
-
     /**
      * 路径，即文件名
      */
     private String path;
-
     /**
      * 访问地址
      */
     private String url;
-
     /**
      * 文件类型
-     * <p>
-     * 通过 {@link cn.hutool.core.io.FileTypeUtil#getType(java.io.InputStream)} 获取
+     *
+     * 通过 {@link cn.hutool.core.io.FileTypeUtil#getType(InputStream)} 获取
      */
     private String type;
-
     /**
      * 文件大小
      */
     private Integer size;
+
 }

@@ -3,6 +3,10 @@ package cn.iocoder.yudao.module.system.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ObjectUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.module.system.enums.permission.DataScopeEnum;
 import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleExportReqVO;
@@ -11,14 +15,10 @@ import cn.iocoder.yudao.module.system.controller.admin.permission.vo.role.RoleUp
 import cn.iocoder.yudao.module.system.convert.permission.RoleConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO;
 import cn.iocoder.yudao.module.system.dal.mysql.permission.RoleMapper;
-import cn.iocoder.yudao.module.system.enums.permission.DataScopeEnum;
 import cn.iocoder.yudao.module.system.enums.permission.RoleCodeEnum;
 import cn.iocoder.yudao.module.system.enums.permission.RoleTypeEnum;
 import cn.iocoder.yudao.module.system.mq.producer.permission.RoleProducer;
 import com.google.common.annotations.VisibleForTesting;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.pojo.PageResult;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
@@ -32,21 +32,11 @@ import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_ADMIN_CODE_ERROR;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_CAN_NOT_UPDATE_SYSTEM_TYPE_ROLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_CODE_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_IS_DISABLE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_NAME_DUPLICATE;
-import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.ROLE_NOT_EXISTS;
-import static io.github.meta.ease.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.framework.common.exception.util.ServiceExceptionUtil.exception;
+import static cn.iocoder.yudao.module.system.enums.ErrorCodeConstants.*;
 
 /**
  * 角色 Service 实现类
@@ -65,13 +55,12 @@ public class RoleServiceImpl implements RoleService {
 
     /**
      * 角色缓存
-     * key：角色编号 {@link cn.iocoder.yudao.module.system.dal.dataobject.permission.RoleDO#getId()}
-     * <p>
+     * key：角色编号 {@link RoleDO#getId()}
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter
     private volatile Map<Long, RoleDO> roleCache;
-
     /**
      * 缓存角色的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -112,7 +101,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Scheduled(fixedDelay = SCHEDULER_PERIOD, initialDelay = SCHEDULER_PERIOD)
     public void schedulePeriodicRefresh() {
-        self.initLocalCache();
+       self.initLocalCache();
     }
 
     /**
@@ -215,6 +204,7 @@ public class RoleServiceImpl implements RoleService {
             public void afterCommit() {
                 roleProducer.sendRoleRefreshMessage();
             }
+
         });
     }
 
@@ -226,8 +216,8 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<RoleDO> getRoles(@Nullable Collection<Integer> statuses) {
         if (CollUtil.isEmpty(statuses)) {
-            return roleMapper.selectList();
-        }
+    		return roleMapper.selectList();
+		}
         return roleMapper.selectListByStatus(statuses);
     }
 
@@ -265,13 +255,13 @@ public class RoleServiceImpl implements RoleService {
 
     /**
      * 校验角色的唯一字段是否重复
-     * <p>
+     *
      * 1. 是否存在相同名字的角色
      * 2. 是否存在相同编码的角色
      *
      * @param name 角色名字
      * @param code 角色额编码
-     * @param id   角色编号
+     * @param id 角色编号
      */
     @VisibleForTesting
     public void checkDuplicateRole(String name, String code, Long id) {

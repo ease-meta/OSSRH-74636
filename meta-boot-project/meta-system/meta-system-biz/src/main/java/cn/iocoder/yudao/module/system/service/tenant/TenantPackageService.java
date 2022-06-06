@@ -1,10 +1,10 @@
 package cn.iocoder.yudao.module.system.service.tenant;
 
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackageCreateReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackagePageReqVO;
 import cn.iocoder.yudao.module.system.controller.admin.tenant.vo.packages.TenantPackageUpdateReqVO;
 import cn.iocoder.yudao.module.system.dal.dataobject.tenant.TenantPackageDO;
-import io.github.meta.ease.common.pojo.PageResult;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -69,4 +69,5 @@ public interface TenantPackageService {
      * @return 租户套餐
      */
     List<TenantPackageDO> getTenantPackageListByStatus(Integer status);
+
 }

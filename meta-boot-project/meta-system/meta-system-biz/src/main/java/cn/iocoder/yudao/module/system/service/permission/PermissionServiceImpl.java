@@ -3,6 +3,10 @@ package cn.iocoder.yudao.module.system.service.permission;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.collection.CollectionUtil;
 import cn.hutool.core.util.ArrayUtil;
+import cn.iocoder.yudao.framework.common.enums.CommonStatusEnum;
+import cn.iocoder.yudao.framework.common.util.collection.CollectionUtils;
+import cn.iocoder.yudao.framework.common.util.collection.MapUtils;
+import cn.iocoder.yudao.framework.common.util.json.JsonUtils;
 import cn.iocoder.yudao.framework.datapermission.core.annotation.DataPermission;
 import cn.iocoder.yudao.framework.tenant.core.aop.TenantIgnore;
 import cn.iocoder.yudao.module.system.api.permission.dto.DeptDataPermissionRespDTO;
@@ -24,10 +28,6 @@ import com.google.common.base.Suppliers;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
-import io.github.meta.ease.common.enums.CommonStatusEnum;
-import io.github.meta.ease.common.util.collection.CollectionUtils;
-import io.github.meta.ease.common.util.collection.MapUtils;
-import io.github.meta.ease.common.util.json.JsonUtils;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -40,19 +40,11 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Supplier;
 
-import static io.github.meta.ease.common.util.collection.CollectionUtils.convertSet;
-import static io.github.meta.ease.common.util.collection.CollectionUtils.getMaxValue;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.convertSet;
+import static cn.iocoder.yudao.framework.common.util.collection.CollectionUtils.getMaxValue;
 import static java.util.Collections.singleton;
 
 /**
@@ -74,24 +66,22 @@ public class PermissionServiceImpl implements PermissionService {
      * 角色编号与菜单编号的缓存映射
      * key：角色编号
      * value：菜单编号的数组
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter
     @Setter // 单元测试需要
     private volatile Multimap<Long, Long> roleMenuCache;
-
     /**
      * 菜单编号与角色编号的缓存映射
      * key：菜单编号
      * value：角色编号的数组
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter
     @Setter // 单元测试需要
     private volatile Multimap<Long, Long> menuRoleCache;
-
     /**
      * 缓存 RoleMenu 的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -102,13 +92,12 @@ public class PermissionServiceImpl implements PermissionService {
      * 用户编号与角色编号的缓存映射
      * key：用户编号
      * value：角色编号的数组
-     * <p>
+     *
      * 这里声明 volatile 修饰的原因是，每次刷新时，直接修改指向
      */
     @Getter
     @Setter // 单元测试需要
     private volatile Map<Long, Set<Long>> userRoleCache;
-
     /**
      * 缓存 UserRole 的最大更新时间，用于后续的增量轮询，判断是否有更新
      */
@@ -117,25 +106,19 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Resource
     private RoleMenuMapper roleMenuMapper;
-
     @Resource
     private RoleMenuBatchInsertMapper roleMenuBatchInsertMapper;
-
     @Resource
     private UserRoleMapper userRoleMapper;
-
     @Resource
     private UserRoleBatchInsertMapper userRoleBatchInsertMapper;
 
     @Resource
     private RoleService roleService;
-
     @Resource
     private MenuService menuService;
-
     @Resource
     private DeptService deptService;
-
     @Resource
     private AdminUserService userService;
 
@@ -319,6 +302,7 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendRoleMenuRefreshMessage();
             }
+
         });
     }
 
@@ -362,6 +346,7 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendUserRoleRefreshMessage();
             }
+
         });
     }
 
@@ -385,6 +370,7 @@ public class PermissionServiceImpl implements PermissionService {
                 permissionProducer.sendRoleMenuRefreshMessage();
                 permissionProducer.sendUserRoleRefreshMessage();
             }
+
         });
     }
 
@@ -399,6 +385,7 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendRoleMenuRefreshMessage();
             }
+
         });
     }
 
@@ -412,6 +399,7 @@ public class PermissionServiceImpl implements PermissionService {
             public void afterCommit() {
                 permissionProducer.sendUserRoleRefreshMessage();
             }
+
         });
     }
 
@@ -524,4 +512,5 @@ public class PermissionServiceImpl implements PermissionService {
         }
         return result;
     }
+
 }

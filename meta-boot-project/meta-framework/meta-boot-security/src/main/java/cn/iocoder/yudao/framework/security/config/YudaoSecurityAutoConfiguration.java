@@ -7,9 +7,9 @@ import cn.iocoder.yudao.framework.security.core.handler.AccessDeniedHandlerImpl;
 import cn.iocoder.yudao.framework.security.core.handler.AuthenticationEntryPointImpl;
 import cn.iocoder.yudao.framework.security.core.service.SecurityFrameworkService;
 import cn.iocoder.yudao.framework.security.core.service.SecurityFrameworkServiceImpl;
+import cn.iocoder.yudao.framework.web.core.handler.GlobalExceptionHandler;
 import cn.iocoder.yudao.module.system.api.oauth2.OAuth2TokenApi;
 import cn.iocoder.yudao.module.system.api.permission.PermissionApi;
-import io.github.meta.ease.web.core.handler.GlobalExceptionHandler;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,8 +24,8 @@ import javax.annotation.Resource;
 
 /**
  * Spring Security 自动配置类，主要用于相关组件的配置
- * <p>
- * 注意，不能和 {@link cn.iocoder.yudao.framework.security.config.YudaoWebSecurityConfigurerAdapter} 用一个，原因是会导致初始化报错。
+ *
+ * 注意，不能和 {@link YudaoWebSecurityConfigurerAdapter} 用一个，原因是会导致初始化报错。
  * 参见 https://stackoverflow.com/questions/53847050/spring-boot-delegatebuilder-cannot-be-null-on-autowiring-authenticationmanager 文档。
  *
  * @author 芋道源码
@@ -87,8 +87,8 @@ public class YudaoSecurityAutoConfiguration {
     }
 
     /**
-     * 声明调用 {@link org.springframework.security.core.context.SecurityContextHolder#setStrategyName(String)} 方法，
-     * 设置使用 {@link cn.iocoder.yudao.framework.security.core.context.TransmittableThreadLocalSecurityContextHolderStrategy} 作为 Security 的上下文策略
+     * 声明调用 {@link SecurityContextHolder#setStrategyName(String)} 方法，
+     * 设置使用 {@link TransmittableThreadLocalSecurityContextHolderStrategy} 作为 Security 的上下文策略
      */
     @Bean
     public MethodInvokingFactoryBean securityContextHolderMethodInvokingFactoryBean() {
@@ -98,4 +98,5 @@ public class YudaoSecurityAutoConfiguration {
         methodInvokingFactoryBean.setArguments(TransmittableThreadLocalSecurityContextHolderStrategy.class.getName());
         return methodInvokingFactoryBean;
     }
+
 }

@@ -15,7 +15,7 @@ export default function loadMonaco(cb) {
     return
   }
 
-  const {monacoEditorUrl: vs} = pluginsConfig
+  const { monacoEditorUrl: vs } = pluginsConfig
 
   // 使用element ui实现加载提示
   const loading = ELEMENT.Loading.service({

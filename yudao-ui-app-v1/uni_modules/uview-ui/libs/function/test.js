@@ -77,8 +77,7 @@ function carNo(value) {
     const creg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/
     if (value.length === 7) {
         return creg.test(value)
-    }
-    if (value.length === 8) {
+    } if (value.length === 8) {
         return xreg.test(value)
     }
     return false
@@ -150,23 +149,23 @@ function landline(value) {
  */
 function empty(value) {
     switch (typeof value) {
-        case 'undefined':
-            return true
-        case 'string':
-            if (value.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) return true
-            break
-        case 'boolean':
-            if (!value) return true
-            break
-        case 'number':
-            if (value === 0 || isNaN(value)) return true
-            break
-        case 'object':
-            if (value === null || value.length === 0) return true
-            for (const i in value) {
-                return false
-            }
-            return true
+    case 'undefined':
+        return true
+    case 'string':
+        if (value.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length == 0) return true
+        break
+    case 'boolean':
+        if (!value) return true
+        break
+    case 'number':
+        if (value === 0 || isNaN(value)) return true
+        break
+    case 'object':
+        if (value === null || value.length === 0) return true
+        for (const i in value) {
+            return false
+        }
+        return true
     }
     return false
 }

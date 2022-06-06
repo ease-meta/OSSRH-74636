@@ -1,32 +1,19 @@
 package cn.iocoder.yudao.module.system.controller.admin.sms;
 
-import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
-import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateCreateReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateExcelVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateExportReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplatePageReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateRespVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateSendReqVO;
-import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.SmsTemplateUpdateReqVO;
+import cn.iocoder.yudao.module.system.controller.admin.sms.vo.template.*;
 import cn.iocoder.yudao.module.system.convert.sms.SmsTemplateConvert;
 import cn.iocoder.yudao.module.system.dal.dataobject.sms.SmsTemplateDO;
-import cn.iocoder.yudao.module.system.service.sms.SmsSendService;
 import cn.iocoder.yudao.module.system.service.sms.SmsTemplateService;
-import io.github.meta.ease.common.pojo.CommonResult;
-import io.github.meta.ease.common.pojo.PageResult;
+import cn.iocoder.yudao.module.system.service.sms.SmsSendService;
+import cn.iocoder.yudao.framework.common.pojo.CommonResult;
+import cn.iocoder.yudao.framework.common.pojo.PageResult;
+import cn.iocoder.yudao.framework.excel.core.util.ExcelUtils;
+import cn.iocoder.yudao.framework.operatelog.core.annotations.OperateLog;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -34,8 +21,8 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
+import static cn.iocoder.yudao.framework.common.pojo.CommonResult.success;
 import static cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum.EXPORT;
-import static io.github.meta.ease.common.pojo.CommonResult.success;
 
 @Api(tags = "管理后台 - 短信模板")
 @RestController
@@ -44,7 +31,6 @@ public class SmsTemplateController {
 
     @Resource
     private SmsTemplateService smsTemplateService;
-
     @Resource
     private SmsSendService smsSendService;
 
@@ -108,4 +94,5 @@ public class SmsTemplateController {
         return success(smsSendService.sendSingleSmsToAdmin(sendReqVO.getMobile(), null,
                 sendReqVO.getTemplateCode(), sendReqVO.getTemplateParams()));
     }
+
 }

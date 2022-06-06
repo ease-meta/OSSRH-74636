@@ -1,6 +1,8 @@
 package cn.iocoder.yudao.framework.operatelog.core.annotations;
 
 import cn.iocoder.yudao.framework.operatelog.core.enums.OperateTypeEnum;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -20,21 +22,19 @@ public @interface OperateLog {
 
     /**
      * 操作模块
-     * <p>
-     * 为空时，会尝试读取 {@link io.swagger.annotations.Api#value()} 属性
+     *
+     * 为空时，会尝试读取 {@link Api#value()} 属性
      */
     String module() default "";
-
     /**
      * 操作名
-     * <p>
-     * 为空时，会尝试读取 {@link io.swagger.annotations.ApiOperation#value()} 属性
+     *
+     * 为空时，会尝试读取 {@link ApiOperation#value()} 属性
      */
     String name() default "";
-
     /**
      * 操作分类
-     * <p>
+     *
      * 实际并不是数组，因为枚举不能设置 null 作为默认值
      */
     OperateTypeEnum[] type() default {};
@@ -45,14 +45,13 @@ public @interface OperateLog {
      * 是否记录操作日志
      */
     boolean enable() default true;
-
     /**
      * 是否记录方法参数
      */
     boolean logArgs() default true;
-
     /**
      * 是否记录方法结果的数据
      */
     boolean logResultData() default true;
+
 }

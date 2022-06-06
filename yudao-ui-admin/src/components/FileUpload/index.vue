@@ -19,8 +19,8 @@
       <!-- 上传提示 -->
       <div class="el-upload__tip" slot="tip" v-if="showTip">
         请上传
-        <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b></template>
-        <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b></template>
+        <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
+        <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
         的文件
       </div>
     </el-upload>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import {getAccessToken} from "@/utils/auth";
+import { getAccessToken } from "@/utils/auth";
 
 export default {
   name: "FileUpload",
@@ -73,7 +73,7 @@ export default {
       number: 0,
       uploadList: [],
       uploadFileUrl: process.env.VUE_APP_BASE_API + "/admin-api/infra/file/upload", // 请求地址
-      headers: {Authorization: "Bearer " + getAccessToken()}, // 设置上传的请求头部
+      headers: { Authorization: "Bearer " + getAccessToken() }, // 设置上传的请求头部
       fileList: [],
     };
   },
@@ -87,7 +87,7 @@ export default {
           // 然后将数组转为对象数组
           this.fileList = list.map(item => {
             if (typeof item === "string") {
-              item = {name: item, url: item};
+              item = { name: item, url: item };
             }
             item.uid = item.uid || new Date().getTime() + temp++;
             return item;
@@ -149,7 +149,7 @@ export default {
     // 上传成功回调
     handleUploadSuccess(res) {
       // edit by 芋道源码
-      this.uploadList.push({name: res.data, url: res.data});
+      this.uploadList.push({ name: res.data, url: res.data });
       if (this.uploadList.length === this.number) {
         this.fileList = this.fileList.concat(this.uploadList);
         this.uploadList = [];

@@ -9,6 +9,8 @@ import cn.iocoder.yudao.framework.file.core.client.ftp.FtpFileClient;
 import cn.iocoder.yudao.framework.file.core.client.ftp.FtpFileClientConfig;
 import cn.iocoder.yudao.framework.file.core.client.local.LocalFileClient;
 import cn.iocoder.yudao.framework.file.core.client.local.LocalFileClientConfig;
+import cn.iocoder.yudao.framework.file.core.client.s3.S3FileClient;
+import cn.iocoder.yudao.framework.file.core.client.s3.S3FileClientConfig;
 import cn.iocoder.yudao.framework.file.core.client.sftp.SftpFileClient;
 import cn.iocoder.yudao.framework.file.core.client.sftp.SftpFileClientConfig;
 import lombok.AllArgsConstructor;
@@ -29,7 +31,7 @@ public enum FileStorageEnum {
     FTP(11, FtpFileClientConfig.class, FtpFileClient.class),
     SFTP(12, SftpFileClientConfig.class, SftpFileClient.class),
 
-    //S3(20, S3FileClientConfig.class, S3FileClient.class),
+    S3(20, S3FileClientConfig.class, S3FileClient.class),
     ;
 
     /**
@@ -41,7 +43,6 @@ public enum FileStorageEnum {
      * 配置类
      */
     private final Class<? extends FileClientConfig> configClass;
-
     /**
      * 客户端类
      */
@@ -50,4 +51,5 @@ public enum FileStorageEnum {
     public static FileStorageEnum getByStorage(Integer storage) {
         return ArrayUtil.firstMatch(o -> o.getStorage().equals(storage), values());
     }
+
 }

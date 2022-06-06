@@ -17,4 +17,5 @@ public class DictTypeCreateReqVO extends DictTypeBaseVO {
     @NotNull(message = "字典类型不能为空")
     @Size(max = 100, message = "字典类型类型长度不能超过100个字符")
     private String type;
+
 }
