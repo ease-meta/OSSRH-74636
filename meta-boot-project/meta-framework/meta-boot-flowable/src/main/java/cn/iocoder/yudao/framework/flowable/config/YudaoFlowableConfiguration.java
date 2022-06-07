@@ -2,6 +2,7 @@ package cn.iocoder.yudao.framework.flowable.config;
 
 import cn.iocoder.yudao.framework.common.enums.WebFilterOrderEnum;
 import cn.iocoder.yudao.framework.flowable.core.web.FlowableWebFilter;
+import org.flowable.common.engine.impl.identity.UserIdAuthenticationContext;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,5 +19,10 @@ public class YudaoFlowableConfiguration {
         registrationBean.setFilter(new FlowableWebFilter());
         registrationBean.setOrder(WebFilterOrderEnum.FLOWABLE_FILTER);
         return registrationBean;
+    }
+
+    @Bean
+    UserIdAuthenticationContext userIdAuthenticationContext(){
+        return new UserIdAuthenticationContext();
     }
 }

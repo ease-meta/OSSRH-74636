@@ -15,7 +15,8 @@ public interface DictDataApi {
      * 2. 字典数据被禁用
      *
      * @param dictType 字典类型
-     * @param values   字典数据值的数组
+     * @param values 字典数据值的数组
      */
     void validDictDatas(String dictType, Collection<String> values);
+
 }

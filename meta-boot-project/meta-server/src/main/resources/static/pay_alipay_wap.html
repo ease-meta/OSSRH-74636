@@ -17,15 +17,15 @@
 
     let shopOrderId = undefined;
     let payOrderId = undefined;
-    let server = 'http://127.0.0.1:48080';
+     let server = 'http://127.0.0.1:48080';
     //let server = 'http://niubi.natapp1.cc';
 
-    $(function () {
+    $(function() {
         // 自动发起商城订单编号
         $.ajax({
             url: server + "/app-api/shop/order/create",
             method: 'POST',
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('创建商城订单失败，原因：' + result.msg)
                     return;
@@ -38,7 +38,7 @@
         })
     });
 
-    $("#alipay_wap").on("click", function () {
+    $( "#alipay_wap").on( "click", function() {
         // 提交支付
         $.ajax({
             url: server + "/app-api/pay/order/submit",
@@ -49,7 +49,7 @@
                 "id": payOrderId,
                 "channelCode": 'alipay_wap'
             }),
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('提交支付订单失败，原因：' + result.msg)
                     return;

@@ -43,12 +43,12 @@
             data: JSON.stringify(data),
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('调用授权登录接口失败，原因：' + result.msg)
                     return;
                 }
-                alert("授权登录成功, token: " + result.data.token)
+                alert("授权登录成功, token: "+result.data.token)
             }
         })
     });

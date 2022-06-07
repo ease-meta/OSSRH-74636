@@ -13,10 +13,10 @@
 <div>
     <button id="alipay_wap">支付宝扫码支付</button>
 </div>
-<div id="qrcode"></div>
+<div  id="qrcode"></div>
 </body>
 <style>
-    #qrcode {
+    #qrcode{
         padding-left: 20px;
         padding-top: 20px;
     }
@@ -24,13 +24,13 @@
 <script>
     let shopOrderId = undefined;
     let payOrderId = undefined;
-    let server = 'http://127.0.0.1:48080';
-    $(function () {
+     let server = 'http://127.0.0.1:48080';
+    $(function() {
         // 自动发起商城订单编号
         $.ajax({
             url: server + "/app-api/shop/order/create",
             method: 'POST',
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('创建商城订单失败，原因：' + result.msg)
                     return;
@@ -43,7 +43,7 @@
         })
     });
     // 支付宝扫码支付
-    $("#alipay_wap").on("click", function () {
+    $( "#alipay_wap").on( "click", function() {
         // 提交支付
         $.ajax({
             url: server + "/app-api/pay/order/submit",
@@ -54,23 +54,23 @@
                 "id": payOrderId,
                 "channelCode": 'alipay_qr'
             }),
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('提交支付订单失败，原因：' + result.msg)
                     return;
                 }
                 //提交支付后返回的参数
                 let data = result.data.invokeResponse;
-                new QRCode($("#qrcode")[0], {
+                new QRCode($("#qrcode")[0],{
                     text: data.qrCode, //内容
-                    width: 98, //宽度
-                    height: 98, //高度
+                    width:98, //宽度
+                    height:98, //高度
                     correctLevel: 3,//二维码纠错级别
                     background: "#ffffff",//背景颜色
                     foreground: "#000000"//二维码颜色
                 });
 
-                console.log("data.qrCode===", data.qrCode)
+                console.log("data.qrCode===",data.qrCode)
 
             }
         })

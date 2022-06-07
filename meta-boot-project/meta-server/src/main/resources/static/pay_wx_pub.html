@@ -20,13 +20,13 @@
     let server = 'http://niubi.natapp1.cc';
     // TODO openid
     let openid = "ockUAwIZ-0OeMZl9ogcZ4ILrGba0";
-    $(function () {
+    $(function() {
         // 获得 JsapiTicket
         // 参考 https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/JS-SDK.html 文档
         $.ajax({
             url: server + "/app-api/wx/mp/create-jsapi-signature?url=" + document.location.href,
             method: 'POST',
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('获取 JsapiTicket 失败，原因：' + result.msg)
                     return;
@@ -44,7 +44,7 @@
         $.ajax({
             url: server + "/app-api/shop/order/create",
             method: 'POST',
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('创建商城订单失败，原因：' + result.msg)
                     return;
@@ -58,7 +58,7 @@
     })
 
     // 微信公众号
-    $("#wx_pub").on("click", function () {
+    $( "#wx_pub").on( "click", function() {
         if (typeof WeixinJSBridge == "undefined") {
             // if (document.addEventListener) {
             //     document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
@@ -89,7 +89,7 @@
                     "openid": openid
                 }
             }),
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('提交支付订单失败，原因：' + result.msg)
                     return;
@@ -106,7 +106,7 @@
                     success: function (res) {
                         alert(JSON.stringify(res));
                     },
-                    error: function (e) {
+                    error: function(e) {
                         alert(JSON.stringify(e));
                     }
                 });

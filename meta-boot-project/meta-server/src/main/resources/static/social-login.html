@@ -18,13 +18,13 @@
 
 
     // 微信公众号
-    $("#wx_pub").on("click", function () {
+    $( "#wx_pub").on( "click", function() {
         // 获得授权链接
         $.ajax({
             url: server + "/app-api/social-auth-redirect?type=31&redirectUri=" +
                 encodeURIComponent(server + '/static/social-login2.html'),  //重定向地址
             method: 'GET',
-            success: function (result) {
+            success: function( result ) {
                 if (result.code !== 0) {
                     alert('获得授权链接失败，原因：' + result.msg)
                     return;
