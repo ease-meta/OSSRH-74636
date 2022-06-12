@@ -3,6 +3,7 @@
 #### 案例
 将 yudao-module-system-api 模块的 auth 包，重构成 oauth2 包 YunaiV Yesterday 16:44 bdf579a2
 * 2022年6月3号 整合https://gitee.com/zhijiantianya/ruoyi-vue-pro 工作流
+* npm install --registry=https://registry.npm.taobao.org
 * 2020年4月19号 整合人人开源的代码生成
 * http://localhost:28082/hystrix
 * http://localhost:28082/hystrix.stream

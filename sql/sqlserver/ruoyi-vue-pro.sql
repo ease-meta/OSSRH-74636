@@ -19,42 +19,26 @@
 -- ----------------------------
 -- Table structure for QRTZ_BLOB_TRIGGERS
 -- ----------------------------
-IF
-EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_BLOB_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_BLOB_TRIGGERS]
-    GO
+IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_BLOB_TRIGGERS]') AND type IN ('U'))
+	DROP TABLE [dbo].[QRTZ_BLOB_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_BLOB_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [BLOB_DATA] varbinary
-(
-    max
-) NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_BLOB_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [BLOB_DATA] varbinary(max)  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_BLOB_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_BLOB_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -65,36 +49,24 @@ GO
 -- Table structure for QRTZ_CALENDARS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_CALENDARS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_CALENDARS]
-    GO
+	DROP TABLE [dbo].[QRTZ_CALENDARS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_CALENDARS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [CALENDAR_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [CALENDAR] varbinary
-(
-    max
-) NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_CALENDARS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [CALENDAR_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [CALENDAR] varbinary(max)  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_CALENDARS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_CALENDARS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -105,44 +77,26 @@ GO
 -- Table structure for QRTZ_CRON_TRIGGERS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_CRON_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_CRON_TRIGGERS]
-    GO
+	DROP TABLE [dbo].[QRTZ_CRON_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_CRON_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [CRON_EXPRESSION] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TIME_ZONE_ID] varchar
-(
-    80
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_CRON_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [CRON_EXPRESSION] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TIME_ZONE_ID] varchar(80) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_CRON_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_CRON_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[QRTZ_CRON_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP], [CRON_EXPRESSION], [TIME_ZONE_ID]) VALUES (N'schedulerName', N'userSessionTimeoutJob', N'DEFAULT', N'0 * * * * ? *', N'Asia/Shanghai')
@@ -156,67 +110,34 @@ GO
 -- Table structure for QRTZ_FIRED_TRIGGERS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_FIRED_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_FIRED_TRIGGERS]
-    GO
+	DROP TABLE [dbo].[QRTZ_FIRED_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_FIRED_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [ENTRY_ID] varchar
-(
-    95
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [INSTANCE_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [FIRED_TIME] bigint NOT NULL,
-    [SCHED_TIME] bigint NOT NULL,
-    [PRIORITY] int NOT NULL,
-    [STATE] varchar
-(
-    16
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [JOB_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [IS_NONCONCURRENT] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [REQUESTS_RECOVERY] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_FIRED_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [ENTRY_ID] varchar(95) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [INSTANCE_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [FIRED_TIME] bigint  NOT NULL,
+  [SCHED_TIME] bigint  NOT NULL,
+  [PRIORITY] int  NOT NULL,
+  [STATE] varchar(16) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [JOB_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [IS_NONCONCURRENT] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [REQUESTS_RECOVERY] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_FIRED_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_FIRED_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -227,64 +148,31 @@ GO
 -- Table structure for QRTZ_JOB_DETAILS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_JOB_DETAILS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_JOB_DETAILS]
-    GO
+	DROP TABLE [dbo].[QRTZ_JOB_DETAILS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_JOB_DETAILS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [DESCRIPTION] varchar
-(
-    250
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [JOB_CLASS_NAME] varchar
-(
-    250
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [IS_DURABLE] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [IS_NONCONCURRENT] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [IS_UPDATE_DATA] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [REQUESTS_RECOVERY] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_DATA] varbinary
-(
-    max
-) NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_JOB_DETAILS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [DESCRIPTION] varchar(250) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [JOB_CLASS_NAME] varchar(250) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [IS_DURABLE] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [IS_NONCONCURRENT] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [IS_UPDATE_DATA] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [REQUESTS_RECOVERY] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_DATA] varbinary(max)  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_JOB_DETAILS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_JOB_DETAILS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[QRTZ_JOB_DETAILS] ([SCHED_NAME], [JOB_NAME], [JOB_GROUP], [DESCRIPTION], [JOB_CLASS_NAME], [IS_DURABLE], [IS_NONCONCURRENT], [IS_UPDATE_DATA], [REQUESTS_RECOVERY], [JOB_DATA]) VALUES (N'schedulerName', N'userSessionTimeoutJob', N'DEFAULT', NULL, N'cn.iocoder.yudao.framework.quartz.core.handler.JobHandlerInvoker', N'0', N'1', N'1', N'0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C770800000010000000027400064A4F425F49447372000E6A6176612E6C616E672E4C6F6E673B8BE490CC8F23DF0200014A000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B020000787000000000000000107400104A4F425F48414E444C45525F4E414D457400157573657253657373696F6E54696D656F75744A6F627800)
@@ -298,32 +186,23 @@ GO
 -- Table structure for QRTZ_LOCKS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_LOCKS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_LOCKS]
-    GO
+	DROP TABLE [dbo].[QRTZ_LOCKS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_LOCKS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [LOCK_NAME] varchar
-(
-    40
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_LOCKS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [LOCK_NAME] varchar(40) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_LOCKS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_LOCKS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[QRTZ_LOCKS] ([SCHED_NAME], [LOCK_NAME]) VALUES (N'schedulerName', N'STATE_ACCESS')
@@ -340,32 +219,23 @@ GO
 -- Table structure for QRTZ_PAUSED_TRIGGER_GRPS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_PAUSED_TRIGGER_GRPS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS]
-    GO
+	DROP TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_PAUSED_TRIGGER_GRPS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -376,34 +246,25 @@ GO
 -- Table structure for QRTZ_SCHEDULER_STATE
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_SCHEDULER_STATE]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_SCHEDULER_STATE]
-    GO
+	DROP TABLE [dbo].[QRTZ_SCHEDULER_STATE]
+GO
 
-CREATE TABLE [dbo].[QRTZ_SCHEDULER_STATE]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [INSTANCE_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [LAST_CHECKIN_TIME] bigint NOT NULL,
-    [CHECKIN_INTERVAL] bigint NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_SCHEDULER_STATE] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [INSTANCE_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [LAST_CHECKIN_TIME] bigint  NOT NULL,
+  [CHECKIN_INTERVAL] bigint  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_SCHEDULER_STATE] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_SCHEDULER_STATE
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[QRTZ_SCHEDULER_STATE] ([SCHED_NAME], [INSTANCE_NAME], [LAST_CHECKIN_TIME], [CHECKIN_INTERVAL]) VALUES (N'schedulerName', N'Yunai1651483828928', N'1651484588813', N'15000')
@@ -417,39 +278,27 @@ GO
 -- Table structure for QRTZ_SIMPLE_TRIGGERS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_SIMPLE_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS]
-    GO
+	DROP TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [REPEAT_COUNT] bigint NOT NULL,
-    [REPEAT_INTERVAL] bigint NOT NULL,
-    [TIMES_TRIGGERED] bigint NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [REPEAT_COUNT] bigint  NOT NULL,
+  [REPEAT_INTERVAL] bigint  NOT NULL,
+  [TIMES_TRIGGERED] bigint  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_SIMPLE_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -460,70 +309,35 @@ GO
 -- Table structure for QRTZ_SIMPROP_TRIGGERS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_SIMPROP_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS]
-    GO
+	DROP TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [STR_PROP_1] varchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [STR_PROP_2] varchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [STR_PROP_3] varchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [INT_PROP_1] int NULL,
-    [INT_PROP_2] int NULL,
-    [LONG_PROP_1] bigint NULL,
-    [LONG_PROP_2] bigint NULL,
-    [DEC_PROP_1] numeric
-(
-    13,
-    4
-) NULL,
-    [DEC_PROP_2] numeric
-(
-    13,
-    4
-) NULL,
-    [BOOL_PROP_1] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [BOOL_PROP_2] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [STR_PROP_1] varchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [STR_PROP_2] varchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [STR_PROP_3] varchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [INT_PROP_1] int  NULL,
+  [INT_PROP_2] int  NULL,
+  [LONG_PROP_1] bigint  NULL,
+  [LONG_PROP_2] bigint  NULL,
+  [DEC_PROP_1] numeric(13,4)  NULL,
+  [DEC_PROP_2] numeric(13,4)  NULL,
+  [BOOL_PROP_1] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [BOOL_PROP_2] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_SIMPROP_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -534,70 +348,37 @@ GO
 -- Table structure for QRTZ_TRIGGERS
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[QRTZ_TRIGGERS]') AND type IN ('U'))
-DROP TABLE [dbo].[QRTZ_TRIGGERS]
-    GO
+	DROP TABLE [dbo].[QRTZ_TRIGGERS]
+GO
 
-CREATE TABLE [dbo].[QRTZ_TRIGGERS]
-(
-    [
-    SCHED_NAME] varchar
-(
-    120
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [JOB_GROUP] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [DESCRIPTION] varchar
-(
-    250
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [NEXT_FIRE_TIME] bigint NULL,
-    [PREV_FIRE_TIME] bigint NULL,
-    [PRIORITY] int NULL,
-    [TRIGGER_STATE] varchar
-(
-    16
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [TRIGGER_TYPE] varchar
-(
-    8
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [START_TIME] bigint NOT NULL,
-    [END_TIME] bigint NULL,
-    [CALENDAR_NAME] varchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [MISFIRE_INSTR] smallint NULL,
-    [JOB_DATA] varbinary
-(
-    max
-) NULL
-    )
-    GO
+CREATE TABLE [dbo].[QRTZ_TRIGGERS] (
+  [SCHED_NAME] varchar(120) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [JOB_GROUP] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [DESCRIPTION] varchar(250) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [NEXT_FIRE_TIME] bigint  NULL,
+  [PREV_FIRE_TIME] bigint  NULL,
+  [PRIORITY] int  NULL,
+  [TRIGGER_STATE] varchar(16) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [TRIGGER_TYPE] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [START_TIME] bigint  NOT NULL,
+  [END_TIME] bigint  NULL,
+  [CALENDAR_NAME] varchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [MISFIRE_INSTR] smallint  NULL,
+  [JOB_DATA] varbinary(max)  NULL
+)
+GO
 
 ALTER TABLE [dbo].[QRTZ_TRIGGERS] SET (LOCK_ESCALATION = TABLE)
-    GO
+GO
 
 
 -- ----------------------------
 -- Records of QRTZ_TRIGGERS
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[QRTZ_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP], [JOB_NAME], [JOB_GROUP], [DESCRIPTION], [NEXT_FIRE_TIME], [PREV_FIRE_TIME], [PRIORITY], [TRIGGER_STATE], [TRIGGER_TYPE], [START_TIME], [END_TIME], [CALENDAR_NAME], [MISFIRE_INSTR], [JOB_DATA]) VALUES (N'schedulerName', N'userSessionTimeoutJob', N'DEFAULT', N'userSessionTimeoutJob', N'DEFAULT', NULL, N'1651484640000', N'1651484580000', N'5', N'WAITING', N'CRON', N'1651483728000', N'0', NULL, N'0', 0xACED0005737200156F72672E71756172747A2E4A6F62446174614D61709FB083E8BFA9B0CB020000787200266F72672E71756172747A2E7574696C732E537472696E674B65794469727479466C61674D61708208E8C3FBC55D280200015A0013616C6C6F77735472616E7369656E74446174617872001D6F72672E71756172747A2E7574696C732E4469727479466C61674D617013E62EAD28760ACE0200025A000564697274794C00036D617074000F4C6A6176612F7574696C2F4D61703B787001737200116A6176612E7574696C2E486173684D61700507DAC1C31660D103000246000A6C6F6164466163746F724900097468726573686F6C6478703F4000000000000C770800000010000000037400114A4F425F48414E444C45525F504152414D707400124A4F425F52455452595F494E54455256414C737200116A6176612E6C616E672E496E746567657212E2A0A4F781873802000149000576616C7565787200106A6176612E6C616E672E4E756D62657286AC951D0B94E08B02000078700000000374000F4A4F425F52455452595F434F554E547371007E0009000007D07800)
@@ -611,143 +392,123 @@ GO
 -- Table structure for bpm_form
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_form]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_form]
-    GO
+	DROP TABLE [dbo].[bpm_form]
+GO
 
-CREATE TABLE [dbo].[bpm_form]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [conf] nvarchar
-(
-    1000
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [fields] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_form] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [conf] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [fields] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_form] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单的配置',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'conf'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单项的数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'fields'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'工作流的表单定义',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_form'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单名',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单的配置',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'conf'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单项的数组',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'fields'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'工作流的表单定义',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_form'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_form
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_form] ON
@@ -764,164 +525,147 @@ GO
 -- Table structure for bpm_oa_leave
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_oa_leave]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_oa_leave]
-    GO
+	DROP TABLE [dbo].[bpm_oa_leave]
+GO
 
-CREATE TABLE [dbo].[bpm_oa_leave]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [type] tinyint NOT NULL,
-    [reason] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [start_time] datetime2
-(
-    7
-) NOT NULL,
-    [end_time] datetime2
-(
-    7
-) NOT NULL,
-    [day] tinyint NOT NULL,
-    [result] tinyint NOT NULL,
-    [process_instance_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_oa_leave] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [reason] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [start_time] datetime2(7)  NOT NULL,
+  [end_time] datetime2(7)  NOT NULL,
+  [day] tinyint  NOT NULL,
+  [result] tinyint  NOT NULL,
+  [process_instance_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_oa_leave] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请假表单主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'申请人的用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请假类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请假原因',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'reason'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开始时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'start_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结束时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'end_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请假天数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'day'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请假结果',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'process_instance_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'OA 请假申请表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_oa_leave'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请假表单主键',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'申请人的用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请假类型',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请假原因',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'reason'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开始时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'start_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结束时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'end_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请假天数',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'day'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请假结果',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'process_instance_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'OA 请假申请表',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_oa_leave'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_oa_leave
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_oa_leave] ON
@@ -938,181 +682,156 @@ GO
 -- Table structure for bpm_process_definition_ext
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_process_definition_ext]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_process_definition_ext]
-    GO
+	DROP TABLE [dbo].[bpm_process_definition_ext]
+GO
 
-CREATE TABLE [dbo].[bpm_process_definition_ext]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [process_definition_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [model_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [description] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [form_type] tinyint NOT NULL,
-    [form_id] bigint NULL,
-    [form_conf] nvarchar
-(
-    1000
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [form_fields] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [form_custom_create_path] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [form_custom_view_path] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_process_definition_ext] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [process_definition_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [model_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [description] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [form_type] tinyint  NOT NULL,
+  [form_id] bigint  NULL,
+  [form_conf] nvarchar(1000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [form_fields] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [form_custom_create_path] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [form_custom_view_path] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_process_definition_ext] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程定义的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'process_definition_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程模型的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'model_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'description'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单的配置',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_conf'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单项的数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_fields'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'自定义表单的提交路径',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_custom_create_path'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'自定义表单的查看路径',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'form_custom_view_path'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Bpm 流程定义的拓展表
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程定义的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'process_definition_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程模型的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'model_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'描述',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'description'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单类型',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单的配置',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_conf'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单项的数组',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_fields'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'自定义表单的提交路径',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_custom_create_path'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'自定义表单的查看路径',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'form_custom_view_path'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Bpm 流程定义的拓展表
 ',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_definition_ext'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_definition_ext'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_process_definition_ext
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_process_definition_ext] ON
@@ -1129,177 +848,155 @@ GO
 -- Table structure for bpm_process_instance_ext
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_process_instance_ext]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_process_instance_ext]
-    GO
+	DROP TABLE [dbo].[bpm_process_instance_ext]
+GO
 
-CREATE TABLE [dbo].[bpm_process_instance_ext]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [start_user_id] bigint NOT NULL,
-    [name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [process_instance_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [process_definition_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [category] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [result] tinyint NOT NULL,
-    [end_time] datetime2
-(
-    7
-) NULL,
-    [form_variables] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_process_instance_ext] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [start_user_id] bigint  NOT NULL,
+  [name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [process_instance_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [process_definition_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [category] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [result] tinyint  NOT NULL,
+  [end_time] datetime2(7)  NULL,
+  [form_variables] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_process_instance_ext] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发起流程的用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'start_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的名字',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'process_instance_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程定义的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'process_definition_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程分类',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'category'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的结果',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结束时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'end_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表单值',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'form_variables'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'工作流的流程实例的拓展',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_process_instance_ext'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发起流程的用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'start_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的名字',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'process_instance_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程定义的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'process_definition_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程分类',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'category'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的状态',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的结果',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结束时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'end_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表单值',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'form_variables'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'工作流的流程实例的拓展',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_process_instance_ext'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_process_instance_ext
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_process_instance_ext] ON
@@ -1316,143 +1013,123 @@ GO
 -- Table structure for bpm_task_assign_rule
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_task_assign_rule]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_task_assign_rule]
-    GO
+	DROP TABLE [dbo].[bpm_task_assign_rule]
+GO
 
-CREATE TABLE [dbo].[bpm_task_assign_rule]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [model_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [process_definition_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [task_definition_key] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] tinyint NOT NULL,
-    [options] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_task_assign_rule] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [model_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [process_definition_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [task_definition_key] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [options] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_task_assign_rule] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程模型的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'model_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程定义的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'process_definition_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程任务定义的 key',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'task_definition_key'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'规则类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'规则值，JSON 数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'options'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Bpm 任务规则表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_assign_rule'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程模型的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'model_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程定义的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'process_definition_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程任务定义的 key',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'task_definition_key'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'规则类型',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'规则值，JSON 数组',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'options'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Bpm 任务规则表',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_assign_rule'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_task_assign_rule
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_task_assign_rule] ON
@@ -1469,170 +1146,147 @@ GO
 -- Table structure for bpm_task_ext
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_task_ext]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_task_ext]
-    GO
+	DROP TABLE [dbo].[bpm_task_ext]
+GO
 
-CREATE TABLE [dbo].[bpm_task_ext]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [assignee_user_id] bigint NULL,
-    [name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [task_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [result] tinyint NOT NULL,
-    [reason] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [end_time] datetime2
-(
-    7
-) NULL,
-    [process_instance_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [process_definition_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_task_ext] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [assignee_user_id] bigint  NULL,
+  [name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [task_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [result] tinyint  NOT NULL,
+  [reason] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [end_time] datetime2(7)  NULL,
+  [process_instance_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [process_definition_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_task_ext] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务的审批人',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'assignee_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务的名字',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'task_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务的结果',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'审批建议',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'reason'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务的结束时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'end_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程实例的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'process_instance_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'流程定义的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'process_definition_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'工作流的流程任务的拓展表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_task_ext'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务的审批人',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'assignee_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务的名字',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'task_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务的结果',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'审批建议',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'reason'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务的结束时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'end_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程实例的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'process_instance_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'流程定义的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'process_definition_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'工作流的流程任务的拓展表',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_task_ext'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_task_ext
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_task_ext] ON
@@ -1649,133 +1303,115 @@ GO
 -- Table structure for bpm_user_group
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[bpm_user_group]') AND type IN ('U'))
-DROP TABLE [dbo].[bpm_user_group]
-    GO
+	DROP TABLE [dbo].[bpm_user_group]
+GO
 
-CREATE TABLE [dbo].[bpm_user_group]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [description] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [member_user_ids] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[bpm_user_group] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [description] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [member_user_ids] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[bpm_user_group] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'组名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'description'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'成员编号数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'member_user_ids'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'bpm_user_group'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'组名',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'描述',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'description'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'成员编号数组',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'member_user_ids'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户组',
+'SCHEMA', N'dbo',
+'TABLE', N'bpm_user_group'
+GO
 
 
 -- ----------------------------
 -- Records of bpm_user_group
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[bpm_user_group] ON
@@ -1792,30 +1428,28 @@ GO
 -- Table structure for dual
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[dual]') AND type IN ('U'))
-DROP TABLE [dbo].[dual]
-    GO
+	DROP TABLE [dbo].[dual]
+GO
 
-CREATE TABLE [dbo].[dual]
-(
-[
-    id] int NULL
+CREATE TABLE [dbo].[dual] (
+  [id] int  NULL
 )
-    GO
+GO
 
 ALTER TABLE [dbo].[dual] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据库连接的表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'dual'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据库连接的表',
+'SCHEMA', N'dbo',
+'TABLE', N'dual'
+GO
 
 
 -- ----------------------------
 -- Records of dual
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 COMMIT
@@ -1826,224 +1460,195 @@ GO
 -- Table structure for infra_api_access_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_api_access_log]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_api_access_log]
-    GO
+	DROP TABLE [dbo].[infra_api_access_log]
+GO
 
-CREATE TABLE [dbo].[infra_api_access_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [trace_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_id] bigint DEFAULT 0 NOT NULL,
-    [user_type] tinyint DEFAULT 0 NOT NULL,
-    [application_name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_method] nvarchar
-(
-    16
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_url] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_params] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_agent] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [begin_time] datetime2
-(
-    7
-) NOT NULL,
-    [end_time] datetime2
-(
-    7
-) NOT NULL,
-    [duration] int NOT NULL,
-    [result_code] int NOT NULL,
-    [result_msg] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_api_access_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [trace_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_id] bigint DEFAULT 0 NOT NULL,
+  [user_type] tinyint DEFAULT 0 NOT NULL,
+  [application_name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_method] nvarchar(16) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_url] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_params] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_agent] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [begin_time] datetime2(7)  NOT NULL,
+  [end_time] datetime2(7)  NOT NULL,
+  [duration] int  NOT NULL,
+  [result_code] int  NOT NULL,
+  [result_msg] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_api_access_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'链路追踪编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'trace_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'application_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求方法名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'request_method'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'request_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'request_params'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'浏览器 UA',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'user_agent'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开始请求时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'begin_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结束请求时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'end_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'执行时长',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'duration'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'result_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果提示',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'result_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'API 访问日志表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_access_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'链路追踪编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'trace_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'application_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求方法名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'request_method'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求地址',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'request_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求参数',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'request_params'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'浏览器 UA',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'user_agent'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开始请求时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'begin_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结束请求时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'end_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'执行时长',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'duration'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果码',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'result_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果提示',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'result_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'API 访问日志表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_access_log'
+GO
 
 
 -- ----------------------------
 -- Records of infra_api_access_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_api_access_log] ON
@@ -2060,311 +1665,271 @@ GO
 -- Table structure for infra_api_error_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_api_error_log]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_api_error_log]
-    GO
+	DROP TABLE [dbo].[infra_api_error_log]
+GO
 
-CREATE TABLE [dbo].[infra_api_error_log]
-(
-    [
-    id]
-    int
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [trace_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_id] int DEFAULT 0 NOT NULL,
-    [user_type] tinyint DEFAULT 0 NOT NULL,
-    [application_name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_method] nvarchar
-(
-    16
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_url] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [request_params] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_agent] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_time] datetime2
-(
-    7
-) NOT NULL,
-    [exception_name] nvarchar
-(
-    128
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_message] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_root_cause_message] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_stack_trace] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_class_name] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_file_name] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_method_name] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [exception_line_number] int NOT NULL,
-    [process_status] tinyint NOT NULL,
-    [process_time] datetime2
-(
-    7
-) NULL,
-    [process_user_id] int NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_api_error_log] (
+  [id] int  IDENTITY(1,1) NOT NULL,
+  [trace_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_id] int DEFAULT 0 NOT NULL,
+  [user_type] tinyint DEFAULT 0 NOT NULL,
+  [application_name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_method] nvarchar(16) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_url] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [request_params] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_agent] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_time] datetime2(7)  NOT NULL,
+  [exception_name] nvarchar(128) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_message] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_root_cause_message] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_stack_trace] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_class_name] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_file_name] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_method_name] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [exception_line_number] int  NOT NULL,
+  [process_status] tinyint  NOT NULL,
+  [process_time] datetime2(7)  NULL,
+  [process_user_id] int  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_api_error_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'链路追踪编号
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'链路追踪编号
      *
      * 一般来说，通过链路追踪编号，可以将访问日志，错误日志，链路追踪日志，logger 打印日志等，结合在一起，从而进行排错。',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'trace_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用名
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'trace_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用名
      *
      * 目前读取 spring.application.name',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'application_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求方法名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'request_method'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'request_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'request_params'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'浏览器 UA',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'user_agent'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常发生时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常名
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'application_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求方法名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'request_method'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求地址',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'request_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求参数',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'request_params'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'浏览器 UA',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'user_agent'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常发生时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常名
      *
      * {@link Throwable#getClass()} 的类全名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常导致的消息
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常导致的消息
      *
      * {@link cn.iocoder.common.framework.util.ExceptionUtil#getMessage(Throwable)}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_message'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常导致的根消息
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_message'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常导致的根消息
      *
      * {@link cn.iocoder.common.framework.util.ExceptionUtil#getRootCauseMessage(Throwable)}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_root_cause_message'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常的栈轨迹
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_root_cause_message'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常的栈轨迹
      *
      * {@link cn.iocoder.common.framework.util.ExceptionUtil#getServiceException(Exception)}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_stack_trace'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常发生的类全名
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_stack_trace'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常发生的类全名
      *
      * {@link StackTraceElement#getClassName()}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_class_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常发生的类文件
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_class_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常发生的类文件
      *
      * {@link StackTraceElement#getFileName()}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_file_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常发生的方法名
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_file_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常发生的方法名
      *
      * {@link StackTraceElement#getMethodName()}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_method_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异常发生的方法所在行
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_method_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异常发生的方法所在行
      *
      * {@link StackTraceElement#getLineNumber()}',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'exception_line_number'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'process_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'process_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'process_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'系统异常日志',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_api_error_log'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'exception_line_number'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理状态',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'process_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'process_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'process_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'系统异常日志',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_api_error_log'
+GO
 
 
 -- ----------------------------
 -- Records of infra_api_error_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_api_error_log] ON
@@ -2381,263 +1946,219 @@ GO
 -- Table structure for infra_codegen_column
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_codegen_column]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_codegen_column]
-    GO
+	DROP TABLE [dbo].[infra_codegen_column]
+GO
 
-CREATE TABLE [dbo].[infra_codegen_column]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [table_id] bigint NOT NULL,
-    [column_name] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [data_type] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [column_comment] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [nullable] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [primary_key] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [auto_increment] nchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [ordinal_position] int NOT NULL,
-    [java_type] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [java_field] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [dict_type] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [example] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_operation] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [update_operation] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [list_operation] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [list_operation_condition] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [list_operation_result] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [html_type] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_codegen_column] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [table_id] bigint  NOT NULL,
+  [column_name] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [data_type] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [column_comment] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [nullable] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [primary_key] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [auto_increment] nchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [ordinal_position] int  NOT NULL,
+  [java_type] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [java_field] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [dict_type] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [example] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_operation] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [update_operation] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [list_operation] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [list_operation_condition] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [list_operation_result] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [html_type] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_codegen_column] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'table_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字段名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'column_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字段类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'data_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字段描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'column_comment'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否允许为空',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'nullable'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'primary_key'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否自增',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'auto_increment'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'排序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'ordinal_position'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Java 属性类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'java_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Java 属性名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'java_field'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'dict_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据示例',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'example'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否为 Create 创建操作的字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'create_operation'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否为 Update 更新操作的字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'update_operation'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否为 List 查询操作的字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'list_operation'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'List 查询操作的条件类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'list_operation_condition'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否为 List 查询操作的返回字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'list_operation_result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'显示类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'html_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'代码生成表字段定义',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_column'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'table_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字段名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'column_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字段类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'data_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字段描述',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'column_comment'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否允许为空',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'nullable'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否主键',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'primary_key'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否自增',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'auto_increment'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'排序',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'ordinal_position'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Java 属性类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'java_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Java 属性名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'java_field'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'dict_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据示例',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'example'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否为 Create 创建操作的字段',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'create_operation'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否为 Update 更新操作的字段',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'update_operation'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否为 List 查询操作的字段',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'list_operation'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'List 查询操作的条件类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'list_operation_condition'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否为 List 查询操作的返回字段',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'list_operation_result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'显示类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'html_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'代码生成表字段定义',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_column'
+GO
 
 
 -- ----------------------------
 -- Records of infra_codegen_column
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_codegen_column] ON
@@ -2654,197 +2175,171 @@ GO
 -- Table structure for infra_codegen_table
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_codegen_table]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_codegen_table]
-    GO
+	DROP TABLE [dbo].[infra_codegen_table]
+GO
 
-CREATE TABLE [dbo].[infra_codegen_table]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [data_source_config_id] bigint NOT NULL,
-    [scene] tinyint NOT NULL,
-    [table_name] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [table_comment] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [module_name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [business_name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [class_name] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [class_comment] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [author] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [template_type] tinyint NOT NULL,
-    [parent_menu_id] bigint NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_codegen_table] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [data_source_config_id] bigint  NOT NULL,
+  [scene] tinyint  NOT NULL,
+  [table_name] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [table_comment] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [module_name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [business_name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [class_name] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [class_comment] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [author] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [template_type] tinyint  NOT NULL,
+  [parent_menu_id] bigint  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_codegen_table] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据源配置的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'data_source_config_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'生成场景',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'scene'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'table_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'表描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'table_comment'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模块名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'module_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'业务名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'business_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'类名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'class_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'类描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'class_comment'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'作者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'author'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'template_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'父菜单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'parent_menu_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'代码生成表定义',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_codegen_table'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据源配置的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'data_source_config_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'生成场景',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'scene'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表名称',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'table_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'表描述',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'table_comment'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模块名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'module_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'业务名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'business_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'类名称',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'class_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'类描述',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'class_comment'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'作者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'author'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'template_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'父菜单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'parent_menu_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'代码生成表定义',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_codegen_table'
+GO
 
 
 -- ----------------------------
 -- Records of infra_codegen_table
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_codegen_table] ON
@@ -2861,154 +2356,131 @@ GO
 -- Table structure for infra_config
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_config]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_config]
-    GO
+	DROP TABLE [dbo].[infra_config]
+GO
 
-CREATE TABLE [dbo].[infra_config]
-(
-    [
-    id]
-    int
-    NOT
-    NULL, [
-    category]
-    nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] tinyint NOT NULL,
-    [name] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [config_key] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [value] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [visible] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_config] (
+  [id] int  NOT NULL,
+  [category] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [name] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [config_key] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [value] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [visible] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_config] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数分组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'category'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数键名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'config_key'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数键值',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'value'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否可见',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'visible'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数配置表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_config'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数主键',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数分组',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'category'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数名称',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数键名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'config_key'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数键值',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'value'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否可见',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'visible'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数配置表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_config'
+GO
 
 
 -- ----------------------------
 -- Records of infra_config
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 INSERT INTO [dbo].[infra_config] ([id], [category], [type], [name], [config_key], [value], [visible], [remark], [creator], [create_time], [updater], [update_time], [deleted]) VALUES (N'1', N'ui', N'1', N'主框架页-默认皮肤样式名称', N'sys.index.skinName', N'skin-blue', N'0', N'蓝色 skin-blue、绿色 skin-green、紫色 skin-purple、红色 skin-red、黄色 skin-yellow', N'admin', N'2021-01-05 17:03:48.0000000', N'1', N'2022-03-26 23:10:31.0000000', N'0')
@@ -3031,129 +2503,107 @@ GO
 -- Table structure for infra_data_source_config
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_data_source_config]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_data_source_config]
-    GO
+	DROP TABLE [dbo].[infra_data_source_config]
+GO
 
-CREATE TABLE [dbo].[infra_data_source_config]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [username] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [password] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_data_source_config] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [username] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [password] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_data_source_config] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'主键编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据源连接',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'username'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'密码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'password'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据源配置表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_data_source_config'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数名称',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据源连接',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'username'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'密码',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'password'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据源配置表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_data_source_config'
+GO
 
 
 -- ----------------------------
 -- Records of infra_data_source_config
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_data_source_config] ON
@@ -3176,133 +2626,115 @@ GO
 -- Table structure for infra_file
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_file]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_file]
-    GO
+	DROP TABLE [dbo].[infra_file]
+GO
 
-CREATE TABLE [dbo].[infra_file]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [config_id] bigint NULL,
-    [path] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [size] int NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_file] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [config_id] bigint  NULL,
+  [path] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [size] int  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_file] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'配置编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'config_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件路径',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'path'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件 URL',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件大小',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'size'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'配置编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'config_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件路径',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'path'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件 URL',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件大小',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'size'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file'
+GO
 
 
 -- ----------------------------
 -- Records of infra_file
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_file] ON
@@ -3319,136 +2751,115 @@ GO
 -- Table structure for infra_file_config
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_file_config]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_file_config]
-    GO
+	DROP TABLE [dbo].[infra_file_config]
+GO
 
-CREATE TABLE [dbo].[infra_file_config]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [storage] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [master] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [config] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_file_config] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [storage] tinyint  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [master] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [config] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_file_config] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'配置名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'存储器',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'storage'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否为主配置',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'master'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'存储配置',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'config'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件配置表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_config'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'配置名',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'存储器',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'storage'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否为主配置',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'master'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'存储配置',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'config'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件配置表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_config'
+GO
 
 
 -- ----------------------------
 -- Records of infra_file_config
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_file_config] ON
@@ -3474,116 +2885,99 @@ GO
 -- Table structure for infra_file_content
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_file_content]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_file_content]
-    GO
+	DROP TABLE [dbo].[infra_file_content]
+GO
 
-CREATE TABLE [dbo].[infra_file_content]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [config_id] bigint NOT NULL,
-    [path] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [content] varbinary
-(
-    max
-) NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_file_content] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [config_id] bigint  NOT NULL,
+  [path] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [content] varbinary(max)  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_file_content] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'配置编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'config_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件路径',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'path'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'content'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'文件表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_file_content'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'配置编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'config_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件路径',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'path'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件内容',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'content'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'文件表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_file_content'
+GO
 
 
 -- ----------------------------
 -- Records of infra_file_content
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_file_content] ON
@@ -3600,157 +2994,139 @@ GO
 -- Table structure for infra_job
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_job]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_job]
-    GO
+	DROP TABLE [dbo].[infra_job]
+GO
 
-CREATE TABLE [dbo].[infra_job]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [handler_name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [handler_param] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [cron_expression] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [retry_count] int NOT NULL,
-    [retry_interval] int NOT NULL,
-    [monitor_timeout] int NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_job] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [handler_name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [handler_param] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [cron_expression] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [retry_count] int  NOT NULL,
+  [retry_interval] int  NOT NULL,
+  [monitor_timeout] int  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_job] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理器的名字',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'handler_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理器的参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'handler_param'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'CRON 表达式',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'cron_expression'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'重试次数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'retry_count'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'重试间隔',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'retry_interval'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'监控超时时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'monitor_timeout'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'定时任务表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务名称',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务状态',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理器的名字',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'handler_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理器的参数',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'handler_param'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'CRON 表达式',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'cron_expression'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'重试次数',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'retry_count'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'重试间隔',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'retry_interval'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'监控超时时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'monitor_timeout'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'定时任务表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job'
+GO
 
 
 -- ----------------------------
 -- Records of infra_job
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_job] ON
@@ -3770,167 +3146,147 @@ GO
 -- Table structure for infra_job_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_job_log]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_job_log]
-    GO
+	DROP TABLE [dbo].[infra_job_log]
+GO
 
-CREATE TABLE [dbo].[infra_job_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [job_id] bigint NOT NULL,
-    [handler_name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [handler_param] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [execute_index] tinyint NOT NULL,
-    [begin_time] datetime2
-(
-    7
-) NOT NULL,
-    [end_time] datetime2
-(
-    7
-) NULL,
-    [duration] int NULL,
-    [status] tinyint NOT NULL,
-    [result] nvarchar
-(
-    4000
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_job_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [job_id] bigint  NOT NULL,
+  [handler_name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [handler_param] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [execute_index] tinyint  NOT NULL,
+  [begin_time] datetime2(7)  NOT NULL,
+  [end_time] datetime2(7)  NULL,
+  [duration] int  NULL,
+  [status] tinyint  NOT NULL,
+  [result] nvarchar(4000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_job_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'日志编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'job_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理器的名字',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'handler_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'处理器的参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'handler_param'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'第几次执行',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'execute_index'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开始执行时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'begin_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结束执行时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'end_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'执行时长',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'duration'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果数据',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'定时任务日志表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_job_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'日志编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'job_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理器的名字',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'handler_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'处理器的参数',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'handler_param'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'第几次执行',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'execute_index'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开始执行时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'begin_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结束执行时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'end_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'执行时长',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'duration'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务状态',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果数据',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'定时任务日志表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_job_log'
+GO
 
 
 -- ----------------------------
 -- Records of infra_job_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_job_log] ON
@@ -3947,130 +3303,115 @@ GO
 -- Table structure for infra_test_demo
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[infra_test_demo]') AND type IN ('U'))
-DROP TABLE [dbo].[infra_test_demo]
-    GO
+	DROP TABLE [dbo].[infra_test_demo]
+GO
 
-CREATE TABLE [dbo].[infra_test_demo]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [type] tinyint NOT NULL,
-    [category] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[infra_test_demo] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [category] tinyint  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[infra_test_demo] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'名字',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'分类',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'category'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典类型表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'infra_test_demo'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'名字',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'类型',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'分类',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'category'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典类型表',
+'SCHEMA', N'dbo',
+'TABLE', N'infra_test_demo'
+GO
 
 
 -- ----------------------------
 -- Records of infra_test_demo
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[infra_test_demo] ON
@@ -4087,173 +3428,147 @@ GO
 -- Table structure for member_user
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[member_user]') AND type IN ('U'))
-DROP TABLE [dbo].[member_user]
-    GO
+	DROP TABLE [dbo].[member_user]
+GO
 
-CREATE TABLE [dbo].[member_user]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [nickname] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [avatar] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [mobile] nvarchar
-(
-    11
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [password] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [register_ip] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [login_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [login_date] datetime2
-(
-    7
-) NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[member_user] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [nickname] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [avatar] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [mobile] nvarchar(11) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [password] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [register_ip] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [login_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [login_date] datetime2(7)  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[member_user] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户昵称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'nickname'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'头像',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'avatar'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'手机号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'mobile'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'密码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'password'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'注册 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'register_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后登录IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'login_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后登录时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'login_date'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户',
-    'SCHEMA', N'dbo',
-    'TABLE', N'member_user'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户昵称',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'nickname'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'头像',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'avatar'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'手机号',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'mobile'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'密码',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'password'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'注册 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'register_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后登录IP',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'login_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后登录时间',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'login_date'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户',
+'SCHEMA', N'dbo',
+'TABLE', N'member_user'
+GO
 
 
 -- ----------------------------
 -- Records of member_user
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[member_user] ON
@@ -4270,150 +3585,131 @@ GO
 -- Table structure for pay_app
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_app]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_app]
-    GO
+	DROP TABLE [dbo].[pay_app]
+GO
 
-CREATE TABLE [dbo].[pay_app]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [pay_notify_url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [refund_notify_url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [merchant_id] bigint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_app] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [pay_notify_url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [refund_notify_url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [merchant_id] bigint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_app] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付结果的回调地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'pay_notify_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款结果的回调地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'refund_notify_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'merchant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付应用信息',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_app'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用名',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付结果的回调地址',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'pay_notify_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款结果的回调地址',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'refund_notify_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'merchant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付应用信息',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_app'
+GO
 
 
 -- ----------------------------
 -- Records of pay_app
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_app] ON
@@ -4433,158 +3729,140 @@ GO
 -- Table structure for pay_channel
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_channel]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_channel]
-    GO
+	DROP TABLE [dbo].[pay_channel]
+GO
 
-CREATE TABLE [dbo].[pay_channel]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [code] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [fee_rate] float
-(
-    53
-) NOT NULL,
-    [merchant_id] bigint NOT NULL,
-    [app_id] bigint NOT NULL,
-    [config] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_channel] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [code] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [fee_rate] float(53)  NOT NULL,
+  [merchant_id] bigint  NOT NULL,
+  [app_id] bigint  NOT NULL,
+  [config] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_channel] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道费率，单位：百分比',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'fee_rate'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'merchant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'app_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付渠道配置',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'config'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付渠道
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道费率，单位：百分比',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'fee_rate'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'merchant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'app_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付渠道配置',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'config'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付渠道
 ',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_channel'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'pay_channel'
+GO
 
 
 -- ----------------------------
 -- Records of pay_channel
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_channel] ON
@@ -4628,143 +3906,123 @@ GO
 -- Table structure for pay_merchant
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_merchant]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_merchant]
-    GO
+	DROP TABLE [dbo].[pay_merchant]
+GO
 
-CREATE TABLE [dbo].[pay_merchant]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [no] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [short_name] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_merchant] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [no] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [short_name] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_merchant] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户全称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户简称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'short_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付商户信息',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_merchant'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户全称',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户简称',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'short_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付商户信息',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_merchant'
+GO
 
 
 -- ----------------------------
 -- Records of pay_merchant
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_merchant] ON
@@ -4784,127 +4042,115 @@ GO
 -- Table structure for pay_notify_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_notify_log]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_notify_log]
-    GO
+	DROP TABLE [dbo].[pay_notify_log]
+GO
 
-CREATE TABLE [dbo].[pay_notify_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [task_id] bigint NOT NULL,
-    [notify_times] tinyint NOT NULL,
-    [response] nvarchar
-(
-    2048
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_notify_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [task_id] bigint  NOT NULL,
+  [notify_times] tinyint  NOT NULL,
+  [response] nvarchar(2048) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_notify_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'日志编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知任务编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'task_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'第几次被通知',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'notify_times'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'response'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付通知 App 的日志',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'日志编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知任务编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'task_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'第几次被通知',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'notify_times'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求参数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'response'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付通知 App 的日志',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_log'
+GO
 
 
 -- ----------------------------
 -- Records of pay_notify_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_notify_log] ON
@@ -4921,186 +4167,172 @@ GO
 -- Table structure for pay_notify_task
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_notify_task]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_notify_task]
-    GO
+	DROP TABLE [dbo].[pay_notify_task]
+GO
 
-CREATE TABLE [dbo].[pay_notify_task]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [merchant_id] bigint NOT NULL,
-    [app_id] bigint NOT NULL,
-    [type] tinyint NOT NULL,
-    [data_id] bigint NOT NULL,
-    [status] tinyint NOT NULL,
-    [merchant_order_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [next_notify_time] datetime2
-(
-    7
-) NOT NULL,
-    [last_execute_time] datetime2
-(
-    7
-) NOT NULL,
-    [notify_times] tinyint NOT NULL,
-    [max_notify_times] tinyint NOT NULL,
-    [notify_url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_notify_task] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [merchant_id] bigint  NOT NULL,
+  [app_id] bigint  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [data_id] bigint  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [merchant_order_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [next_notify_time] datetime2(7)  NOT NULL,
+  [last_execute_time] datetime2(7)  NOT NULL,
+  [notify_times] tinyint  NOT NULL,
+  [max_notify_times] tinyint  NOT NULL,
+  [notify_url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_notify_task] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'任务编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'merchant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'app_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'data_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户订单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'merchant_order_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'下一次通知时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'next_notify_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后一次执行时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'last_execute_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'当前通知次数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'notify_times'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最大可通知次数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'max_notify_times'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异步通知地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'notify_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户支付、退款等的通知
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'任务编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'merchant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'app_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知类型',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'data_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户订单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'merchant_order_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'下一次通知时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'next_notify_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后一次执行时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'last_execute_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'当前通知次数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'notify_times'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最大可通知次数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'max_notify_times'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异步通知地址',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'notify_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户支付、退款等的通知
 ',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_notify_task'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'pay_notify_task'
+GO
 
 
 -- ----------------------------
 -- Records of pay_notify_task
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_notify_task] ON
@@ -5117,294 +4349,268 @@ GO
 -- Table structure for pay_order
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_order]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_order]
-    GO
+	DROP TABLE [dbo].[pay_order]
+GO
 
-CREATE TABLE [dbo].[pay_order]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [merchant_id] bigint NOT NULL,
-    [app_id] bigint NOT NULL,
-    [channel_id] bigint NULL,
-    [channel_code] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [merchant_order_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [subject] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [body] nvarchar
-(
-    128
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [notify_url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [notify_status] tinyint NOT NULL,
-    [amount] bigint NOT NULL,
-    [channel_fee_rate] float
-(
-    53
-) NULL,
-    [channel_fee_amount] bigint NULL,
-    [status] tinyint NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [expire_time] datetime2
-(
-    7
-) NOT NULL,
-    [success_time] datetime2
-(
-    7
-) NULL,
-    [notify_time] datetime2
-(
-    7
-) NULL,
-    [success_extension_id] bigint NULL,
-    [refund_status] tinyint NOT NULL,
-    [refund_times] tinyint NOT NULL,
-    [refund_amount] bigint NOT NULL,
-    [channel_user_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_order_no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_order] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [merchant_id] bigint  NOT NULL,
+  [app_id] bigint  NOT NULL,
+  [channel_id] bigint  NULL,
+  [channel_code] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [merchant_order_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [subject] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [body] nvarchar(128) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [notify_url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [notify_status] tinyint  NOT NULL,
+  [amount] bigint  NOT NULL,
+  [channel_fee_rate] float(53)  NULL,
+  [channel_fee_amount] bigint  NULL,
+  [status] tinyint  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [expire_time] datetime2(7)  NOT NULL,
+  [success_time] datetime2(7)  NULL,
+  [notify_time] datetime2(7)  NULL,
+  [success_extension_id] bigint  NULL,
+  [refund_status] tinyint  NOT NULL,
+  [refund_times] tinyint  NOT NULL,
+  [refund_amount] bigint  NOT NULL,
+  [channel_user_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_order_no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_order] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'merchant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'app_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户订单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'merchant_order_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商品标题',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'subject'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商品描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'body'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异步通知地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'notify_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知商户支付结果的回调状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'notify_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付金额，单位：分',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'amount'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道手续费，单位：百分比',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_fee_rate'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道手续金额，单位：分',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_fee_amount'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'订单失效时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'expire_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'订单支付成功时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'success_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'订单支付通知时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'notify_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付成功的订单拓展单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'success_extension_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'refund_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款次数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'refund_times'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款总金额，单位：分',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'refund_amount'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道订单号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'channel_order_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'merchant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'app_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户订单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'merchant_order_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商品标题',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'subject'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商品描述',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'body'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异步通知地址',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'notify_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知商户支付结果的回调状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'notify_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付金额，单位：分',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'amount'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道手续费，单位：百分比',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_fee_rate'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道手续金额，单位：分',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_fee_amount'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'订单失效时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'expire_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'订单支付成功时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'success_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'订单支付通知时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'notify_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付成功的订单拓展单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'success_extension_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'refund_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款次数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'refund_times'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款总金额，单位：分',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'refund_amount'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道订单号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'channel_order_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单
 ',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order'
+GO
 
 
 -- ----------------------------
 -- Records of pay_order
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_order] ON
@@ -5421,168 +4627,148 @@ GO
 -- Table structure for pay_order_extension
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_order_extension]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_order_extension]
-    GO
+	DROP TABLE [dbo].[pay_order_extension]
+GO
 
-CREATE TABLE [dbo].[pay_order_extension]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [order_id] bigint NOT NULL,
-    [channel_id] bigint NOT NULL,
-    [channel_code] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [channel_extras] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_notify_data] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_order_extension] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [order_id] bigint  NOT NULL,
+  [channel_id] bigint  NOT NULL,
+  [channel_code] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [channel_extras] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_notify_data] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_order_extension] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'order_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'channel_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'channel_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付渠道的额外参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'channel_extras'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付渠道异步通知的内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'channel_notify_data'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'order_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'channel_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'channel_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付渠道的额外参数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'channel_extras'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付渠道异步通知的内容',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'channel_notify_data'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单
 ',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_order_extension'
-    GO
+'SCHEMA', N'dbo',
+'TABLE', N'pay_order_extension'
+GO
 
 
 -- ----------------------------
 -- Records of pay_order_extension
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_order_extension] ON
@@ -5599,309 +4785,275 @@ GO
 -- Table structure for pay_refund
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[pay_refund]') AND type IN ('U'))
-DROP TABLE [dbo].[pay_refund]
-    GO
+	DROP TABLE [dbo].[pay_refund]
+GO
 
-CREATE TABLE [dbo].[pay_refund]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [merchant_id] bigint NOT NULL,
-    [app_id] bigint NOT NULL,
-    [channel_id] bigint NOT NULL,
-    [channel_code] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [order_id] bigint NOT NULL,
-    [trade_no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [merchant_order_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [merchant_refund_no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [notify_url] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [notify_status] tinyint NOT NULL,
-    [status] tinyint NOT NULL,
-    [type] tinyint NOT NULL,
-    [pay_amount] bigint NOT NULL,
-    [refund_amount] bigint NOT NULL,
-    [reason] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_order_no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [channel_refund_no] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_error_code] nvarchar
-(
-    128
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_error_msg] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [channel_extras] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [expire_time] datetime2
-(
-    7
-) NULL,
-    [success_time] datetime2
-(
-    7
-) NULL,
-    [notify_time] datetime2
-(
-    7
-) NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[pay_refund] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [merchant_id] bigint  NOT NULL,
+  [app_id] bigint  NOT NULL,
+  [channel_id] bigint  NOT NULL,
+  [channel_code] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [order_id] bigint  NOT NULL,
+  [trade_no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [merchant_order_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [merchant_refund_no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [notify_url] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [notify_status] tinyint  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [pay_amount] bigint  NOT NULL,
+  [refund_amount] bigint  NOT NULL,
+  [reason] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_order_no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [channel_refund_no] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_error_code] nvarchar(128) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_error_msg] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [channel_extras] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [expire_time] datetime2(7)  NULL,
+  [success_time] datetime2(7)  NULL,
+  [notify_time] datetime2(7)  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[pay_refund] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付退款编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'merchant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'app_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付订单编号 pay_order 表id',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'order_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'交易订单号 pay_extension 表no 字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'trade_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户订单编号（商户系统生成）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'merchant_order_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'商户退款订单号（商户系统生成）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'merchant_refund_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'异步通知商户地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'notify_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知商户退款结果的回调状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'notify_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款类型(部分退款，全部退款)',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付金额,单位分',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'pay_amount'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款金额,单位分',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'refund_amount'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款原因',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'reason'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道订单号，pay_order 中的channel_order_no 对应',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_order_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道退款单号，渠道返回',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_refund_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道调用报错时，错误码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_error_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道调用报错时，错误信息',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_error_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'支付渠道的额外参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'channel_extras'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款失效时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'expire_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款成功时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'success_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款通知时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'notify_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'退款订单',
-    'SCHEMA', N'dbo',
-    'TABLE', N'pay_refund'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付退款编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'merchant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'app_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付订单编号 pay_order 表id',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'order_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'交易订单号 pay_extension 表no 字段',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'trade_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户订单编号（商户系统生成）',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'merchant_order_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'商户退款订单号（商户系统生成）',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'merchant_refund_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'异步通知商户地址',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'notify_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知商户退款结果的回调状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'notify_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款状态',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款类型(部分退款，全部退款)',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付金额,单位分',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'pay_amount'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款金额,单位分',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'refund_amount'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款原因',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'reason'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道订单号，pay_order 中的channel_order_no 对应',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_order_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道退款单号，渠道返回',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_refund_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道调用报错时，错误码',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_error_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道调用报错时，错误信息',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_error_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'支付渠道的额外参数',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'channel_extras'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款失效时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'expire_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款成功时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'success_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款通知时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'notify_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'退款订单',
+'SCHEMA', N'dbo',
+'TABLE', N'pay_refund'
+GO
 
 
 -- ----------------------------
 -- Records of pay_refund
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[pay_refund] ON
@@ -5918,154 +5070,139 @@ GO
 -- Table structure for system_dept
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_dept]') AND type IN ('U'))
-DROP TABLE [dbo].[system_dept]
-    GO
+	DROP TABLE [dbo].[system_dept]
+GO
 
-CREATE TABLE [dbo].[system_dept]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [parent_id] bigint NOT NULL,
-    [sort] int NOT NULL,
-    [leader_user_id] bigint NULL,
-    [phone] nvarchar
-(
-    11
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [email] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_dept] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [parent_id] bigint  NOT NULL,
+  [sort] int  NOT NULL,
+  [leader_user_id] bigint  NULL,
+  [phone] nvarchar(11) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [email] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_dept] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'部门id',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'部门名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'父部门id',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'parent_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'显示顺序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'sort'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'负责人',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'leader_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'联系电话',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'phone'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'邮箱',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'email'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'部门状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'部门表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dept'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'部门id',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'部门名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'父部门id',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'parent_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'显示顺序',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'sort'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'负责人',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'leader_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'联系电话',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'phone'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'邮箱',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'email'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'部门状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'部门表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dept'
+GO
 
 
 -- ----------------------------
 -- Records of system_dept
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_dept] ON
@@ -6118,163 +5255,139 @@ GO
 -- Table structure for system_dict_data
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_dict_data]') AND type IN ('U'))
-DROP TABLE [dbo].[system_dict_data]
-    GO
+	DROP TABLE [dbo].[system_dict_data]
+GO
 
-CREATE TABLE [dbo].[system_dict_data]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [sort] int NOT NULL,
-    [label] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [value] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [dict_type] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [color_type] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [css_class] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_dict_data] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [sort] int  NOT NULL,
+  [label] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [value] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [dict_type] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [color_type] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [css_class] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_dict_data] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典排序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'sort'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典标签',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'label'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典键值',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'value'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'dict_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'颜色类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'color_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'css 样式',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'css_class'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典数据表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_data'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典排序',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'sort'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典标签',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'label'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典键值',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'value'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'dict_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'颜色类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'color_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'css 样式',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'css_class'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典数据表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_data'
+GO
 
 
 -- ----------------------------
 -- Records of system_dict_data
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_dict_data] ON
@@ -6693,126 +5806,107 @@ GO
 -- Table structure for system_dict_type
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_dict_type]') AND type IN ('U'))
-DROP TABLE [dbo].[system_dict_type]
-    GO
+	DROP TABLE [dbo].[system_dict_type]
+GO
 
-CREATE TABLE [dbo].[system_dict_type]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_dict_type] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_dict_type] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'字典类型表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_dict_type'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典主键',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'字典类型表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_dict_type'
+GO
 
 
 -- ----------------------------
 -- Records of system_dict_type
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_dict_type] ON
@@ -6949,133 +6043,115 @@ GO
 -- Table structure for system_error_code
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_error_code]') AND type IN ('U'))
-DROP TABLE [dbo].[system_error_code]
-    GO
+	DROP TABLE [dbo].[system_error_code]
+GO
 
-CREATE TABLE [dbo].[system_error_code]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [type] tinyint NOT NULL,
-    [application_name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [code] int NOT NULL,
-    [message] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [memo] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_error_code] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [type] tinyint  NOT NULL,
+  [application_name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [code] int  NOT NULL,
+  [message] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [memo] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_error_code] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'错误码编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'错误码类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'application_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'错误码编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'错误码错误提示',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'message'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'memo'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'错误码表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_error_code'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'错误码编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'错误码类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'application_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'错误码编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'错误码错误提示',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'message'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'memo'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'错误码表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_error_code'
+GO
 
 
 -- ----------------------------
 -- Records of system_error_code
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_error_code] ON
@@ -7092,164 +6168,147 @@ GO
 -- Table structure for system_login_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_login_log]') AND type IN ('U'))
-DROP TABLE [dbo].[system_login_log]
-    GO
+	DROP TABLE [dbo].[system_login_log]
+GO
 
-CREATE TABLE [dbo].[system_login_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [log_type] bigint NOT NULL,
-    [trace_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_id] bigint NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [username] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [result] tinyint NOT NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_agent] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_login_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [log_type] bigint  NOT NULL,
+  [trace_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [username] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [result] tinyint  NOT NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_agent] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_login_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'访问ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'日志类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'log_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'链路追踪编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'trace_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户账号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'username'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'登陆结果',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'result'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'浏览器 UA',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'user_agent'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'系统访问记录',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_login_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'访问ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'日志类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'log_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'链路追踪编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'trace_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户账号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'username'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'登陆结果',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'result'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'浏览器 UA',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'user_agent'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'系统访问记录',
+'SCHEMA', N'dbo',
+'TABLE', N'system_login_log'
+GO
 
 
 -- ----------------------------
 -- Records of system_login_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_login_log] ON
@@ -7266,187 +6325,163 @@ GO
 -- Table structure for system_menu
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_menu]') AND type IN ('U'))
-DROP TABLE [dbo].[system_menu]
-    GO
+	DROP TABLE [dbo].[system_menu]
+GO
 
-CREATE TABLE [dbo].[system_menu]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [permission] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] tinyint NOT NULL,
-    [sort] int NOT NULL,
-    [parent_id] bigint NOT NULL,
-    [path] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [icon] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [component] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [visible] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [keep_alive] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_menu] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [permission] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [sort] int  NOT NULL,
+  [parent_id] bigint  NOT NULL,
+  [path] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [icon] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [component] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [visible] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [keep_alive] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_menu] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'权限标识',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'permission'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'显示顺序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'sort'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'父菜单ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'parent_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'路由地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'path'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单图标',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'icon'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'组件路径',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'component'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否可见',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'visible'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否缓存',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'keep_alive'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单权限表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_menu'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'权限标识',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'permission'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'显示顺序',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'sort'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'父菜单ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'parent_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'路由地址',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'path'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单图标',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'icon'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'组件路径',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'component'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否可见',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'visible'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否缓存',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'keep_alive'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单权限表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_menu'
+GO
 
 
 -- ----------------------------
 -- Records of system_menu
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_menu] ON
@@ -8153,130 +7188,115 @@ GO
 -- Table structure for system_notice
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_notice]') AND type IN ('U'))
-DROP TABLE [dbo].[system_notice]
-    GO
+	DROP TABLE [dbo].[system_notice]
+GO
 
-CREATE TABLE [dbo].[system_notice]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [title] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [content] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] tinyint NOT NULL,
-    [status] tinyint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_notice] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [title] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [content] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_notice] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'公告ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'公告标题',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'title'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'公告内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'content'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'公告类型（1通知 2公告）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'公告状态（0正常 1关闭）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'通知公告表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_notice'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'公告ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'公告标题',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'title'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'公告内容',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'content'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'公告类型（1通知 2公告）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'公告状态（0正常 1关闭）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'通知公告表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_notice'
+GO
 
 
 -- ----------------------------
 -- Records of system_notice
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_notice] ON
@@ -8302,160 +7322,139 @@ GO
 -- Table structure for system_oauth2_access_token
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_oauth2_access_token]') AND type IN ('U'))
-DROP TABLE [dbo].[system_oauth2_access_token]
-    GO
+	DROP TABLE [dbo].[system_oauth2_access_token]
+GO
 
-CREATE TABLE [dbo].[system_oauth2_access_token]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [access_token] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [refresh_token] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [client_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [expires_time] datetime2
-(
-    7
-) NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL,
-    [scopes] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_oauth2_access_token] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [access_token] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [refresh_token] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [client_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [expires_time] datetime2(7)  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL,
+  [scopes] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_oauth2_access_token] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'访问令牌',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'access_token'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'刷新令牌',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'refresh_token'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'client_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'过期时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'expires_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token',
-    'COLUMN', N'scopes'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'刷新令牌',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_access_token'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'访问令牌',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'access_token'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'刷新令牌',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'refresh_token'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'client_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'过期时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'expires_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token',
+'COLUMN', N'scopes'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'刷新令牌',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_access_token'
+GO
 
 
 -- ----------------------------
 -- Records of system_oauth2_access_token
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_oauth2_access_token] ON
@@ -8472,150 +7471,131 @@ GO
 -- Table structure for system_oauth2_approve
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_oauth2_approve]') AND type IN ('U'))
-DROP TABLE [dbo].[system_oauth2_approve]
-    GO
+	DROP TABLE [dbo].[system_oauth2_approve]
+GO
 
-CREATE TABLE [dbo].[system_oauth2_approve]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [client_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [scope] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [approved] varchar
-(
-    1
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [expires_time] datetime2
-(
-    7
-) NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_oauth2_approve] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [client_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [scope] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [approved] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [expires_time] datetime2(7)  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_oauth2_approve] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'client_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'scope'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否接受',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'approved'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'过期时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'expires_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'OAuth2 批准表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_approve'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'client_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'scope'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否接受',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'approved'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'过期时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'expires_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'OAuth2 批准表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_approve'
+GO
 
 
 -- ----------------------------
 -- Records of system_oauth2_approve
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_oauth2_approve] ON
@@ -8632,230 +7612,195 @@ GO
 -- Table structure for system_oauth2_client
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_oauth2_client]') AND type IN ('U'))
-DROP TABLE [dbo].[system_oauth2_client]
-    GO
+	DROP TABLE [dbo].[system_oauth2_client]
+GO
 
-CREATE TABLE [dbo].[system_oauth2_client]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [client_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [secret] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [name] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [logo] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [description] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [access_token_validity_seconds] int NOT NULL,
-    [refresh_token_validity_seconds] int NOT NULL,
-    [redirect_uris] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [auto_approve_scopes] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
-    [authorized_grant_types] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [scopes] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL,
-    [authorities] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [resource_ids] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [additional_information] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_oauth2_client] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [client_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [secret] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [name] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [logo] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [description] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [access_token_validity_seconds] int  NOT NULL,
+  [refresh_token_validity_seconds] int  NOT NULL,
+  [redirect_uris] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [auto_approve_scopes] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
+  [authorized_grant_types] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [scopes] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL,
+  [authorities] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [resource_ids] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [additional_information] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_oauth2_client] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'client_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端密钥',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'secret'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用图标',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'logo'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'应用描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'description'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'访问令牌的有效期',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'access_token_validity_seconds'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'刷新令牌的有效期',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'refresh_token_validity_seconds'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'可重定向的 URI 地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'redirect_uris'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'自动通过的授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'auto_approve_scopes'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'authorized_grant_types'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'scopes'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'权限',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'authorities'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'资源',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'resource_ids'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'附加信息',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'additional_information'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'OAuth2 客户端表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_client'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'client_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端密钥',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'secret'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用图标',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'logo'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'应用描述',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'description'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'访问令牌的有效期',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'access_token_validity_seconds'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'刷新令牌的有效期',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'refresh_token_validity_seconds'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'可重定向的 URI 地址',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'redirect_uris'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'自动通过的授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'auto_approve_scopes'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'authorized_grant_types'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'scopes'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'权限',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'authorities'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'资源',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'resource_ids'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'附加信息',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'additional_information'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'OAuth2 客户端表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_client'
+GO
 
 
 -- ----------------------------
 -- Records of system_oauth2_client
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_oauth2_client] ON
@@ -8875,170 +7820,147 @@ GO
 -- Table structure for system_oauth2_code
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_oauth2_code]') AND type IN ('U'))
-DROP TABLE [dbo].[system_oauth2_code]
-    GO
+	DROP TABLE [dbo].[system_oauth2_code]
+GO
 
-CREATE TABLE [dbo].[system_oauth2_code]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [code] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [client_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [scopes] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [expires_time] datetime2
-(
-    7
-) NOT NULL,
-    [redirect_uri] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [state] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_oauth2_code] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [code] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [client_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [scopes] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [expires_time] datetime2(7)  NOT NULL,
+  [redirect_uri] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [state] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint  NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_oauth2_code] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'client_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'scopes'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'过期时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'expires_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'可重定向的 URI 地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'redirect_uri'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'state'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'OAuth2 授权码表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_code'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'client_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'scopes'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'过期时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'expires_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'可重定向的 URI 地址',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'redirect_uri'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'state'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'OAuth2 授权码表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_code'
+GO
 
 
 -- ----------------------------
 -- Records of system_oauth2_code
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_oauth2_code] ON
@@ -9055,150 +7977,131 @@ GO
 -- Table structure for system_oauth2_refresh_token
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_oauth2_refresh_token]') AND type IN ('U'))
-DROP TABLE [dbo].[system_oauth2_refresh_token]
-    GO
+	DROP TABLE [dbo].[system_oauth2_refresh_token]
+GO
 
-CREATE TABLE [dbo].[system_oauth2_refresh_token]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [refresh_token] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [client_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [expires_time] datetime2
-(
-    7
-) NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [scopes] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_oauth2_refresh_token] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [refresh_token] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [client_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [expires_time] datetime2(7)  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [scopes] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_oauth2_refresh_token] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'刷新令牌',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'refresh_token'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'客户端编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'client_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'过期时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'expires_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'授权范围',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token',
-    'COLUMN', N'scopes'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'刷新令牌',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_oauth2_refresh_token'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'刷新令牌',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'refresh_token'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'客户端编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'client_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'过期时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'expires_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'授权范围',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token',
+'COLUMN', N'scopes'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'刷新令牌',
+'SCHEMA', N'dbo',
+'TABLE', N'system_oauth2_refresh_token'
+GO
 
 
 -- ----------------------------
 -- Records of system_oauth2_refresh_token
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_oauth2_refresh_token] ON
@@ -9215,271 +8118,235 @@ GO
 -- Table structure for system_operate_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_operate_log]') AND type IN ('U'))
-DROP TABLE [dbo].[system_operate_log]
-    GO
+	DROP TABLE [dbo].[system_operate_log]
+GO
 
-CREATE TABLE [dbo].[system_operate_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [trace_id] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_id] bigint NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [module] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [type] bigint NOT NULL,
-    [content] nvarchar
-(
-    2000
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
-    [exts] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
-    [request_method] nvarchar
-(
-    16
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [request_url] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [user_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [user_agent] nvarchar
-(
-    200
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [java_method] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [java_method_args] nvarchar
-(
-    max
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [start_time] datetime2
-(
-    7
-) NOT NULL,
-    [duration] int NOT NULL,
-    [result_code] int NOT NULL,
-    [result_msg] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [result_data] nvarchar
-(
-    4000
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_operate_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [trace_id] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [module] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [type] bigint  NOT NULL,
+  [content] nvarchar(2000) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
+  [exts] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS DEFAULT '' NOT NULL,
+  [request_method] nvarchar(16) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [request_url] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [user_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [user_agent] nvarchar(200) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [java_method] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [java_method_args] nvarchar(max) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [start_time] datetime2(7)  NOT NULL,
+  [duration] int  NOT NULL,
+  [result_code] int  NOT NULL,
+  [result_msg] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [result_data] nvarchar(4000) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_operate_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'日志主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'链路追踪编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'trace_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模块标题',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'module'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'操作名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'操作分类',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'操作内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'content'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'拓展字段',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'exts'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求方法名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'request_method'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'请求地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'request_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'user_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'浏览器 UA',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'user_agent'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Java 方法名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'java_method'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'Java 方法的参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'java_method_args'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'操作时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'start_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'执行时长',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'duration'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'result_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果提示',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'result_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'结果数据',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'result_data'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'操作日志记录',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_operate_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'日志主键',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'链路追踪编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'trace_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模块标题',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'module'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'操作名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'操作分类',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'操作内容',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'content'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'拓展字段',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'exts'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求方法名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'request_method'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'请求地址',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'request_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'user_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'浏览器 UA',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'user_agent'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Java 方法名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'java_method'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'Java 方法的参数',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'java_method_args'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'操作时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'start_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'执行时长',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'duration'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'result_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果提示',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'result_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'结果数据',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'result_data'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'操作日志记录',
+'SCHEMA', N'dbo',
+'TABLE', N'system_operate_log'
+GO
 
 
 -- ----------------------------
 -- Records of system_operate_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_operate_log] ON
@@ -9496,140 +8363,123 @@ GO
 -- Table structure for system_post
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_post]') AND type IN ('U'))
-DROP TABLE [dbo].[system_post]
-    GO
+	DROP TABLE [dbo].[system_post]
+GO
 
-CREATE TABLE [dbo].[system_post]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [code] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [name] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [sort] int NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_post] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [code] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [name] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [sort] int  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_post] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'显示顺序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'sort'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位信息表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_post'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'显示顺序',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'sort'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位信息表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_post'
+GO
 
 
 -- ----------------------------
 -- Records of system_post
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_post] ON
@@ -9655,164 +8505,147 @@ GO
 -- Table structure for system_role
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_role]') AND type IN ('U'))
-DROP TABLE [dbo].[system_role]
-    GO
+	DROP TABLE [dbo].[system_role]
+GO
 
-CREATE TABLE [dbo].[system_role]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [code] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [sort] int NOT NULL,
-    [data_scope] tinyint NOT NULL,
-    [data_scope_dept_ids] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [type] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_role] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [code] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [sort] int  NOT NULL,
+  [data_scope] tinyint  NOT NULL,
+  [data_scope_dept_ids] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [type] tinyint  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_role] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色权限字符串',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'显示顺序',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'sort'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'data_scope'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'数据范围(指定部门数组)',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'data_scope_dept_ids'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色信息表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色权限字符串',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'显示顺序',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'sort'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'data_scope'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'数据范围(指定部门数组)',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'data_scope_dept_ids'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色信息表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role'
+GO
 
 
 -- ----------------------------
 -- Records of system_role
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_role] ON
@@ -9847,115 +8680,99 @@ GO
 -- Table structure for system_role_menu
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_role_menu]') AND type IN ('U'))
-DROP TABLE [dbo].[system_role_menu]
-    GO
+	DROP TABLE [dbo].[system_role_menu]
+GO
 
-CREATE TABLE [dbo].[system_role_menu]
-(
-    [
-    role_id]
-    bigint
-    NOT
-    NULL, [
-    menu_id]
-    bigint
-    NOT
-    NULL, [
-    creator]
-    nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [id] bigint IDENTITY
-(
-    1,
-    1
-) NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_role_menu] (
+  [role_id] bigint  NOT NULL,
+  [menu_id] bigint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [id] bigint  IDENTITY(1,1) NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_role_menu] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'role_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'菜单ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'menu_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'自增编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色和菜单关联表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_role_menu'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'role_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'菜单ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'menu_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'自增编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色和菜单关联表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_role_menu'
+GO
 
 
 -- ----------------------------
 -- Records of system_role_menu
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_role_menu] ON
@@ -10545,126 +9362,107 @@ GO
 -- Table structure for system_sensitive_word
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_sensitive_word]') AND type IN ('U'))
-DROP TABLE [dbo].[system_sensitive_word]
-    GO
+	DROP TABLE [dbo].[system_sensitive_word]
+GO
 
-CREATE TABLE [dbo].[system_sensitive_word]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [description] nvarchar
-(
-    512
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [tags] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_sensitive_word] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [description] nvarchar(512) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [tags] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_sensitive_word] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'敏感词',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'描述',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'description'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'标签数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'tags'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'敏感词',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sensitive_word'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'敏感词',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'描述',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'description'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'标签数组',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'tags'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'敏感词',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sensitive_word'
+GO
 
 
 -- ----------------------------
 -- Records of system_sensitive_word
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_sensitive_word] ON
@@ -10687,156 +9485,131 @@ GO
 -- Table structure for system_sms_channel
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_sms_channel]') AND type IN ('U'))
-DROP TABLE [dbo].[system_sms_channel]
-    GO
+	DROP TABLE [dbo].[system_sms_channel]
+GO
 
-CREATE TABLE [dbo].[system_sms_channel]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [signature] nvarchar
-(
-    10
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_key] nvarchar
-(
-    128
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [api_secret] nvarchar
-(
-    128
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [callback_url] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_sms_channel] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [signature] nvarchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_key] nvarchar(128) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [api_secret] nvarchar(128) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [callback_url] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_sms_channel] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信签名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'signature'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 的账号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'api_key'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 的秘钥',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'api_secret'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信发送回调 URL',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'callback_url'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信渠道',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_channel'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信签名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'signature'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 的账号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'api_key'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 的秘钥',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'api_secret'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信发送回调 URL',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'callback_url'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信渠道',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_channel'
+GO
 
 
 -- ----------------------------
 -- Records of system_sms_channel
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_sms_channel] ON
@@ -10865,167 +9638,147 @@ GO
 -- Table structure for system_sms_code
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_sms_code]') AND type IN ('U'))
-DROP TABLE [dbo].[system_sms_code]
-    GO
+	DROP TABLE [dbo].[system_sms_code]
+GO
 
-CREATE TABLE [dbo].[system_sms_code]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [mobile] nvarchar
-(
-    11
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [code] nvarchar
-(
-    6
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [create_ip] nvarchar
-(
-    15
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [scene] tinyint NOT NULL,
-    [today_index] tinyint NOT NULL,
-    [used] tinyint NOT NULL,
-    [used_time] datetime2
-(
-    7
-) NULL,
-    [used_ip] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_sms_code] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [mobile] nvarchar(11) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [code] nvarchar(6) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [create_ip] nvarchar(15) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [scene] tinyint  NOT NULL,
+  [today_index] tinyint  NOT NULL,
+  [used] tinyint  NOT NULL,
+  [used_time] datetime2(7)  NULL,
+  [used_ip] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_sms_code] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'手机号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'mobile'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'验证码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'create_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发送场景',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'scene'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'今日发送的第几条',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'today_index'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否使用',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'used'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'使用时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'used_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'使用 IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'used_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'手机验证码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_code'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'手机号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'mobile'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'验证码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'create_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发送场景',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'scene'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'今日发送的第几条',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'today_index'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否使用',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'used'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'使用时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'used_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'使用 IP',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'used_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'手机验证码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_code'
+GO
 
 
 -- ----------------------------
 -- Records of system_sms_code
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_sms_code] ON
@@ -11042,295 +9795,259 @@ GO
 -- Table structure for system_sms_log
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_sms_log]') AND type IN ('U'))
-DROP TABLE [dbo].[system_sms_log]
-    GO
+	DROP TABLE [dbo].[system_sms_log]
+GO
 
-CREATE TABLE [dbo].[system_sms_log]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [channel_id] bigint NOT NULL,
-    [channel_code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [template_id] bigint NOT NULL,
-    [template_code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [template_type] tinyint NOT NULL,
-    [template_content] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [template_params] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [api_template_id] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [mobile] nvarchar
-(
-    11
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [user_id] bigint NULL,
-    [user_type] tinyint NULL,
-    [send_status] tinyint NOT NULL,
-    [send_time] datetime2
-(
-    7
-) NULL,
-    [send_code] int NULL,
-    [send_msg] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_send_code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_send_msg] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_request_id] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_serial_no] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [receive_status] tinyint NOT NULL,
-    [receive_time] datetime2
-(
-    7
-) NULL,
-    [api_receive_code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_receive_msg] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_sms_log] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [channel_id] bigint  NOT NULL,
+  [channel_code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [template_id] bigint  NOT NULL,
+  [template_code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [template_type] tinyint  NOT NULL,
+  [template_content] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [template_params] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [api_template_id] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [mobile] nvarchar(11) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [user_id] bigint  NULL,
+  [user_type] tinyint  NULL,
+  [send_status] tinyint  NOT NULL,
+  [send_time] datetime2(7)  NULL,
+  [send_code] int  NULL,
+  [send_msg] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_send_code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_send_msg] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_request_id] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_serial_no] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [receive_status] tinyint  NOT NULL,
+  [receive_time] datetime2(7)  NULL,
+  [api_receive_code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_receive_msg] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_sms_log] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信渠道编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'channel_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'channel_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'template_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'template_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'template_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'template_content'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信参数',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'template_params'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 的模板编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_template_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'手机号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'mobile'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发送状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'send_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发送时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'send_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发送结果的编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'send_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'发送结果的提示',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'send_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 发送结果的编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_send_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 发送失败的提示',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_send_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 发送返回的唯一请求 ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_request_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 发送返回的序号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_serial_no'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'接收状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'receive_status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'接收时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'receive_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'API 接收结果的编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_receive_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'API 接收结果的说明',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'api_receive_msg'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信日志',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_log'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信渠道编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'channel_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'channel_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'template_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'template_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'template_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信内容',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'template_content'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信参数',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'template_params'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 的模板编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_template_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'手机号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'mobile'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发送状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'send_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发送时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'send_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发送结果的编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'send_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'发送结果的提示',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'send_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 发送结果的编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_send_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 发送失败的提示',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_send_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 发送返回的唯一请求 ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_request_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 发送返回的序号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_serial_no'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'接收状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'receive_status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'接收时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'receive_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'API 接收结果的编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_receive_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'API 接收结果的说明',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'api_receive_msg'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信日志',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_log'
+GO
 
 
 -- ----------------------------
 -- Records of system_sms_log
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_sms_log] ON
@@ -11347,180 +10064,155 @@ GO
 -- Table structure for system_sms_template
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_sms_template]') AND type IN ('U'))
-DROP TABLE [dbo].[system_sms_template]
-    GO
+	DROP TABLE [dbo].[system_sms_template]
+GO
 
-CREATE TABLE [dbo].[system_sms_template]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [type] tinyint NOT NULL,
-    [status] tinyint NOT NULL,
-    [code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [name] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [content] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [params] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [remark] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [api_template_id] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [channel_id] bigint NOT NULL,
-    [channel_code] nvarchar
-(
-    63
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_sms_template] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [type] tinyint  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [name] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [content] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [params] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [remark] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [api_template_id] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [channel_id] bigint  NOT NULL,
+  [channel_code] nvarchar(63) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_sms_template] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信签名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'开启状态',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板名称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'模板内容',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'content'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'参数数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'params'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信 API 的模板编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'api_template_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信渠道编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'channel_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信渠道编码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'channel_code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'短信模板',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_sms_template'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信签名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'开启状态',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板名称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'模板内容',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'content'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'参数数组',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'params'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信 API 的模板编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'api_template_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信渠道编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'channel_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信渠道编码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'channel_code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'短信模板',
+'SCHEMA', N'dbo',
+'TABLE', N'system_sms_template'
+GO
 
 
 -- ----------------------------
 -- Records of system_sms_template
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_sms_template] ON
@@ -11567,183 +10259,155 @@ GO
 -- Table structure for system_social_user
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_social_user]') AND type IN ('U'))
-DROP TABLE [dbo].[system_social_user]
-    GO
+	DROP TABLE [dbo].[system_social_user]
+GO
 
-CREATE TABLE [dbo].[system_social_user]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [type] tinyint NOT NULL,
-    [openid] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [token] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [raw_token_info] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [nickname] nvarchar
-(
-    32
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [avatar] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [raw_user_info] nvarchar
-(
-    1024
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [code] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [state] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_social_user] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [type] tinyint  NOT NULL,
+  [openid] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [token] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [raw_token_info] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [nickname] nvarchar(32) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [avatar] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [raw_user_info] nvarchar(1024) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [code] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [state] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_social_user] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'主键(自增策略)',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交平台的类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交 openid',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'openid'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交 token',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'token'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'原始 Token 数据，一般是 JSON 格式',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'raw_token_info'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户昵称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'nickname'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户头像',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'avatar'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'原始用户数据，一般是 JSON 格式',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'raw_user_info'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后一次的认证 code',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'code'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后一次的认证 state',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'state'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交用户表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键(自增策略)',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交平台的类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交 openid',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'openid'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交 token',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'token'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'原始 Token 数据，一般是 JSON 格式',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'raw_token_info'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户昵称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'nickname'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户头像',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'avatar'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'原始用户数据，一般是 JSON 格式',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'raw_user_info'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后一次的认证 code',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'code'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后一次的认证 state',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'state'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交用户表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user'
+GO
 
 
 -- ----------------------------
 -- Records of system_social_user
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_social_user] ON
@@ -11760,124 +10424,115 @@ GO
 -- Table structure for system_social_user_bind
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_social_user_bind]') AND type IN ('U'))
-DROP TABLE [dbo].[system_social_user_bind]
-    GO
+	DROP TABLE [dbo].[system_social_user_bind]
+GO
 
-CREATE TABLE [dbo].[system_social_user_bind]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [user_type] tinyint NOT NULL,
-    [social_type] tinyint NOT NULL,
-    [social_user_id] bigint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_social_user_bind] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [user_type] tinyint  NOT NULL,
+  [social_type] tinyint  NOT NULL,
+  [social_user_id] bigint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_social_user_bind] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'主键(自增策略)',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'user_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交平台的类型',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'social_type'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交用户的编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'social_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'社交绑定表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_social_user_bind'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'主键(自增策略)',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'user_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交平台的类型',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'social_type'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交用户的编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'social_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'社交绑定表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_social_user_bind'
+GO
 
 
 -- ----------------------------
 -- Records of system_social_user_bind
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_social_user_bind] ON
@@ -11894,167 +10549,147 @@ GO
 -- Table structure for system_tenant
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_tenant]') AND type IN ('U'))
-DROP TABLE [dbo].[system_tenant]
-    GO
+	DROP TABLE [dbo].[system_tenant]
+GO
 
-CREATE TABLE [dbo].[system_tenant]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [contact_user_id] bigint NULL,
-    [contact_name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [contact_mobile] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [domain] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [package_id] bigint NOT NULL,
-    [expire_time] datetime2
-(
-    7
-) NOT NULL,
-    [account_count] int NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_tenant] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [contact_user_id] bigint  NULL,
+  [contact_name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [contact_mobile] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [domain] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [package_id] bigint  NOT NULL,
+  [expire_time] datetime2(7)  NOT NULL,
+  [account_count] int  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_tenant] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'联系人的用户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'contact_user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'联系人',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'contact_name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'联系手机',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'contact_mobile'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'绑定域名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'domain'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户套餐编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'package_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'过期时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'expire_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'账号数量',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'account_count'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'联系人的用户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'contact_user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'联系人',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'contact_name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'联系手机',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'contact_mobile'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'绑定域名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'domain'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户套餐编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'package_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'过期时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'expire_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'账号数量',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'account_count'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant'
+GO
 
 
 -- ----------------------------
 -- Records of system_tenant
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_tenant] ON
@@ -12080,126 +10715,107 @@ GO
 -- Table structure for system_tenant_package
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_tenant_package]') AND type IN ('U'))
-DROP TABLE [dbo].[system_tenant_package]
-    GO
+	DROP TABLE [dbo].[system_tenant_package]
+GO
 
-CREATE TABLE [dbo].[system_tenant_package]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [name] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [status] tinyint NOT NULL,
-    [remark] nvarchar
-(
-    256
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [menu_ids] nvarchar
-(
-    2048
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_tenant_package] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [name] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [status] tinyint  NOT NULL,
+  [remark] nvarchar(256) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [menu_ids] nvarchar(2048) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_tenant_package] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'套餐编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'套餐名',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'name'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'关联的菜单编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'menu_ids'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户套餐表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_tenant_package'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'套餐编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'套餐名',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'name'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'关联的菜单编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'menu_ids'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户套餐表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_tenant_package'
+GO
 
 
 -- ----------------------------
 -- Records of system_tenant_package
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_tenant_package] ON
@@ -12219,110 +10835,99 @@ GO
 -- Table structure for system_user_post
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_user_post]') AND type IN ('U'))
-DROP TABLE [dbo].[system_user_post]
-    GO
+	DROP TABLE [dbo].[system_user_post]
+GO
 
-CREATE TABLE [dbo].[system_user_post]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [post_id] bigint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL,
-    [tenant_id] bigint DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_user_post] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [post_id] bigint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL,
+  [tenant_id] bigint DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_user_post] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'ID 主键',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'post_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户岗位表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_post'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'ID 主键',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'post_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户岗位表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_post'
+GO
 
 
 -- ----------------------------
 -- Records of system_user_post
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_user_post] ON
@@ -12348,110 +10953,99 @@ GO
 -- Table structure for system_user_role
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_user_role]') AND type IN ('U'))
-DROP TABLE [dbo].[system_user_role]
-    GO
+	DROP TABLE [dbo].[system_user_role]
+GO
 
-CREATE TABLE [dbo].[system_user_role]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [user_id] bigint NOT NULL,
-    [role_id] bigint NOT NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_user_role] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [user_id] bigint  NOT NULL,
+  [role_id] bigint  NOT NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_user_role] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'自增编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'user_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'角色ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'role_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户和角色关联表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_user_role'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'自增编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'user_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'角色ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'role_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户和角色关联表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_user_role'
+GO
 
 
 -- ----------------------------
 -- Records of system_user_role
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_user_role] ON
@@ -12510,217 +11104,187 @@ GO
 -- Table structure for system_users
 -- ----------------------------
 IF EXISTS (SELECT * FROM sys.all_objects WHERE object_id = OBJECT_ID(N'[dbo].[system_users]') AND type IN ('U'))
-DROP TABLE [dbo].[system_users]
-    GO
+	DROP TABLE [dbo].[system_users]
+GO
 
-CREATE TABLE [dbo].[system_users]
-(
-    [
-    id]
-    bigint
-    IDENTITY
-(
-    1,
-    1
-) NOT NULL,
-    [username] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [password] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [nickname] nvarchar
-(
-    30
-) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-    [remark] nvarchar
-(
-    500
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [dept_id] bigint NULL,
-    [post_ids] nvarchar
-(
-    255
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [email] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [mobile] nvarchar
-(
-    11
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [sex] tinyint NULL,
-    [avatar] nvarchar
-(
-    100
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [status] tinyint NOT NULL,
-    [login_ip] nvarchar
-(
-    50
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [login_date] datetime2
-(
-    7
-) NULL,
-    [creator] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [create_time] datetime2
-(
-    7
-) NOT NULL,
-    [updater] nvarchar
-(
-    64
-) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
-    [update_time] datetime2
-(
-    7
-) NOT NULL,
-    [tenant_id] bigint NOT NULL,
-    [deleted] bit DEFAULT 0 NOT NULL
-    )
-    GO
+CREATE TABLE [dbo].[system_users] (
+  [id] bigint  IDENTITY(1,1) NOT NULL,
+  [username] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [password] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [nickname] nvarchar(30) COLLATE SQL_Latin1_General_CP1_CI_AS  NOT NULL,
+  [remark] nvarchar(500) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [dept_id] bigint  NULL,
+  [post_ids] nvarchar(255) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [email] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [mobile] nvarchar(11) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [sex] tinyint  NULL,
+  [avatar] nvarchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [status] tinyint  NOT NULL,
+  [login_ip] nvarchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [login_date] datetime2(7)  NULL,
+  [creator] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [create_time] datetime2(7)  NOT NULL,
+  [updater] nvarchar(64) COLLATE SQL_Latin1_General_CP1_CI_AS  NULL,
+  [update_time] datetime2(7)  NOT NULL,
+  [tenant_id] bigint  NOT NULL,
+  [deleted] bit DEFAULT 0 NOT NULL
+)
+GO
 
 ALTER TABLE [dbo].[system_users] SET (LOCK_ESCALATION = TABLE)
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户账号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'username'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'密码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'password'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户昵称',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'nickname'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'备注',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'remark'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'部门ID',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'dept_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'岗位编号数组',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'post_ids'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户邮箱',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'email'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'手机号码',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'mobile'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户性别',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'sex'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'头像地址',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'avatar'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'帐号状态（0正常 1停用）',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'status'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后登录IP',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'login_ip'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'最后登录时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'login_date'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'creator'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'创建时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'create_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新者',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'updater'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'更新时间',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'update_time'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'租户编号',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'tenant_id'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'是否删除',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users',
-    'COLUMN', N'deleted'
-    GO
-    EXEC sp_addextendedproperty
-    'MS_Description', N'用户信息表',
-    'SCHEMA', N'dbo',
-    'TABLE', N'system_users'
-    GO
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户账号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'username'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'密码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'password'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户昵称',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'nickname'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'备注',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'remark'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'部门ID',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'dept_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'岗位编号数组',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'post_ids'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户邮箱',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'email'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'手机号码',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'mobile'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户性别',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'sex'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'头像地址',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'avatar'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'帐号状态（0正常 1停用）',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'status'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后登录IP',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'login_ip'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'最后登录时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'login_date'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'creator'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'创建时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'create_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新者',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'updater'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'更新时间',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'update_time'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'租户编号',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'tenant_id'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'是否删除',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users',
+'COLUMN', N'deleted'
+GO
+
+EXEC sp_addextendedproperty
+'MS_Description', N'用户信息表',
+'SCHEMA', N'dbo',
+'TABLE', N'system_users'
+GO
 
 
 -- ----------------------------
 -- Records of system_users
 -- ----------------------------
-BEGIN
-TRANSACTION
+BEGIN TRANSACTION
 GO
 
 SET IDENTITY_INSERT [dbo].[system_users] ON
@@ -12776,16 +11340,15 @@ GO
 -- Primary Key structure for table QRTZ_CALENDARS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_CALENDARS] ADD CONSTRAINT [PK_QRTZ_CALENDARS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [CALENDAR_NAME])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Indexes structure for table QRTZ_CRON_TRIGGERS
 -- ----------------------------
-CREATE
-NONCLUSTERED INDEX [IX_QRTZ_CRON_TRIGGERS_QRTZ_TRIGGERS]
+CREATE NONCLUSTERED INDEX [IX_QRTZ_CRON_TRIGGERS_QRTZ_TRIGGERS]
 ON [dbo].[QRTZ_CRON_TRIGGERS] (
   [SCHED_NAME] ASC,
   [TRIGGER_NAME] ASC,
@@ -12798,61 +11361,60 @@ GO
 -- Primary Key structure for table QRTZ_CRON_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_CRON_TRIGGERS] ADD CONSTRAINT [PK_QRTZ_CRON_TRIGGERS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table QRTZ_FIRED_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_FIRED_TRIGGERS] ADD CONSTRAINT [PK_QRTZ_FIRED_TRIGGERS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [ENTRY_ID])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table QRTZ_JOB_DETAILS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_JOB_DETAILS] ADD CONSTRAINT [PK_QRTZ_JOB_DETAILS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [JOB_NAME], [JOB_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table QRTZ_LOCKS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_LOCKS] ADD CONSTRAINT [PK_QRTZ_LOCKS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [LOCK_NAME])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table QRTZ_PAUSED_TRIGGER_GRPS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_PAUSED_TRIGGER_GRPS] ADD CONSTRAINT [PK_QRTZ_PAUSED_TRIGGER_GRPS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [TRIGGER_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table QRTZ_SCHEDULER_STATE
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_SCHEDULER_STATE] ADD CONSTRAINT [PK_QRTZ_SCHEDULER_STATE] PRIMARY KEY CLUSTERED ([SCHED_NAME], [INSTANCE_NAME])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Indexes structure for table QRTZ_SIMPLE_TRIGGERS
 -- ----------------------------
-CREATE
-NONCLUSTERED INDEX [IX_QRTZ_SIMPLE_TRIGGERS_QRTZ_TRIGGERS]
+CREATE NONCLUSTERED INDEX [IX_QRTZ_SIMPLE_TRIGGERS_QRTZ_TRIGGERS]
 ON [dbo].[QRTZ_SIMPLE_TRIGGERS] (
   [SCHED_NAME] ASC,
   [TRIGGER_NAME] ASC,
@@ -12865,16 +11427,15 @@ GO
 -- Primary Key structure for table QRTZ_SIMPLE_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS] ADD CONSTRAINT [PK_QRTZ_SIMPLE_TRIGGERS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Indexes structure for table QRTZ_SIMPROP_TRIGGERS
 -- ----------------------------
-CREATE
-NONCLUSTERED INDEX [IX_QRTZ_SIMPROP_TRIGGERS_QRTZ_TRIGGERS]
+CREATE NONCLUSTERED INDEX [IX_QRTZ_SIMPROP_TRIGGERS_QRTZ_TRIGGERS]
 ON [dbo].[QRTZ_SIMPROP_TRIGGERS] (
   [SCHED_NAME] ASC,
   [TRIGGER_NAME] ASC,
@@ -12887,16 +11448,15 @@ GO
 -- Primary Key structure for table QRTZ_SIMPROP_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS] ADD CONSTRAINT [PK_QRTZ_SIMPROP_TRIGGERS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Indexes structure for table QRTZ_TRIGGERS
 -- ----------------------------
-CREATE
-NONCLUSTERED INDEX [IX_QRTZ_TRIGGERS_QRTZ_JOB_DETAILS]
+CREATE NONCLUSTERED INDEX [IX_QRTZ_TRIGGERS_QRTZ_JOB_DETAILS]
 ON [dbo].[QRTZ_TRIGGERS] (
   [SCHED_NAME] ASC,
   [TRIGGER_NAME] ASC,
@@ -12909,785 +11469,895 @@ GO
 -- Primary Key structure for table QRTZ_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_TRIGGERS] ADD CONSTRAINT [PK_QRTZ_TRIGGERS] PRIMARY KEY CLUSTERED ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_form
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_form]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_form]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_form
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_form] ADD CONSTRAINT [PK__bpm_form__3213E83F86C2B27F] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_oa_leave
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_oa_leave]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_oa_leave]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_oa_leave
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_oa_leave] ADD CONSTRAINT [PK__bpm_oa_l__3213E83F3569F596] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_process_definition_ext
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_process_definition_ext]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_process_definition_ext]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_process_definition_ext
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_process_definition_ext] ADD CONSTRAINT [PK__bpm_proc__3213E83F0A8AB015] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_process_instance_ext
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_process_instance_ext]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_process_instance_ext]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_process_instance_ext
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_process_instance_ext] ADD CONSTRAINT [PK__bpm_proc__3213E83FFD88328F] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_task_assign_rule
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_task_assign_rule]', RESEED, 2)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_task_assign_rule]', RESEED, 2)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_task_assign_rule
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_task_assign_rule] ADD CONSTRAINT [PK__bpm_task__3213E83F474371C5] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_task_ext
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_task_ext]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_task_ext]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_task_ext
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_task_ext] ADD CONSTRAINT [PK__bpm_task__3213E83FD8AFE1F9] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for bpm_user_group
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[bpm_user_group]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[bpm_user_group]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table bpm_user_group
 -- ----------------------------
 ALTER TABLE [dbo].[bpm_user_group] ADD CONSTRAINT [PK__bpm_user__3213E83F25E4725B] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_api_access_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_api_access_log]', RESEED, 40615)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_api_access_log]', RESEED, 40615)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_api_access_log
 -- ----------------------------
 ALTER TABLE [dbo].[infra_api_access_log] ADD CONSTRAINT [PK__infra_ap__3213E83F04F27A05] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_api_error_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_api_error_log]', RESEED, 2021)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_api_error_log]', RESEED, 2021)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_api_error_log
 -- ----------------------------
 ALTER TABLE [dbo].[infra_api_error_log] ADD CONSTRAINT [PK__infra_ap__3213E83FCA2446D4] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_codegen_column
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_codegen_column]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_codegen_column]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_codegen_column
 -- ----------------------------
 ALTER TABLE [dbo].[infra_codegen_column] ADD CONSTRAINT [PK__infra_co__3213E83FA9EC5005] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_codegen_table
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_codegen_table]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_codegen_table]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_codegen_table
 -- ----------------------------
 ALTER TABLE [dbo].[infra_codegen_table] ADD CONSTRAINT [PK__infra_co__3213E83F555031D0] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_config
 -- ----------------------------
 ALTER TABLE [dbo].[infra_config] ADD CONSTRAINT [PK__infra_co__3213E83FF4C71E85] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_data_source_config
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_data_source_config]', RESEED, 9)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_data_source_config]', RESEED, 9)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_data_source_config
 -- ----------------------------
 ALTER TABLE [dbo].[infra_data_source_config] ADD CONSTRAINT [PK__infra_da__3213E83F02D21AEB] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_file
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_file]', RESEED, 1)
-    GO
-    -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[infra_file]', RESEED, 1)
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_file_config
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_file_config]', RESEED, 11)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_file_config]', RESEED, 11)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_file_config
 -- ----------------------------
 ALTER TABLE [dbo].[infra_file_config] ADD CONSTRAINT [PK__infra_fi__3213E83F8A7903EA] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_file_content
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_file_content]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_file_content]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_file_content
 -- ----------------------------
 ALTER TABLE [dbo].[infra_file_content] ADD CONSTRAINT [PK__infra_fi__3213E83F033E6045] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_job
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_job]', RESEED, 16)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_job]', RESEED, 16)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_job
 -- ----------------------------
 ALTER TABLE [dbo].[infra_job] ADD CONSTRAINT [PK__infra_jo__3213E83F3C7DE10C] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_job_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_job_log]', RESEED, 16)
-    GO
+DBCC CHECKIDENT ('[dbo].[infra_job_log]', RESEED, 16)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table infra_job_log
 -- ----------------------------
 ALTER TABLE [dbo].[infra_job_log] ADD CONSTRAINT [PK__infra_jo__3213E83F4CA8F353] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for infra_test_demo
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[infra_test_demo]', RESEED, 1)
-    GO
-    -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[infra_test_demo]', RESEED, 1)
+GO
+
+
+-- ----------------------------
 -- Auto increment value for member_user
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[member_user]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[member_user]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table member_user
 -- ----------------------------
 ALTER TABLE [dbo].[member_user] ADD CONSTRAINT [PK__member_u__3213E83F0A9AEC0B] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_app
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_app]', RESEED, 6)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_app]', RESEED, 6)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_app
 -- ----------------------------
 ALTER TABLE [dbo].[pay_app] ADD CONSTRAINT [PK__pay_app__3213E83FB26E0A6B] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_channel
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_channel]', RESEED, 17)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_channel]', RESEED, 17)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_channel
 -- ----------------------------
 ALTER TABLE [dbo].[pay_channel] ADD CONSTRAINT [PK__pay_chan__3213E83F2556A7FC] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_merchant
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_merchant]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_merchant]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_merchant
 -- ----------------------------
 ALTER TABLE [dbo].[pay_merchant] ADD CONSTRAINT [PK__pay_merc__3213E83F010D02B8] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_notify_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_notify_log]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_notify_log]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_notify_log
 -- ----------------------------
 ALTER TABLE [dbo].[pay_notify_log] ADD CONSTRAINT [PK__pay_noti__3213E83F5F4B3447] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_notify_task
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_notify_task]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_notify_task]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_notify_task
 -- ----------------------------
 ALTER TABLE [dbo].[pay_notify_task] ADD CONSTRAINT [PK__pay_noti__3213E83FB9215103] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_order
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_order]', RESEED, 124)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_order]', RESEED, 124)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_order
 -- ----------------------------
 ALTER TABLE [dbo].[pay_order] ADD CONSTRAINT [PK__pay_orde__3213E83F34C95271] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_order_extension
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_order_extension]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_order_extension]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_order_extension
 -- ----------------------------
 ALTER TABLE [dbo].[pay_order_extension] ADD CONSTRAINT [PK__pay_orde__3213E83F5ACB776F] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for pay_refund
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[pay_refund]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[pay_refund]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table pay_refund
 -- ----------------------------
 ALTER TABLE [dbo].[pay_refund] ADD CONSTRAINT [PK__pay_refu__3213E83FBE1B54AC] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_dept
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_dept]', RESEED, 111)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_dept]', RESEED, 111)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_dept
 -- ----------------------------
 ALTER TABLE [dbo].[system_dept] ADD CONSTRAINT [PK__system_d__3213E83FFA72847C] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_dict_data
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_dict_data]', RESEED, 1160)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_dict_data]', RESEED, 1160)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_dict_data
 -- ----------------------------
 ALTER TABLE [dbo].[system_dict_data] ADD CONSTRAINT [PK__system_d__3213E83F20407597] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_dict_type
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_dict_type]', RESEED, 147)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_dict_type]', RESEED, 147)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_dict_type
 -- ----------------------------
 ALTER TABLE [dbo].[system_dict_type] ADD CONSTRAINT [PK__system_d__3213E83F7C36B1FD] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_error_code
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_error_code]', RESEED, 15466)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_error_code]', RESEED, 15466)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_error_code
 -- ----------------------------
 ALTER TABLE [dbo].[system_error_code] ADD CONSTRAINT [PK__system_e__3213E83F68B8DFD0] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_login_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_login_log]', RESEED, 24)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_login_log]', RESEED, 24)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_login_log
 -- ----------------------------
 ALTER TABLE [dbo].[system_login_log] ADD CONSTRAINT [PK__system_l__3213E83F717953E9] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_menu
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_menu]', RESEED, 1267)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_menu]', RESEED, 1267)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_menu
 -- ----------------------------
 ALTER TABLE [dbo].[system_menu] ADD CONSTRAINT [PK__system_m__3213E83F14175801] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_notice
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_notice]', RESEED, 4)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_notice]', RESEED, 4)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_notice
 -- ----------------------------
 ALTER TABLE [dbo].[system_notice] ADD CONSTRAINT [PK__system_n__3213E83FA158BA8D] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_oauth2_access_token
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_oauth2_access_token]', RESEED, 5)
-    GO
-    -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[system_oauth2_access_token]', RESEED, 5)
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_oauth2_approve
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_oauth2_approve]', RESEED, 2)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_oauth2_approve]', RESEED, 2)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_oauth2_approve
 -- ----------------------------
 ALTER TABLE [dbo].[system_oauth2_approve] ADD CONSTRAINT [PK__system_o__3213E83F7CC08ED6] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_oauth2_client
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_oauth2_client]', RESEED, 1)
-    GO
-    -- ----------------------------
+DBCC CHECKIDENT ('[dbo].[system_oauth2_client]', RESEED, 1)
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_oauth2_code
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_oauth2_code]', RESEED, 4)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_oauth2_code]', RESEED, 4)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_oauth2_code
 -- ----------------------------
 ALTER TABLE [dbo].[system_oauth2_code] ADD CONSTRAINT [PK__system_o__3213E83F38C13543] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_oauth2_refresh_token
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_oauth2_refresh_token]', RESEED, 3)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_oauth2_refresh_token]', RESEED, 3)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_oauth2_refresh_token
 -- ----------------------------
 ALTER TABLE [dbo].[system_oauth2_refresh_token] ADD CONSTRAINT [PK__system_o__3213E83FCFB541CC] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_operate_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_operate_log]', RESEED, 19)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_operate_log]', RESEED, 19)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_operate_log
 -- ----------------------------
 ALTER TABLE [dbo].[system_operate_log] ADD CONSTRAINT [PK__system_o__3213E83F85EC81FD] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_post
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_post]', RESEED, 4)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_post]', RESEED, 4)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_post
 -- ----------------------------
 ALTER TABLE [dbo].[system_post] ADD CONSTRAINT [PK__system_p__3213E83FBC098F34] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_role
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_role]', RESEED, 111)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_role]', RESEED, 111)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_role
 -- ----------------------------
 ALTER TABLE [dbo].[system_role] ADD CONSTRAINT [PK__system_r__3213E83F209B43F2] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_role_menu
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_role_menu]', RESEED, 191)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_role_menu]', RESEED, 191)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_role_menu
 -- ----------------------------
 ALTER TABLE [dbo].[system_role_menu] ADD CONSTRAINT [PK__system_r__3213E83F6F1E4A9B] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_sensitive_word
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_sensitive_word]', RESEED, 4)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_sensitive_word]', RESEED, 4)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_sensitive_word
 -- ----------------------------
 ALTER TABLE [dbo].[system_sensitive_word] ADD CONSTRAINT [PK__system_s__3213E83FFFD8E555] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_sms_channel
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_sms_channel]', RESEED, 6)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_sms_channel]', RESEED, 6)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_sms_channel
 -- ----------------------------
 ALTER TABLE [dbo].[system_sms_channel] ADD CONSTRAINT [PK__system_s__3213E83FA96B966E] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_sms_code
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_sms_code]', RESEED, 470)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_sms_code]', RESEED, 470)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_sms_code
 -- ----------------------------
 ALTER TABLE [dbo].[system_sms_code] ADD CONSTRAINT [PK__system_s__3213E83F825CBCB9] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_sms_log
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_sms_log]', RESEED, 6)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_sms_log]', RESEED, 6)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_sms_log
 -- ----------------------------
 ALTER TABLE [dbo].[system_sms_log] ADD CONSTRAINT [PK__system_s__3213E83F5F1968A9] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_sms_template
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_sms_template]', RESEED, 13)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_sms_template]', RESEED, 13)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_sms_template
 -- ----------------------------
 ALTER TABLE [dbo].[system_sms_template] ADD CONSTRAINT [PK__system_s__3213E83F5C91CA37] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_social_user
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_social_user]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_social_user]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_social_user
 -- ----------------------------
 ALTER TABLE [dbo].[system_social_user] ADD CONSTRAINT [PK__system_s__3213E83F6EF3863C] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_social_user_bind
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_social_user_bind]', RESEED, 1)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_social_user_bind]', RESEED, 1)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_social_user_bind
 -- ----------------------------
 ALTER TABLE [dbo].[system_social_user_bind] ADD CONSTRAINT [PK__system_s__3213E83F21F44049] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_tenant
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_tenant]', RESEED, 122)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_tenant]', RESEED, 122)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_tenant
 -- ----------------------------
 ALTER TABLE [dbo].[system_tenant] ADD CONSTRAINT [PK__system_t__3213E83FAF444092] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_tenant_package
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_tenant_package]', RESEED, 111)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_tenant_package]', RESEED, 111)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_tenant_package
 -- ----------------------------
 ALTER TABLE [dbo].[system_tenant_package] ADD CONSTRAINT [PK__system_t__3213E83FA2213DB5] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_user_post
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_user_post]', RESEED, 115)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_user_post]', RESEED, 115)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_user_post
 -- ----------------------------
 ALTER TABLE [dbo].[system_user_post] ADD CONSTRAINT [PK__system_u__3213E83F56DD4107] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_user_role
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_user_role]', RESEED, 17)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_user_role]', RESEED, 17)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_user_role
 -- ----------------------------
 ALTER TABLE [dbo].[system_user_role] ADD CONSTRAINT [PK__system_u__3213E83F3593F652] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
-    -- ----------------------------
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
+
+
+-- ----------------------------
 -- Auto increment value for system_users
 -- ----------------------------
-    DBCC CHECKIDENT ('[dbo].[system_users]', RESEED, 115)
-    GO
+DBCC CHECKIDENT ('[dbo].[system_users]', RESEED, 115)
+GO
 
 
 -- ----------------------------
 -- Primary Key structure for table system_users
 -- ----------------------------
 ALTER TABLE [dbo].[system_users] ADD CONSTRAINT [PK__system_u__3213E83F7CF2516E] PRIMARY KEY CLUSTERED ([id])
-    WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-    ON [PRIMARY]
-    GO
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)  
+ON [PRIMARY]
+GO
 
 
 -- ----------------------------
 -- Foreign Keys structure for table QRTZ_BLOB_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_BLOB_TRIGGERS] ADD CONSTRAINT [FK_QRTZ_BLOB_TRIGGERS_QRTZ_TRIGGERS] FOREIGN KEY ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) REFERENCES [dbo].[QRTZ_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) ON DELETE CASCADE ON UPDATE NO ACTION
-    GO
+GO
 
 
 -- ----------------------------
 -- Foreign Keys structure for table QRTZ_CRON_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_CRON_TRIGGERS] ADD CONSTRAINT [FK_QRTZ_CRON_TRIGGERS_QRTZ_TRIGGERS] FOREIGN KEY ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) REFERENCES [dbo].[QRTZ_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) ON DELETE CASCADE ON UPDATE NO ACTION
-    GO
+GO
 
 
 -- ----------------------------
 -- Foreign Keys structure for table QRTZ_SIMPLE_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_SIMPLE_TRIGGERS] ADD CONSTRAINT [FK_QRTZ_SIMPLE_TRIGGERS_QRTZ_TRIGGERS] FOREIGN KEY ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) REFERENCES [dbo].[QRTZ_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) ON DELETE CASCADE ON UPDATE NO ACTION
-    GO
+GO
 
 
 -- ----------------------------
 -- Foreign Keys structure for table QRTZ_SIMPROP_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_SIMPROP_TRIGGERS] ADD CONSTRAINT [FK_QRTZ_SIMPROP_TRIGGERS_QRTZ_TRIGGERS] FOREIGN KEY ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) REFERENCES [dbo].[QRTZ_TRIGGERS] ([SCHED_NAME], [TRIGGER_NAME], [TRIGGER_GROUP]) ON DELETE CASCADE ON UPDATE NO ACTION
-    GO
+GO
 
 
 -- ----------------------------
 -- Foreign Keys structure for table QRTZ_TRIGGERS
 -- ----------------------------
 ALTER TABLE [dbo].[QRTZ_TRIGGERS] ADD CONSTRAINT [FK_QRTZ_TRIGGERS_QRTZ_JOB_DETAILS] FOREIGN KEY ([SCHED_NAME], [JOB_NAME], [JOB_GROUP]) REFERENCES [dbo].[QRTZ_JOB_DETAILS] ([SCHED_NAME], [JOB_NAME], [JOB_GROUP]) ON DELETE NO ACTION ON UPDATE NO ACTION
-    GO
+GO
 
