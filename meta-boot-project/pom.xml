@@ -23,6 +23,7 @@
         <module>meta-system</module>
         <module>meta-infra</module>
         <module>meta-server</module>
+        <module>meta-report</module>
     </modules>
 
     <properties>
