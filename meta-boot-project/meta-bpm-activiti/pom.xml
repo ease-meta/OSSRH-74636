@@ -13,7 +13,6 @@
 
     <artifactId>meta-bpm-activiti</artifactId>
 
-
     <dependencies>
         <!-- 工作流相关 -->
         <dependency>

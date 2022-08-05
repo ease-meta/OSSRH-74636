@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  io.activiti.spring.boot.ProcessEngineAutoConfiguration,\
+  io.github.meta.ease.bpm.ScheduleJobAutoConfiguration
