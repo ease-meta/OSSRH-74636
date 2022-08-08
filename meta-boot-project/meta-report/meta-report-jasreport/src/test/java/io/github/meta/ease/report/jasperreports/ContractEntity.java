@@ -39,7 +39,7 @@ public class ContractEntity implements Serializable {
     /**
      * 合同生效日期
      * */
-    private String effectiveDate;
+    private Date effectiveDate;
     /**
      * 合同到期日
      * */

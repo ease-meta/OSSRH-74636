@@ -32,10 +32,10 @@ class JasperPdfUtilTest {
         contract.setLocalCcyTaxIncludedAmt(new BigDecimal(987654321.123456));
         contract.setContractType("租赁合同");
         contract.setContractDetailType("房屋租赁合同");
-        //contract.setEffectiveDate("123");
+        contract.setEffectiveDate(new Date());
         contract.setExpiredDate(new Date());
 
-        JasperPdfUtil.exportPdfFromXml(templatePath, BeanUtil.beanToMap(contract),"pdf.pdf");
+        JasperPdfUtil.exportPdfFromXml(templatePath, BeanUtil.beanToMap(contract),"D:/pdf.pdf");
     }
 
 }

@@ -68,7 +68,7 @@ public class JasperPdfUtil {
 
         JasperPrint jasperPrint = getJasperPrint(jasperReport, paramMap);
 
-        JRPdfExporter exporter = new JRPdfExporter(DefaultJasperReportsContext.getInstance());
+      /*  JRPdfExporter exporter = new JRPdfExporter(DefaultJasperReportsContext.getInstance());
         exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
         exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(destFileName));
         SimplePdfReportConfiguration simplePdfReportConfiguration = new SimplePdfReportConfiguration();
@@ -78,8 +78,7 @@ public class JasperPdfUtil {
         SimplePdfExporterConfiguration exporterConfiguration = new SimplePdfExporterConfiguration();
         exporterConfiguration.setMetadataAuthor("abu");
         exporterConfiguration.setMetadataCreator("abu");
-        exporter.setConfiguration(exporterConfiguration);
-        //exporter.exportReport();
+        exporter.setConfiguration(exporterConfiguration);*/
 
         JasperExportManager.exportReportToPdfFile(jasperPrint, destFileName);
     }
@@ -106,7 +105,6 @@ public class JasperPdfUtil {
 
     private static JasperDesign getJasperDesign(String templatePath) throws JRException {
         JasperDesign jasperDesign = JRXmlLoader.load(ResourceUtil.getStream(templatePath));
-        jasperDesign.addStyle(new DefaultStyle());
         return jasperDesign;
     }
 
