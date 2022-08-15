@@ -25,6 +25,7 @@
         <module>meta-server</module>
         <module>meta-report</module>
         <module>meta-bpm-activiti</module>
+        <module>meta-cache</module>
     </modules>
 
     <properties>

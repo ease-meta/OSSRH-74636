@@ -38,4 +38,12 @@ class JasperPdfUtilTest {
         JasperPdfUtil.exportPdfFromXml(templatePath, BeanUtil.beanToMap(contract),"D:/pdf.pdf");
     }
 
+
+    @SneakyThrows
+    @Test
+    void Employee() {
+        String templatePath = "employees-details.jrxml";
+
+        JasperPdfUtil.exportPdfFromXml(templatePath,null,"D:/employees.pdf");
+    }
 }

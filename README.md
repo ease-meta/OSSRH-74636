@@ -1,6 +1,23 @@
 # open-cloud-platform
 
+
+
+# 分布式缓存
+
+## jetcache 两级缓存（嵌入式、远程分布式缓存）
+
+##  hazelcast 嵌入式分布式缓存
+
+
+
+
+
+
+
+
+
 #### 案例
+
 将 yudao-module-system-api 模块的 auth 包，重构成 oauth2 包 YunaiV Yesterday 16:44 bdf579a2
 * 2022年6月3号 整合https://gitee.com/zhijiantianya/ruoyi-vue-pro 工作流
 * npm install --registry=https://registry.npm.taobao.org
