@@ -1,4 +1,4 @@
-package io.github.meta.ease.cache.hazelcast.interceptor;
+package io.github.meta.ease.cache;
 
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 

@@ -2,17 +2,18 @@ package io.github.meta.ease.cache.autoconfigure;
 
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.spring.cache.HazelcastCacheManager;
+import io.github.meta.ease.cache.ExpireCacheResolver;
+import io.github.meta.ease.cache.SimpleCachingConfigurerSupport;
+import io.github.meta.ease.cache.SimpleKeyGenerator;
+import io.github.meta.ease.cache.hazelcast.interceptor.ExpireHazelcastCacheManager;
 import io.github.meta.ease.cache.hazelcast.interceptor.ExpireHazelcastSimpleCachingConfigurerSupport;
-import io.github.meta.ease.cache.beans.factory.config.CacheInterceptorBeanPostProcessor;
-import io.github.meta.ease.cache.hazelcast.interceptor.ExpireCacheResolver;
-import io.github.meta.ease.cache.hazelcast.interceptor.SimpleCachingConfigurerSupport;
-import io.github.meta.ease.cache.hazelcast.interceptor.SimpleKeyGenerator;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.hazelcast.HazelcastAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.interceptor.CacheAspectSupport;
 import org.springframework.cache.interceptor.CacheResolver;
@@ -33,13 +34,9 @@ import org.springframework.context.annotation.Import;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(CacheManager.class)
 @ConditionalOnBean(CacheAspectSupport.class)
+@EnableConfigurationProperties(ExpireProperties.class)
 @Import({CacheAutoConfiguration.ExpireHazelcastSimpleCachingConfigurer.class})
 public class CacheAutoConfiguration {
-
-    @Bean
-    public CacheInterceptorBeanPostProcessor cacheInterceptorBeanPostProcessor() {
-        return new CacheInterceptorBeanPostProcessor();
-    }
 
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass({HazelcastInstance.class, HazelcastCacheManager.class})
@@ -52,6 +49,11 @@ public class CacheAutoConfiguration {
         }
 
         @Bean
+        ExpireHazelcastCacheManager cacheManager(HazelcastInstance hazelcastInstance,ExpireProperties expireProperties) {
+            return new ExpireHazelcastCacheManager(hazelcastInstance,expireProperties);
+        }
+
+        @Bean
         ExpireCacheResolver cacheResolver(@Autowired CacheManager cacheManager) {
             return new ExpireCacheResolver(cacheManager);
         }
@@ -60,6 +62,5 @@ public class CacheAutoConfiguration {
         SimpleKeyGenerator keyGenerator() {
             return new SimpleKeyGenerator();
         }
-
     }
 }

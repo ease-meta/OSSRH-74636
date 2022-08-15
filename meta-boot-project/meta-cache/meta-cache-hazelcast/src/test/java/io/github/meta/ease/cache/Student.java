@@ -1,4 +1,4 @@
-package com.dcfcs.cedar.components.cache;
+package io.github.meta.ease.cache;
 
 import java.io.Serializable;
 

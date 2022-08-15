@@ -1,6 +1,6 @@
 package io.github.meta.ease.cache.hazelcast.interceptor;
 
-import io.github.meta.ease.cache.hazelcast.interceptor.SimpleCachingConfigurerSupport;
+import io.github.meta.ease.cache.SimpleCachingConfigurerSupport;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.interceptor.CacheResolver;

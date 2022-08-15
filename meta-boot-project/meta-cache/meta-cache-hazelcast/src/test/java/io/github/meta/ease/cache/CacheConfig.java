@@ -1,6 +1,5 @@
-package com.dcfcs.cedar.components.cache;
+package io.github.meta.ease.cache;
 
-import io.github.meta.ease.cache.annotation.CacheExpire;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -19,12 +18,11 @@ import org.springframework.stereotype.Component;
 public class CacheConfig {
 
     @Cacheable(cacheNames = {"student"})
-    @CacheExpire(ttl = 20)
     //@Cached(name = "student", expire = 3600,cacheType = CacheType.LOCAL)
     public Student findAll() {
         log.info("student");
         Student student = new Student();
-        student.setName("dcfcs");
+        student.setName("haha");
         return student;
     }
 }

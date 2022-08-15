@@ -5,10 +5,14 @@ import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.map.IMap;
 import com.hazelcast.spring.cache.HazelcastCache;
 import io.github.meta.ease.cache.ExpireCacheManager;
+import io.github.meta.ease.cache.autoconfigure.ExpireProperties;
+import io.github.meta.ease.cache.autoconfigure.ExpireProperties.ExpireConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.Cache;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +20,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static org.springframework.util.Assert.isTrue;
 
@@ -28,6 +35,7 @@ import static org.springframework.util.Assert.isTrue;
  * @version 22.0.1
  * @since 22.0.1
  */
+@Slf4j
 public class ExpireHazelcastCacheManager implements ExpireCacheManager {
 
     public static final String CACHE_PROP = "hazelcast.spring.cache.prop";
@@ -47,11 +55,25 @@ public class ExpireHazelcastCacheManager implements ExpireCacheManager {
      */
     private Map<String, Long> readTimeoutMap = new HashMap<String, Long>();
 
+    private Map<String, ExpireConfig> expireProperties = new HashMap<>();
+
     private ExpireHazelcastCacheManager() {
     }
 
-    public ExpireHazelcastCacheManager(HazelcastInstance hazelcastInstance) {
+    public ExpireHazelcastCacheManager(HazelcastInstance hazelcastInstance, ExpireProperties expireProperties) {
         this.hazelcastInstance = hazelcastInstance;
+        this.expireProperties = expireProperties.getExpireConfig().
+                stream()
+                .filter(distinctByKey(ExpireConfig::getName))
+                .collect(
+                        Collectors.toMap(ExpireConfig::getName,
+                                expireConfig -> expireConfig));
+
+    }
+
+    private static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object, Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     @Override
@@ -59,7 +81,13 @@ public class ExpireHazelcastCacheManager implements ExpireCacheManager {
         Cache cache = caches.get(name);
         if (cache == null) {
             IMap<Object, Object> map = hazelcastInstance.getMap(name);
-            cache = new ExpireHazelcastCache(map);
+            if (this.expireProperties.containsKey(name)) {
+                ExpireConfig expireConfig = this.expireProperties.get(name);
+                cache = new ExpireHazelcastCache(map, parseCacheExpire(expireConfig));
+            } else {
+                cache = new ExpireHazelcastCache(map);
+            }
+
             long cacheTimeout = calculateCacheReadTimeout(name);
             ((HazelcastCache) cache).setReadTimeout(cacheTimeout);
             Cache currentCache = caches.putIfAbsent(name, cache);
@@ -68,6 +96,12 @@ public class ExpireHazelcastCacheManager implements ExpireCacheManager {
             }
         }
         return cache;
+    }
+
+    private long parseCacheExpire(ExpireConfig expireConfig) {
+        log.trace("CacheExpire ttl:{}, CacheExpire unit:{}", expireConfig.getTtl(), expireConfig.getUnit());
+        return Duration.ofMillis(expireConfig.getUnit().toMillis(expireConfig.getTtl())).toMillis();
+
     }
 
     @Override

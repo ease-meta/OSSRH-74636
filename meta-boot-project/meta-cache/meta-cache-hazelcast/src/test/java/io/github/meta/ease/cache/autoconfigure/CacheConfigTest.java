@@ -1,7 +1,7 @@
-package com.dcfcs.cedar.components.cache.autoconfigure;
+package io.github.meta.ease.cache.autoconfigure;
 
-import com.dcfcs.cedar.components.cache.CacheConfig;
-import com.dcfcs.cedar.components.cache.QuickstartApplication;
+import io.github.meta.ease.cache.CacheConfig;
+import io.github.meta.ease.cache.QuickstartApplication;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
