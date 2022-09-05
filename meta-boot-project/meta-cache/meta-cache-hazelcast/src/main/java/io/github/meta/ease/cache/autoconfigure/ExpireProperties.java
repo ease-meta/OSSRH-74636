@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,9 @@ import java.util.concurrent.TimeUnit;
  */
 @Data
 @ConfigurationProperties(prefix = "ease.cache")
-public class ExpireProperties {
+public class ExpireProperties implements Serializable {
+
+    private static final long serialVersionUID = 6909576383755209320L;
 
     @NestedConfigurationProperty
     private List<ExpireConfig> expireConfig = new LinkedList<>();

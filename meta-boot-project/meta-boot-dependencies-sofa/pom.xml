@@ -12,7 +12,7 @@
     <artifactId>meta-boot-dependencies-sofa</artifactId>
 
     <properties>
-        <sofa-boot.version>3.12.1</sofa-boot.version>
+        <sofa-boot.version>3.14.0</sofa-boot.version>
         <sofa-boot-enterprise.version>3.7.0</sofa-boot-enterprise.version>
     </properties>
     <dependencyManagement>
