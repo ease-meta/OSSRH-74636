@@ -25,6 +25,7 @@
         <module>meta-server</module>
         <module>meta-report</module>
         <module>meta-bpm-activiti</module>
+        <module>meta-boot-base-demo</module>
     </modules>
 
     <properties>
@@ -152,6 +153,12 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <scope>test</scope>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>[0.8,)</version>
         </dependency>
     </dependencies>
 </project>

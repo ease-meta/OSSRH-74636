@@ -1,7 +1,6 @@
 package io.activiti.spring.boot;
 
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,7 +21,7 @@ import org.springframework.core.task.TaskExecutor;
 public class ProcessEngineAutoConfiguration {
 
     @Bean
-    public SpringAsyncExecutor springAsyncExecutor(@Qualifier("applicationTaskExecutor") TaskExecutor applicationTaskExecutor) {
+    public SpringAsyncExecutor springAsyncExecutor(TaskExecutor applicationTaskExecutor) {
         return new SpringAsyncExecutor(applicationTaskExecutor);
     }
 }

@@ -35,7 +35,18 @@ class JasperPdfUtilTest {
         contract.setEffectiveDate(new Date());
         contract.setExpiredDate(new Date());
 
-        JasperPdfUtil.exportPdfFromXml(templatePath, BeanUtil.beanToMap(contract),"D:/pdf.pdf");
+        JasperPdfUtil.exportPdfFromXml(templatePath, BeanUtil.beanToMap(contract), "D:/pdf.pdf");
     }
 
+    @Test
+    void Test() {
+
+
+    }
+
+    public static void swap(int value1, int value2) {
+        int temp = value1;
+        value1 = value2;
+        value2 = temp;
+    }
 }
