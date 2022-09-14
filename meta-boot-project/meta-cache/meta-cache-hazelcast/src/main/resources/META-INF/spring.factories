@@ -1,0 +1,4 @@
+# Auto Configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    io.github.meta.ease.cache.autoconfigure.CacheAutoConfiguration,\
+    io.github.meta.ease.cache.autoconfigure.HazelcastAutoConfiguration

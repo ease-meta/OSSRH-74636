@@ -1,0 +1,19 @@
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  hidePackages: com.alibaba
+  local:
+    default:
+      type: caffeine
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      limit: 100
+      expireAfterWriteInMillis: 100000
+    otherArea:
+      type: caffeine
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      limit: 100
+      expireAfterWriteInMillis: 100000
