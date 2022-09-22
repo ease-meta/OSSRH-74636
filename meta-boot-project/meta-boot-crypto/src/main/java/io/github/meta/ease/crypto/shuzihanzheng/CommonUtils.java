@@ -1,4 +1,4 @@
-package io.github.meta.ease.crypto;
+package io.github.meta.ease.crypto.shuzihanzheng;
 
 public class CommonUtils {
     public static String getAccountantPublicKeyUrl(String applyUrl) {

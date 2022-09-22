@@ -1,4 +1,4 @@
-package io.github.meta.ease.crypto;
+package io.github.meta.ease.crypto.shuzihanzheng;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.util.encoders.Hex;

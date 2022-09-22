@@ -1,4 +1,4 @@
-package io.github.meta.ease.crypto;
+package io.github.meta.ease.crypto.shuzihanzheng;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

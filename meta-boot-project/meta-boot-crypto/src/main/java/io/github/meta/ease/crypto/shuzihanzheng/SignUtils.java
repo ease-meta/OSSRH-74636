@@ -1,4 +1,4 @@
-package io.github.meta.ease.crypto;
+package io.github.meta.ease.crypto.shuzihanzheng;
 
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPrivateKey;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;

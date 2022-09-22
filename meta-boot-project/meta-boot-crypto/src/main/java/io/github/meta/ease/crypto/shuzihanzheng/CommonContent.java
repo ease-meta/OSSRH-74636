@@ -1,4 +1,4 @@
-package io.github.meta.ease.crypto;
+package io.github.meta.ease.crypto.shuzihanzheng;
 
 public class CommonContent {
   public static String blockChainSwitch_0 = "0";

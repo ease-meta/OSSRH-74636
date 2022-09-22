@@ -26,6 +26,9 @@
         <module>meta-report</module>
         <module>meta-bpm-activiti</module>
         <module>meta-cache</module>
+        <module>meta-boot-base-demo</module>
+        <module>meta-boot-crypto</module>
+        <module>meta-netty</module>
     </modules>
 
     <properties>

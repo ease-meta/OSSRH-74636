@@ -179,13 +179,19 @@ public class HutoolSMUtil {
 
         String text = "wangjing";
 
+        //SmUtil.sm2(Base64.decode("123456"),Base64.decode("123456"));
 
         //使用随机生成的密钥对加密或解密
         System.out.println("使用随机生成的密钥对加密或解密====开始");
         SM2 sm2 = SmUtil.sm2();
-        String privateKeyBase64 = sm2.getPrivateKeyBase64();
-        String publicKeyBase64 = sm2.getPublicKeyBase64();
+        //String privateKeyBase64 = sm2.getPrivateKeyBase64();
+       // String publicKeyBase64 = sm2.getPublicKeyBase64();
+       // System.out.println(publicKeyBase64);
+       // System.out.println(privateKeyBase64);
 
+        String s = sm2.encryptBase64("123456", KeyType.PublicKey);
+        String s1 = sm2.decryptStr(s, KeyType.PrivateKey);
+        System.out.println(s);
         String digestHex = SmUtil.sm3(text);
         String signHex = sm2.signHex(digestHex);
         String encodeBase64 = Base64.encode(signHex);
