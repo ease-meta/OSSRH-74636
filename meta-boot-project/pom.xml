@@ -25,6 +25,7 @@
         <module>meta-boot-crypto</module>
         <module>meta-netty</module>
         <module>meta-elasticsearch</module>
+        <module>meta-boot-spring-batch</module>
     </modules>
 
     <properties>

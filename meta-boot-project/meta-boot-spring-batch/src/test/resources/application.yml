@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://10.21.5.25:3306/cedar-biz?allowPublicKeyRetrieval=true&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
