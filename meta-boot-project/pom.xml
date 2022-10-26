@@ -18,11 +18,6 @@
         <module>meta-boot-dependencies</module>
         <!-- <module>meta-boot-dependencies-huawei</module>
          <module>meta-boot-dependencies-sofa</module>-->
-        <module>meta-bpm</module>
-        <module>meta-framework</module>
-        <module>meta-system</module>
-        <module>meta-infra</module>
-        <module>meta-server</module>
         <module>meta-report</module>
         <module>meta-bpm-activiti</module>
         <module>meta-cache</module>
