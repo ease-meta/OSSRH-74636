@@ -29,6 +29,7 @@
         <module>meta-boot-base-demo</module>
         <module>meta-boot-crypto</module>
         <module>meta-netty</module>
+        <module>meta-elasticsearch</module>
     </modules>
 
     <properties>
