@@ -29,8 +29,6 @@
     </modules>
 
     <properties>
-        <main.basedir>${basedir}/..</main.basedir>
-        <main.user.dir>${basedir}/..</main.user.dir>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
     </properties>
 

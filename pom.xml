@@ -3,13 +3,6 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.8</version>
-        <!-- Add this to resolve to repository -->
-        <relativePath/>
-    </parent>
 
     <groupId>io.github.meta-ease</groupId>
     <artifactId>meta-boot-build</artifactId>
@@ -21,21 +14,25 @@
     </modules>
 
     <properties>
-        <license.maven.plugin>4.1</license.maven.plugin>
-        <maven_flatten_version>1.1.0</maven_flatten_version>
+        <revision>2021.0.0-SNAPSHOT</revision>
+
         <project.encoding>UTF-8</project.encoding>
         <java.version>1.8</java.version>
 
-        <revision>2021.0.0-SNAPSHOT</revision>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M4</maven-surefire-plugin.version>
+        <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
+        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+        <versions-maven-plugin.version>2.5</versions-maven-plugin.version>
+        <maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
+        <apache-rat-plugin.version>0.13</apache-rat-plugin.version>
+        <frontend-maven-plugin.version>1.6</frontend-maven-plugin.version>
+        <frontend-maven-plugin.node.version>v12.14.1</frontend-maven-plugin.node.version>
+        <docker-maven-plugin.version>0.40.1</docker-maven-plugin.version>
 
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <!-- 看看咋放到 bom 里 -->
-        <lombok.version>1.18.24</lombok.version>
-        <mapstruct.version>1.5.0.Final</mapstruct.version>
-
-        <main.basedir>${basedir}</main.basedir>
-        <main.user.dir>${basedir}/</main.user.dir>
-
+        <skipTests>false</skipTests>
         <!--单元测试-->
         <jmh.version>[1.19,)</jmh.version>
         <podam.version>7.2.6.RELEASE</podam.version>
@@ -77,83 +74,175 @@
                 <version>${testng.version}</version>
                 <scope>test</scope>
             </dependency>
-            <!--
-                        <dependency>
-                            <groupId>org.easymock</groupId>
-                            <artifactId>easymock</artifactId>
-                            <version>${easymock.version}</version>
-                            <scope>test</scope>
-                        </dependency>-->
-            <!--<dependency>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-testng</artifactId>
-                <version>2.17.3</version>
-            </dependency>-->
+
         </dependencies>
     </dependencyManagement>
-    <reporting>
-        <!--<plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-        </plugins>-->
-    </reporting>
+
+
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-                <version>${maven_flatten_version}</version>
-                <configuration>
-                    <updatePomFile>true</updatePomFile>
-                    <flattenMode>resolveCiFriendliesOnly</flattenMode>
-                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>flatten</id>
-                        <phase>process-resources</phase>
+                        <phase>package</phase>
                         <goals>
-                            <goal>flatten</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>flatten.clean</id>
-                        <phase>clean</phase>
-                        <goals>
-                            <goal>clean</goal>
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>
-                <groupId>io.spring.javaformat</groupId>
-                <artifactId>spring-javaformat-maven-plugin</artifactId>
-            </plugin>-->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-checkstyle-plugin</artifactId>
-            </plugin>-->
-            <!-- maven-compiler-plugin 插件，解决 Lombok + MapStruct 组合 -->
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <skip>${skipTests}</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <sourcepath>src/main/java</sourcepath>
+                    <detectJavaApiLink>false</detectJavaApiLink>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
-                        </path>
-                    </annotationProcessorPaths>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${maven-release-plugin.version}</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle-plugin.version}</version>
+                <configuration>
+                    <configLocation>/script/shenyu_checkstyle.xml</configLocation>
+                    <headerLocation>/script/checkstyle-header.txt</headerLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                    <excludes>**/transfer/**/*</excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.rat</groupId>
+                <artifactId>apache-rat-plugin</artifactId>
+                <version>${apache-rat-plugin.version}</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/target/**</exclude>
+                        <exclude>**/logs/**</exclude>
+                        <exclude>**/*.log</exclude>
+                        <exclude>**/*.tar.gz</exclude>
+                        <exclude>**/spring.factories</exclude>
+                        <exclude>**/spring.provides</exclude>
+                        <exclude>/script/**</exclude>
+                        <exclude>**/*.json</exclude>
+                        <!-- IDE files -->
+                        <exclude>**/*.iml</exclude>
+                        <exclude>**/.idea/**</exclude>
+                        <exclude>**/*.classpath</exclude>
+                        <exclude>**/.project</exclude>
+                        <exclude>**/.settings/**</exclude>
+                        <exclude>**/dependency-reduced-pom.xml</exclude>
+                        <!-- git files -->
+                        <exclude>**/.gitignore</exclude>
+                        <exclude>**/.gitmodules</exclude>
+                        <exclude>**/.git/**</exclude>
+                        <!-- CI files -->
+                        <exclude>**/.travis.yml</exclude>
+                        <exclude>**/.codecov.yml</exclude>
+                        <exclude>**/.mvn/jvm.config</exclude>
+                        <exclude>**/.mvn/wrapper/maven-wrapper.properties</exclude>
+                        <!-- GitHub files -->
+                        <exclude>**/.github/**</exclude>
+                        <!-- document files -->
+                        <exclude>**/*.md</exclude>
+                        <excldue>**/*.MD</excldue>
+                        <exclude>**/*.txt</exclude>
+                        <exclude>**/docs/**</exclude>
+                        <!-- UI files -->
+                        <exclude>**/.babelrc</exclude>
+                        <exclude>**/.editorconfig</exclude>
+                        <exclude>**/.eslintignore</exclude>
+                        <exclude>**/assets/**</exclude>
+                        <exclude>**/dist/**</exclude>
+                        <exclude>**/etc/**</exclude>
+                        <exclude>**/node/**</exclude>
+                        <exclude>**/node_modules/**</exclude>
+                        <exclude>**/test/coverage/**</exclude>
+                        <exclude>**/resources/static/</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

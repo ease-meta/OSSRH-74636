@@ -16,11 +16,11 @@
         <main.basedir>${basedir}/../../</main.basedir>
         <main.user.dir>${basedir}/../../</main.user.dir>
         <!--微服务基础框架-->
-        <spring-boot.version>2.6.8</spring-boot.version>
+        <spring-boot.version>2.6.11</spring-boot.version>
         <!--https://spring.io/projects/spring-cloud#overview-->
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
         <!--https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E-->
-        <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2021.0.4.0</spring-cloud-alibaba.version>
         <!--服务治理-->
         <!--https://github.com/apolloconfig/apollo/-->
         <apollo.version>2.0.1</apollo.version>
@@ -139,24 +139,21 @@
         <justauth.version>1.4.0</justauth.version>
         <justauth.version>1.4.0</justauth.version>
     </properties>
+
     <licenses>
         <license>
             <name>The Apache License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <scm>
-        <tag></tag>
-        <url></url>
-        <connection>scm:git:</connection>
-        <developerConnection></developerConnection>
-    </scm>
+
     <developers>
         <developer>
             <name>leijian</name>
             <email>leijian0128@163.com</email>
         </developer>
     </developers>
+
     <distributionManagement>
         <repository>
             <id>rdc-releases</id>
@@ -167,6 +164,7 @@
             <url>https://packages.aliyun.com/maven/repository/2018188-snapshot-mdbvcW/</url>
         </snapshotRepository>
     </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <!--微服务原生组件-->
