@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>meta-boot-project</artifactId>
+        <groupId>io.github.meta-ease</groupId>
+        <version>2021.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>meta-boot-xxs</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/store.taotao.docbook/taotao-docbook-xsl -->
+        <dependency>
+            <groupId>store.taotao.docbook</groupId>
+            <artifactId>taotao-docbook-xsl</artifactId>
+            <version>1.0.1-RELEASE</version>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

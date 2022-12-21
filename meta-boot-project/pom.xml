@@ -26,6 +26,8 @@
         <module>meta-netty</module>
         <module>meta-elasticsearch</module>
         <module>meta-boot-spring-batch</module>
+        <module>meta-boot-xxs</module>
+        <module>meta-boot-util</module>
     </modules>
 
     <properties>
